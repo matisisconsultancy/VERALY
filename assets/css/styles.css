@@ -447,17 +447,36 @@ strong{font-weight:600;color:var(--text)}
 .glass{background:linear-gradient(160deg,rgba(137,245,229,.08),rgba(10,74,80,.14));
   border:1px solid var(--line-soft);border-radius:16px;backdrop-filter:blur(4px)}
 
-/* features en 3 tarjetas altas con media arriba */
-.feature-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);margin-top:2rem}
+/* features: tarjetas con imagen dominante + título + subtítulo (referente AI Finance) */
+.feature-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);margin-top:2.4rem}
 @media (max-width:900px){.feature-cards{grid-template-columns:1fr}}
-.fcard{border:1px solid var(--line-soft);border-radius:16px;overflow:clip;background:var(--panel);
-  display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s}
-.fcard:hover{border-color:var(--line);transform:translateY(-4px)}
-.fcard .fmedia{aspect-ratio:16/11;position:relative;overflow:clip;background:radial-gradient(120% 100% at 70% 0%,rgba(10,74,80,.7),var(--ink))}
-.fcard .fbody{padding:clamp(18px,2.4vw,26px)}
-.fcard h3{font-size:var(--step-1)}
-.fcard p{color:var(--dim);margin:.5rem 0 0}
-.fcard .arrowlink{margin-top:1rem}
+.fcard{border:1px solid var(--line-soft);border-radius:18px;overflow:clip;background:var(--panel);
+  text-decoration:none;color:inherit;display:flex;flex-direction:column;
+  transition:border-color .2s,background .2s,transform .2s}
+.fcard:hover{border-color:var(--accent);background:var(--panel-2);transform:translateY(-4px)}
+.fcard .fmedia{aspect-ratio:4/5;position:relative;overflow:clip;
+  background:radial-gradient(120% 100% at 60% 8%,rgba(10,74,80,.78),var(--ink))}
+.fcard .fbody{padding:clamp(20px,2.4vw,32px)}
+.fcard h3{font-size:var(--step-2);line-height:1.12;transition:color .2s}
+.fcard:hover h3{color:var(--accent)}
+.fcard .fbody>p{color:var(--dim);margin:.7rem 0 0;font-size:var(--step-0)}
+
+/* pill con flecha animada (CTA) */
+.pill-link{display:inline-flex;align-items:center;gap:.6em;font-family:var(--ui);font-weight:600;font-size:var(--step-0);
+  padding:.72em 1.35em;border-radius:999px;border:1.5px solid var(--line);color:var(--accent);text-decoration:none;
+  transition:background .2s,color .2s,border-color .2s}
+.pill-link:hover{background:var(--accent);color:var(--on-light);border-color:var(--accent)}
+.pill-link .pill-arrow{display:inline-block;animation:pill-nudge 1.8s ease-in-out infinite}
+.pill-link:hover .pill-arrow{animation:none;transform:translateX(4px)}
+@keyframes pill-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+
+/* nota de conflicto (disclaimer) — versión elegante */
+.conflict-note{display:flex;gap:16px;align-items:center;max-width:900px;margin:2.8rem auto 0;
+  padding:18px 26px;border:1px solid var(--line-soft);border-radius:16px;background:rgba(137,245,229,.045)}
+.conflict-note svg{width:26px;height:26px;color:var(--accent);flex:none}
+.conflict-note p{margin:0;color:var(--dim);font-size:var(--step--1);line-height:1.55}
+.conflict-note strong{color:var(--text)}
+@media (max-width:560px){.conflict-note{flex-direction:column;text-align:center;align-items:center}}
 
 /* filas de feature numeradas y alternadas (01 / 02 / 03) */
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center;
@@ -579,19 +598,26 @@ strong{font-weight:600;color:var(--text)}
 .reveal-phrases{position:relative;width:100%;max-width:1200px;min-height:clamp(140px,22vh,280px);
   display:flex;align-items:center;justify-content:center;text-align:center}
 .reveal-phrase{position:absolute;margin:0;opacity:0;transition:opacity .45s ease;
-  font-family:var(--display);font-weight:500;font-size:clamp(2.4rem,1.1rem+4.7vw,5.8rem);line-height:1.02;letter-spacing:-.025em}
+  font-family:var(--display);font-weight:500;font-size:clamp(2.9rem,1.4rem+5.6vw,7rem);line-height:1.0;letter-spacing:-.03em}
 .reveal-phrase.active{opacity:1}
 .reveal-phrase .w{color:var(--dim-2);transition:color .3s ease}
 .reveal-phrase .w.lit{color:var(--text)}
-/* baraja de tarjetas de norma que aparecen al hacer scroll (rejilla a lo ancho) */
+/* baraja de tarjetas-enlace de norma (rejilla a lo ancho, con hover de color) */
 .reveal-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%;max-width:1160px}
-.reveal-cards .rc{border:1px solid var(--line-soft);border-radius:16px;padding:22px 24px;min-height:104px;
-  background:linear-gradient(160deg,rgba(137,245,229,.06),rgba(10,74,80,.16));
+.reveal-cards .rc{border:1px solid var(--line-soft);border-radius:16px;padding:22px 24px;min-height:116px;
+  background:linear-gradient(160deg,rgba(137,245,229,.06),rgba(10,74,80,.16));text-decoration:none;color:inherit;
   -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;flex-direction:column;gap:8px;justify-content:space-between;
-  opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+  opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .3s ease,border-color .2s ease,background .2s ease}
 .reveal-cards .rc.in{opacity:1;transform:none}
-.reveal-cards .rc .t-k{font-family:var(--display);font-weight:600;font-size:1.15rem;color:var(--text)}
+.reveal-cards .rc:hover{border-color:var(--accent);background:linear-gradient(160deg,rgba(137,245,229,.16),rgba(10,74,80,.28));transform:translateY(-4px)}
+.reveal-cards .rc .t-k{font-family:var(--display);font-weight:600;font-size:1.2rem;color:var(--text);transition:color .2s}
+.reveal-cards .rc:hover .t-k{color:var(--accent)}
 .reveal-cards .rc .t-d{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--dim-2)}
+.reveal-cards .rc .rc-go{font-family:var(--ui);font-weight:600;font-size:.74rem;color:var(--accent);
+  display:inline-flex;align-items:center;gap:.35em;opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s}
+.reveal-cards .rc:hover .rc-go{opacity:1;transform:none}
+.reveal-cards .rc .rc-go i{font-style:normal;transition:transform .2s}
+.reveal-cards .rc:hover .rc-go i{transform:translate(2px,-2px)}
 @media (max-width:900px){
   .reveal-track{height:auto}
   .reveal-sticky{position:static;height:auto;display:block;padding:56px var(--edge)}

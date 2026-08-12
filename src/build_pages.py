@@ -111,27 +111,18 @@ def build(g):
     # HOME
     # =====================================================================
     situ_data = [
-        ("Perdí dinero en un esquema de captación",
-         "Existen vías administrativas, penales y civiles para reclamar, y cada una tiene términos propios que corren desde la toma de posesión. Saber cuál aplica y en qué plazo es la primera decisión del caso.",
-         "Ver la ruta del afectado", "/afectados-por-captacion-masiva/", "afectado", globe()),
-        ("Me investigan o me vincularon",
-         "La vinculación alcanza a administradores, socios, revisores fiscales, contadores y proveedores por el solo ejercicio del cargo durante el periodo de captación. La defensa se construye sobre la exclusión y la prueba del origen lícito.",
-         "Ver la ruta de la defensa", "/defensa-en-captacion-masiva/", "investigado", wave()),
-        ("Mi empresa recauda de muchas personas",
-         "Fintech, crowdfunding, libranzas, factoring y multinivel operan cerca de los umbrales que configuran captación. Conviene revisar el encuadre antes de que lo revise una superintendencia.",
-         "Ver la ruta preventiva", "/cumplimiento-en-recaudo-masivo/", "empresa", globe()),
+        ("Perdí dinero en un esquema de captación", "Vías de recuperación y plazos.",
+         "/afectados-por-captacion-masiva/", "afectado", globe()),
+        ("Me investigan o me vincularon", "Defensa en los tres frentes.",
+         "/defensa-en-captacion-masiva/", "investigado", wave()),
+        ("Mi empresa recauda de muchas personas", "Revisión de encuadre preventiva.",
+         "/cumplimiento-en-recaudo-masivo/", "empresa", globe()),
     ]
-    situ_tags = {"afectado": "PERFIL · A", "investigado": "PERFIL · B", "empresa": "PERFIL · C"}
     situ_cards = ""
-    for t, d, cta, url, tag, media in situ_data:
+    for t, sub, url, tag, media in situ_data:
         situ_cards += f'''<a class="fcard" href="{url}" data-situacion="{tag}">
   <div class="fmedia">{media}</div>
-  <div class="fbody">
-    <span class="tag-mono">{situ_tags[tag]}</span>
-    <h3>{esc(t)}</h3>
-    <p>{esc(d)}</p>
-    <span class="arrowlink">{esc(cta)}</span>
-  </div>
+  <div class="fbody"><h3>{esc(t)}</h3><p>{esc(sub)}</p></div>
 </a>'''
 
     # Tres vías como filas numeradas alternadas
@@ -214,7 +205,10 @@ def build(g):
       <p class="lead" style="margin-top:1rem;max-width:56ch">Un mismo esquema de captación produce problemas jurídicos opuestos según el lugar que se ocupe en él. La ruta empieza por reconocer el suyo.</p>
     </div>
     <div class="feature-cards">{situ_cards}</div>
-    {conflict_block('El despacho <strong>no representa simultáneamente</strong> a afectados y a vinculados dentro de un mismo proceso de intervención. Cada consulta pasa por una verificación previa de conflicto antes de aceptarse.')}
+    <div class="conflict-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
+      <p>El despacho <strong>no representa simultáneamente</strong> a afectados y a vinculados dentro de un mismo proceso de intervención. Cada consulta pasa por una verificación previa de conflicto antes de aceptarse.</p>
+    </div>
   </div>
 </section>
 

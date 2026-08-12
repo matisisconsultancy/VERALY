@@ -399,12 +399,20 @@ def marco_reveal():
     phr = "".join(
         f'<p class="reveal-phrase{" active" if i == 0 else ""}" data-i="{i}">{words(s)}</p>'
         for i, s in enumerate(phrases))
-    cards = [("Decreto 4334 / 2008", "Intervención"), ("Art. 316 CP", "Captación masiva"),
-             ("Art. 316A CP", "No reintegro"), ("Decreto 1981 / 1988", "Umbrales"),
-             ("Ley 1902 / 2018", "Plan de desmonte"), ("Sentencia C‑145 / 2009", "Presunciones")]
+    # URLs oficiales (TODO: verificar/ajustar por el despacho — decisión pendiente).
+    cards = [
+        ("Decreto 4334 / 2008", "Intervención", "http://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html"),
+        ("Art. 316 CP", "Captación masiva", "http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html"),
+        ("Art. 316A CP", "No reintegro", "http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html"),
+        ("Decreto 1981 / 1988", "Umbrales", "http://www.secretariasenado.gov.co/senado/basedoc/decreto_1981_1988.html"),
+        ("Ley 1902 / 2018", "Plan de desmonte", "http://www.secretariasenado.gov.co/senado/basedoc/ley_1902_2018.html"),
+        ("Sentencia C‑145 / 2009", "Presunciones", "https://www.corteconstitucional.gov.co/relatoria/2009/C-145-09.htm"),
+    ]
     rc = "".join(
-        f'<div class="rc"><span class="t-k">{esc(k)}</span><span class="t-d">{esc(d)}</span></div>'
-        for k, d in cards)
+        f'<a class="rc" href="{u}" target="_blank" rel="noopener" data-norma="{esc(k)}">'
+        f'<span class="t-k">{esc(k)}</span><span class="t-d">{esc(d)}</span>'
+        f'<span class="rc-go" aria-hidden="true">Ver norma <i>↗</i></span></a>'
+        for k, d, u in cards)
     return f'''<section class="reveal" id="marco">
   <div class="section stepper-intro"><div class="container tc">
     <p class="eyebrow">El marco que trabajamos</p>
