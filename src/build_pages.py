@@ -6,6 +6,7 @@ def build(g):
     SOCIOS = g["SOCIOS"]; ARTICLES = g["ARTICLES"]; SITUACIONES = g["SITUACIONES"]
     socio_by_slug = g["socio_by_slug"]; TEMAS = g["TEMAS"]; jsonld = g["jsonld"]
     PRACTICAS = g["PRACTICAS"]; agendar = g["agendar_btn"]
+    burst = g["burst_svg"]; pixels = g["pixels_strip"]; convergence = g["convergence_svg"]
     B = SITE["base_url"]
 
     # -------- helpers de componentes --------
@@ -119,8 +120,11 @@ def build(g):
          "Fintech, crowdfunding, libranzas, factoring, multinivel y clubes de inversión operan cerca de los umbrales que configuran captación. Conviene revisar el encuadre antes de que lo revise una superintendencia.",
          "Ver la ruta preventiva", "/cumplimiento-en-recaudo-masivo/", "empresa"),
     ]
+    situ_tags = {"afectado": "PERFIL·A", "investigado": "PERFIL·B", "empresa": "PERFIL·C"}
     for t, d, cta, url, tag in situ_data:
-        situ_cards += f'''<a class="card card--link" href="{url}" data-situacion="{tag}">
+        situ_cards += f'''<a class="card card--link card--blueprint" href="{url}" data-situacion="{tag}">
+  <span class="card-arrow" aria-hidden="true">↗</span>
+  <span class="tag-mono">{situ_tags[tag]}</span>
   <h3>{esc(t)}</h3>
   <p>{esc(d)}</p>
   <span class="arrowlink">{esc(cta)}</span>
@@ -141,16 +145,20 @@ def build(g):
 </a>'''
 
     home_body = f'''
-{section(f"""
-  <p class="eyebrow">Veraly Grupo Jurídico</p>
-  <h1>Defensa en fraude financiero</h1>
-  <p class="support">Despacho boutique colombiano especializado en captación masiva y habitual de dineros. Cinco socios, cinco ramas del derecho, un mismo caso.</p>
-  <p class="desc">Los procesos por captación no autorizada avanzan al mismo tiempo por tres vías —administrativa, penal y civil— que en Colombia operan de forma autónoma y concurrente. Trabajamos las tres en paralelo, con las cinco prácticas de la firma leyendo el mismo expediente.</p>
-  <div class="cta-row">
-    {agendar("Agendar una consulta")}
-    <a class="btn btn--ghost" href="#situaciones">Ver mi situación</a>
+<section class="section hero grid-bg">
+  {burst()}
+  <div class="container">
+    <p class="eyebrow">Veraly Grupo Jurídico</p>
+    <h1>Defensa en fraude financiero</h1>
+    <p class="support">Despacho boutique colombiano especializado en captación masiva y habitual de dineros. Cinco socios, cinco ramas del derecho, un mismo caso.</p>
+    <p class="desc">Los procesos por captación no autorizada avanzan al mismo tiempo por tres vías —administrativa, penal y civil— que en Colombia operan de forma autónoma y concurrente. Trabajamos las tres en paralelo, con las cinco prácticas de la firma leyendo el mismo expediente.</p>
+    <div class="cta-row">
+      {agendar("Agendar una consulta")}
+      <a class="btn btn--ghost" href="#situaciones">Ver mi situación</a>
+    </div>
   </div>
-""", cls="hero")}
+</section>
+{pixels()}
 
 <section class="section band" id="situaciones">
   <div class="container">
@@ -182,6 +190,7 @@ def build(g):
     <p class="eyebrow">El equipo</p>
     <h2>Cinco prácticas, un mismo caso</h2>
     <p class="lead" style="margin-top:1rem;max-width:52ch">La convergencia no es una declaración: es la composición de la firma. Cinco socios aportan cinco ramas del derecho al mismo expediente.</p>
+    <div style="margin:2rem 0">{convergence()}</div>
     <div class="socios" style="margin-top:1.8rem">{practicas_home}</div>
     <div class="cta-row"><a class="arrowlink" href="/equipo/">Por qué cinco prácticas</a></div>
   </div>

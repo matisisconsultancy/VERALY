@@ -233,6 +233,45 @@ def mobile_bar_html():
   {wa}
 </div>'''
 
+def burst_svg():
+    import math
+    parts = []
+    N = 64
+    for i in range(N):
+        ang = 2 * math.pi * i / N
+        r1 = 10
+        r2 = 92 + (i % 8) * 12
+        x1 = 140 + math.cos(ang) * r1; y1 = 140 + math.sin(ang) * r1
+        x2 = 140 + math.cos(ang) * r2; y2 = 140 + math.sin(ang) * r2
+        parts.append(f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="currentColor" stroke-width="0.7"/>')
+        parts.append(f'<circle cx="{x2:.1f}" cy="{y2:.1f}" r="1.3" fill="currentColor"/>')
+    return ('<svg class="burst" viewBox="0 0 280 280" fill="none" aria-hidden="true" '
+            'style="color:var(--accent)">' + "".join(parts) + '</svg>')
+
+
+def pixels_strip(n=48, on_every=5):
+    cells = "".join(
+        f'<i class="{"on" if (k % on_every == 0 or k % on_every == 1) else ""}"></i>'
+        for k in range(n))
+    return f'<div class="pixel-strip"><div class="container"><div class="pixels" aria-hidden="true">{cells}</div></div></div>'
+
+
+def convergence_svg():
+    # Cinco trazos que convergen a un punto (traducción del isotipo a diagrama).
+    import math
+    parts = []
+    cx, cy = 200, 150
+    for i in range(5):
+        ang = math.radians(-90 + i * 72)
+        x = cx + math.cos(ang) * 130
+        y = cy + math.sin(ang) * 110
+        parts.append(f'<path class="trace-on" d="M {x:.0f} {y:.0f} L {cx} {cy}"/>')
+        parts.append(f'<circle class="node" cx="{x:.0f}" cy="{y:.0f}" r="7"/>')
+    parts.append(f'<circle class="dot" cx="{cx}" cy="{cy}" r="9"/>')
+    return ('<svg class="circuit" viewBox="0 0 400 300" fill="none" aria-hidden="true" '
+            'style="max-width:520px;margin-inline:auto">' + "".join(parts) + '</svg>')
+
+
 def agendar_btn(label="Agendar una consulta", primary=True):
     cls = "btn btn--primary" if primary else "btn btn--ghost"
     return f'<a class="{cls}" href="#agendar" data-cal data-pos="cta">{esc(label)}</a>'

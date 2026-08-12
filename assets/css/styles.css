@@ -6,28 +6,31 @@
 
 /* ---------- Tokens (derivados del brandbook) ---------- */
 :root{
-  --bg:#05292C;          /* fondo base */
+  --bg:#05292C;          /* fondo teal base */
+  --ink:#03191B;         /* casi-negro teal (secciones alternas) */
   --panel:#073A3F;       /* superficie */
-  --panel-2:#0A4A50;     /* superficie elevada */
-  --accent:#89F5E5;      /* menta / acento */
+  --panel-2:#0A4A50;     /* superficie elevada / tarjeta tintada */
+  --accent:#89F5E5;      /* menta / acento (equivale al cian del referente) */
   --accent-deep:#5FD9C7; /* menta apagada para hover */
-  --text:#D9F6EF;        /* texto principal */
+  --text:#EAFBF6;        /* texto principal */
   --on-light:#05292C;    /* texto sobre menta */
-  --dim:rgba(217,246,239,.72);
-  --dim-2:rgba(217,246,239,.52);
-  --line:rgba(137,245,229,.26);
-  --line-soft:rgba(217,246,239,.12);
+  --dim:rgba(234,251,246,.70);
+  --dim-2:rgba(234,251,246,.48);
+  --line:rgba(137,245,229,.30);
+  --line-soft:rgba(234,251,246,.12);
+  --grid-line:rgba(137,245,229,.14); /* trazos de circuito */
 
   --sans:'Archivo',-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --display:'Archivo',-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --ui:'Jost','Archivo',system-ui,sans-serif;
-  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
 
   --edge:clamp(18px,5vw,64px);
-  --maxw:1240px;
+  --maxw:1280px;
   --readw:68ch;
-  --r:20px;
-  --r-sm:14px;
-  --r-xs:10px;
+  --r:6px;
+  --r-sm:6px;
+  --r-xs:4px;
 
   --step--1:clamp(.83rem,.8rem + .15vw,.9rem);
   --step-0:clamp(1rem,.96rem + .2vw,1.08rem);
@@ -60,10 +63,10 @@ body{
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
-h1,h2,h3,h4{font-family:var(--serif);font-weight:700;line-height:1.12;margin:0;color:var(--text)}
-h1{font-size:var(--step-4);letter-spacing:-.01em}
-h2{font-size:var(--step-3);letter-spacing:-.005em}
-h3{font-size:var(--step-1);font-family:var(--sans);font-weight:600;line-height:1.25}
+h1,h2,h3,h4{font-family:var(--display);font-weight:800;line-height:1.04;margin:0;color:var(--text);letter-spacing:-.02em;text-wrap:balance}
+h1{font-size:var(--step-4)}
+h2{font-size:var(--step-3)}
+h3{font-size:var(--step-1);font-weight:700;line-height:1.2;letter-spacing:-.01em}
 p{margin:0 0 1rem}
 strong{font-weight:600;color:var(--text)}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
@@ -74,10 +77,13 @@ strong{font-weight:600;color:var(--text)}
   padding:10px 16px;border-radius:8px;font-family:var(--ui);font-weight:600;z-index:200;transition:top .18s}
 .skip-link:focus{top:12px}
 .container{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--edge)}
-.eyebrow{font-family:var(--ui);text-transform:uppercase;letter-spacing:.16em;font-size:var(--step--1);
-  color:var(--accent);font-weight:600;margin:0 0 .9rem}
+.eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;
+  color:var(--accent);font-weight:500;margin:0 0 1.1rem;display:inline-flex;align-items:center;gap:.65em}
+.eyebrow::before{content:"";width:7px;height:7px;background:var(--accent);display:inline-block;flex:none}
 .lead{font-size:var(--step-1);color:var(--dim);line-height:1.55}
 .prose{max-width:var(--readw)}
+.container.prose{max-width:var(--maxw)}      /* recupera el ancho del contenedor */
+.prose>*{max-width:var(--readw)}             /* limita solo las columnas de texto, alineadas a la izquierda */
 .prose p,.prose li{color:var(--dim)}
 .prose h2{margin:2.6rem 0 1rem}
 .prose h3{margin:1.8rem 0 .6rem;color:var(--text)}
@@ -90,13 +96,14 @@ strong{font-weight:600;color:var(--text)}
 /* ---------- Botones / CTA ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;
   font-family:var(--ui);font-weight:600;font-size:var(--step-0);letter-spacing:.01em;
-  padding:.85em 1.5em;border-radius:999px;border:1.5px solid transparent;cursor:pointer;
+  padding:.8em 1.4em;border-radius:var(--r-sm);border:1.5px solid transparent;cursor:pointer;
   text-decoration:none;min-height:48px;transition:background .18s,color .18s,border-color .18s,transform .18s}
 .btn--primary{background:var(--accent);color:var(--on-light);border-color:var(--accent)}
 .btn--primary:hover{background:var(--accent-deep);border-color:var(--accent-deep)}
 .btn--ghost{background:transparent;color:var(--text);border-color:var(--line)}
 .btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
-.btn--sm{padding:.6em 1.1em;min-height:40px;font-size:var(--step--1)}
+.btn--sm{padding:.55em 1em;min-height:40px;font-size:var(--step--1)}
+.btn:not(.btn--sm)::after{content:"↗";font-family:var(--mono);font-weight:400;font-size:.95em;margin-left:.15em;line-height:1}
 .btn:active{transform:translateY(1px)}
 .cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:1.6rem}
 .textlink{color:var(--accent);text-decoration:none;font-family:var(--ui);font-weight:600;
@@ -341,9 +348,52 @@ strong{font-weight:600;color:var(--text)}
 .negations li{padding-left:30px;position:relative;color:var(--dim)}
 .negations li::before{content:"";position:absolute;left:0;top:.5em;width:16px;height:2px;background:var(--accent)}
 
-/* ---------- Página con fondo alterno ---------- */
-.band{background:var(--panel)}
-.band-2{background:linear-gradient(180deg,var(--bg),var(--panel) 60%)}
+/* ---------- Página con fondo alterno (teal / casi-negro) ---------- */
+.band{background:var(--ink);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.band-2{background:var(--bg);border-top:1px solid var(--line-soft)}
+.site-header{background:var(--ink)}
+.site-footer{background:var(--ink)}
+
+/* ---------- Firma gráfica estilo circuito (adaptada de Cantor8) ---------- */
+/* rejilla técnica de fondo para heros/secciones */
+.grid-bg,.hero{position:relative;overflow:clip}
+.grid-bg::before,.hero::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:64px 64px;-webkit-mask-image:radial-gradient(120% 90% at 80% 0%,#000 0%,transparent 70%);
+  mask-image:radial-gradient(120% 90% at 80% 0%,#000 0%,transparent 70%);opacity:.7}
+.grid-bg>.container,.hero>.container{position:relative;z-index:1}
+
+/* tarjeta blueprint: esquinas rectas, plano técnico y flecha */
+.card{position:relative;border-radius:var(--r-sm);overflow:clip}
+.card--blueprint{background:var(--panel-2)}
+.card--blueprint::before{content:"";position:absolute;right:-30px;top:-30px;width:170px;height:170px;pointer-events:none;
+  background:
+    linear-gradient(90deg,var(--grid-line) 1px,transparent 1px) 0 0/24px 24px,
+    linear-gradient(var(--grid-line) 1px,transparent 1px) 0 0/24px 24px;
+  border:1px solid var(--line);border-radius:4px;opacity:.5;transform:rotate(0)}
+.card--link .card-arrow{position:absolute;top:16px;right:16px;color:var(--accent);font-family:var(--mono);font-size:1.1rem;z-index:2}
+.tag-mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.66rem;color:var(--accent);font-weight:500}
+
+/* tira de píxeles (transición) */
+.pixels{display:flex;gap:6px;flex-wrap:wrap;margin:0;padding:0;line-height:0}
+.pixels i{width:14px;height:14px;background:var(--line-soft);display:inline-block}
+.pixels i.on{background:var(--accent)}
+.pixel-strip{padding:22px 0;overflow:clip}
+
+/* mapa de nodos conectados (tres vías / convergencia) */
+.circuit{width:100%;height:auto;display:block;color:var(--accent)}
+.circuit .trace{fill:none;stroke:var(--grid-line);stroke-width:1.5}
+.circuit .trace-on{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:4 6;opacity:.9}
+.circuit .node{fill:var(--ink);stroke:var(--accent);stroke-width:1.5}
+.circuit .dot{fill:var(--accent)}
+.circuit text{fill:var(--text);font-family:var(--ui);font-weight:600}
+
+/* ráfaga radial del hero */
+.burst{position:absolute;right:clamp(-40px,-2vw,0px);top:40px;width:min(420px,42vw);height:min(420px,42vw);
+  pointer-events:none;opacity:.55;z-index:0}
+@media (max-width:900px){.burst{opacity:.3;top:auto;bottom:-40px;right:-60px;width:340px;height:340px}}
+
+/* @media (prefers-reduced-motion) respeta animaciones globalmente (ya definido arriba) */
 
 /* ---------- Asistente guiado ---------- */
 .asst{position:fixed;right:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px);z-index:96}
