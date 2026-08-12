@@ -414,11 +414,9 @@ def marco_reveal():
         f'<span class="rc-go" aria-hidden="true">Ver norma <i>↗</i></span></a>'
         for k, d, u in cards)
     return f'''<section class="reveal" id="marco">
-  <div class="section stepper-intro"><div class="container tc">
-    <p class="eyebrow">El marco que trabajamos</p>
-  </div></div>
   <div class="reveal-track">
     <div class="reveal-sticky">
+      <p class="eyebrow reveal-eyebrow">El marco que trabajamos</p>
       <div class="reveal-phrases">{phr}</div>
       <div class="reveal-cards" aria-hidden="true">{rc}</div>
     </div>

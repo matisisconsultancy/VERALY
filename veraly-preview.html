@@ -601,16 +601,17 @@ strong{font-weight:600;color:var(--text)}
 .reveal{background:var(--ink);border-top:1px solid var(--line-soft)}
 .reveal-track{position:relative;height:520vh}
 .reveal-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:clamp(32px,7vh,80px);overflow:clip;padding:var(--head-h) var(--edge) 6vh}
-.reveal-phrases{position:relative;width:100%;max-width:1200px;min-height:clamp(140px,22vh,280px);
+  gap:0;overflow:clip;padding:var(--head-h) var(--edge) 6vh}
+.reveal-eyebrow{margin:0 0 clamp(18px,2.6vh,34px)}
+.reveal-phrases{position:relative;width:100%;max-width:1120px;min-height:clamp(180px,26vh,340px);
   display:flex;align-items:center;justify-content:center;text-align:center}
 .reveal-phrase{position:absolute;margin:0;opacity:0;transition:opacity .45s ease;
-  font-family:var(--display);font-weight:500;font-size:clamp(2.9rem,1.4rem+5.6vw,7rem);line-height:1.0;letter-spacing:-.03em}
+  font-family:var(--display);font-weight:500;font-size:clamp(2.4rem, 1.4rem + 3.2vw, 4.6rem);line-height:1.06;letter-spacing:-.03em}
 .reveal-phrase.active{opacity:1}
 .reveal-phrase .w{color:var(--dim-2);transition:color .3s ease}
 .reveal-phrase .w.lit{color:var(--text)}
 /* baraja de tarjetas-enlace de norma (rejilla a lo ancho, con hover de color) */
-.reveal-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%;max-width:1160px}
+.reveal-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%;max-width:1160px;margin-top:clamp(44px,7vh,104px)}
 .reveal-cards .rc{border:1px solid var(--line-soft);border-radius:16px;padding:22px 24px;min-height:116px;
   background:linear-gradient(160deg,rgba(137,245,229,.06),rgba(10,74,80,.16));text-decoration:none;color:inherit;
   -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;flex-direction:column;gap:8px;justify-content:space-between;
@@ -903,11 +904,9 @@ strong{font-weight:600;color:var(--text)}
 </section>
 
 <section class="reveal" id="marco">
-  <div class="section stepper-intro"><div class="container tc">
-    <p class="eyebrow">El marco que trabajamos</p>
-  </div></div>
   <div class="reveal-track">
     <div class="reveal-sticky">
+      <p class="eyebrow reveal-eyebrow">El marco que trabajamos</p>
       <div class="reveal-phrases"><p class="reveal-phrase active" data-i="0"><span class="w">No</span> <span class="w">perseguimos</span> <span class="w">casos.</span> <span class="w">Trabajamos</span> <span class="w">figuras</span> <span class="w">jurídicas.</span></p><p class="reveal-phrase" data-i="1"><span class="w">Cada</span> <span class="w">intervención</span> <span class="w">se</span> <span class="w">ordena</span> <span class="w">sobre</span> <span class="w">un</span> <span class="w">marco</span> <span class="w">normativo</span> <span class="w">preciso.</span></p><p class="reveal-phrase" data-i="2"><span class="w">Decreto</span> <span class="w">4334,</span> <span class="w">artículos</span> <span class="w">316</span> <span class="w">y</span> <span class="w">316A,</span> <span class="w">y</span> <span class="w">la</span> <span class="w">jurisprudencia</span> <span class="w">que</span> <span class="w">los</span> <span class="w">interpreta.</span></p></div>
       <div class="reveal-cards" aria-hidden="true"><a class="rc" href="http://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html" target="_blank" rel="noopener" data-norma="Decreto 4334 / 2008"><span class="t-k">Decreto 4334 / 2008</span><span class="t-d">Intervención</span><span class="rc-go" aria-hidden="true">Ver norma <i>↗</i></span></a><a class="rc" href="http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html" target="_blank" rel="noopener" data-norma="Art. 316 CP"><span class="t-k">Art. 316 CP</span><span class="t-d">Captación masiva</span><span class="rc-go" aria-hidden="true">Ver norma <i>↗</i></span></a><a class="rc" href="http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html" target="_blank" rel="noopener" data-norma="Art. 316A CP"><span class="t-k">Art. 316A CP</span><span class="t-d">No reintegro</span><span class="rc-go" aria-hidden="true">Ver norma <i>↗</i></span></a><a class="rc" href="http://www.secretariasenado.gov.co/senado/basedoc/decreto_1981_1988.html" target="_blank" rel="noopener" data-norma="Decreto 1981 / 1988"><span class="t-k">Decreto 1981 / 1988</span><span class="t-d">Umbrales</span><span class="rc-go" aria-hidden="true">Ver norma <i>↗</i></span></a><a class="rc" href="http://www.secretariasenado.gov.co/senado/basedoc/ley_1902_2018.html" target="_blank" rel="noopener" data-norma="Ley 1902 / 2018"><span class="t-k">Ley 1902 / 2018</span><span class="t-d">Plan de desmonte</span><span class="rc-go" aria-hidden="true">Ver norma <i>↗</i></span></a><a class="rc" href="https://www.corteconstitucional.gov.co/relatoria/2009/C-145-09.htm" target="_blank" rel="noopener" data-norma="Sentencia C‑145 / 2009"><span class="t-k">Sentencia C‑145 / 2009</span><span class="t-d">Presunciones</span><span class="rc-go" aria-hidden="true">Ver norma <i>↗</i></span></a></div>
     </div>
