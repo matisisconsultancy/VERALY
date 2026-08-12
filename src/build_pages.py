@@ -7,6 +7,7 @@ def build(g):
     socio_by_slug = g["socio_by_slug"]; TEMAS = g["TEMAS"]; jsonld = g["jsonld"]
     PRACTICAS = g["PRACTICAS"]; agendar = g["agendar_btn"]
     burst = g["burst_svg"]; pixels = g["pixels_strip"]; convergence = g["convergence_svg"]
+    globe = g["globe_svg"]; wave = g["wave_svg"]
     B = SITE["base_url"]
 
     # -------- helpers de componentes --------
@@ -108,34 +109,73 @@ def build(g):
     # =====================================================================
     # HOME
     # =====================================================================
-    situ_cards = ""
     situ_data = [
         ("Perdí dinero en un esquema de captación",
          "Existen vías administrativas, penales y civiles para reclamar, y cada una tiene términos propios que corren desde la toma de posesión. Saber cuál aplica y en qué plazo es la primera decisión del caso.",
-         "Ver la ruta del afectado", "/afectados-por-captacion-masiva/", "afectado"),
-        ("Me investigan o me vincularon a una captadora",
-         "La vinculación alcanza a administradores, socios, revisores fiscales, contadores y proveedores por el solo ejercicio del cargo durante el periodo de captación. La defensa se construye sobre la exclusión, la contradicción de presunciones y la prueba del origen lícito.",
-         "Ver la ruta de la defensa", "/defensa-en-captacion-masiva/", "investigado"),
+         "Ver la ruta del afectado", "/afectados-por-captacion-masiva/", "afectado", globe()),
+        ("Me investigan o me vincularon",
+         "La vinculación alcanza a administradores, socios, revisores fiscales, contadores y proveedores por el solo ejercicio del cargo durante el periodo de captación. La defensa se construye sobre la exclusión y la prueba del origen lícito.",
+         "Ver la ruta de la defensa", "/defensa-en-captacion-masiva/", "investigado", wave()),
         ("Mi empresa recauda de muchas personas",
-         "Fintech, crowdfunding, libranzas, factoring, multinivel y clubes de inversión operan cerca de los umbrales que configuran captación. Conviene revisar el encuadre antes de que lo revise una superintendencia.",
-         "Ver la ruta preventiva", "/cumplimiento-en-recaudo-masivo/", "empresa"),
+         "Fintech, crowdfunding, libranzas, factoring y multinivel operan cerca de los umbrales que configuran captación. Conviene revisar el encuadre antes de que lo revise una superintendencia.",
+         "Ver la ruta preventiva", "/cumplimiento-en-recaudo-masivo/", "empresa", globe()),
     ]
-    situ_tags = {"afectado": "PERFIL·A", "investigado": "PERFIL·B", "empresa": "PERFIL·C"}
-    for t, d, cta, url, tag in situ_data:
-        situ_cards += f'''<a class="card card--link card--blueprint" href="{url}" data-situacion="{tag}">
-  <span class="card-arrow" aria-hidden="true">↗</span>
-  <span class="tag-mono">{situ_tags[tag]}</span>
-  <h3>{esc(t)}</h3>
-  <p>{esc(d)}</p>
-  <span class="arrowlink">{esc(cta)}</span>
+    situ_tags = {"afectado": "PERFIL · A", "investigado": "PERFIL · B", "empresa": "PERFIL · C"}
+    situ_cards = ""
+    for t, d, cta, url, tag, media in situ_data:
+        situ_cards += f'''<a class="fcard" href="{url}" data-situacion="{tag}">
+  <div class="fmedia">{media}</div>
+  <div class="fbody">
+    <span class="tag-mono">{situ_tags[tag]}</span>
+    <h3>{esc(t)}</h3>
+    <p>{esc(d)}</p>
+    <span class="arrowlink">{esc(cta)}</span>
+  </div>
 </a>'''
 
-    practicas_home = ""
+    # Tres vías como filas numeradas alternadas
+    vias = [
+        ("01", "VÍA ADMINISTRATIVA", "Ante la Superintendencia de Sociedades",
+         "Procedimiento del Decreto 4334 de 2008. La toma de posesión tiene efectos de cosa juzgada frente a todos y es de única instancia: no hay segunda oportunidad procesal.", wave()),
+        ("02", "VÍA PENAL", "Artículos 316 y 316A del Código Penal",
+         "Captación masiva y habitual, con prisión de 120 a 240 meses, y el tipo autónomo de no reintegro. A ellos suelen sumarse estafa agravada, lavado de activos y concierto para delinquir.", globe()),
+        ("03", "VÍA CIVIL", "Responsabilidad patrimonial",
+         "Persigue el patrimonio personal de administradores, revisores fiscales, contadores y vinculados solventes por el faltante que la masa de la intervención no alcanza a cubrir.", wave()),
+    ]
+    vias_rows = ""
+    for i, (num, eyb, h, d, media) in enumerate(vias):
+        media_html = f'<div class="fr-media">{media}</div>'
+        text_html = (f'<div class="fr-text"><span class="fr-num">{num}</span>'
+                     f'<p class="fr-eyebrow">{eyb}</p><h2>{esc(h)}</h2>'
+                     f'<p class="lead" style="margin-top:1rem;color:var(--dim)">{esc(d)}</p></div>')
+        inner = (media_html + text_html) if i % 2 == 0 else (text_html + media_html)
+        vias_rows += f'<div class="frow">{inner}</div>'
+
+    prac_cards = ""
     for pr in PRACTICAS:
-        practicas_home += f'''<div class="socio">
-  <span class="practica">{esc(pr["rama"])}</span>
-  <p style="color:var(--dim);margin:.3rem 0 0;font-size:var(--step-0)">{esc(pr["aporte"])}</p>
-</div>'''
+        prac_cards += (f'<div class="bigcard"><span class="bc-label">Práctica</span>'
+                       f'<h3>{esc(pr["rama"])}</h3><p>{esc(pr["aporte"])}</p></div>')
+
+    conf = [
+        ("3", "Vías en paralelo", "Administrativa, penal y civil, trabajadas a la vez sobre el mismo expediente."),
+        ("5", "Prácticas del derecho", "Cinco socios aportan cinco ramas al mismo caso; se construye en la intersección."),
+        ("24 h", "Tiempo de respuesta", "Respondemos toda consulta en un máximo de 24 horas hábiles, tras verificar el conflicto."),
+        ("0", "Promesas de resultado", "No prometemos desenlace judicial. Se promete rigor, criterio y trabajo — con los límites dichos en voz alta."),
+    ]
+    conf_cards = ""
+    for big, label, d in conf:
+        conf_cards += (f'<div class="bigcard"><span class="bc-big">{esc(big)}</span>'
+                       f'<span class="bc-label">{esc(label)}</span><p>{esc(d)}</p></div>')
+
+    norms = [
+        ("Decreto 4334 / 2008", "Intervención"), ("Art. 316 CP", "Captación masiva"),
+        ("Art. 316A CP", "No reintegro"), ("Decreto 1981 / 1988", "Umbrales"),
+        ("Ley 1902 / 2018", "Plan de desmonte"), ("Sentencia C‑145 / 2009", "Presunciones"),
+        ("Supersociedades", "Competencia privativa"), ("Ley 1581 / 2012", "Datos personales"),
+    ]
+    tiles = "".join(
+        f'<div class="tile"><span class="t-k">{esc(k)}</span><span class="t-d">{esc(d)}</span></div>'
+        for k, d in norms)
 
     art_home = ""
     for a in ARTICLES[:3]:
@@ -145,70 +185,104 @@ def build(g):
 </a>'''
 
     home_body = f'''
-<section class="section hero grid-bg">
-  {burst()}
+<section class="hero-full">
+  <div class="hero-bg" aria-hidden="true"><div class="drape"></div><div class="sphere"></div></div>
   <div class="container">
-    <p class="eyebrow">Veraly Grupo Jurídico</p>
-    <h1>Defensa en fraude financiero</h1>
-    <p class="support">Despacho boutique colombiano especializado en captación masiva y habitual de dineros. Cinco socios, cinco ramas del derecho, un mismo caso.</p>
-    <p class="desc">Los procesos por captación no autorizada avanzan al mismo tiempo por tres vías —administrativa, penal y civil— que en Colombia operan de forma autónoma y concurrente. Trabajamos las tres en paralelo, con las cinco prácticas de la firma leyendo el mismo expediente.</p>
-    <div class="cta-row">
-      {agendar("Agendar una consulta")}
-      <a class="btn btn--ghost" href="#situaciones">Ver mi situación</a>
+    <div class="h-head">
+      <p class="eyebrow">Veraly Grupo Jurídico</p>
+      <h1>Defensa en fraude financiero</h1>
+    </div>
+    <div class="hero-grid-2">
+      <p class="hero-sub">Despacho boutique colombiano especializado en captación masiva y habitual. Cinco socios, cinco ramas del derecho, un mismo caso.</p>
+      <div class="hero-right">
+        <p class="desc">Los procesos por captación avanzan por tres vías —administrativa, penal y civil— autónomas y concurrentes. Las trabajamos las tres en paralelo, sobre el mismo expediente.</p>
+        <div class="cta-row">
+          {agendar("Agendar una consulta")}
+          <a class="btn btn--ghost" href="#situaciones">Ver mi situación</a>
+        </div>
+        <div class="chips">
+          <span class="chip">Decreto 4334/2008</span>
+          <span class="chip">Art. 316 CP</span>
+          <span class="chip">Supersociedades</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-{pixels()}
 
-<section class="section band" id="situaciones">
+<section class="section" id="situaciones">
   <div class="container">
-    <p class="eyebrow">Encaminar por situación</p>
-    <h2>Tres situaciones distintas, tres rutas distintas</h2>
-    <p class="lead" style="margin-top:1rem;max-width:60ch">Un mismo esquema de captación produce problemas jurídicos opuestos según el lugar que se ocupe en él. La ruta empieza por identificar cuál es el suyo.</p>
-    <div class="doors">{situ_cards}</div>
+    <div class="tc">
+      <p class="eyebrow">Encaminar por situación</p>
+      <h2 style="max-width:20ch">Tres situaciones distintas, tres rutas distintas</h2>
+      <p class="lead" style="margin-top:1rem;max-width:56ch">Un mismo esquema de captación produce problemas jurídicos opuestos según el lugar que se ocupe en él. La ruta empieza por reconocer el suyo.</p>
+    </div>
+    <div class="feature-cards">{situ_cards}</div>
     {conflict_block('El despacho <strong>no representa simultáneamente</strong> a afectados y a vinculados dentro de un mismo proceso de intervención. Cada consulta pasa por una verificación previa de conflicto antes de aceptarse.')}
   </div>
 </section>
 
-{section(f"""
-  <p class="eyebrow">El método</p>
-  <h2 style="max-width:20ch">Los casos de fraude financiero no necesitan un abogado. Requieren un equipo.</h2>
-  <div class="prose" style="margin-top:1.4rem">
-    <p>Un proceso por captación no es un problema penal con derivaciones. Es un problema simultáneamente administrativo, penal, civil, societario, tributario y laboral, en el que cada frente condiciona a los demás: lo que se acepta en una audiencia preliminar reaparece en la reclamación, y lo que se declara ante la Superintendencia reaparece en el juicio oral.</p>
-    <p>Por eso los cinco socios de Veraly no se reparten los casos por especialidad. Trabajan el mismo expediente desde sus cinco ramas.</p>
-  </div>
-  <ul class="method-list">
-    <li><strong>Hechos.</strong> Reconstrucción documental del esquema, de los flujos y de las fechas.</li>
-    <li><strong>Actores.</strong> Identificación de quién ocupó cada posición y con qué consecuencia jurídica.</li>
-    <li><strong>Rutas.</strong> Priorización de las vías administrativa, penal y civil según lo que el caso permite y el momento en que llega.</li>
-  </ul>
-  <div class="cta-row"><a class="arrowlink" href="/firma/">Cómo trabajamos</a></div>
-""")}
-
 <section class="section band">
   <div class="container">
-    <p class="eyebrow">El equipo</p>
-    <h2>Cinco prácticas, un mismo caso</h2>
-    <p class="lead" style="margin-top:1rem;max-width:52ch">La convergencia no es una declaración: es la composición de la firma. Cinco socios aportan cinco ramas del derecho al mismo expediente.</p>
-    <div style="margin:2rem 0">{convergence()}</div>
-    <div class="socios" style="margin-top:1.8rem">{practicas_home}</div>
-    <div class="cta-row"><a class="arrowlink" href="/equipo/">Por qué cinco prácticas</a></div>
+    <p class="eyebrow">Las tres vías</p>
+    <h2 style="max-width:22ch">Tres responsabilidades que corren al mismo tiempo</h2>
+    <div style="margin-top:1.4rem">{vias_rows}</div>
   </div>
 </section>
 
-{section(f"""
-  <p class="eyebrow">Análisis</p>
-  <h2>Análisis reciente</h2>
-  <p class="lead" style="margin-top:1rem;max-width:60ch">Publicamos sobre las figuras jurídicas del fraude financiero: cómo se estructuran, cómo se investigan y qué vías abren. Nunca sobre casos identificables.</p>
-  <div class="editorial">{art_home}</div>
-  <div class="cta-row"><a class="arrowlink" href="/analisis/">Ver todos los análisis</a></div>
-""")}
+<section class="section">
+  <div class="container stack">
+    <div class="stack-head">
+      <p class="eyebrow">El equipo</p>
+      <h2>Cinco prácticas, un mismo caso</h2>
+      <p class="lead" style="margin-top:1rem">La convergencia no es una declaración: es la composición de la firma. Cinco socios aportan cinco ramas del derecho al mismo expediente.</p>
+      <div style="margin:1.6rem 0">{convergence()}</div>
+      <div class="cta-row"><a class="btn btn--ghost" href="/equipo/">Por qué cinco prácticas</a></div>
+    </div>
+    <div class="stack-cards">{prac_cards}</div>
+  </div>
+</section>
 
-<section class="section band-2">
+<section class="section band">
+  <div class="container stack">
+    <div class="stack-head">
+      <p class="eyebrow">Por qué esta firma</p>
+      <h2>Confianza sin atajos</h2>
+      <p class="lead" style="margin-top:1rem">En una materia donde no caben testimonios ni promesas, la confianza se construye con personas verificables, densidad técnica y límites declarados.</p>
+    </div>
+    <div class="stack-cards">{conf_cards}</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="tc">
+      <p class="eyebrow">El marco que trabajamos</p>
+      <h2 style="max-width:20ch">Un fenómeno con nombre técnico</h2>
+      <p class="lead" style="margin-top:1rem;max-width:56ch">No perseguimos casos: trabajamos figuras jurídicas. Este es el marco normativo que ordena cada intervención.</p>
+    </div>
+    <div class="tiles">{tiles}</div>
+  </div>
+</section>
+
+<section class="section band">
+  <div class="container">
+    <div class="tc">
+      <p class="eyebrow">Análisis</p>
+      <h2>Conocimiento vivo del fenómeno</h2>
+      <p class="lead" style="margin-top:1rem;max-width:60ch">Publicamos sobre las figuras jurídicas del fraude financiero: cómo se estructuran, cómo se investigan y qué vías abren. Nunca sobre casos identificables.</p>
+    </div>
+    <div class="editorial" style="margin-top:2rem">{art_home}</div>
+    <div class="cta-row" style="justify-content:center"><a class="arrowlink" href="/analisis/">Ver todos los análisis</a></div>
+  </div>
+</section>
+
+<section class="hero-full" style="min-height:auto;justify-content:center">
+  <div class="hero-bg" aria-hidden="true"><div class="drape"></div><div class="sphere"></div></div>
   <div class="container">
     <p class="eyebrow">Contacto</p>
-    <h2 style="max-width:24ch">Cuando un fraude financiero atraviesa una situación, la claridad jurídica es el primer paso.</h2>
-    <p class="lead" style="margin-top:1.2rem;max-width:60ch">Una primera conversación sirve para saber si hay caso, qué vías están abiertas y qué plazos corren. No requiere aportar documentos ni tomar ninguna decisión.</p>
+    <h2 style="font-size:clamp(2rem,1.3rem+3vw,3.6rem);max-width:22ch">Cuando un fraude financiero atraviesa una situación, la claridad jurídica es el primer paso.</h2>
+    <p class="lead" style="margin-top:1.2rem;max-width:58ch">Una primera conversación sirve para saber si hay caso, qué vías están abiertas y qué plazos corren. No requiere aportar documentos ni tomar ninguna decisión.</p>
     <div class="cta-row">
       {agendar("Agendar una consulta")}
       <a class="btn btn--ghost" href="/contacto/">Escribir</a>

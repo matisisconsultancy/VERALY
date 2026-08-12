@@ -272,6 +272,44 @@ def convergence_svg():
             'style="max-width:520px;margin-inline:auto">' + "".join(parts) + '</svg>')
 
 
+def globe_svg():
+    import math
+    cx, cy, R = 200, 150, 120
+    dots = []
+    for lat in range(-80, 81, 12):
+        ry = math.sin(math.radians(lat))
+        rx = math.cos(math.radians(lat))
+        for lon in range(0, 360, 10):
+            cl = math.cos(math.radians(lon))
+            if cl < -0.15:  # solo hemisferio visible
+                continue
+            x = cx + R * rx * math.sin(math.radians(lon))
+            y = cy + R * ry
+            op = 0.25 + 0.55 * max(0, cl)
+            r = 1.1 + 0.7 * max(0, cl)
+            dots.append(f'<circle class="pt" cx="{x:.1f}" cy="{y:.1f}" r="{r:.1f}" opacity="{op:.2f}"/>')
+    ring = (f'<ellipse cx="{cx}" cy="{cy}" rx="{R+18}" ry="{(R+18)*0.32:.0f}" fill="none" '
+            f'stroke="currentColor" stroke-width="1" opacity="0.25" transform="rotate(-18 {cx} {cy})"/>')
+    return ('<svg class="media-svg" viewBox="0 0 400 300" fill="none" aria-hidden="true" '
+            'preserveAspectRatio="xMidYMid slice">' + ring + "".join(dots) + '</svg>')
+
+
+def wave_svg():
+    import math
+    W, H = 400, 300
+    dots = []
+    for li in range(9):
+        base = 120 + li * 16
+        amp = 26 - li * 1.2
+        for xi in range(0, 80):
+            x = xi / 79 * W
+            y = base + amp * math.sin(xi / 79 * math.pi * 2.4 + li * 0.5)
+            op = 0.18 + 0.5 * (xi / 79)
+            dots.append(f'<circle class="pt" cx="{x:.1f}" cy="{y:.1f}" r="1.3" opacity="{op:.2f}"/>')
+    return ('<svg class="media-svg" viewBox="0 0 400 300" fill="none" aria-hidden="true" '
+            'preserveAspectRatio="xMidYMid slice">' + "".join(dots) + '</svg>')
+
+
 def agendar_btn(label="Agendar una consulta", primary=True):
     cls = "btn btn--primary" if primary else "btn btn--ghost"
     return f'<a class="{cls}" href="#agendar" data-cal data-pos="cta">{esc(label)}</a>'
