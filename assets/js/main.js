@@ -12,6 +12,7 @@
     FORM_ENDPOINT: '',                // TODO: endpoint de formulario (p.ej. Formspree). Vacío = fallback mailto
     FIRM_EMAIL: 'contacto@veraly.co', // TODO: correo definitivo (pendiente 07)
     WHATSAPP: '',                     // TODO: número wa.me (pendiente 07)
+    CAL_LINK: '',                     // TODO: enlace Cal.com de la firma, p.ej. 'veraly/consulta'
   };
 
   var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -224,6 +225,129 @@
   $$('.faq details').forEach(function (d) {
     d.addEventListener('toggle', function () { if (d.open) track('faq_open', { pregunta: (d.querySelector('summary') || {}).textContent || '' }); });
   });
+
+  /* ---------- Agendamiento (Cal.com) ---------- */
+  function toast(msg) {
+    var t = document.createElement('div');
+    t.className = 'toast'; t.textContent = msg; document.body.appendChild(t);
+    requestAnimationFrame(function () { t.setAttribute('data-show', 'true'); });
+    setTimeout(function () { t.removeAttribute('data-show'); setTimeout(function () { t.remove(); }, 300); }, 3600);
+  }
+  var calReady = false;
+  function initCal() {
+    if (!CONFIG.CAL_LINK) return;
+    /* eslint-disable */
+    (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    /* eslint-enable */
+    window.Cal("init", { origin: "https://cal.com" });
+    window.Cal("ui", { theme: "dark", styles: { branding: { brandColor: "#89F5E5" } } });
+    calReady = true;
+  }
+  initCal();
+  function openScheduler() {
+    if (calReady && window.Cal) {
+      window.Cal("modal", { calLink: CONFIG.CAL_LINK });
+    } else {
+      // Fallback sin calendario conectado: llevar al formulario/contacto.
+      toast('Agendamiento en línea: se activa al conectar el calendario de la firma. Puede escribirnos mientras tanto.');
+      if (location.pathname.indexOf('/contacto') === -1) location.href = '/contacto/';
+      else { var f = document.querySelector('form[data-veraly-form]'); if (f) f.scrollIntoView({ behavior: 'smooth' }); }
+    }
+  }
+  $$('[data-cal]').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); track('agendar_click', { page_path: location.pathname }); openScheduler(); });
+  });
+  var calInline = $('#cal-inline');
+  if (calInline) {
+    if (calReady && window.Cal) {
+      window.Cal('inline', { elementOrSelector: '#cal-inline', calLink: CONFIG.CAL_LINK });
+    } else {
+      calInline.innerHTML = '<p style="color:var(--dim-2);margin:0">El calendario en línea se activa al conectar la cuenta de la firma. Mientras tanto, puede usar el formulario, WhatsApp o el teléfono.</p>';
+    }
+  }
+
+  /* ---------- Asistente guiado (determinista, sin IA, sin campo libre) ---------- */
+  var FLOW = {
+    start: { q: '¿Con qué le podemos ayudar?', options: [
+      { label: 'Perdí dinero en una captación', to: 'A' },
+      { label: 'Me investigan o me vincularon', to: 'B' },
+      { label: 'Mi empresa recauda de muchas personas', to: 'C' },
+      { label: 'Quiero entender el tema', to: 'INFO' } ] },
+    A: { q: '¿Ya hubo toma de posesión o intervención?', options: [
+      { label: 'Sí, ya hay intervención', to: 'A1' },
+      { label: 'No, o no lo sé', to: 'A2' } ] },
+    A1: { text: 'Dentro de la intervención los plazos son cortos: las solicitudes de devolución se presentan en 10 días comunes desde el aviso del interventor. Conviene actuar pronto.',
+      page: ['Ver la ruta del afectado', '/afectados-por-captacion-masiva/'], cta: 'agendar' },
+    A2: { text: 'Existen tres vías —administrativa, penal y civil— y la calificación correcta cambia la estrategia y lo que se recupera por cada una.',
+      page: ['Ver la ruta del afectado', '/afectados-por-captacion-masiva/'], cta: 'agendar' },
+    B: { q: '¿En qué momento está?', options: [
+      { label: 'Requerimientos o visita administrativa', to: 'B1' },
+      { label: 'Ya hay captura o imputación', to: 'B2' },
+      { label: 'Soy revisor fiscal, contador o proveedor', to: 'B3' } ] },
+    B1: { text: 'Es la fase administrativa previa: todavía se puede sustentar el modelo y, en su caso, evitar la declaratoria y la suspensión.',
+      page: ['Ver la ruta de la defensa', '/defensa-en-captacion-masiva/'], cta: 'urgente' },
+    B2: { text: 'El momento procesal define lo que aún es posible. La defensa se juega desde los actos urgentes y la audiencia de imputación.',
+      page: ['Ver la ruta de la defensa', '/defensa-en-captacion-masiva/'], cta: 'urgente' },
+    B3: { text: 'La vinculación alcanza esas posiciones por el ejercicio del cargo, pero es desvirtuable: la exclusión se construye sobre la buena fe exenta de culpa y el origen lícito.',
+      page: ['Ver la ruta de la defensa', '/defensa-en-captacion-masiva/'], cta: 'urgente' },
+    C: { q: '¿Qué tipo de modelo?', options: [
+      { label: 'Fintech o crowdfunding', to: 'C1' },
+      { label: 'Libranzas, factoring o multinivel', to: 'C1' },
+      { label: 'Otro modelo de recaudo', to: 'C1' } ] },
+    C1: { text: 'La clave es doble: los umbrales del Decreto 1981 de 1988 y la explicación financiera razonable del rendimiento. Ambas se revisan antes de que las revise una superintendencia.',
+      page: ['Ver la ruta preventiva', '/cumplimiento-en-recaudo-masivo/'], cta: 'agendar' },
+    INFO: { text: 'Publicamos sobre las figuras del fraude financiero: cómo se estructuran, cómo se investigan y qué vías abren. Nunca sobre casos identificables.',
+      page: ['Ir a Análisis', '/analisis/'], cta: 'none' }
+  };
+  var asst = $('#asst'), asstLaunch = $('#asst-launch'), asstPanel = $('#asst-panel'),
+      asstClose = $('#asst-close'), asstBody = $('#asst-body');
+  function asstRender(key) {
+    var node = FLOW[key]; if (!node) return;
+    asstBody.innerHTML = '';
+    if (node.q) {
+      var h = document.createElement('p'); h.className = 'asst-q'; h.textContent = node.q; asstBody.appendChild(h);
+      node.options.forEach(function (o) {
+        var b = document.createElement('button'); b.className = 'asst-opt'; b.textContent = o.label;
+        b.addEventListener('click', function () { asstRender(o.to); });
+        asstBody.appendChild(b);
+      });
+    } else {
+      var p = document.createElement('p'); p.className = 'asst-text'; p.textContent = node.text; asstBody.appendChild(p);
+      var acts = document.createElement('div'); acts.className = 'asst-actions';
+      if (node.cta === 'agendar') {
+        acts.appendChild(mkA('Agendar una consulta', '#agendar', 'primary', true));
+      } else if (node.cta === 'urgente') {
+        acts.appendChild(mkA('Escribir ahora', '/contacto/', 'primary', false));
+      }
+      if (node.page) {
+        var pl = document.createElement('a'); pl.className = 'asst-link'; pl.href = node.page[1];
+        pl.textContent = node.page[0] + ' →'; acts.appendChild(pl);
+      }
+      asstBody.appendChild(acts);
+      var back = document.createElement('button'); back.className = 'asst-back'; back.textContent = '← Empezar de nuevo';
+      back.addEventListener('click', function () { asstRender('start'); }); asstBody.appendChild(back);
+    }
+  }
+  function mkA(label, href, kind, isCal, isTel) {
+    var a = document.createElement('a'); a.className = 'btn btn--' + kind + ' btn--sm';
+    if (isTel) { a.href = 'tel:'; a.setAttribute('data-pos', 'asistente'); }
+    else a.href = href;
+    a.textContent = label;
+    if (isCal) { a.setAttribute('data-cal', ''); a.addEventListener('click', function (e) { e.preventDefault(); openScheduler(); }); }
+    return a;
+  }
+  function asstToggle(open) {
+    if (!asstPanel) return;
+    asstPanel.hidden = !open;
+    asstLaunch.setAttribute('aria-expanded', String(open));
+    asst.setAttribute('data-open', String(open));
+    if (open && !asstBody.hasChildNodes()) asstRender('start');
+  }
+  if (asstLaunch) {
+    asstLaunch.addEventListener('click', function () { asstToggle(asstPanel.hidden); track('asistente_open', { page_path: location.pathname }); });
+    asstClose.addEventListener('click', function () { asstToggle(false); });
+    document.addEventListener('keyup', function (e) { if (e.key === 'Escape' && !asstPanel.hidden) asstToggle(false); });
+  }
 
   /* ---------- Profundidad de scroll ---------- */
   var fired = {};

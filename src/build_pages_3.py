@@ -6,7 +6,7 @@ def build(g):
     socio_by_slug = g["socio_by_slug"]; TEMAS = g["TEMAS"]
     section = g["section"]; crumbs = g["crumbs"]; faq_block = g["faq_block"]
     faq_schema = g["faq_schema"]; contact_form = g["contact_form"]; trust_list = g["trust_list"]
-    breadcrumb_schema = g["breadcrumb_schema"]; B = g["B"]
+    breadcrumb_schema = g["breadcrumb_schema"]; B = g["B"]; agendar = g["agendar_btn"]
 
     def acc(items):
         # items: (fase_id, titulo, cuerpo_html)
@@ -60,9 +60,9 @@ def build(g):
   <p class="eyebrow">Para el afectado</p>
   <h1>Perdí dinero en un esquema de captación: qué vías existen</h1>
   <p class="support" style="max-width:56ch">Entregar recursos a una pirámide, un club de inversión o un esquema de rendimientos sin autorización tiene consecuencias jurídicas concretas y plazos que empiezan a correr desde la toma de posesión.</p>
-  <p class="desc" style="max-width:58ch">Esta página explica cómo funciona el proceso, qué se puede reclamar por cada vía y cuáles son los términos. Está escrita para que sirva aunque usted no nos consulte.</p>
+  <p class="desc" style="max-width:58ch">Explica cómo funciona el proceso, qué se reclama por cada vía y qué términos corren. Escrita para que sirva aunque usted no nos consulte.</p>
   <div class="cta-row">
-    <a class="btn btn--primary" href="/contacto/">Solicitar una consulta</a>
+    {agendar("Agendar una consulta")}
     <a class="btn btn--ghost" href="#" data-download="guia">Descargar la guía de plazos</a>
   </div>
 """, cls="hero")}
@@ -106,8 +106,7 @@ def build(g):
 {section("""
   <h2>Lo que la reclamación administrativa no cubre</h2>
   <div class="prose" style="margin-top:1.2rem">
-    <p>La devolución dentro de la intervención tiene techo en el capital entregado. Los intereses prometidos, los rendimientos no pagados y los perjuicios sufridos <strong>no se recuperan por esa vía</strong>. Solo por la penal o la civil.</p>
-    <p>Lo decimos aquí porque es la información que más frecuentemente falta cuando alguien decide si vale la pena reclamar, y porque una expectativa mal instalada al principio se convierte en un problema al final.</p>
+    <p>La devolución dentro de la intervención tiene techo en el capital entregado. Los intereses prometidos, los rendimientos no pagados y los perjuicios <strong>no se recuperan por esa vía</strong>: solo por la penal o la civil. Lo decimos porque es la información que más falta al decidir si vale la pena reclamar.</p>
   </div>
 """)}
 
@@ -121,8 +120,7 @@ def build(g):
 {section("""
   <h2>Cuando el grupo ya existe</h2>
   <div class="prose" style="margin-top:1.2rem">
-    <p>Los esquemas de captación producen afectados en bloque, y esos grupos suelen organizarse antes de buscar representación. Trabajar el caso de forma colectiva tiene ventajas concretas: la reconstrucción probatoria se vuelve más sólida, la evaluación de un plan de desmonte se puede sostener con peso real, y el seguimiento de la intervención deja de depender de una sola persona.</p>
-    <p>Si usted forma parte de un grupo de afectados, la primera conversación conviene tenerla con quien lo represente.</p>
+    <p>Trabajar el caso de forma colectiva tiene ventajas concretas: la prueba se vuelve más sólida, un plan de desmonte se sostiene con peso real y el seguimiento de la intervención no depende de una sola persona. Si forma parte de un grupo, la primera conversación conviene tenerla con quien lo represente.</p>
   </div>
   <div class="cta-row"><a class="btn btn--ghost" href="/contacto/">Escribir en nombre de un grupo</a></div>
 """)}
@@ -147,7 +145,7 @@ def build(g):
     <p class="lead" style="margin-top:1rem;max-width:56ch">No necesita traer documentos ni haber decidido nada. Sirve para saber si hay caso, qué vías siguen abiertas y qué plazos corren.</p>
     <div class="contact-grid" style="margin-top:1.6rem">
       <div>{contact_form("afectados", "Enviar")}
-        <div class="cta-row"><a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="afectados">Llamar</a>{wa_a}</div>
+        <div class="cta-row">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="afectados">Llamar</a>{wa_a}</div>
       </div>
       <aside>{trust_list()}
         <p style="margin-top:1.4rem"><a class="arrowlink" href="/firma/">Conocer cómo trabaja la firma</a></p>
@@ -278,7 +276,7 @@ def build(g):
     <h2>Hablar hoy</h2>
     <div class="contact-grid" style="margin-top:1.4rem">
       <div>{contact_form("defensa", "Enviar el formulario")}
-        <div class="cta-row"><a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="defensa">Llamar</a>{wa_b}</div>
+        <div class="cta-row"><a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="defensa">Llamar</a>{wa_b}{agendar("Agendar", primary=False)}</div>
       </div>
       <aside>{trust_list()}
         <p style="margin-top:1.4rem"><a class="arrowlink" href="/equipo/">Ver al equipo</a></p>
@@ -313,7 +311,7 @@ def build(g):
   <p class="support" style="max-width:58ch">Fintech, crowdfunding, libranzas, factoring, multinivel y clubes de inversión operan cerca de los umbrales que configuran captación. La distancia a esos umbrales se puede medir.</p>
   <p class="desc" style="max-width:58ch">Revisamos el encuadre del modelo, fijamos los límites operativos y documentamos los protocolos que sostienen la posición si una superintendencia pregunta.</p>
   <div class="cta-row">
-    <a class="btn btn--primary" href="/contacto/">Solicitar una revisión de encuadre</a>
+    {agendar("Solicitar una revisión de encuadre")}
     <a class="btn btn--ghost" href="#" data-download="cuestionario">Descargar el cuestionario</a>
   </div>
 """, cls="hero")}
@@ -359,7 +357,9 @@ def build(g):
   <div class="container">
     <h2>Revisar el encuadre</h2>
     <div class="contact-grid" style="margin-top:1.4rem">
-      <div>{contact_form("cumplimiento", "Solicitar una revisión")}</div>
+      <div>{contact_form("cumplimiento", "Solicitar una revisión")}
+        <div class="cta-row">{agendar("Agendar una revisión")}</div>
+      </div>
       <aside>{trust_list()}</aside>
     </div>
   </div>
@@ -445,7 +445,6 @@ def build(g):
         "cumplimiento": ("/cumplimiento-en-recaudo-masivo/", "Ver la ruta preventiva"),
     }
     for a in ARTICLES:
-        author = socio_by_slug(a["author"])
         cta_url, cta_txt = cta_labels[a["cta_target"]]
         body_html = ARTICLE_BODIES[a["slug"]]
         art_body = f'''
@@ -474,8 +473,8 @@ def build(g):
     <div class="byline">
       <span class="brand-mark" aria-hidden="true" style="width:34px;height:34px;color:var(--accent);display:inline-block">{g["LOGO_SVG"]}</span>
       <span>
-        <span class="b-name">{esc(author["nombre"])}</span><br>
-        <span class="b-role">{esc(author["practica"])} · <a class="textlink" href="/equipo/{author["slug"]}/">Ver ficha</a></span>
+        <span class="b-name">Equipo Veraly</span><br>
+        <span class="b-role">Veraly Grupo Jurídico · <a class="textlink" href="/equipo/">Las cinco prácticas</a></span>
       </span>
     </div>
     <p style="margin-top:1.4rem"><a class="arrowlink" href="{cta_url}">{esc(cta_txt)}</a></p>
@@ -487,8 +486,7 @@ def build(g):
             "headline": a["h1"],
             "description": a["desc"],
             "datePublished": "2026-08-12", "dateModified": "2026-08-12",
-            "author": {"@type": "Person", "name": author["nombre"],
-                       "url": B + "/equipo/" + author["slug"] + "/"},
+            "author": {"@type": "Organization", "name": SITE["name"], "url": B + "/"},
             "publisher": {"@type": "Organization", "name": SITE["name"]},
             "mainEntityOfPage": B + "/analisis/" + a["slug"] + "/",
             "inLanguage": "es-CO",

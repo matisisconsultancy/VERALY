@@ -51,7 +51,7 @@
   <p class="support" style="max-width:58ch">Fintech, crowdfunding, libranzas, factoring, multinivel y clubes de inversión operan cerca de los umbrales que configuran captación. La distancia a esos umbrales se puede medir.</p>
   <p class="desc" style="max-width:58ch">Revisamos el encuadre del modelo, fijamos los límites operativos y documentamos los protocolos que sostienen la posición si una superintendencia pregunta.</p>
   <div class="cta-row">
-    <a class="btn btn--primary" href="/contacto/">Solicitar una revisión de encuadre</a>
+    {agendar("Solicitar una revisión de encuadre")}
     <a class="btn btn--ghost" href="#" data-download="cuestionario">Descargar el cuestionario</a>
   </div>
 </div></section>
@@ -120,7 +120,9 @@
   </div>
   <button type="submit" class="btn btn--primary">Solicitar una revisión</button>
   <div class="form-status" role="status" aria-live="polite"></div>
-</form></div>
+</form>
+        <div class="cta-row"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una revisión</a></div>
+      </div>
       <aside><ul class="trust-list">
   <li>Respondemos en un plazo máximo de 24 horas hábiles.</li>
   <li>Toda consulta pasa por verificación previa de conflicto de interés antes de aceptarse.</li>
@@ -176,6 +178,20 @@
   </div>
 </footer>
 
+<div class="asst" id="asst" aria-live="polite">
+  <button class="asst-launch" id="asst-launch" aria-expanded="false" aria-controls="asst-panel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.6-.8L3 21l1.9-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+    <span>¿En qué le ayudamos?</span>
+  </button>
+  <div class="asst-panel" id="asst-panel" role="dialog" aria-label="Asistente de orientación" hidden>
+    <div class="asst-head">
+      <span class="asst-title">Orientación rápida</span>
+      <button class="asst-close" id="asst-close" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="asst-body" id="asst-body"></div>
+    <p class="asst-legal">Información general, no asesoría jurídica. <strong>No comparta los hechos de su caso aquí.</strong></p>
+  </div>
+</div>
 <script src="/assets/js/main.js" defer></script>
 </body>
 </html>

@@ -5,6 +5,7 @@ def build(g):
     add = g["add"]; esc = g["esc"]; SITE = g["SITE"]
     SOCIOS = g["SOCIOS"]; ARTICLES = g["ARTICLES"]; SITUACIONES = g["SITUACIONES"]
     socio_by_slug = g["socio_by_slug"]; TEMAS = g["TEMAS"]; jsonld = g["jsonld"]
+    PRACTICAS = g["PRACTICAS"]; agendar = g["agendar_btn"]
     B = SITE["base_url"]
 
     # -------- helpers de componentes --------
@@ -125,13 +126,12 @@ def build(g):
   <span class="arrowlink">{esc(cta)}</span>
 </a>'''
 
-    socios_home = ""
-    for s in SOCIOS:
-        socios_home += f'''<a class="socio" href="/equipo/{s["slug"]}/" data-socio="{s["slug"]}">
-  <span class="nombre">{esc(s["nombre"])}</span>
-  <span class="practica">{esc(s["practica"])}</span>
-  <span class="arrowlink">Ver ficha</span>
-</a>'''
+    practicas_home = ""
+    for pr in PRACTICAS:
+        practicas_home += f'''<div class="socio">
+  <span class="practica">{esc(pr["rama"])}</span>
+  <p style="color:var(--dim);margin:.3rem 0 0;font-size:var(--step-0)">{esc(pr["aporte"])}</p>
+</div>'''
 
     art_home = ""
     for a in ARTICLES[:3]:
@@ -147,7 +147,7 @@ def build(g):
   <p class="support">Despacho boutique colombiano especializado en captación masiva y habitual de dineros. Cinco socios, cinco ramas del derecho, un mismo caso.</p>
   <p class="desc">Los procesos por captación no autorizada avanzan al mismo tiempo por tres vías —administrativa, penal y civil— que en Colombia operan de forma autónoma y concurrente. Trabajamos las tres en paralelo, con las cinco prácticas de la firma leyendo el mismo expediente.</p>
   <div class="cta-row">
-    <a class="btn btn--primary" href="/contacto/">Solicitar una consulta</a>
+    {agendar("Agendar una consulta")}
     <a class="btn btn--ghost" href="#situaciones">Ver mi situación</a>
   </div>
 """, cls="hero")}
@@ -180,10 +180,10 @@ def build(g):
 <section class="section band">
   <div class="container">
     <p class="eyebrow">El equipo</p>
-    <h2>Cinco socios, cinco prácticas</h2>
-    <p class="lead" style="margin-top:1rem;max-width:52ch">La convergencia no es una declaración: es la composición de la firma.</p>
-    <div class="socios" style="margin-top:1.8rem">{socios_home}</div>
-    <div class="cta-row"><a class="arrowlink" href="/equipo/">Conocer al equipo</a></div>
+    <h2>Cinco prácticas, un mismo caso</h2>
+    <p class="lead" style="margin-top:1rem;max-width:52ch">La convergencia no es una declaración: es la composición de la firma. Cinco socios aportan cinco ramas del derecho al mismo expediente.</p>
+    <div class="socios" style="margin-top:1.8rem">{practicas_home}</div>
+    <div class="cta-row"><a class="arrowlink" href="/equipo/">Por qué cinco prácticas</a></div>
   </div>
 </section>
 
@@ -201,7 +201,8 @@ def build(g):
     <h2 style="max-width:24ch">Cuando un fraude financiero atraviesa una situación, la claridad jurídica es el primer paso.</h2>
     <p class="lead" style="margin-top:1.2rem;max-width:60ch">Una primera conversación sirve para saber si hay caso, qué vías están abiertas y qué plazos corren. No requiere aportar documentos ni tomar ninguna decisión.</p>
     <div class="cta-row">
-      <a class="btn btn--primary" href="/contacto/">Solicitar una consulta</a>
+      {agendar("Agendar una consulta")}
+      <a class="btn btn--ghost" href="/contacto/">Escribir</a>
       <a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="home">Llamar</a>
     </div>
   </div>

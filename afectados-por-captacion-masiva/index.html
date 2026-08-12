@@ -49,9 +49,9 @@
   <p class="eyebrow">Para el afectado</p>
   <h1>Perdí dinero en un esquema de captación: qué vías existen</h1>
   <p class="support" style="max-width:56ch">Entregar recursos a una pirámide, un club de inversión o un esquema de rendimientos sin autorización tiene consecuencias jurídicas concretas y plazos que empiezan a correr desde la toma de posesión.</p>
-  <p class="desc" style="max-width:58ch">Esta página explica cómo funciona el proceso, qué se puede reclamar por cada vía y cuáles son los términos. Está escrita para que sirva aunque usted no nos consulte.</p>
+  <p class="desc" style="max-width:58ch">Explica cómo funciona el proceso, qué se reclama por cada vía y qué términos corren. Escrita para que sirva aunque usted no nos consulte.</p>
   <div class="cta-row">
-    <a class="btn btn--primary" href="/contacto/">Solicitar una consulta</a>
+    <a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a>
     <a class="btn btn--ghost" href="#" data-download="guia">Descargar la guía de plazos</a>
   </div>
 </div></section>
@@ -95,8 +95,7 @@
 <section class="section"><div class="container">
   <h2>Lo que la reclamación administrativa no cubre</h2>
   <div class="prose" style="margin-top:1.2rem">
-    <p>La devolución dentro de la intervención tiene techo en el capital entregado. Los intereses prometidos, los rendimientos no pagados y los perjuicios sufridos <strong>no se recuperan por esa vía</strong>. Solo por la penal o la civil.</p>
-    <p>Lo decimos aquí porque es la información que más frecuentemente falta cuando alguien decide si vale la pena reclamar, y porque una expectativa mal instalada al principio se convierte en un problema al final.</p>
+    <p>La devolución dentro de la intervención tiene techo en el capital entregado. Los intereses prometidos, los rendimientos no pagados y los perjuicios <strong>no se recuperan por esa vía</strong>: solo por la penal o la civil. Lo decimos porque es la información que más falta al decidir si vale la pena reclamar.</p>
   </div>
 </div></section>
 
@@ -110,8 +109,7 @@
 <section class="section"><div class="container">
   <h2>Cuando el grupo ya existe</h2>
   <div class="prose" style="margin-top:1.2rem">
-    <p>Los esquemas de captación producen afectados en bloque, y esos grupos suelen organizarse antes de buscar representación. Trabajar el caso de forma colectiva tiene ventajas concretas: la reconstrucción probatoria se vuelve más sólida, la evaluación de un plan de desmonte se puede sostener con peso real, y el seguimiento de la intervención deja de depender de una sola persona.</p>
-    <p>Si usted forma parte de un grupo de afectados, la primera conversación conviene tenerla con quien lo represente.</p>
+    <p>Trabajar el caso de forma colectiva tiene ventajas concretas: la prueba se vuelve más sólida, un plan de desmonte se sostiene con peso real y el seguimiento de la intervención no depende de una sola persona. Si forma parte de un grupo, la primera conversación conviene tenerla con quien lo represente.</p>
   </div>
   <div class="cta-row"><a class="btn btn--ghost" href="/contacto/">Escribir en nombre de un grupo</a></div>
 </div></section>
@@ -159,7 +157,7 @@
   <button type="submit" class="btn btn--primary">Enviar</button>
   <div class="form-status" role="status" aria-live="polite"></div>
 </form>
-        <div class="cta-row"><a class="btn btn--ghost" href="tel:+570000000000" data-pos="afectados">Llamar</a></div>
+        <div class="cta-row"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="tel:+570000000000" data-pos="afectados">Llamar</a></div>
       </div>
       <aside><ul class="trust-list">
   <li>Respondemos en un plazo máximo de 24 horas hábiles.</li>
@@ -219,6 +217,20 @@
   </div>
 </footer>
 
+<div class="asst" id="asst" aria-live="polite">
+  <button class="asst-launch" id="asst-launch" aria-expanded="false" aria-controls="asst-panel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.6-.8L3 21l1.9-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+    <span>¿En qué le ayudamos?</span>
+  </button>
+  <div class="asst-panel" id="asst-panel" role="dialog" aria-label="Asistente de orientación" hidden>
+    <div class="asst-head">
+      <span class="asst-title">Orientación rápida</span>
+      <button class="asst-close" id="asst-close" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="asst-body" id="asst-body"></div>
+    <p class="asst-legal">Información general, no asesoría jurídica. <strong>No comparta los hechos de su caso aquí.</strong></p>
+  </div>
+</div>
 <script src="/assets/js/main.js" defer></script>
 </body>
 </html>

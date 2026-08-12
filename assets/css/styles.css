@@ -345,6 +345,50 @@ strong{font-weight:600;color:var(--text)}
 .band{background:var(--panel)}
 .band-2{background:linear-gradient(180deg,var(--bg),var(--panel) 60%)}
 
+/* ---------- Asistente guiado ---------- */
+.asst{position:fixed;right:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px);z-index:96}
+.asst-launch{display:inline-flex;align-items:center;gap:.55em;background:var(--accent);color:var(--on-light);
+  border:0;border-radius:999px;padding:13px 20px;font-family:var(--ui);font-weight:600;cursor:pointer;
+  box-shadow:0 12px 32px rgba(0,0,0,.35);transition:transform .18s,background .18s}
+.asst-launch:hover{background:var(--accent-deep);transform:translateY(-2px)}
+.asst-launch svg{width:20px;height:20px}
+.asst[data-open="true"] .asst-launch{display:none}
+.asst-panel{position:absolute;right:0;bottom:0;width:min(360px,calc(100vw - 28px));background:var(--panel-2);
+  border:1px solid var(--line);border-radius:var(--r);box-shadow:0 24px 70px rgba(0,0,0,.5);
+  flex-direction:column;overflow:hidden}
+.asst-panel[hidden]{display:none}
+.asst-panel:not([hidden]){display:flex}
+.asst-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line-soft)}
+.asst-title{font-family:var(--ui);font-weight:600;color:var(--text)}
+.asst-close{background:none;border:0;color:var(--dim);font-size:1.6rem;line-height:1;cursor:pointer;padding:0 4px}
+.asst-close:hover{color:var(--accent)}
+.asst-body{padding:18px;display:flex;flex-direction:column;gap:10px;max-height:min(60vh,440px);overflow-y:auto}
+.asst-q{margin:0 0 4px;font-weight:600;color:var(--text)}
+.asst-opt{text-align:left;background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;
+  padding:13px 15px;color:var(--text);font-family:var(--sans);cursor:pointer;transition:border-color .18s,background .18s}
+.asst-opt:hover{border-color:var(--accent);background:var(--bg)}
+.asst-text{margin:0;color:var(--dim);line-height:1.55}
+.asst-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:4px}
+.asst-link{color:var(--accent);text-decoration:none;font-family:var(--ui);font-weight:600;font-size:var(--step--1)}
+.asst-back{background:none;border:0;color:var(--dim-2);font-family:var(--ui);cursor:pointer;padding:6px 0;text-align:left;font-size:var(--step--1)}
+.asst-back:hover{color:var(--accent)}
+.asst-legal{margin:0;padding:12px 18px;border-top:1px solid var(--line-soft);color:var(--dim-2);font-size:12px;line-height:1.4}
+.asst-legal strong{color:var(--dim)}
+@media (max-width:900px){body.has-mobile-bar .asst{bottom:calc(72px + env(safe-area-inset-bottom))}}
+
+/* ---------- Toast ---------- */
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);z-index:130;background:var(--panel-2);
+  border:1px solid var(--line);color:var(--text);padding:14px 20px;border-radius:12px;max-width:min(90vw,440px);
+  font-size:var(--step--1);opacity:0;transition:opacity .25s,transform .25s;box-shadow:0 16px 44px rgba(0,0,0,.4)}
+.toast[data-show="true"]{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- Sección de agendamiento ---------- */
+.agendar-box{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+  padding:clamp(22px,3.4vw,36px);display:flex;flex-direction:column;gap:14px}
+.agendar-box h2{font-size:var(--step-2)}
+.agendar-box p{color:var(--dim);margin:0}
+#cal-inline{min-height:60px}
+
 /* ---------- Banner de cookies ---------- */
 .cookie-bar{position:fixed;left:0;right:0;bottom:0;z-index:95;background:var(--panel-2);
   border-top:1px solid var(--line);padding:16px var(--edge) calc(16px + env(safe-area-inset-bottom));

@@ -28,6 +28,8 @@ SITE = {
     "whatsapp": "",  # wa.me/57XXXXXXXXXX
     "address": "Dirección por definir — Colombia",
     "hours": "Lun a Vie, 8:00–18:00",
+    # Agendamiento (Cal.com). Placeholder hasta conectar el calendario de la firma.
+    "cal_link": "",  # p.ej. "veraly/consulta"  (TODO: cuenta Cal.com de la firma)
 }
 
 # Isotipo "Convergencia" reutilizado del brandbook (cinco V hacia un punto).
@@ -103,6 +105,20 @@ ARTICLES = [
         "answer": "La buena fe exenta de culpa es el estándar que, según la Sentencia C-145 de 2009, puede dejar fuera de la intervención a terceros proveedores que actuaron en el ámbito de sus actividades lícitas ordinarias. No basta la creencia honesta: exige diligencia positiva y comprobable, acreditada con documentos, controles y decisiones registradas.",
         "cta_target": "defensa",
     },
+]
+
+# Cinco prácticas (composición de la firma, sin nombres — decisión del cliente).
+PRACTICAS = [
+    {"rama": "Contractual y constitucional",
+     "aporte": "El debido proceso en un trámite de única instancia y el andamiaje contractual anterior a la toma de posesión."},
+    {"rama": "Tributaria y migratoria",
+     "aporte": "Las contingencias tributarias sobre los flujos del esquema y las consecuencias migratorias de los vinculados."},
+    {"rama": "Corporativa y urbana",
+     "aporte": "Las controversias societarias sobre actos anteriores a la intervención y los activos inmobiliarios comprometidos."},
+    {"rama": "Penal e informática",
+     "aporte": "La defensa penal por los artículos 316 y 316A y la evidencia digital, desde los actos urgentes hasta el juicio oral."},
+    {"rama": "Laboral y de seguros",
+     "aporte": "Las reclamaciones laborales de la sociedad intervenida y la exposición de las pólizas y garantías del recaudo."},
 ]
 
 TEMAS = ["El fenómeno", "La intervención", "La defensa", "La recuperación", "Prevención empresarial"]
@@ -217,6 +233,29 @@ def mobile_bar_html():
   {wa}
 </div>'''
 
+def agendar_btn(label="Agendar una consulta", primary=True):
+    cls = "btn btn--primary" if primary else "btn btn--ghost"
+    return f'<a class="{cls}" href="#agendar" data-cal data-pos="cta">{esc(label)}</a>'
+
+
+def assistant_html():
+    # Asistente guiado (determinista). El flujo vive en main.js; aquí solo el chasis.
+    return '''<div class="asst" id="asst" aria-live="polite">
+  <button class="asst-launch" id="asst-launch" aria-expanded="false" aria-controls="asst-panel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.6-.8L3 21l1.9-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+    <span>¿En qué le ayudamos?</span>
+  </button>
+  <div class="asst-panel" id="asst-panel" role="dialog" aria-label="Asistente de orientación" hidden>
+    <div class="asst-head">
+      <span class="asst-title">Orientación rápida</span>
+      <button class="asst-close" id="asst-close" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="asst-body" id="asst-body"></div>
+    <p class="asst-legal">Información general, no asesoría jurídica. <strong>No comparta los hechos de su caso aquí.</strong></p>
+  </div>
+</div>'''
+
+
 def jsonld(objects):
     if not objects:
         return ""
@@ -265,6 +304,7 @@ def document(meta, body):
 </main>
 {footer_html()}
 {mobile_bar}
+{assistant_html()}
 <script src="/assets/js/main.js" defer></script>
 </body>
 </html>'''
