@@ -522,7 +522,7 @@ strong{font-weight:600;color:var(--text)}
 .step-body{display:flex;flex-direction:column;justify-content:center;min-width:0}
 .step-visual{height:100%;border-radius:20px;overflow:clip;position:relative;
   border:1px solid var(--line-soft);background:radial-gradient(120% 100% at 30% 15%,rgba(10,74,80,.6),var(--ink))}
-.step-visual .media-svg{opacity:.42}
+.step-visual .media-svg{opacity:.9}
 .step-visual .sv-tag{position:absolute;left:20px;top:20px;font-family:var(--mono);font-size:.62rem;
   text-transform:uppercase;letter-spacing:.14em;color:var(--accent);background:rgba(3,25,27,.7);
   border:1px solid var(--line-soft);border-radius:999px;padding:6px 12px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}

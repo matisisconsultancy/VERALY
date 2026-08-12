@@ -365,7 +365,7 @@ def proceso_stepper():
     for i, (num, chip, h, d, media, tag, overlay) in enumerate(steps):
         active = " active" if i == 0 else ""
         steps_html += f'''<div class="step{active}" data-i="{i}">
-  <div class="step-visual">{media}<span class="sv-tag">{esc(tag)}</span>{overlay}</div>
+  <div class="step-visual">{media}</div>
   <div class="step-body">
     <span class="step-chip">{chip}</span>
     <h2>{esc(h)}</h2>
