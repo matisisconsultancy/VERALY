@@ -432,4 +432,23 @@
     });
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ---------- Nav que se oculta/muestra con el scroll ---------- */
+  (function () {
+    var hdr = $('.site-header'); if (!hdr) return;
+    var lastY = window.pageYOffset || 0, ticking = false;
+    function apply() {
+      ticking = false;
+      var y = window.pageYOffset || 0;
+      var navOpen = document.body.getAttribute('data-nav-open') === 'true';
+      if (y <= 90 || navOpen) { hdr.classList.remove('nav-hidden'); lastY = y; return; }
+      var dy = y - lastY;
+      if (dy > 6) hdr.classList.add('nav-hidden');        // baja → esconde
+      else if (dy < -6) hdr.classList.remove('nav-hidden'); // sube → muestra
+      lastY = y;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(apply); }
+    }, { passive: true });
+  })();
 })();

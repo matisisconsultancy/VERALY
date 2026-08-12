@@ -128,7 +128,10 @@ strong{font-weight:600;color:var(--text)}
 
 /* ---------- Header flotante con pill glass (estilo AI Finance) ---------- */
 .site-header.floating{position:fixed;top:0;left:0;right:0;z-index:100;
-  background:linear-gradient(180deg,rgba(3,25,27,.72),rgba(3,25,27,0));border:0}
+  background:linear-gradient(180deg,rgba(3,25,27,.72),rgba(3,25,27,0));border:0;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.site-header.floating.nav-hidden{transform:translateY(-118%)}
+@media (prefers-reduced-motion:reduce){.site-header.floating{transition:none}}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:var(--head-h);padding-top:14px}
 .brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);font-family:var(--sans);font-weight:600}
 .brand svg{width:30px;height:30px;flex:none}
@@ -1794,6 +1797,11 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
   function aToggle(o){if(!aP)return;aP.hidden=!o;aL.setAttribute('aria-expanded',String(o));asst.setAttribute('data-open',String(o));if(o&&!aB.hasChildNodes())aRender('start');}
   if(aL){aL.addEventListener('click',function(){aToggle(aP.hidden);});aC.addEventListener('click',function(){aToggle(false);});document.addEventListener('keyup',function(e){if(e.key==='Escape'&&!aP.hidden)aToggle(false);});}
   if(aB){aB.addEventListener('click',function(e){if(e.target.closest('a[href^="#!"]'))aToggle(false);});}
+  (function(){var lastY=window.pageYOffset||0,ticking=false;
+    function apply(){ticking=false;var y=window.pageYOffset||0;var navOpen=body.getAttribute('data-nav-open')==='true';
+      if(y<=90||navOpen){header.classList.remove('nav-hidden');lastY=y;return;}
+      var dy=y-lastY;if(dy>6)header.classList.add('nav-hidden');else if(dy<-6)header.classList.remove('nav-hidden');lastY=y;}
+    window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(apply);}},{passive:true});})();
   window.addEventListener('hashchange',function(){if(location.hash.indexOf('#!')===0)render();});
   render();
 })();
