@@ -71,7 +71,8 @@ def run(out_path):
     function upd(){if(window.innerWidth<=900){phrases.forEach(function(p){p.classList.add('active');});words.forEach(function(ws){ws.forEach(function(w){w.classList.add('lit');});});cards.forEach(function(c){c.classList.add('in');});return;}
       var p=pinProgress(track),idx=Math.min(np-1,Math.floor(p*np)),local=(p*np)-idx;
       phrases.forEach(function(ph,i){ph.classList.toggle('active',i===idx);});
-      words[idx].forEach(function(w,j){w.classList.toggle('lit',(j+0.6)/words[idx].length<=local);});
+      var lit=Math.min(1,local/0.55);
+      words[idx].forEach(function(w,j){w.classList.toggle('lit',(j+0.6)/words[idx].length<=lit);});
       cards.forEach(function(c,k){c.classList.toggle('in',p>=(k+1)/(cards.length+1));});}
     window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();}
   function render(){var route=curRoute();var t=tpl[route]||tpl['/'];app.innerHTML='';app.appendChild(t.content.cloneNode(true));

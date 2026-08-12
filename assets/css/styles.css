@@ -573,32 +573,32 @@ strong{font-weight:600;color:var(--text)}
    Reveal por scroll (word focus + tarjetas) — "El marco"
    ============================================================ */
 .reveal{background:var(--ink);border-top:1px solid var(--line-soft)}
-.reveal-track{position:relative;height:340vh}
+.reveal-track{position:relative;height:520vh}
 .reveal-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:clamp(28px,6vh,64px);overflow:clip;padding:var(--head-h) var(--edge) 6vh}
-.reveal-phrases{position:relative;width:100%;max-width:1000px;min-height:clamp(160px,28vh,340px);
+  gap:clamp(32px,7vh,80px);overflow:clip;padding:var(--head-h) var(--edge) 6vh}
+.reveal-phrases{position:relative;width:100%;max-width:1200px;min-height:clamp(140px,22vh,280px);
   display:flex;align-items:center;justify-content:center;text-align:center}
-.reveal-phrase{position:absolute;margin:0;opacity:0;transition:opacity .4s;
-  font-family:var(--display);font-weight:500;font-size:clamp(2.3rem,1.3rem+4vw,5.2rem);line-height:1.03;letter-spacing:-.025em}
+.reveal-phrase{position:absolute;margin:0;opacity:0;transition:opacity .45s ease;
+  font-family:var(--display);font-weight:500;font-size:clamp(2.4rem,1.1rem+4.7vw,5.8rem);line-height:1.02;letter-spacing:-.025em}
 .reveal-phrase.active{opacity:1}
-.reveal-phrase .w{color:var(--dim-2);transition:color .25s ease}
+.reveal-phrase .w{color:var(--dim-2);transition:color .3s ease}
 .reveal-phrase .w.lit{color:var(--text)}
-/* baraja de tarjetas de norma que aparecen al hacer scroll */
-.reveal-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:960px;width:100%}
-.reveal-cards .rc{width:min(250px,44vw);border:1px solid var(--line-soft);border-radius:14px;padding:16px 18px;
+/* baraja de tarjetas de norma que aparecen al hacer scroll (rejilla a lo ancho) */
+.reveal-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%;max-width:1160px}
+.reveal-cards .rc{border:1px solid var(--line-soft);border-radius:16px;padding:22px 24px;min-height:104px;
   background:linear-gradient(160deg,rgba(137,245,229,.06),rgba(10,74,80,.16));
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;flex-direction:column;gap:6px;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;flex-direction:column;gap:8px;justify-content:space-between;
   opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
 .reveal-cards .rc.in{opacity:1;transform:none}
-.reveal-cards .rc .t-k{font-family:var(--display);font-weight:600;font-size:1.02rem;color:var(--text)}
-.reveal-cards .rc .t-d{font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.12em;color:var(--dim-2)}
+.reveal-cards .rc .t-k{font-family:var(--display);font-weight:600;font-size:1.15rem;color:var(--text)}
+.reveal-cards .rc .t-d{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--dim-2)}
 @media (max-width:900px){
   .reveal-track{height:auto}
   .reveal-sticky{position:static;height:auto;display:block;padding:56px var(--edge)}
   .reveal-phrases{min-height:0;max-width:none;display:block}
   .reveal-phrase{position:static;transform:none;opacity:1;margin-bottom:1.4rem}
-  .reveal-cards{margin-top:2rem}
-  .reveal-cards .rc{width:calc(50% - 7px);transform:none;opacity:1}
+  .reveal-cards{grid-template-columns:repeat(2,1fr);margin-top:2rem}
+  .reveal-cards .rc{transform:none;opacity:1}
 }
 
 /* ---------- Asistente guiado ---------- */

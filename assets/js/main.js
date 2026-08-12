@@ -384,7 +384,8 @@
       var idx = Math.min(np - 1, Math.floor(p * np));
       var local = (p * np) - idx;
       phrases.forEach(function (ph, i) { ph.classList.toggle('active', i === idx); });
-      words[idx].forEach(function (w, j) { w.classList.toggle('lit', (j + 0.6) / words[idx].length <= local); });
+      var lit = Math.min(1, local / 0.55); // ilumina en el primer 55% y mantiene
+      words[idx].forEach(function (w, j) { w.classList.toggle('lit', (j + 0.6) / words[idx].length <= lit); });
       cards.forEach(function (c, k) { c.classList.toggle('in', p >= (k + 1) / (cards.length + 1)); });
     }
     window.addEventListener('scroll', upd, { passive: true });
