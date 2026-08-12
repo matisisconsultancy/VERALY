@@ -8,6 +8,7 @@ def build(g):
     PRACTICAS = g["PRACTICAS"]; agendar = g["agendar_btn"]
     burst = g["burst_svg"]; pixels = g["pixels_strip"]; convergence = g["convergence_svg"]
     globe = g["globe_svg"]; wave = g["wave_svg"]
+    stepper = g["proceso_stepper"]; marco = g["marco_reveal"]
     B = SITE["base_url"]
 
     # -------- helpers de componentes --------
@@ -243,39 +244,9 @@ def build(g):
   </div>
 </section>
 
-<section class="section band">
-  <div class="container stack">
-    <div class="stack-head">
-      <p class="eyebrow">Por qué esta firma</p>
-      <h2>Confianza sin atajos</h2>
-      <p class="lead" style="margin-top:1rem">En una materia donde no caben testimonios ni promesas, la confianza se construye con personas verificables, densidad técnica y límites declarados.</p>
-    </div>
-    <div class="stack-cards">{conf_cards}</div>
-  </div>
-</section>
+{stepper()}
 
-<section class="section">
-  <div class="container">
-    <div class="tc">
-      <p class="eyebrow">El marco que trabajamos</p>
-      <h2 style="max-width:20ch">Un fenómeno con nombre técnico</h2>
-      <p class="lead" style="margin-top:1rem;max-width:56ch">No perseguimos casos: trabajamos figuras jurídicas. Este es el marco normativo que ordena cada intervención.</p>
-    </div>
-    <div class="tiles">{tiles}</div>
-  </div>
-</section>
-
-<section class="section band">
-  <div class="container">
-    <div class="tc">
-      <p class="eyebrow">Análisis</p>
-      <h2>Conocimiento vivo del fenómeno</h2>
-      <p class="lead" style="margin-top:1rem;max-width:60ch">Publicamos sobre las figuras jurídicas del fraude financiero: cómo se estructuran, cómo se investigan y qué vías abren. Nunca sobre casos identificables.</p>
-    </div>
-    <div class="editorial" style="margin-top:2rem">{art_home}</div>
-    <div class="cta-row" style="justify-content:center"><a class="arrowlink" href="/analisis/">Ver todos los análisis</a></div>
-  </div>
-</section>
+{marco()}
 
 <section class="hero-full" style="min-height:auto;justify-content:center">
   <div class="hero-bg" aria-hidden="true"><div class="drape"></div><div class="sphere"></div></div>

@@ -157,11 +157,24 @@ def header_html(active=""):
     sub = "".join(
         f'<li><a href="{url}" data-situacion="{tag}"{cur(tag)}>{esc(t)}<small>{esc(d)}</small></a></li>'
         for url, t, d, tag in SITUACIONES)
+    # enlaces reutilizados (pill de escritorio y menú móvil)
+    def links(prefix=""):
+        return f'''<a href="/firma/"{cur('firma')}>La firma</a>
+        <a href="/equipo/"{cur('equipo')}>El equipo</a>
+        <div class="has-sub">
+          <button type="button" aria-haspopup="true">Situaciones {ICON_CHEVRON}</button>
+          <ul class="submenu">{sub}</ul>
+        </div>
+        <a href="/analisis/"{cur('analisis')}>Análisis</a>'''
     return f'''<a class="skip-link" href="#main">Saltar al contenido</a>
-<header class="site-header">
+<header class="site-header floating">
   <div class="container nav">
     {brand()}
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">{ICON_MENU}</button>
+    <div class="nav-cluster">
+      <nav class="nav-pill" aria-label="Navegación principal">{links()}</nav>
+      <a class="btn btn--primary btn--sm nav-cta-pill" href="/contacto/"{cur('contacto')}>Contacto</a>
+    </div>
     <div class="nav-menu-wrap" id="nav-menu">
       <ul class="nav-menu">
         <li><a href="/firma/"{cur('firma')}>La firma</a></li>
@@ -171,7 +184,7 @@ def header_html(active=""):
           <ul class="submenu">{sub}</ul>
         </li>
         <li><a href="/analisis/"{cur('analisis')}>Análisis</a></li>
-        <li class="nav-cta"><a class="btn btn--primary btn--sm" href="/contacto/"{cur('contacto')}>Contacto</a></li>
+        <li class="nav-cta"><a class="btn btn--primary" href="/contacto/"{cur('contacto')}>Contacto</a></li>
       </ul>
     </div>
   </div>
@@ -308,6 +321,82 @@ def wave_svg():
             dots.append(f'<circle class="pt" cx="{x:.1f}" cy="{y:.1f}" r="1.3" opacity="{op:.2f}"/>')
     return ('<svg class="media-svg" viewBox="0 0 400 300" fill="none" aria-hidden="true" '
             'preserveAspectRatio="xMidYMid slice">' + "".join(dots) + '</svg>')
+
+
+def proceso_stepper():
+    steps = [
+        ("01", "VERIFICAR", "Verificamos el conflicto antes de aceptar",
+         "Cada consulta pasa por un protocolo interno: si la firma ya interviene en ese proceso por la orilla contraria, se declina y se explica por qué. Es la primera prueba de integridad.",
+         burst_svg(), "Protocolo de conflicto", "Integridad"),
+        ("02", "HECHOS", "Reconstruimos los hechos",
+         "Qué ocurrió, con qué documentos, en qué fechas y con qué trazabilidad financiera del esquema. El caso se sostiene sobre el expediente, no sobre la versión.",
+         wave_svg(), "Expediente", "Trazabilidad"),
+        ("03", "ACTORES", "Ubicamos a cada actor",
+         "Quién ocupó cada posición —captador, administrador, revisor, contador, proveedor, afectado— y qué consecuencia jurídica arrastra. La defensa empieza por saber si usted debe estar ahí.",
+         globe_svg(), "Mapa de vinculados", "Posiciones"),
+        ("04", "RUTAS", "Ordenamos las tres vías",
+         "Qué vías están abiertas, cuáles ya precluyeron y en qué orden conviene activarlas. Administrativa, penal y civil corren autónomas y concurrentes.",
+         wave_svg(), "Vías paralelas", "Estrategia"),
+        ("05", "CONVERGENCIA", "Cinco prácticas, un expediente",
+         "Los cinco socios trabajan el mismo caso desde sus ramas del derecho. El resultado no se reparte por especialidad: se construye en la intersección.",
+         convergence_svg(), "Convergencia", "Método"),
+    ]
+    rail = "".join(f'<li class="{"on" if i == 0 else ""}">STEP 0{i + 1}</li>' for i in range(len(steps)))
+    steps_html = ""
+    for i, (num, chip, h, d, media, cap, tag) in enumerate(steps):
+        active = " active" if i == 0 else ""
+        steps_html += f'''<div class="step{active}" data-i="{i}">
+  <div class="step-visual">{media}<div class="sv-cap"><b>{esc(cap)}</b><span>{esc(tag)}</span></div></div>
+  <div class="step-body">
+    <span class="step-chip">{chip}</span>
+    <h2>{esc(h)}</h2>
+    <p>{esc(d)}</p>
+    <div class="stepper-cta">{agendar_btn("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabajamos</a></div>
+  </div>
+</div>'''
+    return f'''<section class="stepper" id="metodo">
+  <div class="section stepper-intro"><div class="container tc">
+    <p class="eyebrow">Por qué esta firma</p>
+    <h2 style="max-width:18ch">El método, paso a paso</h2>
+    <p class="lead" style="margin-top:1rem;max-width:56ch">No hay atajos ni promesas: hay un método. Así se construye un caso de fraude financiero en Veraly.</p>
+  </div></div>
+  <div class="stepper-track">
+    <div class="stepper-sticky"><div class="stepper-inner">
+      {steps_html}
+      <ol class="stepper-rail" aria-hidden="true">{rail}</ol>
+    </div></div>
+  </div>
+</section>'''
+
+
+def marco_reveal():
+    phrases = [
+        "No perseguimos casos. Trabajamos figuras jurídicas.",
+        "Cada intervención se ordena sobre un marco normativo preciso.",
+        "Decreto 4334, artículos 316 y 316A, y la jurisprudencia que los interpreta.",
+    ]
+    def words(s):
+        return " ".join(f'<span class="w">{esc(w)}</span>' for w in s.split(" "))
+    phr = "".join(
+        f'<p class="reveal-phrase{" active" if i == 0 else ""}" data-i="{i}">{words(s)}</p>'
+        for i, s in enumerate(phrases))
+    cards = [("Decreto 4334 / 2008", "Intervención"), ("Art. 316 CP", "Captación masiva"),
+             ("Art. 316A CP", "No reintegro"), ("Decreto 1981 / 1988", "Umbrales"),
+             ("Ley 1902 / 2018", "Plan de desmonte"), ("Sentencia C‑145 / 2009", "Presunciones")]
+    rc = "".join(
+        f'<div class="rc pos-{i + 1}"><span class="t-k">{esc(k)}</span><span class="t-d">{esc(d)}</span></div>'
+        for i, (k, d) in enumerate(cards))
+    return f'''<section class="reveal" id="marco">
+  <div class="section stepper-intro"><div class="container tc">
+    <p class="eyebrow">El marco que trabajamos</p>
+  </div></div>
+  <div class="reveal-track">
+    <div class="reveal-sticky">
+      <div class="reveal-cards" aria-hidden="true">{rc}</div>
+      <div class="reveal-phrases">{phr}</div>
+    </div>
+  </div>
+</section>'''
 
 
 def agendar_btn(label="Agendar una consulta", primary=True):

@@ -349,6 +349,50 @@
     document.addEventListener('keyup', function (e) { if (e.key === 'Escape' && !asstPanel.hidden) asstToggle(false); });
   }
 
+  /* ---------- Pin scroll helpers (stepper + reveal) ---------- */
+  function pinProgress(track) {
+    var r = track.getBoundingClientRect();
+    var total = track.offsetHeight - window.innerHeight;
+    return total > 0 ? Math.min(1, Math.max(0, (-r.top) / total)) : 0;
+  }
+  function initStepper() {
+    var track = $('.stepper-track'); if (!track || track.__i) return; track.__i = 1;
+    var steps = $$('.step', track), rail = $$('.stepper-rail li', track), n = steps.length;
+    if (!n) return;
+    function upd() {
+      if (window.innerWidth <= 900) { steps.forEach(function (s) { s.classList.add('active'); }); return; }
+      var idx = Math.min(n - 1, Math.floor(pinProgress(track) * n));
+      steps.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
+      rail.forEach(function (li, i) { li.classList.toggle('on', i === idx); });
+    }
+    window.addEventListener('scroll', upd, { passive: true });
+    window.addEventListener('resize', upd); upd();
+  }
+  function initReveal() {
+    var track = $('.reveal-track'); if (!track || track.__i) return; track.__i = 1;
+    var phrases = $$('.reveal-phrase', track), cards = $$('.reveal-cards .rc', track);
+    var np = phrases.length; if (!np) return;
+    var words = phrases.map(function (p) { return $$('.w', p); });
+    function upd() {
+      if (window.innerWidth <= 900) {
+        phrases.forEach(function (p) { p.classList.add('active'); });
+        words.forEach(function (ws) { ws.forEach(function (w) { w.classList.add('lit'); }); });
+        cards.forEach(function (c) { c.classList.add('in'); });
+        return;
+      }
+      var p = pinProgress(track);
+      var idx = Math.min(np - 1, Math.floor(p * np));
+      var local = (p * np) - idx;
+      phrases.forEach(function (ph, i) { ph.classList.toggle('active', i === idx); });
+      words[idx].forEach(function (w, j) { w.classList.toggle('lit', (j + 0.6) / words[idx].length <= local); });
+      cards.forEach(function (c, k) { c.classList.toggle('in', p >= (k + 1) / (cards.length + 1)); });
+    }
+    window.addEventListener('scroll', upd, { passive: true });
+    window.addEventListener('resize', upd); upd();
+  }
+  window.__initPins = function () { initStepper(); initReveal(); };
+  window.__initPins();
+
   /* ---------- Profundidad de scroll ---------- */
   var fired = {};
   function onScroll() {
