@@ -518,13 +518,26 @@ strong{font-weight:600;color:var(--text)}
   display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;
   opacity:0;visibility:hidden;transition:opacity .55s ease,transform .55s ease;transform:translateY(10px)}
 .step.active{opacity:1;visibility:visible;transform:none}
-.step-visual{aspect-ratio:5/4;border-radius:18px;overflow:clip;position:relative;
+.step-visual{height:min(66vh,600px);border-radius:20px;overflow:clip;position:relative;
   border:1px solid var(--line-soft);background:radial-gradient(120% 100% at 30% 15%,rgba(10,74,80,.6),var(--ink))}
-.step-visual .media-svg{opacity:.95}
-.step-visual .sv-cap{position:absolute;left:16px;bottom:16px;right:16px;display:flex;gap:10px;align-items:center;
-  background:rgba(3,25,27,.72);border:1px solid var(--line-soft);border-radius:12px;padding:12px 14px;backdrop-filter:blur(4px)}
-.step-visual .sv-cap b{font-family:var(--display);font-weight:700;color:var(--text)}
-.step-visual .sv-cap span{font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}
+.step-visual .media-svg{opacity:.42}
+.step-visual .sv-tag{position:absolute;left:20px;top:20px;font-family:var(--mono);font-size:.62rem;
+  text-transform:uppercase;letter-spacing:.14em;color:var(--accent);background:rgba(3,25,27,.7);
+  border:1px solid var(--line-soft);border-radius:999px;padding:6px 12px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+/* tarjeta glass flotante por paso */
+.sv-overlay{position:absolute;left:22px;right:22px;bottom:22px;background:rgba(3,25,27,.82);
+  border:1px solid var(--line-soft);border-radius:14px;padding:16px 18px;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:9px}
+.sv-overlay b{font-family:var(--display);font-weight:600;color:var(--text);font-size:1.02rem}
+.svc-row{display:flex;justify-content:space-between;gap:12px;font-size:.88rem;color:var(--dim)}
+.svc-row .ok{color:var(--accent);font-weight:600}
+.svc-row .bad{color:#F0A08A;font-weight:600}
+.svc-line{font-size:.82rem;color:var(--dim);font-family:var(--mono)}
+.svc-tags{display:flex;flex-wrap:wrap;gap:6px}
+.svc-tag{font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:4px 9px}
+.svc-flag{font-size:.84rem;color:var(--text);border-top:1px solid var(--line-soft);padding-top:9px}
+.svc-flag .ok{color:var(--accent)}
 .step-chip{display:inline-block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.18em;font-size:.7rem;
   background:var(--text);color:var(--ink);padding:8px 14px;border-radius:6px;margin-bottom:1.4rem}
 .step-body h2{font-size:clamp(2.1rem,1.3rem+3.4vw,4rem);line-height:1.02;letter-spacing:-.02em}
@@ -550,7 +563,7 @@ strong{font-weight:600;color:var(--text)}
   .step{position:static;opacity:1;visibility:visible;transform:none;grid-template-columns:1fr;
     gap:20px;padding-block:44px;padding-right:var(--edge);border-top:1px solid var(--line-soft)}
   .step:first-child{border-top:0}
-  .step-visual{aspect-ratio:16/10}
+  .step-visual{aspect-ratio:16/10;height:auto}
   .stepper-rail{display:none}
 }
 
@@ -558,36 +571,32 @@ strong{font-weight:600;color:var(--text)}
    Reveal por scroll (word focus + tarjetas) — "El marco"
    ============================================================ */
 .reveal{background:var(--ink);border-top:1px solid var(--line-soft)}
-.reveal-track{position:relative;height:300vh}
-.reveal-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:clip}
-.reveal-phrases{position:relative;max-width:min(92vw,26ch);margin-inline:auto;text-align:center;z-index:3;padding-inline:var(--edge)}
-.reveal-phrase{margin:0;position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);opacity:0;transition:opacity .4s;
-  font-family:var(--display);font-weight:500;font-size:clamp(1.9rem,1rem+3.8vw,4.2rem);line-height:1.06;letter-spacing:-.02em}
+.reveal-track{position:relative;height:340vh}
+.reveal-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(28px,6vh,64px);overflow:clip;padding:var(--head-h) var(--edge) 6vh}
+.reveal-phrases{position:relative;width:100%;max-width:1000px;min-height:clamp(160px,28vh,340px);
+  display:flex;align-items:center;justify-content:center;text-align:center}
+.reveal-phrase{position:absolute;margin:0;opacity:0;transition:opacity .4s;
+  font-family:var(--display);font-weight:500;font-size:clamp(2.3rem,1.3rem+4vw,5.2rem);line-height:1.03;letter-spacing:-.025em}
 .reveal-phrase.active{opacity:1}
 .reveal-phrase .w{color:var(--dim-2);transition:color .25s ease}
 .reveal-phrase .w.lit{color:var(--text)}
-/* tarjetas de norma dispersas */
-.reveal-cards{position:absolute;inset:0;z-index:1;pointer-events:none}
-.reveal-cards .rc{position:absolute;width:min(230px,42vw);border:1px solid var(--line-soft);border-radius:12px;
-  padding:14px 16px;background:linear-gradient(160deg,rgba(137,245,229,.06),rgba(10,74,80,.16));
+/* baraja de tarjetas de norma que aparecen al hacer scroll */
+.reveal-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:960px;width:100%}
+.reveal-cards .rc{width:min(250px,44vw);border:1px solid var(--line-soft);border-radius:14px;padding:16px 18px;
+  background:linear-gradient(160deg,rgba(137,245,229,.06),rgba(10,74,80,.16));
   -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;flex-direction:column;gap:6px;
-  opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
 .reveal-cards .rc.in{opacity:1;transform:none}
-.reveal-cards .rc .t-k{font-family:var(--display);font-weight:600;font-size:1rem;color:var(--text)}
+.reveal-cards .rc .t-k{font-family:var(--display);font-weight:600;font-size:1.02rem;color:var(--text)}
 .reveal-cards .rc .t-d{font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.12em;color:var(--dim-2)}
-.reveal-cards .pos-1{left:4%;top:14%}
-.reveal-cards .pos-2{right:4%;top:12%}
-.reveal-cards .pos-3{left:2%;top:46%}
-.reveal-cards .pos-4{right:2%;top:44%}
-.reveal-cards .pos-5{left:8%;bottom:12%}
-.reveal-cards .pos-6{right:8%;bottom:10%}
 @media (max-width:900px){
   .reveal-track{height:auto}
-  .reveal-sticky{position:static;height:auto;display:block;padding-block:56px}
-  .reveal-phrases{max-width:none}
+  .reveal-sticky{position:static;height:auto;display:block;padding:56px var(--edge)}
+  .reveal-phrases{min-height:0;max-width:none;display:block}
   .reveal-phrase{position:static;transform:none;opacity:1;margin-bottom:1.4rem}
-  .reveal-cards{position:static;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:2rem;pointer-events:auto}
-  .reveal-cards .rc{position:static;width:calc(50% - 6px);transform:none;opacity:1}
+  .reveal-cards{margin-top:2rem}
+  .reveal-cards .rc{width:calc(50% - 7px);transform:none;opacity:1}
 }
 
 /* ---------- Asistente guiado ---------- */

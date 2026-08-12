@@ -201,11 +201,6 @@ def build(g):
           {agendar("Agendar una consulta")}
           <a class="btn btn--ghost" href="#situaciones">Ver mi situación</a>
         </div>
-        <div class="chips">
-          <span class="chip">Decreto 4334/2008</span>
-          <span class="chip">Art. 316 CP</span>
-          <span class="chip">Supersociedades</span>
-        </div>
       </div>
     </div>
   </div>
