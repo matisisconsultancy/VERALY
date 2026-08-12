@@ -1,0 +1,339 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Generador estático del sitio de Veraly Grupo Jurídico.
+No hay build en CI: este script se ejecuta localmente y emite HTML final
+en las rutas limpias del sitemap (carpeta/index.html). GitHub Pages sirve
+esos archivos tal cual. Fuente de verdad del copy: especificación funcional v1.0.
+
+Uso:  python3 src/build.py
+"""
+import os, json, html, re, shutil
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# ----------------------------------------------------------------------------
+# Configuración del sitio
+# ----------------------------------------------------------------------------
+SITE = {
+    "name": "Veraly Grupo Jurídico",
+    "claim": "Defensa en fraude financiero",
+    # Dominio canónico PENDIENTE (decisión 05). Placeholder para canónicas/OG/sitemap.
+    "base_url": "https://veraly.co",
+    "locale": "es-CO",
+    # Datos de contacto PENDIENTES (decisión 07) — placeholders marcados.
+    "email": "contacto@veraly.co",
+    "phone_display": "+57 000 000 0000",
+    "phone_href": "+570000000000",
+    "whatsapp": "",  # wa.me/57XXXXXXXXXX
+    "address": "Dirección por definir — Colombia",
+    "hours": "Lun a Vie, 8:00–18:00",
+}
+
+# Isotipo "Convergencia" reutilizado del brandbook (cinco V hacia un punto).
+LOGO_SVG = ('<svg viewBox="-140 -140 280 280" fill="none" aria-hidden="true" focusable="false">'
+    '<g stroke="currentColor" stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round">'
+    '<path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/>'
+    '<path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/>'
+    '<path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/>'
+    '<path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/>'
+    '<path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g>'
+    '<circle cx="0" cy="0" r="16.0" fill="currentColor"/></svg>')
+
+ICON_CHEVRON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>'
+ICON_MENU = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>'
+ICON_CLOSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>'
+
+# ----------------------------------------------------------------------------
+# Datos: socios (dato cerrado) y artículos de arranque
+# Formación/cargos PENDIENTES (decisión 03) — marcados como placeholder.
+# ----------------------------------------------------------------------------
+SOCIOS = [
+    {"slug": "hermes-vergara", "nombre": "Hermes Vergara",
+     "practica": "Derecho contractual y constitucional",
+     "aporte": "Estructura la lectura constitucional del debido proceso en un trámite de única instancia y el andamiaje contractual de las relaciones anteriores a la toma de posesión."},
+    {"slug": "kewin-santiago-canizales", "nombre": "Kewin Santiago Canizales",
+     "practica": "Derecho tributario y migratorio",
+     "aporte": "Analiza las contingencias tributarias sobre los flujos del esquema y las consecuencias migratorias que alcanzan a vinculados extranjeros."},
+    {"slug": "miguel-bayter", "nombre": "Miguel Bayter",
+     "practica": "Derecho corporativo y urbano",
+     "aporte": "Aborda las controversias societarias sobre actos anteriores a la intervención y la situación de los activos inmobiliarios comprometidos."},
+    {"slug": "juan-david-naar", "nombre": "Juan David Naar",
+     "practica": "Derecho penal y derecho informático",
+     "aporte": "Conduce la defensa penal por los artículos 316 y 316A y la evidencia digital del esquema, desde los actos urgentes hasta el juicio oral."},
+    {"slug": "javier-pisciotti", "nombre": "Javier Pisciotti",
+     "practica": "Derecho laboral y seguros",
+     "aporte": "Resuelve las reclamaciones laborales de la sociedad intervenida y la exposición de las pólizas y garantías vinculadas al recaudo."},
+]
+
+ARTICLES = [
+    {
+        "slug": "diferencia-entre-estafa-y-captacion-masiva",
+        "tema": "El fenómeno", "perfil": "A · B", "author": "juan-david-naar",
+        "title": "Diferencia entre estafa y captación masiva",
+        "h1": "¿Qué diferencia hay entre estafa y captación masiva?",
+        "desc": "Estafa y captación masiva son delitos distintos: cambian el proceso, la defensa y la vía de recuperación. La captación activa además un trámite administrativo propio.",
+        "answer": "La estafa y la captación masiva y habitual son tipos penales distintos. La captación, además del proceso penal del artículo 316, activa un procedimiento administrativo especial ante la Superintendencia de Sociedades, con un mecanismo de devolución que la estafa no tiene. La calificación correcta cambia la estrategia completa.",
+        "cta_target": "afectados",
+    },
+    {
+        "slug": "captacion-con-libranzas-y-factoring",
+        "tema": "El fenómeno", "perfil": "A · B · C", "author": "miguel-bayter",
+        "title": "Captación montada sobre contratos legales: libranzas y factoring",
+        "h1": "¿Cuándo un esquema de libranzas o factoring se convierte en captación?",
+        "desc": "Contratos legales como libranzas y factoring pueden configurar captación cuando superan los umbrales y el rendimiento carece de explicación financiera razonable.",
+        "answer": "Un esquema de libranzas o factoring —contratos legales en sí mismos— puede configurar captación masiva cuando el pasivo con el público supera los umbrales del Decreto 1981 de 1988 o cuando el rendimiento ofrecido no tiene explicación financiera razonable, en los términos del artículo 6 del Decreto 4334 de 2008.",
+        "cta_target": "cumplimiento",
+    },
+    {
+        "slug": "que-hace-la-superintendencia-de-sociedades",
+        "tema": "La intervención", "perfil": "A", "author": "hermes-vergara",
+        "title": "Qué hace la Superintendencia de Sociedades con una captadora",
+        "h1": "¿Qué hace la Superintendencia de Sociedades cuando interviene una captadora?",
+        "desc": "La ruta administrativa del Decreto 4334 de 2008: toma de posesión, devolución de recursos y plazos, en paralelo al proceso penal.",
+        "answer": "La Superintendencia de Sociedades ordena la toma de posesión de los bienes de la captadora mediante el procedimiento del Decreto 4334 de 2008. Sus decisiones tienen carácter jurisdiccional, efectos de cosa juzgada frente a todos y son de única instancia. A partir de ahí se abre el trámite de devolución de recursos a los afectados.",
+        "cta_target": "afectados",
+    },
+    {
+        "slug": "buena-fe-exenta-de-culpa-tercero-proveedor",
+        "tema": "La defensa", "perfil": "B", "author": "juan-david-naar",
+        "title": "Buena fe exenta de culpa: el estándar del tercero proveedor",
+        "h1": "¿Qué es la buena fe exenta de culpa en un proceso de captación?",
+        "desc": "El estándar que puede excluir de la intervención a proveedores y terceros que actuaron de buena fe: qué exige y cómo se acredita.",
+        "answer": "La buena fe exenta de culpa es el estándar que, según la Sentencia C-145 de 2009, puede dejar fuera de la intervención a terceros proveedores que actuaron en el ámbito de sus actividades lícitas ordinarias. No basta la creencia honesta: exige diligencia positiva y comprobable, acreditada con documentos, controles y decisiones registradas.",
+        "cta_target": "defensa",
+    },
+]
+
+TEMAS = ["El fenómeno", "La intervención", "La defensa", "La recuperación", "Prevención empresarial"]
+
+def socio_by_slug(slug):
+    return next(s for s in SOCIOS if s["slug"] == slug)
+
+def esc(s):
+    return html.escape(s, quote=True)
+
+# ----------------------------------------------------------------------------
+# Enlaces de navegación
+# ----------------------------------------------------------------------------
+SITUACIONES = [
+    ("/afectados-por-captacion-masiva/", "Perdí dinero en un esquema de captación",
+     "Vías administrativa, penal y civil, y los plazos que corren.", "afectado"),
+    ("/defensa-en-captacion-masiva/", "Me investigan o me vincularon",
+     "Defensa en los tres frentes para investigados y vinculados.", "investigado"),
+    ("/cumplimiento-en-recaudo-masivo/", "Mi empresa recauda de muchas personas",
+     "Revisión de encuadre frente a los umbrales de captación.", "empresa"),
+]
+
+# ----------------------------------------------------------------------------
+# Plantillas compartidas
+# ----------------------------------------------------------------------------
+def brand(link=True, small=True):
+    inner = (f'<span class="brand-mark" aria-hidden="true" style="width:30px;height:30px;color:var(--accent);display:inline-block">{LOGO_SVG}</span>'
+             f'<span><b>Veraly</b>{" <span>Grupo Jurídico</span>" if small else ""}</span>')
+    if link:
+        return f'<a class="brand" href="/" aria-label="Veraly Grupo Jurídico — inicio">{inner}</a>'
+    return f'<span class="brand">{inner}</span>'
+
+def header_html(active=""):
+    def cur(key):
+        return ' aria-current="page"' if active == key else ''
+    sub = "".join(
+        f'<li><a href="{url}" data-situacion="{tag}"{cur(tag)}>{esc(t)}<small>{esc(d)}</small></a></li>'
+        for url, t, d, tag in SITUACIONES)
+    return f'''<a class="skip-link" href="#main">Saltar al contenido</a>
+<header class="site-header">
+  <div class="container nav">
+    {brand()}
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">{ICON_MENU}</button>
+    <div class="nav-menu-wrap" id="nav-menu">
+      <ul class="nav-menu">
+        <li><a href="/firma/"{cur('firma')}>La firma</a></li>
+        <li><a href="/equipo/"{cur('equipo')}>El equipo</a></li>
+        <li class="has-sub">
+          <button type="button" aria-haspopup="true">Situaciones {ICON_CHEVRON}</button>
+          <ul class="submenu">{sub}</ul>
+        </li>
+        <li><a href="/analisis/"{cur('analisis')}>Análisis</a></li>
+        <li class="nav-cta"><a class="btn btn--primary btn--sm" href="/contacto/"{cur('contacto')}>Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</header>'''
+
+def footer_html():
+    wa = f'<a href="https://wa.me/{SITE["whatsapp"]}" data-whatsapp>WhatsApp</a> · ' if SITE["whatsapp"] else ''
+    return f'''<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      {brand()}
+      <p class="footer-claim">{esc(SITE["claim"])}.</p>
+      <div class="footer-contact">
+        <span>{esc(SITE["address"])}</span>
+        <span><a href="tel:{SITE["phone_href"]}" data-pos="footer">{esc(SITE["phone_display"])}</a></span>
+        <span><a href="mailto:{SITE["email"]}">{esc(SITE["email"])}</a></span>
+      </div>
+    </div>
+    <div>
+      <h4>Situaciones</h4>
+      <ul>
+        <li><a href="/afectados-por-captacion-masiva/">Perdí dinero en una captación</a></li>
+        <li><a href="/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li>
+        <li><a href="/cumplimiento-en-recaudo-masivo/">Mi empresa recauda de muchos</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>La firma</h4>
+      <ul>
+        <li><a href="/firma/">La firma</a></li>
+        <li><a href="/equipo/">El equipo</a></li>
+        <li><a href="/analisis/">Análisis</a></li>
+        <li><a href="/marca/" data-marca>El sistema de marca</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/aviso-de-privacidad/">Aviso de privacidad</a></li>
+        <li><a href="/aviso-legal/">Aviso legal</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <div class="container">
+      <span class="footer-disclaimer">La información publicada en este sitio tiene carácter informativo y no constituye asesoría jurídica ni genera relación profesional.</span>
+      <span>© 2026 {esc(SITE["name"])}</span>
+    </div>
+  </div>
+</footer>'''
+
+def mobile_bar_html():
+    wa = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" data-whatsapp data-pos="mobilebar">WhatsApp</a>'
+          if SITE["whatsapp"] else
+          '<a class="btn btn--ghost" href="/contacto/" data-pos="mobilebar">Escribir</a>')
+    return f'''<div class="mobile-bar is-on">
+  <a class="btn btn--primary" href="tel:{SITE["phone_href"]}" data-pos="mobilebar">Llamar</a>
+  {wa}
+</div>'''
+
+def jsonld(objects):
+    if not objects:
+        return ""
+    out = []
+    for o in objects:
+        out.append('<script type="application/ld+json">' + json.dumps(o, ensure_ascii=False) + '</script>')
+    return "\n".join(out)
+
+def document(meta, body):
+    canonical = SITE["base_url"] + meta["path"]
+    title = meta["title"]
+    desc = meta["description"]
+    og_type = meta.get("og_type", "website")
+    schema = jsonld(meta.get("schema", []))
+    body_class = meta.get("body_class", "")
+    mobile_bar = mobile_bar_html() if meta.get("mobile_bar") else ""
+    return f'''<!doctype html>
+<html lang="{SITE["locale"]}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(desc)}">
+<link rel="canonical" href="{esc(canonical)}">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="{og_type}">
+<meta property="og:site_name" content="{esc(SITE["name"])}">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(desc)}">
+<meta property="og:url" content="{esc(canonical)}">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{esc(title)}">
+<meta name="twitter:description" content="{esc(desc)}">
+<meta name="theme-color" content="#05292C">
+<link rel="preload" href="/assets/fonts/playfair-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
+{schema}
+</head>
+<body class="{body_class}">
+{header_html(meta.get("active",""))}
+<main id="main">
+{body}
+</main>
+{footer_html()}
+{mobile_bar}
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>'''
+
+# ----------------------------------------------------------------------------
+# Registro de páginas y escritura
+# ----------------------------------------------------------------------------
+PAGES = []  # se llena en build_pages()
+
+def add(path, meta, body):
+    meta = dict(meta)
+    meta["path"] = path
+    PAGES.append((path, meta, body))
+
+def write_all():
+    for path, meta, body in PAGES:
+        out_dir = ROOT + (path if path != "/" else "/")
+        if path == "/":
+            out_file = os.path.join(ROOT, "index.html")
+        else:
+            d = os.path.join(ROOT, path.strip("/"))
+            os.makedirs(d, exist_ok=True)
+            out_file = os.path.join(d, "index.html")
+        with open(out_file, "w", encoding="utf-8") as f:
+            f.write(document(meta, body))
+    print(f"Escritas {len(PAGES)} páginas.")
+
+def write_sitemap():
+    urls = [SITE["base_url"] + p for p, _, _ in PAGES]
+    items = "\n".join(
+        f'  <url><loc>{esc(u)}</loc></url>' for u in urls)
+    xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+           f'{items}\n</urlset>\n')
+    with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
+        f.write(xml)
+    print("sitemap.xml escrito.")
+
+def write_robots():
+    txt = f'''# Veraly Grupo Jurídico — la firma quiere ser citada por asistentes de IA.
+User-agent: *
+Allow: /
+
+# Crawlers de asistentes de IA explícitamente permitidos (decisión §10.5)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: {SITE["base_url"]}/sitemap.xml
+'''
+    with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as f:
+        f.write(txt)
+    print("robots.txt escrito.")
+
+# ----------------------------------------------------------------------------
+if __name__ == "__main__":
+    import build_pages  # define las páginas usando add()
+    build_pages.build(globals())
+    write_all()
+    write_sitemap()
+    write_robots()
