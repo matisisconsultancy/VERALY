@@ -180,19 +180,16 @@ def build(g):
     home_body = f'''
 <section class="hero-full">
   <div class="hero-bg" aria-hidden="true"><div class="drape"></div><div class="sphere"></div></div>
-  <div class="container">
-    <div class="h-head">
-      <p class="eyebrow">Veraly Grupo Jurídico</p>
-      <h1>Defensa en fraude financiero</h1>
+  <div class="container hero-inner">
+    <div class="hero-left">
+      <h1>Defensa en<br>fraude financiero.</h1>
+      <p class="hero-kicker">Captación masiva y habitual.</p>
     </div>
-    <div class="hero-grid-2">
-      <p class="hero-sub">Despacho boutique colombiano especializado en captación masiva y habitual. Cinco socios, cinco ramas del derecho, un mismo caso.</p>
-      <div class="hero-right">
-        <p class="desc">Los procesos por captación avanzan por tres vías —administrativa, penal y civil— autónomas y concurrentes. Las trabajamos las tres en paralelo, sobre el mismo expediente.</p>
-        <div class="cta-row">
-          {agendar("Agendar una consulta")}
-          <a class="btn btn--ghost" href="#situaciones">Ver mi situación</a>
-        </div>
+    <div class="hero-right">
+      <p class="desc">Los procesos por captación avanzan por tres vías —administrativa, penal y civil—, autónomas y concurrentes. Las trabajamos las tres en paralelo, sobre el mismo expediente.</p>
+      <div class="cta-row">
+        {agendar("Agendar una consulta")}
+        <a class="btn btn--ghost" href="#situaciones">Ver mi situación</a>
       </div>
     </div>
   </div>
