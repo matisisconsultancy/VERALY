@@ -390,12 +390,15 @@ def proceso_stepper():
 
 def marco_reveal():
     phrases = [
-        "No perseguimos casos. Trabajamos figuras jurídicas.",
+        "No perseguimos casos. || Trabajamos figuras jurídicas.",
         "Cada intervención se ordena sobre un marco normativo preciso.",
         "Decreto 4334, artículos 316 y 316A, y la jurisprudencia que los interpreta.",
     ]
     def words(s):
-        return " ".join(f'<span class="w">{esc(w)}</span>' for w in s.split(" "))
+        # "||" fuerza un salto de línea (sin contar como palabra en el reveal).
+        return " ".join(
+            "<br>" if w == "||" else f'<span class="w">{esc(w)}</span>'
+            for w in s.split(" "))
     phr = "".join(
         f'<p class="reveal-phrase{" active" if i == 0 else ""}" data-i="{i}">{words(s)}</p>'
         for i, s in enumerate(phrases))

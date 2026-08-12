@@ -450,16 +450,19 @@ strong{font-weight:600;color:var(--text)}
 /* features: tarjetas con imagen dominante + título + subtítulo (referente AI Finance) */
 .feature-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);margin-top:2.4rem}
 @media (max-width:900px){.feature-cards{grid-template-columns:1fr}}
-.fcard{border:1px solid var(--line-soft);border-radius:18px;overflow:clip;background:var(--panel);
-  text-decoration:none;color:inherit;display:flex;flex-direction:column;
-  transition:border-color .2s,background .2s,transform .2s}
-.fcard:hover{border-color:var(--accent);background:var(--panel-2);transform:translateY(-4px)}
-.fcard .fmedia{aspect-ratio:4/5;position:relative;overflow:clip;
-  background:radial-gradient(120% 100% at 60% 8%,rgba(10,74,80,.78),var(--ink))}
-.fcard .fbody{padding:clamp(20px,2.4vw,32px)}
-.fcard h3{font-size:var(--step-2);line-height:1.12;transition:color .2s}
+/* Situaciones (referente AI Finance Features): la imagen es el único marco;
+   el título y la línea de apoyo van debajo, sobre el fondo, sin recuadro. */
+.fcard{text-decoration:none;color:inherit;display:flex;flex-direction:column;
+  transition:transform .25s ease}
+.fcard:hover{transform:translateY(-4px)}
+.fcard .fmedia{aspect-ratio:1/1;position:relative;overflow:clip;border-radius:18px;
+  border:1px solid var(--line-soft);background:radial-gradient(120% 100% at 60% 8%,rgba(10,74,80,.78),var(--ink));
+  transition:border-color .2s}
+.fcard:hover .fmedia{border-color:var(--accent)}
+.fcard .fbody{padding:0;margin-top:clamp(18px,1.8vw,26px)}
+.fcard h3{font-size:var(--step-2);line-height:1.16;font-weight:600;min-height:2.32em;transition:color .2s}
 .fcard:hover h3{color:var(--accent)}
-.fcard .fbody>p{color:var(--dim);margin:.7rem 0 0;font-size:var(--step-0)}
+.fcard .fbody>p{color:var(--dim);margin:.55rem 0 0;font-size:var(--step-0)}
 
 /* pill con flecha animada (CTA) */
 .pill-link{display:inline-flex;align-items:center;gap:.6em;font-family:var(--ui);font-weight:600;font-size:var(--step-0);
