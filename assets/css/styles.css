@@ -500,10 +500,10 @@ strong{font-weight:600;color:var(--text)}
 .fr-eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--dim-2);margin:.4rem 0 1rem}
 .frow h2{font-size:clamp(2rem,1.3rem+2.9vw,3.4rem);line-height:1.06;letter-spacing:-.02em}
 /* Estado de entrada (solo con JS; sin JS todo se ve) */
-html.js .frow .fr-media{opacity:0;transform:translateY(38px) scale(.985);
-  transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-html.js .frow .fr-text>*{opacity:0;transform:translateY(26px);
-  transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+html.js .frow .fr-media{opacity:0;transform:translateY(72px) scale(.9);
+  transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+html.js .frow .fr-text>*{opacity:0;transform:translateY(34px);
+  transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1)}
 html.js .frow.in .fr-media{opacity:1;transform:none}
 html.js .frow.in .fr-text>*{opacity:1;transform:none}
 html.js .frow.in .fr-text>*:nth-child(1){transition-delay:.06s}

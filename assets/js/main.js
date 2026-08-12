@@ -404,7 +404,9 @@
       var m = par.parentNode.getBoundingClientRect();
       var rel = ((m.top + m.height / 2) - vh / 2) / vh;
       rel = Math.max(-1, Math.min(1, rel));
-      par.style.transform = 'translate3d(0,' + (rel * -7).toFixed(2) + '%,0)';
+      var t = (1 - rel) / 2;                 // 0 al entrar por abajo, 1 al salir por arriba
+      var scale = (1 + 0.24 * t).toFixed(3); // la imagen "crece" con el scroll
+      par.style.transform = 'translate3d(0,' + (rel * -9).toFixed(2) + '%,0) scale(' + scale + ')';
     });
   }
   function initFeatureRows() {
