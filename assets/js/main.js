@@ -17,6 +17,7 @@
 
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  document.documentElement.classList.add('js');
 
   /* ---------- Analítica con consentimiento ---------- */
   var consent = localStorage.getItem('veraly-consent');
@@ -391,7 +392,32 @@
     window.addEventListener('scroll', upd, { passive: true });
     window.addEventListener('resize', upd); upd();
   }
-  window.__initPins = function () { initStepper(); initReveal(); };
+  /* ---------- Las tres vías: entrada + parallax interno ---------- */
+  var frowIO = ('IntersectionObserver' in window)
+    ? new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); frowIO.unobserve(e.target); } });
+      }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' })
+    : null;
+  function frowPar() {
+    var vh = window.innerHeight;
+    $$('.fr-par').forEach(function (par) {
+      var m = par.parentNode.getBoundingClientRect();
+      var rel = ((m.top + m.height / 2) - vh / 2) / vh;
+      rel = Math.max(-1, Math.min(1, rel));
+      par.style.transform = 'translate3d(0,' + (rel * -7).toFixed(2) + '%,0)';
+    });
+  }
+  function initFeatureRows() {
+    var rows = $$('.frow');
+    rows.forEach(function (r) { if (r.__f) return; r.__f = 1; if (frowIO) frowIO.observe(r); else r.classList.add('in'); });
+    if (rows.length && !window.__frowScroll) {
+      window.__frowScroll = 1;
+      window.addEventListener('scroll', frowPar, { passive: true });
+      window.addEventListener('resize', frowPar);
+    }
+    frowPar();
+  }
+  window.__initPins = function () { initStepper(); initReveal(); initFeatureRows(); };
   window.__initPins();
 
   /* ---------- Profundidad de scroll ---------- */

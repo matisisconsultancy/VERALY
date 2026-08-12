@@ -136,8 +136,9 @@ def build(g):
     ]
     vias_rows = ""
     for i, (num, eyb, h, d, media) in enumerate(vias):
-        media_html = f'<div class="fr-media">{media}</div>'
-        text_html = (f'<div class="fr-text"><span class="fr-num">{num}</span>'
+        media_html = (f'<div class="fr-media"><div class="fr-par">{media}</div>'
+                      f'<span class="fr-index" aria-hidden="true">{num}</span></div>')
+        text_html = (f'<div class="fr-text">'
                      f'<p class="fr-eyebrow">{eyb}</p><h2>{esc(h)}</h2>'
                      f'<p class="lead" style="margin-top:1rem;color:var(--dim)">{esc(d)}</p></div>')
         inner = (media_html + text_html) if i % 2 == 0 else (text_html + media_html)
