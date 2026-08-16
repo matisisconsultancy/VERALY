@@ -419,6 +419,16 @@
   .dl-btns{display:flex;gap:8px;padding:14px 18px 18px;margin-top:auto;flex-wrap:wrap}
   .dl-btn{font-family:var(--ui);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;transition:border-color .2s,color .2s;text-decoration:none;display:inline-block}
   .dl-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .dl-card{transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .3s,background .3s}
+  .dl-card:hover{transform:translateY(-6px);border-color:var(--line);background:var(--panel-2)}
+  .dl-prev::before{content:"";position:absolute;width:72%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 18%,transparent),transparent 70%);opacity:.75;pointer-events:none}
+  .dl-prev.light::before{background:radial-gradient(circle,rgba(5,41,44,.10),transparent 70%)}
+  .dl-prev>*:not(.sw4){position:relative;z-index:1}
+  .dl-prev.anim svg{width:104px;height:104px}
+  .dl-prev.anim.big svg{width:150px;height:150px}
+  .dl-h{display:flex;align-items:center;gap:14px}
+  .dl-h::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+  .dl-btn[data-dl]::before{content:"↓";margin-right:7px;color:var(--accent);font-weight:700;display:inline-block}
 
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -679,7 +689,6 @@
       <div class="chead"><div class="cnum"><span class="lbl mint">Recursos</span></div>
         <h2>Descargables <span class="s">de marca</span>.</h2>
         <p class="sd">Todos los recursos gráficos para el equipo: logotipo, ícono y sus versiones, paleta, tipografía y la animación. Descarga en vector (SVG) o imagen (PNG).</p></div>
-      <div class="dl-note"><span class="dot"></span> Las descargas funcionan en el sitio publicado. En la vista previa del editor pueden estar bloqueadas por seguridad.</div>
       <h3 class="dl-h">Logotipo</h3>
       <div class="dl-grid">
         <div class="dl-card"><div class="dl-prev "><div class="lkp"><svg class="mark-cinco" viewBox="-140 -140 280 280" fill="none" aria-hidden="true"><g stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0"/></svg><span class="nm">Veraly <i>Grupo Jurídico</i></span></div></div><div class="dl-meta"><b>Lockup horizontal</b><span>Sobre oscuro</span></div><div class="dl-btns"><button class="dl-btn" data-dl="lockup" data-variant="h-dark" data-fmt="svg">SVG</button><button class="dl-btn" data-dl="lockup" data-variant="h-dark" data-fmt="png">PNG</button></div></div>
@@ -703,9 +712,11 @@
         <div class="dl-card"><div class="dl-prev"><span class="typ serif">Aa</span></div><div class="dl-meta"><b>Playfair Display</b><span>Serif itálica · acento</span></div><div class="dl-btns"><a class="dl-btn" href="https://fonts.google.com/specimen/Playfair+Display" target="_blank" rel="noopener">Google Fonts</a></div></div>
         <div class="dl-card"><div class="dl-prev"><span class="typ tok">{ }</span></div><div class="dl-meta"><b>Tokens</b><span>Fuentes + colores · CSS</span></div><div class="dl-btns"><button class="dl-btn" data-dl="tokens" data-fmt="css">CSS</button></div></div>
       </div>
-      <h3 class="dl-h">Animación</h3>
+      <h3 class="dl-h">Animaciones del logotipo</h3>
       <div class="dl-grid">
-        <div class="dl-card"><div class="dl-prev"><svg class="mark-cinco" viewBox="-140 -140 280 280" fill="none" aria-hidden="true"><g stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0"/></svg></div><div class="dl-meta"><b>Logo animado</b><span>Convergencia · SVG</span></div><div class="dl-btns"><button class="dl-btn" data-dl="animsvg" data-fmt="svg">SVG animado</button></div></div>
+        <div class="dl-card"><div class="dl-prev anim" data-anim="conv-oro"></div><div class="dl-meta"><b>Convergencia</b><span>Verde + menta · SVG</span></div><div class="dl-btns"><button class="dl-btn" data-dl="animsvg" data-variant="oro" data-fmt="svg">SVG animado</button></div></div>
+        <div class="dl-card"><div class="dl-prev anim" data-anim="conv-mono"></div><div class="dl-meta"><b>Convergencia</b><span>Monocromo · SVG</span></div><div class="dl-btns"><button class="dl-btn" data-dl="animsvg" data-variant="mono" data-fmt="svg">SVG animado</button></div></div>
+        <div class="dl-card"><div class="dl-prev anim big" data-anim="construct"></div><div class="dl-meta"><b>Construcción</b><span>Nodo → cruz → arco · SVG</span></div><div class="dl-btns"><button class="dl-btn" data-dl="constructsvg" data-fmt="svg">SVG animado</button></div></div>
       </div>
     </div>
   </section>
@@ -872,33 +883,30 @@
 <script>
 (function(){
  var MP=["M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0","M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6","M 94.4 80.4 L 23.2 32.0 L 10.0 81.2","M -47.2 114.8 L -23.2 32.0 L -74.0 34.8","M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"];
- function markInner(stroke,dot,anim){
-   var p=MP.map(function(d,i){
-     if(anim){return '<path d="'+d+'" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"><animate attributeName="stroke-dashoffset" from="100" to="0" dur="0.8s" begin="'+(0.15+i*0.2).toFixed(2)+'s" fill="freeze"/></path>';}
-     return '<path d="'+d+'"/>';}).join('');
-   var dr=anim?0:16, da=anim?'<animate attributeName="r" from="0" to="16" dur="0.5s" begin="1.15s" fill="freeze"/>':'';
-   return '<g fill="none" stroke="'+stroke+'" stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round">'+p+'</g><circle cx="0" cy="0" r="'+dr+'" fill="'+dot+'">'+da+'</circle>';
+ var T=4;
+ function drawA(s,d){var a=(s/T).toFixed(3),b=((s+d)/T).toFixed(3);return '<animate attributeName="stroke-dashoffset" values="100;100;0;0" keyTimes="0;'+a+';'+b+';1" dur="'+T+'s" repeatCount="indefinite"/>';}
+ function popA(s,R){var a=(s/T).toFixed(3),b=((s+0.35)/T).toFixed(3);return '<animate attributeName="r" values="0;0;'+R+';'+R+'" keyTimes="0;'+a+';'+b+';1" dur="'+T+'s" repeatCount="indefinite"/>';}
+ function markInner(stroke,dotc,anim){
+   var g=MP.map(function(d,i){if(anim){return '<path d="'+d+'" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100">'+drawA(0.3+i*0.22,0.8)+'</path>';}return '<path d="'+d+'"/>';}).join('');
+   var circ=anim?('<circle cx="0" cy="0" r="0" fill="'+dotc+'">'+popA(2.05,16)+'</circle>'):('<circle cx="0" cy="0" r="16" fill="'+dotc+'"/>');
+   return '<g fill="none" stroke="'+stroke+'" stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round">'+g+'</g>'+circ;
  }
  function iconSVG(stroke,dot,anim){return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-140 -140 280 280" width="1024" height="1024">'+markInner(stroke,dot,anim)+'</svg>';}
+ function constructInner(stroke,accent,anim){
+   var cx=200,cy=200,S=120;
+   var L=[[cx,cy,cx+S,cy,0.3],[cx,cy,cx-S,cy,0.3],[cx,cy,cx,cy-S,0.3],[cx,cy,cx,cy+S,0.3],[cx,cy-S,cx+S,cy-S,1.4],[cx+S,cy,cx+S,cy-S,1.4],[cx,cy+S,cx-S,cy+S,1.4],[cx-S,cy,cx-S,cy+S,1.4]];
+   var lines=L.map(function(c){return '<line x1="'+c[0]+'" y1="'+c[1]+'" x2="'+c[2]+'" y2="'+c[3]+'" pathLength="100" stroke-dasharray="100" stroke-dashoffset="'+(anim?100:0)+'">'+(anim?drawA(c[4],0.8):'')+'</line>';}).join('');
+   var arc='<path d="M '+cx+' '+(cy-S)+' A '+S+' '+S+' 0 0 1 '+(cx+S)+' '+cy+'" fill="none" stroke="'+accent+'" stroke-width="4" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="'+(anim?100:0)+'">'+(anim?drawA(2.4,0.9):'')+'</path>';
+   var N=[[cx,cy,0.1],[cx+S,cy,1.2],[cx-S,cy,1.2],[cx,cy-S,1.2],[cx,cy+S,1.2],[cx+S,cy-S,2.2],[cx-S,cy+S,2.2]];
+   var dots=N.map(function(n){return '<circle cx="'+n[0]+'" cy="'+n[1]+'" r="'+(anim?0:5)+'" fill="'+accent+'">'+(anim?popA(n[2],5):'')+'</circle>';}).join('');
+   return '<g stroke="'+stroke+'" stroke-width="3" stroke-linecap="round" fill="none">'+lines+'</g>'+arc+dots;
+ }
+ function constructSVG(anim){return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="800" height="800">'+constructInner('#D9F6EF','#89F5E5',anim)+'</svg>';}
  var ICV={oro:['#D9F6EF','#89F5E5',null],mono:['#D9F6EF','#D9F6EF',null],negativo:['#05292C','#05292C','#D9F6EF']};
  function fontFaceCSS(){var o='';for(var i=0;i<document.styleSheets.length;i++){var r;try{r=document.styleSheets[i].cssRules;}catch(e){continue;}if(!r)continue;for(var j=0;j<r.length;j++){if(r[j].type===5){o+=r[j].cssText+'\n';}}}return o;}
  function measure(font,text){var c=(measure._c||(measure._c=document.createElement('canvas').getContext('2d')));c.font=font;return c.measureText(text).width;}
- function lockupH(v){
-   var light=v.indexOf('light')>=0;
-   var ink=light?'#05292C':'#D9F6EF',accent=light?'#0A4A50':'#89F5E5',dot=light?'#05292C':'#89F5E5',bg=light?'#D9F6EF':'#05292C',fs=150;
-   var w1=measure('700 '+fs+'px Archivo','Veraly'),w2=measure('italic 400 '+fs+'px "Playfair Display"',' Grupo Jurídico');
-   var markW=300,gap=54,padX=80,H=440,cy=H/2,textX=padX+markW+gap,W=Math.round(textX+w1+w2+padX);
-   var s=markW/280,mtx='translate('+(padX+markW/2)+' '+cy+') scale('+s+')';
-   var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'"><defs><style>'+fontFaceCSS()+'</style></defs><rect width="100%" height="100%" fill="'+bg+'"/><g transform="'+mtx+'">'+markInner(ink,dot,false)+'</g><text x="'+textX+'" y="'+(cy+4)+'" dominant-baseline="middle" font-size="'+fs+'"><tspan font-family="Archivo" font-weight="700" fill="'+ink+'">Veraly</tspan><tspan font-family="Playfair Display" font-style="italic" font-weight="400" fill="'+accent+'"> Grupo Jurídico</tspan></text></svg>';
-   return {svg:svg,w:W,h:H};
- }
- function lockupV(v){
-   var light=v.indexOf('light')>=0;
-   var ink=light?'#05292C':'#D9F6EF',accent=light?'#0A4A50':'#89F5E5',dot=light?'#05292C':'#89F5E5',bg=light?'#D9F6EF':'#05292C';
-   var markW=300,W=820,H=760,cx=W/2,s=markW/280,mtx='translate('+cx+' 250) scale('+s+')';
-   var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'"><defs><style>'+fontFaceCSS()+'</style></defs><rect width="100%" height="100%" fill="'+bg+'"/><g transform="'+mtx+'">'+markInner(ink,dot,false)+'</g><text x="'+cx+'" y="545" text-anchor="middle" font-family="Archivo" font-weight="700" font-size="130" fill="'+ink+'">veraly</text><text x="'+cx+'" y="605" text-anchor="middle" font-family="Jost" font-weight="500" font-size="42" letter-spacing="10" fill="'+accent+'">GRUPO JURÍDICO</text></svg>';
-   return {svg:svg,w:W,h:H};
- }
+ function lockupH(v){var light=v.indexOf('light')>=0;var ink=light?'#05292C':'#D9F6EF',accent=light?'#0A4A50':'#89F5E5',dot=light?'#05292C':'#89F5E5',bg=light?'#D9F6EF':'#05292C',fs=150;var w1=measure('700 '+fs+'px Archivo','Veraly'),w2=measure('italic 400 '+fs+'px "Playfair Display"',' Grupo Jurídico');var markW=300,gap=54,padX=80,H=440,cy=H/2,textX=padX+markW+gap,W=Math.round(textX+w1+w2+padX);var s=markW/280,mtx='translate('+(padX+markW/2)+' '+cy+') scale('+s+')';var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'"><defs><style>'+fontFaceCSS()+'</style></defs><rect width="100%" height="100%" fill="'+bg+'"/><g transform="'+mtx+'">'+markInner(ink,dot,false)+'</g><text x="'+textX+'" y="'+(cy+4)+'" dominant-baseline="middle" font-size="'+fs+'"><tspan font-family="Archivo" font-weight="700" fill="'+ink+'">Veraly</tspan><tspan font-family="Playfair Display" font-style="italic" font-weight="400" fill="'+accent+'"> Grupo Jurídico</tspan></text></svg>';return {svg:svg,w:W,h:H};}
+ function lockupV(v){var light=v.indexOf('light')>=0;var ink=light?'#05292C':'#D9F6EF',accent=light?'#0A4A50':'#89F5E5',dot=light?'#05292C':'#89F5E5',bg=light?'#D9F6EF':'#05292C';var markW=300,W=820,H=760,cx=W/2,s=markW/280,mtx='translate('+cx+' 250) scale('+s+')';var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'"><defs><style>'+fontFaceCSS()+'</style></defs><rect width="100%" height="100%" fill="'+bg+'"/><g transform="'+mtx+'">'+markInner(ink,dot,false)+'</g><text x="'+cx+'" y="545" text-anchor="middle" font-family="Archivo" font-weight="700" font-size="130" fill="'+ink+'">veraly</text><text x="'+cx+'" y="605" text-anchor="middle" font-family="Jost" font-weight="500" font-size="42" letter-spacing="10" fill="'+accent+'">GRUPO JURÍDICO</text></svg>';return {svg:svg,w:W,h:H};}
  function paletteCSS(){return ':root{\n  --verde:#05292C;\n  --second-bg:#073A3F;\n  --menta:#89F5E5;\n  --crema:#D9F6EF;\n}\n';}
  function paletteJSON(){return JSON.stringify({verde:"#05292C",second_background:"#073A3F",menta_acento:"#89F5E5",crema_texto:"#D9F6EF"},null,2);}
  function paletteSVG(){var cols=[['Verde','#05292C'],['Second','#073A3F'],['Menta','#89F5E5'],['Crema','#D9F6EF']];var W=1200,H=360,cw=W/4;var s='<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'"><defs><style>'+fontFaceCSS()+'</style></defs>';cols.forEach(function(c,i){var tc=(i>=2)?'#05292C':'#D9F6EF';s+='<rect x="'+(i*cw)+'" width="'+cw+'" height="'+H+'" fill="'+c[1]+'"/><text x="'+(i*cw+28)+'" y="'+(H-54)+'" font-family="Jost" font-weight="500" font-size="26" letter-spacing="2" fill="'+tc+'">'+c[0].toUpperCase()+'</text><text x="'+(i*cw+28)+'" y="'+(H-22)+'" font-family="Archivo" font-weight="600" font-size="30" fill="'+tc+'">'+c[1]+'</text>';});return {svg:s+'</svg>',w:W,h:H};}
@@ -906,20 +914,21 @@
  function dlBlob(fn,blob){var u=URL.createObjectURL(blob);var a=document.createElement('a');a.href=u;a.download=fn;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},1500);}
  function dlText(fn,text,mime){dlBlob(fn,new Blob([text],{type:mime||'text/plain;charset=utf-8'}));}
  function svgToPng(svg,w,h,bg,fn){var img=new Image();img.onload=function(){var c=document.createElement('canvas');c.width=w;c.height=h;var x=c.getContext('2d');if(bg){x.fillStyle=bg;x.fillRect(0,0,w,h);}x.drawImage(img,0,0,w,h);c.toBlob(function(b){dlBlob(fn,b);},'image/png');};img.onerror=function(){alert('No se pudo generar el PNG en este navegador.');};img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);}
+ function previewSVG(k){if(k==='conv-oro')return '<svg viewBox="-140 -140 280 280" fill="none">'+markInner('#D9F6EF','#89F5E5',true)+'</svg>';if(k==='conv-mono')return '<svg viewBox="-140 -140 280 280" fill="none">'+markInner('#D9F6EF','#D9F6EF',true)+'</svg>';if(k==='construct')return '<svg viewBox="0 0 400 400">'+constructInner('#D9F6EF','#89F5E5',true)+'</svg>';return '';}
+ var pv=document.querySelectorAll('[data-anim]');for(var k=0;k<pv.length;k++){pv[k].innerHTML=previewSVG(pv[k].getAttribute('data-anim'));}
  var btns=document.querySelectorAll('button[data-dl]');
  for(var i=0;i<btns.length;i++){(function(btn){btn.addEventListener('click',function(){
    var t=btn.getAttribute('data-dl'),f=btn.getAttribute('data-fmt'),v=btn.getAttribute('data-variant');
    try{
-     if(t==='icon'){var c=ICV[v]||ICV.oro;var svg=iconSVG(c[0],c[1],false);
-       if(f==='svg')dlText('veraly-icono-'+v+'.svg',svg,'image/svg+xml');else svgToPng(svg,1024,1024,c[2],'veraly-icono-'+v+'.png');}
-     else if(t==='lockup'){var o=(v.charAt(0)==='v')?lockupV(v):lockupH(v);
-       if(f==='svg')dlText('veraly-lockup-'+v+'.svg',o.svg,'image/svg+xml');else svgToPng(o.svg,o.w*2,o.h*2,null,'veraly-lockup-'+v+'.png');}
+     if(t==='icon'){var c=ICV[v]||ICV.oro;var svg=iconSVG(c[0],c[1],false);if(f==='svg')dlText('veraly-icono-'+v+'.svg',svg,'image/svg+xml');else svgToPng(svg,1024,1024,c[2],'veraly-icono-'+v+'.png');}
+     else if(t==='lockup'){var o=(v.charAt(0)==='v')?lockupV(v):lockupH(v);if(f==='svg')dlText('veraly-lockup-'+v+'.svg',o.svg,'image/svg+xml');else svgToPng(o.svg,o.w*2,o.h*2,null,'veraly-lockup-'+v+'.png');}
      else if(t==='palette'){if(f==='css')dlText('veraly-paleta.css',paletteCSS(),'text/css');else if(f==='json')dlText('veraly-paleta.json',paletteJSON(),'application/json');else{var p=paletteSVG();svgToPng(p.svg,p.w*2,p.h*2,null,'veraly-paleta.png');}}
      else if(t==='tokens')dlText('veraly-tokens.css',tokensCSS(),'text/css');
-     else if(t==='animsvg')dlText('veraly-logo-animado.svg',iconSVG('#D9F6EF','#89F5E5',true),'image/svg+xml');
+     else if(t==='animsvg'){var cc=ICV[v]||ICV.oro;dlText('veraly-convergencia-'+(v||'oro')+'.svg',iconSVG(cc[0],cc[1],true),'image/svg+xml');}
+     else if(t==='constructsvg')dlText('veraly-construccion.svg',constructSVG(true),'image/svg+xml');
    }catch(e){alert('Error generando el recurso: '+(e&&e.message));}
  });})(btns[i]);}
- window.__dlgen={lockupH:lockupH,lockupV:lockupV,iconSVG:iconSVG,paletteSVG:paletteSVG,tokensCSS:tokensCSS,fontFaceCSS:fontFaceCSS};
+ window.__dlgen={lockupH:lockupH,lockupV:lockupV,iconSVG:iconSVG,constructSVG:constructSVG,paletteSVG:paletteSVG,fontFaceCSS:fontFaceCSS};
 })();
 </script>
 </body>
