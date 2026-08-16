@@ -390,6 +390,36 @@
   .cvg-detail .nm{font-weight:700;font-size:clamp(1.15rem,2.6vw,1.6rem);letter-spacing:-.02em}
   .cvg-detail .rm{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:1.08rem}
 
+  /* — descargables — */
+  .dl-note{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--dim);border:1px dashed var(--line);border-radius:var(--r-sm);padding:12px 16px;margin-bottom:clamp(24px,4vh,40px);font-family:var(--ui);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+  .dl-h{font-family:var(--ui);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:clamp(28px,4vh,48px) 0 14px}
+  .dl-grid{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:600px){.dl-grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:980px){.dl-grid{grid-template-columns:repeat(3,1fr)}}
+  .dl-card{border:1px solid var(--line-soft);border-radius:var(--r);background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
+  .dl-prev{aspect-ratio:16/9;display:grid;place-items:center;background:var(--bg);position:relative;overflow:hidden;padding:18px}
+  .dl-prev.light{background:var(--mint-light)}
+  .dl-prev.mono{--mark-dot:var(--text)}
+  .dl-prev .mark-cinco{width:62px;color:var(--text)}
+  .dl-prev.light .mark-cinco{color:var(--on-light);--mark-dot:var(--on-light)}
+  .dl-prev .lkp{display:flex;align-items:center;gap:12px}
+  .dl-prev .lkp.vert{flex-direction:column;gap:8px}
+  .dl-prev .lkp .mark-cinco{width:42px}
+  .dl-prev .lkp .nm{font-weight:700;font-size:1.25rem;letter-spacing:-.01em;color:var(--text)}
+  .dl-prev .lkp .nm i{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent)}
+  .dl-prev.light .lkp .nm{color:var(--on-light)}.dl-prev.light .lkp .nm i{color:#0A4A50}
+  .dl-prev .sw4{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr)}
+  .dl-prev .typ{font-size:2.8rem;font-weight:700;color:var(--text)}
+  .dl-prev .typ.ui{font-family:var(--ui);font-weight:500}
+  .dl-prev .typ.serif{font-family:var(--serif);font-style:italic;font-weight:400}
+  .dl-prev .typ.tok{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:2.2rem}
+  .dl-meta{padding:15px 18px 2px}
+  .dl-meta b{display:block;font-weight:700;letter-spacing:-.01em}
+  .dl-meta span{font-family:var(--ui);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+  .dl-btns{display:flex;gap:8px;padding:14px 18px 18px;margin-top:auto;flex-wrap:wrap}
+  .dl-btn{font-family:var(--ui);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;transition:border-color .2s,color .2s;text-decoration:none;display:inline-block}
+  .dl-btn:hover{border-color:var(--accent);color:var(--accent)}
+
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     .reveal{opacity:1!important;transform:none!important;transition:none!important}
@@ -418,7 +448,7 @@
     <nav class="main" aria-label="Capítulos">
       <a href="#origen">Origen</a><a href="#nombre">Nombre</a>
       <a href="#color">Color</a><a href="#tipografia">Tipografía</a>
-      <a href="#grafico">Gráfico</a><a href="#voz">Voz</a>
+      <a href="#grafico">Gráfico</a><a href="#voz">Voz</a><a href="#descargables">Recursos</a>
     </nav>
     <span class="lbl deskonly">Brandbook · v1</span>
     <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
@@ -433,6 +463,7 @@
     <a href="#tipografia"><span class="n">04</span> Tipografía</a>
     <a href="#grafico"><span class="n">05</span> Sistema <span class="s">gráfico</span></a>
     <a href="#voz"><span class="n">06</span> Sistema verbal</a>
+    <a href="#descargables"><span class="n">07</span> Descargables</a>
   </nav>
 </div>
 
@@ -468,6 +499,7 @@
         <a href="#tipografia"><span class="n">04</span><span class="t">Tipografía</span><span class="d">Sistema dual</span></a>
         <a href="#grafico"><span class="n">05</span><span class="t">Sistema <span class="s">gráfico</span></span><span class="d">Construcción · nodos</span></a>
         <a href="#voz"><span class="n">06</span><span class="t">Sistema verbal</span><span class="d">Voz y claims</span></a>
+        <a href="#descargables"><span class="n">07</span><span class="t">Descargables</span><span class="d">Recursos del equipo</span></a>
       </div>
     </div>
   </section>
@@ -640,6 +672,43 @@
       </div>
     </div>
   </section>
+
+  <!-- DESCARGABLES -->
+  <section class="chapter" id="descargables">
+    <div class="wrap">
+      <div class="chead"><div class="cnum"><span class="lbl mint">Recursos</span></div>
+        <h2>Descargables <span class="s">de marca</span>.</h2>
+        <p class="sd">Todos los recursos gráficos para el equipo: logotipo, ícono y sus versiones, paleta, tipografía y la animación. Descarga en vector (SVG) o imagen (PNG).</p></div>
+      <div class="dl-note"><span class="dot"></span> Las descargas funcionan en el sitio publicado. En la vista previa del editor pueden estar bloqueadas por seguridad.</div>
+      <h3 class="dl-h">Logotipo</h3>
+      <div class="dl-grid">
+        <div class="dl-card"><div class="dl-prev "><div class="lkp"><svg class="mark-cinco" viewBox="-140 -140 280 280" fill="none" aria-hidden="true"><g stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0"/></svg><span class="nm">Veraly <i>Grupo Jurídico</i></span></div></div><div class="dl-meta"><b>Lockup horizontal</b><span>Sobre oscuro</span></div><div class="dl-btns"><button class="dl-btn" data-dl="lockup" data-variant="h-dark" data-fmt="svg">SVG</button><button class="dl-btn" data-dl="lockup" data-variant="h-dark" data-fmt="png">PNG</button></div></div>
+        <div class="dl-card"><div class="dl-prev light"><div class="lkp"><svg class="mark-cinco" viewBox="-140 -140 280 280" fill="none" aria-hidden="true"><g stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0"/></svg><span class="nm">Veraly <i>Grupo Jurídico</i></span></div></div><div class="dl-meta"><b>Lockup horizontal</b><span>Sobre menta</span></div><div class="dl-btns"><button class="dl-btn" data-dl="lockup" data-variant="h-light" data-fmt="svg">SVG</button><button class="dl-btn" data-dl="lockup" data-variant="h-light" data-fmt="png">PNG</button></div></div>
+        <div class="dl-card"><div class="dl-prev "><div class="lkp vert"><svg class="mark-cinco" viewBox="-140 -140 280 280" fill="none" aria-hidden="true"><g stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0"/></svg><span class="nm">Veraly <i>Grupo Jurídico</i></span></div></div><div class="dl-meta"><b>Lockup vertical</b><span>Sobre oscuro</span></div><div class="dl-btns"><button class="dl-btn" data-dl="lockup" data-variant="v-dark" data-fmt="svg">SVG</button><button class="dl-btn" data-dl="lockup" data-variant="v-dark" data-fmt="png">PNG</button></div></div>
+      </div>
+      <h3 class="dl-h">Símbolo (ícono)</h3>
+      <div class="dl-grid">
+        <div class="dl-card"><div class="dl-prev "><svg class="mark-cinco" viewBox="-140 -140 280 280" fill="none" aria-hidden="true"><g stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0"/></svg></div><div class="dl-meta"><b>Ícono · Verde + menta</b><span>Principal</span></div><div class="dl-btns"><button class="dl-btn" data-dl="icon" data-variant="oro" data-fmt="svg">SVG</button><button class="dl-btn" data-dl="icon" data-variant="oro" data-fmt="png">PNG</button></div></div>
+        <div class="dl-card"><div class="dl-prev mono"><svg class="mark-cinco" viewBox="-140 -140 280 280" fill="none" aria-hidden="true"><g stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0"/></svg></div><div class="dl-meta"><b>Ícono · Monocromo</b><span>Un solo color</span></div><div class="dl-btns"><button class="dl-btn" data-dl="icon" data-variant="mono" data-fmt="svg">SVG</button><button class="dl-btn" data-dl="icon" data-variant="mono" data-fmt="png">PNG</button></div></div>
+        <div class="dl-card"><div class="dl-prev light"><svg class="mark-cinco" viewBox="-140 -140 280 280" fill="none" aria-hidden="true"><g stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0"/></svg></div><div class="dl-meta"><b>Ícono · Negativo</b><span>Sobre claro</span></div><div class="dl-btns"><button class="dl-btn" data-dl="icon" data-variant="negativo" data-fmt="svg">SVG</button><button class="dl-btn" data-dl="icon" data-variant="negativo" data-fmt="png">PNG</button></div></div>
+      </div>
+      <h3 class="dl-h">Paleta de color</h3>
+      <div class="dl-grid">
+        <div class="dl-card"><div class="dl-prev"><div class="sw4"><span style="background:#05292C"></span><span style="background:#073A3F"></span><span style="background:#89F5E5"></span><span style="background:#D9F6EF"></span></div></div><div class="dl-meta"><b>Paleta</b><span>4 colores · HEX</span></div><div class="dl-btns"><button class="dl-btn" data-dl="palette" data-fmt="css">CSS</button><button class="dl-btn" data-dl="palette" data-fmt="json">JSON</button><button class="dl-btn" data-dl="palette" data-fmt="png">PNG</button></div></div>
+      </div>
+      <h3 class="dl-h">Tipografía</h3>
+      <div class="dl-grid">
+        <div class="dl-card"><div class="dl-prev"><span class="typ">Aa</span></div><div class="dl-meta"><b>Archivo</b><span>Grotesca · nombre</span></div><div class="dl-btns"><a class="dl-btn" href="https://fonts.google.com/specimen/Archivo" target="_blank" rel="noopener">Google Fonts</a></div></div>
+        <div class="dl-card"><div class="dl-prev"><span class="typ ui">Aa</span></div><div class="dl-meta"><b>Jost</b><span>Micro-caps · etiquetas</span></div><div class="dl-btns"><a class="dl-btn" href="https://fonts.google.com/specimen/Jost" target="_blank" rel="noopener">Google Fonts</a></div></div>
+        <div class="dl-card"><div class="dl-prev"><span class="typ serif">Aa</span></div><div class="dl-meta"><b>Playfair Display</b><span>Serif itálica · acento</span></div><div class="dl-btns"><a class="dl-btn" href="https://fonts.google.com/specimen/Playfair+Display" target="_blank" rel="noopener">Google Fonts</a></div></div>
+        <div class="dl-card"><div class="dl-prev"><span class="typ tok">{ }</span></div><div class="dl-meta"><b>Tokens</b><span>Fuentes + colores · CSS</span></div><div class="dl-btns"><button class="dl-btn" data-dl="tokens" data-fmt="css">CSS</button></div></div>
+      </div>
+      <h3 class="dl-h">Animación</h3>
+      <div class="dl-grid">
+        <div class="dl-card"><div class="dl-prev"><svg class="mark-cinco" viewBox="-140 -140 280 280" fill="none" aria-hidden="true"><g stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0"/></svg></div><div class="dl-meta"><b>Logo animado</b><span>Convergencia · SVG</span></div><div class="dl-btns"><button class="dl-btn" data-dl="animsvg" data-fmt="svg">SVG animado</button></div></div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="site">
@@ -800,5 +869,58 @@
   })();
 </script>
 
+<script>
+(function(){
+ var MP=["M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0","M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6","M 94.4 80.4 L 23.2 32.0 L 10.0 81.2","M -47.2 114.8 L -23.2 32.0 L -74.0 34.8","M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"];
+ function markInner(stroke,dot,anim){
+   var p=MP.map(function(d,i){
+     if(anim){return '<path d="'+d+'" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"><animate attributeName="stroke-dashoffset" from="100" to="0" dur="0.8s" begin="'+(0.15+i*0.2).toFixed(2)+'s" fill="freeze"/></path>';}
+     return '<path d="'+d+'"/>';}).join('');
+   var dr=anim?0:16, da=anim?'<animate attributeName="r" from="0" to="16" dur="0.5s" begin="1.15s" fill="freeze"/>':'';
+   return '<g fill="none" stroke="'+stroke+'" stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round">'+p+'</g><circle cx="0" cy="0" r="'+dr+'" fill="'+dot+'">'+da+'</circle>';
+ }
+ function iconSVG(stroke,dot,anim){return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-140 -140 280 280" width="1024" height="1024">'+markInner(stroke,dot,anim)+'</svg>';}
+ var ICV={oro:['#D9F6EF','#89F5E5',null],mono:['#D9F6EF','#D9F6EF',null],negativo:['#05292C','#05292C','#D9F6EF']};
+ function fontFaceCSS(){var o='';for(var i=0;i<document.styleSheets.length;i++){var r;try{r=document.styleSheets[i].cssRules;}catch(e){continue;}if(!r)continue;for(var j=0;j<r.length;j++){if(r[j].type===5){o+=r[j].cssText+'\n';}}}return o;}
+ function measure(font,text){var c=(measure._c||(measure._c=document.createElement('canvas').getContext('2d')));c.font=font;return c.measureText(text).width;}
+ function lockupH(v){
+   var light=v.indexOf('light')>=0;
+   var ink=light?'#05292C':'#D9F6EF',accent=light?'#0A4A50':'#89F5E5',dot=light?'#05292C':'#89F5E5',bg=light?'#D9F6EF':'#05292C',fs=150;
+   var w1=measure('700 '+fs+'px Archivo','Veraly'),w2=measure('italic 400 '+fs+'px "Playfair Display"',' Grupo Jurídico');
+   var markW=300,gap=54,padX=80,H=440,cy=H/2,textX=padX+markW+gap,W=Math.round(textX+w1+w2+padX);
+   var s=markW/280,mtx='translate('+(padX+markW/2)+' '+cy+') scale('+s+')';
+   var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'"><defs><style>'+fontFaceCSS()+'</style></defs><rect width="100%" height="100%" fill="'+bg+'"/><g transform="'+mtx+'">'+markInner(ink,dot,false)+'</g><text x="'+textX+'" y="'+(cy+4)+'" dominant-baseline="middle" font-size="'+fs+'"><tspan font-family="Archivo" font-weight="700" fill="'+ink+'">Veraly</tspan><tspan font-family="Playfair Display" font-style="italic" font-weight="400" fill="'+accent+'"> Grupo Jurídico</tspan></text></svg>';
+   return {svg:svg,w:W,h:H};
+ }
+ function lockupV(v){
+   var light=v.indexOf('light')>=0;
+   var ink=light?'#05292C':'#D9F6EF',accent=light?'#0A4A50':'#89F5E5',dot=light?'#05292C':'#89F5E5',bg=light?'#D9F6EF':'#05292C';
+   var markW=300,W=820,H=760,cx=W/2,s=markW/280,mtx='translate('+cx+' 250) scale('+s+')';
+   var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'"><defs><style>'+fontFaceCSS()+'</style></defs><rect width="100%" height="100%" fill="'+bg+'"/><g transform="'+mtx+'">'+markInner(ink,dot,false)+'</g><text x="'+cx+'" y="545" text-anchor="middle" font-family="Archivo" font-weight="700" font-size="130" fill="'+ink+'">veraly</text><text x="'+cx+'" y="605" text-anchor="middle" font-family="Jost" font-weight="500" font-size="42" letter-spacing="10" fill="'+accent+'">GRUPO JURÍDICO</text></svg>';
+   return {svg:svg,w:W,h:H};
+ }
+ function paletteCSS(){return ':root{\n  --verde:#05292C;\n  --second-bg:#073A3F;\n  --menta:#89F5E5;\n  --crema:#D9F6EF;\n}\n';}
+ function paletteJSON(){return JSON.stringify({verde:"#05292C",second_background:"#073A3F",menta_acento:"#89F5E5",crema_texto:"#D9F6EF"},null,2);}
+ function paletteSVG(){var cols=[['Verde','#05292C'],['Second','#073A3F'],['Menta','#89F5E5'],['Crema','#D9F6EF']];var W=1200,H=360,cw=W/4;var s='<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'"><defs><style>'+fontFaceCSS()+'</style></defs>';cols.forEach(function(c,i){var tc=(i>=2)?'#05292C':'#D9F6EF';s+='<rect x="'+(i*cw)+'" width="'+cw+'" height="'+H+'" fill="'+c[1]+'"/><text x="'+(i*cw+28)+'" y="'+(H-54)+'" font-family="Jost" font-weight="500" font-size="26" letter-spacing="2" fill="'+tc+'">'+c[0].toUpperCase()+'</text><text x="'+(i*cw+28)+'" y="'+(H-22)+'" font-family="Archivo" font-weight="600" font-size="30" fill="'+tc+'">'+c[1]+'</text>';});return {svg:s+'</svg>',w:W,h:H};}
+ function tokensCSS(){return '/* Veraly Grupo Juridico — tokens de marca */\n@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400..800&family=Jost:wght@400..600&family=Playfair+Display:ital@0;1&display=swap");\n\n:root{\n  --verde:#05292C;\n  --second-bg:#073A3F;\n  --menta:#89F5E5;\n  --crema:#D9F6EF;\n  --sans:"Archivo",system-ui,sans-serif;\n  --ui:"Jost",system-ui,sans-serif;\n  --serif:"Playfair Display",Georgia,serif;\n}\n';}
+ function dlBlob(fn,blob){var u=URL.createObjectURL(blob);var a=document.createElement('a');a.href=u;a.download=fn;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},1500);}
+ function dlText(fn,text,mime){dlBlob(fn,new Blob([text],{type:mime||'text/plain;charset=utf-8'}));}
+ function svgToPng(svg,w,h,bg,fn){var img=new Image();img.onload=function(){var c=document.createElement('canvas');c.width=w;c.height=h;var x=c.getContext('2d');if(bg){x.fillStyle=bg;x.fillRect(0,0,w,h);}x.drawImage(img,0,0,w,h);c.toBlob(function(b){dlBlob(fn,b);},'image/png');};img.onerror=function(){alert('No se pudo generar el PNG en este navegador.');};img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);}
+ var btns=document.querySelectorAll('button[data-dl]');
+ for(var i=0;i<btns.length;i++){(function(btn){btn.addEventListener('click',function(){
+   var t=btn.getAttribute('data-dl'),f=btn.getAttribute('data-fmt'),v=btn.getAttribute('data-variant');
+   try{
+     if(t==='icon'){var c=ICV[v]||ICV.oro;var svg=iconSVG(c[0],c[1],false);
+       if(f==='svg')dlText('veraly-icono-'+v+'.svg',svg,'image/svg+xml');else svgToPng(svg,1024,1024,c[2],'veraly-icono-'+v+'.png');}
+     else if(t==='lockup'){var o=(v.charAt(0)==='v')?lockupV(v):lockupH(v);
+       if(f==='svg')dlText('veraly-lockup-'+v+'.svg',o.svg,'image/svg+xml');else svgToPng(o.svg,o.w*2,o.h*2,null,'veraly-lockup-'+v+'.png');}
+     else if(t==='palette'){if(f==='css')dlText('veraly-paleta.css',paletteCSS(),'text/css');else if(f==='json')dlText('veraly-paleta.json',paletteJSON(),'application/json');else{var p=paletteSVG();svgToPng(p.svg,p.w*2,p.h*2,null,'veraly-paleta.png');}}
+     else if(t==='tokens')dlText('veraly-tokens.css',tokensCSS(),'text/css');
+     else if(t==='animsvg')dlText('veraly-logo-animado.svg',iconSVG('#D9F6EF','#89F5E5',true),'image/svg+xml');
+   }catch(e){alert('Error generando el recurso: '+(e&&e.message));}
+ });})(btns[i]);}
+ window.__dlgen={lockupH:lockupH,lockupV:lockupV,iconSVG:iconSVG,paletteSVG:paletteSVG,tokensCSS:tokensCSS,fontFaceCSS:fontFaceCSS};
+})();
+</script>
 </body>
 </html>
