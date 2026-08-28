@@ -217,6 +217,7 @@ def footer_html():
         <li><a href="/firma/">La firma</a></li>
         <li><a href="/equipo/">El equipo</a></li>
         <li><a href="/analisis/">Análisis</a></li>
+        <li><a href="/preguntas-frecuentes/">Preguntas frecuentes</a></li>
         <li><a href="/marca/" data-marca>El sistema de marca</a></li>
       </ul>
     </div>
@@ -225,6 +226,7 @@ def footer_html():
       <ul>
         <li><a href="/aviso-de-privacidad/">Aviso de privacidad</a></li>
         <li><a href="/aviso-legal/">Aviso legal</a></li>
+        <li><a href="/politica-de-cookies/">Política de cookies</a></li>
         <li><a href="/contacto/">Contacto</a></li>
       </ul>
     </div>
@@ -474,7 +476,7 @@ def document(meta, body):
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{esc(canonical)}">
-<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="robots" content="{esc(meta.get("robots", "index,follow,max-image-preview:large"))}">
 <meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="{esc(SITE["name"])}">
 <meta property="og:title" content="{esc(title)}">
@@ -527,7 +529,9 @@ def write_all():
     print(f"Escritas {len(PAGES)} páginas.")
 
 def write_sitemap():
-    urls = [SITE["base_url"] + p for p, _, _ in PAGES]
+    # Se excluyen las páginas marcadas noindex (p. ej. /marca).
+    urls = [SITE["base_url"] + p for p, m, _ in PAGES
+            if "noindex" not in m.get("robots", "")]
     items = "\n".join(
         f'  <url><loc>{esc(u)}</loc></url>' for u in urls)
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'

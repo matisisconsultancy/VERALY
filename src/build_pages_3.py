@@ -7,6 +7,7 @@ def build(g):
     section = g["section"]; crumbs = g["crumbs"]; faq_block = g["faq_block"]
     faq_schema = g["faq_schema"]; contact_form = g["contact_form"]; trust_list = g["trust_list"]
     breadcrumb_schema = g["breadcrumb_schema"]; B = g["B"]; agendar = g["agendar_btn"]
+    service_schema = g["service_schema"]; faq_block = g["faq_block"]
 
     def acc(items):
         # items: (fase_id, titulo, cuerpo_html)
@@ -159,7 +160,15 @@ def build(g):
         "title": "Afectados por captación masiva: vías y plazos",
         "description": "Vías administrativa, penal y civil para reclamar tras una captación no autorizada, con los términos que corren desde la toma de posesión.",
         "active": "afectado", "og_type": "article",
-        "schema": [faq_schema(afectados_faq)],
+        "schema": [
+            service_schema(
+                "Recuperación para afectados por captación masiva",
+                "Acompañamiento a afectados para reclamar por las vías administrativa, penal y civil tras una captación no autorizada.",
+                "/afectados-por-captacion-masiva/", "Recuperación de recursos"),
+            faq_schema(afectados_faq),
+            breadcrumb_schema([("Inicio", "/"),
+                ("Perdí dinero en un esquema", "/afectados-por-captacion-masiva/")]),
+        ],
     }, afectados_body)
 
     # =====================================================================
@@ -290,7 +299,15 @@ def build(g):
         "description": "Defensa administrativa ante la Superintendencia de Sociedades, penal por los arts. 316 y 316A, y civil patrimonial.",
         "active": "investigado", "og_type": "article", "mobile_bar": True,
         "body_class": "has-mobile-bar",
-        "schema": [faq_schema(defensa_faq)],
+        "schema": [
+            service_schema(
+                "Defensa en captación masiva y habitual",
+                "Defensa de investigados y vinculados en los tres frentes: administrativo ante la Superintendencia de Sociedades, penal por los arts. 316 y 316A, y civil patrimonial.",
+                "/defensa-en-captacion-masiva/", "Defensa penal y administrativa"),
+            faq_schema(defensa_faq),
+            breadcrumb_schema([("Inicio", "/"),
+                ("Me investigan o me vincularon", "/defensa-en-captacion-masiva/")]),
+        ],
     }, defensa_body)
 
     # =====================================================================
@@ -369,7 +386,15 @@ def build(g):
         "title": "Cumplimiento en recaudo masivo · Captación",
         "description": "Revisión de encuadre para fintech, crowdfunding, libranzas y multinivel frente a los umbrales de captación.",
         "active": "empresa", "og_type": "article",
-        "schema": [faq_schema(cumplimiento_faq)],
+        "schema": [
+            service_schema(
+                "Revisión de encuadre en recaudo masivo",
+                "Revisión preventiva para fintech, crowdfunding, libranzas, factoring y multinivel frente a los umbrales de captación del Decreto 1981 de 1988.",
+                "/cumplimiento-en-recaudo-masivo/", "Cumplimiento normativo"),
+            faq_schema(cumplimiento_faq),
+            breadcrumb_schema([("Inicio", "/"),
+                ("Mi empresa recauda de muchos", "/cumplimiento-en-recaudo-masivo/")]),
+        ],
     }, cumplimiento_body)
 
     # =====================================================================
@@ -393,6 +418,9 @@ def build(g):
   <div class="container">
     <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:1.4rem" aria-hidden="true">{filtro}</div>
     <div class="editorial">{lista}</div>
+    <div class="cta-row" style="margin-top:2rem">
+      <a class="btn btn--ghost" href="/preguntas-frecuentes/">Preguntas frecuentes</a>
+    </div>
   </div>
 </section>
 '''
@@ -473,10 +501,11 @@ def build(g):
     <div class="byline">
       <span class="brand-mark" aria-hidden="true" style="width:34px;height:34px;color:var(--accent);display:inline-block">{g["LOGO_SVG"]}</span>
       <span>
-        <span class="b-name">Equipo Veraly</span><br>
-        <span class="b-role">Veraly Grupo Jurídico · <a class="textlink" href="/equipo/">Las cinco prácticas</a></span>
+        <span class="b-name">Equipo editorial · Veraly Grupo Jurídico</span><br>
+        <span class="b-role">Preparado y revisado por las <a class="textlink" href="/equipo/">cinco prácticas del derecho</a> de la firma —constitucional, penal, corporativa, tributaria y laboral— especializadas en captación masiva y habitual. Contenido informativo con fundamento normativo verificable.</span>
       </span>
     </div>
+    <p class="article-more">Más respuestas en las <a class="textlink" href="/preguntas-frecuentes/">preguntas frecuentes</a>.</p>
     <p style="margin-top:1.4rem"><a class="arrowlink" href="{cta_url}">{esc(cta_txt)}</a></p>
   </div>
 </article>
@@ -486,8 +515,14 @@ def build(g):
             "headline": a["h1"],
             "description": a["desc"],
             "datePublished": "2026-08-12", "dateModified": "2026-08-12",
-            "author": {"@type": "Organization", "name": SITE["name"], "url": B + "/"},
-            "publisher": {"@type": "Organization", "name": SITE["name"]},
+            "author": {"@type": "Organization", "name": "Equipo editorial · " + SITE["name"],
+                       "url": B + "/equipo/",
+                       "knowsAbout": ["Captación masiva y habitual", "Decreto 4334 de 2008",
+                                      "Artículos 316 y 316A del Código Penal",
+                                      "Superintendencia de Sociedades", "Fraude financiero"]},
+            "publisher": {"@type": "LegalService", "name": SITE["name"], "url": B + "/"},
+            "about": {"@type": "Thing", "name": "Captación masiva y habitual"},
+            "isPartOf": {"@type": "WebSite", "name": SITE["name"], "url": B + "/"},
             "mainEntityOfPage": B + "/analisis/" + a["slug"] + "/",
             "inLanguage": "es-CO",
         }
@@ -499,6 +534,89 @@ def build(g):
                 ("Inicio", "/"), ("Análisis", "/analisis/"),
                 (a["title"], "/analisis/" + a["slug"] + "/")])],
         }, art_body)
+
+    # =====================================================================
+    # /preguntas-frecuentes  (FAQ central — autoridad + featured snippets)
+    # =====================================================================
+    faq_central = [
+        ("¿Qué es la captación masiva y habitual?",
+         '<p>Es recibir dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable (art. 6 del Decreto 4334 de 2008). Hay captación cuando el pasivo con el público supera los umbrales del Decreto 1981 de 1988: más de veinte personas o más de cincuenta obligaciones, o mediación de ofertas masivas.</p>'),
+        ("¿En qué se diferencia la captación de una estafa?",
+         '<p>Son delitos distintos. La estafa (art. 246) exige un engaño que induce a error a una víctima determinada; la captación (art. 316) sanciona recibir dineros del público sin autorización, sin necesidad de probar el engaño individual. La captación, además, activa un trámite administrativo propio ante la Superintendencia de Sociedades. <a class="textlink" href="/analisis/diferencia-entre-estafa-y-captacion-masiva/">Ver el análisis completo</a>.</p>'),
+        ("¿Qué es la toma de posesión y qué efectos tiene?",
+         '<p>Es la medida con la que la Superintendencia de Sociedades interviene los bienes de la captadora bajo el Decreto 4334 de 2008. Tiene carácter jurisdiccional, efectos de cosa juzgada frente a todos y es de única instancia. <a class="textlink" href="/analisis/que-hace-la-superintendencia-de-sociedades/">Cómo funciona la intervención</a>.</p>'),
+        ("Perdí dinero en un esquema, ¿por dónde empiezo?",
+         '<p>Existen tres vías —administrativa, penal y civil— y cada una tiene términos propios que corren desde la toma de posesión. Identificar cuál aplica y en qué plazo es la primera decisión. No prometemos recuperación: el desenlace depende de la masa de la intervención y de cada caso. <a class="textlink" href="/afectados-por-captacion-masiva/">Ver las vías y los plazos</a>.</p>'),
+        ("¿Qué es el no reintegro del artículo 316A?",
+         '<p>Es un tipo penal autónomo que sanciona no devolver los recursos captados. Puede concurrir con el art. 316 y con otros delitos como estafa agravada, lavado de activos o concierto para delinquir.</p>'),
+        ("Tengo una empresa que recauda de muchas personas, ¿cuándo se configura captación?",
+         '<p>Se revisa un criterio objetivo —los umbrales del Decreto 1981 de 1988— y uno material —que exista explicación financiera razonable del rendimiento (art. 6 del Decreto 4334 de 2008)—. Un modelo puede estar bajo los umbrales y aun así quedar señalado si no sustenta de dónde sale el rendimiento. <a class="textlink" href="/cumplimiento-en-recaudo-masivo/">Revisión de encuadre</a>.</p>'),
+        ("¿Qué es la “explicación financiera razonable”?",
+         '<p>Es la justificación económica verificable del rendimiento ofrecido: de dónde sale y por qué es sostenible. Su ausencia es uno de los indicios centrales de captación, incluso cuando el esquema se apoya en contratos legales como libranzas o factoring. <a class="textlink" href="/analisis/captacion-con-libranzas-y-factoring/">Cuándo un contrato legal configura captación</a>.</p>'),
+        ("Me vincularon a un proceso por captación, ¿qué significa?",
+         '<p>La vinculación alcanza a administradores, socios, revisores fiscales, contadores y proveedores por el ejercicio del cargo durante el período de captación. Es desvirtuable: la defensa se construye sobre la exclusión y la prueba del origen lícito. <a class="textlink" href="/defensa-en-captacion-masiva/">Ver la ruta de la defensa</a>.</p>'),
+        ("¿Qué es la buena fe exenta de culpa?",
+         '<p>Es el estándar que, según la Sentencia C-145 de 2009, puede dejar fuera de la intervención a terceros proveedores que actuaron diligentemente en sus actividades lícitas ordinarias. No basta la creencia honesta: exige diligencia comprobable con documentos. <a class="textlink" href="/analisis/buena-fe-exenta-de-culpa-tercero-proveedor/">Cómo se acredita</a>.</p>'),
+        ("¿La firma garantiza recuperar el dinero o un resultado?",
+         '<p>No. No prometemos recuperación ni desenlace judicial. Lo que se promete es rigor, criterio y trabajo sobre las tres vías, con los límites dichos en voz alta.</p>'),
+        ("¿Qué datos piden para una primera consulta?",
+         '<p>Solo su nombre, una vía de contacto y una línea de contexto. No pedimos los hechos del caso por escrito: se conversan. Los datos se tratan conforme a la Ley 1581 de 2012. <a class="textlink" href="/contacto/">Agendar una consulta</a>.</p>'),
+        ("¿Atienden al afectado y al investigado en el mismo caso?",
+         '<p>No. La defensa del investigado y la recuperación del afectado nunca se prestan dentro del mismo proceso de intervención. Cada consulta pasa por verificación previa de conflicto de interés antes de aceptarse.</p>'),
+    ]
+    faq_central_body = f'''
+{crumbs([("Inicio", "/"), ("Preguntas frecuentes", None)])}
+{section("""
+  <p class="eyebrow">Preguntas frecuentes</p>
+  <h1>Preguntas frecuentes sobre captación masiva</h1>
+  <p class="support" style="max-width:60ch">Las dudas más frecuentes sobre el fraude financiero por captación —qué es, cómo se investiga, qué vías abre y qué se puede hacer—. Respuestas sobre la figura jurídica, nunca sobre casos identificables.</p>
+""", cls="hero", tight=True)}
+
+<section class="section band">
+  <div class="container" style="max-width:var(--readw,72ch)">
+    {faq_block(faq_central)}
+    <div class="cta-row" style="margin-top:2rem">
+      {agendar("Agendar una consulta")}
+      <a class="btn btn--ghost" href="/analisis/">Leer los análisis</a>
+    </div>
+  </div>
+</section>
+'''
+    add("/preguntas-frecuentes/", {
+        "title": "Preguntas frecuentes sobre captación masiva · Veraly",
+        "description": "Respuestas claras sobre captación masiva y habitual: diferencia con la estafa, toma de posesión, vías de recuperación, vinculación y umbrales.",
+        "active": "",
+        "schema": [faq_schema(faq_central), breadcrumb_schema([
+            ("Inicio", "/"), ("Preguntas frecuentes", "/preguntas-frecuentes/")])],
+    }, faq_central_body)
+
+    # =====================================================================
+    # /politica-de-cookies
+    # =====================================================================
+    cookies_body = f'''
+{section("""
+  <p class="eyebrow">Legal</p>
+  <h1>Política de cookies</h1>
+""", cls="hero", tight=True)}
+<section class="section band">
+  <div class="container prose">
+    <p style="color:var(--dim-2)"><em>Borrador. Requiere revisión y aprobación de los socios antes de publicar (§17, pendiente 06).</em></p>
+    <h2>Qué son las cookies</h2>
+    <p>Las cookies son pequeños archivos que un sitio guarda en su navegador para recordar preferencias y entender cómo se usa el sitio. Este sitio funciona sin necesidad de aceptarlas.</p>
+    <h2>Qué cookies usamos</h2>
+    <p>Usamos dos categorías. Las <strong>esenciales</strong> permiten recordar su preferencia sobre las cookies y no requieren consentimiento. Las <strong>analíticas</strong> —opcionales— nos ayudan a entender de forma agregada cómo se navega el sitio; solo se activan si usted las acepta en el aviso inicial.</p>
+    <h2>Cómo gestionar su preferencia</h2>
+    <p>Puede aceptar o continuar sin las cookies analíticas desde el aviso que aparece al entrar. También puede borrar o bloquear las cookies desde la configuración de su navegador en cualquier momento.</p>
+    <h2>Datos personales</h2>
+    <p>El tratamiento de datos personales se rige por nuestro <a class="textlink" href="/aviso-de-privacidad/">aviso de privacidad</a>, conforme a la Ley 1581 de 2012.</p>
+  </div>
+</section>
+'''
+    add("/politica-de-cookies/", {
+        "title": "Política de cookies · Veraly Grupo Jurídico",
+        "description": "Cómo usa Veraly Grupo Jurídico las cookies esenciales y analíticas, y cómo gestionar su preferencia.",
+        "active": "",
+    }, cookies_body)
 
     # =====================================================================
     # Páginas legales

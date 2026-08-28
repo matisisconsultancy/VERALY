@@ -50,7 +50,7 @@
     bar.setAttribute('aria-label', 'Aviso de cookies');
     bar.innerHTML =
       '<p>Usamos analítica para entender cómo se usa el sitio. Puede aceptarla o continuar sin ella. ' +
-      '<a href="/aviso-de-privacidad/">Más información</a>.</p>' +
+      '<a href="/politica-de-cookies/">Más información</a>.</p>' +
       '<div class="cookie-actions">' +
       '<button type="button" class="btn btn--ghost btn--sm" data-consent="declined">Solo esenciales</button>' +
       '<button type="button" class="btn btn--primary btn--sm" data-consent="accepted">Aceptar analítica</button>' +

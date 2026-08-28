@@ -107,6 +107,16 @@ def build(g):
                 for i, (n, u) in enumerate(items)]
         }
 
+    def service_schema(name, description, url, service_type, area="Colombia"):
+        # Cada landing de situación es un Service prestado por la LegalService.
+        return {
+            "@context": "https://schema.org", "@type": "Service",
+            "name": name, "description": description,
+            "serviceType": service_type, "url": B + url,
+            "areaServed": {"@type": "Country", "name": area},
+            "provider": {"@type": "LegalService", "name": SITE["name"], "url": B + "/"},
+        }
+
     # =====================================================================
     # HOME
     # =====================================================================
@@ -264,7 +274,13 @@ def build(g):
             "telephone": SITE["phone_display"],
             "address": {"@type": "PostalAddress", "addressCountry": "CO",
                         "streetAddress": SITE["address"]},
-        }
+        },
+        {
+            "@context": "https://schema.org", "@type": "WebSite",
+            "name": SITE["name"], "url": B + "/",
+            "inLanguage": "es-CO",
+            "publisher": {"@type": "LegalService", "name": SITE["name"], "url": B + "/"},
+        },
     ]
     add("/", {
         "title": "Veraly Grupo Jurídico · Defensa en fraude financiero",
@@ -279,6 +295,7 @@ def build(g):
                 "faq_schema": faq_schema, "contact_form": contact_form,
                 "trust_list": trust_list, "conflict_block": conflict_block,
                 "person_schema": person_schema, "breadcrumb_schema": breadcrumb_schema,
+                "service_schema": service_schema, "faq_block": faq_block,
                 "re_text": re_text, "B": B})
     build_pages_2.build(ctx)
     build_pages_3.build(ctx)

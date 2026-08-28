@@ -170,6 +170,7 @@ def build(g):
         "title": "El sistema de marca · Veraly Grupo Jurídico",
         "description": "El sistema de marca de Veraly Grupo Jurídico: nombre, isotipo Convergencia, sistema visual y verbal.",
         "active": "",
+        "robots": "noindex,follow",  # pieza de verificación: no debe competir en búsquedas
     }, marca_body)
 
     # =====================================================================
