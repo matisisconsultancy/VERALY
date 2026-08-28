@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+
+# Working files / design scratch (not part of the site source)
+scratchpad/
