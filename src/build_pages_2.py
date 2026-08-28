@@ -8,6 +8,7 @@ def build(g):
     trust_list = g["trust_list"]; person_schema = g["person_schema"]
     breadcrumb_schema = g["breadcrumb_schema"]; B = g["B"]
     PRACTICAS = g["PRACTICAS"]; agendar = g["agendar_btn"]
+    service_schema = g["service_schema"]
 
     # =====================================================================
     # /firma
@@ -90,40 +91,178 @@ def build(g):
     }, firma_body)
 
     # =====================================================================
-    # /equipo  (composición por prácticas, sin nombres — decisión del cliente)
+    # /equipo  (hub de las cinco prácticas, sin nombres) + páginas de práctica
     # =====================================================================
-    practicas_html = ""
-    for pr in PRACTICAS:
-        practicas_html += f'''<div class="socio">
+    # Desarrollo de cada práctica: función en un caso de captación, a qué
+    # situación sirve y qué normas toca. Habla de la disciplina, no de personas.
+    PRACTICAS_DEV = [
+        {
+            "slug": "contractual-y-constitucional",
+            "rama": "Contractual y constitucional",
+            "card": "El debido proceso en un trámite de única instancia y el andamiaje contractual anterior a la toma de posesión.",
+            "lede": "Lee el proceso de captación desde dos planos: las garantías constitucionales del trámite y la arquitectura contractual de todo lo que ocurrió antes de la intervención.",
+            "paras": [
+                "El procedimiento del Decreto 4334 de 2008 es de única instancia y sus decisiones tienen efectos de cosa juzgada frente a todos. Esa concentración exige una lectura constitucional cuidadosa del debido proceso: cuándo se garantiza la contradicción, cómo se ejerce la defensa material dentro de un trámite tan comprimido y qué actos son susceptibles de control.",
+                "En paralelo, el esquema casi siempre se construyó sobre contratos —mandatos, mutuos, cuentas en participación, promesas— firmados antes de la toma de posesión. Entender ese andamiaje contractual permite distinguir lo lícito de lo que sostuvo la captación, y es la base sobre la que se apoyan las demás prácticas.",
+            ],
+            "normas": ["Decreto 4334 de 2008 — única instancia y efectos de cosa juzgada.",
+                       "Debido proceso (art. 29 de la Constitución) en trámites concentrados.",
+                       "Régimen general de obligaciones y contratos previos a la intervención."],
+            "serves": [("Me investigan o me vincularon", "/defensa-en-captacion-masiva/"),
+                       ("Perdí dinero en un esquema", "/afectados-por-captacion-masiva/")],
+            "articulo": ("que-hace-la-superintendencia-de-sociedades", "Qué hace la Superintendencia de Sociedades"),
+        },
+        {
+            "slug": "tributaria-y-migratoria",
+            "rama": "Tributaria y migratoria",
+            "card": "Las contingencias tributarias sobre los flujos del esquema y las consecuencias migratorias de los vinculados.",
+            "lede": "Sigue el dinero y sigue a las personas: las contingencias fiscales que dejan los flujos del esquema y las consecuencias migratorias que alcanzan a vinculados extranjeros.",
+            "paras": [
+                "Todo esquema de captación deja un rastro tributario: retenciones, declaraciones, movimientos que la autoridad fiscal puede leer de forma independiente al proceso por captación. Anticipar esas contingencias evita que una defensa se gane en un frente y se pierda en otro.",
+                "Cuando hay vinculados extranjeros o estructuras fuera del país, la dimensión migratoria se vuelve real: visados, permanencia y salidas quedan condicionados por el proceso. Integrar ese análisis desde el inicio impide sorpresas que ninguna de las otras prácticas vería venir.",
+            ],
+            "normas": ["Estatuto Tributario — obligaciones formales y sustanciales sobre los flujos.",
+                       "Régimen migratorio aplicable a vinculados extranjeros.",
+                       "Intercambio de información entre autoridades."],
+            "serves": [("Me investigan o me vincularon", "/defensa-en-captacion-masiva/"),
+                       ("Mi empresa recauda de muchos", "/cumplimiento-en-recaudo-masivo/")],
+            "articulo": None,
+        },
+        {
+            "slug": "corporativa-y-urbana",
+            "rama": "Corporativa y urbana",
+            "card": "Las controversias societarias sobre actos anteriores a la intervención y los activos inmobiliarios comprometidos.",
+            "lede": "Trabaja la vida societaria de la captadora y los activos reales que suelen sostener el esquema: qué decisiones son atacables y qué pasa con los inmuebles comprometidos.",
+            "paras": [
+                "La toma de posesión congela una sociedad que, hasta el día anterior, tomaba decisiones: aumentos de capital, cesiones, garantías, operaciones entre vinculadas. Revisar la validez de esos actos anteriores a la intervención define responsabilidades y, muchas veces, la suerte de administradores y terceros.",
+                "Buena parte de los esquemas se apoya en inmuebles —comprados, prometidos o dados en garantía—. La dimensión urbana y registral determina qué activos entran a la masa, cuáles pueden liberarse y cómo se protege a quien contrató de buena fe.",
+            ],
+            "normas": ["Código de Comercio — validez de actos societarios y responsabilidad de administradores.",
+                       "Régimen de propiedad y registro de inmuebles comprometidos.",
+                       "Decreto 4334 de 2008 — perímetro de bienes de la intervención."],
+            "serves": [("Me investigan o me vincularon", "/defensa-en-captacion-masiva/"),
+                       ("Perdí dinero en un esquema", "/afectados-por-captacion-masiva/")],
+            "articulo": ("captacion-con-libranzas-y-factoring", "Captación montada sobre contratos legales"),
+        },
+        {
+            "slug": "penal-e-informatica",
+            "rama": "Penal e informática",
+            "card": "La defensa penal por los artículos 316 y 316A y la evidencia digital, desde los actos urgentes hasta el juicio oral.",
+            "lede": "Conduce el frente penal —los artículos 316 y 316A y los delitos que suelen concurrir— y la prueba digital que hoy sostiene o desmonta la acusación.",
+            "paras": [
+                "El proceso penal por captación masiva y habitual (art. 316) y no reintegro (art. 316A) suele venir acompañado de estafa agravada, lavado de activos y concierto para delinquir. La defensa se juega desde los actos urgentes y la audiencia de imputación: cada decisión temprana condiciona el juicio oral.",
+                "Casi toda la prueba es digital: registros de plataformas, comunicaciones, trazas de pagos. Tratar esa evidencia con criterio informático —cadena de custodia, autenticidad, alcance— es lo que permite excluir lo mal recaudado y sostener el origen lícito de lo que sí lo tiene.",
+            ],
+            "normas": ["Artículos 316 y 316A del Código Penal — captación masiva y no reintegro.",
+                       "Delitos concurrentes: estafa agravada, lavado de activos, concierto para delinquir.",
+                       "Régimen de evidencia digital y cadena de custodia."],
+            "serves": [("Me investigan o me vincularon", "/defensa-en-captacion-masiva/")],
+            "articulo": ("diferencia-entre-estafa-y-captacion-masiva", "Diferencia entre estafa y captación masiva"),
+        },
+        {
+            "slug": "laboral-y-de-seguros",
+            "rama": "Laboral y de seguros",
+            "card": "Las reclamaciones laborales de la sociedad intervenida y la exposición de las pólizas y garantías del recaudo.",
+            "lede": "Resuelve dos frentes que suelen quedar huérfanos: las relaciones laborales de la sociedad intervenida y las pólizas o garantías vinculadas al recaudo.",
+            "paras": [
+                "La captadora tuvo empleados, comisionistas y estructuras de pago que la intervención interrumpe de golpe. Ordenar esas relaciones laborales —qué se debe, a quién y con qué prelación— evita contingencias que crecen en silencio mientras el resto del caso avanza.",
+                "Muchos esquemas se aseguraron: pólizas de cumplimiento, de manejo, garantías de terceros. Leer esa exposición determina si hay una fuente adicional de recuperación para el afectado o un frente adicional de reclamación contra el vinculado.",
+            ],
+            "normas": ["Código Sustantivo del Trabajo — obligaciones y prelación de acreencias laborales.",
+                       "Régimen de seguros — pólizas de cumplimiento, manejo y garantías.",
+                       "Concurrencia con la masa de la intervención."],
+            "serves": [("Perdí dinero en un esquema", "/afectados-por-captacion-masiva/"),
+                       ("Me investigan o me vincularon", "/defensa-en-captacion-masiva/")],
+            "articulo": None,
+        },
+    ]
+
+    # --- hub /equipo: tesis "por qué cinco" integrada + tarjetas-enlace ---
+    practicas_cards = ""
+    for pr in PRACTICAS_DEV:
+        practicas_cards += f'''<a class="socio" href="/equipo/{pr["slug"]}/">
   <span class="practica">{esc(pr["rama"])}</span>
-  <p style="color:var(--dim);margin:.4rem 0 0;font-size:var(--step-0)">{esc(pr["aporte"])}</p>
-</div>'''
+  <p style="color:var(--dim);margin:.4rem 0 .2rem;font-size:var(--step-0)">{esc(pr["card"])}</p>
+  <span class="arrowlink">Ver la práctica</span>
+</a>'''
     equipo_body = f'''
 {section("""
   <p class="eyebrow">El equipo</p>
   <h1>Cinco prácticas, un mismo caso</h1>
-  <p class="support" style="max-width:52ch">El método de la firma no es un principio abstracto: es su composición. Cinco socios aportan cinco ramas del derecho al mismo expediente, y el caso se construye en la intersección.</p>
+  <p class="support" style="max-width:52ch">El método de la firma no es un principio abstracto: es su composición. Cinco prácticas del derecho trabajan el mismo expediente, y el caso se construye en la intersección.</p>
 """, cls="hero")}
+
+{section("""
+  <p class="eyebrow">Por qué cinco y no una</p>
+  <h2 style="max-width:22ch">Un caso de captación no tiene una especialidad: tiene seis a la vez</h2>
+  <div class="prose" style="margin-top:1.2rem">
+    <p>Un proceso por captación produce, en paralelo, una actuación ante la Superintendencia de Sociedades, un proceso penal, demandas civiles de responsabilidad, controversias societarias, contingencias tributarias sobre los flujos y reclamaciones laborales de la intervenida. Ningún abogado cubre eso solo. Lo habitual es asignar el caso a una especialidad y trabajar un tercio del problema; esta firma se compuso para cubrirlo entero.</p>
+  </div>
+""")}
 
 <section class="section band">
   <div class="container">
-    <div class="socios">{practicas_html}</div>
+    <h2 style="margin-bottom:1.4rem">Las cinco prácticas</h2>
+    <div class="socios">{practicas_cards}</div>
+    <div class="cta-row" style="margin-top:2rem">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabajamos</a></div>
+  </div>
+</section>
+'''
+    add("/equipo/", {
+        "title": "El equipo · Las cinco prácticas · Veraly Grupo Jurídico",
+        "description": "La firma se compone de cinco prácticas del derecho que convergen sobre el mismo expediente de captación masiva: constitucional, penal, corporativa, tributaria y laboral.",
+        "active": "equipo",
+        "schema": [breadcrumb_schema([("Inicio", "/"), ("El equipo", "/equipo/")])],
+    }, equipo_body)
+
+    # --- páginas de desarrollo por práctica ---
+    for pr in PRACTICAS_DEV:
+        url = "/equipo/" + pr["slug"] + "/"
+        paras = "".join(f"<p>{esc(t)}</p>" for t in pr["paras"])
+        normas = "".join(f"<li>{esc(n)}</li>" for n in pr["normas"])
+        serves = "".join(
+            f'<li><a class="arrowlink" href="{u}">{esc(t)}</a></li>' for t, u in pr["serves"])
+        art = ""
+        if pr["articulo"]:
+            aslug, atitle = pr["articulo"]
+            art = f'<p style="margin-top:1.2rem"><a class="arrowlink" href="/analisis/{aslug}/">Análisis · {esc(atitle)}</a></p>'
+        practica_body = f'''
+{crumbs([("Inicio", "/"), ("El equipo", "/equipo/"), (pr["rama"], None)])}
+{section(f"""
+  <p class="eyebrow">Una de las cinco prácticas</p>
+  <h1>{esc(pr["rama"])}</h1>
+  <p class="support" style="max-width:60ch">{esc(pr["lede"])}</p>
+""", cls="hero", tight=True)}
+
+<section class="section band">
+  <div class="container prose">
+    <h2>Qué resuelve en un caso de captación</h2>
+    {paras}
+    <div class="norm-block">
+      <h2>Qué normas toca</h2>
+      <ul>{normas}</ul>
+    </div>
   </div>
 </section>
 
 {section(f"""
-  <h2>Por qué cinco y no uno</h2>
-  <div class="prose" style="margin-top:1.2rem">
-    <p>Un proceso por captación produce, en paralelo, una actuación ante la Superintendencia de Sociedades, un proceso penal, demandas civiles de responsabilidad, controversias societarias, contingencias tributarias sobre los flujos y reclamaciones laborales de la intervenida. Ningún abogado cubre eso solo. Esta firma se compuso para cubrirlo.</p>
-  </div>
-  <div class="cta-row">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabajamos</a></div>
+  <h2>A qué situación sirve</h2>
+  <ul class="method-list" style="margin-top:1rem">{serves}</ul>
+  {art}
+  <div class="cta-row" style="margin-top:1.6rem">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/equipo/">Las cinco prácticas</a></div>
 """)}
 '''
-    add("/equipo/", {
-        "title": "El equipo · Veraly Grupo Jurídico",
-        "description": "La firma se compone de cinco prácticas del derecho que convergen sobre el mismo expediente de captación masiva.",
-        "active": "equipo",
-    }, equipo_body)
+        add(url, {
+            "title": f'{pr["rama"]} · Las cinco prácticas · Veraly',
+            "description": pr["lede"],
+            "active": "equipo",
+            "schema": [
+                service_schema(
+                    pr["rama"] + " en captación masiva", pr["lede"], url, pr["rama"]),
+                breadcrumb_schema([("Inicio", "/"), ("El equipo", "/equipo/"),
+                                   (pr["rama"], url)]),
+            ],
+        }, practica_body)
 
     # =====================================================================
     # /marca  (brandbook — pieza de verificación)
