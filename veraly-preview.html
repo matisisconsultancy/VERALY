@@ -264,6 +264,17 @@ strong{font-weight:600;color:var(--text)}
 .socio .practica{color:var(--accent);font-family:var(--ui);font-weight:500;font-size:var(--step-0)}
 .socio .arrowlink{margin-top:.4rem;font-size:var(--step--1)}
 
+/* Navegador lateral entre las cinco prácticas (ruta clara entre hermanas) */
+.practica-nav-wrap{padding-top:1.2rem;padding-bottom:.2rem}
+.practica-nav{display:flex;flex-wrap:wrap;gap:8px}
+.practica-nav a{font-family:var(--ui);font-size:var(--step--1);color:var(--dim);text-decoration:none;
+  border:1px solid var(--line-soft);border-radius:999px;padding:.45em 1em;line-height:1.2;
+  transition:border-color .18s,color .18s,background .18s}
+.practica-nav a:hover{border-color:var(--line);color:var(--text)}
+.practica-nav a[aria-current="page"]{background:var(--accent);color:var(--ink);border-color:var(--accent);font-weight:600}
+@media (max-width:640px){.practica-nav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  padding-bottom:6px;scrollbar-width:none}.practica-nav a{white-space:nowrap;flex:none}}
+
 /* ---------- Formulario ---------- */
 .form-wrap{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r);
   padding:clamp(22px,3.4vw,36px)}
@@ -1082,23 +1093,20 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
   <p class="support" style="max-width:60ch">Lee el proceso de captación desde dos planos: las garantías constitucionales del trámite y la arquitectura contractual de todo lo que ocurrió antes de la intervención.</p>
 </div></section>
 
+<div class="container practica-nav-wrap"><nav class="practica-nav" aria-label="Las cinco prácticas"><a href="#!/equipo/contractual-y-constitucional/" aria-current="page">Contractual y constitucional</a><a href="#!/equipo/tributaria-y-migratoria/">Tributaria y migratoria</a><a href="#!/equipo/corporativa-y-urbana/">Corporativa y urbana</a><a href="#!/equipo/penal-e-informatica/">Penal e informática</a><a href="#!/equipo/laboral-y-de-seguros/">Laboral y de seguros</a></nav></div>
+
 <section class="section band">
   <div class="container prose">
     <h2>Qué resuelve en un caso de captación</h2>
     <p>El procedimiento del Decreto 4334 de 2008 es de única instancia y sus decisiones tienen efectos de cosa juzgada frente a todos. Esa concentración exige una lectura constitucional cuidadosa del debido proceso: cuándo se garantiza la contradicción, cómo se ejerce la defensa material dentro de un trámite tan comprimido y qué actos son susceptibles de control.</p><p>En paralelo, el esquema casi siempre se construyó sobre contratos —mandatos, mutuos, cuentas en participación, promesas— firmados antes de la toma de posesión. Entender ese andamiaje contractual permite distinguir lo lícito de lo que sostuvo la captación, y es la base sobre la que se apoyan las demás prácticas.</p>
-    <div class="norm-block">
-      <h2>Qué normas toca</h2>
-      <ul><li>Decreto 4334 de 2008 — única instancia y efectos de cosa juzgada.</li><li>Debido proceso (art. 29 de la Constitución) en trámites concentrados.</li><li>Régimen general de obligaciones y contratos previos a la intervención.</li></ul>
-    </div>
+    <h3 style="margin-top:1.8rem">Normas que toca</h3>
+    <ul><li>Decreto 4334 de 2008 — única instancia y efectos de cosa juzgada.</li><li>Debido proceso (art. 29 de la Constitución) en trámites concentrados.</li><li>Régimen general de obligaciones y contratos previos a la intervención.</li></ul>
+    <h3 style="margin-top:1.8rem">A qué situación sirve</h3>
+    <ul class="method-list"><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li><li><a class="arrowlink" href="#!/afectados-por-captacion-masiva/">Perdí dinero en un esquema</a></li></ul>
+    <a class="arrowlink" href="#!/analisis/que-hace-la-superintendencia-de-sociedades/">Análisis · Qué hace la Superintendencia de Sociedades</a>
+    <div class="cta-row" style="margin-top:1.8rem"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/equipo/">← Volver a las cinco prácticas</a></div>
   </div>
 </section>
-
-<section class="section"><div class="container">
-  <h2>A qué situación sirve</h2>
-  <ul class="method-list" style="margin-top:1rem"><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li><li><a class="arrowlink" href="#!/afectados-por-captacion-masiva/">Perdí dinero en un esquema</a></li></ul>
-  <p style="margin-top:1.2rem"><a class="arrowlink" href="#!/analisis/que-hace-la-superintendencia-de-sociedades/">Análisis · Qué hace la Superintendencia de Sociedades</a></p>
-  <div class="cta-row" style="margin-top:1.6rem"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/equipo/">Las cinco prácticas</a></div>
-</div></section>
 </template>
 <template data-route="/equipo/tributaria-y-migratoria/" data-title="Tributaria y migratoria · Las cinco prácticas · Veraly" data-active="equipo" data-mobilebar="0">
 <nav class="crumbs container" aria-label="Migas de pan"><a href="#!/">Inicio</a><span>›</span><a href="#!/equipo/">El equipo</a><span>›</span>Tributaria y migratoria</nav>
@@ -1108,23 +1116,20 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
   <p class="support" style="max-width:60ch">Sigue el dinero y sigue a las personas: las contingencias fiscales que dejan los flujos del esquema y las consecuencias migratorias que alcanzan a vinculados extranjeros.</p>
 </div></section>
 
+<div class="container practica-nav-wrap"><nav class="practica-nav" aria-label="Las cinco prácticas"><a href="#!/equipo/contractual-y-constitucional/">Contractual y constitucional</a><a href="#!/equipo/tributaria-y-migratoria/" aria-current="page">Tributaria y migratoria</a><a href="#!/equipo/corporativa-y-urbana/">Corporativa y urbana</a><a href="#!/equipo/penal-e-informatica/">Penal e informática</a><a href="#!/equipo/laboral-y-de-seguros/">Laboral y de seguros</a></nav></div>
+
 <section class="section band">
   <div class="container prose">
     <h2>Qué resuelve en un caso de captación</h2>
     <p>Todo esquema de captación deja un rastro tributario: retenciones, declaraciones, movimientos que la autoridad fiscal puede leer de forma independiente al proceso por captación. Anticipar esas contingencias evita que una defensa se gane en un frente y se pierda en otro.</p><p>Cuando hay vinculados extranjeros o estructuras fuera del país, la dimensión migratoria se vuelve real: visados, permanencia y salidas quedan condicionados por el proceso. Integrar ese análisis desde el inicio impide sorpresas que ninguna de las otras prácticas vería venir.</p>
-    <div class="norm-block">
-      <h2>Qué normas toca</h2>
-      <ul><li>Estatuto Tributario — obligaciones formales y sustanciales sobre los flujos.</li><li>Régimen migratorio aplicable a vinculados extranjeros.</li><li>Intercambio de información entre autoridades.</li></ul>
-    </div>
+    <h3 style="margin-top:1.8rem">Normas que toca</h3>
+    <ul><li>Estatuto Tributario — obligaciones formales y sustanciales sobre los flujos.</li><li>Régimen migratorio aplicable a vinculados extranjeros.</li><li>Intercambio de información entre autoridades.</li></ul>
+    <h3 style="margin-top:1.8rem">A qué situación sirve</h3>
+    <ul class="method-list"><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li><li><a class="arrowlink" href="#!/cumplimiento-en-recaudo-masivo/">Mi empresa recauda de muchos</a></li></ul>
+    
+    <div class="cta-row" style="margin-top:1.8rem"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/equipo/">← Volver a las cinco prácticas</a></div>
   </div>
 </section>
-
-<section class="section"><div class="container">
-  <h2>A qué situación sirve</h2>
-  <ul class="method-list" style="margin-top:1rem"><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li><li><a class="arrowlink" href="#!/cumplimiento-en-recaudo-masivo/">Mi empresa recauda de muchos</a></li></ul>
-  
-  <div class="cta-row" style="margin-top:1.6rem"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/equipo/">Las cinco prácticas</a></div>
-</div></section>
 </template>
 <template data-route="/equipo/corporativa-y-urbana/" data-title="Corporativa y urbana · Las cinco prácticas · Veraly" data-active="equipo" data-mobilebar="0">
 <nav class="crumbs container" aria-label="Migas de pan"><a href="#!/">Inicio</a><span>›</span><a href="#!/equipo/">El equipo</a><span>›</span>Corporativa y urbana</nav>
@@ -1134,23 +1139,20 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
   <p class="support" style="max-width:60ch">Trabaja la vida societaria de la captadora y los activos reales que suelen sostener el esquema: qué decisiones son atacables y qué pasa con los inmuebles comprometidos.</p>
 </div></section>
 
+<div class="container practica-nav-wrap"><nav class="practica-nav" aria-label="Las cinco prácticas"><a href="#!/equipo/contractual-y-constitucional/">Contractual y constitucional</a><a href="#!/equipo/tributaria-y-migratoria/">Tributaria y migratoria</a><a href="#!/equipo/corporativa-y-urbana/" aria-current="page">Corporativa y urbana</a><a href="#!/equipo/penal-e-informatica/">Penal e informática</a><a href="#!/equipo/laboral-y-de-seguros/">Laboral y de seguros</a></nav></div>
+
 <section class="section band">
   <div class="container prose">
     <h2>Qué resuelve en un caso de captación</h2>
     <p>La toma de posesión congela una sociedad que, hasta el día anterior, tomaba decisiones: aumentos de capital, cesiones, garantías, operaciones entre vinculadas. Revisar la validez de esos actos anteriores a la intervención define responsabilidades y, muchas veces, la suerte de administradores y terceros.</p><p>Buena parte de los esquemas se apoya en inmuebles —comprados, prometidos o dados en garantía—. La dimensión urbana y registral determina qué activos entran a la masa, cuáles pueden liberarse y cómo se protege a quien contrató de buena fe.</p>
-    <div class="norm-block">
-      <h2>Qué normas toca</h2>
-      <ul><li>Código de Comercio — validez de actos societarios y responsabilidad de administradores.</li><li>Régimen de propiedad y registro de inmuebles comprometidos.</li><li>Decreto 4334 de 2008 — perímetro de bienes de la intervención.</li></ul>
-    </div>
+    <h3 style="margin-top:1.8rem">Normas que toca</h3>
+    <ul><li>Código de Comercio — validez de actos societarios y responsabilidad de administradores.</li><li>Régimen de propiedad y registro de inmuebles comprometidos.</li><li>Decreto 4334 de 2008 — perímetro de bienes de la intervención.</li></ul>
+    <h3 style="margin-top:1.8rem">A qué situación sirve</h3>
+    <ul class="method-list"><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li><li><a class="arrowlink" href="#!/afectados-por-captacion-masiva/">Perdí dinero en un esquema</a></li></ul>
+    <a class="arrowlink" href="#!/analisis/captacion-con-libranzas-y-factoring/">Análisis · Captación montada sobre contratos legales</a>
+    <div class="cta-row" style="margin-top:1.8rem"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/equipo/">← Volver a las cinco prácticas</a></div>
   </div>
 </section>
-
-<section class="section"><div class="container">
-  <h2>A qué situación sirve</h2>
-  <ul class="method-list" style="margin-top:1rem"><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li><li><a class="arrowlink" href="#!/afectados-por-captacion-masiva/">Perdí dinero en un esquema</a></li></ul>
-  <p style="margin-top:1.2rem"><a class="arrowlink" href="#!/analisis/captacion-con-libranzas-y-factoring/">Análisis · Captación montada sobre contratos legales</a></p>
-  <div class="cta-row" style="margin-top:1.6rem"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/equipo/">Las cinco prácticas</a></div>
-</div></section>
 </template>
 <template data-route="/equipo/penal-e-informatica/" data-title="Penal e informática · Las cinco prácticas · Veraly" data-active="equipo" data-mobilebar="0">
 <nav class="crumbs container" aria-label="Migas de pan"><a href="#!/">Inicio</a><span>›</span><a href="#!/equipo/">El equipo</a><span>›</span>Penal e informática</nav>
@@ -1160,23 +1162,20 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
   <p class="support" style="max-width:60ch">Conduce el frente penal —los artículos 316 y 316A y los delitos que suelen concurrir— y la prueba digital que hoy sostiene o desmonta la acusación.</p>
 </div></section>
 
+<div class="container practica-nav-wrap"><nav class="practica-nav" aria-label="Las cinco prácticas"><a href="#!/equipo/contractual-y-constitucional/">Contractual y constitucional</a><a href="#!/equipo/tributaria-y-migratoria/">Tributaria y migratoria</a><a href="#!/equipo/corporativa-y-urbana/">Corporativa y urbana</a><a href="#!/equipo/penal-e-informatica/" aria-current="page">Penal e informática</a><a href="#!/equipo/laboral-y-de-seguros/">Laboral y de seguros</a></nav></div>
+
 <section class="section band">
   <div class="container prose">
     <h2>Qué resuelve en un caso de captación</h2>
     <p>El proceso penal por captación masiva y habitual (art. 316) y no reintegro (art. 316A) suele venir acompañado de estafa agravada, lavado de activos y concierto para delinquir. La defensa se juega desde los actos urgentes y la audiencia de imputación: cada decisión temprana condiciona el juicio oral.</p><p>Casi toda la prueba es digital: registros de plataformas, comunicaciones, trazas de pagos. Tratar esa evidencia con criterio informático —cadena de custodia, autenticidad, alcance— es lo que permite excluir lo mal recaudado y sostener el origen lícito de lo que sí lo tiene.</p>
-    <div class="norm-block">
-      <h2>Qué normas toca</h2>
-      <ul><li>Artículos 316 y 316A del Código Penal — captación masiva y no reintegro.</li><li>Delitos concurrentes: estafa agravada, lavado de activos, concierto para delinquir.</li><li>Régimen de evidencia digital y cadena de custodia.</li></ul>
-    </div>
+    <h3 style="margin-top:1.8rem">Normas que toca</h3>
+    <ul><li>Artículos 316 y 316A del Código Penal — captación masiva y no reintegro.</li><li>Delitos concurrentes: estafa agravada, lavado de activos, concierto para delinquir.</li><li>Régimen de evidencia digital y cadena de custodia.</li></ul>
+    <h3 style="margin-top:1.8rem">A qué situación sirve</h3>
+    <ul class="method-list"><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li></ul>
+    <a class="arrowlink" href="#!/analisis/diferencia-entre-estafa-y-captacion-masiva/">Análisis · Diferencia entre estafa y captación masiva</a>
+    <div class="cta-row" style="margin-top:1.8rem"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/equipo/">← Volver a las cinco prácticas</a></div>
   </div>
 </section>
-
-<section class="section"><div class="container">
-  <h2>A qué situación sirve</h2>
-  <ul class="method-list" style="margin-top:1rem"><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li></ul>
-  <p style="margin-top:1.2rem"><a class="arrowlink" href="#!/analisis/diferencia-entre-estafa-y-captacion-masiva/">Análisis · Diferencia entre estafa y captación masiva</a></p>
-  <div class="cta-row" style="margin-top:1.6rem"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/equipo/">Las cinco prácticas</a></div>
-</div></section>
 </template>
 <template data-route="/equipo/laboral-y-de-seguros/" data-title="Laboral y de seguros · Las cinco prácticas · Veraly" data-active="equipo" data-mobilebar="0">
 <nav class="crumbs container" aria-label="Migas de pan"><a href="#!/">Inicio</a><span>›</span><a href="#!/equipo/">El equipo</a><span>›</span>Laboral y de seguros</nav>
@@ -1186,23 +1185,20 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
   <p class="support" style="max-width:60ch">Resuelve dos frentes que suelen quedar huérfanos: las relaciones laborales de la sociedad intervenida y las pólizas o garantías vinculadas al recaudo.</p>
 </div></section>
 
+<div class="container practica-nav-wrap"><nav class="practica-nav" aria-label="Las cinco prácticas"><a href="#!/equipo/contractual-y-constitucional/">Contractual y constitucional</a><a href="#!/equipo/tributaria-y-migratoria/">Tributaria y migratoria</a><a href="#!/equipo/corporativa-y-urbana/">Corporativa y urbana</a><a href="#!/equipo/penal-e-informatica/">Penal e informática</a><a href="#!/equipo/laboral-y-de-seguros/" aria-current="page">Laboral y de seguros</a></nav></div>
+
 <section class="section band">
   <div class="container prose">
     <h2>Qué resuelve en un caso de captación</h2>
     <p>La captadora tuvo empleados, comisionistas y estructuras de pago que la intervención interrumpe de golpe. Ordenar esas relaciones laborales —qué se debe, a quién y con qué prelación— evita contingencias que crecen en silencio mientras el resto del caso avanza.</p><p>Muchos esquemas se aseguraron: pólizas de cumplimiento, de manejo, garantías de terceros. Leer esa exposición determina si hay una fuente adicional de recuperación para el afectado o un frente adicional de reclamación contra el vinculado.</p>
-    <div class="norm-block">
-      <h2>Qué normas toca</h2>
-      <ul><li>Código Sustantivo del Trabajo — obligaciones y prelación de acreencias laborales.</li><li>Régimen de seguros — pólizas de cumplimiento, manejo y garantías.</li><li>Concurrencia con la masa de la intervención.</li></ul>
-    </div>
+    <h3 style="margin-top:1.8rem">Normas que toca</h3>
+    <ul><li>Código Sustantivo del Trabajo — obligaciones y prelación de acreencias laborales.</li><li>Régimen de seguros — pólizas de cumplimiento, manejo y garantías.</li><li>Concurrencia con la masa de la intervención.</li></ul>
+    <h3 style="margin-top:1.8rem">A qué situación sirve</h3>
+    <ul class="method-list"><li><a class="arrowlink" href="#!/afectados-por-captacion-masiva/">Perdí dinero en un esquema</a></li><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li></ul>
+    
+    <div class="cta-row" style="margin-top:1.8rem"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/equipo/">← Volver a las cinco prácticas</a></div>
   </div>
 </section>
-
-<section class="section"><div class="container">
-  <h2>A qué situación sirve</h2>
-  <ul class="method-list" style="margin-top:1rem"><li><a class="arrowlink" href="#!/afectados-por-captacion-masiva/">Perdí dinero en un esquema</a></li><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li></ul>
-  
-  <div class="cta-row" style="margin-top:1.6rem"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/equipo/">Las cinco prácticas</a></div>
-</div></section>
 </template>
 <template data-route="/marca/" data-title="El sistema de marca · Veraly Grupo Jurídico" data-active="" data-mobilebar="0">
 <section class="section hero"><div class="container">

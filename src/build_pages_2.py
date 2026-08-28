@@ -215,7 +215,16 @@ def build(g):
         "schema": [breadcrumb_schema([("Inicio", "/"), ("El equipo", "/equipo/")])],
     }, equipo_body)
 
-    # --- páginas de desarrollo por práctica ---
+    # --- navegador lateral: la ruta entre las cinco prácticas, siempre visible ---
+    def practica_nav(current):
+        items = ""
+        for p in PRACTICAS_DEV:
+            cur = ' aria-current="page"' if p["slug"] == current else ''
+            items += f'<a href="/equipo/{p["slug"]}/"{cur}>{esc(p["rama"])}</a>'
+        return (f'<div class="container practica-nav-wrap">'
+                f'<nav class="practica-nav" aria-label="Las cinco prácticas">{items}</nav></div>')
+
+    # --- páginas de desarrollo por práctica (simplificadas: un solo bloque) ---
     for pr in PRACTICAS_DEV:
         url = "/equipo/" + pr["slug"] + "/"
         paras = "".join(f"<p>{esc(t)}</p>" for t in pr["paras"])
@@ -225,7 +234,7 @@ def build(g):
         art = ""
         if pr["articulo"]:
             aslug, atitle = pr["articulo"]
-            art = f'<p style="margin-top:1.2rem"><a class="arrowlink" href="/analisis/{aslug}/">Análisis · {esc(atitle)}</a></p>'
+            art = f'<a class="arrowlink" href="/analisis/{aslug}/">Análisis · {esc(atitle)}</a>'
         practica_body = f'''
 {crumbs([("Inicio", "/"), ("El equipo", "/equipo/"), (pr["rama"], None)])}
 {section(f"""
@@ -234,23 +243,20 @@ def build(g):
   <p class="support" style="max-width:60ch">{esc(pr["lede"])}</p>
 """, cls="hero", tight=True)}
 
+{practica_nav(pr["slug"])}
+
 <section class="section band">
   <div class="container prose">
     <h2>Qué resuelve en un caso de captación</h2>
     {paras}
-    <div class="norm-block">
-      <h2>Qué normas toca</h2>
-      <ul>{normas}</ul>
-    </div>
+    <h3 style="margin-top:1.8rem">Normas que toca</h3>
+    <ul>{normas}</ul>
+    <h3 style="margin-top:1.8rem">A qué situación sirve</h3>
+    <ul class="method-list">{serves}</ul>
+    {art}
+    <div class="cta-row" style="margin-top:1.8rem">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/equipo/">← Volver a las cinco prácticas</a></div>
   </div>
 </section>
-
-{section(f"""
-  <h2>A qué situación sirve</h2>
-  <ul class="method-list" style="margin-top:1rem">{serves}</ul>
-  {art}
-  <div class="cta-row" style="margin-top:1.6rem">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/equipo/">Las cinco prácticas</a></div>
-""")}
 '''
         add(url, {
             "title": f'{pr["rama"]} · Las cinco prácticas · Veraly',
