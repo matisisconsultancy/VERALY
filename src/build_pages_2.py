@@ -42,6 +42,45 @@ def build(g):
     # =====================================================================
     # /firma
     # =====================================================================
+    def no_hacemos_section():
+        I = {
+            "target": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="3.4"/></svg>',
+            "merge": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8.5" cy="12" r="5"/><circle cx="15.5" cy="12" r="5"/></svg>',
+            "eye": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.6"/></svg>',
+            "layers": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 13.5l9 5 9-5"/></svg>',
+            "scales": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M6 20h12M5 8h14"/><path d="M5 8 2.6 13a2.9 2.9 0 0 0 4.8 0Z"/><path d="M19 8l-2.4 5a2.9 2.9 0 0 0 4.8 0Z"/></svg>',
+            "form": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="3.5" width="13" height="17" rx="2.2"/><path d="M9 8.5h6M9 12h6M9 15.5h3.5"/></svg>',
+        }
+        items = [
+            (I["target"], "No prometemos resultados.",
+             "No prometemos recuperación ni desenlace judicial: se promete rigor, criterio y trabajo, con los límites dichos en voz alta."),
+            (I["merge"], "No mezclamos las dos orillas.",
+             "La defensa del investigado y la recuperación del afectado nunca se prestan dentro del mismo proceso de intervención."),
+            (I["eye"], "No exponemos casos.",
+             "No publicamos casos identificables, testimonios ni cifras de damnificados. Escribimos sobre la figura, nunca sobre personas."),
+            (I["layers"], "No somos un portafolio general.",
+             "No tratamos la captación masiva como una especialidad más entre muchas: es el único fenómeno sobre el que trabaja la firma."),
+            (I["scales"], "No la litigamos como una estafa.",
+             "No trabajamos la captación como si fuera una estafa agravada. Es una figura jurídica distinta, con vías y plazos propios."),
+            (I["form"], "No capturamos su caso en un formulario.",
+             "El primer contacto no pide los hechos por escrito: se conversan. Los datos se tratan conforme a la Ley 1581 de 2012."),
+        ]
+        cards = "".join(
+            f'<div class="nh-card reveal-up">'
+            f'<span class="nh-n">/ {i:02d}</span>'
+            f'<span class="nh-ico" aria-hidden="true">{ico}<span class="nh-strike"></span></span>'
+            f'<h3 class="nh-t">{esc(t)}</h3><p class="nh-d">{esc(d)}</p></div>'
+            for i, (ico, t, d) in enumerate(items, 1))
+        return (
+            '<section class="section band nh-sec">'
+            '<div class="container">'
+            '<div class="nh-head">'
+            '<p class="eyebrow nh-eyebrow">Nuestros límites</p>'
+            '<h2 class="nh-title">Lo que <span class="pr-accent">no hacemos.</span></h2>'
+            '</div>'
+            f'<div class="nh-grid">{cards}</div>'
+            '</div></section>')
+
     firma_body = f'''
 {section("""
   <p class="eyebrow">La firma</p>
@@ -92,17 +131,7 @@ def build(g):
   </div>
 """)}
 
-<section class="section band">
-  <div class="container">
-    <h2>Lo que no hacemos</h2>
-    <ul class="negations">
-      <li>No prometemos recuperación ni desenlace judicial.</li>
-      <li>No aceptamos casos de las dos orillas en el mismo proceso.</li>
-      <li>No publicamos casos identificables ni cifras de damnificados.</li>
-      <li>No trabajamos captación masiva como una especialidad más de un portafolio general.</li>
-    </ul>
-  </div>
-</section>
+{no_hacemos_section()}
 
 {section(f"""
   <h2>El equipo</h2>

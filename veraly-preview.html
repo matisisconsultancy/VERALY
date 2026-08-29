@@ -1168,6 +1168,51 @@ html.js .reveal-up.in{opacity:1;transform:none}
   .faq-sticky-l{position:static}
 }
 
+/* ============================================================
+   /firma — "Lo que no hacemos": grid de tarjetas (referente Advantages)
+   Animación acorde: una línea tacha cada icono al entrar (gesto de "no")
+   ============================================================ */
+.nh-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,5vw,80px);
+  align-items:baseline;margin-bottom:clamp(30px,4vw,56px)}
+.nh-eyebrow{margin:0}
+.nh-title{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1.05;
+  font-size:clamp(2rem,1.3rem + 3vw,3.8rem);margin:0;max-width:18ch}
+.nh-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.nh-card{padding:clamp(28px,3vw,46px) clamp(20px,2.2vw,38px) clamp(30px,3.4vw,52px);
+  border-top:1px solid var(--line-soft)}
+.nh-card:not(:nth-child(3n+1)){border-left:1px solid var(--line-soft)}
+.nh-n{font-family:var(--mono);font-size:.76rem;letter-spacing:.18em;color:var(--dim-2)}
+.nh-ico{position:relative;display:grid;place-items:center;width:clamp(52px,5vw,64px);
+  height:clamp(52px,5vw,64px);border-radius:50%;background:var(--accent);color:var(--on-light);
+  margin:clamp(22px,2.6vw,34px) 0 clamp(20px,2.4vw,30px);
+  transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.nh-ico svg{width:46%;height:46%}
+.nh-card:hover .nh-ico{transform:scale(1.06)}
+/* línea de tachado: se traza en diagonal sobre el icono al revelarse */
+.nh-strike{position:absolute;left:50%;top:50%;width:136%;height:3px;border-radius:2px;
+  background:var(--on-light);transform:translate(-50%,-50%) rotate(-45deg) scaleX(0);
+  transform-origin:center}
+html.js .nh-strike{transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+.nh-card.in .nh-strike{transform:translate(-50%,-50%) rotate(-45deg) scaleX(1)}
+html:not(.js) .nh-strike{transform:translate(-50%,-50%) rotate(-45deg) scaleX(1)}
+.nh-t{font-family:var(--sans);font-weight:300;letter-spacing:-.015em;line-height:1.15;
+  font-size:clamp(1.35rem,1.05rem + 1vw,1.85rem);color:var(--text);margin:0}
+.nh-d{color:var(--dim);font-weight:300;line-height:1.6;font-size:var(--step-0);
+  margin:.9rem 0 0;max-width:34ch}
+/* cascada al revelar (tarjeta e icono) */
+.nh-grid .nh-card:nth-child(3n+2),.nh-grid .nh-card:nth-child(3n+2) .nh-strike{transition-delay:.09s}
+.nh-grid .nh-card:nth-child(3n),.nh-grid .nh-card:nth-child(3n) .nh-strike{transition-delay:.18s}
+@media (max-width:820px){
+  .nh-head{grid-template-columns:1fr;gap:14px}
+  .nh-grid{grid-template-columns:1fr}
+  .nh-card{border-left:0 !important}
+}
+@media (min-width:821px) and (max-width:1040px){
+  .nh-grid{grid-template-columns:1fr 1fr}
+  .nh-card:not(:nth-child(3n+1)){border-left:1px solid var(--line-soft)}
+  .nh-card:nth-child(2n+1){border-left:0}
+}
+
 .preview-flag{position:fixed;bottom:12px;left:12px;z-index:60;background:var(--panel-2);border:1px solid var(--line);color:var(--dim);font-family:var(--ui);font-size:12px;padding:6px 12px;border-radius:6px}
 </style>
 <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -1455,17 +1500,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
   </div>
 </div></section>
 
-<section class="section band">
-  <div class="container">
-    <h2>Lo que no hacemos</h2>
-    <ul class="negations">
-      <li>No prometemos recuperación ni desenlace judicial.</li>
-      <li>No aceptamos casos de las dos orillas en el mismo proceso.</li>
-      <li>No publicamos casos identificables ni cifras de damnificados.</li>
-      <li>No trabajamos captación masiva como una especialidad más de un portafolio general.</li>
-    </ul>
-  </div>
-</section>
+<section class="section band nh-sec"><div class="container"><div class="nh-head"><p class="eyebrow nh-eyebrow">Nuestros límites</p><h2 class="nh-title">Lo que <span class="pr-accent">no hacemos.</span></h2></div><div class="nh-grid"><div class="nh-card reveal-up"><span class="nh-n">/ 01</span><span class="nh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="3.4"/></svg><span class="nh-strike"></span></span><h3 class="nh-t">No prometemos resultados.</h3><p class="nh-d">No prometemos recuperación ni desenlace judicial: se promete rigor, criterio y trabajo, con los límites dichos en voz alta.</p></div><div class="nh-card reveal-up"><span class="nh-n">/ 02</span><span class="nh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8.5" cy="12" r="5"/><circle cx="15.5" cy="12" r="5"/></svg><span class="nh-strike"></span></span><h3 class="nh-t">No mezclamos las dos orillas.</h3><p class="nh-d">La defensa del investigado y la recuperación del afectado nunca se prestan dentro del mismo proceso de intervención.</p></div><div class="nh-card reveal-up"><span class="nh-n">/ 03</span><span class="nh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.6"/></svg><span class="nh-strike"></span></span><h3 class="nh-t">No exponemos casos.</h3><p class="nh-d">No publicamos casos identificables, testimonios ni cifras de damnificados. Escribimos sobre la figura, nunca sobre personas.</p></div><div class="nh-card reveal-up"><span class="nh-n">/ 04</span><span class="nh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 13.5l9 5 9-5"/></svg><span class="nh-strike"></span></span><h3 class="nh-t">No somos un portafolio general.</h3><p class="nh-d">No tratamos la captación masiva como una especialidad más entre muchas: es el único fenómeno sobre el que trabaja la firma.</p></div><div class="nh-card reveal-up"><span class="nh-n">/ 05</span><span class="nh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M6 20h12M5 8h14"/><path d="M5 8 2.6 13a2.9 2.9 0 0 0 4.8 0Z"/><path d="M19 8l-2.4 5a2.9 2.9 0 0 0 4.8 0Z"/></svg><span class="nh-strike"></span></span><h3 class="nh-t">No la litigamos como una estafa.</h3><p class="nh-d">No trabajamos la captación como si fuera una estafa agravada. Es una figura jurídica distinta, con vías y plazos propios.</p></div><div class="nh-card reveal-up"><span class="nh-n">/ 06</span><span class="nh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="3.5" width="13" height="17" rx="2.2"/><path d="M9 8.5h6M9 12h6M9 15.5h3.5"/></svg><span class="nh-strike"></span></span><h3 class="nh-t">No capturamos su caso en un formulario.</h3><p class="nh-d">El primer contacto no pide los hechos por escrito: se conversan. Los datos se tratan conforme a la Ley 1581 de 2012.</p></div></div></div></section>
 
 <section class="section band-2"><div class="container">
   <h2>El equipo</h2>
