@@ -398,41 +398,33 @@ def build(g):
     }, cumplimiento_body)
 
     # =====================================================================
-    # /analisis  (índice editorial)
+    # Blog / Análisis  (referente Orionix: fondo claro, serif editorial,
+    # tarjeta destacada dividida, filtros y grid de tarjetas)
     # =====================================================================
-    filtro = "".join(f'<span class="tag">{esc(t)}</span>' for t in TEMAS)
-    lista = ""
-    for a in ARTICLES:
-        lista += f'''<a href="/analisis/{a["slug"]}/">
-  <span class="tag">{esc(a["tema"])}</span>
-  <span><span class="t">{esc(a["h1"])}</span><span class="d">{esc(a["desc"])}</span></span>
-</a>'''
-    analisis_body = f'''
-{section(f"""
-  <p class="eyebrow">Análisis</p>
-  <h1>Análisis</h1>
-  <p class="support" style="max-width:60ch">Publicamos sobre las figuras jurídicas del fraude financiero: cómo se estructuran los esquemas, cómo se investigan, qué presunciones activan y qué vías abren. Escribimos sobre la figura, nunca sobre casos identificables.</p>
-""", cls="hero", tight=True)}
+    LOGO_SVG = g["LOGO_SVG"]
+    _GRAPHICS = [g["globe_svg"], g["wave_svg"], g["burst_svg"], g["convergence_svg"]]
 
-<section class="section band">
-  <div class="container">
-    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:1.4rem" aria-hidden="true">{filtro}</div>
-    <div class="editorial">{lista}</div>
-    <div class="cta-row" style="margin-top:2rem">
-      <a class="btn btn--ghost" href="/preguntas-frecuentes/">Preguntas frecuentes</a>
-    </div>
-  </div>
-</section>
-'''
-    add("/analisis/", {
-        "title": "Análisis · Veraly Grupo Jurídico",
-        "description": "Publicaciones sobre las figuras jurídicas del fraude financiero: estructura de los esquemas, presunciones y vías procesales.",
-        "active": "analisis",
-    }, analisis_body)
+    def art_media(i):
+        return _GRAPHICS[i % len(_GRAPHICS)]()
 
-    # =====================================================================
-    # /analisis/{articulo}
-    # =====================================================================
+    def read_min(html):
+        import re as _re
+        n = len(_re.sub(r"<[^>]+>", " ", html).split())
+        return max(2, round(n / 170))
+
+    def bcard(a, ridx):
+        return (
+            f'<a class="bcard reveal-up" href="/analisis/{a["slug"]}/" data-tema="{esc(a["tema"])}">'
+            f'<div class="bcard-head">'
+            f'<span class="bcard-date">{esc(a["date_disp"])}</span>'
+            f'<h3 class="bcard-title">{esc(a["title"])}</h3>'
+            f'<p class="bcard-desc">{esc(a["desc"])}</p>'
+            f'<span class="tag">{esc(a["tema"])}</span>'
+            f'</div>'
+            f'<div class="bcard-media">{art_media(ridx)}<span class="bcard-cta">Leer análisis</span></div>'
+            f'</a>')
+
+    # ---- Cuerpos de los artículos (necesarios para calcular el tiempo de lectura)
     ARTICLE_BODIES = {
         "diferencia-entre-estafa-y-captacion-masiva": """
     <h2>Por qué no son el mismo delito</h2>
@@ -467,27 +459,86 @@ def build(g):
     <p>Se construye hacia atrás, con documentos: contratos, controles internos, comunicaciones, decisiones registradas en su momento. Acreditar ese estándar es, con frecuencia, la diferencia entre quedar dentro o fuera del perímetro de la intervención, y es un trabajo que conviene empezar antes de que la vinculación se formalice.</p>
 """,
     }
+    READ_MIN = {a["slug"]: read_min(ARTICLE_BODIES[a["slug"]]) for a in ARTICLES}
+
+    # ---- Índice /analisis/ -------------------------------------------------
+    feat = ARTICLES[0]
+    featured = (
+        f'<a class="blog-feature reveal-up" href="/analisis/{feat["slug"]}/">'
+        f'<div class="bf-body">'
+        f'<span class="bcard-date">{esc(feat["date_disp"])}</span>'
+        f'<h2 class="bf-title">{esc(feat["title"])}</h2>'
+        f'<p class="bf-desc">{esc(feat["desc"])}</p>'
+        f'<span class="tag">{esc(feat["tema"])}</span>'
+        f'<div class="bf-foot"><span class="bf-by">Equipo editorial · Veraly</span>'
+        f'<span class="bf-read">{READ_MIN[feat["slug"]]} min de lectura</span></div>'
+        f'</div>'
+        f'<div class="bf-media">{art_media(0)}</div>'
+        f'</a>')
+
+    temas_present = [t for t in TEMAS if any(a["tema"] == t for a in ARTICLES)]
+    filtros = ('<button type="button" class="bfilter is-active" data-tema="">Todos</button>'
+               + "".join(f'<button type="button" class="bfilter" data-tema="{esc(t)}">{esc(t)}</button>'
+                         for t in temas_present))
+    grid_cards = "".join(bcard(a, i) for i, a in enumerate(ARTICLES[1:]))
+
+    analisis_body = f'''
+<section class="section section--tight blog-hero">
+  <div class="container">
+    <p class="eyebrow">Análisis</p>
+    <h1 class="blog-h1">Análisis, criterio<br>y perspectiva jurídica</h1>
+    <p class="blog-sub">Sobre las figuras del fraude financiero: cómo se estructuran los esquemas, qué presunciones activan y qué vías abren. Escribimos sobre la figura, nunca sobre casos identificables.</p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container">
+    {featured}
+    <div class="blog-filters" role="group" aria-label="Filtrar por tema">{filtros}</div>
+    <div class="blog-grid" data-blog-grid>{grid_cards}</div>
+  </div>
+</section>
+'''
+    add("/analisis/", {
+        "title": "Análisis · Veraly Grupo Jurídico",
+        "description": "Publicaciones sobre las figuras jurídicas del fraude financiero: estructura de los esquemas, presunciones y vías procesales.",
+        "active": "analisis", "body_class": "theme-light",
+    }, analisis_body)
+
+    # ---- Artículos /analisis/{slug} ---------------------------------------
     cta_labels = {
         "afectados": ("/afectados-por-captacion-masiva/", "Ver la ruta del afectado"),
         "defensa": ("/defensa-en-captacion-masiva/", "Ver la ruta de la defensa"),
         "cumplimiento": ("/cumplimiento-en-recaudo-masivo/", "Ver la ruta preventiva"),
     }
+    import urllib.parse as _url
     for a in ARTICLES:
         cta_url, cta_txt = cta_labels[a["cta_target"]]
         body_html = ARTICLE_BODIES[a["slug"]]
+        art_url = B + "/analisis/" + a["slug"] + "/"
+        share_ln = "https://www.linkedin.com/sharing/share-offsite/?url=" + _url.quote(art_url, safe="")
+        share_x = ("https://twitter.com/intent/tweet?text="
+                   + _url.quote(a["title"] + " — Veraly Grupo Jurídico", safe="")
+                   + "&url=" + _url.quote(art_url, safe=""))
+        related = [x for x in ARTICLES if x["slug"] != a["slug"]][:3]
+        rel_cards = "".join(bcard(x, i) for i, x in enumerate(related))
         art_body = f'''
 {crumbs([("Inicio", "/"), ("Análisis", "/analisis/"), (a["title"], None)])}
-<article class="section section--tight">
-  <div class="container article-head">
+<article class="blog-article">
+  <header class="container article-head">
     <p class="eyebrow">{esc(a["tema"])}</p>
-    <h1>{esc(a["h1"])}</h1>
-    <p class="article-answer">{esc(a["answer"])}</p>
-    <div class="article-meta">
-      <span>Publicado el 12 de agosto de 2026</span>
-      <span>Última revisión: 12 de agosto de 2026</span>
+    <h1 class="article-h1">{esc(a["h1"])}</h1>
+    <p class="article-lede">{esc(a["answer"])}</p>
+    <div class="article-byline">
+      <span class="brand-mark" aria-hidden="true">{LOGO_SVG}</span>
+      <span class="ab-name">Equipo editorial · Veraly Grupo Jurídico</span>
+      <span class="ab-sep" aria-hidden="true">·</span>
+      <time datetime="{a["date_iso"]}">{esc(a["date_disp"])}</time>
+      <span class="ab-sep" aria-hidden="true">·</span>
+      <span>{READ_MIN[a["slug"]]} min de lectura</span>
     </div>
-  </div>
-  <div class="container prose" style="margin-top:1.6rem">
+  </header>
+  <div class="container prose prose-serif article-col">
     {body_html}
     <div class="norm-block">
       <h2>Fundamento normativo</h2>
@@ -498,23 +549,33 @@ def build(g):
         <li>Sentencia C-145 de 2009 — presunciones y buena fe exenta de culpa.</li>
       </ul>
     </div>
-    <div class="byline">
-      <span class="brand-mark" aria-hidden="true" style="width:34px;height:34px;color:var(--accent);display:inline-block">{g["LOGO_SVG"]}</span>
-      <span>
-        <span class="b-name">Equipo editorial · Veraly Grupo Jurídico</span><br>
-        <span class="b-role">Preparado y revisado por las <a class="textlink" href="/equipo/">cinco prácticas del derecho</a> de la firma —constitucional, penal, corporativa, tributaria y laboral— especializadas en captación masiva y habitual. Contenido informativo con fundamento normativo verificable.</span>
-      </span>
+    <p class="article-authority">Preparado y revisado por las <a class="textlink" href="/equipo/">cinco prácticas del derecho</a> de la firma —constitucional, penal, corporativa, tributaria y laboral— especializadas en captación masiva y habitual. Contenido informativo con fundamento normativo verificable. Más respuestas en las <a class="textlink" href="/preguntas-frecuentes/">preguntas frecuentes</a>.</p>
+    <div class="share-row">
+      <span class="share-lead">¿Le resultó útil? Compártalo.</span>
+      <div class="share-links">
+        <a class="share-btn" href="{share_ln}" target="_blank" rel="noopener" aria-label="Compartir en LinkedIn">in</a>
+        <a class="share-btn" href="{share_x}" target="_blank" rel="noopener" aria-label="Compartir en X">X</a>
+        <button type="button" class="share-btn" data-share-copy="{esc(art_url)}" aria-label="Copiar enlace">↗</button>
+      </div>
     </div>
-    <p class="article-more">Más respuestas en las <a class="textlink" href="/preguntas-frecuentes/">preguntas frecuentes</a>.</p>
-    <p style="margin-top:1.4rem"><a class="arrowlink" href="{cta_url}">{esc(cta_txt)}</a></p>
   </div>
+  <section class="blog-related">
+    <div class="container">
+      <div class="related-head">
+        <p class="bfilter-pill"><span class="dot" aria-hidden="true"></span>Análisis recientes</p>
+        <a class="btn btn--ghost" href="/analisis/">Ver todos</a>
+      </div>
+      <h2 class="related-h2">También puede interesarle</h2>
+      <div class="blog-grid">{rel_cards}</div>
+    </div>
+  </section>
 </article>
 '''
         article_schema = {
             "@context": "https://schema.org", "@type": "Article",
             "headline": a["h1"],
             "description": a["desc"],
-            "datePublished": "2026-08-12", "dateModified": "2026-08-12",
+            "datePublished": a["date_iso"], "dateModified": a["date_iso"],
             "author": {"@type": "Organization", "name": "Equipo editorial · " + SITE["name"],
                        "url": B + "/equipo/",
                        "knowsAbout": ["Captación masiva y habitual", "Decreto 4334 de 2008",
@@ -529,7 +590,7 @@ def build(g):
         add("/analisis/" + a["slug"] + "/", {
             "title": f'{a["title"]} · Veraly',
             "description": a["desc"],
-            "active": "analisis", "og_type": "article",
+            "active": "analisis", "og_type": "article", "body_class": "theme-light",
             "schema": [article_schema, breadcrumb_schema([
                 ("Inicio", "/"), ("Análisis", "/analisis/"),
                 (a["title"], "/analisis/" + a["slug"] + "/")])],

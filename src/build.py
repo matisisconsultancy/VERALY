@@ -72,6 +72,7 @@ ARTICLES = [
     {
         "slug": "diferencia-entre-estafa-y-captacion-masiva",
         "tema": "El fenómeno", "perfil": "A · B", "author": "juan-david-naar",
+        "date_iso": "2026-08-12", "date_disp": "12 AGO 2026",
         "title": "Diferencia entre estafa y captación masiva",
         "h1": "¿Qué diferencia hay entre estafa y captación masiva?",
         "desc": "Estafa y captación masiva son delitos distintos: cambian el proceso, la defensa y la vía de recuperación. La captación activa además un trámite administrativo propio.",
@@ -81,6 +82,7 @@ ARTICLES = [
     {
         "slug": "captacion-con-libranzas-y-factoring",
         "tema": "El fenómeno", "perfil": "A · B · C", "author": "miguel-bayter",
+        "date_iso": "2026-07-28", "date_disp": "28 JUL 2026",
         "title": "Captación montada sobre contratos legales: libranzas y factoring",
         "h1": "¿Cuándo un esquema de libranzas o factoring se convierte en captación?",
         "desc": "Contratos legales como libranzas y factoring pueden configurar captación cuando superan los umbrales y el rendimiento carece de explicación financiera razonable.",
@@ -90,6 +92,7 @@ ARTICLES = [
     {
         "slug": "que-hace-la-superintendencia-de-sociedades",
         "tema": "La intervención", "perfil": "A", "author": "hermes-vergara",
+        "date_iso": "2026-07-10", "date_disp": "10 JUL 2026",
         "title": "Qué hace la Superintendencia de Sociedades con una captadora",
         "h1": "¿Qué hace la Superintendencia de Sociedades cuando interviene una captadora?",
         "desc": "La ruta administrativa del Decreto 4334 de 2008: toma de posesión, devolución de recursos y plazos, en paralelo al proceso penal.",
@@ -99,6 +102,7 @@ ARTICLES = [
     {
         "slug": "buena-fe-exenta-de-culpa-tercero-proveedor",
         "tema": "La defensa", "perfil": "B", "author": "juan-david-naar",
+        "date_iso": "2026-06-24", "date_disp": "24 JUN 2026",
         "title": "Buena fe exenta de culpa: el estándar del tercero proveedor",
         "h1": "¿Qué es la buena fe exenta de culpa en un proceso de captación?",
         "desc": "El estándar que puede excluir de la intervención a proveedores y terceros que actuaron de buena fe: qué exige y cómo se acredita.",
