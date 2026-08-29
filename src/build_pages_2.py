@@ -127,8 +127,8 @@ def build(g):
 <section class="section section-light">
   <div class="container">
     <p class="eyebrow-num"><span class="n">§</span>El método de convergencia</p>
-    <h2 class="pr-big">Cinco prácticas sobre <span class="pr-accent">el mismo expediente.</span></h2>
-    <p class="prac-sub">Lo habitual es asignar cada caso al socio de la especialidad correspondiente. En captación esa estructura falla, porque el caso no tiene una especialidad: tiene seis a la vez. Veraly opera al revés: los cinco socios trabajan el mismo expediente desde sus ramas, y el caso se construye en la intersección. Identificamos hechos, actores y rutas jurídicas.</p>
+    <h2 class="pr-big">Leemos cada expediente en <span class="pr-accent">hechos, actores y rutas.</span></h2>
+    <p class="prac-sub">Lo habitual es asignar el caso al socio de la especialidad correspondiente. En captación esa estructura falla: el caso no tiene una especialidad, tiene varias a la vez. Por eso las cinco prácticas trabajan el mismo expediente y el caso se construye en la intersección —a partir de tres lecturas.</p>
   </div>
   <div class="pr-timeline">{metodo_rows}</div>
 </section>
