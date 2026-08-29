@@ -649,28 +649,44 @@ def build(g):
         ("¿Atienden al afectado y al investigado en el mismo caso?",
          '<p>No. La defensa del investigado y la recuperación del afectado nunca se prestan dentro del mismo proceso de intervención. Cada consulta pasa por verificación previa de conflicto de interés antes de aceptarse.</p>'),
     ]
+    def faq_sticky(items):
+        rows = "".join(
+            f'<details class="faq-acc">'
+            f'<summary><span class="fa-n">{i:02d}</span>'
+            f'<span class="fa-q">{esc(q)}</span>'
+            f'<span class="fa-box" aria-hidden="true"></span></summary>'
+            f'<div class="fa-a">{a}</div></details>'
+            for i, (q, a) in enumerate(items, 1))
+        return (
+            '<section class="section faq-sticky-sec">'
+            '<div class="container faq-sticky-grid">'
+            '<div class="faq-sticky-l">'
+            '<p class="faq-pill"><span class="dot" aria-hidden="true"></span>Preguntas frecuentes</p>'
+            '<h2 class="faq-sticky-title">Las preguntas que <span class="pr-accent">más nos hacen.</span></h2>'
+            '</div>'
+            f'<div class="faq-sticky-r">{rows}</div>'
+            '</div></section>')
+
     faq_central_body = f'''
-{crumbs([("Inicio", "/"), ("Preguntas frecuentes", None)])}
 {section("""
   <p class="eyebrow">Preguntas frecuentes</p>
-  <h1>Preguntas frecuentes sobre captación masiva</h1>
-  <p class="support" style="max-width:60ch">Las dudas más frecuentes sobre el fraude financiero por captación —qué es, cómo se investiga, qué vías abre y qué se puede hacer—. Respuestas sobre la figura jurídica, nunca sobre casos identificables.</p>
-""", cls="hero", tight=True)}
+  <span class="prac-rule" aria-hidden="true"></span>
+  <h1 class="prac-h1">Preguntas frecuentes sobre captación masiva.</h1>
+  <p class="prac-sub">Las dudas más frecuentes sobre el fraude financiero por captación —qué es, cómo se investiga, qué vías abre y qué se puede hacer—. Respuestas sobre la figura jurídica, nunca sobre casos identificables.</p>
+""", cls="hero")}
 
-<section class="section band">
-  <div class="container" style="max-width:var(--readw,72ch)">
-    {faq_block(faq_central)}
-    <div class="cta-row" style="margin-top:2rem">
-      {agendar("Agendar una consulta")}
-      <a class="btn btn--ghost" href="/analisis/">Leer los análisis</a>
-    </div>
+{faq_sticky(faq_central)}
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta-row">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/analisis/">Leer los análisis</a></div>
   </div>
 </section>
 '''
     add("/preguntas-frecuentes/", {
         "title": "Preguntas frecuentes sobre captación masiva · Veraly",
         "description": "Respuestas claras sobre captación masiva y habitual: diferencia con la estafa, toma de posesión, vías de recuperación, vinculación y umbrales.",
-        "active": "",
+        "active": "", "body_class": "theme-light",
         "schema": [faq_schema(faq_central), breadcrumb_schema([
             ("Inicio", "/"), ("Preguntas frecuentes", "/preguntas-frecuentes/")])],
     }, faq_central_body)
