@@ -408,6 +408,22 @@
       var scale = (1 + 0.24 * t).toFixed(3); // la imagen "crece" con el scroll
       par.style.transform = 'translate3d(0,' + (rel * -9).toFixed(2) + '%,0) scale(' + scale + ')';
     });
+    // parallax más sutil para la imagen del timeline de normatividad
+    $$('.pr-tl-par').forEach(function (par) {
+      var m = par.parentNode.getBoundingClientRect();
+      var rel = Math.max(-1, Math.min(1, ((m.top + m.height / 2) - vh / 2) / vh));
+      var scale = (1 + 0.10 * ((1 - rel) / 2)).toFixed(3);
+      par.style.transform = 'translate3d(0,' + (rel * -6).toFixed(2) + '%,0) scale(' + scale + ')';
+    });
+    // fila activa (la centrada en pantalla) para la barra de acento
+    $$('.pr-timeline').forEach(function (tl) {
+      var rows = $$('.pr-tl-row', tl), best = null, bestD = 1e9, c = vh / 2;
+      rows.forEach(function (r) {
+        var b = r.getBoundingClientRect(), d = Math.abs((b.top + b.height / 2) - c);
+        if (d < bestD) { bestD = d; best = r; }
+      });
+      rows.forEach(function (r) { r.classList.toggle('active', r === best && bestD < vh * 0.5); });
+    });
   }
   function initFeatureRows() {
     var rows = $$('.frow').concat($$('.prac-rows')).concat($$('.pr-timeline'));

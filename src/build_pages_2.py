@@ -330,7 +330,7 @@ def build(g):
             media = _media_cycle[i % 2]()
             norm_rows += (f'<div class="pr-tl-row"><span class="pr-tl-label">{esc(n["ley"])}</span>'
                           f'<div class="pr-tl-body"><p class="pr-tl-desc">{esc(n["que"])}</p>{go}</div>'
-                          f'<div class="pr-tl-media">{media}</div></div>')
+                          f'<div class="pr-tl-media"><div class="pr-tl-par">{media}</div></div></div>')
         art = ""
         if pr["articulo"]:
             aslug, atitle = pr["articulo"]
