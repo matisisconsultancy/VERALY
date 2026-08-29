@@ -310,8 +310,9 @@ def build(g):
 {crumbs([("Inicio", "/"), ("El equipo", "/equipo/"), (pr["rama"], None)])}
 {section(f"""
   <p class="eyebrow">Una de las cinco prácticas</p>
-  <h1>{esc(pr["rama"])}</h1>
-  <p class="support" style="max-width:60ch">{esc(pr["lede"])}</p>
+  <span class="prac-rule" aria-hidden="true"></span>
+  <h1 class="prac-h1">{esc(pr["rama"])}</h1>
+  <p class="prac-sub">{esc(pr["lede"])}</p>
 """, cls="hero", tight=True)}
 
 {practica_nav(pr["slug"])}
