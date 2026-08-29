@@ -522,13 +522,25 @@ def build(g):
                    + "&url=" + _url.quote(art_url, safe=""))
         related = [x for x in ARTICLES if x["slug"] != a["slug"]][:3]
         rel_cards = "".join(bcard(x, i) for i, x in enumerate(related))
+        ai = ARTICLES.index(a)
+        NORMAS = [
+            ("Decreto 4334 de 2008", "Procedimiento de intervención por captación no autorizada."),
+            ("Decreto 1981 de 1988", "Umbrales objetivos de captación."),
+            ("Artículos 316 y 316A · Código Penal", "Captación masiva y habitual, y no reintegro."),
+            ("Sentencia C-145 de 2009", "Presunciones y buena fe exenta de culpa."),
+        ]
+        norm_rows = "".join(
+            f'<div class="norm-row"><span class="norm-k">{esc(k)}</span>'
+            f'<p class="norm-d">{esc(d)}</p></div>' for k, d in NORMAS)
         art_body = f'''
 {crumbs([("Inicio", "/"), ("Análisis", "/analisis/"), (a["title"], None)])}
 <article class="blog-article">
   <header class="container article-head">
-    <p class="eyebrow">{esc(a["tema"])}</p>
-    <h1 class="article-h1">{esc(a["h1"])}</h1>
-    <p class="article-lede">{esc(a["answer"])}</p>
+    <p class="article-kicker"><span class="dot" aria-hidden="true"></span>{esc(a["tema"])}</p>
+    <div class="article-head-row">
+      <h1 class="article-h1">{esc(a["h1"])}</h1>
+      <p class="article-lede">{esc(a["desc"])}</p>
+    </div>
     <div class="article-byline">
       <span class="brand-mark" aria-hidden="true">{LOGO_SVG}</span>
       <span class="ab-name">Equipo editorial · Veraly Grupo Jurídico</span>
@@ -538,17 +550,21 @@ def build(g):
       <span>{READ_MIN[a["slug"]]} min de lectura</span>
     </div>
   </header>
+  <div class="container article-hero-media"><div class="ahm-inner">{art_media(ai)}</div></div>
   <div class="container prose prose-article article-col">
+    <p class="article-intro">{esc(a["answer"])}</p>
     {body_html}
-    <div class="norm-block">
-      <h2>Fundamento normativo</h2>
-      <ul>
-        <li>Decreto 4334 de 2008 — procedimiento de intervención por captación no autorizada.</li>
-        <li>Decreto 1981 de 1988 — umbrales objetivos de captación.</li>
-        <li>Artículos 316 y 316A del Código Penal — captación masiva y habitual, y no reintegro.</li>
-        <li>Sentencia C-145 de 2009 — presunciones y buena fe exenta de culpa.</li>
-      </ul>
+  </div>
+  <section class="section norm-two-sec">
+    <div class="container pr-two">
+      <div class="pr-two-l">
+        <p class="eyebrow-num"><span class="n">§</span> Fundamento normativo</p>
+        <h2 class="pr-big pr-parallax">El marco que <span class="pr-accent">sostiene el análisis.</span></h2>
+      </div>
+      <div class="pr-two-r norm-flow">{norm_rows}</div>
     </div>
+  </section>
+  <div class="container article-col">
     <p class="article-authority">Preparado y revisado por las <a class="textlink" href="/equipo/">cinco prácticas del derecho</a> de la firma —constitucional, penal, corporativa, tributaria y laboral— especializadas en captación masiva y habitual. Contenido informativo con fundamento normativo verificable. Más respuestas en las <a class="textlink" href="/preguntas-frecuentes/">preguntas frecuentes</a>.</p>
     <div class="share-row">
       <span class="share-lead">¿Le resultó útil? Compártalo.</span>
