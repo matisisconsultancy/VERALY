@@ -166,7 +166,7 @@ def header_html(active=""):
         return f'''<a href="/firma/"{cur('firma')}>La firma</a>
         <a href="/equipo/"{cur('equipo')}>El equipo</a>
         <div class="has-sub">
-          <button type="button" aria-haspopup="true">Situaciones {ICON_CHEVRON}</button>
+          <button type="button" aria-haspopup="true">Soluciones {ICON_CHEVRON}</button>
           <ul class="submenu">{sub}</ul>
         </div>
         <a href="/analisis/"{cur('analisis')}>Análisis</a>'''
@@ -184,7 +184,7 @@ def header_html(active=""):
         <li><a href="/firma/"{cur('firma')}>La firma</a></li>
         <li><a href="/equipo/"{cur('equipo')}>El equipo</a></li>
         <li class="has-sub">
-          <button type="button" aria-haspopup="true">Situaciones {ICON_CHEVRON}</button>
+          <button type="button" aria-haspopup="true">Soluciones {ICON_CHEVRON}</button>
           <ul class="submenu">{sub}</ul>
         </li>
         <li><a href="/analisis/"{cur('analisis')}>Análisis</a></li>

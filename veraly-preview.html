@@ -648,9 +648,13 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   box-shadow:0 4px 10px rgba(12,31,28,.06),0 22px 46px rgba(12,31,28,.10)}
 .acard-label{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.68rem;color:var(--dim-2)}
 .acard-title{font-family:var(--display);font-weight:600;font-size:var(--step-2);line-height:1.16;
-  letter-spacing:-.01em;color:var(--text);transition:color .2s}
+  letter-spacing:-.01em;color:var(--text);transition:color .2s;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  min-height:calc(1.16em * 2)}
 .acard:hover .acard-title{color:var(--accent-ink)}
-.acard-desc{color:var(--dim);font-size:var(--step-0);line-height:1.5;margin:0}
+.acard-desc{color:var(--dim);font-size:var(--step-0);line-height:1.5;margin:0;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+  min-height:calc(1.5em * 3)}
 .acard-tag{margin-top:auto;margin-bottom:6px}
 .acard-media{position:relative;aspect-ratio:16/10;overflow:clip;border-radius:14px;
   border:1px solid var(--line-soft);background:radial-gradient(120% 100% at 60% 8%,#0a4a50,#04191b)}
@@ -1002,9 +1006,13 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .bcard:hover{transform:translateY(-4px);
   box-shadow:0 1px 2px rgba(12,31,28,.05),0 26px 60px -32px rgba(12,31,28,.4)}
 .bcard-head{display:flex;flex-direction:column;gap:12px}
-.bcard-title{font-family:var(--sans);font-weight:300;letter-spacing:-.015em;line-height:1.1;
-  font-size:clamp(1.4rem,1.1rem + 1vw,1.9rem);color:var(--text)}
-.bcard-desc{color:var(--dim);font-weight:300;font-size:var(--step-0);line-height:1.5}
+.bcard-title{font-family:var(--sans);font-weight:300;letter-spacing:-.015em;line-height:1.15;
+  font-size:clamp(1.4rem,1.1rem + 1vw,1.9rem);color:var(--text);
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+  min-height:calc(1.15em * 3)}
+.bcard-desc{color:var(--dim);font-weight:300;font-size:var(--step-0);line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+  min-height:calc(1.5em * 3)}
 .bcard-tag{margin-top:auto;margin-bottom:20px}
 .bcard-media{position:relative;border-radius:14px;overflow:hidden;
   aspect-ratio:16/10;background:linear-gradient(150deg,#0a4a50,#04191b)}
@@ -1129,7 +1137,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
       <nav class="nav-pill" aria-label="Navegación principal"><a href="#!/firma/">La firma</a>
         <a href="#!/equipo/">El equipo</a>
         <div class="has-sub">
-          <button type="button" aria-haspopup="true">Situaciones <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <button type="button" aria-haspopup="true">Soluciones <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
           <ul class="submenu"><li><a href="#!/afectados-por-captacion-masiva/" data-situacion="afectado">Perdí dinero en un esquema de captación<small>Vías administrativa, penal y civil, y los plazos que corren.</small></a></li><li><a href="#!/defensa-en-captacion-masiva/" data-situacion="investigado">Me investigan o me vincularon<small>Defensa en los tres frentes para investigados y vinculados.</small></a></li><li><a href="#!/cumplimiento-en-recaudo-masivo/" data-situacion="empresa">Mi empresa recauda de muchas personas<small>Revisión de encuadre frente a los umbrales de captación.</small></a></li></ul>
         </div>
         <a href="#!/analisis/">Análisis</a></nav>
@@ -1140,7 +1148,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
         <li><a href="#!/firma/">La firma</a></li>
         <li><a href="#!/equipo/">El equipo</a></li>
         <li class="has-sub">
-          <button type="button" aria-haspopup="true">Situaciones <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <button type="button" aria-haspopup="true">Soluciones <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
           <ul class="submenu"><li><a href="#!/afectados-por-captacion-masiva/" data-situacion="afectado">Perdí dinero en un esquema de captación<small>Vías administrativa, penal y civil, y los plazos que corren.</small></a></li><li><a href="#!/defensa-en-captacion-masiva/" data-situacion="investigado">Me investigan o me vincularon<small>Defensa en los tres frentes para investigados y vinculados.</small></a></li><li><a href="#!/cumplimiento-en-recaudo-masivo/" data-situacion="empresa">Mi empresa recauda de muchas personas<small>Revisión de encuadre frente a los umbrales de captación.</small></a></li></ul>
         </li>
         <li><a href="#!/analisis/">Análisis</a></li>
