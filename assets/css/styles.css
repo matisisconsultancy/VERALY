@@ -358,7 +358,7 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
 .pr-tl-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent-ink);
   transform:scaleY(0);transform-origin:center;transition:transform .3s ease;z-index:1}
 .pr-tl-row:hover{background:var(--panel-2)}
-.pr-tl-row:hover::before,.pr-tl-row.active::before{transform:scaleY(1)}
+.pr-tl-row:hover::before{transform:scaleY(1)}
 .pr-tl-label{font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;font-size:.76rem;
   color:var(--dim-2);line-height:1.45;display:flex;align-items:center;padding-left:var(--edge)}
 .pr-tl-body{display:flex;flex-direction:column;justify-content:center;gap:.9rem;padding-block:clamp(26px,3vw,44px)}
@@ -367,34 +367,32 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
   color:var(--accent-ink);white-space:nowrap;text-decoration:none;display:inline-flex;gap:.4em;align-items:center}
 .pr-tl-go i{font-style:normal;transition:transform .2s}
 .pr-tl-row:hover .pr-tl-go i{transform:translate(2px,-2px)}
+/* Imagen del timeline: gris por defecto; a color + zoom al pasar el cursor */
 .pr-tl-media{position:relative;min-height:clamp(200px,22vw,300px);overflow:clip;
-  background:radial-gradient(120% 100% at 60% 8%,#0a4a50,#04191b);border-left:1px solid var(--line)}
-.pr-tl-par{position:absolute;left:0;right:0;top:-8%;height:116%;will-change:transform}
+  background:radial-gradient(120% 100% at 60% 8%,#0a4a50,#04191b);border-left:1px solid var(--line);
+  filter:grayscale(1) contrast(1.02);transition:filter .5s ease}
+.pr-tl-row:hover .pr-tl-media,.pr-tl-row:focus-within .pr-tl-media{filter:grayscale(0)}
+.pr-tl-par{position:absolute;inset:0;transform:scale(1);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+/* al pasar el cursor, la imagen "cobra vida": zoom/paneo continuo (como un video) */
+.pr-tl-row:hover .pr-tl-par,.pr-tl-row:focus-within .pr-tl-par{animation:tl-ken 8s ease-out forwards}
+@keyframes tl-ken{from{transform:scale(1.05)}to{transform:scale(1.16) translate(-2%,-1.5%)}}
 .pr-tl-par .media-svg,.pr-tl-par>svg{position:absolute;inset:0;width:100%;height:100%}
 @media (max-width:720px){
   .pr-tl-row{grid-template-columns:1fr;gap:0;padding:26px var(--edge) 0;align-items:start}
   .pr-tl-label{padding-left:0}
   .pr-tl-body{padding-block:12px 18px}
-  .pr-tl-media{min-height:180px;border-left:0;border-radius:12px;margin-bottom:26px}
+  .pr-tl-media{min-height:180px;border-left:0;border-radius:12px;margin-bottom:26px;filter:none}
 }
-/* Animaciones de las cards del timeline (referente milestones):
-   texto entra con fade+slide, imagen se revela con barrido (clip) escalonado */
+/* entrada suave de las filas al hacer scroll */
 html.js .pr-timeline .pr-tl-row{opacity:0;transform:translateY(22px);
   transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1),background .22s ease}
 html.js .pr-timeline.in .pr-tl-row{opacity:1;transform:none}
-html.js .pr-tl-media{clip-path:inset(0 100% 0 0)}
-html.js .pr-timeline.in .pr-tl-row .pr-tl-media{clip-path:inset(0 0 0 0);
-  transition:clip-path 1s cubic-bezier(.2,.7,.2,1)}
 html.js .pr-timeline.in .pr-tl-row:nth-child(2){transition-delay:.08s}
 html.js .pr-timeline.in .pr-tl-row:nth-child(3){transition-delay:.16s}
 html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
-html.js .pr-timeline.in .pr-tl-row:nth-child(2) .pr-tl-media{transition-delay:.14s}
-html.js .pr-timeline.in .pr-tl-row:nth-child(3) .pr-tl-media{transition-delay:.22s}
-html.js .pr-timeline.in .pr-tl-row:nth-child(4) .pr-tl-media{transition-delay:.30s}
 @media (prefers-reduced-motion:reduce){
   html.js .pr-timeline .pr-tl-row{opacity:1;transform:none}
-  html.js .pr-tl-media{clip-path:none}
-  .pr-tl-par{top:0;height:100%;transform:none!important}
+  .pr-tl-par{transition:none}
 }
 
 /* ---------- Formulario ---------- */
