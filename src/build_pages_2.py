@@ -81,6 +81,17 @@ def build(g):
             f'<div class="nh-grid">{cards}</div>'
             '</div></section>')
 
+    # Filas numeradas de las cinco prácticas (mismo diagramado que el hub /equipo)
+    _prac_slugs = ["contractual-y-constitucional", "tributaria-y-migratoria",
+                   "corporativa-y-urbana", "penal-e-informatica", "laboral-y-de-seguros"]
+    firma_prac_rows = "".join(
+        f'<a class="prac-row" href="/equipo/{_prac_slugs[i]}/">'
+        f'<span class="pr-n">{i+1:02d}</span>'
+        f'<span class="pr-t">{esc(pr["rama"])}</span>'
+        f'<span class="pr-d">{esc(pr["aporte"])}</span>'
+        f'<span class="pr-go" aria-hidden="true">→</span></a>'
+        for i, pr in enumerate(PRACTICAS))
+
     firma_body = f'''
 {section("""
   <p class="eyebrow">La firma</p>
@@ -111,20 +122,14 @@ def build(g):
   </div>
 </section>
 
-<section class="section band">
+<section class="section section-light prac-rows-sec">
   <div class="container">
     <p class="eyebrow">El método de convergencia</p>
-    <h2>Cinco prácticas sobre el mismo expediente</h2>
-    <div class="prose" style="margin-top:1.2rem">
-      <p>Lo habitual es asignar cada caso al socio de la especialidad correspondiente. En captación esa estructura falla, porque el caso no tiene una especialidad: tiene seis a la vez. Veraly opera al revés: los cinco socios trabajan el mismo expediente desde sus ramas, y el caso se construye en la intersección.</p>
-      <h3>Identificamos hechos, actores y rutas jurídicas.</h3>
-    </div>
-    <ul class="method-list">
-      <li><strong>Hechos.</strong> Qué ocurrió, con qué documentos, en qué fechas y con qué trazabilidad financiera.</li>
-      <li><strong>Actores.</strong> Quién ocupó cada posición y qué consecuencia jurídica arrastra.</li>
-      <li><strong>Rutas.</strong> Qué vías están abiertas, cuáles precluyeron y en qué orden activarlas.</li>
-    </ul>
+    <span class="prac-rule" aria-hidden="true"></span>
+    <h2 class="prac-h1" style="max-width:18ch">Cinco prácticas sobre el mismo expediente.</h2>
+    <p class="prac-sub">Lo habitual es asignar cada caso al socio de la especialidad correspondiente. En captación esa estructura falla: el caso no tiene una especialidad, tiene varias a la vez. Veraly opera al revés —los cinco socios trabajan el mismo expediente desde sus ramas y el caso se construye en la intersección.</p>
   </div>
+  <div class="prac-rows" style="margin-top:clamp(34px,5vw,66px)">{firma_prac_rows}</div>
 </section>
 
 {g["marco_reveal"](
