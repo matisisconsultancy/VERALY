@@ -211,6 +211,7 @@ strong{font-weight:600;color:var(--text)}
 
 /* ---------- Hero ---------- */
 .hero{padding-block:calc(var(--head-h) + clamp(28px,6vh,64px)) clamp(52px,9vw,110px)}
+.hero--vh{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
 .hero h1{max-width:15ch}
 .hero .support{font-size:var(--step-1);color:var(--text);max-width:44ch;margin:1.4rem 0 0;font-family:var(--sans);font-weight:400;line-height:1.4}
 .hero .desc{max-width:58ch;color:var(--dim);margin:1.4rem 0 0}

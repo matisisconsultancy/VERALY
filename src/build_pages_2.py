@@ -87,7 +87,7 @@ def build(g):
   <span class="prac-rule" aria-hidden="true"></span>
   <h1 class="prac-h1" style="max-width:24ch">Una firma construida sobre un solo fenómeno jurídico.</h1>
   <p class="prac-sub">Veraly Grupo Jurídico entiende el fraude financiero en toda su complejidad. Defendemos a quien lo sufre —por haber perdido lo invertido o por estar bajo investigación— con la lectura completa que da un equipo trabajando el problema desde cada una de sus ramas.</p>
-""", cls="hero")}
+""", cls="hero hero--vh")}
 
 <section class="section section-light">
   <div class="container pr-two">
