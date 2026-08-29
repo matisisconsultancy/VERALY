@@ -1186,38 +1186,37 @@ html.js .reveal-up.in{opacity:1;transform:none}
   height:clamp(52px,5vw,64px);border-radius:50%;background:var(--accent);color:var(--on-light);
   margin:clamp(22px,2.6vw,34px) 0 clamp(20px,2.4vw,30px);
   transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.nh-card:hover .nh-ico{transform:scale(1.06)}
-/* Secuencia comunicativa al revelar la tarjeta:
-   (1) se ve el icono = la acción  ->  (2) el tachado la prohíbe  ->
-   (3) el icono se atenúa = acción anulada.
-   En hover el icono se re-ilumina para leer con claridad QUÉ no se hace. */
-.nh-ico svg{width:46%;height:46%;opacity:1;transition:opacity .4s ease}
-html.js .nh-card.in .nh-ico svg{opacity:.28;transition-delay:.66s}
-.nh-card:hover .nh-ico svg{opacity:1;transition-delay:0s}
-/* línea de tachado: se traza en diagonal sobre el icono, tras aparecer */
-.nh-strike{position:absolute;left:50%;top:50%;width:138%;height:3px;border-radius:2px;
-  background:var(--on-light);transform:translate(-50%,-50%) rotate(-45deg) scaleX(0);
-  transform-origin:center}
-html.js .nh-strike{transition:transform .5s cubic-bezier(.2,.7,.2,1);transition-delay:.24s}
-.nh-card.in .nh-strike{transform:translate(-50%,-50%) rotate(-45deg) scaleX(1)}
-html:not(.js) .nh-strike{transform:translate(-50%,-50%) rotate(-45deg) scaleX(1)}
-/* pulso del círculo justo cuando se produce el corte (refuerza el "no") */
-html.js .nh-card.in .nh-ico{animation:nh-cut-pulse .5s ease .24s}
-@keyframes nh-cut-pulse{0%,100%{transform:scale(1)}45%{transform:scale(.9)}}
+.nh-ico svg{width:46%;height:46%;opacity:1;transition:opacity .3s ease}
+/* Bloqueo evidente: dos líneas gruesas SE VAN TRAZANDO en X sobre el icono
+   al revelarse cada tarjeta (una tras otra), y el icono se apaga = acción
+   bloqueada. Al pasar el cursor, el bloqueo se intensifica (el icono
+   desaparece bajo la X). */
+.nh-strike,.nh-ico::after{content:"";position:absolute;left:50%;top:50%;
+  width:152%;height:4px;border-radius:3px;background:var(--on-light);
+  box-shadow:0 0 12px -2px rgba(5,41,44,.9);clip-path:inset(0 100% 0 0)}
+.nh-strike{transform:translate(-50%,-50%) rotate(-45deg)}
+.nh-ico::after{transform:translate(-50%,-50%) rotate(45deg)}
+html.js .nh-strike{transition:clip-path .38s cubic-bezier(.4,0,.2,1) .18s}
+html.js .nh-ico::after{transition:clip-path .38s cubic-bezier(.4,0,.2,1) .34s}
+html.js .nh-card.in .nh-strike,html.js .nh-card.in .nh-ico::after{clip-path:inset(0)}
+html:not(.js) .nh-strike,html:not(.js) .nh-ico::after{clip-path:inset(0)}
+html.js .nh-card.in .nh-ico svg{opacity:.24;transition-delay:.34s}
+.nh-card:hover .nh-ico{transform:scale(1.08)}
+.nh-card:hover .nh-ico svg{opacity:.05;transition-delay:0s}
+.nh-card:hover .nh-strike,.nh-card:hover .nh-ico::after{box-shadow:0 0 16px 0 rgba(5,41,44,1)}
 .nh-t{font-family:var(--sans);font-weight:300;letter-spacing:-.015em;line-height:1.15;
   font-size:clamp(1.35rem,1.05rem + 1vw,1.85rem);color:var(--text);margin:0}
 .nh-d{color:var(--dim);font-weight:300;line-height:1.6;font-size:var(--step-0);
   margin:.9rem 0 0;max-width:34ch}
-/* cascada al revelar: la secuencia arranca escalonada por columna */
+/* cascada por columna: las X van saliendo de izquierda a derecha */
 .nh-grid .nh-card:nth-child(3n+2){transition-delay:.09s}
 .nh-grid .nh-card:nth-child(3n){transition-delay:.18s}
-html.js .nh-grid .nh-card:nth-child(3n+2) .nh-strike{transition-delay:.36s}
-html.js .nh-grid .nh-card:nth-child(3n) .nh-strike{transition-delay:.48s}
-html.js .nh-grid .nh-card:nth-child(3n+2).in .nh-ico svg{transition-delay:.78s}
-html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico svg{transition-delay:.9s}
-html.js .nh-grid .nh-card:nth-child(3n+2).in .nh-ico{animation-delay:.36s}
-html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico{animation-delay:.48s}
-@media (prefers-reduced-motion:reduce){html.js .nh-card.in .nh-ico{animation:none}}
+html.js .nh-grid .nh-card:nth-child(3n+2).in .nh-strike{transition-delay:.34s}
+html.js .nh-grid .nh-card:nth-child(3n+2).in .nh-ico::after{transition-delay:.5s}
+html.js .nh-grid .nh-card:nth-child(3n+2).in .nh-ico svg{transition-delay:.5s}
+html.js .nh-grid .nh-card:nth-child(3n).in .nh-strike{transition-delay:.5s}
+html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico::after{transition-delay:.66s}
+html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico svg{transition-delay:.66s}
 @media (max-width:820px){
   .nh-head{grid-template-columns:1fr;gap:14px}
   .nh-grid{grid-template-columns:1fr}
