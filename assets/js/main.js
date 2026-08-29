@@ -489,7 +489,7 @@
       }, { threshold: 0.6 })
     : null;
   function initScramble() {
-    $$('.eyebrow, .eyebrow-num, .faq-pill, .bfilter-pill, .article-kicker').forEach(function (el) {
+    $$('.eyebrow, .eyebrow-num, .faq-pill, .bfilter-pill, .article-kicker, .pr-tl-label').forEach(function (el) {
       if (el.__scr) return; el.__scr = 1;
       if (scrIO) scrIO.observe(el); else scrambleText(el);
     });
