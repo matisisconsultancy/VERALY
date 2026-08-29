@@ -69,6 +69,8 @@ body.theme-light .nav-pill{background:rgba(12,31,28,.04);border-color:rgba(12,31
   --dim:rgba(12,31,28,.60);--dim-2:rgba(12,31,28,.42);--line:rgba(12,31,28,.13);
   --line-soft:rgba(12,31,28,.09);--grid-line:rgba(12,31,28,.05);--accent-ink:#0C8C79;
   background:#FFFFFF;color:var(--text)}
+/* en la isla clara, el tile del gráfico se mantiene oscuro para dar contraste */
+.section-light .frow .fr-media{background:radial-gradient(120% 120% at 30% 20%,#0a4a50,#04191b)}
 
 /* ---------- Reset ---------- */
 *,*::before,*::after{box-sizing:border-box}

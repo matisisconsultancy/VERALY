@@ -102,7 +102,7 @@ def build(g):
   </div>
 </section>
 
-<section class="section">
+<section class="section section-light">
   <div class="container">
     <p class="eyebrow">Las tres vías</p>
     <h2 style="max-width:22ch">Tres responsabilidades que corren al mismo tiempo</h2>
