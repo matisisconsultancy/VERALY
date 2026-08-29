@@ -261,14 +261,15 @@ def build(g):
     equipo_body = f'''
 {section("""
   <p class="eyebrow">Áreas de práctica</p>
+  <span class="prac-rule" aria-hidden="true"></span>
   <h1 class="prac-h1">Cinco prácticas al servicio de su defensa.</h1>
   <p class="prac-sub">Cada proceso por captación abre a la vez frentes administrativos, penales, civiles, societarios, tributarios y laborales. La firma los cubre con cinco prácticas que trabajan el mismo expediente.</p>
 """, cls="hero")}
 
-<section class="section">
+<section class="prac-rows-sec">
+  <div class="prac-rows">{prac_rows}</div>
   <div class="container">
-    <div class="prac-rows">{prac_rows}</div>
-    <div class="cta-row" style="margin-top:2.4rem">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabajamos</a></div>
+    <div class="cta-row" style="margin-top:clamp(40px,6vw,72px)">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabajamos</a></div>
   </div>
 </section>
 '''

@@ -51,24 +51,24 @@
   --gutter:clamp(20px,4vw,40px);
 }
 
-/* ---------- Tema claro Veraly (referente: diagramación en clave clara) ---------- */
+/* ---------- Tema claro Veraly (referente bgslaw: fondo blanco, tipografía fina) ---------- */
 body.theme-light{
-  --bg:#EEF4F2;          /* fondo teal muy claro */
-  --ink:#E4EDEA;         /* superficie alterna / footer (un tono más) */
+  --bg:#FFFFFF;          /* fondo blanco */
+  --ink:#F5F6F7;         /* superficie alterna / footer (gris muy claro) */
   --panel:#FFFFFF;       /* superficie / tarjeta */
-  --panel-2:#E7F1ED;     /* superficie elevada / realce de fila */
-  --text:#072925;        /* casi-negro teal */
-  --dim:rgba(7,41,37,.72);
-  --dim-2:rgba(7,41,37,.48);
-  --line:rgba(7,41,37,.16);
-  --line-soft:rgba(7,41,37,.10);
-  --grid-line:rgba(7,41,37,.06);
-  --accent-ink:#0B8271;  /* teal profundo: acento-texto legible sobre claro */
+  --panel-2:#F3F5F6;     /* realce de fila (gris muy claro, como el referente) */
+  --text:#0C1F1C;        /* casi-negro (leve tinte teal) */
+  --dim:rgba(12,31,28,.60);
+  --dim-2:rgba(12,31,28,.42);
+  --line:rgba(12,31,28,.13);
+  --line-soft:rgba(12,31,28,.09);
+  --grid-line:rgba(12,31,28,.05);
+  --accent-ink:#0C8C79;  /* teal: único detalle de color, legible sobre blanco */
   /* --accent (menta) y --on-light se mantienen: botones/pills rellenos */
 }
-/* Header legible sobre fondo claro */
-body.theme-light .site-header.floating{background:linear-gradient(180deg,rgba(238,244,242,.94),rgba(238,244,242,0))}
-body.theme-light .nav-pill{background:rgba(7,41,37,.045);border-color:rgba(7,41,37,.10)}
+/* Header legible sobre fondo blanco */
+body.theme-light .site-header.floating{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,0))}
+body.theme-light .nav-pill{background:rgba(12,31,28,.04);border-color:rgba(12,31,28,.10)}
 
 /* ---------- Reset ---------- */
 *,*::before,*::after{box-sizing:border-box}
@@ -295,26 +295,32 @@ strong{font-weight:600;color:var(--text)}
 @media (max-width:640px){.practica-nav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
   padding-bottom:6px;scrollbar-width:none}.practica-nav a{white-space:nowrap;flex:none}}
 
-/* Diagramación de las prácticas (referente: titular grande + filas numeradas) */
-.prac-h1{font-size:clamp(2.6rem,1.4rem + 4.6vw,5.2rem);line-height:1.02;letter-spacing:-.025em;max-width:15ch}
-.prac-sub{color:var(--dim);margin-top:clamp(18px,2.6vw,34px);max-width:52ch;font-size:var(--step-1);line-height:1.55}
-.prac-rows{border-top:1px solid var(--line-soft)}
-.prac-row{display:grid;grid-template-columns:56px minmax(0,1.5fr) minmax(0,1fr) 30px;
-  gap:clamp(14px,2.6vw,44px);align-items:center;padding:clamp(22px,3vw,42px) clamp(6px,1.4vw,20px);
-  border-bottom:1px solid var(--line-soft);text-decoration:none;color:inherit;
+/* Diagramación de las prácticas — réplica exacta del referente bgslaw:
+   fondo blanco, titulares finos, filas a todo el ancho, color como detalle. */
+.prac-rule{display:block;width:52px;height:2px;background:var(--accent-ink);margin:16px 0 0}
+.prac-h1{font-family:var(--sans);font-weight:300;font-size:clamp(2.6rem,1.2rem + 5.2vw,5.6rem);
+  line-height:1.03;letter-spacing:-.02em;max-width:16ch;margin-top:clamp(22px,3vw,40px)}
+.prac-sub{color:var(--dim);margin-top:clamp(20px,2.8vw,38px);max-width:52ch;
+  font-size:var(--step-1);font-weight:300;line-height:1.5}
+.prac-rows-sec{padding-bottom:clamp(56px,8vw,104px)}
+/* filas a todo el ancho del layout (full-bleed); el contenido respeta el margen */
+.prac-rows{border-top:1px solid var(--line)}
+.prac-row{display:grid;grid-template-columns:44px minmax(0,1fr) clamp(200px,26%,340px) 22px;
+  gap:clamp(20px,3.5vw,64px);align-items:center;
+  padding:clamp(26px,3.4vw,50px) var(--edge);
+  border-bottom:1px solid var(--line);text-decoration:none;color:inherit;
   transition:background .22s ease}
 .prac-row:hover,.prac-row:focus-visible{background:var(--panel-2)}
-.prac-row:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
-.prac-row .pr-n{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;color:var(--accent-ink);opacity:.85}
-.prac-row .pr-t{font-family:var(--serif);font-weight:700;line-height:1.08;letter-spacing:-.01em;
-  font-size:clamp(1.5rem,1rem + 1.9vw,2.5rem);color:var(--text);transition:color .2s}
-.prac-row:hover .pr-t,.prac-row:focus-visible .pr-t{color:var(--accent-ink)}
-.prac-row .pr-d{color:var(--dim);font-size:var(--step-0);line-height:1.5}
-.prac-row .pr-go{justify-self:end;color:var(--accent-ink);font-style:normal;font-size:1.25rem;
-  opacity:0;transform:translateX(-6px);transition:opacity .22s,transform .22s}
+.prac-row:focus-visible{outline:2px solid var(--accent-ink);outline-offset:-2px}
+.prac-row .pr-n{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;color:var(--dim-2)}
+.prac-row .pr-t{font-family:var(--sans);font-weight:300;line-height:1.05;letter-spacing:-.015em;
+  font-size:clamp(1.6rem,.9rem + 2.4vw,3rem);color:var(--text)}
+.prac-row .pr-d{color:var(--dim);font-size:var(--step-0);font-weight:300;line-height:1.5}
+.prac-row .pr-go{justify-self:end;color:var(--text);font-style:normal;font-size:1.3rem;
+  opacity:0;transform:translateX(-8px);transition:opacity .22s,transform .22s}
 .prac-row:hover .pr-go,.prac-row:focus-visible .pr-go{opacity:1;transform:none}
 @media (max-width:820px){
-  .prac-row{grid-template-columns:auto 1fr;column-gap:16px;row-gap:.7rem;padding:24px 4px}
+  .prac-row{grid-template-columns:auto 1fr;column-gap:18px;row-gap:.7rem;padding:26px var(--edge)}
   .prac-row .pr-n{grid-column:1;grid-row:1;align-self:center}
   .prac-row .pr-t{grid-column:2;grid-row:1}
   .prac-row .pr-d{grid-column:1 / -1;grid-row:2}
@@ -1102,13 +1108,13 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 <template data-route="/equipo/" data-title="El equipo · Las cinco prácticas · Veraly Grupo Jurídico" data-active="equipo" data-mobilebar="0">
 <section class="section hero"><div class="container">
   <p class="eyebrow">Áreas de práctica</p>
+  <span class="prac-rule" aria-hidden="true"></span>
   <h1 class="prac-h1">Cinco prácticas al servicio de su defensa.</h1>
   <p class="prac-sub">Cada proceso por captación abre a la vez frentes administrativos, penales, civiles, societarios, tributarios y laborales. La firma los cubre con cinco prácticas que trabajan el mismo expediente.</p>
 </div></section>
 
-<section class="section">
-  <div class="container">
-    <div class="prac-rows"><a class="prac-row" href="#!/equipo/contractual-y-constitucional/">
+<section class="prac-rows-sec">
+  <div class="prac-rows"><a class="prac-row" href="#!/equipo/contractual-y-constitucional/">
   <span class="pr-n">01</span>
   <span class="pr-t">Contractual y constitucional</span>
   <span class="pr-d">El debido proceso en un trámite de única instancia y el andamiaje contractual anterior a la toma de posesión.</span>
@@ -1134,7 +1140,8 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
   <span class="pr-d">Las reclamaciones laborales de la sociedad intervenida y la exposición de las pólizas y garantías del recaudo.</span>
   <span class="pr-go" aria-hidden="true">→</span>
 </a></div>
-    <div class="cta-row" style="margin-top:2.4rem"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/firma/">Cómo trabajamos</a></div>
+  <div class="container">
+    <div class="cta-row" style="margin-top:clamp(40px,6vw,72px)"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/firma/">Cómo trabajamos</a></div>
   </div>
 </section>
 </template>
