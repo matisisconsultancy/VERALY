@@ -90,10 +90,15 @@ def build(g):
 """, cls="hero")}
 
 <section class="section band">
-  <div class="container prose">
-    <h2>Qué es la captación masiva y habitual</h2>
-    <p>Consiste en recibir dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable (art. 6 del Decreto 4334 de 2008). Hay captación cuando el pasivo con el público supera los umbrales del Decreto 1981 de 1988 —más de veinte personas o más de cincuenta obligaciones, o mediación de ofertas masivas—.</p>
-    <p>Es un fenómeno denso y ruidoso, y por eso se litiga mal: la mayoría de los despachos lo trata como una estafa agravada. No lo es.</p>
+  <div class="container pr-two">
+    <div class="pr-two-l">
+      <p class="eyebrow-num"><span class="n">§</span>El fenómeno</p>
+      <h2 class="pr-big pr-parallax">Qué es la captación <span class="pr-accent">masiva y habitual.</span></h2>
+    </div>
+    <div class="pr-two-r">
+      <p>Consiste en recibir dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable (art. 6 del Decreto 4334 de 2008). Hay captación cuando el pasivo con el público supera los umbrales del Decreto 1981 de 1988 —más de veinte personas o más de cincuenta obligaciones, o mediación de ofertas masivas—.</p>
+      <p>Es un fenómeno denso y ruidoso, y por eso se litiga mal: la mayoría de los despachos lo trata como una estafa agravada. No lo es.</p>
+    </div>
   </div>
 </section>
 
