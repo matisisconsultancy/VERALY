@@ -10,6 +10,34 @@ def build(g):
     PRACTICAS = g["PRACTICAS"]; agendar = g["agendar_btn"]
     service_schema = g["service_schema"]
     faq_block = g["faq_block"]; faq_schema = g["faq_schema"]
+    globe = g["globe_svg"]; wave = g["wave_svg"]
+
+    # Info de cada situación para las tarjetas dentro de las páginas de práctica
+    SITU_INFO = {
+        "/afectados-por-captacion-masiva/": ("Afectado", "Recuperación",
+            "Vías administrativa, penal y civil, y los plazos que corren desde la toma de posesión.", globe),
+        "/defensa-en-captacion-masiva/": ("Investigado o vinculado", "Defensa",
+            "Defensa en los tres frentes para investigados, administradores, revisores y proveedores.", wave),
+        "/cumplimiento-en-recaudo-masivo/": ("Empresa", "Cumplimiento",
+            "Revisión de encuadre frente a los umbrales de captación antes de que la revise una superintendencia.", globe),
+    }
+    def situ_card(title, url):
+        label, pill, desc, media = SITU_INFO[url]
+        return (f'<a class="acard" href="{url}">'
+                f'<span class="acard-label">{esc(label)}</span>'
+                f'<h3 class="acard-title">{esc(title)}</h3>'
+                f'<p class="acard-desc">{esc(desc)}</p>'
+                f'<span class="acard-tag">{esc(pill)}</span>'
+                f'<div class="acard-media">{media()}</div></a>')
+
+    def faq_numbered(items):
+        rows = ""
+        for i, (q, a) in enumerate(items, 1):
+            rows += (f'<details class="fq-item"><summary>'
+                     f'<span class="fq-n">{i}</span><span class="fq-q">{esc(q)}</span>'
+                     f'<span class="fq-ic" aria-hidden="true"></span></summary>'
+                     f'<div class="fq-a">{a}</div></details>')
+        return f'<div class="fq-list">{rows}</div>'
 
     # =====================================================================
     # /firma
@@ -300,13 +328,11 @@ def build(g):
                   if n.get("url") else '<span></span>')
             norm_rows += (f'<div class="pr-tl-row"><span class="pr-tl-label">{esc(n["ley"])}</span>'
                           f'<div class="pr-tl-body">{esc(n["que"])}</div>{go}</div>')
-        serves_dash = "".join(
-            f'<li><a href="{u}">{esc(t)} →</a></li>' for t, u in pr["serves"])
         art = ""
         if pr["articulo"]:
             aslug, atitle = pr["articulo"]
             art = f'<p class="pr-more"><a class="arrowlink" href="/analisis/{aslug}/">Análisis · {esc(atitle)}</a></p>'
-        rama_low = pr["rama"][0].lower() + pr["rama"][1:]
+        situ_cards_html = "".join(situ_card(t, u) for t, u in pr["serves"])
         practica_body = f'''
 {crumbs([("Inicio", "/"), ("El equipo", "/equipo/"), (pr["rama"], None)])}
 {section(f"""
@@ -326,8 +352,6 @@ def build(g):
     </div>
     <div class="pr-two-r">
       {paras}
-      <p class="pr-list-h">A qué situación sirve</p>
-      <ul class="pr-list">{serves_dash}</ul>
       {art}
     </div>
   </div>
@@ -335,18 +359,30 @@ def build(g):
 
 <section class="section">
   <div class="container">
-    <p class="eyebrow-num"><span class="n">02</span>Normatividad asociada</p>
+    <p class="eyebrow-num"><span class="n">02</span>A qué situación sirve</p>
+    <h2 class="pr-big">Desde dónde entra <span class="pr-accent">su caso.</span></h2>
+    <div class="acards">{situ_cards_html}</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow-num"><span class="n">03</span>Normatividad asociada</p>
     <h2 class="pr-big">El marco que <span class="pr-accent">enmarca esta práctica.</span></h2>
   </div>
   <div class="pr-timeline">{norm_rows}</div>
 </section>
 
 <section class="section">
+  <div class="container faq-two">
+    <div class="faq-two-l">
+      <p class="faq-pill"><span class="dot" aria-hidden="true"></span>Preguntas</p>
+      <h2 class="pr-big">¿Dudas? <span class="pr-accent">Estamos para ayudar.</span></h2>
+    </div>
+    <div class="faq-two-r">{faq_numbered(pr["faqs"])}</div>
+  </div>
   <div class="container">
-    <p class="eyebrow">Preguntas frecuentes</p>
-    <h2 style="max-width:24ch">Sobre la práctica {esc(rama_low)}</h2>
-    <div style="max-width:var(--readw,72ch);margin-top:1.4rem">{faq_block(pr["faqs"])}</div>
-    <div class="cta-row" style="margin-top:2rem">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/equipo/">← Volver a las cinco prácticas</a></div>
+    <div class="cta-row" style="margin-top:clamp(36px,5vw,64px)">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/equipo/">← Volver a las cinco prácticas</a></div>
   </div>
 </section>
 '''

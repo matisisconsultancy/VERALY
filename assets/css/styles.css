@@ -613,26 +613,52 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .fcard:hover h3{color:var(--accent)}
 .fcard .fbody>p{color:var(--dim);margin:.55rem 0 0;font-size:var(--step-0)}
 
-/* Situaciones (referente: tarjetas tipo artículo — etiqueta, título, pill, imagen) */
-.acards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);margin-top:2.6rem;align-items:stretch}
-@media (max-width:900px){.acards{grid-template-columns:1fr}}
-.acard{display:flex;flex-direction:column;gap:14px;background:var(--panel);border:1px solid var(--line-soft);
-  border-radius:22px;padding:clamp(22px,2.4vw,32px);text-decoration:none;color:inherit;
-  transition:border-color .2s ease,transform .25s ease,background .2s ease}
-.acard:hover{border-color:var(--accent);background:var(--panel-2);transform:translateY(-4px)}
+/* Tarjetas tipo artículo (referente) — situaciones dentro de las páginas de práctica */
+.acards{display:flex;flex-wrap:wrap;gap:var(--gutter);margin-top:clamp(28px,3.4vw,48px)}
+.acard{flex:1 1 300px;max-width:460px;display:flex;flex-direction:column;gap:14px;
+  background:var(--panel);border:1px solid var(--line-soft);border-radius:22px;
+  padding:clamp(22px,2.4vw,30px);text-decoration:none;color:inherit;
+  box-shadow:0 1px 2px rgba(12,31,28,.04),0 14px 34px rgba(12,31,28,.06);
+  transition:border-color .2s ease,transform .25s ease,box-shadow .25s ease}
+.acard:hover{border-color:var(--accent-ink);transform:translateY(-4px);
+  box-shadow:0 4px 10px rgba(12,31,28,.06),0 22px 46px rgba(12,31,28,.10)}
 .acard-label{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.68rem;color:var(--dim-2)}
 .acard-title{font-family:var(--display);font-weight:600;font-size:var(--step-2);line-height:1.16;
   letter-spacing:-.01em;color:var(--text);transition:color .2s}
-.acard:hover .acard-title{color:var(--accent)}
+.acard:hover .acard-title{color:var(--accent-ink)}
 .acard-desc{color:var(--dim);font-size:var(--step-0);line-height:1.5;margin:0}
 .acard-tag{align-self:flex-start;font-family:var(--ui);font-size:.74rem;font-weight:600;color:var(--text);
   background:var(--panel-2);border:1px solid var(--line-soft);border-radius:999px;padding:.4em .95em}
-.acard:hover .acard-tag{background:var(--panel);border-color:var(--line)}
 .acard-media{margin-top:auto;position:relative;aspect-ratio:16/10;overflow:clip;border-radius:14px;
-  border:1px solid var(--line-soft);background:radial-gradient(120% 100% at 60% 8%,rgba(10,74,80,.6),var(--ink));
-  transition:border-color .2s}
-.acard:hover .acard-media{border-color:var(--accent)}
+  border:1px solid var(--line-soft);background:radial-gradient(120% 100% at 60% 8%,#0a4a50,#04191b)}
 .acard-media .media-svg,.acard-media>svg{position:absolute;inset:0;width:100%;height:100%}
+@media (max-width:900px){.acard{flex:1 1 100%;max-width:none}}
+
+/* FAQ a dos columnas, lista numerada con chevron circular (referente) */
+.faq-two{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(32px,6vw,96px);align-items:start}
+@media (max-width:860px){.faq-two{grid-template-columns:1fr;gap:24px}}
+.faq-pill{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);text-transform:uppercase;
+  letter-spacing:.16em;font-size:.7rem;color:var(--text);background:var(--panel-2);
+  border:1px solid var(--line-soft);border-radius:999px;padding:.5em 1.05em;margin:0 0 clamp(20px,2.4vw,32px)}
+.faq-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--accent-ink)}
+.faq-two-l .pr-big{max-width:14ch}
+.fq-list{border-top:1px solid var(--line)}
+.fq-item{border-bottom:1px solid var(--line)}
+.fq-item>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;
+  gap:clamp(14px,2vw,26px);align-items:center;padding:clamp(18px,2vw,26px) 0}
+.fq-item>summary::-webkit-details-marker{display:none}
+.fq-n{font-family:var(--sans);font-weight:300;font-size:var(--step-2);color:var(--dim-2);line-height:1;min-width:1.4ch}
+.fq-q{font-family:var(--sans);font-weight:500;font-size:var(--step-1);color:var(--text);transition:color .2s}
+.fq-item[open] .fq-q{color:var(--accent-ink)}
+.fq-ic{width:38px;height:38px;flex:none;border:1px solid var(--line);border-radius:50%;position:relative;
+  transition:background .2s,border-color .2s}
+.fq-ic::before{content:"";position:absolute;width:8px;height:8px;left:50%;top:45%;
+  border-right:1.6px solid var(--text);border-bottom:1.6px solid var(--text);
+  transform:translate(-50%,-50%) rotate(45deg);transition:transform .28s ease,border-color .2s}
+.fq-item[open] .fq-ic{background:var(--accent-ink);border-color:var(--accent-ink)}
+.fq-item[open] .fq-ic::before{transform:translate(-50%,-25%) rotate(225deg);border-color:#fff}
+.fq-a{padding:0 0 clamp(18px,2vw,28px);max-width:66ch;color:var(--dim);line-height:1.6}
+.fq-a p{margin:0}
 
 /* pill con flecha animada (CTA) */
 .pill-link{display:inline-flex;align-items:center;gap:.6em;font-family:var(--ui);font-weight:600;font-size:var(--step-0);
