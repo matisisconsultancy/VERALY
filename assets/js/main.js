@@ -408,10 +408,13 @@
       var scale = (1 + 0.24 * t).toFixed(3); // la imagen "crece" con el scroll
       par.style.transform = 'translate3d(0,' + (rel * -9).toFixed(2) + '%,0) scale(' + scale + ')';
     });
-    // parallax del título del banner de arriba
+    // parallax del título de la sección "Qué resuelve"
     if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
-      var y = Math.min(window.pageYOffset || 0, 700);
-      $$('.prac-h1').forEach(function (h) { h.style.transform = 'translateY(' + (y * -0.18).toFixed(1) + 'px)'; });
+      $$('.pr-parallax').forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        var rel = (r.top + r.height / 2) - vh / 2;
+        el.style.transform = 'translateY(' + (rel * -0.12).toFixed(1) + 'px)';
+      });
     }
   }
   function initFeatureRows() {

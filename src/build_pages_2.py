@@ -351,7 +351,7 @@ def build(g):
   <div class="container pr-two">
     <div class="pr-two-l">
       <p class="eyebrow-num"><span class="n">01</span>Qué resuelve</p>
-      <h2 class="pr-big">Qué resuelve esta práctica <span class="pr-accent">en un caso de captación.</span></h2>
+      <h2 class="pr-big pr-parallax">Qué resuelve esta práctica <span class="pr-accent">en un caso de captación.</span></h2>
     </div>
     <div class="pr-two-r">
       {paras}
