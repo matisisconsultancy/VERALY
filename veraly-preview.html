@@ -30,7 +30,6 @@
 
   --sans:'Archivo',-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --display:'Archivo',-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
   --ui:'Jost','Archivo',system-ui,sans-serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
 
@@ -940,9 +939,9 @@ html.js .reveal-up.in{opacity:1;transform:none}
 /* Hero del blog: centrado, serif de display */
 .blog-hero{text-align:center;padding-top:calc(var(--head-h) + clamp(28px,6vw,72px))}
 .blog-hero .eyebrow{justify-content:center}
-.blog-h1{font-family:var(--serif);font-weight:700;letter-spacing:-.012em;line-height:1.04;
+.blog-h1{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1.03;
   font-size:clamp(2.5rem,1.4rem + 4.4vw,5rem);margin:.5rem auto 0;max-width:16ch}
-.blog-sub{color:var(--dim);font-size:var(--step-1);line-height:1.5;
+.blog-sub{color:var(--dim);font-weight:300;font-size:var(--step-1);line-height:1.5;
   max-width:56ch;margin:1.4rem auto 0}
 
 /* Tag pill (categoría) */
@@ -963,16 +962,18 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .blog-feature:hover{transform:translateY(-3px);
   box-shadow:0 1px 2px rgba(12,31,28,.05),0 30px 70px -34px rgba(12,31,28,.4)}
 .bf-body{display:flex;flex-direction:column;gap:16px;padding:8px 4px}
-.bf-title{font-family:var(--serif);font-weight:700;letter-spacing:-.01em;line-height:1.06;
+.bf-title{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1.05;
   font-size:clamp(1.9rem,1.2rem + 2.4vw,3rem);color:var(--text)}
-.bf-desc{color:var(--dim);font-size:var(--step-1);line-height:1.5;max-width:38ch}
+.bf-desc{color:var(--dim);font-weight:300;font-size:var(--step-1);line-height:1.5;max-width:38ch}
 .bf-body .tag{align-self:flex-start}
 .bf-foot{margin-top:auto;padding-top:18px;display:flex;align-items:center;
   justify-content:space-between;gap:16px;border-top:1px solid var(--line-soft)}
-.bf-by{font-family:var(--serif);font-size:var(--step-0);color:var(--text)}
+.bf-by{font-family:var(--sans);font-weight:500;font-size:var(--step-0);color:var(--text)}
 .bf-media{position:relative;border-radius:16px;overflow:hidden;min-height:300px;
   background:linear-gradient(150deg,#0a4a50,#04191b)}
-.bf-media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bf-media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.blog-feature:hover .bf-media svg{transform:scale(1.06)}
 
 /* -------- Filtros -------- */
 .blog-filters{display:flex;flex-wrap:wrap;gap:8px;margin:clamp(30px,5vw,54px) 0 clamp(20px,3vw,30px)}
@@ -992,9 +993,9 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .bcard:hover{transform:translateY(-4px);
   box-shadow:0 1px 2px rgba(12,31,28,.05),0 26px 60px -32px rgba(12,31,28,.4)}
 .bcard-head{display:flex;flex-direction:column;gap:12px;padding-bottom:20px}
-.bcard-title{font-family:var(--serif);font-weight:700;letter-spacing:-.008em;line-height:1.1;
+.bcard-title{font-family:var(--sans);font-weight:300;letter-spacing:-.015em;line-height:1.1;
   font-size:clamp(1.4rem,1.1rem + 1vw,1.9rem);color:var(--text)}
-.bcard-desc{color:var(--dim);font-size:var(--step-0);line-height:1.5}
+.bcard-desc{color:var(--dim);font-weight:300;font-size:var(--step-0);line-height:1.5}
 .bcard-head .tag{align-self:flex-start;margin-top:2px}
 .bcard-media{position:relative;margin-top:auto;border-radius:14px;overflow:hidden;
   aspect-ratio:16/10;background:linear-gradient(150deg,#0a4a50,#04191b)}
@@ -1015,9 +1016,9 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .blog-article .article-head{text-align:center;max-width:52rem;margin:0 auto;
   padding-top:clamp(20px,4vw,40px)}
 .blog-article .article-head .eyebrow{justify-content:center}
-.article-h1{font-family:var(--serif);font-weight:700;letter-spacing:-.012em;line-height:1.06;
+.article-h1{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1.05;
   font-size:clamp(2.1rem,1.3rem + 3vw,3.6rem);margin:.6rem auto 0;max-width:20ch}
-.article-lede{color:var(--dim);font-size:var(--step-1);line-height:1.55;
+.article-lede{color:var(--dim);font-weight:300;font-size:var(--step-1);line-height:1.55;
   max-width:44ch;margin:1.3rem auto 0}
 .article-byline{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
   gap:10px;margin-top:1.8rem;font-family:var(--ui);font-size:var(--step--1);color:var(--dim-2)}
@@ -1029,17 +1030,17 @@ html.js .reveal-up.in{opacity:1;transform:none}
 /* Columna de lectura, tipografía serif en encabezados */
 .article-col{max-width:44rem;margin-left:auto;margin-right:auto;
   margin-top:clamp(34px,5vw,60px)}
-.prose-serif h2{font-family:var(--serif);font-weight:700;letter-spacing:-.006em;
+.prose-article h2{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;
   font-size:clamp(1.5rem,1.2rem + 1.1vw,2.05rem);line-height:1.15;margin:2.8rem 0 1rem}
-.prose-serif p,.prose-serif li{font-size:var(--step-1);line-height:1.7;color:var(--dim)}
-.prose-serif p strong{color:var(--text)}
+.prose-article p,.prose-article li{font-size:var(--step-1);line-height:1.7;color:var(--dim)}
+.prose-article p strong{color:var(--text)}
 .article-authority{color:var(--dim-2);font-size:var(--step--1);line-height:1.6;
   margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--line-soft)}
 
 /* Fila de compartir */
 .share-row{display:flex;align-items:center;justify-content:space-between;gap:16px;
   flex-wrap:wrap;margin-top:2.4rem;padding-top:1.6rem;border-top:1px solid var(--line-soft)}
-.share-lead{font-family:var(--serif);font-size:var(--step-1);color:var(--text)}
+.share-lead{font-family:var(--sans);font-weight:300;font-size:var(--step-1);color:var(--text)}
 .share-links{display:flex;gap:10px}
 .share-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;
   border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--text);
@@ -1056,7 +1057,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
   text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;color:var(--dim);
   background:var(--panel);border:1px solid var(--line-soft);border-radius:999px;padding:8px 16px}
 .bfilter-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--accent-ink)}
-.related-h2{font-family:var(--serif);font-weight:700;letter-spacing:-.01em;line-height:1.05;
+.related-h2{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1.05;
   font-size:clamp(2rem,1.3rem + 2.4vw,3.4rem);margin:1.1rem 0 clamp(28px,4vw,46px)}
 
 /* Responsive */
@@ -2132,7 +2133,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
       <span>2 min de lectura</span>
     </div>
   </header>
-  <div class="container prose prose-serif article-col">
+  <div class="container prose prose-article article-col">
     
     <h2>Por qué no son el mismo delito</h2>
     <p>La estafa (artículo 246 del Código Penal) exige un artificio o engaño que induce a error a una víctima determinada y le produce un perjuicio. La captación masiva y habitual (artículo 316) sanciona una conducta distinta: recibir dineros del público, de forma masiva y habitual, sin autorización estatal. No requiere probar el engaño individual: lo que se reprocha es la captación no autorizada en sí misma.</p>
@@ -2188,7 +2189,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
       <span>2 min de lectura</span>
     </div>
   </header>
-  <div class="container prose prose-serif article-col">
+  <div class="container prose prose-article article-col">
     
     <h2>Contratos legales, uso que puede no serlo</h2>
     <p>La libranza y el factoring son figuras contractuales lícitas. El problema no está en el contrato, sino en el esquema que se construye sobre él: cuando se usan para recibir dineros del público de forma masiva y habitual prometiendo un rendimiento, pueden configurar captación masiva y habitual no autorizada.</p>
@@ -2244,7 +2245,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
       <span>2 min de lectura</span>
     </div>
   </header>
-  <div class="container prose prose-serif article-col">
+  <div class="container prose prose-article article-col">
     
     <h2>La toma de posesión</h2>
     <p>Ante indicios de captación no autorizada, la Superintendencia de Sociedades puede ordenar la toma de posesión de los bienes, haberes y negocios de la persona o entidad. La medida trae nombramiento de agente interventor, remoción de administradores, congelación de activos y suspensión de las ejecuciones en curso.</p>
@@ -2300,7 +2301,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
       <span>2 min de lectura</span>
     </div>
   </header>
-  <div class="container prose prose-serif article-col">
+  <div class="container prose prose-article article-col">
     
     <h2>De dónde viene el estándar</h2>
     <p>El artículo 5 del Decreto 4334 de 2008 extiende la intervención a un perímetro amplio de vinculados. La Sentencia C-145 de 2009 lo condicionó: la intervención no puede alcanzar a terceros proveedores que hayan procedido de buena fe exenta de culpa en el ámbito de sus actividades lícitas ordinarias.</p>

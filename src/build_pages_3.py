@@ -538,7 +538,7 @@ def build(g):
       <span>{READ_MIN[a["slug"]]} min de lectura</span>
     </div>
   </header>
-  <div class="container prose prose-serif article-col">
+  <div class="container prose prose-article article-col">
     {body_html}
     <div class="norm-block">
       <h2>Fundamento normativo</h2>
