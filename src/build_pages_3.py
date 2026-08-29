@@ -419,8 +419,8 @@ def build(g):
             f'<span class="bcard-date">{esc(a["date_disp"])}</span>'
             f'<h3 class="bcard-title">{esc(a["title"])}</h3>'
             f'<p class="bcard-desc">{esc(a["desc"])}</p>'
-            f'<span class="tag">{esc(a["tema"])}</span>'
             f'</div>'
+            f'<span class="tag bcard-tag">{esc(a["tema"])}</span>'
             f'<div class="bcard-media">{art_media(ridx)}<span class="bcard-cta">Leer análisis</span></div>'
             f'</a>')
 
@@ -550,7 +550,7 @@ def build(g):
       <span>{READ_MIN[a["slug"]]} min de lectura</span>
     </div>
   </header>
-  <div class="container article-hero-media"><div class="ahm-inner">{art_media(ai)}</div></div>
+  <div class="article-hero-media"><div class="ahm-inner">{art_media(ai)}</div></div>
   <div class="container prose prose-article article-col">
     <p class="article-intro">{esc(a["answer"])}</p>
     {body_html}
@@ -565,13 +565,21 @@ def build(g):
     </div>
   </section>
   <div class="container article-col">
-    <p class="article-authority">Preparado y revisado por las <a class="textlink" href="/equipo/">cinco prácticas del derecho</a> de la firma —constitucional, penal, corporativa, tributaria y laboral— especializadas en captación masiva y habitual. Contenido informativo con fundamento normativo verificable. Más respuestas en las <a class="textlink" href="/preguntas-frecuentes/">preguntas frecuentes</a>.</p>
-    <div class="share-row">
-      <span class="share-lead">¿Le resultó útil? Compártalo.</span>
-      <div class="share-links">
-        <a class="share-btn" href="{share_ln}" target="_blank" rel="noopener" aria-label="Compartir en LinkedIn">in</a>
-        <a class="share-btn" href="{share_x}" target="_blank" rel="noopener" aria-label="Compartir en X">X</a>
-        <button type="button" class="share-btn" data-share-copy="{esc(art_url)}" aria-label="Copiar enlace">↗</button>
+    <div class="article-end">
+      <div class="article-byline-card">
+        <span class="brand-mark" aria-hidden="true">{LOGO_SVG}</span>
+        <div>
+          <p class="abc-role">Preparado y revisado por la firma</p>
+          <p class="abc-text">Las <a class="textlink" href="/equipo/">cinco prácticas del derecho</a> —constitucional, penal, corporativa, tributaria y laboral— especializadas en captación masiva y habitual. Contenido informativo con fundamento normativo verificable. Más respuestas en las <a class="textlink" href="/preguntas-frecuentes/">preguntas frecuentes</a>.</p>
+        </div>
+      </div>
+      <div class="share-row">
+        <span class="share-lead">¿Le resultó útil? Compártalo.</span>
+        <div class="share-links">
+          <a class="share-btn" href="{share_ln}" target="_blank" rel="noopener" aria-label="Compartir en LinkedIn">in</a>
+          <a class="share-btn" href="{share_x}" target="_blank" rel="noopener" aria-label="Compartir en X">X</a>
+          <button type="button" class="share-btn" data-share-copy="{esc(art_url)}" aria-label="Copiar enlace">↗</button>
+        </div>
       </div>
     </div>
   </div>

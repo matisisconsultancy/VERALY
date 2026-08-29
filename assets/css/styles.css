@@ -644,9 +644,8 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   letter-spacing:-.01em;color:var(--text);transition:color .2s}
 .acard:hover .acard-title{color:var(--accent-ink)}
 .acard-desc{color:var(--dim);font-size:var(--step-0);line-height:1.5;margin:0}
-.acard-tag{align-self:flex-start;font-family:var(--ui);font-size:.74rem;font-weight:600;color:var(--text);
-  background:var(--panel-2);border:1px solid var(--line-soft);border-radius:999px;padding:.4em .95em}
-.acard-media{margin-top:auto;position:relative;aspect-ratio:16/10;overflow:clip;border-radius:14px;
+.acard-tag{margin-top:auto;margin-bottom:6px}
+.acard-media{position:relative;aspect-ratio:16/10;overflow:clip;border-radius:14px;
   border:1px solid var(--line-soft);background:radial-gradient(120% 100% at 60% 8%,#0a4a50,#04191b)}
 .acard-media .media-svg,.acard-media>svg{position:absolute;inset:0;width:100%;height:100%}
 @media (max-width:900px){.acard{flex:1 1 100%;max-width:none}}
@@ -938,9 +937,19 @@ html.js .reveal-up.in{opacity:1;transform:none}
   max-width:56ch;margin:1.4rem auto 0}
 
 /* Tag pill (categoría) */
-.bcard .tag,.bf-body .tag{display:inline-block;font-family:var(--ui);font-weight:600;
-  font-size:var(--step--1);color:var(--text);background:var(--panel-2);
-  border:1px solid var(--line-soft);border-radius:999px;padding:6px 14px;white-space:nowrap}
+/* Pill de categoría (compartida por todas las cards con pill) + barrido teal en hover */
+.bcard .tag,.bf-body .tag,.acard-tag{display:inline-block;align-self:flex-start;
+  font-family:var(--ui);font-weight:600;font-size:var(--step--1);color:var(--text);
+  border:1px solid var(--line-soft);border-radius:999px;padding:6px 14px;white-space:nowrap;
+  background-image:linear-gradient(90deg,var(--accent-ink) 0 50%,var(--panel-2) 50% 100%);
+  background-size:200% 100%;background-position:100% 0;background-repeat:no-repeat;
+  transition:background-position .5s cubic-bezier(.2,.7,.2,1),color .32s ease,
+    border-color .32s ease,transform .32s cubic-bezier(.2,.7,.2,1)}
+.bcard:hover .tag,.blog-feature:hover .tag,.acard:hover .acard-tag{
+  background-position:0 0;color:#fff;border-color:var(--accent-ink);transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){
+  .bcard .tag,.bf-body .tag,.acard-tag{transition:color .2s ease,border-color .2s ease}
+  .bcard:hover .tag,.blog-feature:hover .tag,.acard:hover .acard-tag{transform:none}}
 
 /* Fecha / metadatos en mono */
 .bcard-date,.bf-read{font-family:var(--mono);text-transform:uppercase;
@@ -985,12 +994,12 @@ html.js .reveal-up.in{opacity:1;transform:none}
   transition:box-shadow .4s ease,transform .4s cubic-bezier(.2,.7,.2,1)}
 .bcard:hover{transform:translateY(-4px);
   box-shadow:0 1px 2px rgba(12,31,28,.05),0 26px 60px -32px rgba(12,31,28,.4)}
-.bcard-head{display:flex;flex-direction:column;gap:12px;padding-bottom:20px}
+.bcard-head{display:flex;flex-direction:column;gap:12px}
 .bcard-title{font-family:var(--sans);font-weight:300;letter-spacing:-.015em;line-height:1.1;
   font-size:clamp(1.4rem,1.1rem + 1vw,1.9rem);color:var(--text)}
 .bcard-desc{color:var(--dim);font-weight:300;font-size:var(--step-0);line-height:1.5}
-.bcard-head .tag{align-self:flex-start;margin-top:2px}
-.bcard-media{position:relative;margin-top:auto;border-radius:14px;overflow:hidden;
+.bcard-tag{margin-top:auto;margin-bottom:20px}
+.bcard-media{position:relative;border-radius:14px;overflow:hidden;
   aspect-ratio:16/10;background:linear-gradient(150deg,#0a4a50,#04191b)}
 .bcard-media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   transition:transform .6s cubic-bezier(.2,.7,.2,1)}
@@ -1029,9 +1038,8 @@ html.js .reveal-up.in{opacity:1;transform:none}
   .article-lede{align-self:start}
 }
 
-/* Imagen hero a todo el ancho del viewport (full-bleed) */
-.article-hero-media{margin-top:clamp(30px,4vw,56px);width:100vw;position:relative;
-  left:50%;right:50%;margin-left:-50vw;margin-right:-50vw}
+/* Imagen hero a todo el ancho del viewport */
+.article-hero-media{margin-top:clamp(30px,4vw,56px);width:100%}
 .ahm-inner{position:relative;overflow:hidden;height:clamp(300px,42vw,600px);
   background:linear-gradient(150deg,#0a4a50,#04191b)}
 .ahm-inner svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
@@ -1064,12 +1072,19 @@ html.js .reveal-up.in{opacity:1;transform:none}
   font-size:clamp(1.5rem,1.2rem + 1.1vw,2.05rem);line-height:1.15;margin:2.8rem 0 1rem}
 .prose-article p,.prose-article li{font-size:var(--step-1);line-height:1.7;color:var(--dim)}
 .prose-article p strong{color:var(--text)}
-.article-authority{color:var(--dim-2);font-size:var(--step--1);line-height:1.6;
-  margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--line-soft)}
+/* Tarjeta de cierre: autoría + compartir agrupadas (integradas, no sueltas) */
+.article-end{margin-top:clamp(36px,5vw,64px);background:var(--ink);
+  border:1px solid var(--line-soft);border-radius:20px;padding:clamp(24px,3.2vw,40px)}
+.article-byline-card{display:flex;gap:16px;align-items:flex-start}
+.article-byline-card .brand-mark{width:36px;height:36px;flex:none;color:var(--accent-ink);
+  display:inline-block;margin-top:2px}
+.abc-role{margin:0 0 .35rem;font-family:var(--ui);font-weight:600;font-size:var(--step-0);color:var(--text)}
+.abc-text{margin:0;color:var(--dim);font-size:var(--step--1);line-height:1.6}
 
-/* Fila de compartir */
+/* Fila de compartir (dentro de la tarjeta de cierre) */
 .share-row{display:flex;align-items:center;justify-content:space-between;gap:16px;
-  flex-wrap:wrap;margin-top:2.4rem;padding-top:1.6rem;border-top:1px solid var(--line-soft)}
+  flex-wrap:wrap;margin-top:clamp(22px,2.6vw,30px);padding-top:clamp(22px,2.6vw,30px);
+  border-top:1px solid var(--line)}
 .share-lead{font-family:var(--sans);font-weight:300;font-size:var(--step-1);color:var(--text)}
 .share-links{display:flex;gap:10px}
 .share-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;
