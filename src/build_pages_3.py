@@ -421,7 +421,7 @@ def build(g):
             f'<p class="bcard-desc">{esc(a["desc"])}</p>'
             f'</div>'
             f'<span class="tag bcard-tag">{esc(a["tema"])}</span>'
-            f'<div class="bcard-media">{art_media(ridx)}<span class="bcard-cta">Leer análisis</span></div>'
+            f'<div class="bcard-media">{art_media(ridx)}</div>'
             f'</a>')
 
     # ---- Cuerpos de los artículos (necesarios para calcular el tiempo de lectura)

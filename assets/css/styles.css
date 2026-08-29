@@ -1004,12 +1004,6 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .bcard-media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .bcard:hover .bcard-media svg{transform:scale(1.06)}
-.bcard-cta{position:absolute;top:50%;left:50%;transform:translate(-50%,-46%);
-  font-family:var(--ui);font-weight:600;font-size:var(--step--1);color:var(--text);
-  background:rgba(255,255,255,.94);border-radius:999px;padding:9px 18px;
-  opacity:0;transition:opacity .3s ease,transform .3s ease;pointer-events:none;
-  box-shadow:0 10px 30px -12px rgba(0,0,0,.4)}
-.bcard:hover .bcard-cta{opacity:1;transform:translate(-50%,-50%)}
 
 /* ============================================================
    Artículo del blog
