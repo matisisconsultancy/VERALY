@@ -81,17 +81,17 @@ def build(g):
             f'<div class="nh-grid">{cards}</div>'
             '</div></section>')
 
-    # Método (hechos, actores, rutas) con el diagramado de filas numeradas del hub
+    # Método (hechos, actores, rutas) con el diagramado del timeline "El marco"
     _metodo = [
         ("Hechos", "Qué ocurrió, con qué documentos, en qué fechas y con qué trazabilidad financiera."),
         ("Actores", "Quién ocupó cada posición y qué consecuencia jurídica arrastra."),
         ("Rutas", "Qué vías están abiertas, cuáles precluyeron y en qué orden activarlas."),
     ]
+    _metodo_media = [globe, wave]
     metodo_rows = "".join(
-        f'<div class="prac-row prac-row--static">'
-        f'<span class="pr-n">{i+1:02d}</span>'
-        f'<span class="pr-t">{esc(t)}</span>'
-        f'<span class="pr-d">{esc(d)}</span></div>'
+        f'<div class="pr-tl-row"><span class="pr-tl-label">{esc(t)}</span>'
+        f'<div class="pr-tl-body"><p class="pr-tl-desc">{esc(d)}</p></div>'
+        f'<div class="pr-tl-media"><div class="pr-tl-par">{_metodo_media[i % 2]()}</div></div></div>'
         for i, (t, d) in enumerate(_metodo))
 
     firma_body = f'''
@@ -124,14 +124,13 @@ def build(g):
   </div>
 </section>
 
-<section class="section section-light prac-rows-sec">
+<section class="section section-light">
   <div class="container">
-    <p class="eyebrow">El método de convergencia</p>
-    <span class="prac-rule" aria-hidden="true"></span>
-    <h2 class="prac-h1" style="max-width:18ch">Cinco prácticas sobre el mismo expediente.</h2>
+    <p class="eyebrow-num"><span class="n">§</span>El método de convergencia</p>
+    <h2 class="pr-big">Cinco prácticas sobre <span class="pr-accent">el mismo expediente.</span></h2>
     <p class="prac-sub">Lo habitual es asignar cada caso al socio de la especialidad correspondiente. En captación esa estructura falla, porque el caso no tiene una especialidad: tiene seis a la vez. Veraly opera al revés: los cinco socios trabajan el mismo expediente desde sus ramas, y el caso se construye en la intersección. Identificamos hechos, actores y rutas jurídicas.</p>
   </div>
-  <div class="prac-rows" style="margin-top:clamp(34px,5vw,66px)">{metodo_rows}</div>
+  <div class="pr-timeline">{metodo_rows}</div>
 </section>
 
 {g["marco_reveal"](

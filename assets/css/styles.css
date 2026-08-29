@@ -314,8 +314,6 @@ strong{font-weight:600;color:var(--text)}
   border-bottom:1px solid var(--line);text-decoration:none;color:inherit;
   transition:background .22s ease}
 .prac-row:hover,.prac-row:focus-visible{background:var(--panel-2)}
-.prac-row--static{cursor:default}
-.prac-row--static:hover{background:transparent}
 .prac-row:focus-visible{outline:2px solid var(--accent-ink);outline-offset:-2px}
 .prac-row .pr-n{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;color:var(--dim-2)}
 .prac-row .pr-t{font-family:var(--sans);font-weight:300;line-height:1.05;letter-spacing:-.015em;
