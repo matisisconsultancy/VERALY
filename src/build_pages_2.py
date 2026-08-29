@@ -131,8 +131,8 @@ def build(g):
     eyebrow="Las dos líneas y la regla",
     phrases=[
         "Defendemos las dos orillas. || Nunca en el mismo proceso.",
-        "La defensa del investigado y la recuperación del afectado no se prestan dentro de una misma intervención.",
-        "Cada consulta pasa por verificación previa de conflicto antes de aceptarse.",
+        "La defensa y la recuperación || no caben en una misma intervención.",
+        "Cada consulta pasa por || verificación previa de conflicto.",
     ],
     cards=[],
     section_id="dos-lineas",
