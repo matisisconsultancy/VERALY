@@ -384,9 +384,6 @@ def build(g):
     </div>
     <div class="faq-two-r">{faq_numbered(pr["faqs"])}</div>
   </div>
-  <div class="container">
-    <div class="cta-row" style="margin-top:clamp(36px,5vw,64px)">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/equipo/">← Volver a las cinco prácticas</a></div>
-  </div>
 </section>
 '''
         add(url, {
