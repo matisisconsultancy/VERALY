@@ -97,16 +97,14 @@ def build(g):
   </div>
 </section>
 
-{section("""
-  <h2>Tres responsabilidades que corren al mismo tiempo</h2>
-  <div class="prose" style="margin-top:1.2rem">
-    <p>Una misma conducta detona, de forma simultánea e independiente, tres procesos. No son fases: son frentes paralelos, y cada uno condiciona a los otros dos.</p>
-    <p><strong>Administrativa.</strong> Procedimiento del Decreto 4334 de 2008 ante la Superintendencia de Sociedades. La toma de posesión tiene efectos de cosa juzgada frente a todos y es de única instancia.</p>
-    <p><strong>Penal.</strong> Artículo 316 del Código Penal (prisión de 120 a 240 meses) y tipo autónomo de no reintegro del 316A, a los que suelen sumarse estafa agravada, lavado de activos y concierto para delinquir.</p>
-    <p><strong>Civil.</strong> Persigue el patrimonio personal de administradores, revisores fiscales, contadores y vinculados solventes por el faltante que la masa no cubre.</p>
-    <p>Un despacho que atiende solo una de las tres vías trabaja un tercio del problema.</p>
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">Las tres vías</p>
+    <h2 style="max-width:22ch">Tres responsabilidades que corren al mismo tiempo</h2>
+    <p class="lead" style="margin-top:1rem;max-width:56ch;color:var(--dim)">Una misma conducta detona, de forma simultánea e independiente, tres procesos. No son fases: son frentes paralelos, y cada uno condiciona a los otros dos. Un despacho que atiende solo una de las tres vías trabaja un tercio del problema.</p>
+    <div style="margin-top:1.4rem">{g["tres_vias_rows"]()}</div>
   </div>
-""")}
+</section>
 
 <section class="section band">
   <div class="container">
