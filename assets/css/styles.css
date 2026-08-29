@@ -409,24 +409,41 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
 .editorial .d{color:var(--dim);margin:.4rem 0 0;font-size:var(--step-0)}
 @media (max-width:640px){.editorial a{grid-template-columns:1fr;gap:8px}}
 
-/* ---------- Footer ---------- */
-.site-footer{border-top:1px solid var(--line-soft);background:var(--panel);margin-top:clamp(48px,8vw,96px)}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:var(--gutter);
-  padding-block:clamp(40px,6vw,72px)}
+/* ---------- Footer (referente bgslaw: oscuro siempre, bloques etiquetados) ---------- */
+.site-footer{
+  /* Se fija la paleta OSCURA: el footer permanece oscuro incluso bajo body.theme-light */
+  --bg:#05292C; --ink:#03191B; --panel:#073A3F; --panel-2:#0A4A50;
+  --text:#EAFBF6; --dim:rgba(234,251,246,.66); --dim-2:rgba(234,251,246,.44);
+  --line:rgba(137,245,229,.28); --line-soft:rgba(234,251,246,.12); --accent-ink:#89F5E5;
+  background:var(--ink);color:var(--text);
+  border-top:1px solid var(--line-soft);margin-top:clamp(48px,8vw,96px)}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:var(--gutter);
+  padding-block:clamp(48px,6vw,84px)}
 @media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.footer-grid{grid-template-columns:1fr}}
-.footer-grid h4{font-family:var(--ui);font-size:var(--step--1);text-transform:uppercase;
-  letter-spacing:.14em;color:var(--accent-ink);font-weight:600;margin:0 0 16px}
+.footer-grid h4{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;
+  letter-spacing:.2em;color:var(--dim-2);font-weight:500;margin:0 0 14px}
+.footer-col h4+.footer-plain,.footer-col ul+h4{margin-top:0}
+.footer-col .footer-plain+h4{margin-top:26px}
 .footer-grid ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
 .footer-grid a{color:var(--dim);text-decoration:none;transition:color .18s}
-.footer-grid a:hover{color:var(--text)}
+.footer-grid a:hover{color:var(--accent-ink)}
 .footer-brand .brand{margin-bottom:14px}
-.footer-claim{font-family:var(--serif);font-size:var(--step-1);color:var(--text);margin:0 0 16px;max-width:24ch}
-.footer-contact{color:var(--dim);font-size:var(--step--1);display:grid;gap:6px}
+.footer-claim{font-family:var(--sans);font-weight:500;font-size:var(--step-1);color:var(--text);margin:0 0 18px;max-width:26ch}
+.footer-plain{color:var(--dim);font-size:var(--step-0);line-height:1.55;font-style:normal;margin:0}
+.footer-status{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);
+  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:0}
+.footer-status .dot{width:8px;height:8px;border-radius:50%;background:var(--accent-ink);
+  box-shadow:0 0 0 3px rgba(137,245,229,.16);flex:none}
 .footer-legal{border-top:1px solid var(--line-soft)}
-.footer-legal .container{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;
-  padding-block:22px;color:var(--dim-2);font-size:var(--step--1)}
-.footer-disclaimer{max-width:70ch;line-height:1.5}
+.footer-legal-top{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;
+  align-items:baseline;padding-block:22px 8px;color:var(--dim-2);font-size:var(--step--1);
+  font-family:var(--mono);letter-spacing:.06em}
+.footer-legal-links{display:flex;flex-wrap:wrap;gap:8px 16px}
+.footer-legal-links a{color:var(--dim-2);text-decoration:none}
+.footer-legal-links a:hover{color:var(--accent-ink)}
+.footer-legal-bottom{padding-block:0 24px}
+.footer-disclaimer{max-width:74ch;line-height:1.5;color:var(--dim-2);font-size:var(--step--1)}
 
 /* ---------- Situaciones (home tarjetas de puerta) ---------- */
 .doors{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);margin-top:1.8rem}

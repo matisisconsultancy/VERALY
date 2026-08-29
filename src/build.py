@@ -191,50 +191,51 @@ def header_html(active=""):
 </header>'''
 
 def footer_html():
-    wa = f'<a href="https://wa.me/{SITE["whatsapp"]}" data-whatsapp>WhatsApp</a> · ' if SITE["whatsapp"] else ''
+    wa = (f'<li><a href="https://wa.me/{SITE["whatsapp"]}" data-whatsapp>WhatsApp</a></li>'
+          if SITE["whatsapp"] else '')
     return f'''<footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
       {brand()}
-      <p class="footer-claim">{esc(SITE["claim"])}.</p>
-      <div class="footer-contact">
-        <span>{esc(SITE["address"])}</span>
-        <span><a href="tel:{SITE["phone_href"]}" data-pos="footer">{esc(SITE["phone_display"])}</a></span>
-        <span><a href="mailto:{SITE["email"]}">{esc(SITE["email"])}</a></span>
-      </div>
+      <p class="footer-claim">Defensa en fraude financiero por captación masiva y habitual.</p>
+      <p class="footer-status"><span class="dot" aria-hidden="true"></span>{esc(SITE["hours"])}</p>
     </div>
-    <div>
-      <h4>Situaciones</h4>
+    <div class="footer-col">
+      <h4>Dirección</h4>
+      <address class="footer-plain">{esc(SITE["address"])}</address>
+      <h4>Horario</h4>
+      <p class="footer-plain">{esc(SITE["hours"])}</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
       <ul>
-        <li><a href="/afectados-por-captacion-masiva/">Perdí dinero en una captación</a></li>
-        <li><a href="/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li>
-        <li><a href="/cumplimiento-en-recaudo-masivo/">Mi empresa recauda de muchos</a></li>
+        <li><a href="tel:{SITE["phone_href"]}" data-pos="footer">{esc(SITE["phone_display"])}</a></li>
+        <li><a href="mailto:{SITE["email"]}">{esc(SITE["email"])}</a></li>
+        {wa}
       </ul>
     </div>
-    <div>
-      <h4>La firma</h4>
+    <div class="footer-col">
+      <h4>Navegación</h4>
       <ul>
         <li><a href="/firma/">La firma</a></li>
         <li><a href="/equipo/">El equipo</a></li>
         <li><a href="/analisis/">Análisis</a></li>
         <li><a href="/preguntas-frecuentes/">Preguntas frecuentes</a></li>
-        <li><a href="/marca/" data-marca>El sistema de marca</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Legal</h4>
-      <ul>
-        <li><a href="/aviso-de-privacidad/">Aviso de privacidad</a></li>
-        <li><a href="/aviso-legal/">Aviso legal</a></li>
-        <li><a href="/politica-de-cookies/">Política de cookies</a></li>
         <li><a href="/contacto/">Contacto</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-legal">
-    <div class="container">
+    <div class="container footer-legal-top">
+      <span>© 2026 · {esc(SITE["name"])} · Todos los derechos reservados.</span>
+      <span class="footer-legal-links">
+        <a href="/aviso-de-privacidad/">Aviso de privacidad</a>
+        <a href="/aviso-legal/">Aviso legal</a>
+        <a href="/politica-de-cookies/">Política de cookies</a>
+      </span>
+    </div>
+    <div class="container footer-legal-bottom">
       <span class="footer-disclaimer">La información publicada en este sitio tiene carácter informativo y no constituye asesoría jurídica ni genera relación profesional.</span>
-      <span>© 2026 {esc(SITE["name"])}</span>
     </div>
   </div>
 </footer>'''
