@@ -249,34 +249,26 @@ def build(g):
         },
     ]
 
-    # --- hub /equipo: tesis "por qué cinco" integrada + tarjetas-enlace ---
-    practicas_cards = ""
-    for pr in PRACTICAS_DEV:
-        practicas_cards += f'''<a class="socio" href="/equipo/{pr["slug"]}/">
-  <span class="practica">{esc(pr["rama"])}</span>
-  <p style="color:var(--dim);margin:.4rem 0 .2rem;font-size:var(--step-0)">{esc(pr["card"])}</p>
-  <span class="arrowlink">Ver la práctica</span>
+    # --- hub /equipo: titular grande + filas numeradas (referente Expertise) ---
+    prac_rows = ""
+    for i, pr in enumerate(PRACTICAS_DEV, 1):
+        prac_rows += f'''<a class="prac-row" href="/equipo/{pr["slug"]}/">
+  <span class="pr-n">{i:02d}</span>
+  <span class="pr-t">{esc(pr["rama"])}</span>
+  <span class="pr-d">{esc(pr["card"])}</span>
+  <span class="pr-go" aria-hidden="true">→</span>
 </a>'''
     equipo_body = f'''
 {section("""
-  <p class="eyebrow">El equipo</p>
-  <h1>Cinco prácticas, un mismo caso</h1>
-  <p class="support" style="max-width:52ch">El método de la firma no es un principio abstracto: es su composición. Cinco prácticas del derecho trabajan el mismo expediente, y el caso se construye en la intersección.</p>
+  <p class="eyebrow">Áreas de práctica</p>
+  <h1 class="prac-h1">Cinco prácticas al servicio de su defensa.</h1>
+  <p class="prac-sub">Cada proceso por captación abre a la vez frentes administrativos, penales, civiles, societarios, tributarios y laborales. La firma los cubre con cinco prácticas que trabajan el mismo expediente.</p>
 """, cls="hero")}
 
-{section("""
-  <p class="eyebrow">Por qué cinco y no una</p>
-  <h2 style="max-width:22ch">Un caso de captación no tiene una especialidad: tiene seis a la vez</h2>
-  <div class="prose" style="margin-top:1.2rem">
-    <p>Un proceso por captación produce, en paralelo, una actuación ante la Superintendencia de Sociedades, un proceso penal, demandas civiles de responsabilidad, controversias societarias, contingencias tributarias sobre los flujos y reclamaciones laborales de la intervenida. Ningún abogado cubre eso solo. Lo habitual es asignar el caso a una especialidad y trabajar un tercio del problema; esta firma se compuso para cubrirlo entero.</p>
-  </div>
-""")}
-
-<section class="section band">
+<section class="section">
   <div class="container">
-    <h2 style="margin-bottom:1.4rem">Las cinco prácticas</h2>
-    <div class="socios">{practicas_cards}</div>
-    <div class="cta-row" style="margin-top:2rem">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabajamos</a></div>
+    <div class="prac-rows">{prac_rows}</div>
+    <div class="cta-row" style="margin-top:2.4rem">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabajamos</a></div>
   </div>
 </section>
 '''

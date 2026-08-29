@@ -268,6 +268,43 @@ strong{font-weight:600;color:var(--text)}
 @media (max-width:640px){.practica-nav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
   padding-bottom:6px;scrollbar-width:none}.practica-nav a{white-space:nowrap;flex:none}}
 
+/* Diagramación de las prácticas (referente: titular grande + filas numeradas) */
+.prac-h1{font-size:clamp(2.6rem,1.4rem + 4.6vw,5.2rem);line-height:1.02;letter-spacing:-.025em;max-width:15ch}
+.prac-sub{color:var(--dim);margin-top:clamp(18px,2.6vw,34px);max-width:52ch;font-size:var(--step-1);line-height:1.55}
+.prac-rows{border-top:1px solid var(--line-soft)}
+.prac-row{display:grid;grid-template-columns:56px minmax(0,1.5fr) minmax(0,1fr) 30px;
+  gap:clamp(14px,2.6vw,44px);align-items:center;padding:clamp(22px,3vw,42px) clamp(6px,1.4vw,20px);
+  border-bottom:1px solid var(--line-soft);text-decoration:none;color:inherit;
+  transition:background .22s ease}
+.prac-row:hover,.prac-row:focus-visible{background:var(--panel-2)}
+.prac-row:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.prac-row .pr-n{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;color:var(--accent);opacity:.75}
+.prac-row .pr-t{font-family:var(--serif);font-weight:700;line-height:1.08;letter-spacing:-.01em;
+  font-size:clamp(1.5rem,1rem + 1.9vw,2.5rem);color:var(--text);transition:color .2s}
+.prac-row:hover .pr-t,.prac-row:focus-visible .pr-t{color:var(--accent)}
+.prac-row .pr-d{color:var(--dim);font-size:var(--step-0);line-height:1.5}
+.prac-row .pr-go{justify-self:end;color:var(--accent);font-style:normal;font-size:1.25rem;
+  opacity:0;transform:translateX(-6px);transition:opacity .22s,transform .22s}
+.prac-row:hover .pr-go,.prac-row:focus-visible .pr-go{opacity:1;transform:none}
+@media (max-width:820px){
+  .prac-row{grid-template-columns:auto 1fr;column-gap:16px;row-gap:.7rem;padding:24px 4px}
+  .prac-row .pr-n{grid-column:1;grid-row:1;align-self:center}
+  .prac-row .pr-t{grid-column:2;grid-row:1}
+  .prac-row .pr-d{grid-column:1 / -1;grid-row:2}
+  .prac-row .pr-go{display:none}
+}
+/* Entrada escalonada al hacer scroll (solo con JS; sin JS todo visible) */
+html.js .prac-rows .prac-row{opacity:0;transform:translateY(18px);
+  transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),background .22s ease}
+html.js .prac-rows.in .prac-row{opacity:1;transform:none}
+html.js .prac-rows.in .prac-row:nth-child(2){transition-delay:.07s}
+html.js .prac-rows.in .prac-row:nth-child(3){transition-delay:.14s}
+html.js .prac-rows.in .prac-row:nth-child(4){transition-delay:.21s}
+html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
+@media (prefers-reduced-motion:reduce){
+  html.js .prac-rows .prac-row{opacity:1;transform:none;transition:background .22s ease}
+}
+
 /* ---------- Formulario ---------- */
 .form-wrap{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r);
   padding:clamp(22px,3.4vw,36px)}
