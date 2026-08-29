@@ -321,13 +321,16 @@ def build(g):
     for pr in PRACTICAS_DEV:
         url = "/equipo/" + pr["slug"] + "/"
         paras = "".join(f"<p>{esc(t)}</p>" for t in pr["paras"])
-        # timeline de normatividad (etiqueta · descripción · enlace)
+        # timeline de normatividad (etiqueta · descripción+enlace · imagen)
         norm_rows = ""
-        for n in pr["normas"]:
+        _media_cycle = [globe, wave]
+        for i, n in enumerate(pr["normas"]):
             go = (f'<a class="pr-tl-go" href="{n["url"]}" target="_blank" rel="noopener">Ver norma <i>↗</i></a>'
-                  if n.get("url") else '<span></span>')
+                  if n.get("url") else '')
+            media = _media_cycle[i % 2]()
             norm_rows += (f'<div class="pr-tl-row"><span class="pr-tl-label">{esc(n["ley"])}</span>'
-                          f'<div class="pr-tl-body">{esc(n["que"])}</div>{go}</div>')
+                          f'<div class="pr-tl-body"><p class="pr-tl-desc">{esc(n["que"])}</p>{go}</div>'
+                          f'<div class="pr-tl-media">{media}</div></div>')
         art = ""
         if pr["articulo"]:
             aslug, atitle = pr["articulo"]

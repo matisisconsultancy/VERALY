@@ -350,25 +350,31 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
 .pr-list a{color:var(--text);text-decoration:none;transition:color .18s}
 .pr-list a:hover{color:var(--accent-ink)}
 .pr-more{margin-top:clamp(22px,2.6vw,32px)}
-/* Timeline de normatividad (referente milestones) */
+/* Timeline de normatividad con imagen (referente milestones) */
 .pr-timeline{margin-top:clamp(28px,4vw,52px);border-top:1px solid var(--line)}
-.pr-tl-row{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr) auto;
-  gap:clamp(20px,4vw,64px);align-items:center;padding:clamp(24px,3vw,42px) var(--edge);
+.pr-tl-row{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr) clamp(300px,42%,600px);
+  gap:clamp(24px,3vw,56px);align-items:stretch;padding:0;
   position:relative;border-bottom:1px solid var(--line);transition:background .22s ease}
 .pr-tl-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent-ink);
-  transform:scaleY(0);transform-origin:center;transition:transform .3s ease}
+  transform:scaleY(0);transform-origin:center;transition:transform .3s ease;z-index:1}
 .pr-tl-row:hover{background:var(--panel-2)}
 .pr-tl-row:hover::before{transform:scaleY(1)}
 .pr-tl-label{font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;font-size:.76rem;
-  color:var(--dim-2);line-height:1.45}
-.pr-tl-body{color:var(--text);font-size:var(--step-1);font-weight:300;line-height:1.4}
-.pr-tl-go{justify-self:end;font-family:var(--ui);font-weight:600;font-size:var(--step--1);
+  color:var(--dim-2);line-height:1.45;display:flex;align-items:center;padding-left:var(--edge)}
+.pr-tl-body{display:flex;flex-direction:column;justify-content:center;gap:.9rem;padding-block:clamp(26px,3vw,44px)}
+.pr-tl-desc{margin:0;color:var(--text);font-size:var(--step-1);font-weight:300;line-height:1.4}
+.pr-tl-go{align-self:flex-start;font-family:var(--ui);font-weight:600;font-size:var(--step--1);
   color:var(--accent-ink);white-space:nowrap;text-decoration:none;display:inline-flex;gap:.4em;align-items:center}
 .pr-tl-go i{font-style:normal;transition:transform .2s}
 .pr-tl-row:hover .pr-tl-go i{transform:translate(2px,-2px)}
+.pr-tl-media{position:relative;min-height:clamp(200px,22vw,300px);overflow:clip;
+  background:radial-gradient(120% 100% at 60% 8%,#0a4a50,#04191b);border-left:1px solid var(--line)}
+.pr-tl-media .media-svg,.pr-tl-media>svg{position:absolute;inset:0;width:100%;height:100%}
 @media (max-width:720px){
-  .pr-tl-row{grid-template-columns:1fr;gap:8px;padding:24px var(--edge)}
-  .pr-tl-go{justify-self:start}
+  .pr-tl-row{grid-template-columns:1fr;gap:0;padding:26px var(--edge) 0;align-items:start}
+  .pr-tl-label{padding-left:0}
+  .pr-tl-body{padding-block:12px 18px}
+  .pr-tl-media{min-height:180px;border-left:0;border-radius:12px;margin-bottom:26px}
 }
 html.js .pr-timeline .pr-tl-row{opacity:0;transform:translateY(20px);
   transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),background .22s ease}
