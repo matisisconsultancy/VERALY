@@ -417,12 +417,23 @@ def proceso_stepper():
 </section>'''
 
 
-def marco_reveal():
-    phrases = [
-        "No perseguimos casos. || Trabajamos figuras jurídicas.",
-        "Cada intervención se ordena sobre un marco normativo preciso.",
-        "Decreto 4334, artículos 316 y 316A, y la jurisprudencia que los interpreta.",
-    ]
+def marco_reveal(eyebrow="El marco que trabajamos", phrases=None, cards=None, section_id="marco"):
+    if phrases is None:
+        phrases = [
+            "No perseguimos casos. || Trabajamos figuras jurídicas.",
+            "Cada intervención se ordena sobre un marco normativo preciso.",
+            "Decreto 4334, artículos 316 y 316A, y la jurisprudencia que los interpreta.",
+        ]
+    if cards is None:
+        # URLs oficiales (TODO: verificar/ajustar por el despacho — decisión pendiente).
+        cards = [
+            ("Decreto 4334 / 2008", "Intervención", "http://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html"),
+            ("Art. 316 CP", "Captación masiva", "http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html"),
+            ("Art. 316A CP", "No reintegro", "http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html"),
+            ("Decreto 1981 / 1988", "Umbrales", "http://www.secretariasenado.gov.co/senado/basedoc/decreto_1981_1988.html"),
+            ("Ley 1902 / 2018", "Plan de desmonte", "http://www.secretariasenado.gov.co/senado/basedoc/ley_1902_2018.html"),
+            ("Sentencia C‑145 / 2009", "Presunciones", "https://www.corteconstitucional.gov.co/relatoria/2009/C-145-09.htm"),
+        ]
     def words(s):
         # "||" fuerza un salto de línea (sin contar como palabra en el reveal).
         return " ".join(
@@ -431,26 +442,18 @@ def marco_reveal():
     phr = "".join(
         f'<p class="reveal-phrase{" active" if i == 0 else ""}" data-i="{i}">{words(s)}</p>'
         for i, s in enumerate(phrases))
-    # URLs oficiales (TODO: verificar/ajustar por el despacho — decisión pendiente).
-    cards = [
-        ("Decreto 4334 / 2008", "Intervención", "http://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html"),
-        ("Art. 316 CP", "Captación masiva", "http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html"),
-        ("Art. 316A CP", "No reintegro", "http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html"),
-        ("Decreto 1981 / 1988", "Umbrales", "http://www.secretariasenado.gov.co/senado/basedoc/decreto_1981_1988.html"),
-        ("Ley 1902 / 2018", "Plan de desmonte", "http://www.secretariasenado.gov.co/senado/basedoc/ley_1902_2018.html"),
-        ("Sentencia C‑145 / 2009", "Presunciones", "https://www.corteconstitucional.gov.co/relatoria/2009/C-145-09.htm"),
-    ]
     rc = "".join(
         f'<a class="rc" href="{u}" target="_blank" rel="noopener" data-norma="{esc(k)}">'
         f'<span class="t-k">{esc(k)}</span><span class="t-d">{esc(d)}</span>'
         f'<span class="rc-go" aria-hidden="true">Ver norma <i>↗</i></span></a>'
         for k, d, u in cards)
-    return f'''<section class="reveal" id="marco">
+    cards_html = f'<div class="reveal-cards" aria-hidden="true">{rc}</div>' if cards else ""
+    return f'''<section class="reveal" id="{section_id}">
   <div class="reveal-track">
     <div class="reveal-sticky">
-      <p class="eyebrow reveal-eyebrow">El marco que trabajamos</p>
+      <p class="eyebrow reveal-eyebrow">{esc(eyebrow)}</p>
       <div class="reveal-phrases">{phr}</div>
-      <div class="reveal-cards" aria-hidden="true">{rc}</div>
+      {cards_html}
     </div>
   </div>
 </section>'''

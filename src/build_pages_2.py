@@ -127,13 +127,16 @@ def build(g):
   </div>
 </section>
 
-{section("""
-  <p class="eyebrow">Las dos líneas y la regla</p>
-  <h2>Defendemos las dos orillas. Nunca en el mismo proceso.</h2>
-  <div class="conflict" style="margin-top:1.4rem">
-    <p><strong>Es una regla que no admite excepción:</strong> la defensa del investigado y la recuperación del afectado jamás se prestan dentro del mismo proceso de intervención. El portafolio opera sobre casos distintos, y cada consulta pasa por verificación previa de conflicto antes de aceptarse. Si la firma ya interviene por la orilla contraria, se declina y se explica por qué.</p>
-  </div>
-""")}
+{g["marco_reveal"](
+    eyebrow="Las dos líneas y la regla",
+    phrases=[
+        "Defendemos las dos orillas. || Nunca en el mismo proceso.",
+        "La defensa del investigado y la recuperación del afectado no se prestan dentro de una misma intervención.",
+        "Cada consulta pasa por verificación previa de conflicto antes de aceptarse.",
+    ],
+    cards=[],
+    section_id="dos-lineas",
+)}
 
 {no_hacemos_section()}
 
