@@ -410,7 +410,7 @@
     });
   }
   function initFeatureRows() {
-    var rows = $$('.frow').concat($$('.prac-rows'));
+    var rows = $$('.frow').concat($$('.prac-rows')).concat($$('.pr-timeline'));
     rows.forEach(function (r) { if (r.__f) return; r.__f = 1; if (frowIO) frowIO.observe(r); else r.classList.add('in'); });
     if (rows.length && !window.__frowScroll) {
       window.__frowScroll = 1;

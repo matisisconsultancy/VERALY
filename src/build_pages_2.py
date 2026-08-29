@@ -293,18 +293,19 @@ def build(g):
     for pr in PRACTICAS_DEV:
         url = "/equipo/" + pr["slug"] + "/"
         paras = "".join(f"<p>{esc(t)}</p>" for t in pr["paras"])
-        norma_items = ""
+        # timeline de normatividad (etiqueta · descripción · enlace)
+        norm_rows = ""
         for n in pr["normas"]:
-            core = f'<strong>{esc(n["ley"])}</strong> — {esc(n["que"])}'
-            if n.get("url"):
-                core += f' <a class="textlink" href="{n["url"]}" target="_blank" rel="noopener">Ver norma ↗</a>'
-            norma_items += f'<li>{core}</li>'
-        serves = "".join(
-            f'<li><a class="arrowlink" href="{u}">{esc(t)}</a></li>' for t, u in pr["serves"])
+            go = (f'<a class="pr-tl-go" href="{n["url"]}" target="_blank" rel="noopener">Ver norma <i>↗</i></a>'
+                  if n.get("url") else '<span></span>')
+            norm_rows += (f'<div class="pr-tl-row"><span class="pr-tl-label">{esc(n["ley"])}</span>'
+                          f'<div class="pr-tl-body">{esc(n["que"])}</div>{go}</div>')
+        serves_dash = "".join(
+            f'<li><a href="{u}">{esc(t)} →</a></li>' for t, u in pr["serves"])
         art = ""
         if pr["articulo"]:
             aslug, atitle = pr["articulo"]
-            art = f'<p style="margin-top:1.2rem"><a class="arrowlink" href="/analisis/{aslug}/">Análisis · {esc(atitle)}</a></p>'
+            art = f'<p class="pr-more"><a class="arrowlink" href="/analisis/{aslug}/">Análisis · {esc(atitle)}</a></p>'
         rama_low = pr["rama"][0].lower() + pr["rama"][1:]
         practica_body = f'''
 {crumbs([("Inicio", "/"), ("El equipo", "/equipo/"), (pr["rama"], None)])}
@@ -317,18 +318,27 @@ def build(g):
 
 {practica_nav(pr["slug"])}
 
-<section class="section band">
-  <div class="container prose">
-    <h2>Qué resuelve en un caso de captación</h2>
-    {paras}
-    <div class="norm-block">
-      <h2>Normatividad asociada</h2>
-      <ul>{norma_items}</ul>
+<section class="section">
+  <div class="container pr-two">
+    <div class="pr-two-l">
+      <p class="eyebrow-num"><span class="n">01</span>Qué resuelve</p>
+      <h2 class="pr-big">Qué resuelve esta práctica <span class="pr-accent">en un caso de captación.</span></h2>
     </div>
-    <h3 style="margin-top:1.8rem">A qué situación sirve</h3>
-    <ul class="method-list">{serves}</ul>
-    {art}
+    <div class="pr-two-r">
+      {paras}
+      <p class="pr-list-h">A qué situación sirve</p>
+      <ul class="pr-list">{serves_dash}</ul>
+      {art}
+    </div>
   </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow-num"><span class="n">02</span>Normatividad asociada</p>
+    <h2 class="pr-big">El marco que <span class="pr-accent">enmarca esta práctica.</span></h2>
+  </div>
+  <div class="pr-timeline">{norm_rows}</div>
 </section>
 
 <section class="section">

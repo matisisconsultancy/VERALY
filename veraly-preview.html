@@ -338,6 +338,53 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
   html.js .prac-rows .prac-row{opacity:1;transform:none;transition:background .22s ease}
 }
 
+/* Páginas de práctica — descripción y normas (referente Oris, en clave clara) */
+.eyebrow-num{font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;
+  color:var(--dim-2);display:flex;align-items:center;gap:14px;margin:0 0 clamp(20px,2.6vw,34px)}
+.eyebrow-num .n{color:var(--accent-ink);font-weight:600}
+.pr-big{font-family:var(--sans);font-weight:300;font-size:clamp(2rem,1.2rem + 2.6vw,3.4rem);
+  line-height:1.08;letter-spacing:-.02em;max-width:18ch;margin:0}
+.pr-accent{color:var(--accent-ink)}
+.pr-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
+@media (max-width:860px){.pr-two{grid-template-columns:1fr;gap:26px}}
+.pr-two-r p{color:var(--dim);line-height:1.65;margin:0 0 1.1rem}
+.pr-two-r p:last-child{margin-bottom:0}
+.pr-list-h{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;
+  color:var(--dim-2);margin:clamp(26px,3vw,38px) 0 14px}
+.pr-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.pr-list li{position:relative;padding-left:28px;color:var(--text);line-height:1.4}
+.pr-list li::before{content:"—";position:absolute;left:0;color:var(--accent-ink)}
+.pr-list a{color:var(--text);text-decoration:none;transition:color .18s}
+.pr-list a:hover{color:var(--accent-ink)}
+.pr-more{margin-top:clamp(22px,2.6vw,32px)}
+/* Timeline de normatividad (referente milestones) */
+.pr-timeline{margin-top:clamp(28px,4vw,52px);border-top:1px solid var(--line)}
+.pr-tl-row{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr) auto;
+  gap:clamp(20px,4vw,64px);align-items:center;padding:clamp(24px,3vw,42px) var(--edge);
+  position:relative;border-bottom:1px solid var(--line);transition:background .22s ease}
+.pr-tl-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent-ink);
+  transform:scaleY(0);transform-origin:center;transition:transform .3s ease}
+.pr-tl-row:hover{background:var(--panel-2)}
+.pr-tl-row:hover::before{transform:scaleY(1)}
+.pr-tl-label{font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;font-size:.76rem;
+  color:var(--dim-2);line-height:1.45}
+.pr-tl-body{color:var(--text);font-size:var(--step-1);font-weight:300;line-height:1.4}
+.pr-tl-go{justify-self:end;font-family:var(--ui);font-weight:600;font-size:var(--step--1);
+  color:var(--accent-ink);white-space:nowrap;text-decoration:none;display:inline-flex;gap:.4em;align-items:center}
+.pr-tl-go i{font-style:normal;transition:transform .2s}
+.pr-tl-row:hover .pr-tl-go i{transform:translate(2px,-2px)}
+@media (max-width:720px){
+  .pr-tl-row{grid-template-columns:1fr;gap:8px;padding:24px var(--edge)}
+  .pr-tl-go{justify-self:start}
+}
+html.js .pr-timeline .pr-tl-row{opacity:0;transform:translateY(20px);
+  transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),background .22s ease}
+html.js .pr-timeline.in .pr-tl-row{opacity:1;transform:none}
+html.js .pr-timeline.in .pr-tl-row:nth-child(2){transition-delay:.08s}
+html.js .pr-timeline.in .pr-tl-row:nth-child(3){transition-delay:.16s}
+html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){html.js .pr-timeline .pr-tl-row{opacity:1;transform:none}}
+
 /* ---------- Formulario ---------- */
 .form-wrap{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r);
   padding:clamp(22px,3.4vw,36px)}
@@ -1173,18 +1220,27 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 
 <div class="container practica-nav-wrap"><nav class="practica-nav" aria-label="Las cinco prácticas"><a href="#!/equipo/contractual-y-constitucional/" aria-current="page">Contractual y constitucional</a><a href="#!/equipo/tributaria-y-migratoria/">Tributaria y migratoria</a><a href="#!/equipo/corporativa-y-urbana/">Corporativa y urbana</a><a href="#!/equipo/penal-e-informatica/">Penal e informática</a><a href="#!/equipo/laboral-y-de-seguros/">Laboral y de seguros</a></nav></div>
 
-<section class="section band">
-  <div class="container prose">
-    <h2>Qué resuelve en un caso de captación</h2>
-    <p>El procedimiento de intervención por captación masiva y habitual del Decreto 4334 de 2008 es de única instancia y sus decisiones tienen efectos de cosa juzgada frente a todos. Esa concentración exige una lectura constitucional cuidadosa del debido proceso: cuándo se garantiza la contradicción, cómo se ejerce la defensa material dentro de un trámite tan comprimido y qué actos de la Superintendencia de Sociedades son susceptibles de control.</p><p>En paralelo, el esquema casi siempre se construyó sobre contratos —mandatos, mutuos, cuentas en participación, promesas de compraventa— firmados antes de la toma de posesión. Entender ese andamiaje contractual permite distinguir lo lícito de lo que sostuvo la captación, y es la base sobre la que se apoyan las demás prácticas de la firma.</p><p>El trabajo constitucional y contractual, entonces, fija el terreno: qué garantías se pueden invocar, qué decisiones administrativas se pueden controlar y qué relaciones jurídicas anteriores conservan validez. Sobre ese terreno se construyen la defensa penal, la responsabilidad civil y la recuperación del afectado.</p>
-    <div class="norm-block">
-      <h2>Normatividad asociada</h2>
-      <ul><li><strong>Decreto 4334 de 2008</strong> — Procedimiento de intervención de única instancia y con efectos de cosa juzgada. <a class="textlink" href="http://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html" target="_blank" rel="noopener">Ver norma ↗</a></li><li><strong>Constitución Política, art. 29</strong> — Debido proceso y derecho de defensa en trámites administrativos concentrados. <a class="textlink" href="http://www.secretariasenado.gov.co/senado/basedoc/constitucion_politica_1991.html" target="_blank" rel="noopener">Ver norma ↗</a></li><li><strong>Código de Comercio</strong> — Validez de los contratos y actos jurídicos previos a la intervención. <a class="textlink" href="http://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio.html" target="_blank" rel="noopener">Ver norma ↗</a></li></ul>
+<section class="section">
+  <div class="container pr-two">
+    <div class="pr-two-l">
+      <p class="eyebrow-num"><span class="n">01</span>Qué resuelve</p>
+      <h2 class="pr-big">Qué resuelve esta práctica <span class="pr-accent">en un caso de captación.</span></h2>
     </div>
-    <h3 style="margin-top:1.8rem">A qué situación sirve</h3>
-    <ul class="method-list"><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li><li><a class="arrowlink" href="#!/afectados-por-captacion-masiva/">Perdí dinero en un esquema</a></li></ul>
-    <p style="margin-top:1.2rem"><a class="arrowlink" href="#!/analisis/que-hace-la-superintendencia-de-sociedades/">Análisis · Qué hace la Superintendencia de Sociedades</a></p>
+    <div class="pr-two-r">
+      <p>El procedimiento de intervención por captación masiva y habitual del Decreto 4334 de 2008 es de única instancia y sus decisiones tienen efectos de cosa juzgada frente a todos. Esa concentración exige una lectura constitucional cuidadosa del debido proceso: cuándo se garantiza la contradicción, cómo se ejerce la defensa material dentro de un trámite tan comprimido y qué actos de la Superintendencia de Sociedades son susceptibles de control.</p><p>En paralelo, el esquema casi siempre se construyó sobre contratos —mandatos, mutuos, cuentas en participación, promesas de compraventa— firmados antes de la toma de posesión. Entender ese andamiaje contractual permite distinguir lo lícito de lo que sostuvo la captación, y es la base sobre la que se apoyan las demás prácticas de la firma.</p><p>El trabajo constitucional y contractual, entonces, fija el terreno: qué garantías se pueden invocar, qué decisiones administrativas se pueden controlar y qué relaciones jurídicas anteriores conservan validez. Sobre ese terreno se construyen la defensa penal, la responsabilidad civil y la recuperación del afectado.</p>
+      <p class="pr-list-h">A qué situación sirve</p>
+      <ul class="pr-list"><li><a href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon →</a></li><li><a href="#!/afectados-por-captacion-masiva/">Perdí dinero en un esquema →</a></li></ul>
+      <p class="pr-more"><a class="arrowlink" href="#!/analisis/que-hace-la-superintendencia-de-sociedades/">Análisis · Qué hace la Superintendencia de Sociedades</a></p>
+    </div>
   </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow-num"><span class="n">02</span>Normatividad asociada</p>
+    <h2 class="pr-big">El marco que <span class="pr-accent">enmarca esta práctica.</span></h2>
+  </div>
+  <div class="pr-timeline"><div class="pr-tl-row"><span class="pr-tl-label">Decreto 4334 de 2008</span><div class="pr-tl-body">Procedimiento de intervención de única instancia y con efectos de cosa juzgada.</div><a class="pr-tl-go" href="http://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html" target="_blank" rel="noopener">Ver norma <i>↗</i></a></div><div class="pr-tl-row"><span class="pr-tl-label">Constitución Política, art. 29</span><div class="pr-tl-body">Debido proceso y derecho de defensa en trámites administrativos concentrados.</div><a class="pr-tl-go" href="http://www.secretariasenado.gov.co/senado/basedoc/constitucion_politica_1991.html" target="_blank" rel="noopener">Ver norma <i>↗</i></a></div><div class="pr-tl-row"><span class="pr-tl-label">Código de Comercio</span><div class="pr-tl-body">Validez de los contratos y actos jurídicos previos a la intervención.</div><a class="pr-tl-go" href="http://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio.html" target="_blank" rel="noopener">Ver norma <i>↗</i></a></div></div>
 </section>
 
 <section class="section">
@@ -1207,18 +1263,27 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 
 <div class="container practica-nav-wrap"><nav class="practica-nav" aria-label="Las cinco prácticas"><a href="#!/equipo/contractual-y-constitucional/">Contractual y constitucional</a><a href="#!/equipo/tributaria-y-migratoria/" aria-current="page">Tributaria y migratoria</a><a href="#!/equipo/corporativa-y-urbana/">Corporativa y urbana</a><a href="#!/equipo/penal-e-informatica/">Penal e informática</a><a href="#!/equipo/laboral-y-de-seguros/">Laboral y de seguros</a></nav></div>
 
-<section class="section band">
-  <div class="container prose">
-    <h2>Qué resuelve en un caso de captación</h2>
-    <p>Todo esquema de captación deja un rastro tributario: retenciones, declaraciones, movimientos que la autoridad fiscal puede leer de forma independiente al proceso por captación masiva. Anticipar esas contingencias tributarias evita que una defensa se gane en el frente penal o administrativo y se pierda en el fiscal.</p><p>Cuando hay vinculados extranjeros o estructuras fuera del país, la dimensión migratoria se vuelve real: visados, permanencia y salidas quedan condicionados por el proceso. Integrar el análisis migratorio desde el inicio impide sorpresas que ninguna de las otras prácticas vería venir.</p><p>Los mecanismos de intercambio de información entre autoridades hacen que lo tributario y lo penal-administrativo se lean en conjunto. Por eso la estrategia fiscal y migratoria no puede ir por separado: debe ser coherente con la defensa que se construye en los demás frentes.</p>
-    <div class="norm-block">
-      <h2>Normatividad asociada</h2>
-      <ul><li><strong>Estatuto Tributario</strong> — Obligaciones formales y sustanciales sobre los flujos del esquema. <a class="textlink" href="http://www.secretariasenado.gov.co/senado/basedoc/estatuto_tributario.html" target="_blank" rel="noopener">Ver norma ↗</a></li><li><strong>Régimen migratorio (Decreto 1067 de 2015)</strong> — Permanencia, visados y salidas de vinculados extranjeros.</li><li><strong>Mecanismos de intercambio de información</strong> — Cruce de datos entre autoridades tributarias y de investigación.</li></ul>
+<section class="section">
+  <div class="container pr-two">
+    <div class="pr-two-l">
+      <p class="eyebrow-num"><span class="n">01</span>Qué resuelve</p>
+      <h2 class="pr-big">Qué resuelve esta práctica <span class="pr-accent">en un caso de captación.</span></h2>
     </div>
-    <h3 style="margin-top:1.8rem">A qué situación sirve</h3>
-    <ul class="method-list"><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li><li><a class="arrowlink" href="#!/cumplimiento-en-recaudo-masivo/">Mi empresa recauda de muchos</a></li></ul>
-    
+    <div class="pr-two-r">
+      <p>Todo esquema de captación deja un rastro tributario: retenciones, declaraciones, movimientos que la autoridad fiscal puede leer de forma independiente al proceso por captación masiva. Anticipar esas contingencias tributarias evita que una defensa se gane en el frente penal o administrativo y se pierda en el fiscal.</p><p>Cuando hay vinculados extranjeros o estructuras fuera del país, la dimensión migratoria se vuelve real: visados, permanencia y salidas quedan condicionados por el proceso. Integrar el análisis migratorio desde el inicio impide sorpresas que ninguna de las otras prácticas vería venir.</p><p>Los mecanismos de intercambio de información entre autoridades hacen que lo tributario y lo penal-administrativo se lean en conjunto. Por eso la estrategia fiscal y migratoria no puede ir por separado: debe ser coherente con la defensa que se construye en los demás frentes.</p>
+      <p class="pr-list-h">A qué situación sirve</p>
+      <ul class="pr-list"><li><a href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon →</a></li><li><a href="#!/cumplimiento-en-recaudo-masivo/">Mi empresa recauda de muchos →</a></li></ul>
+      
+    </div>
   </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow-num"><span class="n">02</span>Normatividad asociada</p>
+    <h2 class="pr-big">El marco que <span class="pr-accent">enmarca esta práctica.</span></h2>
+  </div>
+  <div class="pr-timeline"><div class="pr-tl-row"><span class="pr-tl-label">Estatuto Tributario</span><div class="pr-tl-body">Obligaciones formales y sustanciales sobre los flujos del esquema.</div><a class="pr-tl-go" href="http://www.secretariasenado.gov.co/senado/basedoc/estatuto_tributario.html" target="_blank" rel="noopener">Ver norma <i>↗</i></a></div><div class="pr-tl-row"><span class="pr-tl-label">Régimen migratorio (Decreto 1067 de 2015)</span><div class="pr-tl-body">Permanencia, visados y salidas de vinculados extranjeros.</div><span></span></div><div class="pr-tl-row"><span class="pr-tl-label">Mecanismos de intercambio de información</span><div class="pr-tl-body">Cruce de datos entre autoridades tributarias y de investigación.</div><span></span></div></div>
 </section>
 
 <section class="section">
@@ -1241,18 +1306,27 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 
 <div class="container practica-nav-wrap"><nav class="practica-nav" aria-label="Las cinco prácticas"><a href="#!/equipo/contractual-y-constitucional/">Contractual y constitucional</a><a href="#!/equipo/tributaria-y-migratoria/">Tributaria y migratoria</a><a href="#!/equipo/corporativa-y-urbana/" aria-current="page">Corporativa y urbana</a><a href="#!/equipo/penal-e-informatica/">Penal e informática</a><a href="#!/equipo/laboral-y-de-seguros/">Laboral y de seguros</a></nav></div>
 
-<section class="section band">
-  <div class="container prose">
-    <h2>Qué resuelve en un caso de captación</h2>
-    <p>La toma de posesión congela una sociedad que, hasta el día anterior, tomaba decisiones: aumentos de capital, cesiones, garantías, operaciones entre vinculadas. Revisar la validez de esos actos societarios anteriores a la intervención define la responsabilidad de administradores, revisores fiscales y terceros.</p><p>Buena parte de los esquemas se apoya en inmuebles —comprados, prometidos o dados en garantía—. La dimensión urbana y registral determina qué activos inmobiliarios entran a la masa de la intervención, cuáles pueden liberarse y cómo se protege a quien contrató de buena fe.</p><p>Leer la sociedad y sus bienes con criterio corporativo y registral define, en la práctica, el tamaño del problema: cuánto patrimonio responde, quién responde por él y qué activos pueden devolverse a los afectados.</p>
-    <div class="norm-block">
-      <h2>Normatividad asociada</h2>
-      <ul><li><strong>Código de Comercio</strong> — Validez de actos societarios y responsabilidad de administradores. <a class="textlink" href="http://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio.html" target="_blank" rel="noopener">Ver norma ↗</a></li><li><strong>Decreto 4334 de 2008</strong> — Perímetro de bienes que entran a la intervención. <a class="textlink" href="http://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html" target="_blank" rel="noopener">Ver norma ↗</a></li><li><strong>Régimen de registro de inmuebles</strong> — Oponibilidad y protección del tercero de buena fe.</li></ul>
+<section class="section">
+  <div class="container pr-two">
+    <div class="pr-two-l">
+      <p class="eyebrow-num"><span class="n">01</span>Qué resuelve</p>
+      <h2 class="pr-big">Qué resuelve esta práctica <span class="pr-accent">en un caso de captación.</span></h2>
     </div>
-    <h3 style="margin-top:1.8rem">A qué situación sirve</h3>
-    <ul class="method-list"><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li><li><a class="arrowlink" href="#!/afectados-por-captacion-masiva/">Perdí dinero en un esquema</a></li></ul>
-    <p style="margin-top:1.2rem"><a class="arrowlink" href="#!/analisis/captacion-con-libranzas-y-factoring/">Análisis · Captación montada sobre contratos legales</a></p>
+    <div class="pr-two-r">
+      <p>La toma de posesión congela una sociedad que, hasta el día anterior, tomaba decisiones: aumentos de capital, cesiones, garantías, operaciones entre vinculadas. Revisar la validez de esos actos societarios anteriores a la intervención define la responsabilidad de administradores, revisores fiscales y terceros.</p><p>Buena parte de los esquemas se apoya en inmuebles —comprados, prometidos o dados en garantía—. La dimensión urbana y registral determina qué activos inmobiliarios entran a la masa de la intervención, cuáles pueden liberarse y cómo se protege a quien contrató de buena fe.</p><p>Leer la sociedad y sus bienes con criterio corporativo y registral define, en la práctica, el tamaño del problema: cuánto patrimonio responde, quién responde por él y qué activos pueden devolverse a los afectados.</p>
+      <p class="pr-list-h">A qué situación sirve</p>
+      <ul class="pr-list"><li><a href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon →</a></li><li><a href="#!/afectados-por-captacion-masiva/">Perdí dinero en un esquema →</a></li></ul>
+      <p class="pr-more"><a class="arrowlink" href="#!/analisis/captacion-con-libranzas-y-factoring/">Análisis · Captación montada sobre contratos legales</a></p>
+    </div>
   </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow-num"><span class="n">02</span>Normatividad asociada</p>
+    <h2 class="pr-big">El marco que <span class="pr-accent">enmarca esta práctica.</span></h2>
+  </div>
+  <div class="pr-timeline"><div class="pr-tl-row"><span class="pr-tl-label">Código de Comercio</span><div class="pr-tl-body">Validez de actos societarios y responsabilidad de administradores.</div><a class="pr-tl-go" href="http://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio.html" target="_blank" rel="noopener">Ver norma <i>↗</i></a></div><div class="pr-tl-row"><span class="pr-tl-label">Decreto 4334 de 2008</span><div class="pr-tl-body">Perímetro de bienes que entran a la intervención.</div><a class="pr-tl-go" href="http://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html" target="_blank" rel="noopener">Ver norma <i>↗</i></a></div><div class="pr-tl-row"><span class="pr-tl-label">Régimen de registro de inmuebles</span><div class="pr-tl-body">Oponibilidad y protección del tercero de buena fe.</div><span></span></div></div>
 </section>
 
 <section class="section">
@@ -1275,18 +1349,27 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 
 <div class="container practica-nav-wrap"><nav class="practica-nav" aria-label="Las cinco prácticas"><a href="#!/equipo/contractual-y-constitucional/">Contractual y constitucional</a><a href="#!/equipo/tributaria-y-migratoria/">Tributaria y migratoria</a><a href="#!/equipo/corporativa-y-urbana/">Corporativa y urbana</a><a href="#!/equipo/penal-e-informatica/" aria-current="page">Penal e informática</a><a href="#!/equipo/laboral-y-de-seguros/">Laboral y de seguros</a></nav></div>
 
-<section class="section band">
-  <div class="container prose">
-    <h2>Qué resuelve en un caso de captación</h2>
-    <p>El proceso penal por captación masiva y habitual (artículo 316 del Código Penal) y no reintegro (artículo 316A) suele venir acompañado de estafa agravada, lavado de activos y concierto para delinquir. La defensa penal se juega desde los actos urgentes y la audiencia de imputación: cada decisión temprana condiciona el juicio oral.</p><p>Casi toda la prueba es digital: registros de plataformas, comunicaciones, trazas de pagos, billeteras. Tratar esa evidencia digital con criterio informático —cadena de custodia, autenticidad, alcance— es lo que permite excluir lo mal recaudado y sostener el origen lícito de lo que sí lo tiene.</p><p>La combinación de derecho penal y competencia informática es la que permite discutir, a la vez, la calificación del delito y la validez de la prueba que lo sostiene. Ese doble frente es difícil de cubrir cuando la defensa se apoya en una sola especialidad.</p>
-    <div class="norm-block">
-      <h2>Normatividad asociada</h2>
-      <ul><li><strong>Código Penal, arts. 316 y 316A</strong> — Captación masiva y habitual (prisión de 120 a 240 meses) y no reintegro. <a class="textlink" href="http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html" target="_blank" rel="noopener">Ver norma ↗</a></li><li><strong>Delitos concurrentes</strong> — Estafa agravada, lavado de activos y concierto para delinquir. <a class="textlink" href="http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html" target="_blank" rel="noopener">Ver norma ↗</a></li><li><strong>Ley 906 de 2004</strong> — Régimen de la prueba, evidencia digital y cadena de custodia. <a class="textlink" href="http://www.secretariasenado.gov.co/senado/basedoc/ley_0906_2004.html" target="_blank" rel="noopener">Ver norma ↗</a></li></ul>
+<section class="section">
+  <div class="container pr-two">
+    <div class="pr-two-l">
+      <p class="eyebrow-num"><span class="n">01</span>Qué resuelve</p>
+      <h2 class="pr-big">Qué resuelve esta práctica <span class="pr-accent">en un caso de captación.</span></h2>
     </div>
-    <h3 style="margin-top:1.8rem">A qué situación sirve</h3>
-    <ul class="method-list"><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li></ul>
-    <p style="margin-top:1.2rem"><a class="arrowlink" href="#!/analisis/diferencia-entre-estafa-y-captacion-masiva/">Análisis · Diferencia entre estafa y captación masiva</a></p>
+    <div class="pr-two-r">
+      <p>El proceso penal por captación masiva y habitual (artículo 316 del Código Penal) y no reintegro (artículo 316A) suele venir acompañado de estafa agravada, lavado de activos y concierto para delinquir. La defensa penal se juega desde los actos urgentes y la audiencia de imputación: cada decisión temprana condiciona el juicio oral.</p><p>Casi toda la prueba es digital: registros de plataformas, comunicaciones, trazas de pagos, billeteras. Tratar esa evidencia digital con criterio informático —cadena de custodia, autenticidad, alcance— es lo que permite excluir lo mal recaudado y sostener el origen lícito de lo que sí lo tiene.</p><p>La combinación de derecho penal y competencia informática es la que permite discutir, a la vez, la calificación del delito y la validez de la prueba que lo sostiene. Ese doble frente es difícil de cubrir cuando la defensa se apoya en una sola especialidad.</p>
+      <p class="pr-list-h">A qué situación sirve</p>
+      <ul class="pr-list"><li><a href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon →</a></li></ul>
+      <p class="pr-more"><a class="arrowlink" href="#!/analisis/diferencia-entre-estafa-y-captacion-masiva/">Análisis · Diferencia entre estafa y captación masiva</a></p>
+    </div>
   </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow-num"><span class="n">02</span>Normatividad asociada</p>
+    <h2 class="pr-big">El marco que <span class="pr-accent">enmarca esta práctica.</span></h2>
+  </div>
+  <div class="pr-timeline"><div class="pr-tl-row"><span class="pr-tl-label">Código Penal, arts. 316 y 316A</span><div class="pr-tl-body">Captación masiva y habitual (prisión de 120 a 240 meses) y no reintegro.</div><a class="pr-tl-go" href="http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html" target="_blank" rel="noopener">Ver norma <i>↗</i></a></div><div class="pr-tl-row"><span class="pr-tl-label">Delitos concurrentes</span><div class="pr-tl-body">Estafa agravada, lavado de activos y concierto para delinquir.</div><a class="pr-tl-go" href="http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html" target="_blank" rel="noopener">Ver norma <i>↗</i></a></div><div class="pr-tl-row"><span class="pr-tl-label">Ley 906 de 2004</span><div class="pr-tl-body">Régimen de la prueba, evidencia digital y cadena de custodia.</div><a class="pr-tl-go" href="http://www.secretariasenado.gov.co/senado/basedoc/ley_0906_2004.html" target="_blank" rel="noopener">Ver norma <i>↗</i></a></div></div>
 </section>
 
 <section class="section">
@@ -1309,18 +1392,27 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 
 <div class="container practica-nav-wrap"><nav class="practica-nav" aria-label="Las cinco prácticas"><a href="#!/equipo/contractual-y-constitucional/">Contractual y constitucional</a><a href="#!/equipo/tributaria-y-migratoria/">Tributaria y migratoria</a><a href="#!/equipo/corporativa-y-urbana/">Corporativa y urbana</a><a href="#!/equipo/penal-e-informatica/">Penal e informática</a><a href="#!/equipo/laboral-y-de-seguros/" aria-current="page">Laboral y de seguros</a></nav></div>
 
-<section class="section band">
-  <div class="container prose">
-    <h2>Qué resuelve en un caso de captación</h2>
-    <p>La captadora tuvo empleados, comisionistas y estructuras de pago que la intervención interrumpe de golpe. Ordenar esas relaciones laborales —qué se debe, a quién y con qué prelación de créditos— evita contingencias que crecen en silencio mientras el resto del caso avanza.</p><p>Muchos esquemas se aseguraron: pólizas de cumplimiento, de manejo, garantías de terceros. Leer esa exposición determina si hay una fuente adicional de recuperación para el afectado o un frente adicional de reclamación contra el vinculado.</p><p>Ninguno de estos dos frentes suele estar en el radar de una defensa penal clásica, y sin embargo pueden mover cifras importantes: las acreencias laborales por su prelación, y las pólizas por su capacidad de responder cuando el patrimonio de la sociedad no alcanza.</p>
-    <div class="norm-block">
-      <h2>Normatividad asociada</h2>
-      <ul><li><strong>Código Sustantivo del Trabajo</strong> — Obligaciones laborales y prelación de créditos. <a class="textlink" href="http://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html" target="_blank" rel="noopener">Ver norma ↗</a></li><li><strong>Régimen de seguros</strong> — Pólizas de cumplimiento, de manejo y garantías del recaudo.</li><li><strong>Decreto 4334 de 2008</strong> — Concurrencia de acreencias con la masa de la intervención. <a class="textlink" href="http://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html" target="_blank" rel="noopener">Ver norma ↗</a></li></ul>
+<section class="section">
+  <div class="container pr-two">
+    <div class="pr-two-l">
+      <p class="eyebrow-num"><span class="n">01</span>Qué resuelve</p>
+      <h2 class="pr-big">Qué resuelve esta práctica <span class="pr-accent">en un caso de captación.</span></h2>
     </div>
-    <h3 style="margin-top:1.8rem">A qué situación sirve</h3>
-    <ul class="method-list"><li><a class="arrowlink" href="#!/afectados-por-captacion-masiva/">Perdí dinero en un esquema</a></li><li><a class="arrowlink" href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon</a></li></ul>
-    
+    <div class="pr-two-r">
+      <p>La captadora tuvo empleados, comisionistas y estructuras de pago que la intervención interrumpe de golpe. Ordenar esas relaciones laborales —qué se debe, a quién y con qué prelación de créditos— evita contingencias que crecen en silencio mientras el resto del caso avanza.</p><p>Muchos esquemas se aseguraron: pólizas de cumplimiento, de manejo, garantías de terceros. Leer esa exposición determina si hay una fuente adicional de recuperación para el afectado o un frente adicional de reclamación contra el vinculado.</p><p>Ninguno de estos dos frentes suele estar en el radar de una defensa penal clásica, y sin embargo pueden mover cifras importantes: las acreencias laborales por su prelación, y las pólizas por su capacidad de responder cuando el patrimonio de la sociedad no alcanza.</p>
+      <p class="pr-list-h">A qué situación sirve</p>
+      <ul class="pr-list"><li><a href="#!/afectados-por-captacion-masiva/">Perdí dinero en un esquema →</a></li><li><a href="#!/defensa-en-captacion-masiva/">Me investigan o me vincularon →</a></li></ul>
+      
+    </div>
   </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow-num"><span class="n">02</span>Normatividad asociada</p>
+    <h2 class="pr-big">El marco que <span class="pr-accent">enmarca esta práctica.</span></h2>
+  </div>
+  <div class="pr-timeline"><div class="pr-tl-row"><span class="pr-tl-label">Código Sustantivo del Trabajo</span><div class="pr-tl-body">Obligaciones laborales y prelación de créditos.</div><a class="pr-tl-go" href="http://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html" target="_blank" rel="noopener">Ver norma <i>↗</i></a></div><div class="pr-tl-row"><span class="pr-tl-label">Régimen de seguros</span><div class="pr-tl-body">Pólizas de cumplimiento, de manejo y garantías del recaudo.</div><span></span></div><div class="pr-tl-row"><span class="pr-tl-label">Decreto 4334 de 2008</span><div class="pr-tl-body">Concurrencia de acreencias con la masa de la intervención.</div><a class="pr-tl-go" href="http://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html" target="_blank" rel="noopener">Ver norma <i>↗</i></a></div></div>
 </section>
 
 <section class="section">
@@ -2075,7 +2167,7 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
     window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();}
   var frowIO=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');frowIO.unobserve(e.target);}});},{threshold:0.2,rootMargin:'0px 0px -8% 0px'}):null;
   function frowPar(){var vh=window.innerHeight;[].slice.call(document.querySelectorAll('.fr-par')).forEach(function(par){var m=par.parentNode.getBoundingClientRect();var rel=((m.top+m.height/2)-vh/2)/vh;rel=Math.max(-1,Math.min(1,rel));var t=(1-rel)/2;var scale=(1+0.24*t).toFixed(3);par.style.transform='translate3d(0,'+(rel*-9).toFixed(2)+'%,0) scale('+scale+')';});}
-  function initFeatureRows(){var rows=[].slice.call(document.querySelectorAll('.frow')).concat([].slice.call(document.querySelectorAll('.prac-rows')));rows.forEach(function(r){if(r.__f)return;r.__f=1;if(frowIO)frowIO.observe(r);else r.classList.add('in');});if(rows.length&&!window.__frowScroll){window.__frowScroll=1;window.addEventListener('scroll',frowPar,{passive:true});window.addEventListener('resize',frowPar);}frowPar();}
+  function initFeatureRows(){var rows=[].slice.call(document.querySelectorAll('.frow')).concat([].slice.call(document.querySelectorAll('.prac-rows'))).concat([].slice.call(document.querySelectorAll('.pr-timeline')));rows.forEach(function(r){if(r.__f)return;r.__f=1;if(frowIO)frowIO.observe(r);else r.classList.add('in');});if(rows.length&&!window.__frowScroll){window.__frowScroll=1;window.addEventListener('scroll',frowPar,{passive:true});window.addEventListener('resize',frowPar);}frowPar();}
   function render(){var route=curRoute();var t=tpl[route]||tpl['/'];app.innerHTML='';app.appendChild(t.content.cloneNode(true));
     document.title=t.getAttribute('data-title');setActive(t.getAttribute('data-route'));
     var mb=t.getAttribute('data-mobilebar')==='1';mbar.classList.toggle('is-on',mb);body.classList.toggle('has-mobile-bar',mb);
