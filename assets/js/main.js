@@ -456,7 +456,46 @@
       });
     });
   }
-  window.__initPins = function () { initStepper(); initReveal(); initFeatureRows(); initBlog(); };
+  /* ---------- Títulos de sección: efecto "scramble/decode" ---------- */
+  var scrReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var SCR_GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  function scrambleText(el) {
+    // localizar el último nodo de texto (preserva iconos/números anteriores)
+    var node = null;
+    for (var i = el.childNodes.length - 1; i >= 0; i--) {
+      var n = el.childNodes[i];
+      if (n.nodeType === 3 && n.nodeValue.replace(/\s/g, '')) { node = n; break; }
+    }
+    var text = node ? node.nodeValue : el.textContent;
+    var set = node ? function (v) { node.nodeValue = v; } : function (v) { el.textContent = v; };
+    var start = 0, dur = Math.min(1100, text.length * 55 + 280);
+    function frame(now) {
+      if (!start) start = now;
+      var p = Math.min(1, (now - start) / dur);
+      var reveal = p * text.length, out = '';
+      for (var i = 0; i < text.length; i++) {
+        var c = text.charAt(i);
+        if (c === ' ' || c === '/' || c === '·' || i < reveal - 0.4) { out += c; }
+        else { out += SCR_GLYPHS.charAt((Math.random() * SCR_GLYPHS.length) | 0); }
+      }
+      set(out);
+      if (p < 1) requestAnimationFrame(frame); else set(text);
+    }
+    requestAnimationFrame(frame);
+  }
+  var scrIO = ('IntersectionObserver' in window)
+    ? new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { scrIO.unobserve(e.target); scrambleText(e.target); } });
+      }, { threshold: 0.6 })
+    : null;
+  function initScramble() {
+    if (scrReduce) return;
+    $$('.eyebrow, .eyebrow-num, .faq-pill, .bfilter-pill, .article-kicker').forEach(function (el) {
+      if (el.__scr) return; el.__scr = 1;
+      if (scrIO) scrIO.observe(el); else scrambleText(el);
+    });
+  }
+  window.__initPins = function () { initStepper(); initReveal(); initFeatureRows(); initBlog(); initScramble(); };
   window.__initPins();
 
   /* ---------- Profundidad de scroll ---------- */
