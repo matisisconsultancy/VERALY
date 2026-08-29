@@ -121,18 +121,21 @@ def build(g):
     # HOME
     # =====================================================================
     situ_data = [
-        ("Perdí dinero en un esquema de captación", "Vías de recuperación y plazos.",
-         "/afectados-por-captacion-masiva/", "afectado", globe()),
-        ("Me investigan o me vincularon", "Defensa en los tres frentes.",
-         "/defensa-en-captacion-masiva/", "investigado", wave()),
-        ("Mi empresa recauda de muchas personas", "Revisión de encuadre preventiva.",
-         "/cumplimiento-en-recaudo-masivo/", "empresa", globe()),
+        ("Perdí dinero en un esquema de captación", "Vías administrativa, penal y civil, y los plazos que corren desde la toma de posesión.",
+         "/afectados-por-captacion-masiva/", "afectado", "Afectado", "Recuperación", globe()),
+        ("Me investigan o me vincularon", "Defensa en los tres frentes para investigados, administradores, revisores y proveedores.",
+         "/defensa-en-captacion-masiva/", "investigado", "Investigado o vinculado", "Defensa", wave()),
+        ("Mi empresa recauda de muchas personas", "Revisión de encuadre frente a los umbrales de captación antes de que la revise una superintendencia.",
+         "/cumplimiento-en-recaudo-masivo/", "empresa", "Empresa", "Cumplimiento", globe()),
     ]
     situ_cards = ""
-    for t, sub, url, tag, media in situ_data:
-        situ_cards += f'''<a class="fcard" href="{url}" data-situacion="{tag}">
-  <div class="fmedia">{media}</div>
-  <div class="fbody"><h3>{esc(t)}</h3><p>{esc(sub)}</p></div>
+    for t, sub, url, tag, label, pill, media in situ_data:
+        situ_cards += f'''<a class="acard" href="{url}" data-situacion="{tag}">
+  <span class="acard-label">{esc(label)}</span>
+  <h3 class="acard-title">{esc(t)}</h3>
+  <p class="acard-desc">{esc(sub)}</p>
+  <span class="acard-tag">{esc(pill)}</span>
+  <div class="acard-media">{media}</div>
 </a>'''
 
     # Tres vías como filas numeradas alternadas
@@ -212,7 +215,7 @@ def build(g):
       <h2 style="max-width:20ch">Tres situaciones distintas, tres rutas distintas</h2>
       <p class="lead" style="margin-top:1rem;max-width:56ch">Un mismo esquema de captación produce problemas jurídicos opuestos según el lugar que se ocupe en él. La ruta empieza por reconocer el suyo.</p>
     </div>
-    <div class="feature-cards">{situ_cards}</div>
+    <div class="acards">{situ_cards}</div>
     <div class="conflict-note">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
       <p>El despacho <strong>no representa simultáneamente</strong> a afectados y a vinculados dentro de un mismo proceso de intervención. Cada consulta pasa por una verificación previa de conflicto antes de aceptarse.</p>
