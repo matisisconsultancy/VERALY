@@ -28,11 +28,12 @@ def run(out_path):
     routes = {}
     for path, meta, body in PAGES:
         routes[path] = {"title": meta["title"], "active": meta.get("active", ""),
-                        "mobilebar": bool(meta.get("mobile_bar")), "html": body}
+                        "mobilebar": bool(meta.get("mobile_bar")),
+                        "bodyclass": meta.get("body_class", ""), "html": body}
     routes["/marca/sistema/"] = {"title": "Brandbook · Veraly", "active": "", "mobilebar": False,
         "html": '<section class="section"><div class="container prose"><p class="eyebrow">Brandbook</p><h1>El brandbook interactivo completo</h1><p>Pieza independiente de gran formato. En esta vista previa se muestra el resumen del sistema de marca; el brandbook completo se sirve en el sitio desplegado, en <code>/marca/sistema/</code>.</p><p><a class="arrowlink" href="#!/marca/">Volver al sistema de marca</a></p></div></section>'}
     templates = "\n".join(
-        f'<template data-route="{p}" data-title="{build.esc(r["title"])}" data-active="{r["active"]}" data-mobilebar="{1 if r["mobilebar"] else 0}">{r["html"]}</template>'
+        f'<template data-route="{p}" data-title="{build.esc(r["title"])}" data-active="{r["active"]}" data-mobilebar="{1 if r["mobilebar"] else 0}" data-bodyclass="{r.get("bodyclass","")}">{r["html"]}</template>'
         for p, r in routes.items())
 
     def rw(h):
@@ -82,6 +83,7 @@ def run(out_path):
   function render(){var route=curRoute();var t=tpl[route]||tpl['/'];app.innerHTML='';app.appendChild(t.content.cloneNode(true));
     document.title=t.getAttribute('data-title');setActive(t.getAttribute('data-route'));
     var mb=t.getAttribute('data-mobilebar')==='1';mbar.classList.toggle('is-on',mb);body.classList.toggle('has-mobile-bar',mb);
+    body.classList.toggle('theme-light',(t.getAttribute('data-bodyclass')||'').indexOf('theme-light')>=0);
     var mw=document.querySelector('.nav-menu-wrap');if(mw){mw.setAttribute('data-open','false');body.setAttribute('data-nav-open','false');}
     var tg=document.querySelector('.nav-toggle');if(tg){tg.setAttribute('aria-expanded','false');tg.innerHTML=ICON_MENU;}
     window.scrollTo(0,0);bindDynamic(app);initStepper();initReveal();initFeatureRows();}
