@@ -17,8 +17,9 @@
   --ink:#03191B;         /* casi-negro teal (secciones alternas) */
   --panel:#073A3F;       /* superficie */
   --panel-2:#0A4A50;     /* superficie elevada / tarjeta tintada */
-  --accent:#89F5E5;      /* menta / acento (equivale al cian del referente) */
+  --accent:#89F5E5;      /* menta / acento (fondo de botones/pills) */
   --accent-deep:#5FD9C7; /* menta apagada para hover */
+  --accent-ink:#89F5E5;  /* acento como TEXTO/gráfico fino (menta en oscuro) */
   --text:#EAFBF6;        /* texto principal */
   --on-light:#05292C;    /* texto sobre menta */
   --dim:rgba(234,251,246,.70);
@@ -49,6 +50,25 @@
 
   --gutter:clamp(20px,4vw,40px);
 }
+
+/* ---------- Tema claro Veraly (referente: diagramación en clave clara) ---------- */
+body.theme-light{
+  --bg:#EEF4F2;          /* fondo teal muy claro */
+  --ink:#E4EDEA;         /* superficie alterna / footer (un tono más) */
+  --panel:#FFFFFF;       /* superficie / tarjeta */
+  --panel-2:#E7F1ED;     /* superficie elevada / realce de fila */
+  --text:#072925;        /* casi-negro teal */
+  --dim:rgba(7,41,37,.72);
+  --dim-2:rgba(7,41,37,.48);
+  --line:rgba(7,41,37,.16);
+  --line-soft:rgba(7,41,37,.10);
+  --grid-line:rgba(7,41,37,.06);
+  --accent-ink:#0B8271;  /* teal profundo: acento-texto legible sobre claro */
+  /* --accent (menta) y --on-light se mantienen: botones/pills rellenos */
+}
+/* Header legible sobre fondo claro */
+body.theme-light .site-header.floating{background:linear-gradient(180deg,rgba(238,244,242,.94),rgba(238,244,242,0))}
+body.theme-light .nav-pill{background:rgba(7,41,37,.045);border-color:rgba(7,41,37,.10)}
 
 /* ---------- Reset ---------- */
 *,*::before,*::after{box-sizing:border-box}
@@ -118,10 +138,10 @@ strong{font-weight:600;color:var(--text)}
 .btn--sm{padding:.55em 1.1em;min-height:40px;font-size:var(--step--1);gap:.4em}
 .btn:active{transform:translateY(1px)}
 .cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:1.6rem}
-.textlink{color:var(--accent);text-decoration:none;font-family:var(--ui);font-weight:600;
+.textlink{color:var(--accent-ink);text-decoration:none;font-family:var(--ui);font-weight:600;
   border-bottom:1.5px solid transparent;transition:border-color .18s}
-.textlink:hover{border-color:var(--accent)}
-.arrowlink{display:inline-flex;align-items:center;gap:.45em;color:var(--accent);
+.textlink:hover{border-color:var(--accent-ink)}
+.arrowlink{display:inline-flex;align-items:center;gap:.45em;color:var(--accent-ink);
   text-decoration:none;font-family:var(--ui);font-weight:600}
 .arrowlink::after{content:"→";transition:transform .18s}
 .arrowlink:hover::after{transform:translateX(4px)}
@@ -242,7 +262,7 @@ strong{font-weight:600;color:var(--text)}
 .faq summary{list-style:none;cursor:pointer;padding:18px 40px 18px 0;position:relative;
   font-weight:600;color:var(--text);font-size:var(--step-0)}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";position:absolute;right:6px;top:16px;color:var(--accent);font-family:var(--ui);font-size:1.4rem}
+.faq summary::after{content:"+";position:absolute;right:6px;top:16px;color:var(--accent-ink);font-family:var(--ui);font-size:1.4rem}
 .faq details[open] summary::after{content:"–"}
 .faq .faq-a{padding:0 0 20px;color:var(--dim);max-width:70ch}
 
@@ -271,7 +291,7 @@ strong{font-weight:600;color:var(--text)}
   border:1px solid var(--line-soft);border-radius:999px;padding:.45em 1em;line-height:1.2;
   transition:border-color .18s,color .18s,background .18s}
 .practica-nav a:hover{border-color:var(--line);color:var(--text)}
-.practica-nav a[aria-current="page"]{background:var(--accent);color:var(--ink);border-color:var(--accent);font-weight:600}
+.practica-nav a[aria-current="page"]{background:var(--accent);color:var(--on-light);border-color:var(--accent);font-weight:600}
 @media (max-width:640px){.practica-nav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
   padding-bottom:6px;scrollbar-width:none}.practica-nav a{white-space:nowrap;flex:none}}
 
@@ -285,12 +305,12 @@ strong{font-weight:600;color:var(--text)}
   transition:background .22s ease}
 .prac-row:hover,.prac-row:focus-visible{background:var(--panel-2)}
 .prac-row:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
-.prac-row .pr-n{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;color:var(--accent);opacity:.75}
+.prac-row .pr-n{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;color:var(--accent-ink);opacity:.85}
 .prac-row .pr-t{font-family:var(--serif);font-weight:700;line-height:1.08;letter-spacing:-.01em;
   font-size:clamp(1.5rem,1rem + 1.9vw,2.5rem);color:var(--text);transition:color .2s}
-.prac-row:hover .pr-t,.prac-row:focus-visible .pr-t{color:var(--accent)}
+.prac-row:hover .pr-t,.prac-row:focus-visible .pr-t{color:var(--accent-ink)}
 .prac-row .pr-d{color:var(--dim);font-size:var(--step-0);line-height:1.5}
-.prac-row .pr-go{justify-self:end;color:var(--accent);font-style:normal;font-size:1.25rem;
+.prac-row .pr-go{justify-self:end;color:var(--accent-ink);font-style:normal;font-size:1.25rem;
   opacity:0;transform:translateX(-6px);transition:opacity .22s,transform .22s}
 .prac-row:hover .pr-go,.prac-row:focus-visible .pr-go{opacity:1;transform:none}
 @media (max-width:820px){
@@ -374,7 +394,7 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
 .norm-block h2{font-size:var(--step-1);margin:0 0 .8rem}
 .norm-block ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem}
 .norm-block li{color:var(--dim);padding-left:1.2rem;position:relative}
-.norm-block li::before{content:"§";position:absolute;left:0;color:var(--accent)}
+.norm-block li::before{content:"§";position:absolute;left:0;color:var(--accent-ink)}
 .byline{display:flex;align-items:center;gap:14px;margin:2rem 0;padding:18px 0;border-top:1px solid var(--line-soft)}
 .byline .b-name{font-family:var(--sans);font-weight:600;color:var(--text)}
 .byline .b-role{color:var(--dim-2);font-size:var(--step--1)}
@@ -397,7 +417,7 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
 @media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.footer-grid{grid-template-columns:1fr}}
 .footer-grid h4{font-family:var(--ui);font-size:var(--step--1);text-transform:uppercase;
-  letter-spacing:.14em;color:var(--accent);font-weight:600;margin:0 0 16px}
+  letter-spacing:.14em;color:var(--accent-ink);font-weight:600;margin:0 0 16px}
 .footer-grid ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
 .footer-grid a{color:var(--dim);text-decoration:none;transition:color .18s}
 .footer-grid a:hover{color:var(--text)}

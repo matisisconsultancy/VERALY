@@ -275,7 +275,7 @@ def build(g):
     add("/equipo/", {
         "title": "El equipo · Las cinco prácticas · Veraly Grupo Jurídico",
         "description": "La firma se compone de cinco prácticas del derecho que convergen sobre el mismo expediente de captación masiva: constitucional, penal, corporativa, tributaria y laboral.",
-        "active": "equipo",
+        "active": "equipo", "body_class": "theme-light",
         "schema": [breadcrumb_schema([("Inicio", "/"), ("El equipo", "/equipo/")])],
     }, equipo_body)
 
@@ -341,7 +341,7 @@ def build(g):
         add(url, {
             "title": f'{pr["rama"]} en captación masiva · Veraly Grupo Jurídico',
             "description": pr["meta"],
-            "active": "equipo",
+            "active": "equipo", "body_class": "theme-light",
             "schema": [
                 service_schema(
                     pr["rama"] + " en captación masiva", pr["meta"], url, pr["rama"]),
