@@ -655,6 +655,65 @@
     }
     upd();
   }
+  /* ---------- Reserva de cita (tipo Calendly, sin backend: compone la solicitud) ---------- */
+  function initBooking() {
+    var w = $('[data-booking]'); if (!w) return;
+    var daysEl = w.querySelector('[data-days]'), slotsEl = w.querySelector('[data-slots]');
+    var confirmBtn = w.querySelector('[data-confirm]'), selEl = w.querySelector('[data-selected]');
+    var email = w.getAttribute('data-email') || '';
+    var active = w.querySelector('.cal-chip.is-active');
+    var state = { motivo: active ? active.getAttribute('data-motivo') : '', day: null, dayLabel: '', time: null };
+    $$('.cal-chip', w).forEach(function (c) {
+      c.addEventListener('click', function () {
+        $$('.cal-chip', w).forEach(function (x) { x.classList.remove('is-active'); });
+        c.classList.add('is-active'); state.motivo = c.getAttribute('data-motivo');
+      });
+    });
+    var dows = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    var months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+    var d = new Date(); d.setHours(0, 0, 0, 0); var added = 0;
+    while (added < 10) {
+      d.setDate(d.getDate() + 1); var dow = d.getDay(); if (dow === 0 || dow === 6) continue;
+      var lbl = dows[dow] + ' ' + d.getDate() + ' ' + months[d.getMonth()];
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'cal-day';
+      b.innerHTML = '<span class="cal-dow">' + lbl + '</span>';
+      (function (lbl2) {
+        b.addEventListener('click', function () {
+          $$('.cal-day', w).forEach(function (x) { x.classList.remove('is-active'); });
+          b.classList.add('is-active'); state.day = lbl2; state.dayLabel = lbl2; state.time = null; buildSlots(); upd();
+        });
+      })(lbl);
+      daysEl.appendChild(b); added++;
+    }
+    function buildSlots() {
+      slotsEl.innerHTML = '';
+      [8, 9, 10, 11, 12, 14, 15, 16, 17].forEach(function (h) {
+        var t = ('0' + h).slice(-2) + ':00';
+        var s = document.createElement('button'); s.type = 'button'; s.className = 'cal-slot'; s.textContent = t;
+        s.addEventListener('click', function () {
+          $$('.cal-slot', w).forEach(function (x) { x.classList.remove('is-active'); });
+          s.classList.add('is-active'); state.time = t; upd();
+        });
+        slotsEl.appendChild(s);
+      });
+    }
+    function upd() {
+      var ok = !!(state.day && state.time);
+      confirmBtn.disabled = !ok;
+      if (ok) { selEl.hidden = false; selEl.innerHTML = 'Franja seleccionada: <b>' + state.dayLabel + ' · ' + state.time + '</b>'; }
+      else selEl.hidden = true;
+    }
+    confirmBtn.addEventListener('click', function () {
+      if (confirmBtn.disabled) return;
+      var nombre = (w.querySelector('[data-f="nombre"]') || {}).value || '';
+      var contacto = (w.querySelector('[data-f="contacto"]') || {}).value || '';
+      var subject = 'Solicitud de cita — ' + state.dayLabel + ' ' + state.time;
+      var body = 'Motivo: ' + state.motivo + '\nFranja solicitada: ' + state.dayLabel + ' a las ' + state.time
+        + '\nNombre: ' + nombre + '\nContacto: ' + contacto
+        + '\n\n(No incluyo los hechos del caso; los conversamos en la reunión.)';
+      window.location.href = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    });
+  }
   /* ---------- El trabajo por momento: pestañas numeradas ---------- */
   function initPhases() {
     $$('.phase-tabs').forEach(function (root) {
@@ -669,7 +728,7 @@
       });
     });
   }
-  window.__initPins = function () { initStepper(); initReveal(); initFeatureRows(); initBlog(); initScramble(); initCountUp(); initPlazos(); initViaSticky(); initPhases(); initJourney(); };
+  window.__initPins = function () { initStepper(); initReveal(); initFeatureRows(); initBlog(); initScramble(); initCountUp(); initPlazos(); initViaSticky(); initPhases(); initJourney(); initBooking(); };
   window.__initPins();
 
   /* ---------- Profundidad de scroll ---------- */

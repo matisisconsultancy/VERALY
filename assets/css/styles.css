@@ -1553,3 +1553,61 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 .quiz-cta-badge span{font-family:var(--sans);font-weight:300;font-size:clamp(3.2rem,2rem + 3vw,4.8rem);color:var(--accent-ink);line-height:1}
 .quiz-cta-badge small{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.64rem;color:var(--dim)}
 @media(max-width:720px){.quiz-cta{grid-template-columns:1fr}.quiz-cta-badge{display:none}}
+
+/* ============ Página de contacto (referente) + reserva tipo Calendly ============ */
+.contact-hero{position:relative;overflow:clip;background:var(--ink);min-height:80vh;min-height:80svh;
+  display:flex;align-items:flex-end;
+  --bg:#05292C;--ink:#03191B;--panel:#073A3F;--text:#EAFBF6;--dim:rgba(234,251,246,.7);
+  --dim-2:rgba(234,251,246,.48);--accent-ink:#89F5E5;--line:rgba(137,245,229,.28)}
+.contact-hero-bg{position:absolute;inset:0;opacity:.20;filter:saturate(.5)}
+.contact-hero-bg svg{width:100%;height:100%}
+.contact-hero-in{position:relative;padding:clamp(120px,16vh,180px) 0 clamp(40px,7vh,88px)}
+.contact-hero .eyebrow{color:var(--accent-ink)}
+.contact-hero-h1{font-family:var(--display);font-weight:500;letter-spacing:-.02em;line-height:1;
+  font-size:clamp(2.8rem,1.4rem + 6vw,7rem);color:#fff;margin:.6rem 0 0;max-width:14ch}
+.contact-hero-h1 .pr-accent{color:var(--accent-ink)}
+.contact-hero-sub{color:rgba(234,251,246,.7);font-weight:300;line-height:1.5;font-size:var(--step-1);
+  max-width:52ch;margin:clamp(22px,3vh,38px) 0 0}
+.contact-cols{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,6vw,96px);align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:clamp(24px,3vw,42px)}
+.ci-k{display:block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.18em;font-size:.68rem;color:var(--dim-2);margin-bottom:.7rem}
+.ci-v{font-family:var(--sans);font-weight:300;font-size:clamp(1.15rem,1rem + .6vw,1.5rem);line-height:1.35;color:var(--text);margin:0}
+.ci-v a{color:var(--text);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+.ci-v a:hover{border-color:var(--accent-ink)}
+.ci-block .arrowlink{margin-top:.7rem}
+/* widget de reserva */
+.contact-book .ci-k{margin-bottom:1.1rem}
+.cal-widget{border:1px solid var(--line);border-radius:20px;padding:clamp(22px,2.6vw,40px);background:var(--panel)}
+.cal-w-title{font-family:var(--sans);font-weight:400;font-size:clamp(1.3rem,1.05rem + 1vw,1.7rem);color:var(--text);margin:0}
+.cal-w-sub{color:var(--dim);font-weight:300;line-height:1.55;margin:.6rem 0 0;font-size:var(--step--1)}
+.cal-field{margin-top:1.6rem}
+.cal-label{display:block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:.64rem;color:var(--dim-2);margin-bottom:.7rem}
+.cal-chips{display:flex;flex-wrap:wrap;gap:8px}
+.cal-chip{font-family:var(--ui);font-size:.86rem;color:var(--dim);background:transparent;border:1px solid var(--line);
+  border-radius:999px;padding:.5rem .95rem;cursor:pointer;transition:color .25s,border-color .25s,background .25s}
+.cal-chip:hover{color:var(--text);border-color:var(--accent-ink)}
+.cal-chip.is-active{color:var(--accent-ink);border-color:var(--accent-ink);background:color-mix(in srgb,var(--accent-ink) 8%,transparent)}
+.cal-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2vw,30px);margin-top:1.6rem}
+.cal-days{display:flex;flex-direction:column;gap:6px;max-height:236px;overflow:auto}
+.cal-day{width:100%;text-align:left;font-family:var(--ui);font-size:.9rem;color:var(--dim);background:transparent;
+  border:1px solid var(--line);border-radius:10px;padding:.62rem .8rem;cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.cal-day:hover{color:var(--text);border-color:var(--accent-ink)}
+.cal-day.is-active{color:var(--accent-ink);border-color:var(--accent-ink);background:color-mix(in srgb,var(--accent-ink) 8%,transparent)}
+.cal-dow{text-transform:capitalize}
+.cal-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;align-content:start}
+.cal-hint{grid-column:1/-1;color:var(--dim-2);font-size:.85rem;font-weight:300;margin:0}
+.cal-slot{font-family:var(--mono);font-size:.82rem;color:var(--dim);background:transparent;border:1px solid var(--line);
+  border-radius:8px;padding:.5rem .3rem;cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.cal-slot:hover{color:var(--text);border-color:var(--accent-ink)}
+.cal-slot.is-active{color:var(--bg);background:var(--accent-ink);border-color:var(--accent-ink);font-weight:500}
+.cal-fields{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.6vw,24px);margin-top:1.6rem}
+.cal-input label{display:block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;font-size:.6rem;color:var(--dim-2);margin-bottom:.4rem}
+.cal-input input{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);padding:.5rem 0;color:var(--text);font-family:var(--sans);font-size:1rem}
+.cal-input input:focus{outline:none;border-color:var(--accent-ink)}
+.cal-selected{margin-top:1.4rem;font-weight:400;color:var(--text)}
+.cal-selected b{color:var(--accent-ink)}
+.cal-confirm{margin-top:1.4rem}
+.cal-confirm:disabled{opacity:.4;cursor:not-allowed}
+.cal-note{color:var(--dim-2);font-size:.78rem;font-weight:300;line-height:1.5;margin:1rem 0 0}
+@media(max-width:860px){.contact-cols{grid-template-columns:1fr;gap:40px}}
+@media(max-width:520px){.cal-grid{grid-template-columns:1fr}.cal-fields{grid-template-columns:1fr}.cal-days{max-height:none}}

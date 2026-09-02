@@ -18,15 +18,13 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = {
     "name": "Veraly Grupo Jurídico",
     "claim": "Defensa en fraude financiero",
-    # Dominio canónico PENDIENTE (decisión 05). Placeholder para canónicas/OG/sitemap.
-    "base_url": "https://veraly.co",
+    "base_url": "https://veraly.com.co",
     "locale": "es-CO",
-    # Datos de contacto PENDIENTES (decisión 07) — placeholders marcados.
-    "email": "contacto@veraly.co",
-    "phone_display": "+57 000 000 0000",
-    "phone_href": "+570000000000",
-    "whatsapp": "",  # wa.me/57XXXXXXXXXX
-    "address": "Dirección por definir — Colombia",
+    "email": "contacto@veraly.com.co",
+    "phone_display": "+57 322 512 6199",
+    "phone_href": "+573225126199",
+    "whatsapp": "",  # la firma no cuenta con WhatsApp
+    "address": "Calle 16 # 4-68, oficina 1204, Bogotá",
     "hours": "Lun a Vie, 8:00–18:00",
     # Agendamiento (Cal.com). Placeholder hasta conectar el calendario de la firma.
     "cal_link": "",  # p.ej. "veraly/consulta"  (TODO: cuenta Cal.com de la firma)

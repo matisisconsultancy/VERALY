@@ -492,53 +492,73 @@ def build(g):
     # =====================================================================
     # /contacto
     # =====================================================================
-    wa_btn = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" data-whatsapp data-pos="contacto">Escribir por WhatsApp</a>'
-              if SITE["whatsapp"] else "")
+    maps_q = "https://www.google.com/maps/search/?api=1&query=Calle+16+%234-68+oficina+1204+Bogot%C3%A1"
+    booking_motivos = "".join(
+        f'<button type="button" class="cal-chip{" is-active" if i == 0 else ""}" data-motivo="{esc(m)}">{esc(lbl)}</button>'
+        for i, (lbl, m) in enumerate([
+            ("Soy afectado", "Afectado por captación"),
+            ("Me investigan o me vincularon", "Investigado o vinculado"),
+            ("Empresa / prevención", "Empresa que recauda"),
+            ("Otro motivo", "Otro"),
+        ]))
+    booking_widget = (
+        '<div class="cal-widget" data-booking data-email="' + SITE["email"] + '">'
+        '<p class="cal-w-title">Reserve una cita en línea</p>'
+        '<p class="cal-w-sub">Elija el motivo, el día y la hora dentro del horario de atención. Enviaremos la confirmación por correo tras verificar disponibilidad y conflicto de interés.</p>'
+        '<div class="cal-field"><span class="cal-label">Motivo</span>'
+        f'<div class="cal-chips">{booking_motivos}</div></div>'
+        '<div class="cal-grid">'
+        '<div class="cal-col"><span class="cal-label">Día</span><div class="cal-days" data-days></div></div>'
+        '<div class="cal-col"><span class="cal-label">Hora</span><div class="cal-slots" data-slots><p class="cal-hint">Seleccione un día.</p></div></div>'
+        '</div>'
+        '<div class="cal-fields">'
+        '<div class="cal-input"><label for="bk-nombre">Nombre completo</label><input id="bk-nombre" data-f="nombre" type="text" autocomplete="name"></div>'
+        '<div class="cal-input"><label for="bk-contacto">Correo o teléfono</label><input id="bk-contacto" data-f="contacto" type="text" autocomplete="email"></div>'
+        '</div>'
+        '<p class="cal-selected" data-selected hidden></p>'
+        '<button type="button" class="btn btn--primary cal-confirm" data-confirm disabled>Confirmar la reserva</button>'
+        '<p class="cal-note">Lunes a viernes · 8:00 – 18:00. No incluya los hechos de su caso; los detalles se conversan en la reunión.</p>'
+        '</div>')
     contacto_body = f'''
-{section(f"""
-  <p class="eyebrow">Contacto</p>
-  <h1>Hablar con la firma</h1>
-  <p class="support" style="max-width:54ch">Una primera conversación sirve para determinar si hay caso, qué vías están abiertas y qué plazos corren. No requiere aportar documentación ni tomar ninguna decisión.</p>
-  <div class="cta-row">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="#formulario">Escribir el formulario</a></div>
-""", cls="hero", tight=True)}
-
-<section class="section band" id="agendar">
-  <div class="container">
-    <div class="agendar-box">
-      <p class="eyebrow">Agendar en línea</p>
-      <h2>Elija una franja para la primera conversación</h2>
-      <p>Reserve directamente un espacio con la firma. Solo necesitamos su nombre y una vía de contacto; no hace falta describir el caso.</p>
-      <div id="cal-inline" data-cal-inline></div>
-      <div class="cta-row">{agendar("Agendar una consulta")}</div>
-    </div>
+<section class="contact-hero">
+  <div class="contact-hero-bg" aria-hidden="true">{g["wave_svg"]()}</div>
+  <div class="container contact-hero-in">
+    <p class="eyebrow">Contacto</p>
+    <h1 class="contact-hero-h1">No dude en <span class="pr-accent">contactarnos.</span></h1>
+    <p class="contact-hero-sub">Para cualquier solicitud de información o para agendar una primera conversación, la firma queda a su disposición.</p>
   </div>
 </section>
 
-<section class="section band" id="formulario">
-  <div class="container">
-    <div class="contact-grid">
-      <div>
-        {contact_form("institucional", "Enviar")}
-        <div class="cta-row">
-          <a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="contacto">Llamar</a>
-          {wa_btn}
-        </div>
+<section class="section">
+  <div class="container contact-cols">
+    <aside class="contact-info">
+      <div class="ci-block">
+        <span class="ci-k">Dirección</span>
+        <p class="ci-v">Calle 16 # 4-68<br>Oficina 1204<br>Bogotá, Colombia</p>
+        <a class="arrowlink" href="{maps_q}" target="_blank" rel="noopener">Cómo llegar</a>
       </div>
-      <aside>
-        {trust_list()}
-        <dl class="firm-data">
-          <div><dt>Dirección</dt><dd>{esc(SITE["address"])}</dd></div>
-          <div><dt>Teléfono</dt><dd><a href="tel:{SITE["phone_href"]}" data-pos="contacto">{esc(SITE["phone_display"])}</a></dd></div>
-          <div><dt>Correo</dt><dd><a href="mailto:{SITE["email"]}">{esc(SITE["email"])}</a></dd></div>
-          <div><dt>Horario</dt><dd>{esc(SITE["hours"])}</dd></div>
-        </dl>
-      </aside>
+      <div class="ci-block">
+        <span class="ci-k">Teléfono</span>
+        <p class="ci-v"><a href="tel:{SITE["phone_href"]}" data-pos="contacto">{esc(SITE["phone_display"])}</a></p>
+      </div>
+      <div class="ci-block">
+        <span class="ci-k">Correo</span>
+        <p class="ci-v"><a href="mailto:{SITE["email"]}">{esc(SITE["email"])}</a></p>
+      </div>
+      <div class="ci-block">
+        <span class="ci-k">Horario</span>
+        <p class="ci-v">Lunes a viernes · 8:00 – 18:00</p>
+      </div>
+    </aside>
+    <div class="contact-book">
+      <span class="ci-k">Reservar una cita</span>
+      {booking_widget}
     </div>
   </div>
 </section>
 '''
     add("/contacto/", {
         "title": "Contacto · Veraly Grupo Jurídico",
-        "description": "Solicite una primera conversación con Veraly Grupo Jurídico. Datos mínimos y verificación previa de conflicto de interés.",
+        "description": "Reserve una primera conversación con Veraly Grupo Jurídico en Bogotá. Verificación previa de conflicto de interés.",
         "active": "contacto",
     }, contacto_body)
