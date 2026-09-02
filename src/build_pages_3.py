@@ -423,13 +423,6 @@ def build(g):
         "<p><strong>Plan de desmonte en intervención.</strong> Propuesta de devolución voluntaria conforme a cronograma que, bajo la Ley 1902 de 2018, exige aval de la Superintendencia y respaldo del 75 % de los afectados. Su cumplimiento conduce a la desintervención; su incumplimiento reactiva las medidas.</p>"
         "<p style='margin-top:1.1rem'><strong>Justicia penal negociada.</strong> Preacuerdos, allanamiento y principio de oportunidad. La reparación y el reintegro tienen efecto directo sobre la exposición punitiva. Coordinar la conciliación civil, la devolución administrativa y la negociación penal —y no por separado, con abogados que no se hablan— es donde se juega el resultado.</p>",
         band=True, parallax=True)
-    def_conflict = (
-        '<section class="section"><div class="container">'
-        '<p class="eyebrow-num"><span class="n">§</span>Antes de escribir</p>'
-        '<div class="conflict" style="margin-top:1.2rem;max-width:70ch">'
-        '<p>El formulario pide tres datos: nombre, una vía de contacto y una línea de contexto. <strong>No escriba los hechos de su caso en el formulario.</strong> No lo necesitamos para agendar y usted no necesita dejarlo por escrito antes de que exista relación profesional.</p></div>'
-        '<p class="lead" style="margin-top:1.2rem;max-width:70ch;color:var(--dim)">La firma también representa a personas afectadas en procesos de captación, en casos distintos. Antes de aceptar cualquier consulta verificamos si ya intervenimos en ese proceso por la orilla contraria. Si es así, declinamos.</p>'
-        '</div></section>')
     def_faq = faq_sticky(defensa_faq, title='Preguntas de la <span class="pr-accent">defensa.</span>')
     defensa_body = f'''
 {def_hero}
@@ -443,8 +436,6 @@ def build(g):
 {def_stmt}
 
 {def_salidas}
-
-{def_conflict}
 
 {def_faq}
 
