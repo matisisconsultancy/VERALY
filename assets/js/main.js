@@ -538,7 +538,10 @@
         p = Math.max(0, Math.min(1, p));
         track.style.setProperty('--p', p.toFixed(3));
         var active = Math.ceil(p * steps.length);
-        steps.forEach(function (s, i) { s.classList.toggle('is-on', i < active); });
+        steps.forEach(function (s, i) {
+          s.classList.toggle('is-on', i < active);
+          s.classList.toggle('is-cur', i === active - 1);
+        });
       });
     }
     if (!window.__plzScroll) {
@@ -551,7 +554,8 @@
   /* ---------- Tres vías: escenario fijado que avanza con el scroll ---------- */
   function initViaSticky() {
     var track = $('.via-track'); if (!track) return;
-    var slides = $$('.via-slide', track), bars = $$('.via-bars i', track), n = slides.length;
+    var slides = $$('.via-slide', track), bars = $$('.via-bars i', track),
+        steps = $$('.via-step', track), n = slides.length;
     if (!n) return;
     function upd() {
       var h = track.offsetHeight - window.innerHeight;
@@ -560,9 +564,35 @@
       var idx = Math.floor(p * n);
       slides.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
       bars.forEach(function (b, i) { b.classList.toggle('on', i <= idx); });
+      steps.forEach(function (s, i) { s.classList.toggle('on', i === idx); });
     }
     if (!window.__viaScroll) {
       window.__viaScroll = 1;
+      window.addEventListener('scroll', upd, { passive: true });
+      window.addEventListener('resize', upd);
+    }
+    upd();
+  }
+  /* ---------- Recorrido (journey) vertical: spine que se llena con el scroll ---------- */
+  function initJourney() {
+    var js = $$('.journey'); if (!js.length) return;
+    function upd() {
+      var vh = window.innerHeight, mid = vh * 0.62;
+      js.forEach(function (j) {
+        var spine = j.querySelector('.jn-spine');
+        var phases = $$('.jn-phase', j);
+        var r = j.getBoundingClientRect();
+        var p = (mid - r.top) / Math.max(1, r.height * 0.72);
+        p = Math.max(0, Math.min(1, p));
+        if (spine) spine.style.setProperty('--p', p.toFixed(3));
+        phases.forEach(function (ph) {
+          var nr = ph.getBoundingClientRect();
+          ph.classList.toggle('is-on', nr.top < mid);
+        });
+      });
+    }
+    if (!window.__jnScroll) {
+      window.__jnScroll = 1;
       window.addEventListener('scroll', upd, { passive: true });
       window.addEventListener('resize', upd);
     }
@@ -582,7 +612,7 @@
       });
     });
   }
-  window.__initPins = function () { initStepper(); initReveal(); initFeatureRows(); initBlog(); initScramble(); initCountUp(); initPlazos(); initViaSticky(); initPhases(); };
+  window.__initPins = function () { initStepper(); initReveal(); initFeatureRows(); initBlog(); initScramble(); initCountUp(); initPlazos(); initViaSticky(); initPhases(); initJourney(); };
   window.__initPins();
 
   /* ---------- Profundidad de scroll ---------- */

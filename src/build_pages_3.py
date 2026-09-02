@@ -77,6 +77,17 @@ def build(g):
             for i, (lbl, title, body) in enumerate(items))
         return f'<div class="phase-tabs"><div class="ph-nav">{tabs}</div><div class="ph-panels">{panels}</div></div>'
 
+    def journey(items):
+        # items: (etiqueta corta, título, cuerpo_html) -> recorrido vertical
+        phases = "".join(
+            f'<div class="jn-phase" data-i="{i}">'
+            f'<div class="jn-node"><span class="jn-n">{i+1:02d}</span></div>'
+            f'<div class="jn-body"><span class="jn-tag">{esc(tag)}</span>'
+            f'<h3 class="jn-h">{esc(title)}</h3>{body}</div></div>'
+            for i, (tag, title, body) in enumerate(items))
+        return (f'<div class="journey"><div class="jn-spine" aria-hidden="true">'
+                f'<i class="jn-fill"></i></div>{phases}</div>')
+
     # =====================================================================
     # /afectados-por-captacion-masiva  (Perfil A)
     # =====================================================================
@@ -96,7 +107,7 @@ def build(g):
         ("¿Cuánto cuesta consultar?",
          "<p>La primera conversación sirve para determinar si hay caso y qué vías están abiertas. Las condiciones del encargo se definen después y por escrito.</p>"),
     ]
-    afectados_acc = phase_tabs([
+    afectados_acc = journey([
         ("Antes de la intervención", "Antes de que se abra la intervención",
          "<ul><li>Denuncia administrativa y solicitud de intervención por hechos objetivos o notorios.</li>"
          "<li>Organización probatoria individual o del grupo: reconstrucción de entregas, trazabilidad y armado del expediente reclamable.</li>"
@@ -162,20 +173,28 @@ def build(g):
         f'</div>'
         for i, v in enumerate(_via_data))
     _via_bars = "".join('<i></i>' for _ in range(3))
+    _via_steps = "".join(
+        f'<span class="via-step{" on" if i == 0 else ""}" data-i="{i}">'
+        f'<b>{i+1:02d}</b>{esc(v[0])}</span>'
+        for i, v in enumerate(_via_data))
     af_vias_grid = (
-        '<section class="via-sticky-sec"><div class="container">'
+        '<section class="via-sticky-sec"><div class="via-track"><div class="via-sticky">'
+        '<div class="container via-frame">'
+        '<div class="via-head">'
+        '<div class="via-head-txt">'
         '<p class="eyebrow-num"><span class="n">§</span>Las tres vías</p>'
-        '<h2 class="pr-big">Tres vías, tres cosas distintas <span class="pr-accent">que se recuperan.</span></h2>'
+        '<h2 class="pr-big">Tres vías, tres cosas distintas <span class="pr-accent">que se recuperan.</span></h2></div>'
+        f'<div class="via-steps" aria-hidden="true">{_via_steps}</div>'
         '</div>'
-        '<div class="via-track"><div class="via-sticky"><div class="container via-stage">'
+        '<div class="via-stage">'
         f'<div class="via-slides">{_via_slides}</div>'
         '<div class="via-scopewrap" aria-hidden="true">'
         '<span class="via-scope-k">Alcance de la recuperación</span>'
         f'<div class="via-bars">{_via_bars}</div>'
         '<span class="via-scope-hint">Cada vía llega más lejos que la anterior.</span>'
         '</div>'
-        '</div></div></div>'
-        '<div class="container"><p class="lead" style="max-width:66ch;color:var(--dim)">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía civil o la penal. Las tres corren de forma autónoma —no hay que elegir una, hay que ordenarlas.</p></div>'
+        '</div></div></div></div>'
+        '<div class="container"><p class="lead via-foot" style="max-width:66ch">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía civil o la penal. Las tres corren de forma autónoma —no hay que elegir una, hay que ordenarlas.</p></div>'
         '</section>')
     af_plazos = (
         '<section class="plz-sec plz-pin"><div class="plz-pin-track">'
@@ -188,6 +207,7 @@ def build(g):
         + plz_step(2, "10", "días", "La reclamación", "Las solicitudes de devolución se presentan por escrito, con presentación personal y original del comprobante.")
         + plz_step(3, "20", "días", "La decisión", "La providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.")
         + plz_step(4, "3", "días", "El recurso", "El recurso de reposición contra esa decisión se interpone dentro de los tres días siguientes.")
+        + '<span class="plz-cursor" aria-hidden="true"></span>'
         + '</div>'
         '<p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p>'
         '</div></div></div></section>')

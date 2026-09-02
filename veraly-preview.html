@@ -1289,11 +1289,22 @@ html:not(.js) .plz-track::after{width:100%}
 .plz-step::before{content:"";position:absolute;top:3px;left:0;width:18px;height:18px;border-radius:50%;
   background:#04191b;border:2px solid rgba(137,245,229,.4);transition:background .35s ease,border-color .35s ease,box-shadow .35s ease}
 .plz-step.is-on::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 16px -1px var(--accent)}
+.plz-step.is-cur::before{box-shadow:0 0 0 6px rgba(137,245,229,.18),0 0 22px 2px var(--accent)}
+/* cursor viajero que recorre la línea con el scroll */
+.plz-cursor{position:absolute;top:11px;left:calc(var(--p,0) * 100%);width:14px;height:14px;border-radius:50%;
+  background:#fff;transform:translate(-50%,-50%);z-index:2;transition:left .12s linear;
+  box-shadow:0 0 0 5px rgba(137,245,229,.26),0 0 22px 2px var(--accent);animation:plzPulse 2.2s ease-in-out infinite}
+@keyframes plzPulse{0%,100%{box-shadow:0 0 0 5px rgba(137,245,229,.26),0 0 22px 2px var(--accent)}
+  50%{box-shadow:0 0 0 9px rgba(137,245,229,.10),0 0 30px 4px var(--accent)}}
+@media (prefers-reduced-motion:reduce){.plz-cursor{animation:none}}
 .plz-ord{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;
   color:rgba(137,245,229,.55);margin-bottom:.55rem;transition:color .35s ease}
 .plz-step.is-on .plz-ord{color:var(--accent)}
+.plz-step.is-cur .plz-ord{color:#fff}
 .plz-num{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:.95;color:#fff;
-  font-size:clamp(2.8rem,1.8rem + 3vw,4.8rem);display:flex;align-items:baseline;gap:.16em}
+  font-size:clamp(2.8rem,1.8rem + 3vw,4.8rem);display:flex;align-items:baseline;gap:.16em;
+  transform-origin:left bottom;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.plz-step.is-cur .plz-num{transform:scale(1.06)}
 .plz-num .u{font-size:.28em;color:var(--accent);font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em}
 .plz-label{font-family:var(--ui);font-weight:600;margin-top:.7rem;color:#fff}
 .plz-detail{color:rgba(234,251,246,.62);font-size:var(--step--1);line-height:1.5;margin-top:.4rem;max-width:26ch}
@@ -1306,6 +1317,7 @@ html:not(.js) .plz-track::after{width:100%}
   html:not(.js) .plz-track::after{height:100%}
   .plz-step{padding-top:2px;padding-left:44px;padding-bottom:34px}
   .plz-step::before{top:2px;left:0}
+  .plz-cursor{top:calc(var(--p,0) * 100%);left:9px;transition:top .12s linear}
 }
 
 /* El calendario fijado (sticky): el panel se ancla al viewport mientras
@@ -1322,10 +1334,24 @@ html:not(.js) .plz-track::after{width:100%}
 /* Las tres vías: escenario fijado (sticky) que cambia de vía con el scroll
    mientras la barra de alcance crece (administrativa -> civil -> penal) */
 .via-sticky-sec{padding:clamp(44px,6vw,80px) 0}
-.via-track{position:relative;height:300vh}
-.via-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center}
+.via-track{position:relative;height:320vh}
+.via-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center}
+.via-frame{width:100%}
+/* encabezado integrado dentro de la escena fijada */
+.via-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(20px,3vw,48px);flex-wrap:wrap;
+  padding-bottom:clamp(20px,2.6vw,36px);margin-bottom:clamp(26px,3.4vw,52px);border-bottom:1px solid var(--line)}
+.via-head-txt{max-width:32ch}
+.via-head .eyebrow-num{margin:0}
+.via-head .pr-big{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.5rem);margin:.5rem 0 0;line-height:1.06}
+.via-steps{display:flex;gap:8px;flex-shrink:0}
+.via-step{display:flex;flex-direction:column;gap:.35rem;font-family:var(--mono);text-transform:uppercase;
+  letter-spacing:.08em;font-size:.58rem;color:var(--dim-2);padding:.55rem .85rem;border:1px solid var(--line);
+  border-radius:12px;min-width:104px;transition:color .45s ease,border-color .45s ease,background .45s ease}
+.via-step b{font-size:.95rem;font-weight:400;letter-spacing:.02em;color:var(--dim-2);transition:color .45s ease}
+.via-step.on{border-color:var(--accent-ink);color:var(--text);background:color-mix(in srgb,var(--accent-ink) 7%,transparent)}
+.via-step.on b{color:var(--accent-ink)}
 .via-stage{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,6vw,88px);align-items:center;width:100%}
-.via-slides{position:relative;min-height:clamp(320px,46vh,440px)}
+.via-slides{position:relative;min-height:clamp(268px,36vh,360px)}
 .via-slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
   opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.2,1);pointer-events:none}
 .via-slide.active{opacity:1;transform:none;pointer-events:auto}
@@ -1347,14 +1373,51 @@ html:not(.js) .plz-track::after{width:100%}
 .via-bars i:nth-child(3){height:100%}
 .via-bars i.on{background:var(--accent-ink)}
 .via-scope-hint{font-family:var(--ui);font-size:var(--step--1);color:var(--dim)}
+.via-foot{color:var(--dim);margin-top:clamp(26px,3.4vw,48px)}
 @media (max-width:860px){
   .via-track{height:auto}
   .via-sticky{position:static;height:auto;display:block;padding:8px 0}
+  .via-head{align-items:flex-start;margin-bottom:28px}
+  .via-steps{display:none}
   .via-stage{grid-template-columns:1fr;gap:26px}
   .via-slides{position:static;min-height:0;display:flex;flex-direction:column;gap:34px}
   .via-slide{position:static;opacity:1;transform:none;border-top:1px solid var(--line);padding-top:24px}
   .via-slide:first-child{border-top:0;padding-top:0}
   .via-scopewrap{display:none}
+}
+
+/* Recorrido (customer journey): línea vertical con hitos que se iluminan
+   conforme el scroll avanza por el antes / durante / después */
+.journey{position:relative;margin-top:clamp(30px,3.6vw,52px)}
+.jn-spine{position:absolute;left:22px;top:16px;bottom:16px;width:2px;background:var(--line);overflow:hidden}
+.jn-fill{position:absolute;left:0;top:0;width:100%;height:calc(var(--p,0) * 100%);
+  background:var(--accent-ink);box-shadow:0 0 12px -2px var(--accent-ink);transition:height .18s linear}
+html:not(.js) .jn-fill{height:100%}
+.jn-phase{position:relative;display:grid;grid-template-columns:46px 1fr;gap:clamp(16px,2vw,34px);
+  padding-bottom:clamp(38px,5vw,68px);opacity:.5;transition:opacity .55s ease}
+.jn-phase:last-child{padding-bottom:0}
+.jn-phase.is-on{opacity:1}
+.jn-node{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--bg,#fff);border:2px solid var(--line);position:relative;z-index:1;
+  transition:border-color .5s ease,box-shadow .5s ease}
+.jn-phase.is-on .jn-node{border-color:var(--accent-ink);box-shadow:0 0 0 5px color-mix(in srgb,var(--accent-ink) 14%,transparent)}
+.jn-n{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--dim-2);transition:color .5s ease}
+.jn-phase.is-on .jn-n{color:var(--accent-ink)}
+.jn-body{padding-top:.35rem;min-width:0}
+.jn-tag{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:.66rem;color:var(--dim-2)}
+.jn-h{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1.1;
+  font-size:clamp(1.3rem,1rem + 1.2vw,1.95rem);color:var(--text);margin:.4rem 0 1.1rem}
+.jn-body ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.jn-body li{position:relative;padding:.82rem 0 .82rem 1.6rem;border-top:1px solid var(--line);
+  color:var(--dim);font-weight:300;line-height:1.55;font-size:var(--step-0)}
+.jn-body li:first-child{border-top:0}
+.jn-body li::before{content:"";position:absolute;left:0;top:1.35rem;width:7px;height:7px;border-radius:50%;
+  background:var(--line);transition:background .45s ease,box-shadow .45s ease}
+.jn-phase.is-on .jn-body li::before{background:var(--accent-ink)}
+@media (max-width:600px){
+  .jn-phase{grid-template-columns:40px 1fr;gap:14px}
+  .jn-node{width:40px;height:40px}
+  .jn-spine{left:19px}
 }
 
 /* El trabajo por momento del proceso: pestañas numeradas (nav + panel) */
@@ -2096,15 +2159,15 @@ html:not(.js) .plz-track::after{width:100%}
 
 <section class="section sol-stmt-sec"><div class="container sol-stmt-grid"><div><p class="eyebrow-num"><span class="n">§</span>El fenómeno</p><h2 class="sol-stmt pr-parallax">Probablemente no fue una estafa. <span class="pr-accent">Fue captación masiva.</span></h2></div><div class="sol-stmt-body"><p>La diferencia no es semántica. La estafa y la captación masiva son delitos distintos, con procesos distintos y con vías de recuperación distintas —y se usan como sinónimos incluso en la prensa.</p><p>Hay <strong>captación masiva y habitual no autorizada</strong> cuando se reciben dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable: más de veinte personas, o más de cincuenta obligaciones, o mediación de ofertas masivas.</p><p>Que su caso encuadre en esta figura lo cambia todo: activa un procedimiento administrativo especial ante la Superintendencia de Sociedades que no existe en la estafa común, y con él un mecanismo de devolución al que usted puede acceder.</p></div></div></section>
 
-<section class="via-sticky-sec"><div class="container"><p class="eyebrow-num"><span class="n">§</span>Las tres vías</p><h2 class="pr-big">Tres vías, tres cosas distintas <span class="pr-accent">que se recuperan.</span></h2></div><div class="via-track"><div class="via-sticky"><div class="container via-stage"><div class="via-slides"><div class="via-slide active" data-i="0"><span class="via-idx">01 / 03</span><span class="via-tag">Vía administrativa</span><h3 class="via-h">La reclamación dentro de la intervención</h3><p class="via-d">Cuando la Superintendencia ordena la toma de posesión para devolver, se abre un trámite de reclamación a prorrata entre los afectados. Es la vía más rápida.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">El capital entregado</span></div></div><div class="via-slide" data-i="1"><span class="via-idx">02 / 03</span><span class="via-tag">Vía civil</span><h3 class="via-h">La responsabilidad de los solventes</h3><p class="via-d">Cuando la masa no cubre el faltante, persigue el patrimonio de administradores, revisores, contadores y vinculados solventes; y reconstruye la prenda general.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">El patrimonio de los responsables</span></div></div><div class="via-slide" data-i="2"><span class="via-idx">03 / 03</span><span class="via-tag">Vía penal</span><h3 class="via-h">El incidente de reparación integral</h3><p class="via-d">Tras la sentencia condenatoria se reclaman daño emergente, lucro cesante y perjuicios morales. Es la vía de mayor alcance: llega a lo que las demás dejan fuera.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">Capital, rendimientos y perjuicios</span></div></div></div><div class="via-scopewrap" aria-hidden="true"><span class="via-scope-k">Alcance de la recuperación</span><div class="via-bars"><i></i><i></i><i></i></div><span class="via-scope-hint">Cada vía llega más lejos que la anterior.</span></div></div></div></div><div class="container"><p class="lead" style="max-width:66ch;color:var(--dim)">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía civil o la penal. Las tres corren de forma autónoma —no hay que elegir una, hay que ordenarlas.</p></div></section>
+<section class="via-sticky-sec"><div class="via-track"><div class="via-sticky"><div class="container via-frame"><div class="via-head"><div class="via-head-txt"><p class="eyebrow-num"><span class="n">§</span>Las tres vías</p><h2 class="pr-big">Tres vías, tres cosas distintas <span class="pr-accent">que se recuperan.</span></h2></div><div class="via-steps" aria-hidden="true"><span class="via-step on" data-i="0"><b>01</b>Vía administrativa</span><span class="via-step" data-i="1"><b>02</b>Vía civil</span><span class="via-step" data-i="2"><b>03</b>Vía penal</span></div></div><div class="via-stage"><div class="via-slides"><div class="via-slide active" data-i="0"><span class="via-idx">01 / 03</span><span class="via-tag">Vía administrativa</span><h3 class="via-h">La reclamación dentro de la intervención</h3><p class="via-d">Cuando la Superintendencia ordena la toma de posesión para devolver, se abre un trámite de reclamación a prorrata entre los afectados. Es la vía más rápida.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">El capital entregado</span></div></div><div class="via-slide" data-i="1"><span class="via-idx">02 / 03</span><span class="via-tag">Vía civil</span><h3 class="via-h">La responsabilidad de los solventes</h3><p class="via-d">Cuando la masa no cubre el faltante, persigue el patrimonio de administradores, revisores, contadores y vinculados solventes; y reconstruye la prenda general.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">El patrimonio de los responsables</span></div></div><div class="via-slide" data-i="2"><span class="via-idx">03 / 03</span><span class="via-tag">Vía penal</span><h3 class="via-h">El incidente de reparación integral</h3><p class="via-d">Tras la sentencia condenatoria se reclaman daño emergente, lucro cesante y perjuicios morales. Es la vía de mayor alcance: llega a lo que las demás dejan fuera.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">Capital, rendimientos y perjuicios</span></div></div></div><div class="via-scopewrap" aria-hidden="true"><span class="via-scope-k">Alcance de la recuperación</span><div class="via-bars"><i></i><i></i><i></i></div><span class="via-scope-hint">Cada vía llega más lejos que la anterior.</span></div></div></div></div></div><div class="container"><p class="lead via-foot" style="max-width:66ch">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía civil o la penal. Las tres corren de forma autónoma —no hay que elegir una, hay que ordenarlas.</p></div></section>
 
-<section class="plz-sec plz-pin"><div class="plz-pin-track"><div class="plz-pin-sticky"><div class="container"><p class="eyebrow-num"><span class="n">§</span>El calendario</p><div class="plz-head"><h2 class="plz-title">Los términos corren, <span class="pr-accent">y son cortos.</span></h2></div><p class="plz-sub">Dentro de la intervención administrativa el calendario es estricto y se cuenta en días comunes desde la toma de posesión.</p><div class="plz-track"><div class="plz-step"><span class="plz-ord">01</span><span class="plz-num"><span data-count="2">0</span><span class="u">días</span></span><p class="plz-label">El aviso</p><p class="plz-detail">El interventor publica el aviso dentro de los dos días siguientes a la toma de posesión.</p></div><div class="plz-step"><span class="plz-ord">02</span><span class="plz-num"><span data-count="10">0</span><span class="u">días</span></span><p class="plz-label">La reclamación</p><p class="plz-detail">Las solicitudes de devolución se presentan por escrito, con presentación personal y original del comprobante.</p></div><div class="plz-step"><span class="plz-ord">03</span><span class="plz-num"><span data-count="20">0</span><span class="u">días</span></span><p class="plz-label">La decisión</p><p class="plz-detail">La providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.</p></div><div class="plz-step"><span class="plz-ord">04</span><span class="plz-num"><span data-count="3">0</span><span class="u">días</span></span><p class="plz-label">El recurso</p><p class="plz-detail">El recurso de reposición contra esa decisión se interpone dentro de los tres días siguientes.</p></div></div><p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p></div></div></div></section>
+<section class="plz-sec plz-pin"><div class="plz-pin-track"><div class="plz-pin-sticky"><div class="container"><p class="eyebrow-num"><span class="n">§</span>El calendario</p><div class="plz-head"><h2 class="plz-title">Los términos corren, <span class="pr-accent">y son cortos.</span></h2></div><p class="plz-sub">Dentro de la intervención administrativa el calendario es estricto y se cuenta en días comunes desde la toma de posesión.</p><div class="plz-track"><div class="plz-step"><span class="plz-ord">01</span><span class="plz-num"><span data-count="2">0</span><span class="u">días</span></span><p class="plz-label">El aviso</p><p class="plz-detail">El interventor publica el aviso dentro de los dos días siguientes a la toma de posesión.</p></div><div class="plz-step"><span class="plz-ord">02</span><span class="plz-num"><span data-count="10">0</span><span class="u">días</span></span><p class="plz-label">La reclamación</p><p class="plz-detail">Las solicitudes de devolución se presentan por escrito, con presentación personal y original del comprobante.</p></div><div class="plz-step"><span class="plz-ord">03</span><span class="plz-num"><span data-count="20">0</span><span class="u">días</span></span><p class="plz-label">La decisión</p><p class="plz-detail">La providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.</p></div><div class="plz-step"><span class="plz-ord">04</span><span class="plz-num"><span data-count="3">0</span><span class="u">días</span></span><p class="plz-label">El recurso</p><p class="plz-detail">El recurso de reposición contra esa decisión se interpone dentro de los tres días siguientes.</p></div><span class="plz-cursor" aria-hidden="true"></span></div><p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p></div></div></div></section>
 
 <section class="section">
   <div class="container">
     <p class="eyebrow-num"><span class="n">§</span>El acompañamiento</p>
     <h2 class="pr-big">El trabajo, <span class="pr-accent">por momento del proceso.</span></h2>
-    <div style="margin-top:clamp(28px,3.4vw,48px)"><div class="phase-tabs"><div class="ph-nav"><button type="button" class="ph-tab is-active" data-ph="0"><span class="ph-n">01</span><span class="ph-l">Antes de la intervención</span><span class="ph-go" aria-hidden="true">→</span></button><button type="button" class="ph-tab" data-ph="1"><span class="ph-n">02</span><span class="ph-l">Durante la intervención</span><span class="ph-go" aria-hidden="true">→</span></button><button type="button" class="ph-tab" data-ph="2"><span class="ph-n">03</span><span class="ph-l">Después del fallo</span><span class="ph-go" aria-hidden="true">→</span></button></div><div class="ph-panels"><div class="ph-panel is-active" data-ph="0"><h3 class="ph-title">Antes de que se abra la intervención</h3><ul><li>Denuncia administrativa y solicitud de intervención por hechos objetivos o notorios.</li><li>Organización probatoria individual o del grupo: reconstrucción de entregas, trazabilidad y armado del expediente reclamable.</li><li>Denuncia penal estructurada y acreditación como víctima.</li><li>Solicitud de medidas cautelares penales sobre bienes, para evitar el vaciamiento patrimonial antes de la sentencia.</li><li>Aseguramiento civil temprano frente a codeudores, avalistas y garantes no intervenidos, que no quedan cubiertos por la suspensión de ejecuciones.</li></ul></div><div class="ph-panel" data-ph="1"><h3 class="ph-title">Durante la intervención</h3><ul><li>Reclamación de devolución dentro del término, con la formalidad que exige el trámite.</li><li>Impugnación del reconocimiento cuando se rechaza o se acepta por menor valor.</li><li>Exclusión de bienes propios aprehendidos por error en el inventario.</li><li>Gestión de títulos valores y libranzas para acreditar tenencia legítima y prelación sobre los flujos.</li><li>Evaluación y voto de planes de desmonte, que bajo la Ley 1902 de 2018 requieren el respaldo del 75 % de los afectados.</li><li>Vigilancia activa de la intervención: prorrateos incompletos, recursos nuevos sin distribuir, gestión opaca del interventor.</li></ul></div><div class="ph-panel" data-ph="2"><h3 class="ph-title">Después del fallo</h3><ul><li>Representación de víctimas en el proceso penal, incluidas las salidas negociadas.</li><li>Incidente de reparación integral: daño emergente, lucro cesante y perjuicio moral.</li><li>Responsabilidad civil contra administradores, revisores fiscales, contadores y vinculados solventes.</li><li>Reconstrucción de la prenda general por simulación, acción pauliana y revocatoria concursal.</li></ul></div></div></div></div>
+    <div style="margin-top:clamp(28px,3.4vw,48px)"><div class="journey"><div class="jn-spine" aria-hidden="true"><i class="jn-fill"></i></div><div class="jn-phase" data-i="0"><div class="jn-node"><span class="jn-n">01</span></div><div class="jn-body"><span class="jn-tag">Antes de la intervención</span><h3 class="jn-h">Antes de que se abra la intervención</h3><ul><li>Denuncia administrativa y solicitud de intervención por hechos objetivos o notorios.</li><li>Organización probatoria individual o del grupo: reconstrucción de entregas, trazabilidad y armado del expediente reclamable.</li><li>Denuncia penal estructurada y acreditación como víctima.</li><li>Solicitud de medidas cautelares penales sobre bienes, para evitar el vaciamiento patrimonial antes de la sentencia.</li><li>Aseguramiento civil temprano frente a codeudores, avalistas y garantes no intervenidos, que no quedan cubiertos por la suspensión de ejecuciones.</li></ul></div></div><div class="jn-phase" data-i="1"><div class="jn-node"><span class="jn-n">02</span></div><div class="jn-body"><span class="jn-tag">Durante la intervención</span><h3 class="jn-h">Durante la intervención</h3><ul><li>Reclamación de devolución dentro del término, con la formalidad que exige el trámite.</li><li>Impugnación del reconocimiento cuando se rechaza o se acepta por menor valor.</li><li>Exclusión de bienes propios aprehendidos por error en el inventario.</li><li>Gestión de títulos valores y libranzas para acreditar tenencia legítima y prelación sobre los flujos.</li><li>Evaluación y voto de planes de desmonte, que bajo la Ley 1902 de 2018 requieren el respaldo del 75 % de los afectados.</li><li>Vigilancia activa de la intervención: prorrateos incompletos, recursos nuevos sin distribuir, gestión opaca del interventor.</li></ul></div></div><div class="jn-phase" data-i="2"><div class="jn-node"><span class="jn-n">03</span></div><div class="jn-body"><span class="jn-tag">Después del fallo</span><h3 class="jn-h">Después del fallo</h3><ul><li>Representación de víctimas en el proceso penal, incluidas las salidas negociadas.</li><li>Incidente de reparación integral: daño emergente, lucro cesante y perjuicio moral.</li><li>Responsabilidad civil contra administradores, revisores fiscales, contadores y vinculados solventes.</li><li>Reconstrucción de la prenda general por simulación, acción pauliana y revocatoria concursal.</li></ul></div></div></div></div>
   </div>
 </section>
 
@@ -2773,9 +2836,10 @@ html:not(.js) .plz-track::after{width:100%}
     body.classList.toggle('theme-light',(t.getAttribute('data-bodyclass')||'').indexOf('theme-light')>=0);
     var mw=document.querySelector('.nav-menu-wrap');if(mw){mw.setAttribute('data-open','false');body.setAttribute('data-nav-open','false');}
     var tg=document.querySelector('.nav-toggle');if(tg){tg.setAttribute('aria-expanded','false');tg.innerHTML=ICON_MENU;}
-    window.scrollTo(0,0);bindDynamic(app);initStepper();initReveal();initFeatureRows();initBlog();initScramble();initCountUp();initPlazos();initViaSticky();initPhases();}
-  function initViaSticky(){var track=document.querySelector('.via-track');if(!track)return;var slides=[].slice.call(track.querySelectorAll('.via-slide')),bars=[].slice.call(track.querySelectorAll('.via-bars i')),n=slides.length;if(!n)return;function upd(){var h=track.offsetHeight-window.innerHeight;var p=h>0?(-track.getBoundingClientRect().top)/h:0;p=Math.max(0,Math.min(0.999,p));var idx=Math.floor(p*n);slides.forEach(function(s,i){s.classList.toggle('active',i===idx);});bars.forEach(function(b,i){b.classList.toggle('on',i<=idx);});}if(!window.__viaScroll){window.__viaScroll=1;window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);}upd();}
-  function initPlazos(){var secs=[].slice.call(document.querySelectorAll('.plz-sec'));if(!secs.length)return;function upd(){var vh=window.innerHeight;secs.forEach(function(sec){var track=sec.querySelector('.plz-track');if(!track)return;var steps=[].slice.call(track.querySelectorAll('.plz-step'));var pin=sec.querySelector('.plz-pin-track');var p;if(pin&&getComputedStyle(sec.querySelector('.plz-pin-sticky')).position==='sticky'){var h=pin.offsetHeight-vh;p=h>0?(-pin.getBoundingClientRect().top)/h:0;}else{var r=sec.getBoundingClientRect();p=(vh*0.72-r.top)/Math.max(1,r.height*0.55);}p=Math.max(0,Math.min(1,p));track.style.setProperty('--p',p.toFixed(3));var active=Math.ceil(p*steps.length);steps.forEach(function(s,i){s.classList.toggle('is-on',i<active);});});}if(!window.__plzScroll){window.__plzScroll=1;window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);}upd();}
+    window.scrollTo(0,0);bindDynamic(app);initStepper();initReveal();initFeatureRows();initBlog();initScramble();initCountUp();initPlazos();initViaSticky();initPhases();initJourney();}
+  function initViaSticky(){var track=document.querySelector('.via-track');if(!track)return;var slides=[].slice.call(track.querySelectorAll('.via-slide')),bars=[].slice.call(track.querySelectorAll('.via-bars i')),steps=[].slice.call(track.querySelectorAll('.via-step')),n=slides.length;if(!n)return;function upd(){var h=track.offsetHeight-window.innerHeight;var p=h>0?(-track.getBoundingClientRect().top)/h:0;p=Math.max(0,Math.min(0.999,p));var idx=Math.floor(p*n);slides.forEach(function(s,i){s.classList.toggle('active',i===idx);});bars.forEach(function(b,i){b.classList.toggle('on',i<=idx);});steps.forEach(function(s,i){s.classList.toggle('on',i===idx);});}if(!window.__viaScroll){window.__viaScroll=1;window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);}upd();}
+  function initPlazos(){var secs=[].slice.call(document.querySelectorAll('.plz-sec'));if(!secs.length)return;function upd(){var vh=window.innerHeight;secs.forEach(function(sec){var track=sec.querySelector('.plz-track');if(!track)return;var steps=[].slice.call(track.querySelectorAll('.plz-step'));var pin=sec.querySelector('.plz-pin-track');var p;if(pin&&getComputedStyle(sec.querySelector('.plz-pin-sticky')).position==='sticky'){var h=pin.offsetHeight-vh;p=h>0?(-pin.getBoundingClientRect().top)/h:0;}else{var r=sec.getBoundingClientRect();p=(vh*0.72-r.top)/Math.max(1,r.height*0.55);}p=Math.max(0,Math.min(1,p));track.style.setProperty('--p',p.toFixed(3));var active=Math.ceil(p*steps.length);steps.forEach(function(s,i){s.classList.toggle('is-on',i<active);s.classList.toggle('is-cur',i===active-1);});});}if(!window.__plzScroll){window.__plzScroll=1;window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);}upd();}
+  function initJourney(){var js=[].slice.call(document.querySelectorAll('.journey'));if(!js.length)return;function upd(){var vh=window.innerHeight,mid=vh*0.62;js.forEach(function(j){var spine=j.querySelector('.jn-spine');var phases=[].slice.call(j.querySelectorAll('.jn-phase'));var r=j.getBoundingClientRect();var p=(mid-r.top)/Math.max(1,r.height*0.72);p=Math.max(0,Math.min(1,p));if(spine)spine.style.setProperty('--p',p.toFixed(3));phases.forEach(function(ph){var nr=ph.getBoundingClientRect();ph.classList.toggle('is-on',nr.top<mid);});});}if(!window.__jnScroll){window.__jnScroll=1;window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);}upd();}
   function initPhases(){[].slice.call(document.querySelectorAll('.phase-tabs')).forEach(function(root){var tabs=[].slice.call(root.querySelectorAll('.ph-tab')),panels=[].slice.call(root.querySelectorAll('.ph-panel'));if(!tabs.length)return;tabs.forEach(function(tab){tab.addEventListener('click',function(){var k=tab.getAttribute('data-ph');tabs.forEach(function(t){t.classList.toggle('is-active',t===tab);});panels.forEach(function(p){p.classList.toggle('is-active',p.getAttribute('data-ph')===k);});});});});}
   var scrReduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   var SCR_GLYPHS='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
