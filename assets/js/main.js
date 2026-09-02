@@ -513,7 +513,9 @@
     : null;
   function initCountUp() {
     $$('[data-count]').forEach(function (el) {
-      if (el.__cu) return; el.__cu = 1;
+      if (el.__cu) return;
+      if (el.closest('.plz-track')) return; // los plazos se cuentan con el scroll (initPlazos)
+      el.__cu = 1;
       var target = parseFloat(el.getAttribute('data-count')) || 0;
       el.__cuRun = function () {
         if (scrReduce) { el.textContent = String(target); return; }
@@ -547,9 +549,23 @@
           p = (vh * 0.72 - r.top) / Math.max(1, r.height * 0.55);
         }
         p = Math.max(0, Math.min(1, p));
-        track.style.setProperty('--p', p.toFixed(3));
-        var active = Math.ceil(p * steps.length);
-        steps.forEach(function (s, i) { s.classList.toggle('is-on', i < active); });
+        // La barra se llena en el 82% del recorrido; el resto es un breve
+        // "hold" con la barra completa antes de soltar el pin.
+        var n = steps.length;
+        var fill = Math.min(1, p / 0.82);
+        track.style.setProperty('--p', fill.toFixed(4));
+        var seg = 1 / n;
+        steps.forEach(function (s, i) {
+          // cada número cuenta de 0 a su valor justo cuando la barra cruza su tramo
+          var sp = Math.max(0, Math.min(1, (fill - i * seg) / seg));
+          s.classList.toggle('is-on', fill > i * seg + 0.0005);
+          s.classList.toggle('is-cur', sp > 0 && sp < 1);
+          var num = s.querySelector('[data-count]');
+          if (num) {
+            var tgt = parseFloat(num.getAttribute('data-count')) || 0;
+            num.textContent = String(Math.round(tgt * sp));
+          }
+        });
       });
     }
     if (!window.__plzScroll) {
@@ -582,22 +598,54 @@
     }
     upd();
   }
-  /* ---------- Recorrido (journey) vertical: spine que se llena con el scroll ---------- */
+  /* ---------- Recorrido (journey): escena fijada; una fase abierta a la vez ---------- */
+  function jnApplyOpen(j, phases, i) {
+    phases.forEach(function (ph, k) {
+      var on = k === i;
+      ph.classList.toggle('open', on);
+      var t = ph.querySelector('.jn-toggle');
+      if (t) t.setAttribute('aria-expanded', on ? 'true' : 'false');
+    });
+    j.__open = i;
+  }
   function initJourney() {
     var js = $$('.journey'); if (!js.length) return;
+    js.forEach(function (j) {
+      if (j.__jnInit) return; j.__jnInit = 1;
+      var phases = $$('.jn-phase', j);
+      phases.forEach(function (ph, i) {
+        var t = ph.querySelector('.jn-toggle');
+        if (t) t.addEventListener('click', function () {
+          jnApplyOpen(j, phases, j.__open === i ? -1 : i);
+        });
+      });
+      jnApplyOpen(j, phases, 0); j.__lastCur = 0;
+    });
     function upd() {
-      var vh = window.innerHeight, mid = vh * 0.62;
+      var vh = window.innerHeight;
       js.forEach(function (j) {
         var spine = j.querySelector('.jn-spine');
         var phases = $$('.jn-phase', j);
-        var r = j.getBoundingClientRect();
-        var p = (mid - r.top) / Math.max(1, r.height * 0.72);
-        p = Math.max(0, Math.min(1, p));
-        if (spine) spine.style.setProperty('--p', p.toFixed(3));
-        phases.forEach(function (ph) {
-          var nr = ph.getBoundingClientRect();
-          ph.classList.toggle('is-on', nr.top < mid);
-        });
+        var n = phases.length; if (!n) return;
+        var sec = j.closest('.jn-sec');
+        var pin = sec && sec.querySelector('.jn-pin-track');
+        var sticky = sec && sec.querySelector('.jn-pin-sticky');
+        var cur, prog;
+        if (pin && sticky && getComputedStyle(sticky).position === 'sticky') {
+          var h = pin.offsetHeight - vh;
+          prog = h > 0 ? (-pin.getBoundingClientRect().top) / h : 0;
+          prog = Math.max(0, Math.min(0.999, prog));
+          cur = Math.min(n - 1, Math.floor(prog * n));
+        } else {
+          // móvil (sin pin): abre según el borde superior de cada fase
+          var mid = vh * 0.5, r = j.getBoundingClientRect();
+          prog = Math.max(0, Math.min(1, (vh * 0.4 - r.top) / Math.max(1, r.height)));
+          cur = 0;
+          phases.forEach(function (ph, i) { if (ph.getBoundingClientRect().top < mid) cur = i; });
+        }
+        if (spine) spine.style.setProperty('--p', prog.toFixed(3));
+        phases.forEach(function (ph, i) { ph.classList.toggle('is-on', i <= cur); });
+        if (cur !== j.__lastCur) { jnApplyOpen(j, phases, cur); j.__lastCur = cur; }
       });
     }
     if (!window.__jnScroll) {

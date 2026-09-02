@@ -1336,7 +1336,7 @@ html:not(.js) .plz-track::after{width:100%}
 /* El calendario fijado (sticky): el panel se ancla al viewport mientras
    la barra y los pasos se iluminan con el scroll (--p 0..1) */
 .plz-pin{overflow:visible;padding:0}
-.plz-pin-track{position:relative;height:240vh}
+.plz-pin-track{position:relative;height:300vh}
 .plz-pin-sticky{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;
   justify-content:center;padding:clamp(52px,8vw,116px) 0}
 @media (max-width:760px){
@@ -1399,8 +1399,16 @@ html:not(.js) .plz-track::after{width:100%}
   .via-scopewrap{display:none}
 }
 
-/* Recorrido (customer journey): línea vertical con hitos que se iluminan
-   conforme el scroll avanza por el antes / durante / después */
+/* Recorrido (customer journey): escena fijada; al bajar avanza la fase
+   activa y las anteriores se cierran (una abierta a la vez) */
+.jn-pin{padding:0}
+.jn-pin-track{position:relative;height:300vh}
+.jn-pin-sticky{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;padding:clamp(52px,8vw,110px) 0}
+@media (max-width:820px){
+  .jn-pin-track{height:auto}
+  .jn-pin-sticky{position:static;min-height:0;display:block;padding:clamp(48px,10vw,80px) 0}
+}
 .journey{position:relative;margin-top:clamp(30px,3.6vw,52px)}
 .jn-spine{position:absolute;left:22px;top:16px;bottom:16px;width:2px;background:var(--line);overflow:hidden}
 .jn-fill{position:absolute;left:0;top:0;width:100%;height:calc(var(--p,0) * 100%);
@@ -1420,28 +1428,40 @@ html:not(.js) .jn-fill{height:100%}
 .jn-n{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--dim-2);transition:color .5s ease}
 .jn-phase.is-on .jn-n{color:var(--accent-ink)}
 .jn-body{padding-top:.35rem;min-width:0}
-.jn-tag{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:.66rem;color:var(--dim-2)}
-.jn-h{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1.1;
-  font-size:clamp(1.3rem,1rem + 1.2vw,1.95rem);color:var(--text);margin:.4rem 0 1.1rem}
-.jn-body ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
-.jn-body li{position:relative;padding:.82rem 0 .82rem 1.6rem;border-top:1px solid var(--line);
+/* cabecera clicable de cada fase */
+.jn-toggle{display:flex;flex-direction:column;align-items:flex-start;gap:.42rem;width:100%;text-align:left;
+  background:transparent;border:0;padding:.15rem 2rem .15rem 0;cursor:pointer;position:relative}
+.jn-tag{display:block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:.66rem;
+  color:var(--dim-2);transition:color .4s ease}
+.jn-phase.open .jn-tag{color:var(--accent-ink)}
+.jn-h{display:block;font-family:var(--sans);font-weight:400;letter-spacing:-.02em;line-height:1.1;
+  font-size:clamp(1.3rem,1rem + 1.2vw,1.95rem);color:var(--text);margin:0}
+.jn-chev{position:absolute;right:2px;top:.55rem;width:11px;height:11px;border-right:2px solid var(--dim-2);
+  border-bottom:2px solid var(--dim-2);transform:rotate(45deg);transition:transform .4s ease,border-color .4s ease}
+.jn-phase.open .jn-chev{transform:rotate(-135deg);border-color:var(--accent-ink)}
+/* acciones colapsables: solo la fase abierta las muestra (las de arriba se cierran) */
+.jn-actions{display:grid;grid-template-rows:0fr;opacity:0;margin-top:0;
+  transition:grid-template-rows .5s cubic-bezier(.2,.7,.2,1),opacity .4s ease,margin-top .5s ease}
+.jn-actions>ul{overflow:hidden;min-height:0;list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.jn-phase.open .jn-actions{grid-template-rows:1fr;opacity:1;margin-top:1.1rem}
+html:not(.js) .jn-actions{grid-template-rows:1fr;opacity:1;margin-top:1.1rem}
+.jn-actions li{position:relative;padding:.82rem 0 .82rem 1.6rem;border-top:1px solid var(--line);
   color:var(--dim);font-weight:300;line-height:1.55;font-size:var(--step-0)}
-.jn-body li:first-child{border-top:0}
-.jn-body li::before{content:"";position:absolute;left:0;top:1.35rem;width:7px;height:7px;border-radius:50%;
-  background:var(--line);transition:background .45s ease,box-shadow .45s ease}
-.jn-phase.is-on .jn-body li::before{background:var(--accent-ink)}
-/* las acciones van apareciendo (escalonadas) cuando la fase se activa */
-html.js .jn-body li{opacity:0;transform:translateY(12px);
-  transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.2,1)}
-html.js .jn-phase.is-on .jn-body li{opacity:1;transform:none}
-.jn-phase.is-on .jn-body li:nth-child(1){transition-delay:.04s}
-.jn-phase.is-on .jn-body li:nth-child(2){transition-delay:.12s}
-.jn-phase.is-on .jn-body li:nth-child(3){transition-delay:.20s}
-.jn-phase.is-on .jn-body li:nth-child(4){transition-delay:.28s}
-.jn-phase.is-on .jn-body li:nth-child(5){transition-delay:.36s}
-.jn-phase.is-on .jn-body li:nth-child(6){transition-delay:.44s}
+.jn-actions li:first-child{border-top:0}
+.jn-actions li::before{content:"";position:absolute;left:0;top:1.35rem;width:7px;height:7px;border-radius:50%;
+  background:var(--accent-ink)}
+/* aparición escalonada al abrir la fase */
+html.js .jn-actions li{opacity:0;transform:translateY(10px);
+  transition:opacity .5s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
+html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
+.jn-phase.open .jn-actions li:nth-child(1){transition-delay:.10s}
+.jn-phase.open .jn-actions li:nth-child(2){transition-delay:.17s}
+.jn-phase.open .jn-actions li:nth-child(3){transition-delay:.24s}
+.jn-phase.open .jn-actions li:nth-child(4){transition-delay:.31s}
+.jn-phase.open .jn-actions li:nth-child(5){transition-delay:.38s}
+.jn-phase.open .jn-actions li:nth-child(6){transition-delay:.45s}
 @media (prefers-reduced-motion:reduce){
-  html.js .jn-body li{opacity:1;transform:none;transition:none}
+  html.js .jn-actions li{opacity:1;transform:none;transition:none}
 }
 @media (max-width:600px){
   .jn-phase{grid-template-columns:40px 1fr;gap:14px}
@@ -2194,12 +2214,12 @@ html.js .jn-phase.is-on .jn-body li{opacity:1;transform:none}
 
 <section class="plz-sec plz-pin"><div class="plz-pin-track"><div class="plz-pin-sticky"><div class="container"><p class="eyebrow-num"><span class="n">§</span>El calendario</p><div class="plz-head"><h2 class="plz-title">Los términos corren, <span class="pr-accent">y son cortos.</span></h2></div><p class="plz-sub">Dentro de la intervención administrativa el calendario es estricto y se cuenta en días comunes desde la toma de posesión.</p><div class="plz-track"><div class="plz-step"><span class="plz-ord">01</span><span class="plz-num"><span data-count="2">0</span><span class="u">días</span></span><p class="plz-label">El aviso</p><p class="plz-detail">El interventor publica el aviso dentro de los dos días siguientes a la toma de posesión.</p></div><div class="plz-step"><span class="plz-ord">02</span><span class="plz-num"><span data-count="10">0</span><span class="u">días</span></span><p class="plz-label">La reclamación</p><p class="plz-detail">Las solicitudes de devolución se presentan por escrito, con presentación personal y original del comprobante.</p></div><div class="plz-step"><span class="plz-ord">03</span><span class="plz-num"><span data-count="20">0</span><span class="u">días</span></span><p class="plz-label">La decisión</p><p class="plz-detail">La providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.</p></div><div class="plz-step"><span class="plz-ord">04</span><span class="plz-num"><span data-count="3">0</span><span class="u">días</span></span><p class="plz-label">El recurso</p><p class="plz-detail">El recurso de reposición contra esa decisión se interpone dentro de los tres días siguientes.</p></div></div><p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p></div></div></div></section>
 
-<section class="section">
-  <div class="container">
+<section class="section jn-sec jn-pin">
+  <div class="jn-pin-track"><div class="jn-pin-sticky"><div class="container">
     <p class="eyebrow-num"><span class="n">§</span>El acompañamiento</p>
     <h2 class="pr-big">El trabajo, <span class="pr-accent">por momento del proceso.</span></h2>
-    <div style="margin-top:clamp(28px,3.4vw,48px)"><div class="journey"><div class="jn-spine" aria-hidden="true"><i class="jn-fill"></i></div><div class="jn-phase" data-i="0"><div class="jn-node"><span class="jn-n">01</span></div><div class="jn-body"><span class="jn-tag">Antes de la intervención</span><h3 class="jn-h">Antes de que se abra la intervención</h3><ul><li>Denuncia administrativa y solicitud de intervención por hechos objetivos o notorios.</li><li>Organización probatoria individual o del grupo: reconstrucción de entregas, trazabilidad y armado del expediente reclamable.</li><li>Denuncia penal estructurada y acreditación como víctima.</li><li>Solicitud de medidas cautelares penales sobre bienes, para evitar el vaciamiento patrimonial antes de la sentencia.</li><li>Aseguramiento civil temprano frente a codeudores, avalistas y garantes no intervenidos, que no quedan cubiertos por la suspensión de ejecuciones.</li></ul></div></div><div class="jn-phase" data-i="1"><div class="jn-node"><span class="jn-n">02</span></div><div class="jn-body"><span class="jn-tag">Durante la intervención</span><h3 class="jn-h">Durante la intervención</h3><ul><li>Reclamación de devolución dentro del término, con la formalidad que exige el trámite.</li><li>Impugnación del reconocimiento cuando se rechaza o se acepta por menor valor.</li><li>Exclusión de bienes propios aprehendidos por error en el inventario.</li><li>Gestión de títulos valores y libranzas para acreditar tenencia legítima y prelación sobre los flujos.</li><li>Evaluación y voto de planes de desmonte, que bajo la Ley 1902 de 2018 requieren el respaldo del 75 % de los afectados.</li><li>Vigilancia activa de la intervención: prorrateos incompletos, recursos nuevos sin distribuir, gestión opaca del interventor.</li></ul></div></div><div class="jn-phase" data-i="2"><div class="jn-node"><span class="jn-n">03</span></div><div class="jn-body"><span class="jn-tag">Después del fallo</span><h3 class="jn-h">Después del fallo</h3><ul><li>Representación de víctimas en el proceso penal, incluidas las salidas negociadas.</li><li>Incidente de reparación integral: daño emergente, lucro cesante y perjuicio moral.</li><li>Responsabilidad civil contra administradores, revisores fiscales, contadores y vinculados solventes.</li><li>Reconstrucción de la prenda general por simulación, acción pauliana y revocatoria concursal.</li></ul></div></div></div></div>
-  </div>
+    <div class="journey"><div class="jn-spine" aria-hidden="true"><i class="jn-fill"></i></div><div class="jn-phase" data-i="0"><div class="jn-node"><span class="jn-n">01</span></div><div class="jn-body"><button type="button" class="jn-toggle" aria-expanded="false"><span class="jn-tag">Antes de la intervención</span><span class="jn-h">Antes de que se abra la intervención</span><span class="jn-chev" aria-hidden="true"></span></button><div class="jn-actions"><ul><li>Denuncia administrativa y solicitud de intervención por hechos objetivos o notorios.</li><li>Organización probatoria individual o del grupo: reconstrucción de entregas, trazabilidad y armado del expediente reclamable.</li><li>Denuncia penal estructurada y acreditación como víctima.</li><li>Solicitud de medidas cautelares penales sobre bienes, para evitar el vaciamiento patrimonial antes de la sentencia.</li><li>Aseguramiento civil temprano frente a codeudores, avalistas y garantes no intervenidos, que no quedan cubiertos por la suspensión de ejecuciones.</li></ul></div></div></div><div class="jn-phase" data-i="1"><div class="jn-node"><span class="jn-n">02</span></div><div class="jn-body"><button type="button" class="jn-toggle" aria-expanded="false"><span class="jn-tag">Durante la intervención</span><span class="jn-h">Durante la intervención</span><span class="jn-chev" aria-hidden="true"></span></button><div class="jn-actions"><ul><li>Reclamación de devolución dentro del término, con la formalidad que exige el trámite.</li><li>Impugnación del reconocimiento cuando se rechaza o se acepta por menor valor.</li><li>Exclusión de bienes propios aprehendidos por error en el inventario.</li><li>Gestión de títulos valores y libranzas para acreditar tenencia legítima y prelación sobre los flujos.</li><li>Evaluación y voto de planes de desmonte, que bajo la Ley 1902 de 2018 requieren el respaldo del 75 % de los afectados.</li><li>Vigilancia activa de la intervención: prorrateos incompletos, recursos nuevos sin distribuir, gestión opaca del interventor.</li></ul></div></div></div><div class="jn-phase" data-i="2"><div class="jn-node"><span class="jn-n">03</span></div><div class="jn-body"><button type="button" class="jn-toggle" aria-expanded="false"><span class="jn-tag">Después del fallo</span><span class="jn-h">Después del fallo</span><span class="jn-chev" aria-hidden="true"></span></button><div class="jn-actions"><ul><li>Representación de víctimas en el proceso penal, incluidas las salidas negociadas.</li><li>Incidente de reparación integral: daño emergente, lucro cesante y perjuicio moral.</li><li>Responsabilidad civil contra administradores, revisores fiscales, contadores y vinculados solventes.</li><li>Reconstrucción de la prenda general por simulación, acción pauliana y revocatoria concursal.</li></ul></div></div></div></div>
+  </div></div></div>
 </section>
 
 <section class="section band"><div class="container pr-two"><div class="pr-two-l"><p class="eyebrow-num"><span class="n">§</span>Casos colectivos</p><h2 class="pr-big">Cuando el grupo <span class="pr-accent">ya existe.</span></h2></div><div class="pr-two-r"><p>Trabajar el caso de forma colectiva tiene ventajas concretas: la prueba se vuelve más sólida, un plan de desmonte se sostiene con peso real y el seguimiento de la intervención no depende de una sola persona. Si forma parte de un grupo, la primera conversación conviene tenerla con quien lo represente.</p><p style="margin-top:1.2rem"><a class="arrowlink" href="#!/contacto/">Escribir en nombre de un grupo</a></p></div></div></section>
@@ -2862,7 +2882,7 @@ html.js .jn-phase.is-on .jn-body li{opacity:1;transform:none}
     if(!window.matchMedia||!window.matchMedia('(prefers-reduced-motion:reduce)').matches){[].slice.call(document.querySelectorAll('.pr-parallax')).forEach(function(el){var r=el.getBoundingClientRect();var rel=(r.top+r.height/2)-vh/2;el.style.transform='translateY('+(rel*-0.12).toFixed(1)+'px)';});}}
   function initFeatureRows(){var rows=[].slice.call(document.querySelectorAll('.frow')).concat([].slice.call(document.querySelectorAll('.prac-rows'))).concat([].slice.call(document.querySelectorAll('.pr-timeline'))).concat([].slice.call(document.querySelectorAll('.reveal-up'))).concat([].slice.call(document.querySelectorAll('.plz-sec')));rows.forEach(function(r){if(r.__f)return;r.__f=1;if(frowIO)frowIO.observe(r);else r.classList.add('in');});if(rows.length&&!window.__frowScroll){window.__frowScroll=1;window.addEventListener('scroll',frowPar,{passive:true});window.addEventListener('resize',frowPar);}frowPar();}
   var countIO=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countIO.unobserve(e.target);if(e.target.__cuRun)e.target.__cuRun();}});},{threshold:0.6}):null;
-  function initCountUp(){[].slice.call(document.querySelectorAll('[data-count]')).forEach(function(el){if(el.__cu)return;el.__cu=1;var target=parseFloat(el.getAttribute('data-count'))||0;el.__cuRun=function(){if(scrReduce){el.textContent=String(target);return;}var t0=0;function step(now){if(!t0)t0=now;var p=Math.min(1,(now-t0)/1200),eased=1-Math.pow(1-p,3);el.textContent=String(Math.round(eased*target));if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);};if(countIO)countIO.observe(el);else el.__cuRun();});}
+  function initCountUp(){[].slice.call(document.querySelectorAll('[data-count]')).forEach(function(el){if(el.__cu)return;if(el.closest('.plz-track'))return;el.__cu=1;var target=parseFloat(el.getAttribute('data-count'))||0;el.__cuRun=function(){if(scrReduce){el.textContent=String(target);return;}var t0=0;function step(now){if(!t0)t0=now;var p=Math.min(1,(now-t0)/1200),eased=1-Math.pow(1-p,3);el.textContent=String(Math.round(eased*target));if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);};if(countIO)countIO.observe(el);else el.__cuRun();});}
   function initBlog(){var filters=[].slice.call(document.querySelectorAll('.bfilter')),grid=document.querySelector('[data-blog-grid]');if(filters.length&&grid){var cards=[].slice.call(grid.querySelectorAll('.bcard'));filters.forEach(function(btn){if(btn.__b)return;btn.__b=1;btn.addEventListener('click',function(){var t=btn.getAttribute('data-tema')||'';filters.forEach(function(f){f.classList.toggle('is-active',f===btn);});cards.forEach(function(c){c.hidden=!(t===''||c.getAttribute('data-tema')===t);});});});}[].slice.call(document.querySelectorAll('[data-share-copy]')).forEach(function(btn){if(btn.__b)return;btn.__b=1;btn.addEventListener('click',function(){var url=btn.getAttribute('data-share-copy');var done=function(){var prev=btn.textContent;btn.textContent='✓';btn.classList.add('is-copied');setTimeout(function(){btn.textContent=prev;btn.classList.remove('is-copied');},1600);};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,done);}else{done();}});});}
   function render(){var route=curRoute();var t=tpl[route]||tpl['/'];app.innerHTML='';app.appendChild(t.content.cloneNode(true));
     document.title=t.getAttribute('data-title');setActive(t.getAttribute('data-route'));
@@ -2872,8 +2892,9 @@ html.js .jn-phase.is-on .jn-body li{opacity:1;transform:none}
     var tg=document.querySelector('.nav-toggle');if(tg){tg.setAttribute('aria-expanded','false');tg.innerHTML=ICON_MENU;}
     window.scrollTo(0,0);bindDynamic(app);initStepper();initReveal();initFeatureRows();initBlog();initScramble();initCountUp();initPlazos();initViaSticky();initPhases();initJourney();}
   function initViaSticky(){var track=document.querySelector('.via-track');if(!track)return;var slides=[].slice.call(track.querySelectorAll('.via-slide')),bars=[].slice.call(track.querySelectorAll('.via-bar')),n=slides.length;if(!n)return;function upd(){var h=track.offsetHeight-window.innerHeight;var p=h>0?(-track.getBoundingClientRect().top)/h:0;p=Math.max(0,Math.min(0.999,p));var idx=Math.floor(p*n);slides.forEach(function(s,i){s.classList.toggle('active',i===idx);});bars.forEach(function(b,i){b.classList.toggle('on',i<=idx);b.classList.toggle('cur',i===idx);});}if(!window.__viaScroll){window.__viaScroll=1;window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);}upd();}
-  function initPlazos(){var secs=[].slice.call(document.querySelectorAll('.plz-sec'));if(!secs.length)return;function upd(){var vh=window.innerHeight;secs.forEach(function(sec){var track=sec.querySelector('.plz-track');if(!track)return;var steps=[].slice.call(track.querySelectorAll('.plz-step'));var pin=sec.querySelector('.plz-pin-track');var p;if(pin&&getComputedStyle(sec.querySelector('.plz-pin-sticky')).position==='sticky'){var h=pin.offsetHeight-vh;p=h>0?(-pin.getBoundingClientRect().top)/h:0;}else{var r=sec.getBoundingClientRect();p=(vh*0.72-r.top)/Math.max(1,r.height*0.55);}p=Math.max(0,Math.min(1,p));track.style.setProperty('--p',p.toFixed(3));var active=Math.ceil(p*steps.length);steps.forEach(function(s,i){s.classList.toggle('is-on',i<active);});});}if(!window.__plzScroll){window.__plzScroll=1;window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);}upd();}
-  function initJourney(){var js=[].slice.call(document.querySelectorAll('.journey'));if(!js.length)return;function upd(){var vh=window.innerHeight,mid=vh*0.62;js.forEach(function(j){var spine=j.querySelector('.jn-spine');var phases=[].slice.call(j.querySelectorAll('.jn-phase'));var r=j.getBoundingClientRect();var p=(mid-r.top)/Math.max(1,r.height*0.72);p=Math.max(0,Math.min(1,p));if(spine)spine.style.setProperty('--p',p.toFixed(3));phases.forEach(function(ph){var nr=ph.getBoundingClientRect();ph.classList.toggle('is-on',nr.top<mid);});});}if(!window.__jnScroll){window.__jnScroll=1;window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);}upd();}
+  function initPlazos(){var secs=[].slice.call(document.querySelectorAll('.plz-sec'));if(!secs.length)return;function upd(){var vh=window.innerHeight;secs.forEach(function(sec){var track=sec.querySelector('.plz-track');if(!track)return;var steps=[].slice.call(track.querySelectorAll('.plz-step'));var pin=sec.querySelector('.plz-pin-track');var p;if(pin&&getComputedStyle(sec.querySelector('.plz-pin-sticky')).position==='sticky'){var h=pin.offsetHeight-vh;p=h>0?(-pin.getBoundingClientRect().top)/h:0;}else{var r=sec.getBoundingClientRect();p=(vh*0.72-r.top)/Math.max(1,r.height*0.55);}p=Math.max(0,Math.min(1,p));var n=steps.length,fill=Math.min(1,p/0.82),seg=1/n;track.style.setProperty('--p',fill.toFixed(4));steps.forEach(function(s,i){var sp=Math.max(0,Math.min(1,(fill-i*seg)/seg));s.classList.toggle('is-on',fill>i*seg+0.0005);s.classList.toggle('is-cur',sp>0&&sp<1);var num=s.querySelector('[data-count]');if(num){var tgt=parseFloat(num.getAttribute('data-count'))||0;num.textContent=String(Math.round(tgt*sp));}});});}if(!window.__plzScroll){window.__plzScroll=1;window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);}upd();}
+  function jnApplyOpen(j,phases,i){phases.forEach(function(ph,k){var on=k===i;ph.classList.toggle('open',on);var t=ph.querySelector('.jn-toggle');if(t)t.setAttribute('aria-expanded',on?'true':'false');});j.__open=i;}
+  function initJourney(){var js=[].slice.call(document.querySelectorAll('.journey'));if(!js.length)return;js.forEach(function(j){if(j.__jnInit)return;j.__jnInit=1;var phases=[].slice.call(j.querySelectorAll('.jn-phase'));phases.forEach(function(ph,i){var t=ph.querySelector('.jn-toggle');if(t)t.addEventListener('click',function(){jnApplyOpen(j,phases,j.__open===i?-1:i);});});jnApplyOpen(j,phases,0);j.__lastCur=0;});function upd(){var vh=window.innerHeight;js.forEach(function(j){var spine=j.querySelector('.jn-spine');var phases=[].slice.call(j.querySelectorAll('.jn-phase'));var n=phases.length;if(!n)return;var sec=j.closest('.jn-sec');var pin=sec&&sec.querySelector('.jn-pin-track');var sticky=sec&&sec.querySelector('.jn-pin-sticky');var cur,prog;if(pin&&sticky&&getComputedStyle(sticky).position==='sticky'){var h=pin.offsetHeight-vh;prog=h>0?(-pin.getBoundingClientRect().top)/h:0;prog=Math.max(0,Math.min(0.999,prog));cur=Math.min(n-1,Math.floor(prog*n));}else{var mid=vh*0.5,r=j.getBoundingClientRect();prog=Math.max(0,Math.min(1,(vh*0.4-r.top)/Math.max(1,r.height)));cur=0;phases.forEach(function(ph,i){if(ph.getBoundingClientRect().top<mid)cur=i;});}if(spine)spine.style.setProperty('--p',prog.toFixed(3));phases.forEach(function(ph,i){ph.classList.toggle('is-on',i<=cur);});if(cur!==j.__lastCur){jnApplyOpen(j,phases,cur);j.__lastCur=cur;}});}if(!window.__jnScroll){window.__jnScroll=1;window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);}upd();}
   function initPhases(){[].slice.call(document.querySelectorAll('.phase-tabs')).forEach(function(root){var tabs=[].slice.call(root.querySelectorAll('.ph-tab')),panels=[].slice.call(root.querySelectorAll('.ph-panel'));if(!tabs.length)return;tabs.forEach(function(tab){tab.addEventListener('click',function(){var k=tab.getAttribute('data-ph');tabs.forEach(function(t){t.classList.toggle('is-active',t===tab);});panels.forEach(function(p){p.classList.toggle('is-active',p.getAttribute('data-ph')===k);});});});});}
   var scrReduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   var SCR_GLYPHS='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

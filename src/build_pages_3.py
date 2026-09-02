@@ -79,11 +79,16 @@ def build(g):
 
     def journey(items):
         # items: (etiqueta corta, título, cuerpo_html) -> recorrido vertical
+        # con una sola fase abierta a la vez: al bajar, las de arriba se cierran.
         phases = "".join(
             f'<div class="jn-phase" data-i="{i}">'
             f'<div class="jn-node"><span class="jn-n">{i+1:02d}</span></div>'
-            f'<div class="jn-body"><span class="jn-tag">{esc(tag)}</span>'
-            f'<h3 class="jn-h">{esc(title)}</h3>{body}</div></div>'
+            f'<div class="jn-body">'
+            f'<button type="button" class="jn-toggle" aria-expanded="false">'
+            f'<span class="jn-tag">{esc(tag)}</span>'
+            f'<span class="jn-h">{esc(title)}</span>'
+            f'<span class="jn-chev" aria-hidden="true"></span></button>'
+            f'<div class="jn-actions">{body}</div></div></div>'
             for i, (tag, title, body) in enumerate(items))
         return (f'<div class="journey"><div class="jn-spine" aria-hidden="true">'
                 f'<i class="jn-fill"></i></div>{phases}</div>')
@@ -258,12 +263,12 @@ def build(g):
 
 {af_plazos}
 
-<section class="section">
-  <div class="container">
+<section class="section jn-sec jn-pin">
+  <div class="jn-pin-track"><div class="jn-pin-sticky"><div class="container">
     <p class="eyebrow-num"><span class="n">§</span>El acompañamiento</p>
     <h2 class="pr-big">El trabajo, <span class="pr-accent">por momento del proceso.</span></h2>
-    <div style="margin-top:clamp(28px,3.4vw,48px)">{afectados_acc}</div>
-  </div>
+    {afectados_acc}
+  </div></div></div>
 </section>
 
 {af_grupo}

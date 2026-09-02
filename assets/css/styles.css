@@ -1329,7 +1329,7 @@ html:not(.js) .plz-track::after{width:100%}
 /* El calendario fijado (sticky): el panel se ancla al viewport mientras
    la barra y los pasos se iluminan con el scroll (--p 0..1) */
 .plz-pin{overflow:visible;padding:0}
-.plz-pin-track{position:relative;height:240vh}
+.plz-pin-track{position:relative;height:300vh}
 .plz-pin-sticky{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;
   justify-content:center;padding:clamp(52px,8vw,116px) 0}
 @media (max-width:760px){
@@ -1392,8 +1392,16 @@ html:not(.js) .plz-track::after{width:100%}
   .via-scopewrap{display:none}
 }
 
-/* Recorrido (customer journey): línea vertical con hitos que se iluminan
-   conforme el scroll avanza por el antes / durante / después */
+/* Recorrido (customer journey): escena fijada; al bajar avanza la fase
+   activa y las anteriores se cierran (una abierta a la vez) */
+.jn-pin{padding:0}
+.jn-pin-track{position:relative;height:300vh}
+.jn-pin-sticky{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;padding:clamp(52px,8vw,110px) 0}
+@media (max-width:820px){
+  .jn-pin-track{height:auto}
+  .jn-pin-sticky{position:static;min-height:0;display:block;padding:clamp(48px,10vw,80px) 0}
+}
 .journey{position:relative;margin-top:clamp(30px,3.6vw,52px)}
 .jn-spine{position:absolute;left:22px;top:16px;bottom:16px;width:2px;background:var(--line);overflow:hidden}
 .jn-fill{position:absolute;left:0;top:0;width:100%;height:calc(var(--p,0) * 100%);
@@ -1413,28 +1421,40 @@ html:not(.js) .jn-fill{height:100%}
 .jn-n{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--dim-2);transition:color .5s ease}
 .jn-phase.is-on .jn-n{color:var(--accent-ink)}
 .jn-body{padding-top:.35rem;min-width:0}
-.jn-tag{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:.66rem;color:var(--dim-2)}
-.jn-h{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1.1;
-  font-size:clamp(1.3rem,1rem + 1.2vw,1.95rem);color:var(--text);margin:.4rem 0 1.1rem}
-.jn-body ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
-.jn-body li{position:relative;padding:.82rem 0 .82rem 1.6rem;border-top:1px solid var(--line);
+/* cabecera clicable de cada fase */
+.jn-toggle{display:flex;flex-direction:column;align-items:flex-start;gap:.42rem;width:100%;text-align:left;
+  background:transparent;border:0;padding:.15rem 2rem .15rem 0;cursor:pointer;position:relative}
+.jn-tag{display:block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:.66rem;
+  color:var(--dim-2);transition:color .4s ease}
+.jn-phase.open .jn-tag{color:var(--accent-ink)}
+.jn-h{display:block;font-family:var(--sans);font-weight:400;letter-spacing:-.02em;line-height:1.1;
+  font-size:clamp(1.3rem,1rem + 1.2vw,1.95rem);color:var(--text);margin:0}
+.jn-chev{position:absolute;right:2px;top:.55rem;width:11px;height:11px;border-right:2px solid var(--dim-2);
+  border-bottom:2px solid var(--dim-2);transform:rotate(45deg);transition:transform .4s ease,border-color .4s ease}
+.jn-phase.open .jn-chev{transform:rotate(-135deg);border-color:var(--accent-ink)}
+/* acciones colapsables: solo la fase abierta las muestra (las de arriba se cierran) */
+.jn-actions{display:grid;grid-template-rows:0fr;opacity:0;margin-top:0;
+  transition:grid-template-rows .5s cubic-bezier(.2,.7,.2,1),opacity .4s ease,margin-top .5s ease}
+.jn-actions>ul{overflow:hidden;min-height:0;list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.jn-phase.open .jn-actions{grid-template-rows:1fr;opacity:1;margin-top:1.1rem}
+html:not(.js) .jn-actions{grid-template-rows:1fr;opacity:1;margin-top:1.1rem}
+.jn-actions li{position:relative;padding:.82rem 0 .82rem 1.6rem;border-top:1px solid var(--line);
   color:var(--dim);font-weight:300;line-height:1.55;font-size:var(--step-0)}
-.jn-body li:first-child{border-top:0}
-.jn-body li::before{content:"";position:absolute;left:0;top:1.35rem;width:7px;height:7px;border-radius:50%;
-  background:var(--line);transition:background .45s ease,box-shadow .45s ease}
-.jn-phase.is-on .jn-body li::before{background:var(--accent-ink)}
-/* las acciones van apareciendo (escalonadas) cuando la fase se activa */
-html.js .jn-body li{opacity:0;transform:translateY(12px);
-  transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.2,1)}
-html.js .jn-phase.is-on .jn-body li{opacity:1;transform:none}
-.jn-phase.is-on .jn-body li:nth-child(1){transition-delay:.04s}
-.jn-phase.is-on .jn-body li:nth-child(2){transition-delay:.12s}
-.jn-phase.is-on .jn-body li:nth-child(3){transition-delay:.20s}
-.jn-phase.is-on .jn-body li:nth-child(4){transition-delay:.28s}
-.jn-phase.is-on .jn-body li:nth-child(5){transition-delay:.36s}
-.jn-phase.is-on .jn-body li:nth-child(6){transition-delay:.44s}
+.jn-actions li:first-child{border-top:0}
+.jn-actions li::before{content:"";position:absolute;left:0;top:1.35rem;width:7px;height:7px;border-radius:50%;
+  background:var(--accent-ink)}
+/* aparición escalonada al abrir la fase */
+html.js .jn-actions li{opacity:0;transform:translateY(10px);
+  transition:opacity .5s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
+html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
+.jn-phase.open .jn-actions li:nth-child(1){transition-delay:.10s}
+.jn-phase.open .jn-actions li:nth-child(2){transition-delay:.17s}
+.jn-phase.open .jn-actions li:nth-child(3){transition-delay:.24s}
+.jn-phase.open .jn-actions li:nth-child(4){transition-delay:.31s}
+.jn-phase.open .jn-actions li:nth-child(5){transition-delay:.38s}
+.jn-phase.open .jn-actions li:nth-child(6){transition-delay:.45s}
 @media (prefers-reduced-motion:reduce){
-  html.js .jn-body li{opacity:1;transform:none;transition:none}
+  html.js .jn-actions li{opacity:1;transform:none;transition:none}
 }
 @media (max-width:600px){
   .jn-phase{grid-template-columns:40px 1fr;gap:14px}
