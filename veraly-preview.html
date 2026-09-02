@@ -1619,6 +1619,48 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 @media(max-width:860px){.contact-cols{grid-template-columns:1fr;gap:40px}}
 @media(max-width:520px){.cal-grid{grid-template-columns:1fr}.cal-fields{grid-template-columns:1fr}.cal-days{max-height:none}}
 
+/* ============ Equipo (personas): índice con retratos + detalle de socio ============ */
+.equipo-cta{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;
+  margin-top:clamp(48px,7vw,88px);padding-top:clamp(32px,4vw,56px);border-top:1px solid var(--line)}
+.equipo-cta .eyebrow{margin:0}
+.equipo-cta .pr-big{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.4rem);margin:.4rem 0 0}
+/* rejilla de retratos (referente Équipe) */
+.socios-grid-sec{padding:clamp(6px,1.6vw,20px) 0 clamp(48px,7vw,96px)}
+.socios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.4vw,22px);padding:0 var(--edge)}
+.socio-card{display:block;text-decoration:none;color:inherit}
+.socio-photo{display:block;position:relative;overflow:clip;border-radius:14px;aspect-ratio:4/5;background:var(--ink)}
+.socio-ph{width:100%;height:100%;display:block;filter:grayscale(1) contrast(1.04);
+  transition:filter .6s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.socio-card:hover .socio-photo .socio-ph,.socio-card:focus-visible .socio-photo .socio-ph{filter:grayscale(0);transform:scale(1.07)}
+.socio-meta{display:block;margin-top:1rem}
+.socio-name{display:block;font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,1.05rem + .5vw,1.45rem);color:var(--text);transition:color .25s ease}
+.socio-card:hover .socio-name{color:var(--accent-ink)}
+.socio-rama{display:block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;font-size:.66rem;color:var(--dim-2);margin-top:.35rem}
+@media(prefers-reduced-motion:reduce){.socio-ph{transition:filter .3s ease}.socio-card:hover .socio-ph{transform:none}}
+@media(max-width:820px){.socios-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.socios-grid{grid-template-columns:1fr}}
+/* detalle de socio */
+.socio-detail .backlink{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;margin-bottom:clamp(26px,4vw,50px)}
+.socio-detail .backlink a{color:var(--dim);text-decoration:none;transition:color .2s}
+.socio-detail .backlink a:hover{color:var(--accent-ink)}
+.socio-hero{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(32px,5vw,80px);align-items:start}
+.socio-hero-photo .socio-photo{aspect-ratio:4/5;border-radius:18px}
+.socio-hero-photo .socio-ph{filter:grayscale(1) contrast(1.04);transition:filter .6s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.socio-hero-photo:hover .socio-ph{filter:grayscale(0);transform:scale(1.05)}
+.socio-h1{font-family:var(--display);font-weight:500;letter-spacing:-.02em;line-height:1.02;
+  font-size:clamp(2.6rem,1.6rem + 4vw,5rem);color:var(--text);margin:.5rem 0 0}
+.socio-role{font-family:var(--sans);font-weight:300;font-size:var(--step-1);color:var(--dim);margin:.8rem 0 0}
+.socio-bio{margin-top:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:1.05rem;max-width:62ch}
+.socio-bio p{color:var(--dim);font-weight:300;line-height:1.7;margin:0}
+.socio-contact{margin-top:clamp(28px,3.4vw,48px);padding-top:1.4rem;border-top:1px solid var(--line)}
+.socio-contact .ci-v{margin:.4rem 0 0}
+.socio-next{display:flex;flex-direction:column;gap:.5rem;margin-top:clamp(48px,7vw,96px);
+  padding:clamp(36px,5vw,72px) var(--edge);background:var(--ink);text-decoration:none}
+.sn-k{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;color:var(--dim-2)}
+.sn-name{font-family:var(--display);font-weight:500;font-size:clamp(1.8rem,1.2rem + 2.6vw,3.2rem);color:var(--text);transition:color .25s ease}
+.socio-next:hover .sn-name{color:var(--accent-ink)}
+@media(max-width:820px){.socio-hero{grid-template-columns:1fr;gap:26px}.socio-hero-photo{max-width:340px}}
+
 .preview-flag{position:fixed;bottom:12px;left:12px;z-index:60;background:var(--panel-2);border:1px solid var(--line);color:var(--dim);font-family:var(--ui);font-size:12px;padding:6px 12px;border-radius:6px}
 </style>
 <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -1952,7 +1994,14 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <span class="pr-go" aria-hidden="true">→</span>
 </a></div>
   <div class="container">
-    <div class="cta-row" style="margin-top:clamp(40px,6vw,72px)"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/firma/">Cómo trabajamos</a></div>
+    <div class="equipo-cta">
+      <div>
+        <p class="eyebrow">Las personas</p>
+        <h2 class="pr-big">Detrás de las cinco prácticas, <span class="pr-accent">un equipo.</span></h2>
+      </div>
+      <a class="btn btn--primary" href="#!/equipo/socios/">Equipo <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="cta-row" style="margin-top:clamp(28px,3.4vw,44px)"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/firma/">Cómo trabajamos</a></div>
   </div>
 </section>
 </template>
@@ -2204,6 +2253,161 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
     </div>
     <div class="faq-two-r"><div class="fq-list"><details class="fq-item"><summary><span class="fq-n">1</span><span class="fq-q">¿Qué pasa con los empleados de la sociedad intervenida?</span><span class="fq-ic" aria-hidden="true"></span></summary><div class="fq-a"><p>La intervención interrumpe las relaciones laborales; ordenar qué se debe, a quién y con qué prelación de créditos evita contingencias que crecen mientras avanza el resto del caso.</p></div></details><details class="fq-item"><summary><span class="fq-n">2</span><span class="fq-q">¿Las pólizas pueden ser una fuente de recuperación?</span><span class="fq-ic" aria-hidden="true"></span></summary><div class="fq-a"><p>Pueden serlo. Las pólizas de cumplimiento, de manejo y las garantías de terceros se revisan para ver si abren una fuente adicional de recuperación o un frente adicional de reclamación.</p></div></details><details class="fq-item"><summary><span class="fq-n">3</span><span class="fq-q">¿Cómo se ubican las acreencias laborales frente a los afectados?</span><span class="fq-ic" aria-hidden="true"></span></summary><div class="fq-a"><p>El Código Sustantivo del Trabajo establece una prelación de créditos laborales que debe leerse junto con la masa de la intervención y las demás acreencias.</p></div></details></div></div>
   </div>
+</section>
+</template>
+<template data-route="/equipo/socios/" data-title="El equipo · Los socios · Veraly Grupo Jurídico" data-active="equipo" data-mobilebar="0" data-bodyclass="theme-light">
+<section class="section section--tight hero"><div class="container">
+  <p class="eyebrow">El equipo</p>
+  <span class="prac-rule" aria-hidden="true"></span>
+  <h1 class="prac-h1">El equipo detrás <span class="pr-accent">de cada expediente.</span></h1>
+  <p class="prac-sub">Cinco socios, cinco prácticas del derecho que convergen sobre el mismo expediente de captación masiva. Conozca a quienes construyen la defensa.</p>
+</div></section>
+
+<section class="socios-grid-sec">
+  <div class="socios-grid"><a class="socio-card" href="#!/equipo/socios/hermes-vergara/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Hermes Vergara"><defs><linearGradient id="g-hermes-vergara" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-hermes-vergara" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-hermes-vergara)"/><rect width="320" height="400" fill="url(#r-hermes-vergara)"/><text x="160" y="230" text-anchor="middle" font-family="Playfair Display,serif" font-weight="500" font-size="132" fill="#EAFBF6" fill-opacity="0.92">HV</text></svg></span><span class="socio-meta"><span class="socio-name">Hermes Vergara</span><span class="socio-rama">Derecho contractual y constitucional</span></span></a><a class="socio-card" href="#!/equipo/socios/kewin-santiago-canizales/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Kewin Santiago Canizales"><defs><linearGradient id="g-kewin-santiago-canizales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-kewin-santiago-canizales" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-kewin-santiago-canizales)"/><rect width="320" height="400" fill="url(#r-kewin-santiago-canizales)"/><text x="160" y="230" text-anchor="middle" font-family="Playfair Display,serif" font-weight="500" font-size="132" fill="#EAFBF6" fill-opacity="0.92">KC</text></svg></span><span class="socio-meta"><span class="socio-name">Kewin Santiago Canizales</span><span class="socio-rama">Derecho tributario y migratorio</span></span></a><a class="socio-card" href="#!/equipo/socios/miguel-bayter/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Miguel Bayter"><defs><linearGradient id="g-miguel-bayter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-miguel-bayter" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-miguel-bayter)"/><rect width="320" height="400" fill="url(#r-miguel-bayter)"/><text x="160" y="230" text-anchor="middle" font-family="Playfair Display,serif" font-weight="500" font-size="132" fill="#EAFBF6" fill-opacity="0.92">MB</text></svg></span><span class="socio-meta"><span class="socio-name">Miguel Bayter</span><span class="socio-rama">Derecho corporativo y urbano</span></span></a><a class="socio-card" href="#!/equipo/socios/juan-david-naar/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Juan David Naar"><defs><linearGradient id="g-juan-david-naar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-juan-david-naar" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-juan-david-naar)"/><rect width="320" height="400" fill="url(#r-juan-david-naar)"/><text x="160" y="230" text-anchor="middle" font-family="Playfair Display,serif" font-weight="500" font-size="132" fill="#EAFBF6" fill-opacity="0.92">JN</text></svg></span><span class="socio-meta"><span class="socio-name">Juan David Naar</span><span class="socio-rama">Derecho penal y derecho informático</span></span></a><a class="socio-card" href="#!/equipo/socios/javier-pisciotti/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Javier Pisciotti"><defs><linearGradient id="g-javier-pisciotti" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-javier-pisciotti" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-javier-pisciotti)"/><rect width="320" height="400" fill="url(#r-javier-pisciotti)"/><text x="160" y="230" text-anchor="middle" font-family="Playfair Display,serif" font-weight="500" font-size="132" fill="#EAFBF6" fill-opacity="0.92">JP</text></svg></span><span class="socio-meta"><span class="socio-name">Javier Pisciotti</span><span class="socio-rama">Derecho laboral y seguros</span></span></a></div>
+  <div class="container">
+    <div class="cta-row" style="margin-top:clamp(40px,6vw,72px)"><a class="btn btn--ghost" href="#!/equipo/">Volver a las prácticas</a><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a></div>
+  </div>
+</section>
+</template>
+<template data-route="/equipo/socios/hermes-vergara/" data-title="Hermes Vergara · Socio · Veraly Grupo Jurídico" data-active="equipo" data-mobilebar="0" data-bodyclass="theme-light">
+<section class="section socio-detail">
+  <div class="container">
+    <p class="backlink"><a href="#!/equipo/socios/"><span aria-hidden="true">←</span> Volver al equipo</a></p>
+    <div class="socio-hero">
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Hermes Vergara"><defs><linearGradient id="g-hermes-vergara" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-hermes-vergara" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-hermes-vergara)"/><rect width="320" height="400" fill="url(#r-hermes-vergara)"/><text x="160" y="230" text-anchor="middle" font-family="Playfair Display,serif" font-weight="500" font-size="132" fill="#EAFBF6" fill-opacity="0.92">HV</text></svg></span></div>
+      <div class="socio-hero-txt">
+        <p class="eyebrow-num"><span class="n">§</span>Socio</p>
+        <h1 class="socio-h1">Hermes Vergara</h1>
+        <p class="socio-role">Socio · Derecho contractual y constitucional</p>
+        <div class="socio-bio">
+          <p>Hermes Vergara integra en la firma la práctica de derecho contractual y constitucional.</p>
+          <p>Estructura la lectura constitucional del debido proceso en un trámite de única instancia y el andamiaje contractual de las relaciones anteriores a la toma de posesión.</p>
+          <p>Su trabajo se articula con las demás prácticas sobre el mismo expediente: en un proceso por captación masiva, ninguna defensa se sostiene desde un solo frente.</p>
+        </div>
+        <div class="socio-contact">
+          <span class="ci-k">Contacto</span>
+          <p class="ci-v"><a href="mailto:contacto@veraly.com.co">contacto@veraly.com.co</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="socio-next" href="#!/equipo/socios/kewin-santiago-canizales/">
+    <span class="sn-k">Siguiente miembro</span>
+    <span class="sn-name">Kewin Santiago Canizales <span aria-hidden="true">→</span></span>
+  </a>
+</section>
+</template>
+<template data-route="/equipo/socios/kewin-santiago-canizales/" data-title="Kewin Santiago Canizales · Socio · Veraly Grupo Jurídico" data-active="equipo" data-mobilebar="0" data-bodyclass="theme-light">
+<section class="section socio-detail">
+  <div class="container">
+    <p class="backlink"><a href="#!/equipo/socios/"><span aria-hidden="true">←</span> Volver al equipo</a></p>
+    <div class="socio-hero">
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Kewin Santiago Canizales"><defs><linearGradient id="g-kewin-santiago-canizales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-kewin-santiago-canizales" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-kewin-santiago-canizales)"/><rect width="320" height="400" fill="url(#r-kewin-santiago-canizales)"/><text x="160" y="230" text-anchor="middle" font-family="Playfair Display,serif" font-weight="500" font-size="132" fill="#EAFBF6" fill-opacity="0.92">KC</text></svg></span></div>
+      <div class="socio-hero-txt">
+        <p class="eyebrow-num"><span class="n">§</span>Socio</p>
+        <h1 class="socio-h1">Kewin Santiago Canizales</h1>
+        <p class="socio-role">Socio · Derecho tributario y migratorio</p>
+        <div class="socio-bio">
+          <p>Kewin Santiago Canizales integra en la firma la práctica de derecho tributario y migratorio.</p>
+          <p>Analiza las contingencias tributarias sobre los flujos del esquema y las consecuencias migratorias que alcanzan a vinculados extranjeros.</p>
+          <p>Su trabajo se articula con las demás prácticas sobre el mismo expediente: en un proceso por captación masiva, ninguna defensa se sostiene desde un solo frente.</p>
+        </div>
+        <div class="socio-contact">
+          <span class="ci-k">Contacto</span>
+          <p class="ci-v"><a href="mailto:contacto@veraly.com.co">contacto@veraly.com.co</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="socio-next" href="#!/equipo/socios/miguel-bayter/">
+    <span class="sn-k">Siguiente miembro</span>
+    <span class="sn-name">Miguel Bayter <span aria-hidden="true">→</span></span>
+  </a>
+</section>
+</template>
+<template data-route="/equipo/socios/miguel-bayter/" data-title="Miguel Bayter · Socio · Veraly Grupo Jurídico" data-active="equipo" data-mobilebar="0" data-bodyclass="theme-light">
+<section class="section socio-detail">
+  <div class="container">
+    <p class="backlink"><a href="#!/equipo/socios/"><span aria-hidden="true">←</span> Volver al equipo</a></p>
+    <div class="socio-hero">
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Miguel Bayter"><defs><linearGradient id="g-miguel-bayter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-miguel-bayter" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-miguel-bayter)"/><rect width="320" height="400" fill="url(#r-miguel-bayter)"/><text x="160" y="230" text-anchor="middle" font-family="Playfair Display,serif" font-weight="500" font-size="132" fill="#EAFBF6" fill-opacity="0.92">MB</text></svg></span></div>
+      <div class="socio-hero-txt">
+        <p class="eyebrow-num"><span class="n">§</span>Socio</p>
+        <h1 class="socio-h1">Miguel Bayter</h1>
+        <p class="socio-role">Socio · Derecho corporativo y urbano</p>
+        <div class="socio-bio">
+          <p>Miguel Bayter integra en la firma la práctica de derecho corporativo y urbano.</p>
+          <p>Aborda las controversias societarias sobre actos anteriores a la intervención y la situación de los activos inmobiliarios comprometidos.</p>
+          <p>Su trabajo se articula con las demás prácticas sobre el mismo expediente: en un proceso por captación masiva, ninguna defensa se sostiene desde un solo frente.</p>
+        </div>
+        <div class="socio-contact">
+          <span class="ci-k">Contacto</span>
+          <p class="ci-v"><a href="mailto:contacto@veraly.com.co">contacto@veraly.com.co</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="socio-next" href="#!/equipo/socios/juan-david-naar/">
+    <span class="sn-k">Siguiente miembro</span>
+    <span class="sn-name">Juan David Naar <span aria-hidden="true">→</span></span>
+  </a>
+</section>
+</template>
+<template data-route="/equipo/socios/juan-david-naar/" data-title="Juan David Naar · Socio · Veraly Grupo Jurídico" data-active="equipo" data-mobilebar="0" data-bodyclass="theme-light">
+<section class="section socio-detail">
+  <div class="container">
+    <p class="backlink"><a href="#!/equipo/socios/"><span aria-hidden="true">←</span> Volver al equipo</a></p>
+    <div class="socio-hero">
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Juan David Naar"><defs><linearGradient id="g-juan-david-naar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-juan-david-naar" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-juan-david-naar)"/><rect width="320" height="400" fill="url(#r-juan-david-naar)"/><text x="160" y="230" text-anchor="middle" font-family="Playfair Display,serif" font-weight="500" font-size="132" fill="#EAFBF6" fill-opacity="0.92">JN</text></svg></span></div>
+      <div class="socio-hero-txt">
+        <p class="eyebrow-num"><span class="n">§</span>Socio</p>
+        <h1 class="socio-h1">Juan David Naar</h1>
+        <p class="socio-role">Socio · Derecho penal y derecho informático</p>
+        <div class="socio-bio">
+          <p>Juan David Naar integra en la firma la práctica de derecho penal y derecho informático.</p>
+          <p>Conduce la defensa penal por los artículos 316 y 316A y la evidencia digital del esquema, desde los actos urgentes hasta el juicio oral.</p>
+          <p>Su trabajo se articula con las demás prácticas sobre el mismo expediente: en un proceso por captación masiva, ninguna defensa se sostiene desde un solo frente.</p>
+        </div>
+        <div class="socio-contact">
+          <span class="ci-k">Contacto</span>
+          <p class="ci-v"><a href="mailto:contacto@veraly.com.co">contacto@veraly.com.co</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="socio-next" href="#!/equipo/socios/javier-pisciotti/">
+    <span class="sn-k">Siguiente miembro</span>
+    <span class="sn-name">Javier Pisciotti <span aria-hidden="true">→</span></span>
+  </a>
+</section>
+</template>
+<template data-route="/equipo/socios/javier-pisciotti/" data-title="Javier Pisciotti · Socio · Veraly Grupo Jurídico" data-active="equipo" data-mobilebar="0" data-bodyclass="theme-light">
+<section class="section socio-detail">
+  <div class="container">
+    <p class="backlink"><a href="#!/equipo/socios/"><span aria-hidden="true">←</span> Volver al equipo</a></p>
+    <div class="socio-hero">
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Javier Pisciotti"><defs><linearGradient id="g-javier-pisciotti" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-javier-pisciotti" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-javier-pisciotti)"/><rect width="320" height="400" fill="url(#r-javier-pisciotti)"/><text x="160" y="230" text-anchor="middle" font-family="Playfair Display,serif" font-weight="500" font-size="132" fill="#EAFBF6" fill-opacity="0.92">JP</text></svg></span></div>
+      <div class="socio-hero-txt">
+        <p class="eyebrow-num"><span class="n">§</span>Socio</p>
+        <h1 class="socio-h1">Javier Pisciotti</h1>
+        <p class="socio-role">Socio · Derecho laboral y seguros</p>
+        <div class="socio-bio">
+          <p>Javier Pisciotti integra en la firma la práctica de derecho laboral y seguros.</p>
+          <p>Resuelve las reclamaciones laborales de la sociedad intervenida y la exposición de las pólizas y garantías vinculadas al recaudo.</p>
+          <p>Su trabajo se articula con las demás prácticas sobre el mismo expediente: en un proceso por captación masiva, ninguna defensa se sostiene desde un solo frente.</p>
+        </div>
+        <div class="socio-contact">
+          <span class="ci-k">Contacto</span>
+          <p class="ci-v"><a href="mailto:contacto@veraly.com.co">contacto@veraly.com.co</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="socio-next" href="#!/equipo/socios/hermes-vergara/">
+    <span class="sn-k">Siguiente miembro</span>
+    <span class="sn-name">Hermes Vergara <span aria-hidden="true">→</span></span>
+  </a>
 </section>
 </template>
 <template data-route="/marca/" data-title="El sistema de marca · Veraly Grupo Jurídico" data-active="" data-mobilebar="0" data-bodyclass="">

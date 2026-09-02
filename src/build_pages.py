@@ -94,7 +94,7 @@ def build(g):
             "@context": "https://schema.org", "@type": "Person",
             "name": s["nombre"], "jobTitle": "Socio · " + s["practica"],
             "worksFor": {"@type": "LegalService", "name": SITE["name"]},
-            "url": B + "/equipo/" + s["slug"] + "/"
+            "url": B + "/equipo/socios/" + s["slug"] + "/"
         }
 
     def breadcrumb_schema(items):

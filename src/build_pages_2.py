@@ -339,7 +339,14 @@ def build(g):
 <section class="prac-rows-sec">
   <div class="prac-rows">{prac_rows}</div>
   <div class="container">
-    <div class="cta-row" style="margin-top:clamp(40px,6vw,72px)">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabajamos</a></div>
+    <div class="equipo-cta">
+      <div>
+        <p class="eyebrow">Las personas</p>
+        <h2 class="pr-big">Detrás de las cinco prácticas, <span class="pr-accent">un equipo.</span></h2>
+      </div>
+      <a class="btn btn--primary" href="/equipo/socios/">Equipo <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="cta-row" style="margin-top:clamp(28px,3.4vw,44px)">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabajamos</a></div>
   </div>
 </section>
 '''
@@ -440,6 +447,100 @@ def build(g):
                                    (pr["rama"], url)]),
             ],
         }, practica_body)
+
+    # =====================================================================
+    # /equipo/socios  — el equipo (personas); se llega con el botón "Equipo"
+    # Retratos generativos como placeholder (hover: escala de grises -> color
+    # + acercamiento); se reemplazan por fotografías reales cuando estén.
+    # =====================================================================
+    def socio_portrait(s):
+        p = s["nombre"].split()
+        ini = (p[0][0] + (p[-1][0] if len(p) > 1 else "")).upper()
+        sid = s["slug"]
+        return (
+            f'<svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" '
+            f'role="img" aria-label="Retrato de {esc(s["nombre"])}">'
+            f'<defs><linearGradient id="g-{sid}" x1="0" y1="0" x2="1" y2="1">'
+            f'<stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient>'
+            f'<radialGradient id="r-{sid}" cx="0.5" cy="0.34" r="0.75">'
+            f'<stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/>'
+            f'<stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs>'
+            f'<rect width="320" height="400" fill="url(#g-{sid})"/>'
+            f'<rect width="320" height="400" fill="url(#r-{sid})"/>'
+            f'<text x="160" y="230" text-anchor="middle" font-family="Playfair Display,serif" '
+            f'font-weight="500" font-size="132" fill="#EAFBF6" fill-opacity="0.92">{esc(ini)}</text>'
+            f'</svg>')
+    socio_cards = ""
+    for s in SOCIOS:
+        socio_cards += (
+            f'<a class="socio-card" href="/equipo/socios/{s["slug"]}/">'
+            f'<span class="socio-photo">{socio_portrait(s)}</span>'
+            f'<span class="socio-meta"><span class="socio-name">{esc(s["nombre"])}</span>'
+            f'<span class="socio-rama">{esc(s["practica"])}</span></span></a>')
+    equipo_socios_body = f'''
+{section("""
+  <p class="eyebrow">El equipo</p>
+  <span class="prac-rule" aria-hidden="true"></span>
+  <h1 class="prac-h1">El equipo detrás <span class="pr-accent">de cada expediente.</span></h1>
+  <p class="prac-sub">Cinco socios, cinco prácticas del derecho que convergen sobre el mismo expediente de captación masiva. Conozca a quienes construyen la defensa.</p>
+""", cls="hero", tight=True)}
+
+<section class="socios-grid-sec">
+  <div class="socios-grid">{socio_cards}</div>
+  <div class="container">
+    <div class="cta-row" style="margin-top:clamp(40px,6vw,72px)"><a class="btn btn--ghost" href="/equipo/">Volver a las prácticas</a>{agendar("Agendar una consulta")}</div>
+  </div>
+</section>
+'''
+    add("/equipo/socios/", {
+        "title": "El equipo · Los socios · Veraly Grupo Jurídico",
+        "description": "Los cinco socios de Veraly Grupo Jurídico y la práctica del derecho que cada uno aplica a la defensa en captación masiva.",
+        "active": "equipo", "body_class": "theme-light",
+        "schema": [breadcrumb_schema([("Inicio", "/"), ("El equipo", "/equipo/"), ("Los socios", "/equipo/socios/")])],
+    }, equipo_socios_body)
+
+    for i, s in enumerate(SOCIOS):
+        nxt = SOCIOS[(i + 1) % len(SOCIOS)]
+        url = "/equipo/socios/" + s["slug"] + "/"
+        practica_lc = s["practica"][0].lower() + s["practica"][1:]
+        socio_body = f'''
+<section class="section socio-detail">
+  <div class="container">
+    <p class="backlink"><a href="/equipo/socios/"><span aria-hidden="true">←</span> Volver al equipo</a></p>
+    <div class="socio-hero">
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg">{socio_portrait(s)}</span></div>
+      <div class="socio-hero-txt">
+        <p class="eyebrow-num"><span class="n">§</span>Socio</p>
+        <h1 class="socio-h1">{esc(s["nombre"])}</h1>
+        <p class="socio-role">Socio · {esc(s["practica"])}</p>
+        <div class="socio-bio">
+          <p>{esc(s["nombre"])} integra en la firma la práctica de {esc(practica_lc)}.</p>
+          <p>{esc(s["aporte"])}</p>
+          <p>Su trabajo se articula con las demás prácticas sobre el mismo expediente: en un proceso por captación masiva, ninguna defensa se sostiene desde un solo frente.</p>
+        </div>
+        <div class="socio-contact">
+          <span class="ci-k">Contacto</span>
+          <p class="ci-v"><a href="mailto:{SITE["email"]}">{esc(SITE["email"])}</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="socio-next" href="/equipo/socios/{nxt["slug"]}/">
+    <span class="sn-k">Siguiente miembro</span>
+    <span class="sn-name">{esc(nxt["nombre"])} <span aria-hidden="true">→</span></span>
+  </a>
+</section>
+'''
+        add(url, {
+            "title": f'{s["nombre"]} · Socio · Veraly Grupo Jurídico',
+            "description": f'{s["nombre"]}, socio de Veraly Grupo Jurídico en {practica_lc}, aplicada a la defensa en captación masiva.',
+            "active": "equipo", "body_class": "theme-light",
+            "schema": [
+                person_schema(s),
+                breadcrumb_schema([("Inicio", "/"), ("El equipo", "/equipo/"),
+                                   ("Los socios", "/equipo/socios/"), (s["nombre"], url)]),
+            ],
+        }, socio_body)
 
     # =====================================================================
     # /marca  (brandbook — pieza de verificación)
