@@ -264,9 +264,11 @@ def build(g):
 {af_plazos}
 
 <section class="section jn-sec jn-pin">
-  <div class="jn-pin-track"><div class="jn-pin-sticky"><div class="container">
+  <div class="container jn-intro">
     <p class="eyebrow-num"><span class="n">§</span>El acompañamiento</p>
     <h2 class="pr-big">El trabajo, <span class="pr-accent">por momento del proceso.</span></h2>
+  </div>
+  <div class="jn-pin-track"><div class="jn-pin-sticky"><div class="container">
     {afectados_acc}
   </div></div></div>
 </section>
