@@ -129,8 +129,8 @@ def build(g):
     <p class="eyebrow-num"><span class="n">§</span>El método de convergencia</p>
     <h2 class="pr-big">Leemos cada expediente en <span class="pr-accent">hechos, actores y rutas.</span></h2>
     <p class="prac-sub">Lo habitual es asignar el caso al socio de la especialidad correspondiente. En captación esa estructura falla: el caso no tiene una especialidad, tiene varias a la vez. Por eso las cinco prácticas trabajan el mismo expediente y el caso se construye en la intersección —a partir de tres lecturas.</p>
+    <div class="pr-timeline">{metodo_rows}</div>
   </div>
-  <div class="pr-timeline">{metodo_rows}</div>
 </section>
 
 {g["marco_reveal"](
@@ -414,8 +414,8 @@ def build(g):
   <div class="container">
     <p class="eyebrow-num"><span class="n">03</span>Normatividad asociada</p>
     <h2 class="pr-big">El marco que <span class="pr-accent">enmarca esta práctica.</span></h2>
+    <div class="pr-timeline">{norm_rows}</div>
   </div>
-  <div class="pr-timeline">{norm_rows}</div>
 </section>
 
 <section class="section">
