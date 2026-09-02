@@ -374,6 +374,9 @@
     var phrases = $$('.reveal-phrase', track), cards = $$('.reveal-cards .rc', track);
     var np = phrases.length; if (!np) return;
     var words = phrases.map(function (p) { return $$('.w', p); });
+    // data-litspan (0..1): fracción del avance de cada frase en la que se
+    // iluminan las palabras. Más alto = más lento y las palabras nunca entran de golpe.
+    var litspan = parseFloat(track.getAttribute('data-litspan')) || 0.55;
     function upd() {
       if (window.innerWidth <= 900) {
         phrases.forEach(function (p) { p.classList.add('active'); });
@@ -385,7 +388,7 @@
       var idx = Math.min(np - 1, Math.floor(p * np));
       var local = (p * np) - idx;
       phrases.forEach(function (ph, i) { ph.classList.toggle('active', i === idx); });
-      var lit = Math.min(1, local / 0.55); // ilumina en el primer 55% y mantiene
+      var lit = Math.min(1, local / litspan);
       words[idx].forEach(function (w, j) { w.classList.toggle('lit', (j + 0.6) / words[idx].length <= lit); });
       cards.forEach(function (c, k) { c.classList.toggle('in', p >= (k + 1) / (cards.length + 1)); });
     }

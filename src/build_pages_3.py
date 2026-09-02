@@ -173,10 +173,6 @@ def build(g):
         f'</div>'
         for i, v in enumerate(_via_data))
     _via_bars = "".join('<i></i>' for _ in range(3))
-    _via_steps = "".join(
-        f'<span class="via-step{" on" if i == 0 else ""}" data-i="{i}">'
-        f'<b>{i+1:02d}</b>{esc(v[0])}</span>'
-        for i, v in enumerate(_via_data))
     # Intro replicando el reveal por palabras: van saliendo las cards con el
     # nombre de cada vía a medida que se hace scroll (escena fijada, dark).
     def _wrev(s):
@@ -201,7 +197,7 @@ def build(g):
         f'<span class="rc-note">{esc(note)}</span></div>'
         for name, tag, note in _vr_cards_data)
     af_vias_reveal = (
-        '<section class="reveal force-dark" id="vias-intro"><div class="reveal-track"><div class="reveal-sticky">'
+        '<section class="reveal force-dark" id="vias-intro"><div class="reveal-track" data-litspan="0.9"><div class="reveal-sticky">'
         '<p class="eyebrow reveal-eyebrow">Las tres vías</p>'
         f'<div class="reveal-phrases">{_vr_phr}</div>'
         f'<div class="reveal-cards" aria-hidden="true">{_vr_cards}</div>'
@@ -210,10 +206,7 @@ def build(g):
         '<section class="via-sticky-sec"><div class="via-track"><div class="via-sticky">'
         '<div class="container via-frame">'
         '<div class="via-head">'
-        '<div class="via-head-txt">'
         '<p class="eyebrow-num"><span class="n">§</span>El alcance de cada vía</p>'
-        '<h2 class="pr-big">Cada vía llega <span class="pr-accent">más lejos que la anterior.</span></h2></div>'
-        f'<div class="via-steps" aria-hidden="true">{_via_steps}</div>'
         '</div>'
         '<div class="via-stage">'
         f'<div class="via-slides">{_via_slides}</div>'

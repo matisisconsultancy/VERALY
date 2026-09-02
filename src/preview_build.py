@@ -70,10 +70,11 @@ def run(out_path):
   function initReveal(){var track=document.querySelector('.reveal-track');if(!track||track.__i)return;track.__i=1;
     var phrases=[].slice.call(track.querySelectorAll('.reveal-phrase')),cards=[].slice.call(track.querySelectorAll('.reveal-cards .rc')),np=phrases.length;if(!np)return;
     var words=phrases.map(function(p){return [].slice.call(p.querySelectorAll('.w'));});
+    var litspan=parseFloat(track.getAttribute('data-litspan'))||0.55;
     function upd(){if(window.innerWidth<=900){phrases.forEach(function(p){p.classList.add('active');});words.forEach(function(ws){ws.forEach(function(w){w.classList.add('lit');});});cards.forEach(function(c){c.classList.add('in');});return;}
       var p=pinProgress(track),idx=Math.min(np-1,Math.floor(p*np)),local=(p*np)-idx;
       phrases.forEach(function(ph,i){ph.classList.toggle('active',i===idx);});
-      var lit=Math.min(1,local/0.55);
+      var lit=Math.min(1,local/litspan);
       words[idx].forEach(function(w,j){w.classList.toggle('lit',(j+0.6)/words[idx].length<=lit);});
       cards.forEach(function(c,k){c.classList.toggle('in',p>=(k+1)/(cards.length+1));});}
     window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();}

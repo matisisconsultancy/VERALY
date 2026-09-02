@@ -852,14 +852,22 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
   --dim:rgba(234,251,246,.66);--dim-2:rgba(234,251,246,.44);--line:rgba(137,245,229,.28);
   --line-soft:rgba(234,251,246,.12);--accent-ink:#89F5E5}
 /* tarjetas del reveal cuando nombran las vías (no son enlaces) */
-#vias-intro .reveal-track{height:360vh}
+/* pista más larga = scroll más lento y claro; las palabras nunca entran de golpe */
+#vias-intro .reveal-track{height:480vh}
 /* transición más seca entre frases para que nunca queden dos textos superpuestos */
 #vias-intro .reveal-phrase{transition:opacity .22s ease}
+/* cada palabra aparece con un fundido más suave */
+#vias-intro .reveal-phrase .w{transition:color .5s ease}
+/* tarjetas del reveal cuando nombran las vías (no son enlaces) — legibilidad reforzada */
 .rc--via{cursor:default}
-.reveal-cards .rc--via .t-k{font-family:var(--display);font-weight:600;
-  font-size:clamp(1.3rem,1.05rem + .9vw,1.7rem);letter-spacing:-.02em;margin-top:.15rem}
-.reveal-cards .rc--via .rc-note{font-family:var(--ui);font-size:.8rem;color:var(--dim);line-height:1.35}
-.reveal-cards .rc--via:hover{transform:translateY(-4px)}
+.reveal-cards .rc--via{padding:26px 26px 24px;min-height:150px;gap:12px;
+  background:linear-gradient(160deg,rgba(137,245,229,.10),rgba(3,25,27,.55));
+  border-color:rgba(137,245,229,.22)}
+.reveal-cards .rc--via .t-d{color:var(--accent);font-size:.66rem;letter-spacing:.16em}
+.reveal-cards .rc--via .t-k{font-family:var(--display);font-weight:600;color:#fff;
+  font-size:clamp(1.5rem,1.15rem + 1.1vw,2rem);letter-spacing:-.02em;line-height:1.05;margin-top:.1rem}
+.reveal-cards .rc--via .rc-note{font-family:var(--ui);font-size:.85rem;color:rgba(234,251,246,.75);line-height:1.4;margin-top:.1rem}
+.reveal-cards .rc--via:hover{transform:translateY(-4px);border-color:var(--accent)}
 .reveal-cards .rc--via:hover .t-k{color:var(--accent)}
 .reveal{background:var(--ink);border-top:1px solid var(--line-soft)}
 .reveal-track{position:relative;height:520vh}
@@ -1338,33 +1346,25 @@ html:not(.js) .plz-track::after{width:100%}
 /* Las tres vías: escenario fijado (sticky) que cambia de vía con el scroll
    mientras la barra de alcance crece (administrativa -> civil -> penal) */
 .via-sticky-sec{padding:clamp(44px,6vw,80px) 0}
-.via-track{position:relative;height:320vh}
+/* pista más alta = el cambio de vía ocurre más despacio y con más aire */
+.via-track{position:relative;height:440vh}
 .via-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center}
 .via-frame{width:100%}
-/* encabezado integrado dentro de la escena fijada */
-.via-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(20px,3vw,48px);flex-wrap:wrap;
-  padding-bottom:clamp(20px,2.6vw,36px);margin-bottom:clamp(26px,3.4vw,52px);border-bottom:1px solid var(--line)}
-.via-head-txt{max-width:32ch}
+/* encabezado mínimo: solo el eyebrow, con aire */
+.via-head{padding-bottom:clamp(22px,2.8vw,40px);margin-bottom:clamp(36px,4.4vw,68px);border-bottom:1px solid var(--line)}
 .via-head .eyebrow-num{margin:0}
-.via-head .pr-big{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.5rem);margin:.5rem 0 0;line-height:1.06}
-.via-steps{display:flex;gap:8px;flex-shrink:0}
-.via-step{display:flex;flex-direction:column;gap:.35rem;font-family:var(--mono);text-transform:uppercase;
-  letter-spacing:.08em;font-size:.58rem;color:var(--dim-2);padding:.55rem .85rem;border:1px solid var(--line);
-  border-radius:12px;min-width:104px;transition:color .45s ease,border-color .45s ease,background .45s ease}
-.via-step b{font-size:.95rem;font-weight:400;letter-spacing:.02em;color:var(--dim-2);transition:color .45s ease}
-.via-step.on{border-color:var(--accent-ink);color:var(--text);background:color-mix(in srgb,var(--accent-ink) 7%,transparent)}
-.via-step.on b{color:var(--accent-ink)}
-.via-stage{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,6vw,88px);align-items:center;width:100%}
-.via-slides{position:relative;min-height:clamp(268px,36vh,360px)}
+.via-stage{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,7vw,104px);align-items:center;width:100%}
+.via-slides{position:relative;min-height:clamp(300px,40vh,400px)}
 .via-slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
-  opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+  opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .65s cubic-bezier(.2,.7,.2,1);pointer-events:none}
 .via-slide.active{opacity:1;transform:none;pointer-events:auto}
 .via-idx{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;color:var(--accent-ink)}
-.via-tag{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;color:var(--dim-2);margin-top:.5rem}
-.via-h{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1.05;
-  font-size:clamp(1.9rem,1.3rem + 2vw,3.1rem);color:var(--text);margin:.5rem 0 0;max-width:16ch}
-.via-d{color:var(--dim);font-weight:300;line-height:1.6;font-size:var(--step-1);margin:1.1rem 0 0;max-width:42ch}
-.via-recup{margin-top:1.6rem;padding-top:1.2rem;border-top:1px solid var(--line);max-width:42ch}
+.via-tag{display:block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;
+  font-size:.82rem;font-weight:500;color:var(--accent-ink);margin-top:.7rem}
+.via-h{font-family:var(--sans);font-weight:400;letter-spacing:-.02em;line-height:1.08;
+  font-size:clamp(2rem,1.4rem + 2.1vw,3.2rem);color:var(--text);margin:.55rem 0 0;max-width:15ch}
+.via-d{color:var(--dim);font-weight:300;line-height:1.65;font-size:var(--step-1);margin:1.3rem 0 0;max-width:42ch}
+.via-recup{margin-top:1.9rem;padding-top:1.4rem;border-top:1px solid var(--line);max-width:42ch}
 .via-recup .k{display:block;font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--dim-2)}
 .via-recup .v{display:block;font-family:var(--sans);font-weight:500;font-size:var(--step-1);color:var(--text);margin-top:.3rem;line-height:1.3}
 /* panel de alcance: barra que crece */
@@ -2176,9 +2176,9 @@ html.js .jn-phase.is-on .jn-body li{opacity:1;transform:none}
 
 <section class="section sol-stmt-sec"><div class="container sol-stmt-grid"><div><p class="eyebrow-num"><span class="n">§</span>El fenómeno</p><h2 class="sol-stmt pr-parallax">Probablemente no fue una estafa. <span class="pr-accent">Fue captación masiva.</span></h2></div><div class="sol-stmt-body"><p>La diferencia no es semántica. La estafa y la captación masiva son delitos distintos, con procesos distintos y con vías de recuperación distintas —y se usan como sinónimos incluso en la prensa.</p><p>Hay <strong>captación masiva y habitual no autorizada</strong> cuando se reciben dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable: más de veinte personas, o más de cincuenta obligaciones, o mediación de ofertas masivas.</p><p>Que su caso encuadre en esta figura lo cambia todo: activa un procedimiento administrativo especial ante la Superintendencia de Sociedades que no existe en la estafa común, y con él un mecanismo de devolución al que usted puede acceder.</p></div></div></section>
 
-<section class="reveal force-dark" id="vias-intro"><div class="reveal-track"><div class="reveal-sticky"><p class="eyebrow reveal-eyebrow">Las tres vías</p><div class="reveal-phrases"><p class="reveal-phrase active" data-i="0"><span class="w">Recuperar</span> <span class="w">no</span> <span class="w">es</span> <span class="w">una</span> <span class="w">sola</span> <span class="w">cosa.</span> <br> <span class="w">Son</span> <span class="w">tres</span> <span class="w">caminos</span> <span class="w">distintos.</span></p><p class="reveal-phrase" data-i="1"><span class="w">Cada</span> <span class="w">vía</span> <span class="w">persigue</span> <span class="w">algo</span> <span class="w">diferente</span> <br> <span class="w">y</span> <span class="w">avanza</span> <span class="w">por</span> <span class="w">su</span> <span class="w">cuenta.</span></p><p class="reveal-phrase" data-i="2"><span class="w">No</span> <span class="w">hay</span> <span class="w">que</span> <span class="w">elegir</span> <span class="w">una.</span> <br> <span class="w">Hay</span> <span class="w">que</span> <span class="w">ordenarlas.</span></p></div><div class="reveal-cards" aria-hidden="true"><div class="rc rc--via"><span class="t-d">Devolución a prorrata</span><span class="t-k">Vía administrativa</span><span class="rc-note">La más rápida</span></div><div class="rc rc--via"><span class="t-d">Patrimonio de los responsables</span><span class="t-k">Vía civil</span><span class="rc-note">La más amplia en deudores</span></div><div class="rc rc--via"><span class="t-d">Reparación integral</span><span class="t-k">Vía penal</span><span class="rc-note">La de mayor alcance</span></div></div></div></div></section>
+<section class="reveal force-dark" id="vias-intro"><div class="reveal-track" data-litspan="0.9"><div class="reveal-sticky"><p class="eyebrow reveal-eyebrow">Las tres vías</p><div class="reveal-phrases"><p class="reveal-phrase active" data-i="0"><span class="w">Recuperar</span> <span class="w">no</span> <span class="w">es</span> <span class="w">una</span> <span class="w">sola</span> <span class="w">cosa.</span> <br> <span class="w">Son</span> <span class="w">tres</span> <span class="w">caminos</span> <span class="w">distintos.</span></p><p class="reveal-phrase" data-i="1"><span class="w">Cada</span> <span class="w">vía</span> <span class="w">persigue</span> <span class="w">algo</span> <span class="w">diferente</span> <br> <span class="w">y</span> <span class="w">avanza</span> <span class="w">por</span> <span class="w">su</span> <span class="w">cuenta.</span></p><p class="reveal-phrase" data-i="2"><span class="w">No</span> <span class="w">hay</span> <span class="w">que</span> <span class="w">elegir</span> <span class="w">una.</span> <br> <span class="w">Hay</span> <span class="w">que</span> <span class="w">ordenarlas.</span></p></div><div class="reveal-cards" aria-hidden="true"><div class="rc rc--via"><span class="t-d">Devolución a prorrata</span><span class="t-k">Vía administrativa</span><span class="rc-note">La más rápida</span></div><div class="rc rc--via"><span class="t-d">Patrimonio de los responsables</span><span class="t-k">Vía civil</span><span class="rc-note">La más amplia en deudores</span></div><div class="rc rc--via"><span class="t-d">Reparación integral</span><span class="t-k">Vía penal</span><span class="rc-note">La de mayor alcance</span></div></div></div></div></section>
 
-<section class="via-sticky-sec"><div class="via-track"><div class="via-sticky"><div class="container via-frame"><div class="via-head"><div class="via-head-txt"><p class="eyebrow-num"><span class="n">§</span>El alcance de cada vía</p><h2 class="pr-big">Cada vía llega <span class="pr-accent">más lejos que la anterior.</span></h2></div><div class="via-steps" aria-hidden="true"><span class="via-step on" data-i="0"><b>01</b>Vía administrativa</span><span class="via-step" data-i="1"><b>02</b>Vía civil</span><span class="via-step" data-i="2"><b>03</b>Vía penal</span></div></div><div class="via-stage"><div class="via-slides"><div class="via-slide active" data-i="0"><span class="via-idx">01 / 03</span><span class="via-tag">Vía administrativa</span><h3 class="via-h">La reclamación dentro de la intervención</h3><p class="via-d">Cuando la Superintendencia ordena la toma de posesión para devolver, se abre un trámite de reclamación a prorrata entre los afectados. Es la vía más rápida.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">El capital entregado</span></div></div><div class="via-slide" data-i="1"><span class="via-idx">02 / 03</span><span class="via-tag">Vía civil</span><h3 class="via-h">La responsabilidad de los solventes</h3><p class="via-d">Cuando la masa no cubre el faltante, persigue el patrimonio de administradores, revisores, contadores y vinculados solventes; y reconstruye la prenda general.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">El patrimonio de los responsables</span></div></div><div class="via-slide" data-i="2"><span class="via-idx">03 / 03</span><span class="via-tag">Vía penal</span><h3 class="via-h">El incidente de reparación integral</h3><p class="via-d">Tras la sentencia condenatoria se reclaman daño emergente, lucro cesante y perjuicios morales. Es la vía de mayor alcance: llega a lo que las demás dejan fuera.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">Capital, rendimientos y perjuicios</span></div></div></div><div class="via-scopewrap" aria-hidden="true"><span class="via-scope-k">Alcance de la recuperación</span><div class="via-bars"><i></i><i></i><i></i></div><span class="via-scope-hint">De la más rápida a la de mayor alcance.</span></div></div></div></div></div><div class="container"><p class="lead via-foot" style="max-width:66ch">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía civil o la penal. Las tres corren de forma autónoma —no hay que elegir una, hay que ordenarlas.</p></div></section>
+<section class="via-sticky-sec"><div class="via-track"><div class="via-sticky"><div class="container via-frame"><div class="via-head"><p class="eyebrow-num"><span class="n">§</span>El alcance de cada vía</p></div><div class="via-stage"><div class="via-slides"><div class="via-slide active" data-i="0"><span class="via-idx">01 / 03</span><span class="via-tag">Vía administrativa</span><h3 class="via-h">La reclamación dentro de la intervención</h3><p class="via-d">Cuando la Superintendencia ordena la toma de posesión para devolver, se abre un trámite de reclamación a prorrata entre los afectados. Es la vía más rápida.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">El capital entregado</span></div></div><div class="via-slide" data-i="1"><span class="via-idx">02 / 03</span><span class="via-tag">Vía civil</span><h3 class="via-h">La responsabilidad de los solventes</h3><p class="via-d">Cuando la masa no cubre el faltante, persigue el patrimonio de administradores, revisores, contadores y vinculados solventes; y reconstruye la prenda general.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">El patrimonio de los responsables</span></div></div><div class="via-slide" data-i="2"><span class="via-idx">03 / 03</span><span class="via-tag">Vía penal</span><h3 class="via-h">El incidente de reparación integral</h3><p class="via-d">Tras la sentencia condenatoria se reclaman daño emergente, lucro cesante y perjuicios morales. Es la vía de mayor alcance: llega a lo que las demás dejan fuera.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">Capital, rendimientos y perjuicios</span></div></div></div><div class="via-scopewrap" aria-hidden="true"><span class="via-scope-k">Alcance de la recuperación</span><div class="via-bars"><i></i><i></i><i></i></div><span class="via-scope-hint">De la más rápida a la de mayor alcance.</span></div></div></div></div></div><div class="container"><p class="lead via-foot" style="max-width:66ch">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía civil o la penal. Las tres corren de forma autónoma —no hay que elegir una, hay que ordenarlas.</p></div></section>
 
 <section class="plz-sec plz-pin"><div class="plz-pin-track"><div class="plz-pin-sticky"><div class="container"><p class="eyebrow-num"><span class="n">§</span>El calendario</p><div class="plz-head"><h2 class="plz-title">Los términos corren, <span class="pr-accent">y son cortos.</span></h2></div><p class="plz-sub">Dentro de la intervención administrativa el calendario es estricto y se cuenta en días comunes desde la toma de posesión.</p><div class="plz-track"><div class="plz-step"><span class="plz-ord">01</span><span class="plz-num"><span data-count="2">0</span><span class="u">días</span></span><p class="plz-label">El aviso</p><p class="plz-detail">El interventor publica el aviso dentro de los dos días siguientes a la toma de posesión.</p></div><div class="plz-step"><span class="plz-ord">02</span><span class="plz-num"><span data-count="10">0</span><span class="u">días</span></span><p class="plz-label">La reclamación</p><p class="plz-detail">Las solicitudes de devolución se presentan por escrito, con presentación personal y original del comprobante.</p></div><div class="plz-step"><span class="plz-ord">03</span><span class="plz-num"><span data-count="20">0</span><span class="u">días</span></span><p class="plz-label">La decisión</p><p class="plz-detail">La providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.</p></div><div class="plz-step"><span class="plz-ord">04</span><span class="plz-num"><span data-count="3">0</span><span class="u">días</span></span><p class="plz-label">El recurso</p><p class="plz-detail">El recurso de reposición contra esa decisión se interpone dentro de los tres días siguientes.</p></div></div><p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p></div></div></div></section>
 
@@ -2835,10 +2835,11 @@ html.js .jn-phase.is-on .jn-body li{opacity:1;transform:none}
   function initReveal(){var track=document.querySelector('.reveal-track');if(!track||track.__i)return;track.__i=1;
     var phrases=[].slice.call(track.querySelectorAll('.reveal-phrase')),cards=[].slice.call(track.querySelectorAll('.reveal-cards .rc')),np=phrases.length;if(!np)return;
     var words=phrases.map(function(p){return [].slice.call(p.querySelectorAll('.w'));});
+    var litspan=parseFloat(track.getAttribute('data-litspan'))||0.55;
     function upd(){if(window.innerWidth<=900){phrases.forEach(function(p){p.classList.add('active');});words.forEach(function(ws){ws.forEach(function(w){w.classList.add('lit');});});cards.forEach(function(c){c.classList.add('in');});return;}
       var p=pinProgress(track),idx=Math.min(np-1,Math.floor(p*np)),local=(p*np)-idx;
       phrases.forEach(function(ph,i){ph.classList.toggle('active',i===idx);});
-      var lit=Math.min(1,local/0.55);
+      var lit=Math.min(1,local/litspan);
       words[idx].forEach(function(w,j){w.classList.toggle('lit',(j+0.6)/words[idx].length<=lit);});
       cards.forEach(function(c,k){c.classList.toggle('in',p>=(k+1)/(cards.length+1));});}
     window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();}

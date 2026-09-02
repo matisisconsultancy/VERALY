@@ -845,14 +845,22 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
   --dim:rgba(234,251,246,.66);--dim-2:rgba(234,251,246,.44);--line:rgba(137,245,229,.28);
   --line-soft:rgba(234,251,246,.12);--accent-ink:#89F5E5}
 /* tarjetas del reveal cuando nombran las vías (no son enlaces) */
-#vias-intro .reveal-track{height:360vh}
+/* pista más larga = scroll más lento y claro; las palabras nunca entran de golpe */
+#vias-intro .reveal-track{height:480vh}
 /* transición más seca entre frases para que nunca queden dos textos superpuestos */
 #vias-intro .reveal-phrase{transition:opacity .22s ease}
+/* cada palabra aparece con un fundido más suave */
+#vias-intro .reveal-phrase .w{transition:color .5s ease}
+/* tarjetas del reveal cuando nombran las vías (no son enlaces) — legibilidad reforzada */
 .rc--via{cursor:default}
-.reveal-cards .rc--via .t-k{font-family:var(--display);font-weight:600;
-  font-size:clamp(1.3rem,1.05rem + .9vw,1.7rem);letter-spacing:-.02em;margin-top:.15rem}
-.reveal-cards .rc--via .rc-note{font-family:var(--ui);font-size:.8rem;color:var(--dim);line-height:1.35}
-.reveal-cards .rc--via:hover{transform:translateY(-4px)}
+.reveal-cards .rc--via{padding:26px 26px 24px;min-height:150px;gap:12px;
+  background:linear-gradient(160deg,rgba(137,245,229,.10),rgba(3,25,27,.55));
+  border-color:rgba(137,245,229,.22)}
+.reveal-cards .rc--via .t-d{color:var(--accent);font-size:.66rem;letter-spacing:.16em}
+.reveal-cards .rc--via .t-k{font-family:var(--display);font-weight:600;color:#fff;
+  font-size:clamp(1.5rem,1.15rem + 1.1vw,2rem);letter-spacing:-.02em;line-height:1.05;margin-top:.1rem}
+.reveal-cards .rc--via .rc-note{font-family:var(--ui);font-size:.85rem;color:rgba(234,251,246,.75);line-height:1.4;margin-top:.1rem}
+.reveal-cards .rc--via:hover{transform:translateY(-4px);border-color:var(--accent)}
 .reveal-cards .rc--via:hover .t-k{color:var(--accent)}
 .reveal{background:var(--ink);border-top:1px solid var(--line-soft)}
 .reveal-track{position:relative;height:520vh}
@@ -1331,33 +1339,25 @@ html:not(.js) .plz-track::after{width:100%}
 /* Las tres vías: escenario fijado (sticky) que cambia de vía con el scroll
    mientras la barra de alcance crece (administrativa -> civil -> penal) */
 .via-sticky-sec{padding:clamp(44px,6vw,80px) 0}
-.via-track{position:relative;height:320vh}
+/* pista más alta = el cambio de vía ocurre más despacio y con más aire */
+.via-track{position:relative;height:440vh}
 .via-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center}
 .via-frame{width:100%}
-/* encabezado integrado dentro de la escena fijada */
-.via-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(20px,3vw,48px);flex-wrap:wrap;
-  padding-bottom:clamp(20px,2.6vw,36px);margin-bottom:clamp(26px,3.4vw,52px);border-bottom:1px solid var(--line)}
-.via-head-txt{max-width:32ch}
+/* encabezado mínimo: solo el eyebrow, con aire */
+.via-head{padding-bottom:clamp(22px,2.8vw,40px);margin-bottom:clamp(36px,4.4vw,68px);border-bottom:1px solid var(--line)}
 .via-head .eyebrow-num{margin:0}
-.via-head .pr-big{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.5rem);margin:.5rem 0 0;line-height:1.06}
-.via-steps{display:flex;gap:8px;flex-shrink:0}
-.via-step{display:flex;flex-direction:column;gap:.35rem;font-family:var(--mono);text-transform:uppercase;
-  letter-spacing:.08em;font-size:.58rem;color:var(--dim-2);padding:.55rem .85rem;border:1px solid var(--line);
-  border-radius:12px;min-width:104px;transition:color .45s ease,border-color .45s ease,background .45s ease}
-.via-step b{font-size:.95rem;font-weight:400;letter-spacing:.02em;color:var(--dim-2);transition:color .45s ease}
-.via-step.on{border-color:var(--accent-ink);color:var(--text);background:color-mix(in srgb,var(--accent-ink) 7%,transparent)}
-.via-step.on b{color:var(--accent-ink)}
-.via-stage{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,6vw,88px);align-items:center;width:100%}
-.via-slides{position:relative;min-height:clamp(268px,36vh,360px)}
+.via-stage{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,7vw,104px);align-items:center;width:100%}
+.via-slides{position:relative;min-height:clamp(300px,40vh,400px)}
 .via-slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
-  opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+  opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .65s cubic-bezier(.2,.7,.2,1);pointer-events:none}
 .via-slide.active{opacity:1;transform:none;pointer-events:auto}
 .via-idx{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;color:var(--accent-ink)}
-.via-tag{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;color:var(--dim-2);margin-top:.5rem}
-.via-h{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1.05;
-  font-size:clamp(1.9rem,1.3rem + 2vw,3.1rem);color:var(--text);margin:.5rem 0 0;max-width:16ch}
-.via-d{color:var(--dim);font-weight:300;line-height:1.6;font-size:var(--step-1);margin:1.1rem 0 0;max-width:42ch}
-.via-recup{margin-top:1.6rem;padding-top:1.2rem;border-top:1px solid var(--line);max-width:42ch}
+.via-tag{display:block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;
+  font-size:.82rem;font-weight:500;color:var(--accent-ink);margin-top:.7rem}
+.via-h{font-family:var(--sans);font-weight:400;letter-spacing:-.02em;line-height:1.08;
+  font-size:clamp(2rem,1.4rem + 2.1vw,3.2rem);color:var(--text);margin:.55rem 0 0;max-width:15ch}
+.via-d{color:var(--dim);font-weight:300;line-height:1.65;font-size:var(--step-1);margin:1.3rem 0 0;max-width:42ch}
+.via-recup{margin-top:1.9rem;padding-top:1.4rem;border-top:1px solid var(--line);max-width:42ch}
 .via-recup .k{display:block;font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--dim-2)}
 .via-recup .v{display:block;font-family:var(--sans);font-weight:500;font-size:var(--step-1);color:var(--text);margin-top:.3rem;line-height:1.3}
 /* panel de alcance: barra que crece */
