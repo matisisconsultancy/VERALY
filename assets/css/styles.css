@@ -840,6 +840,20 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 /* ============================================================
    Reveal por scroll (word focus + tarjetas) — "El marco"
    ============================================================ */
+/* isla oscura: fija la paleta oscura aunque la página esté en theme-light */
+.force-dark{--bg:#05292C;--ink:#03191B;--panel:#073A3F;--panel-2:#0A4A50;--text:#EAFBF6;
+  --dim:rgba(234,251,246,.66);--dim-2:rgba(234,251,246,.44);--line:rgba(137,245,229,.28);
+  --line-soft:rgba(234,251,246,.12);--accent-ink:#89F5E5}
+/* tarjetas del reveal cuando nombran las vías (no son enlaces) */
+#vias-intro .reveal-track{height:360vh}
+/* transición más seca entre frases para que nunca queden dos textos superpuestos */
+#vias-intro .reveal-phrase{transition:opacity .22s ease}
+.rc--via{cursor:default}
+.reveal-cards .rc--via .t-k{font-family:var(--display);font-weight:600;
+  font-size:clamp(1.3rem,1.05rem + .9vw,1.7rem);letter-spacing:-.02em;margin-top:.15rem}
+.reveal-cards .rc--via .rc-note{font-family:var(--ui);font-size:.8rem;color:var(--dim);line-height:1.35}
+.reveal-cards .rc--via:hover{transform:translateY(-4px)}
+.reveal-cards .rc--via:hover .t-k{color:var(--accent)}
 .reveal{background:var(--ink);border-top:1px solid var(--line-soft)}
 .reveal-track{position:relative;height:520vh}
 .reveal-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -1271,46 +1285,36 @@ html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico svg{transition-delay:.66s}
 .plz-sub{color:rgba(234,251,246,.7);font-weight:300;line-height:1.55;max-width:56ch;margin:1rem 0 0}
 .plz-track{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.4vw,44px);
   margin-top:clamp(44px,6vw,76px);position:relative}
-.plz-track::before,.plz-track::after{content:"";position:absolute;top:11px;left:0;height:3px;border-radius:3px}
-.plz-track::before{right:0;background:rgba(137,245,229,.16)}
-/* la línea de progreso se llena con el scroll (--p 0..1) */
-.plz-track::after{width:calc(var(--p,0) * 100%);background:var(--accent);
-  box-shadow:0 0 16px -1px var(--accent);transition:width .12s linear}
+/* la barra es el protagonista: un riel fino que se ilumina de izq. a der. con el scroll */
+.plz-track::before,.plz-track::after{content:"";position:absolute;top:10px;left:0;height:5px;border-radius:5px}
+.plz-track::before{right:0;background:rgba(137,245,229,.12)}
+.plz-track::after{width:calc(var(--p,0) * 100%);
+  background:linear-gradient(90deg,rgba(137,245,229,.45) 0%,var(--accent) 78%,#fff 100%);
+  box-shadow:0 0 22px 1px var(--accent);transition:width .22s cubic-bezier(.22,.7,.24,1)}
 html:not(.js) .plz-track::after{width:100%}
-.plz-step{position:relative;padding-top:52px;opacity:.45;transition:opacity .45s ease}
+/* cada término se ilumina cuando la barra lo alcanza (sin nodos ni bolas) */
+.plz-step{position:relative;padding-top:clamp(32px,4vw,48px);opacity:.34;
+  transition:opacity .55s cubic-bezier(.2,.7,.2,1)}
 .plz-step.is-on{opacity:1}
-.plz-step::before{content:"";position:absolute;top:3px;left:0;width:18px;height:18px;border-radius:50%;
-  background:#04191b;border:2px solid rgba(137,245,229,.4);transition:background .35s ease,border-color .35s ease,box-shadow .35s ease}
-.plz-step.is-on::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 16px -1px var(--accent)}
-.plz-step.is-cur::before{box-shadow:0 0 0 6px rgba(137,245,229,.18),0 0 22px 2px var(--accent)}
-/* cursor viajero que recorre la línea con el scroll */
-.plz-cursor{position:absolute;top:11px;left:calc(var(--p,0) * 100%);width:14px;height:14px;border-radius:50%;
-  background:#fff;transform:translate(-50%,-50%);z-index:2;transition:left .12s linear;
-  box-shadow:0 0 0 5px rgba(137,245,229,.26),0 0 22px 2px var(--accent);animation:plzPulse 2.2s ease-in-out infinite}
-@keyframes plzPulse{0%,100%{box-shadow:0 0 0 5px rgba(137,245,229,.26),0 0 22px 2px var(--accent)}
-  50%{box-shadow:0 0 0 9px rgba(137,245,229,.10),0 0 30px 4px var(--accent)}}
-@media (prefers-reduced-motion:reduce){.plz-cursor{animation:none}}
 .plz-ord{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;
-  color:rgba(137,245,229,.55);margin-bottom:.55rem;transition:color .35s ease}
+  color:rgba(137,245,229,.5);margin-bottom:.55rem;transition:color .45s ease}
 .plz-step.is-on .plz-ord{color:var(--accent)}
-.plz-step.is-cur .plz-ord{color:#fff}
 .plz-num{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:.95;color:#fff;
-  font-size:clamp(2.8rem,1.8rem + 3vw,4.8rem);display:flex;align-items:baseline;gap:.16em;
-  transform-origin:left bottom;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
-.plz-step.is-cur .plz-num{transform:scale(1.06)}
+  font-size:clamp(2.8rem,1.8rem + 3vw,4.8rem);display:flex;align-items:baseline;gap:.16em}
 .plz-num .u{font-size:.28em;color:var(--accent);font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em}
 .plz-label{font-family:var(--ui);font-weight:600;margin-top:.7rem;color:#fff}
 .plz-detail{color:rgba(234,251,246,.62);font-size:var(--step--1);line-height:1.5;margin-top:.4rem;max-width:26ch}
 .plz-note{color:rgba(234,251,246,.66);font-weight:300;line-height:1.6;max-width:64ch;margin:clamp(34px,4vw,56px) 0 0}
 .plz-note strong{color:#fff;font-weight:500}
 @media (max-width:760px){
-  .plz-track{grid-template-columns:1fr;gap:0;margin-left:8px}
-  .plz-track::before{right:auto;top:0;bottom:0;left:8px;width:3px;height:auto}
-  .plz-track::after{top:0;left:8px;width:3px !important;height:calc(var(--p,0) * 100%);transition:height .12s linear}
+  .plz-track{grid-template-columns:1fr;gap:0;margin-left:10px}
+  .plz-track::before{right:auto;top:0;bottom:0;left:10px;width:5px;height:auto}
+  .plz-track::after{top:0;left:10px;width:5px !important;
+    height:calc(var(--p,0) * 100%);
+    background:linear-gradient(180deg,rgba(137,245,229,.45),var(--accent) 80%,#fff);
+    transition:height .22s cubic-bezier(.22,.7,.24,1)}
   html:not(.js) .plz-track::after{height:100%}
-  .plz-step{padding-top:2px;padding-left:44px;padding-bottom:34px}
-  .plz-step::before{top:2px;left:0}
-  .plz-cursor{top:calc(var(--p,0) * 100%);left:9px;transition:top .12s linear}
+  .plz-step{padding-top:2px;padding-left:44px;padding-bottom:38px}
 }
 
 /* El calendario fijado (sticky): el panel se ancla al viewport mientras
@@ -1407,6 +1411,19 @@ html:not(.js) .jn-fill{height:100%}
 .jn-body li::before{content:"";position:absolute;left:0;top:1.35rem;width:7px;height:7px;border-radius:50%;
   background:var(--line);transition:background .45s ease,box-shadow .45s ease}
 .jn-phase.is-on .jn-body li::before{background:var(--accent-ink)}
+/* las acciones van apareciendo (escalonadas) cuando la fase se activa */
+html.js .jn-body li{opacity:0;transform:translateY(12px);
+  transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.2,1)}
+html.js .jn-phase.is-on .jn-body li{opacity:1;transform:none}
+.jn-phase.is-on .jn-body li:nth-child(1){transition-delay:.04s}
+.jn-phase.is-on .jn-body li:nth-child(2){transition-delay:.12s}
+.jn-phase.is-on .jn-body li:nth-child(3){transition-delay:.20s}
+.jn-phase.is-on .jn-body li:nth-child(4){transition-delay:.28s}
+.jn-phase.is-on .jn-body li:nth-child(5){transition-delay:.36s}
+.jn-phase.is-on .jn-body li:nth-child(6){transition-delay:.44s}
+@media (prefers-reduced-motion:reduce){
+  html.js .jn-body li{opacity:1;transform:none;transition:none}
+}
 @media (max-width:600px){
   .jn-phase{grid-template-columns:40px 1fr;gap:14px}
   .jn-node{width:40px;height:40px}

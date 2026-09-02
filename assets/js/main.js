@@ -538,10 +538,7 @@
         p = Math.max(0, Math.min(1, p));
         track.style.setProperty('--p', p.toFixed(3));
         var active = Math.ceil(p * steps.length);
-        steps.forEach(function (s, i) {
-          s.classList.toggle('is-on', i < active);
-          s.classList.toggle('is-cur', i === active - 1);
-        });
+        steps.forEach(function (s, i) { s.classList.toggle('is-on', i < active); });
       });
     }
     if (!window.__plzScroll) {

@@ -177,13 +177,42 @@ def build(g):
         f'<span class="via-step{" on" if i == 0 else ""}" data-i="{i}">'
         f'<b>{i+1:02d}</b>{esc(v[0])}</span>'
         for i, v in enumerate(_via_data))
+    # Intro replicando el reveal por palabras: van saliendo las cards con el
+    # nombre de cada vía a medida que se hace scroll (escena fijada, dark).
+    def _wrev(s):
+        return " ".join("<br>" if w == "||" else f'<span class="w">{esc(w)}</span>'
+                        for w in s.split(" "))
+    _vr_phrases = [
+        "Recuperar no es una sola cosa. || Son tres caminos distintos.",
+        "Cada vía persigue algo diferente || y avanza por su cuenta.",
+        "No hay que elegir una. || Hay que ordenarlas.",
+    ]
+    _vr_phr = "".join(
+        f'<p class="reveal-phrase{" active" if i == 0 else ""}" data-i="{i}">{_wrev(s)}</p>'
+        for i, s in enumerate(_vr_phrases))
+    _vr_cards_data = [
+        ("Vía administrativa", "Devolución a prorrata", "La más rápida"),
+        ("Vía civil", "Patrimonio de los responsables", "La más amplia en deudores"),
+        ("Vía penal", "Reparación integral", "La de mayor alcance"),
+    ]
+    _vr_cards = "".join(
+        f'<div class="rc rc--via"><span class="t-d">{esc(tag)}</span>'
+        f'<span class="t-k">{esc(name)}</span>'
+        f'<span class="rc-note">{esc(note)}</span></div>'
+        for name, tag, note in _vr_cards_data)
+    af_vias_reveal = (
+        '<section class="reveal force-dark" id="vias-intro"><div class="reveal-track"><div class="reveal-sticky">'
+        '<p class="eyebrow reveal-eyebrow">Las tres vías</p>'
+        f'<div class="reveal-phrases">{_vr_phr}</div>'
+        f'<div class="reveal-cards" aria-hidden="true">{_vr_cards}</div>'
+        '</div></div></section>')
     af_vias_grid = (
         '<section class="via-sticky-sec"><div class="via-track"><div class="via-sticky">'
         '<div class="container via-frame">'
         '<div class="via-head">'
         '<div class="via-head-txt">'
-        '<p class="eyebrow-num"><span class="n">§</span>Las tres vías</p>'
-        '<h2 class="pr-big">Tres vías, tres cosas distintas <span class="pr-accent">que se recuperan.</span></h2></div>'
+        '<p class="eyebrow-num"><span class="n">§</span>El alcance de cada vía</p>'
+        '<h2 class="pr-big">Cada vía llega <span class="pr-accent">más lejos que la anterior.</span></h2></div>'
         f'<div class="via-steps" aria-hidden="true">{_via_steps}</div>'
         '</div>'
         '<div class="via-stage">'
@@ -191,7 +220,7 @@ def build(g):
         '<div class="via-scopewrap" aria-hidden="true">'
         '<span class="via-scope-k">Alcance de la recuperación</span>'
         f'<div class="via-bars">{_via_bars}</div>'
-        '<span class="via-scope-hint">Cada vía llega más lejos que la anterior.</span>'
+        '<span class="via-scope-hint">De la más rápida a la de mayor alcance.</span>'
         '</div>'
         '</div></div></div></div>'
         '<div class="container"><p class="lead via-foot" style="max-width:66ch">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía civil o la penal. Las tres corren de forma autónoma —no hay que elegir una, hay que ordenarlas.</p></div>'
@@ -207,7 +236,6 @@ def build(g):
         + plz_step(2, "10", "días", "La reclamación", "Las solicitudes de devolución se presentan por escrito, con presentación personal y original del comprobante.")
         + plz_step(3, "20", "días", "La decisión", "La providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.")
         + plz_step(4, "3", "días", "El recurso", "El recurso de reposición contra esa decisión se interpone dentro de los tres días siguientes.")
-        + '<span class="plz-cursor" aria-hidden="true"></span>'
         + '</div>'
         '<p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p>'
         '</div></div></div></section>')
@@ -222,6 +250,8 @@ def build(g):
 {af_hero}
 
 {af_stmt}
+
+{af_vias_reveal}
 
 {af_vias_grid}
 
