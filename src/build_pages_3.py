@@ -172,7 +172,15 @@ def build(g):
         f'<div class="via-recup"><span class="k">Qué recupera</span><span class="v">{esc(_via_recup[i])}</span></div>'
         f'</div>'
         for i, v in enumerate(_via_data))
-    _via_bars = "".join('<i></i>' for _ in range(3))
+    # Diagrama de alcance: cada barra queda rotulada con la vía y lo que
+    # recupera, y se resalta la que corresponde a la diapositiva activa.
+    _via_short = ["Administrativa", "Civil", "Penal"]
+    _via_bar_v = ["El capital", "El patrimonio", "+ Rendimientos y perjuicios"]
+    _via_bars = "".join(
+        f'<div class="via-bar" data-i="{i}"><span class="via-bar-col"><i></i></span>'
+        f'<span class="via-bar-l">{esc(_via_short[i])}</span>'
+        f'<span class="via-bar-v">{esc(_via_bar_v[i])}</span></div>'
+        for i in range(3))
     # Intro replicando el reveal por palabras: van saliendo las cards con el
     # nombre de cada vía a medida que se hace scroll (escena fijada, dark).
     def _wrev(s):
@@ -197,7 +205,7 @@ def build(g):
         f'<span class="rc-note">{esc(note)}</span></div>'
         for name, tag, note in _vr_cards_data)
     af_vias_reveal = (
-        '<section class="reveal force-dark" id="vias-intro"><div class="reveal-track" data-litspan="0.9"><div class="reveal-sticky">'
+        '<section class="reveal force-dark" id="vias-intro"><div class="reveal-track" data-litspan="0.5" data-cardstart="0.7"><div class="reveal-sticky">'
         '<p class="eyebrow reveal-eyebrow">Las tres vías</p>'
         f'<div class="reveal-phrases">{_vr_phr}</div>'
         f'<div class="reveal-cards" aria-hidden="true">{_vr_cards}</div>'

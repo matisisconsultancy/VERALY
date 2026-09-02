@@ -377,6 +377,14 @@
     // data-litspan (0..1): fracción del avance de cada frase en la que se
     // iluminan las palabras. Más alto = más lento y las palabras nunca entran de golpe.
     var litspan = parseFloat(track.getAttribute('data-litspan')) || 0.55;
+    // data-cardstart: fracción del avance donde EMPIEZAN a salir las cards
+    // (permite leer las frases primero y que las cards aparezcan al final).
+    var cardStart = parseFloat(track.getAttribute('data-cardstart'));
+    var hasCardStart = !isNaN(cardStart);
+    function cardThresh(k, n) {
+      if (hasCardStart) return cardStart + (k / n) * (0.98 - cardStart);
+      return (k + 1) / (n + 1);
+    }
     function upd() {
       if (window.innerWidth <= 900) {
         phrases.forEach(function (p) { p.classList.add('active'); });
@@ -390,7 +398,7 @@
       phrases.forEach(function (ph, i) { ph.classList.toggle('active', i === idx); });
       var lit = Math.min(1, local / litspan);
       words[idx].forEach(function (w, j) { w.classList.toggle('lit', (j + 0.6) / words[idx].length <= lit); });
-      cards.forEach(function (c, k) { c.classList.toggle('in', p >= (k + 1) / (cards.length + 1)); });
+      cards.forEach(function (c, k) { c.classList.toggle('in', p >= cardThresh(k, cards.length)); });
     }
     window.addEventListener('scroll', upd, { passive: true });
     window.addEventListener('resize', upd); upd();
@@ -554,8 +562,7 @@
   /* ---------- Tres vías: escenario fijado que avanza con el scroll ---------- */
   function initViaSticky() {
     var track = $('.via-track'); if (!track) return;
-    var slides = $$('.via-slide', track), bars = $$('.via-bars i', track),
-        steps = $$('.via-step', track), n = slides.length;
+    var slides = $$('.via-slide', track), bars = $$('.via-bar', track), n = slides.length;
     if (!n) return;
     function upd() {
       var h = track.offsetHeight - window.innerHeight;
@@ -563,8 +570,10 @@
       p = Math.max(0, Math.min(0.999, p));
       var idx = Math.floor(p * n);
       slides.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
-      bars.forEach(function (b, i) { b.classList.toggle('on', i <= idx); });
-      steps.forEach(function (s, i) { s.classList.toggle('on', i === idx); });
+      bars.forEach(function (b, i) {
+        b.classList.toggle('on', i <= idx);   // alcanzada
+        b.classList.toggle('cur', i === idx);  // vía activa (resaltada)
+      });
     }
     if (!window.__viaScroll) {
       window.__viaScroll = 1;
