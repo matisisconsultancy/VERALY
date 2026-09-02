@@ -88,7 +88,7 @@ def build(g):
             f'<span class="jn-tag">{esc(tag)}</span>'
             f'<span class="jn-h">{esc(title)}</span>'
             f'<span class="jn-chev" aria-hidden="true"></span></button>'
-            f'<div class="jn-actions">{body}</div></div></div>'
+            f'<div class="jn-actions"><div class="jn-actions-in">{body}</div></div></div></div>'
             for i, (tag, title, body) in enumerate(items))
         return (f'<div class="journey"><div class="jn-spine" aria-hidden="true">'
                 f'<i class="jn-fill"></i></div>{phases}</div>')
@@ -404,12 +404,16 @@ def build(g):
         '<div class="presu-grid">' + _presu_cards + '</div>'
         '</div></section>')
     def_phases = (
-        '<section class="section"><div class="container">'
+        '<section class="section jn-sec jn-pin">'
+        '<div class="container jn-intro">'
         '<p class="eyebrow-num"><span class="n">§</span>Dónde está su caso</p>'
         '<h2 class="pr-big">La defensa cambia <span class="pr-accent">según el momento.</span></h2>'
         '<p class="lead" style="max-width:58ch;margin-top:1rem;color:var(--dim)">Abra la fase en la que se encuentra. No necesita leer las demás.</p>'
-        '<div style="margin-top:clamp(28px,3.4vw,48px)">' + phase_tabs(def_phase_items) + '</div>'
-        '</div></section>')
+        '</div>'
+        '<div class="jn-pin-track"><div class="jn-pin-sticky"><div class="container">'
+        + journey(def_phase_items) +
+        '</div></div></div>'
+        '</section>')
     def_stmt = (
         '<section class="section sol-stmt-sec"><div class="container sol-stmt-grid">'
         '<div><p class="eyebrow-num"><span class="n">§</span>El estándar</p>'
