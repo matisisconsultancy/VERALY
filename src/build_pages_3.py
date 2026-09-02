@@ -16,6 +16,40 @@ def build(g):
             for fid, t, body in items)
         return f'<div class="accordion">{rows}</div>'
 
+    # --- componentes reutilizables para las páginas de soluciones ---
+    globe = g["globe_svg"]; wave = g["wave_svg"]
+
+    def faq_sticky(items, title='Las preguntas que <span class="pr-accent">más nos hacen.</span>',
+                   eyebrow="Preguntas frecuentes"):
+        rows = "".join(
+            f'<details class="faq-acc"><summary><span class="fa-n">{i:02d}</span>'
+            f'<span class="fa-q">{esc(q)}</span>'
+            f'<span class="fa-box" aria-hidden="true"></span></summary>'
+            f'<div class="fa-a">{a}</div></details>'
+            for i, (q, a) in enumerate(items, 1))
+        return ('<section class="section faq-sticky-sec"><div class="container faq-sticky-grid">'
+                '<div class="faq-sticky-l">'
+                f'<p class="faq-pill"><span class="dot" aria-hidden="true"></span>{esc(eyebrow)}</p>'
+                f'<h2 class="faq-sticky-title">{title}</h2></div>'
+                f'<div class="faq-sticky-r">{rows}</div></div></section>')
+
+    def sol_two(eyebrow_label, title_html, body_html, band=False, parallax=True):
+        cls = "section band" if band else "section"
+        ppx = " pr-parallax" if parallax else ""
+        return (f'<section class="{cls}"><div class="container pr-two">'
+                f'<div class="pr-two-l"><p class="eyebrow-num"><span class="n">§</span>{esc(eyebrow_label)}</p>'
+                f'<h2 class="pr-big{ppx}">{title_html}</h2></div>'
+                f'<div class="pr-two-r">{body_html}</div></div></section>')
+
+    def sol_timeline(rows):
+        media = [globe, wave]
+        r = "".join(
+            f'<div class="pr-tl-row"><span class="pr-tl-label">{esc(lbl)}</span>'
+            f'<div class="pr-tl-body"><p class="pr-tl-desc">{esc(d)}</p></div>'
+            f'<div class="pr-tl-media"><div class="pr-tl-par">{media[i % 2]()}</div></div></div>'
+            for i, (lbl, d) in enumerate(rows))
+        return f'<div class="pr-timeline">{r}</div>'
+
     # =====================================================================
     # /afectados-por-captacion-masiva  (Perfil A)
     # =====================================================================
@@ -56,45 +90,58 @@ def build(g):
          "<li>Reconstrucción de la prenda general por simulación, acción pauliana y revocatoria concursal.</li></ul>"),
     ])
     wa_a = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" data-whatsapp data-pos="afectados">Escribir por WhatsApp</a>' if SITE["whatsapp"] else "")
+    af_fenomeno = sol_two(
+        "El fenómeno",
+        'Probablemente no fue una estafa. <span class="pr-accent">Fue captación masiva.</span>',
+        "<p>La diferencia no es semántica. La estafa y la captación masiva son delitos distintos, con procesos distintos y con vías de recuperación distintas —y se usan como sinónimos incluso en la prensa.</p>"
+        "<p>Hay <strong>captación masiva y habitual no autorizada</strong> cuando se reciben dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable. Los umbrales: más de veinte personas, o más de cincuenta obligaciones, o mediación de ofertas masivas.</p>"
+        "<p>Que su caso encuadre en esta figura cambia todo: activa un procedimiento administrativo especial ante la Superintendencia de Sociedades que no existe en la estafa común, y con él un mecanismo de devolución al que usted puede acceder.</p>")
+    af_vias = sol_timeline([
+        ("Vía administrativa", "Cuando la Superintendencia ordena la toma de posesión para devolver, se abre un trámite de reclamación. Recupera el capital entregado, a prorrata con los demás afectados: es la vía más rápida y la de techo más bajo."),
+        ("Vía penal", "Tras la sentencia condenatoria se abre el incidente de reparación integral: daño emergente, lucro cesante y perjuicios morales. Es la única vía que alcanza lo que la administrativa deja fuera."),
+        ("Vía civil", "Cuando la masa de la intervención no cubre el faltante, la responsabilidad civil persigue el patrimonio personal de administradores, revisores fiscales, contadores y vinculados solventes, y permite reconstruir la prenda general si hubo bienes distraídos antes de la intervención."),
+    ])
+    af_techo = sol_two(
+        "El techo de la vía administrativa",
+        'Lo que la reclamación administrativa <span class="pr-accent">no cubre.</span>',
+        "<p>La devolución dentro de la intervención tiene techo en el capital entregado. Los intereses prometidos, los rendimientos no pagados y los perjuicios <strong>no se recuperan por esa vía</strong>: solo por la penal o la civil. Lo decimos porque es la información que más falta al decidir si vale la pena reclamar.</p>",
+        band=True)
+    af_grupo = sol_two(
+        "Casos colectivos",
+        'Cuando el grupo <span class="pr-accent">ya existe.</span>',
+        "<p>Trabajar el caso de forma colectiva tiene ventajas concretas: la prueba se vuelve más sólida, un plan de desmonte se sostiene con peso real y el seguimiento de la intervención no depende de una sola persona. Si forma parte de un grupo, la primera conversación conviene tenerla con quien lo represente.</p>"
+        '<p style="margin-top:1.2rem"><a class="arrowlink" href="/contacto/">Escribir en nombre de un grupo</a></p>',
+        band=True, parallax=False)
+    af_faq = faq_sticky(afectados_faq, title='Preguntas del <span class="pr-accent">afectado.</span>')
     afectados_body = f'''
 {section(f"""
   <p class="eyebrow">Para el afectado</p>
-  <h1>Perdí dinero en un esquema de captación: qué vías existen</h1>
-  <p class="support" style="max-width:56ch">Entregar recursos a una pirámide, un club de inversión o un esquema de rendimientos sin autorización tiene consecuencias jurídicas concretas y plazos que empiezan a correr desde la toma de posesión.</p>
-  <p class="desc" style="max-width:58ch">Explica cómo funciona el proceso, qué se reclama por cada vía y qué términos corren. Escrita para que sirva aunque usted no nos consulte.</p>
-  <div class="cta-row">
+  <span class="prac-rule" aria-hidden="true"></span>
+  <h1 class="prac-h1" style="max-width:20ch">Perdí dinero en un esquema de captación: <span class="pr-accent">qué vías existen.</span></h1>
+  <p class="prac-sub">Entregar recursos a una pirámide, un club de inversión o un esquema de rendimientos sin autorización tiene consecuencias jurídicas concretas y plazos que empiezan a correr desde la toma de posesión. Aquí explicamos cómo funciona el proceso, qué se reclama por cada vía y qué términos corren —para que sirva aunque usted no nos consulte.</p>
+  <div class="cta-row" style="margin-top:clamp(24px,3vw,40px)">
     {agendar("Agendar una consulta")}
-    <a class="btn btn--ghost" href="#" data-download="guia">Descargar la guía de plazos</a>
+    <a class="btn btn--ghost" href="#formulario">Escribir a la firma</a>
   </div>
 """, cls="hero")}
 
-<section class="section band">
-  <div class="container prose">
-    <h2>Probablemente no fue una estafa. Fue captación masiva.</h2>
-    <p>La diferencia no es semántica. La estafa y la captación masiva son delitos distintos, con procesos distintos y con vías de recuperación distintas —y se usan como sinónimos incluso en la prensa.</p>
-    <p>Hay <strong>captación masiva y habitual no autorizada</strong> cuando se reciben dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable. Los umbrales objetivos: más de veinte personas, o más de cincuenta obligaciones, o mediación de ofertas masivas.</p>
-    <p>Que su caso encuadre en esta figura cambia todo: activa un procedimiento administrativo especial ante la Superintendencia de Sociedades que no existe en la estafa común, y con él un mecanismo de devolución al que usted puede acceder.</p>
-  </div>
-</section>
-
-{section("""
-  <h2>Tres vías, tres cosas distintas que se recuperan</h2>
-  <div class="prose" style="margin-top:1.2rem">
-    <h3>Vía administrativa — la reclamación dentro de la intervención</h3>
-    <p>Cuando la Superintendencia ordena la toma de posesión para devolver, se abre un trámite de reclamación. Recupera <strong>el capital entregado</strong>, a prorrata con los demás afectados. Es la vía más rápida y la de techo más bajo.</p>
-    <h3>Vía penal — el incidente de reparación integral</h3>
-    <p>Tras la sentencia condenatoria se abre un incidente en el que se pueden reclamar daño emergente, lucro cesante y perjuicios morales. Es la única vía que alcanza lo que la administrativa deja fuera.</p>
-    <h3>Vía civil — la responsabilidad de administradores y vinculados solventes</h3>
-    <p>Cuando la masa de la intervención no alcanza a cubrir el faltante, la responsabilidad civil persigue el patrimonio personal de administradores, revisores fiscales, contadores y vinculados con solvencia. También permite reconstruir la prenda general cuando hubo bienes distraídos antes de la intervención.</p>
-    <p>Las tres corren de forma autónoma y concurrente. No hay que elegir una: hay que ordenarlas.</p>
-  </div>
-""")}
+{af_fenomeno}
 
 <section class="section band">
   <div class="container">
-    <h2>Los términos corren, y son cortos</h2>
-    <p class="prose" style="margin-top:1rem">Dentro de la intervención administrativa, el calendario es estricto y se cuenta en días comunes:</p>
-    <div class="plazos">
+    <p class="eyebrow-num"><span class="n">§</span>Las tres vías</p>
+    <h2 class="pr-big">Tres vías, tres cosas distintas <span class="pr-accent">que se recuperan.</span></h2>
+  </div>
+  {af_vias}
+  <div class="container"><p class="lead" style="margin-top:clamp(28px,3vw,44px);max-width:60ch;color:var(--dim)">Las tres corren de forma autónoma y concurrente. No hay que elegir una: hay que ordenarlas.</p></div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow-num"><span class="n">§</span>El calendario</p>
+    <h2 class="pr-big">Los términos corren, <span class="pr-accent">y son cortos.</span></h2>
+    <p class="lead" style="margin-top:1rem;max-width:60ch;color:var(--dim)">Dentro de la intervención administrativa el calendario es estricto y se cuenta en días comunes.</p>
+    <div class="plazos" style="margin-top:clamp(28px,3vw,44px)">
       <div class="plazo"><b>2 días</b><span>El interventor publica el aviso dentro de los dos días siguientes a la toma de posesión.</span></div>
       <div class="plazo"><b>10 días</b><span>Las solicitudes de devolución se presentan por escrito, con presentación personal y original del comprobante de entrega.</span></div>
       <div class="plazo"><b>20 días</b><span>La providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.</span></div>
@@ -104,43 +151,31 @@ def build(g):
   </div>
 </section>
 
-{section("""
-  <h2>Lo que la reclamación administrativa no cubre</h2>
-  <div class="prose" style="margin-top:1.2rem">
-    <p>La devolución dentro de la intervención tiene techo en el capital entregado. Los intereses prometidos, los rendimientos no pagados y los perjuicios <strong>no se recuperan por esa vía</strong>: solo por la penal o la civil. Lo decimos porque es la información que más falta al decidir si vale la pena reclamar.</p>
-  </div>
-""")}
+{af_techo}
 
-<section class="section band">
+<section class="section">
   <div class="container">
-    <h2>El trabajo, por momento del proceso</h2>
-    {afectados_acc}
+    <p class="eyebrow-num"><span class="n">§</span>El acompañamiento</p>
+    <h2 class="pr-big">El trabajo, <span class="pr-accent">por momento del proceso.</span></h2>
+    <div style="margin-top:clamp(28px,3.4vw,48px)">{afectados_acc}</div>
   </div>
 </section>
 
-{section("""
-  <h2>Cuando el grupo ya existe</h2>
-  <div class="prose" style="margin-top:1.2rem">
-    <p>Trabajar el caso de forma colectiva tiene ventajas concretas: la prueba se vuelve más sólida, un plan de desmonte se sostiene con peso real y el seguimiento de la intervención no depende de una sola persona. Si forma parte de un grupo, la primera conversación conviene tenerla con quien lo represente.</p>
-  </div>
-  <div class="cta-row"><a class="btn btn--ghost" href="/contacto/">Escribir en nombre de un grupo</a></div>
-""")}
+{af_grupo}
 
-<section class="section band">
+<section class="section">
   <div class="container">
-    <h2>Una aclaración necesaria</h2>
-    <div class="conflict" style="margin-top:1.2rem">
+    <p class="eyebrow-num"><span class="n">§</span>Una aclaración necesaria</p>
+    <h2 class="pr-big" style="max-width:22ch">La firma también defiende <span class="pr-accent">la otra orilla.</span></h2>
+    <div class="conflict" style="margin-top:1.4rem">
       <p>Veraly también defiende a personas investigadas o vinculadas en procesos de captación. Es la misma materia vista desde la otra orilla, y exige el mismo conocimiento técnico. <strong>Nunca en el mismo proceso.</strong> Las dos líneas no se prestan dentro de una misma intervención. Antes de aceptar cualquier consulta verificamos si la firma ya interviene en ese proceso por la orilla contraria; si es así, declinamos y lo explicamos.</p>
     </div>
   </div>
 </section>
 
-{section(f"""
-  <h2>Preguntas frecuentes</h2>
-  {faq_block(afectados_faq)}
-""")}
+{af_faq}
 
-<section class="section band-2">
+<section class="section band-2" id="formulario">
   <div class="container">
     <h2>Una primera conversación</h2>
     <p class="lead" style="margin-top:1rem;max-width:56ch">No necesita traer documentos ni haber decidido nada. Sirve para saber si hay caso, qué vías siguen abiertas y qué plazos corren.</p>
@@ -159,7 +194,7 @@ def build(g):
     add("/afectados-por-captacion-masiva/", {
         "title": "Afectados por captación masiva: vías y plazos",
         "description": "Vías administrativa, penal y civil para reclamar tras una captación no autorizada, con los términos que corren desde la toma de posesión.",
-        "active": "afectado", "og_type": "article",
+        "active": "afectado", "og_type": "article", "body_class": "theme-light",
         "schema": [
             service_schema(
                 "Recuperación para afectados por captación masiva",
@@ -669,24 +704,6 @@ def build(g):
         ("¿Qué otros delitos suelen concurrir con la captación masiva?",
          '<p>Junto al no reintegro del artículo 316A, es frecuente que concurran estafa agravada, lavado de activos y concierto para delinquir. La calificación conjunta define el número de frentes y la estrategia de defensa. <a class="textlink" href="/defensa-en-captacion-masiva/">Ver la ruta de la defensa</a>.</p>'),
     ]
-    def faq_sticky(items):
-        rows = "".join(
-            f'<details class="faq-acc">'
-            f'<summary><span class="fa-n">{i:02d}</span>'
-            f'<span class="fa-q">{esc(q)}</span>'
-            f'<span class="fa-box" aria-hidden="true"></span></summary>'
-            f'<div class="fa-a">{a}</div></details>'
-            for i, (q, a) in enumerate(items, 1))
-        return (
-            '<section class="section faq-sticky-sec">'
-            '<div class="container faq-sticky-grid">'
-            '<div class="faq-sticky-l">'
-            '<p class="faq-pill"><span class="dot" aria-hidden="true"></span>Preguntas frecuentes</p>'
-            '<h2 class="faq-sticky-title">Las preguntas que <span class="pr-accent">más nos hacen.</span></h2>'
-            '</div>'
-            f'<div class="faq-sticky-r">{rows}</div>'
-            '</div></section>')
-
     faq_central_body = f'''
 {section("""
   <p class="eyebrow">Preguntas frecuentes</p>
