@@ -64,6 +64,19 @@ def build(g):
                 f'<span class="u">{esc(unit)}</span></span>'
                 f'<p class="plz-label">{esc(label)}</p><p class="plz-detail">{esc(detail)}</p></div>')
 
+    def phase_tabs(items):
+        # items: (etiqueta corta, título, cuerpo_html)
+        tabs = "".join(
+            f'<button type="button" class="ph-tab{" is-active" if i == 0 else ""}" data-ph="{i}">'
+            f'<span class="ph-n">{i+1:02d}</span><span class="ph-l">{esc(lbl)}</span>'
+            f'<span class="ph-go" aria-hidden="true">→</span></button>'
+            for i, (lbl, title, body) in enumerate(items))
+        panels = "".join(
+            f'<div class="ph-panel{" is-active" if i == 0 else ""}" data-ph="{i}">'
+            f'<h3 class="ph-title">{esc(title)}</h3>{body}</div>'
+            for i, (lbl, title, body) in enumerate(items))
+        return f'<div class="phase-tabs"><div class="ph-nav">{tabs}</div><div class="ph-panels">{panels}</div></div>'
+
     # =====================================================================
     # /afectados-por-captacion-masiva  (Perfil A)
     # =====================================================================
@@ -83,21 +96,21 @@ def build(g):
         ("¿Cuánto cuesta consultar?",
          "<p>La primera conversación sirve para determinar si hay caso y qué vías están abiertas. Las condiciones del encargo se definen después y por escrito.</p>"),
     ]
-    afectados_acc = acc([
-        ("antes", "Antes de que se abra la intervención",
+    afectados_acc = phase_tabs([
+        ("Antes de la intervención", "Antes de que se abra la intervención",
          "<ul><li>Denuncia administrativa y solicitud de intervención por hechos objetivos o notorios.</li>"
          "<li>Organización probatoria individual o del grupo: reconstrucción de entregas, trazabilidad y armado del expediente reclamable.</li>"
          "<li>Denuncia penal estructurada y acreditación como víctima.</li>"
          "<li>Solicitud de medidas cautelares penales sobre bienes, para evitar el vaciamiento patrimonial antes de la sentencia.</li>"
          "<li>Aseguramiento civil temprano frente a codeudores, avalistas y garantes no intervenidos, que no quedan cubiertos por la suspensión de ejecuciones.</li></ul>"),
-        ("durante", "Durante la intervención",
+        ("Durante la intervención", "Durante la intervención",
          "<ul><li>Reclamación de devolución dentro del término, con la formalidad que exige el trámite.</li>"
          "<li>Impugnación del reconocimiento cuando se rechaza o se acepta por menor valor.</li>"
          "<li>Exclusión de bienes propios aprehendidos por error en el inventario.</li>"
          "<li>Gestión de títulos valores y libranzas para acreditar tenencia legítima y prelación sobre los flujos.</li>"
          "<li>Evaluación y voto de planes de desmonte, que bajo la Ley 1902 de 2018 requieren el respaldo del 75 % de los afectados.</li>"
          "<li>Vigilancia activa de la intervención: prorrateos incompletos, recursos nuevos sin distribuir, gestión opaca del interventor.</li></ul>"),
-        ("despues", "Después del fallo",
+        ("Después del fallo", "Después del fallo",
          "<ul><li>Representación de víctimas en el proceso penal, incluidas las salidas negociadas.</li>"
          "<li>Incidente de reparación integral: daño emergente, lucro cesante y perjuicio moral.</li>"
          "<li>Responsabilidad civil contra administradores, revisores fiscales, contadores y vinculados solventes.</li>"
@@ -128,25 +141,45 @@ def build(g):
         '<p>Hay <strong>captación masiva y habitual no autorizada</strong> cuando se reciben dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable: más de veinte personas, o más de cincuenta obligaciones, o mediación de ofertas masivas.</p>'
         '<p>Que su caso encuadre en esta figura lo cambia todo: activa un procedimiento administrativo especial ante la Superintendencia de Sociedades que no existe en la estafa común, y con él un mecanismo de devolución al que usted puede acceder.</p>'
         '</div></div></section>')
+    _via_data = [
+        ("Vía administrativa", "La reclamación dentro de la intervención",
+         "Cuando la Superintendencia ordena la toma de posesión para devolver, se abre un trámite de reclamación a prorrata entre los afectados. Es la vía más rápida.",
+         "El capital entregado"),
+        ("Vía civil", "La responsabilidad de los solventes",
+         "Cuando la masa no cubre el faltante, persigue el patrimonio de administradores, revisores, contadores y vinculados solventes; y reconstruye la prenda general.",
+         "El patrimonio de los responsables"),
+        ("Vía penal", "El incidente de reparación integral",
+         "Tras la sentencia condenatoria se reclaman daño emergente, lucro cesante y perjuicios morales. Es la vía de mayor alcance: llega a lo que las demás dejan fuera."),
+    ]
+    _via_recup = ["El capital entregado", "El patrimonio de los responsables", "Capital, rendimientos y perjuicios"]
+    _via_slides = "".join(
+        f'<div class="via-slide{" active" if i == 0 else ""}" data-i="{i}">'
+        f'<span class="via-idx">{i+1:02d} / 03</span>'
+        f'<span class="via-tag">{esc(v[0])}</span>'
+        f'<h3 class="via-h">{esc(v[1])}</h3>'
+        f'<p class="via-d">{esc(v[2])}</p>'
+        f'<div class="via-recup"><span class="k">Qué recupera</span><span class="v">{esc(_via_recup[i])}</span></div>'
+        f'</div>'
+        for i, v in enumerate(_via_data))
+    _via_bars = "".join('<i></i>' for _ in range(3))
     af_vias_grid = (
-        '<section class="section band"><div class="container">'
+        '<section class="via-sticky-sec"><div class="container">'
         '<p class="eyebrow-num"><span class="n">§</span>Las tres vías</p>'
         '<h2 class="pr-big">Tres vías, tres cosas distintas <span class="pr-accent">que se recuperan.</span></h2>'
-        '<div class="via-grid">'
-        + via_card("Vía administrativa", "La reclamación dentro de la intervención",
-                   "Cuando la Superintendencia ordena la toma de posesión para devolver, se abre un trámite de reclamación a prorrata entre los afectados. Es la vía más rápida.",
-                   "El capital entregado", 1)
-        + via_card("Vía penal", "El incidente de reparación integral",
-                   "Tras la sentencia condenatoria se reclaman daño emergente, lucro cesante y perjuicios morales. Alcanza lo que la administrativa deja fuera.",
-                   "Capital, rendimientos y perjuicios", 3)
-        + via_card("Vía civil", "La responsabilidad de los solventes",
-                   "Cuando la masa no cubre el faltante, persigue el patrimonio de administradores, revisores, contadores y vinculados solventes; y reconstruye la prenda general.",
-                   "El patrimonio de los responsables", 2)
-        + '</div>'
-        '<p class="lead" style="margin-top:clamp(28px,3vw,44px);max-width:66ch;color:var(--dim)">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía penal o la civil. Las tres corren de forma autónoma —no hay que elegir una, hay que ordenarlas.</p>'
-        '</div></section>')
+        '</div>'
+        '<div class="via-track"><div class="via-sticky"><div class="container via-stage">'
+        f'<div class="via-slides">{_via_slides}</div>'
+        '<div class="via-scopewrap" aria-hidden="true">'
+        '<span class="via-scope-k">Alcance de la recuperación</span>'
+        f'<div class="via-bars">{_via_bars}</div>'
+        '<span class="via-scope-hint">Cada vía llega más lejos que la anterior.</span>'
+        '</div>'
+        '</div></div></div>'
+        '<div class="container"><p class="lead" style="max-width:66ch;color:var(--dim)">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía civil o la penal. Las tres corren de forma autónoma —no hay que elegir una, hay que ordenarlas.</p></div>'
+        '</section>')
     af_plazos = (
-        '<section class="plz-sec"><div class="container">'
+        '<section class="plz-sec plz-pin"><div class="plz-pin-track">'
+        '<div class="plz-pin-sticky"><div class="container">'
         '<p class="eyebrow-num"><span class="n">§</span>El calendario</p>'
         '<div class="plz-head"><h2 class="plz-title">Los términos corren, <span class="pr-accent">y son cortos.</span></h2></div>'
         '<p class="plz-sub">Dentro de la intervención administrativa el calendario es estricto y se cuenta en días comunes desde la toma de posesión.</p>'
@@ -157,7 +190,7 @@ def build(g):
         + plz_step(4, "3", "días", "El recurso", "El recurso de reposición contra esa decisión se interpone dentro de los tres días siguientes.")
         + '</div>'
         '<p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p>'
-        '</div></section>')
+        '</div></div></div></section>')
     af_grupo = sol_two(
         "Casos colectivos",
         'Cuando el grupo <span class="pr-accent">ya existe.</span>',

@@ -526,8 +526,15 @@
       secs.forEach(function (sec) {
         var track = sec.querySelector('.plz-track'); if (!track) return;
         var steps = $$('.plz-step', track);
-        var r = sec.getBoundingClientRect();
-        var p = (vh * 0.72 - r.top) / Math.max(1, r.height * 0.55);
+        var pin = sec.querySelector('.plz-pin-track');
+        var p;
+        if (pin && getComputedStyle(sec.querySelector('.plz-pin-sticky')).position === 'sticky') {
+          var h = pin.offsetHeight - vh;
+          p = h > 0 ? (-pin.getBoundingClientRect().top) / h : 0;
+        } else {
+          var r = sec.getBoundingClientRect();
+          p = (vh * 0.72 - r.top) / Math.max(1, r.height * 0.55);
+        }
         p = Math.max(0, Math.min(1, p));
         track.style.setProperty('--p', p.toFixed(3));
         var active = Math.ceil(p * steps.length);
@@ -541,7 +548,41 @@
     }
     upd();
   }
-  window.__initPins = function () { initStepper(); initReveal(); initFeatureRows(); initBlog(); initScramble(); initCountUp(); initPlazos(); };
+  /* ---------- Tres vías: escenario fijado que avanza con el scroll ---------- */
+  function initViaSticky() {
+    var track = $('.via-track'); if (!track) return;
+    var slides = $$('.via-slide', track), bars = $$('.via-bars i', track), n = slides.length;
+    if (!n) return;
+    function upd() {
+      var h = track.offsetHeight - window.innerHeight;
+      var p = h > 0 ? (-track.getBoundingClientRect().top) / h : 0;
+      p = Math.max(0, Math.min(0.999, p));
+      var idx = Math.floor(p * n);
+      slides.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
+      bars.forEach(function (b, i) { b.classList.toggle('on', i <= idx); });
+    }
+    if (!window.__viaScroll) {
+      window.__viaScroll = 1;
+      window.addEventListener('scroll', upd, { passive: true });
+      window.addEventListener('resize', upd);
+    }
+    upd();
+  }
+  /* ---------- El trabajo por momento: pestañas numeradas ---------- */
+  function initPhases() {
+    $$('.phase-tabs').forEach(function (root) {
+      var tabs = $$('.ph-tab', root), panels = $$('.ph-panel', root);
+      if (!tabs.length) return;
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var k = tab.getAttribute('data-ph');
+          tabs.forEach(function (t) { t.classList.toggle('is-active', t === tab); });
+          panels.forEach(function (p) { p.classList.toggle('is-active', p.getAttribute('data-ph') === k); });
+        });
+      });
+    });
+  }
+  window.__initPins = function () { initStepper(); initReveal(); initFeatureRows(); initBlog(); initScramble(); initCountUp(); initPlazos(); initViaSticky(); initPhases(); };
   window.__initPins();
 
   /* ---------- Profundidad de scroll ---------- */
