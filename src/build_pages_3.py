@@ -58,8 +58,9 @@ def build(g):
                 f'<span class="v">{esc(recup)}</span>'
                 f'<div class="via-scope" aria-hidden="true">{segs}</div></div></div>')
 
-    def plz_step(num, unit, label, detail):
-        return (f'<div class="plz-step"><span class="plz-num"><span data-count="{num}">0</span>'
+    def plz_step(idx, num, unit, label, detail):
+        return (f'<div class="plz-step"><span class="plz-ord">{idx:02d}</span>'
+                f'<span class="plz-num"><span data-count="{num}">0</span>'
                 f'<span class="u">{esc(unit)}</span></span>'
                 f'<p class="plz-label">{esc(label)}</p><p class="plz-detail">{esc(detail)}</p></div>')
 
@@ -115,7 +116,7 @@ def build(g):
         '<aside class="sol-hero-aside"><div class="sol-facts">'
         '<div class="sol-fact"><b>3</b><span>vías de recuperación: administrativa, penal y civil</span></div>'
         '<div class="sol-fact"><b>10<span class="u">días</span></b><span>para reclamar dentro de la intervención</span></div>'
-        '<div class="sol-fact"><b>0</b><span>promesas de resultado — se promete rigor y trabajo</span></div>'
+        '<div class="sol-fact"><b>316<span class="u">CP</span></b><span>captación masiva y habitual, y no reintegro</span></div>'
         '</div></aside>'
         '</div></section>')
     af_stmt = (
@@ -150,10 +151,10 @@ def build(g):
         '<div class="plz-head"><h2 class="plz-title">Los términos corren, <span class="pr-accent">y son cortos.</span></h2></div>'
         '<p class="plz-sub">Dentro de la intervención administrativa el calendario es estricto y se cuenta en días comunes desde la toma de posesión.</p>'
         '<div class="plz-track">'
-        + plz_step("2", "días", "El aviso", "El interventor publica el aviso dentro de los dos días siguientes a la toma de posesión.")
-        + plz_step("10", "días", "La reclamación", "Las solicitudes de devolución se presentan por escrito, con presentación personal y original del comprobante.")
-        + plz_step("20", "días", "La decisión", "La providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.")
-        + plz_step("3", "días", "El recurso", "El recurso de reposición contra esa decisión se interpone dentro de los tres días siguientes.")
+        + plz_step(1, "2", "días", "El aviso", "El interventor publica el aviso dentro de los dos días siguientes a la toma de posesión.")
+        + plz_step(2, "10", "días", "La reclamación", "Las solicitudes de devolución se presentan por escrito, con presentación personal y original del comprobante.")
+        + plz_step(3, "20", "días", "La decisión", "La providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.")
+        + plz_step(4, "3", "días", "El recurso", "El recurso de reposición contra esa decisión se interpone dentro de los tres días siguientes.")
         + '</div>'
         '<p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p>'
         '</div></section>')
@@ -182,16 +183,6 @@ def build(g):
 </section>
 
 {af_grupo}
-
-<section class="section">
-  <div class="container">
-    <p class="eyebrow-num"><span class="n">§</span>Una aclaración necesaria</p>
-    <h2 class="pr-big" style="max-width:22ch">La firma también defiende <span class="pr-accent">la otra orilla.</span></h2>
-    <div class="conflict" style="margin-top:1.4rem">
-      <p>Veraly también defiende a personas investigadas o vinculadas en procesos de captación. Es la misma materia vista desde la otra orilla, y exige el mismo conocimiento técnico. <strong>Nunca en el mismo proceso.</strong> Las dos líneas no se prestan dentro de una misma intervención. Antes de aceptar cualquier consulta verificamos si la firma ya interviene en ese proceso por la orilla contraria; si es así, declinamos y lo explicamos.</p>
-    </div>
-  </div>
-</section>
 
 {af_faq}
 

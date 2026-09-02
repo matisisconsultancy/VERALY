@@ -518,7 +518,30 @@
       if (countIO) countIO.observe(el); else el.__cuRun();
     });
   }
-  window.__initPins = function () { initStepper(); initReveal(); initFeatureRows(); initBlog(); initScramble(); initCountUp(); };
+  /* ---------- Línea de tiempo de plazos: avance con el scroll ---------- */
+  function initPlazos() {
+    var secs = $$('.plz-sec'); if (!secs.length) return;
+    function upd() {
+      var vh = window.innerHeight;
+      secs.forEach(function (sec) {
+        var track = sec.querySelector('.plz-track'); if (!track) return;
+        var steps = $$('.plz-step', track);
+        var r = sec.getBoundingClientRect();
+        var p = (vh * 0.72 - r.top) / Math.max(1, r.height * 0.55);
+        p = Math.max(0, Math.min(1, p));
+        track.style.setProperty('--p', p.toFixed(3));
+        var active = Math.ceil(p * steps.length);
+        steps.forEach(function (s, i) { s.classList.toggle('is-on', i < active); });
+      });
+    }
+    if (!window.__plzScroll) {
+      window.__plzScroll = 1;
+      window.addEventListener('scroll', upd, { passive: true });
+      window.addEventListener('resize', upd);
+    }
+    upd();
+  }
+  window.__initPins = function () { initStepper(); initReveal(); initFeatureRows(); initBlog(); initScramble(); initCountUp(); initPlazos(); };
   window.__initPins();
 
   /* ---------- Profundidad de scroll ---------- */

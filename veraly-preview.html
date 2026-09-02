@@ -1276,32 +1276,35 @@ html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico svg{transition-delay:.66s}
   font-size:clamp(2rem,1.3rem + 2.6vw,3.4rem);color:#fff;margin:.4rem 0 0}
 .plz-title .pr-accent{color:var(--accent)}
 .plz-sub{color:rgba(234,251,246,.7);font-weight:300;line-height:1.55;max-width:56ch;margin:1rem 0 0}
-.plz-track{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.4vw,40px);
-  margin-top:clamp(40px,6vw,72px);position:relative}
-.plz-track::before,.plz-track::after{content:"";position:absolute;top:11px;left:0;height:2px;border-radius:2px}
-.plz-track::before{right:0;background:rgba(137,245,229,.18)}
-.plz-track::after{width:0;background:var(--accent);box-shadow:0 0 14px -1px var(--accent)}
-.plz-sec.in .plz-track::after{width:100%;transition:width 1.6s cubic-bezier(.2,.7,.2,1) .15s}
-.plz-step{position:relative;padding-top:40px}
-.plz-step::before{content:"";position:absolute;top:4px;left:0;width:16px;height:16px;border-radius:50%;
-  background:#04191b;border:2px solid rgba(137,245,229,.45);transition:background .4s ease,border-color .4s ease}
-.plz-sec.in .plz-step::before{background:var(--accent);border-color:var(--accent)}
-.plz-sec.in .plz-step:nth-child(2)::before{transition-delay:.4s}
-.plz-sec.in .plz-step:nth-child(3)::before{transition-delay:.8s}
-.plz-sec.in .plz-step:nth-child(4)::before{transition-delay:1.2s}
-.plz-num{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1;color:#fff;
-  font-size:clamp(2.4rem,1.6rem + 2.4vw,4rem);display:flex;align-items:baseline;gap:.18em}
-.plz-num .u{font-size:.32em;color:var(--accent);font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em}
+.plz-track{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.4vw,44px);
+  margin-top:clamp(44px,6vw,76px);position:relative}
+.plz-track::before,.plz-track::after{content:"";position:absolute;top:11px;left:0;height:3px;border-radius:3px}
+.plz-track::before{right:0;background:rgba(137,245,229,.16)}
+/* la línea de progreso se llena con el scroll (--p 0..1) */
+.plz-track::after{width:calc(var(--p,0) * 100%);background:var(--accent);
+  box-shadow:0 0 16px -1px var(--accent);transition:width .12s linear}
+html:not(.js) .plz-track::after{width:100%}
+.plz-step{position:relative;padding-top:52px;opacity:.45;transition:opacity .45s ease}
+.plz-step.is-on{opacity:1}
+.plz-step::before{content:"";position:absolute;top:3px;left:0;width:18px;height:18px;border-radius:50%;
+  background:#04191b;border:2px solid rgba(137,245,229,.4);transition:background .35s ease,border-color .35s ease,box-shadow .35s ease}
+.plz-step.is-on::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 16px -1px var(--accent)}
+.plz-ord{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;
+  color:rgba(137,245,229,.55);margin-bottom:.55rem;transition:color .35s ease}
+.plz-step.is-on .plz-ord{color:var(--accent)}
+.plz-num{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:.95;color:#fff;
+  font-size:clamp(2.8rem,1.8rem + 3vw,4.8rem);display:flex;align-items:baseline;gap:.16em}
+.plz-num .u{font-size:.28em;color:var(--accent);font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em}
 .plz-label{font-family:var(--ui);font-weight:600;margin-top:.7rem;color:#fff}
 .plz-detail{color:rgba(234,251,246,.62);font-size:var(--step--1);line-height:1.5;margin-top:.4rem;max-width:26ch}
 .plz-note{color:rgba(234,251,246,.66);font-weight:300;line-height:1.6;max-width:64ch;margin:clamp(34px,4vw,56px) 0 0}
 .plz-note strong{color:#fff;font-weight:500}
 @media (max-width:760px){
-  .plz-track{grid-template-columns:1fr;gap:0;margin-left:6px}
-  .plz-track::before{right:auto;top:0;bottom:0;left:7px;width:2px;height:auto}
-  .plz-track::after{top:0;left:7px;width:2px !important;height:0}
-  .plz-sec.in .plz-track::after{height:100%;width:2px !important;transition:height 1.6s cubic-bezier(.2,.7,.2,1) .15s}
-  .plz-step{padding-top:0;padding-left:40px;padding-bottom:30px}
+  .plz-track{grid-template-columns:1fr;gap:0;margin-left:8px}
+  .plz-track::before{right:auto;top:0;bottom:0;left:8px;width:3px;height:auto}
+  .plz-track::after{top:0;left:8px;width:3px !important;height:calc(var(--p,0) * 100%);transition:height .12s linear}
+  html:not(.js) .plz-track::after{height:100%}
+  .plz-step{padding-top:2px;padding-left:44px;padding-bottom:34px}
   .plz-step::before{top:2px;left:0}
 }
 
@@ -1317,13 +1320,19 @@ html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico svg{transition-delay:.66s}
 .via-card h3{font-family:var(--sans);font-weight:300;letter-spacing:-.015em;font-size:var(--step-2);
   line-height:1.1;color:var(--text);margin:.7rem 0 0}
 .via-card p{color:var(--dim);font-weight:300;line-height:1.55;font-size:var(--step-0);margin:.8rem 0 0}
-.via-recup{margin-top:auto;padding-top:1.2rem;margin-top:clamp(20px,2.4vw,32px);border-top:1px solid var(--line)}
-.via-recup .k{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--dim-2)}
-.via-recup .v{font-family:var(--sans);font-weight:500;color:var(--text);margin-top:.25rem;line-height:1.3}
-.via-scope{display:flex;gap:5px;margin-top:.9rem}
-.via-scope i{height:6px;flex:1;border-radius:3px;background:var(--line)}
-.via-scope i.on{background:var(--accent-ink)}
-@media (max-width:820px){.via-grid{grid-template-columns:1fr}}
+.via-recup{margin-top:auto;padding-top:clamp(20px,2.4vw,28px);border-top:1px solid var(--line)}
+.via-recup .k{display:block;font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--dim-2)}
+.via-recup .v{display:block;font-family:var(--sans);font-weight:500;color:var(--text);margin-top:.3rem;line-height:1.3}
+.via-scope{display:flex;gap:5px;margin-top:1rem}
+.via-scope i{height:6px;flex:1;border-radius:3px;background:var(--line);transition:background .45s ease}
+html:not(.js) .via-scope i.on{background:var(--accent-ink)}
+html.js .via-card.in .via-scope i.on{background:var(--accent-ink)}
+html.js .via-card.in .via-scope i.on:nth-child(2){transition-delay:.14s}
+html.js .via-card.in .via-scope i.on:nth-child(3){transition-delay:.28s}
+/* aparición escalonada de las tarjetas */
+.via-grid .via-card:nth-child(2){transition-delay:.1s}
+.via-grid .via-card:nth-child(3){transition-delay:.2s}
+@media (max-width:820px){.via-grid{grid-template-columns:1fr}.via-grid .via-card{transition-delay:0s !important}}
 
 .preview-flag{position:fixed;bottom:12px;left:12px;z-index:60;background:var(--panel-2);border:1px solid var(--line);color:var(--dim);font-family:var(--ui);font-size:12px;padding:6px 12px;border-radius:6px}
 </style>
@@ -2020,13 +2029,13 @@ html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico svg{transition-delay:.66s}
 </section>
 </template>
 <template data-route="/afectados-por-captacion-masiva/" data-title="Afectados por captación masiva: vías y plazos" data-active="afectado" data-mobilebar="0" data-bodyclass="theme-light">
-<section class="sol-hero"><div class="container sol-hero-grid"><div class="sol-hero-main"><p class="eyebrow">Para el afectado</p><h1 class="sol-h1">Recuperar lo que entregó <span class="pr-accent">tiene vías —y un reloj.</span></h1><p class="sol-lede">Perder dinero en una pirámide o en un esquema de rendimientos no autorizado abre tres vías de recuperación, todas con plazos que empiezan a correr desde la toma de posesión.</p><div class="cta-row"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#formulario">Escribir a la firma</a></div></div><aside class="sol-hero-aside"><div class="sol-facts"><div class="sol-fact"><b>3</b><span>vías de recuperación: administrativa, penal y civil</span></div><div class="sol-fact"><b>10<span class="u">días</span></b><span>para reclamar dentro de la intervención</span></div><div class="sol-fact"><b>0</b><span>promesas de resultado — se promete rigor y trabajo</span></div></div></aside></div></section>
+<section class="sol-hero"><div class="container sol-hero-grid"><div class="sol-hero-main"><p class="eyebrow">Para el afectado</p><h1 class="sol-h1">Recuperar lo que entregó <span class="pr-accent">tiene vías —y un reloj.</span></h1><p class="sol-lede">Perder dinero en una pirámide o en un esquema de rendimientos no autorizado abre tres vías de recuperación, todas con plazos que empiezan a correr desde la toma de posesión.</p><div class="cta-row"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#formulario">Escribir a la firma</a></div></div><aside class="sol-hero-aside"><div class="sol-facts"><div class="sol-fact"><b>3</b><span>vías de recuperación: administrativa, penal y civil</span></div><div class="sol-fact"><b>10<span class="u">días</span></b><span>para reclamar dentro de la intervención</span></div><div class="sol-fact"><b>316<span class="u">CP</span></b><span>captación masiva y habitual, y no reintegro</span></div></div></aside></div></section>
 
 <section class="section sol-stmt-sec"><div class="container sol-stmt-grid"><div><p class="eyebrow-num"><span class="n">§</span>El fenómeno</p><h2 class="sol-stmt pr-parallax">Probablemente no fue una estafa. <span class="pr-accent">Fue captación masiva.</span></h2></div><div class="sol-stmt-body"><p>La diferencia no es semántica. La estafa y la captación masiva son delitos distintos, con procesos distintos y con vías de recuperación distintas —y se usan como sinónimos incluso en la prensa.</p><p>Hay <strong>captación masiva y habitual no autorizada</strong> cuando se reciben dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable: más de veinte personas, o más de cincuenta obligaciones, o mediación de ofertas masivas.</p><p>Que su caso encuadre en esta figura lo cambia todo: activa un procedimiento administrativo especial ante la Superintendencia de Sociedades que no existe en la estafa común, y con él un mecanismo de devolución al que usted puede acceder.</p></div></div></section>
 
 <section class="section band"><div class="container"><p class="eyebrow-num"><span class="n">§</span>Las tres vías</p><h2 class="pr-big">Tres vías, tres cosas distintas <span class="pr-accent">que se recuperan.</span></h2><div class="via-grid"><div class="via-card reveal-up"><span class="via-tag">Vía administrativa</span><h3>La reclamación dentro de la intervención</h3><p>Cuando la Superintendencia ordena la toma de posesión para devolver, se abre un trámite de reclamación a prorrata entre los afectados. Es la vía más rápida.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">El capital entregado</span><div class="via-scope" aria-hidden="true"><i class="on"></i><i class=""></i><i class=""></i></div></div></div><div class="via-card reveal-up"><span class="via-tag">Vía penal</span><h3>El incidente de reparación integral</h3><p>Tras la sentencia condenatoria se reclaman daño emergente, lucro cesante y perjuicios morales. Alcanza lo que la administrativa deja fuera.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">Capital, rendimientos y perjuicios</span><div class="via-scope" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></div></div></div><div class="via-card reveal-up"><span class="via-tag">Vía civil</span><h3>La responsabilidad de los solventes</h3><p>Cuando la masa no cubre el faltante, persigue el patrimonio de administradores, revisores, contadores y vinculados solventes; y reconstruye la prenda general.</p><div class="via-recup"><span class="k">Qué recupera</span><span class="v">El patrimonio de los responsables</span><div class="via-scope" aria-hidden="true"><i class="on"></i><i class="on"></i><i class=""></i></div></div></div></div><p class="lead" style="margin-top:clamp(28px,3vw,44px);max-width:66ch;color:var(--dim)">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía penal o la civil. Las tres corren de forma autónoma —no hay que elegir una, hay que ordenarlas.</p></div></section>
 
-<section class="plz-sec"><div class="container"><p class="eyebrow-num"><span class="n">§</span>El calendario</p><div class="plz-head"><h2 class="plz-title">Los términos corren, <span class="pr-accent">y son cortos.</span></h2></div><p class="plz-sub">Dentro de la intervención administrativa el calendario es estricto y se cuenta en días comunes desde la toma de posesión.</p><div class="plz-track"><div class="plz-step"><span class="plz-num"><span data-count="2">0</span><span class="u">días</span></span><p class="plz-label">El aviso</p><p class="plz-detail">El interventor publica el aviso dentro de los dos días siguientes a la toma de posesión.</p></div><div class="plz-step"><span class="plz-num"><span data-count="10">0</span><span class="u">días</span></span><p class="plz-label">La reclamación</p><p class="plz-detail">Las solicitudes de devolución se presentan por escrito, con presentación personal y original del comprobante.</p></div><div class="plz-step"><span class="plz-num"><span data-count="20">0</span><span class="u">días</span></span><p class="plz-label">La decisión</p><p class="plz-detail">La providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.</p></div><div class="plz-step"><span class="plz-num"><span data-count="3">0</span><span class="u">días</span></span><p class="plz-label">El recurso</p><p class="plz-detail">El recurso de reposición contra esa decisión se interpone dentro de los tres días siguientes.</p></div></div><p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p></div></section>
+<section class="plz-sec"><div class="container"><p class="eyebrow-num"><span class="n">§</span>El calendario</p><div class="plz-head"><h2 class="plz-title">Los términos corren, <span class="pr-accent">y son cortos.</span></h2></div><p class="plz-sub">Dentro de la intervención administrativa el calendario es estricto y se cuenta en días comunes desde la toma de posesión.</p><div class="plz-track"><div class="plz-step"><span class="plz-ord">01</span><span class="plz-num"><span data-count="2">0</span><span class="u">días</span></span><p class="plz-label">El aviso</p><p class="plz-detail">El interventor publica el aviso dentro de los dos días siguientes a la toma de posesión.</p></div><div class="plz-step"><span class="plz-ord">02</span><span class="plz-num"><span data-count="10">0</span><span class="u">días</span></span><p class="plz-label">La reclamación</p><p class="plz-detail">Las solicitudes de devolución se presentan por escrito, con presentación personal y original del comprobante.</p></div><div class="plz-step"><span class="plz-ord">03</span><span class="plz-num"><span data-count="20">0</span><span class="u">días</span></span><p class="plz-label">La decisión</p><p class="plz-detail">La providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.</p></div><div class="plz-step"><span class="plz-ord">04</span><span class="plz-num"><span data-count="3">0</span><span class="u">días</span></span><p class="plz-label">El recurso</p><p class="plz-detail">El recurso de reposición contra esa decisión se interpone dentro de los tres días siguientes.</p></div></div><p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p></div></section>
 
 <section class="section">
   <div class="container">
@@ -2037,16 +2046,6 @@ html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico svg{transition-delay:.66s}
 </section>
 
 <section class="section band"><div class="container pr-two"><div class="pr-two-l"><p class="eyebrow-num"><span class="n">§</span>Casos colectivos</p><h2 class="pr-big">Cuando el grupo <span class="pr-accent">ya existe.</span></h2></div><div class="pr-two-r"><p>Trabajar el caso de forma colectiva tiene ventajas concretas: la prueba se vuelve más sólida, un plan de desmonte se sostiene con peso real y el seguimiento de la intervención no depende de una sola persona. Si forma parte de un grupo, la primera conversación conviene tenerla con quien lo represente.</p><p style="margin-top:1.2rem"><a class="arrowlink" href="#!/contacto/">Escribir en nombre de un grupo</a></p></div></div></section>
-
-<section class="section">
-  <div class="container">
-    <p class="eyebrow-num"><span class="n">§</span>Una aclaración necesaria</p>
-    <h2 class="pr-big" style="max-width:22ch">La firma también defiende <span class="pr-accent">la otra orilla.</span></h2>
-    <div class="conflict" style="margin-top:1.4rem">
-      <p>Veraly también defiende a personas investigadas o vinculadas en procesos de captación. Es la misma materia vista desde la otra orilla, y exige el mismo conocimiento técnico. <strong>Nunca en el mismo proceso.</strong> Las dos líneas no se prestan dentro de una misma intervención. Antes de aceptar cualquier consulta verificamos si la firma ya interviene en ese proceso por la orilla contraria; si es así, declinamos y lo explicamos.</p>
-    </div>
-  </div>
-</section>
 
 <section class="section faq-sticky-sec"><div class="container faq-sticky-grid"><div class="faq-sticky-l"><p class="faq-pill"><span class="dot" aria-hidden="true"></span>Preguntas frecuentes</p><h2 class="faq-sticky-title">Preguntas del <span class="pr-accent">afectado.</span></h2></div><div class="faq-sticky-r"><details class="faq-acc"><summary><span class="fa-n">01</span><span class="fa-q">¿Cuánto tiempo tengo para reclamar?</span><span class="fa-box" aria-hidden="true"></span></summary><div class="fa-a"><p>Dentro de la intervención administrativa, diez días comunes contados desde el aviso que el interventor publica en los dos días siguientes a la toma de posesión. Fuera de ese trámite, los términos dependen de la vía: la penal y la civil tienen sus propios plazos de prescripción.</p></div></details><details class="faq-acc"><summary><span class="fa-n">02</span><span class="fa-q">¿Puedo recuperar los intereses que me prometieron?</span><span class="fa-box" aria-hidden="true"></span></summary><div class="fa-a"><p>Por la vía administrativa, no: la devolución tiene techo en el capital entregado. Los rendimientos y perjuicios solo se persiguen por la vía penal, en el incidente de reparación integral, o por la vía civil.</p></div></details><details class="faq-acc"><summary><span class="fa-n">03</span><span class="fa-q">¿Y si entregué el dinero en efectivo y no tengo comprobante?</span><span class="fa-box" aria-hidden="true"></span></summary><div class="fa-a"><p>Dificulta la reclamación pero no la cierra automáticamente. La trazabilidad se puede reconstruir con otros elementos —transferencias parciales, comunicaciones, registros del propio esquema, declaraciones de terceros—. Es trabajo probatorio, y conviene empezarlo antes de que corra el término.</p></div></details><details class="faq-acc"><summary><span class="fa-n">04</span><span class="fa-q">¿Qué diferencia hay entre estafa y captación masiva?</span><span class="fa-box" aria-hidden="true"></span></summary><div class="fa-a"><p>Son tipos penales distintos. La captación masiva, además, activa un procedimiento administrativo especial ante la Superintendencia de Sociedades con un mecanismo de devolución propio que la estafa no tiene. La calificación correcta cambia la estrategia completa.</p></div></details><details class="faq-acc"><summary><span class="fa-n">05</span><span class="fa-q">¿Qué es un plan de desmonte y me conviene votarlo?</span><span class="fa-box" aria-hidden="true"></span></summary><div class="fa-a"><p>Es una propuesta de devolución voluntaria y ordenada conforme a un cronograma. Bajo la Ley 1902 de 2018 requiere aval de la Superintendencia y respaldo del 75 % de los afectados. Conviene o no según lo que ofrezca frente a lo que la prorrata alcanzaría, y según los plazos: hay planes que protegen la igualdad entre afectados y otros que la sacrifican.</p></div></details><details class="faq-acc"><summary><span class="fa-n">06</span><span class="fa-q">¿Qué pasa si el dinero ya no existe?</span><span class="fa-box" aria-hidden="true"></span></summary><div class="fa-a"><p>Es la pregunta correcta y no siempre tiene respuesta inmediata. Cuando la masa no alcanza, la vía civil persigue el patrimonio personal de administradores y vinculados solventes, y las acciones de simulación y pauliana permiten reintegrar bienes distraídos antes de la intervención. Si hay algo que perseguir, se persigue; si no lo hay, se dice.</p></div></details><details class="faq-acc"><summary><span class="fa-n">07</span><span class="fa-q">¿Cuánto cuesta consultar?</span><span class="fa-box" aria-hidden="true"></span></summary><div class="fa-a"><p>La primera conversación sirve para determinar si hay caso y qué vías están abiertas. Las condiciones del encargo se definen después y por escrito.</p></div></details></div></div></section>
 
@@ -2711,7 +2710,8 @@ html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico svg{transition-delay:.66s}
     body.classList.toggle('theme-light',(t.getAttribute('data-bodyclass')||'').indexOf('theme-light')>=0);
     var mw=document.querySelector('.nav-menu-wrap');if(mw){mw.setAttribute('data-open','false');body.setAttribute('data-nav-open','false');}
     var tg=document.querySelector('.nav-toggle');if(tg){tg.setAttribute('aria-expanded','false');tg.innerHTML=ICON_MENU;}
-    window.scrollTo(0,0);bindDynamic(app);initStepper();initReveal();initFeatureRows();initBlog();initScramble();initCountUp();}
+    window.scrollTo(0,0);bindDynamic(app);initStepper();initReveal();initFeatureRows();initBlog();initScramble();initCountUp();initPlazos();}
+  function initPlazos(){var secs=[].slice.call(document.querySelectorAll('.plz-sec'));if(!secs.length)return;function upd(){var vh=window.innerHeight;secs.forEach(function(sec){var track=sec.querySelector('.plz-track');if(!track)return;var steps=[].slice.call(track.querySelectorAll('.plz-step'));var r=sec.getBoundingClientRect();var p=(vh*0.72-r.top)/Math.max(1,r.height*0.55);p=Math.max(0,Math.min(1,p));track.style.setProperty('--p',p.toFixed(3));var active=Math.ceil(p*steps.length);steps.forEach(function(s,i){s.classList.toggle('is-on',i<active);});});}if(!window.__plzScroll){window.__plzScroll=1;window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);}upd();}
   var scrReduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   var SCR_GLYPHS='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   function scrambleText(el){var node=null;for(var i=el.childNodes.length-1;i>=0;i--){var n=el.childNodes[i];if(n.nodeType===3&&n.nodeValue.replace(/\s/g,'')){node=n;break;}}var text=node?node.nodeValue:el.textContent;var set=node?function(v){node.nodeValue=v;}:function(v){el.textContent=v;};var start=0,dur=Math.min(1100,text.length*55+280);function frame(now){if(!start)start=now;var p=Math.min(1,(now-start)/dur);var reveal=p*text.length,out='';for(var i=0;i<text.length;i++){var c=text.charAt(i);if(c===' '||c==='/'||c==='·'||i<reveal-0.4){out+=c;}else{out+=SCR_GLYPHS.charAt((Math.random()*SCR_GLYPHS.length)|0);}}set(out);if(p<1)requestAnimationFrame(frame);else set(text);}requestAnimationFrame(frame);}
