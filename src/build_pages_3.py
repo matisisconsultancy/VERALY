@@ -140,7 +140,7 @@ def build(g):
         '<h1 class="sol-h1">Recuperar lo que entregó <span class="pr-accent">tiene vías —y un reloj.</span></h1>'
         '<p class="sol-lede">Perder dinero en una pirámide o en un esquema de rendimientos no autorizado abre tres vías de recuperación, todas con plazos que empiezan a correr desde la toma de posesión.</p>'
         '<div class="cta-row">' + agendar("Agendar una consulta")
-        + '<a class="btn btn--ghost" href="#formulario">Escribir a la firma</a></div>'
+        + '<a class="btn btn--ghost" href="/contacto/">Escribir a la firma</a></div>'
         '</div>'
         '<aside class="sol-hero-aside"><div class="sol-facts">'
         '<div class="sol-fact"><b>3</b><span>vías de recuperación: administrativa, penal y civil</span></div>'
@@ -277,19 +277,14 @@ def build(g):
 
 {af_faq}
 
-<section class="section band-2" id="formulario">
+<section class="section band-2">
   <div class="container">
     <h2>Una primera conversación</h2>
     <p class="lead" style="margin-top:1rem;max-width:56ch">No necesita traer documentos ni haber decidido nada. Sirve para saber si hay caso, qué vías siguen abiertas y qué plazos corren.</p>
-    <div class="contact-grid" style="margin-top:1.6rem">
-      <div>{contact_form("afectados", "Enviar")}
-        <div class="cta-row">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="afectados">Llamar</a>{wa_a}</div>
-      </div>
-      <aside>{trust_list()}
-        <p style="margin-top:1.4rem"><a class="arrowlink" href="/firma/">Conocer cómo trabaja la firma</a></p>
-        <p><a class="arrowlink" href="/equipo/">Conocer al equipo</a></p>
-      </aside>
-    </div>
+    <div class="cta-row" style="margin-top:1.6rem">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="afectados">Llamar</a>{wa_a}</div>
+    <div style="margin-top:1.8rem">{trust_list()}</div>
+    <p style="margin-top:1.4rem"><a class="arrowlink" href="/firma/">Conocer cómo trabaja la firma</a></p>
+    <p><a class="arrowlink" href="/equipo/">Conocer al equipo</a></p>
   </div>
 </section>
 '''
@@ -453,18 +448,13 @@ def build(g):
 
 {def_faq}
 
-<section class="section band-2" id="formulario">
+<section class="section band-2">
   <div class="container">
     <h2>Hablar hoy</h2>
     <p class="lead" style="margin-top:1rem;max-width:54ch">Una primera conversación para ubicar el momento procesal y lo que todavía es posible. No necesita traer documentos.</p>
-    <div class="contact-grid" style="margin-top:1.6rem">
-      <div>{contact_form("defensa", "Enviar el formulario")}
-        <div class="cta-row"><a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="defensa">Llamar</a>{wa_b}{agendar("Agendar", primary=False)}</div>
-      </div>
-      <aside>{trust_list()}
-        <p style="margin-top:1.4rem"><a class="arrowlink" href="/equipo/">Ver al equipo</a></p>
-      </aside>
-    </div>
+    <div class="cta-row" style="margin-top:1.6rem"><a class="btn btn--primary" href="/contacto/">Escribir a la firma</a><a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="defensa">Llamar</a>{wa_b}{agendar("Agendar", primary=False)}</div>
+    <div style="margin-top:1.8rem">{trust_list()}</div>
+    <p style="margin-top:1.4rem"><a class="arrowlink" href="/equipo/">Ver al equipo</a></p>
   </div>
 </section>
 '''
@@ -502,7 +492,7 @@ def build(g):
         '<h1 class="sol-h1">La línea de la captación <span class="pr-accent">se puede medir.</span></h1>'
         '<p class="sol-lede">Fintech, crowdfunding, libranzas, factoring, multinivel y clubes de inversión operan cerca de los umbrales que configuran captación. Revisamos el encuadre, fijamos los límites y documentamos la posición antes de que una superintendencia pregunte.</p>'
         '<div class="cta-row">' + agendar("Solicitar una revisión de encuadre") +
-        '<a class="btn btn--ghost" href="#" data-download="cuestionario">Descargar el cuestionario</a></div>'
+        '<a class="btn btn--ghost" href="/contacto/">Escribir a la firma</a></div>'
         '</div>'
         '<aside class="sol-hero-aside"><div class="sol-facts">'
         '<div class="sol-fact"><b>+20</b><span>personas con las que hay pasivo con el público</span></div>'
@@ -550,18 +540,6 @@ def build(g):
         '<p>Veraly defiende procesos de captación en sus tres frentes. Conoce qué hallazgos activan un requerimiento, qué documentos pide la Superintendencia y qué sostiene la explicación financiera razonable cuando se cuestiona.</p>'
         '<p>Un modelo se puede estructurar sin esa información. Se estructura mejor con ella.</p>'
         '</div></div></section>')
-    cump_quiz = (
-        '<section class="section"><div class="container">'
-        '<div class="quiz-cta">'
-        '<div class="quiz-cta-txt">'
-        '<p class="eyebrow-num"><span class="n">§</span>Autodiagnóstico</p>'
-        '<h2 class="pr-big">Diez preguntas para medir su <span class="pr-accent">distancia a los umbrales.</span></h2>'
-        '<p class="lead" style="margin-top:1rem;max-width:52ch;color:var(--dim)">Un cuestionario breve para revisar internamente antes de decidir si conviene una revisión formal. No sustituye un concepto jurídico ni genera relación profesional.</p>'
-        '<div class="cta-row"><a class="btn btn--primary" href="#" data-download="cuestionario">Descargar el cuestionario (PDF)</a></div>'
-        '</div>'
-        '<div class="quiz-cta-badge" aria-hidden="true"><span>10</span><small>preguntas</small></div>'
-        '</div>'
-        '</div></section>')
     cump_faq = faq_sticky(cumplimiento_faq, title='Preguntas de <span class="pr-accent">encuadre.</span>')
     cumplimiento_body = f'''
 {cump_hero}
@@ -572,20 +550,14 @@ def build(g):
 
 {cump_stmt}
 
-{cump_quiz}
-
 {cump_faq}
 
-<section class="section band-2" id="formulario">
+<section class="section band-2">
   <div class="container">
     <h2>Revisar el encuadre</h2>
     <p class="lead" style="margin-top:1rem;max-width:54ch">Una conversación para ubicar el modelo frente a los umbrales y definir si conviene una revisión formal.</p>
-    <div class="contact-grid" style="margin-top:1.6rem">
-      <div>{contact_form("cumplimiento", "Solicitar una revisión")}
-        <div class="cta-row">{agendar("Agendar una revisión")}</div>
-      </div>
-      <aside>{trust_list()}</aside>
-    </div>
+    <div class="cta-row" style="margin-top:1.6rem">{agendar("Agendar una revisión")}<a class="btn btn--ghost" href="/contacto/">Escribir a la firma</a></div>
+    <div style="margin-top:1.8rem">{trust_list()}</div>
   </div>
 </section>
 '''
