@@ -181,7 +181,7 @@ def header_html(active=""):
     def cur(key):
         return ' aria-current="page"' if active == key else ''
     sub = "".join(
-        f'<li><a href="{url}" data-situacion="{tag}"{cur(tag)}>{esc(t)}<small>{esc(d)}</small></a></li>'
+        f'<li><a href="{url}" data-situacion="{tag}"{cur(tag)}>{esc(t)}</a></li>'
         for url, t, d, tag in SITUACIONES)
     # enlaces reutilizados (pill de escritorio y menú móvil)
     def links(prefix=""):

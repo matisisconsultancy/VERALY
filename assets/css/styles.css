@@ -1497,6 +1497,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 .ph-panel li:first-child{border-top:0}
 .ph-panel li::before{content:"";position:absolute;left:0;top:1.5rem;width:10px;height:10px;
   border-radius:50%;border:2px solid var(--accent-ink)}
+.ph-panel p{color:var(--dim);font-weight:300;line-height:1.6;margin:0 0 1.1rem;max-width:62ch}
 @media (max-width:820px){
   .phase-tabs{grid-template-columns:1fr;gap:22px}
   .ph-nav{position:static;flex-direction:row;flex-wrap:wrap;gap:8px}
@@ -1505,3 +1506,48 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   .ph-tab .ph-l{font-size:.95rem}
   .ph-tab .ph-go{display:none}
 }
+
+/* ============ Soluciones: componentes propios de /defensa y /cumplimiento ============ */
+/* Perímetro (defensa): rejilla de roles alcanzados, con el captador destacado */
+.perim-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,22px);margin:clamp(28px,3.4vw,48px) 0 0}
+.perim-card{border:1px solid var(--line);border-radius:16px;padding:clamp(20px,2vw,28px);background:var(--panel);
+  display:flex;flex-direction:column;gap:.5rem;transition:border-color .4s ease,transform .4s ease}
+.perim-card.is-core{border-color:var(--accent-ink);background:color-mix(in srgb,var(--accent-ink) 9%,var(--panel))}
+.perim-card:hover{transform:translateY(-3px);border-color:var(--accent-ink)}
+.perim-role{font-family:var(--display);font-weight:600;font-size:1.15rem;color:var(--text);line-height:1.15}
+.perim-card.is-core .perim-role{color:var(--accent-ink)}
+.perim-note{font-family:var(--ui);font-size:.9rem;color:var(--dim);line-height:1.4}
+.perim-foot{margin:clamp(26px,3vw,44px) 0 0;font-weight:300;line-height:1.6;max-width:64ch;color:var(--dim);font-size:var(--step-1)}
+.perim-foot strong{color:var(--text);font-weight:500}
+@media(max-width:760px){.perim-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.perim-grid{grid-template-columns:1fr}}
+/* Dos presunciones (defensa): tarjeta con "se presume" -> "se desvirtúa" */
+.presu-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,32px);margin-top:clamp(28px,3.4vw,48px)}
+.presu-card{border:1px solid var(--line);border-radius:18px;padding:clamp(24px,2.4vw,38px);background:var(--panel)}
+.presu-tag{display:block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.66rem;color:var(--dim-2);margin-bottom:1.1rem}
+.presu-k{display:inline-block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;font-size:.62rem;
+  color:var(--dim-2);padding:.28rem .65rem;border:1px solid var(--line);border-radius:999px;margin-bottom:.6rem}
+.presu-k--ok{color:var(--accent-ink);border-color:var(--accent-ink);margin-top:1.4rem}
+.presu-claim{font-family:var(--sans);font-weight:300;font-size:1.2rem;line-height:1.4;color:var(--text);margin:0}
+.presu-rebut{font-weight:300;line-height:1.6;color:var(--dim);margin:.2rem 0 0}
+@media(max-width:720px){.presu-grid{grid-template-columns:1fr}}
+/* Umbrales (cumplimiento): tres disparadores con cifra grande */
+.umbral-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px);margin:clamp(28px,3.4vw,48px) 0 0}
+.umbral-metric{border:1px solid var(--line);border-radius:18px;padding:clamp(24px,2.4vw,38px);background:var(--panel)}
+.umbral-metric.um-material{background:color-mix(in srgb,var(--accent-ink) 9%,var(--panel));border-color:var(--accent-ink)}
+.um-n{display:flex;align-items:baseline;font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:.9;
+  font-size:clamp(3rem,2rem + 3.4vw,5rem);color:var(--text)}
+.um-plus{font-size:.42em;color:var(--accent-ink);margin-left:.04em;font-weight:400}
+.um-sym{color:var(--accent-ink);font-size:clamp(2.4rem,1.6rem + 2.6vw,3.8rem)}
+.um-l{display:block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;color:var(--accent-ink);margin:1rem 0 .5rem}
+.um-d{font-weight:300;line-height:1.55;color:var(--dim);margin:0}
+@media(max-width:760px){.umbral-grid{grid-template-columns:1fr}}
+/* Cuestionario (cumplimiento): panel con distintivo circular */
+.quiz-cta{display:grid;grid-template-columns:1.6fr .8fr;gap:clamp(28px,4vw,64px);align-items:center;
+  border:1px solid var(--line);border-radius:24px;padding:clamp(30px,4vw,64px);
+  background:radial-gradient(130% 150% at 100% 0%,color-mix(in srgb,var(--accent-ink) 13%,var(--panel)),var(--panel))}
+.quiz-cta-badge{justify-self:center;text-align:center;width:clamp(130px,14vw,184px);height:clamp(130px,14vw,184px);
+  border-radius:50%;border:2px solid var(--accent-ink);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.quiz-cta-badge span{font-family:var(--sans);font-weight:300;font-size:clamp(3.2rem,2rem + 3vw,4.8rem);color:var(--accent-ink);line-height:1}
+.quiz-cta-badge small{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.64rem;color:var(--dim)}
+@media(max-width:720px){.quiz-cta{grid-template-columns:1fr}.quiz-cta-badge{display:none}}

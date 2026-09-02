@@ -323,13 +323,13 @@ def build(g):
         ("¿Pueden alcanzar bienes de mi cónyuge o de mis sociedades?",
          "<p>Es habitual que se intenten, por la vía de la simulación y de la acción pauliana. La defensa se construye acreditando origen lícito y separación real de patrimonios, y es un trabajo probatorio que conviene empezar antes de que la demanda llegue.</p>"),
     ]
-    defensa_acc = acc([
-        ("previa", "Fase administrativa previa — antes de la declaratoria",
+    def_phase_items = [
+        ("Fase previa", "Fase administrativa previa — antes de la declaratoria",
          "<p>Requerimientos, visitas y actuaciones de las Superintendencias que anteceden a la declaratoria de captación. Aquí se sustenta técnicamente el modelo de negocio y se acredita la explicación financiera razonable. Es la fase en la que todavía se puede evitar la declaratoria y la suspensión.</p>"
          "<ul><li>Defensa en la actuación administrativa previa y sustentación técnica del modelo.</li>"
          "<li>Recursos contra la orden de suspensión y las multas, y control judicial de la sanción.</li>"
          "<li>Plan de desmonte voluntario preintervención, cuando la toma de posesión es inminente.</li></ul>"),
-        ("intervencion", "Fase de intervención — después de la toma de posesión",
+        ("Intervención", "Fase de intervención — tras la toma de posesión",
          "<p>La toma de posesión trae nombramiento de agente interventor, remoción de administradores, congelación de activos, exigibilidad inmediata de créditos, suspensión de ejecutivos en curso y prohibición de iniciar nuevos.</p>"
          "<ul><li>Solicitud de exclusión y desintervención.</li>"
          "<li>Contradicción de las presunciones sobre recursos y sobre participación.</li>"
@@ -338,89 +338,122 @@ def build(g):
          "<li>Suspensión de ejecuciones y cobros coactivos paralelos.</li>"
          "<li>Defensa frente a revocatorias e ineficacias promovidas por el interventor.</li>"
          "<li>Representación en audiencias y recursos de reposición, aclaración y adición.</li>"
-         "<li>Acciones constitucionales frente a vías de hecho, en un trámite que es de única instancia.</li></ul>"),
-        ("penal", "Fase penal",
+         "<li>Acciones constitucionales frente a vías de hecho, en un trámite de única instancia.</li></ul>"),
+        ("Fase penal", "Fase penal",
          "<ul><li>Defensa en indagación e investigación: interrogatorios, allanamientos, capturas y actos urgentes.</li>"
          "<li>Audiencias preliminares: imputación, medida de aseguramiento y cautelares reales sobre bienes.</li>"
          "<li>Defensa técnica en juicio oral frente a acusaciones por captación, no reintegro, estafa o lavado.</li>"
          "<li>Ejecución penal: subrogados, prisión domiciliaria, libertad condicional y redenciones.</li></ul>"),
-        ("civil", "Fase civil y patrimonial",
+        ("Fase civil", "Fase civil y patrimonial",
          "<ul><li>Defensa frente a demandas de afectados por el faltante.</li>"
          "<li>Responsabilidad de administradores, simulaciones y acciones paulianas contra el patrimonio del cónyuge, la familia o sociedades relacionadas.</li>"
          "<li>Conciliación y acuerdos de pago con afectados.</li></ul>"),
-    ])
+    ]
     wa_b = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" data-whatsapp data-pos="defensa">Escribir por WhatsApp</a>' if SITE["whatsapp"] else "")
+    def_hero = (
+        '<section class="sol-hero"><div class="container sol-hero-grid">'
+        '<div class="sol-hero-main">'
+        '<p class="eyebrow">Para el investigado o vinculado</p>'
+        '<h1 class="sol-h1">La defensa se libra en <span class="pr-accent">tres frentes a la vez.</span></h1>'
+        '<p class="sol-lede">Actuación administrativa ante la Superintendencia de Sociedades, defensa penal por los artículos 316 y 316A, y defensa patrimonial civil. El momento procesal define lo que todavía es posible.</p>'
+        '<div class="cta-row"><a class="btn btn--primary" href="/contacto/">Escribir ahora</a>'
+        '<a class="btn btn--ghost" href="tel:' + SITE["phone_href"] + '" data-pos="defensa-hero">Llamar</a></div>'
+        '</div>'
+        '<aside class="sol-hero-aside"><div class="sol-facts">'
+        '<div class="sol-fact"><b>3</b><span>frentes en paralelo: administrativo, penal y civil</span></div>'
+        '<div class="sol-fact"><b>316<span class="u">·316A</span></b><span>captación masiva y no reintegro</span></div>'
+        '<div class="sol-fact"><b>Art.<span class="u">5</span></b><span>el perímetro que alcanza a los vinculados</span></div>'
+        '</div></aside>'
+        '</div></section>')
+    _perim = [
+        ("El captador", "El origen del esquema", True),
+        ("Administradores", "Representantes legales y miembros de junta", False),
+        ("Socios", "Por su participación en la operación", False),
+        ("Revisores fiscales", "Por el ejercicio del cargo durante la captación", False),
+        ("Contadores", "Por el ejercicio del cargo durante la captación", False),
+        ("Proveedores de buena fe", "Que contrataron con la intervenida", False),
+    ]
+    _perim_cards = "".join(
+        '<div class="perim-card reveal-up' + (' is-core' if core else '') + '">'
+        '<span class="perim-role">' + esc(r) + '</span>'
+        '<span class="perim-note">' + esc(n) + '</span></div>'
+        for r, n, core in _perim)
+    def_perim = (
+        '<section class="section"><div class="container">'
+        '<p class="eyebrow-num"><span class="n">§</span>El perímetro</p>'
+        '<h2 class="pr-big">La vinculación no se limita <span class="pr-accent">al captador.</span></h2>'
+        '<p class="lead" style="max-width:64ch;margin-top:1.1rem;color:var(--dim)">El artículo 5 del Decreto 4334 de 2008 alcanza a captadores, administradores, socios, revisores fiscales, contadores, beneficiarios y demás personas vinculadas —directa o indirectamente— a la operación. Profesionales y proveedores que actuaron de forma puntual quedan dentro del perímetro por el solo ejercicio del cargo.</p>'
+        '<div class="perim-grid">' + _perim_cards + '</div>'
+        '<p class="perim-foot">Si usted está en ese perímetro, su defensa no empieza discutiendo los hechos del esquema: <strong>empieza discutiendo si debe estar ahí.</strong></p>'
+        '</div></section>')
+    _presu = [
+        ("Sobre los recursos", "Todos los recursos aprehendidos provienen de la actividad ilícita.",
+         "Trazabilidad y origen lícito de los activos. Es una presunción legal —así lo precisó la Sentencia C-145 de 2009— y, por tanto, desvirtuable con prueba positiva."),
+        ("Sobre la participación", "Participación en el esquema por el solo ejercicio del cargo durante el periodo de captación.",
+         "Acreditación de gestión diligente y del origen lícito. No basta con negar: hay que aportar la prueba que la desmonte."),
+    ]
+    _presu_cards = "".join(
+        '<div class="presu-card reveal-up"><span class="presu-tag">' + esc(tag) + '</span>'
+        '<span class="presu-k">Se presume</span><p class="presu-claim">' + esc(claim) + '</p>'
+        '<span class="presu-k presu-k--ok">Se desvirtúa con</span><p class="presu-rebut">' + esc(reb) + '</p></div>'
+        for tag, claim, reb in _presu)
+    def_presu = (
+        '<section class="section band"><div class="container">'
+        '<p class="eyebrow-num"><span class="n">§</span>La carga de la prueba</p>'
+        '<h2 class="pr-big">Dos presunciones <span class="pr-accent">que hay que desvirtuar.</span></h2>'
+        '<div class="presu-grid">' + _presu_cards + '</div>'
+        '</div></section>')
+    def_phases = (
+        '<section class="section"><div class="container">'
+        '<p class="eyebrow-num"><span class="n">§</span>Dónde está su caso</p>'
+        '<h2 class="pr-big">La defensa cambia <span class="pr-accent">según el momento.</span></h2>'
+        '<p class="lead" style="max-width:58ch;margin-top:1rem;color:var(--dim)">Abra la fase en la que se encuentra. No necesita leer las demás.</p>'
+        '<div style="margin-top:clamp(28px,3.4vw,48px)">' + phase_tabs(def_phase_items) + '</div>'
+        '</div></section>')
+    def_stmt = (
+        '<section class="section sol-stmt-sec"><div class="container sol-stmt-grid">'
+        '<div><p class="eyebrow-num"><span class="n">§</span>El estándar</p>'
+        '<h2 class="sol-stmt pr-parallax">No basta la creencia honesta. <span class="pr-accent">Exige diligencia comprobable.</span></h2></div>'
+        '<div class="sol-stmt-body">'
+        '<p>El artículo 7, literal c, del Decreto 4334 permite devolver bienes de personas no vinculadas a la actividad. Y la Sentencia C-145 de 2009 condicionó el artículo 5 para que la intervención no alcance a terceros proveedores que hayan procedido de <strong>buena fe exenta de culpa</strong> en el ámbito de sus actividades lícitas ordinarias.</p>'
+        '<p>El estándar es exigente: exige diligencia positiva y comprobable. Acreditarla es un trabajo documental que se construye hacia atrás —contratos, controles, comunicaciones, decisiones registradas— y es, con frecuencia, la diferencia entre quedar dentro o fuera del perímetro.</p>'
+        '</div></div></section>')
+    def_salidas = sol_two(
+        "Cuando la salida es negociada",
+        'Dos salidas que <span class="pr-accent">no se trabajan por separado.</span>',
+        "<p><strong>Plan de desmonte en intervención.</strong> Propuesta de devolución voluntaria conforme a cronograma que, bajo la Ley 1902 de 2018, exige aval de la Superintendencia y respaldo del 75 % de los afectados. Su cumplimiento conduce a la desintervención; su incumplimiento reactiva las medidas.</p>"
+        "<p style='margin-top:1.1rem'><strong>Justicia penal negociada.</strong> Preacuerdos, allanamiento y principio de oportunidad. La reparación y el reintegro tienen efecto directo sobre la exposición punitiva. Coordinar la conciliación civil, la devolución administrativa y la negociación penal —y no por separado, con abogados que no se hablan— es donde se juega el resultado.</p>",
+        band=True, parallax=True)
+    def_conflict = (
+        '<section class="section"><div class="container">'
+        '<p class="eyebrow-num"><span class="n">§</span>Antes de escribir</p>'
+        '<div class="conflict" style="margin-top:1.2rem;max-width:70ch">'
+        '<p>El formulario pide tres datos: nombre, una vía de contacto y una línea de contexto. <strong>No escriba los hechos de su caso en el formulario.</strong> No lo necesitamos para agendar y usted no necesita dejarlo por escrito antes de que exista relación profesional.</p></div>'
+        '<p class="lead" style="margin-top:1.2rem;max-width:70ch;color:var(--dim)">La firma también representa a personas afectadas en procesos de captación, en casos distintos. Antes de aceptar cualquier consulta verificamos si ya intervenimos en ese proceso por la orilla contraria. Si es así, declinamos.</p>'
+        '</div></section>')
+    def_faq = faq_sticky(defensa_faq, title='Preguntas de la <span class="pr-accent">defensa.</span>')
     defensa_body = f'''
-{section(f"""
-  <p class="eyebrow">Para el investigado o vinculado</p>
-  <h1>Defensa en procesos por captación masiva y habitual</h1>
-  <p class="support" style="max-width:56ch">Actuaciones administrativas ante la Superintendencia de Sociedades, defensa penal por los artículos 316 y 316A del Código Penal, y defensa patrimonial civil. Los tres frentes, en paralelo.</p>
-  <p class="desc" style="max-width:58ch">Si hay requerimientos, visita administrativa, orden de suspensión, actos urgentes, captura o audiencia de imputación, el momento procesal define lo que todavía es posible.</p>
-  <div class="cta-row">
-    <a class="btn btn--primary" href="/contacto/">Escribir ahora</a>
-    <a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="defensa-hero">Llamar</a>
-  </div>
-""", cls="hero")}
+{def_hero}
 
-<section class="section band">
-  <div class="container prose">
-    <h2>La vinculación no se limita al captador</h2>
-    <p>El artículo 5 del Decreto 4334 de 2008 alcanza a captadores, administradores —representantes legales y miembros de junta directiva—, socios, revisores fiscales, contadores, beneficiarios y demás personas vinculadas directa o indirectamente a la operación.</p>
-    <p>En la práctica, esto significa que profesionales que prestaron un servicio puntual y correcto quedan dentro del perímetro de la intervención por el solo ejercicio del cargo durante el periodo de captación. Y también proveedores que contrataron de buena fe con la intervenida.</p>
-    <p>Si usted está en ese perímetro, su defensa no empieza discutiendo los hechos del esquema: empieza discutiendo si debe estar ahí.</p>
-  </div>
-</section>
+{def_perim}
 
-{section("""
-  <h2>Dos presunciones que hay que desvirtuar</h2>
-  <div class="prose" style="margin-top:1.2rem">
-    <p><strong>Sobre los recursos.</strong> Dentro de la intervención se presume que todos los recursos aprehendidos provienen de la actividad ilícita. Es una presunción legal y, por tanto, desvirtuable —así lo precisó la Sentencia C-145 de 2009—, pero mientras no se desvirtúe opera contra el patrimonio del vinculado.</p>
-    <p><strong>Sobre la participación.</strong> El régimen posterior hace recaer sobre administradores y vinculados una presunción de participación por el solo ejercicio del cargo durante el periodo de captación.</p>
-    <p>Desvirtuarlas exige prueba positiva: trazabilidad y origen lícito de los activos, y acreditación de gestión diligente. No basta con negar.</p>
-  </div>
-""")}
+{def_presu}
 
-<section class="section band">
-  <div class="container">
-    <h2>Dónde está su caso</h2>
-    <p class="acc-note">Abra la fase en la que se encuentra. No necesita leer las demás.</p>
-    {defensa_acc}
-  </div>
-</section>
+{def_phases}
 
-{section("""
-  <h2>El estándar que decide muchas exclusiones</h2>
-  <div class="prose" style="margin-top:1.2rem">
-    <p>El artículo 7, literal c, del Decreto 4334 permite devolver bienes de personas no vinculadas a la actividad. Y la Sentencia C-145 de 2009 condicionó el artículo 5 para que la intervención no alcance a terceros proveedores que hayan procedido de <strong>buena fe exenta de culpa</strong> en el ámbito de sus actividades lícitas ordinarias.</p>
-    <p>El estándar es exigente: no basta la creencia honesta. Exige diligencia positiva y comprobable. Acreditarla es un trabajo documental que se construye hacia atrás —contratos, controles, comunicaciones, decisiones registradas— y es, con frecuencia, la diferencia entre quedar dentro o fuera del perímetro de la intervención.</p>
-  </div>
-""")}
+{def_stmt}
 
-<section class="section band">
-  <div class="container prose">
-    <h2>Cuando la salida es negociada</h2>
-    <p><strong>Plan de desmonte en intervención.</strong> Propuesta de devolución voluntaria conforme a cronograma que, bajo la Ley 1902 de 2018, exige aval de la Superintendencia y respaldo del 75 % de los afectados. Su cumplimiento conduce a la desintervención; su incumplimiento reactiva las medidas.</p>
-    <p><strong>Justicia penal negociada.</strong> Preacuerdos, allanamiento y principio de oportunidad. La reparación y el reintegro tienen efecto directo sobre la exposición punitiva, y la coordinación entre la conciliación civil, la devolución administrativa y la negociación penal es donde se juega el resultado. Trabajarlas por separado, con abogados distintos que no se hablan, es la forma más frecuente de perder la ventaja.</p>
-  </div>
-</section>
+{def_salidas}
 
-{section(f"""
-  <h2>Antes de escribir</h2>
-  <div class="conflict" style="margin-top:1.2rem">
-    <p>El formulario pide tres datos: nombre, una vía de contacto y una línea de contexto. <strong>No escriba los hechos de su caso en el formulario.</strong> No lo necesitamos para agendar y usted no necesita dejarlo por escrito antes de que exista relación profesional.</p>
-  </div>
-  <p class="prose" style="margin-top:1.2rem">Veraly también representa a afectados en procesos de captación, en casos distintos. Antes de aceptar cualquier consulta verificamos si la firma ya interviene en ese proceso por la orilla contraria. Si es así, declinamos.</p>
-""")}
+{def_conflict}
 
-{section(f"""
-  <h2>Preguntas frecuentes</h2>
-  {faq_block(defensa_faq)}
-""", cls="band")}
+{def_faq}
 
-<section class="section band-2">
+<section class="section band-2" id="formulario">
   <div class="container">
     <h2>Hablar hoy</h2>
-    <div class="contact-grid" style="margin-top:1.4rem">
+    <p class="lead" style="margin-top:1rem;max-width:54ch">Una primera conversación para ubicar el momento procesal y lo que todavía es posible. No necesita traer documentos.</p>
+    <div class="contact-grid" style="margin-top:1.6rem">
       <div>{contact_form("defensa", "Enviar el formulario")}
         <div class="cta-row"><a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="defensa">Llamar</a>{wa_b}{agendar("Agendar", primary=False)}</div>
       </div>
@@ -458,59 +491,92 @@ def build(g):
         ("¿La auditoría periódica es un servicio recurrente?",
          "<p>Sí. Los modelos derivan cuando crecen: cambian los volúmenes, los productos y las contrapartes. La revisión periódica existe para detectar esa deriva antes de que sea material.</p>"),
     ]
+    cump_hero = (
+        '<section class="sol-hero"><div class="container sol-hero-grid">'
+        '<div class="sol-hero-main">'
+        '<p class="eyebrow">Para la empresa preventiva</p>'
+        '<h1 class="sol-h1">La línea de la captación <span class="pr-accent">se puede medir.</span></h1>'
+        '<p class="sol-lede">Fintech, crowdfunding, libranzas, factoring, multinivel y clubes de inversión operan cerca de los umbrales que configuran captación. Revisamos el encuadre, fijamos los límites y documentamos la posición antes de que una superintendencia pregunte.</p>'
+        '<div class="cta-row">' + agendar("Solicitar una revisión de encuadre") +
+        '<a class="btn btn--ghost" href="#" data-download="cuestionario">Descargar el cuestionario</a></div>'
+        '</div>'
+        '<aside class="sol-hero-aside"><div class="sol-facts">'
+        '<div class="sol-fact"><b>+20</b><span>personas con las que hay pasivo con el público</span></div>'
+        '<div class="sol-fact"><b>+50</b><span>obligaciones con el público</span></div>'
+        '<div class="sol-fact"><b>Art.<span class="u">6</span></b><span>rendimiento sin explicación financiera razonable</span></div>'
+        '</div></aside>'
+        '</div></section>')
+    _umbrales = [
+        ("20", "personas o más", "Pasivo con el público que involucra a más de veinte personas.", "num"),
+        ("50", "obligaciones o más", "O más de cincuenta obligaciones con el público, o mediación de ofertas masivas.", "num"),
+        ("§6", "criterio material", "O rendimiento entregado sin explicación financiera razonable —aunque los números estén por debajo.", "mat"),
+    ]
+    _um_cards = "".join(
+        '<div class="umbral-metric reveal-up' + (' um-material' if kind == 'mat' else '') + '">' +
+        ('<span class="um-n"><span data-count="' + val + '">0</span><span class="um-plus">+</span></span>'
+         if kind == 'num' else '<span class="um-n um-sym">' + esc(val) + '</span>') +
+        '<span class="um-l">' + esc(lbl) + '</span>'
+        '<p class="um-d">' + esc(d) + '</p></div>'
+        for val, lbl, d, kind in _umbrales)
+    cump_umbral = (
+        '<section class="section"><div class="container">'
+        '<p class="eyebrow-num"><span class="n">§</span>Dónde está la línea</p>'
+        '<h2 class="pr-big">Tres disparadores. <span class="pr-accent">Con uno basta.</span></h2>'
+        '<p class="lead" style="max-width:64ch;margin-top:1.1rem;color:var(--dim)">El Decreto 1981 de 1988 fija umbrales objetivos y el artículo 6 del Decreto 4334 de 2008 añade el criterio material. Cualquiera de los tres puede configurar captación.</p>'
+        '<div class="umbral-grid">' + _um_cards + '</div>'
+        '<p class="perim-foot">Un modelo puede estar <strong>por debajo de los números</strong> y quedar señalado igual si no sustenta de dónde sale el rendimiento que ofrece.</p>'
+        '</div></section>')
+    _enc_rows = [
+        ("Diagnóstico de encuadre", "Dictamen de riesgo sobre el modelo actual, con los puntos en que se aproxima a los supuestos del artículo 6 y una hoja de ruta."),
+        ("Blindaje preventivo", "Límites operativos, arquitectura contractual y protocolos documentados, con foco en sustentar la explicación financiera del rendimiento."),
+        ("Auditoría periódica", "Revisión recurrente que detecta la deriva del modelo cuando el negocio crece y las condiciones cambian. Incluye alertas tempranas."),
+    ]
+    cump_enc = (
+        '<section class="section band"><div class="container">'
+        '<p class="eyebrow-num"><span class="n">§</span>La revisión de encuadre</p>'
+        '<h2 class="pr-big">Una posición defendible <span class="pr-accent">sobre su modelo.</span></h2>'
+        '<p class="lead" style="max-width:62ch;margin-top:1rem;color:var(--dim)">No un concepto general sobre la normativa: una posición escrita para ser leída por un tercero que la cuestione.</p>'
+        + sol_timeline(_enc_rows) +
+        '</div></section>')
+    cump_stmt = (
+        '<section class="section sol-stmt-sec"><div class="container sol-stmt-grid">'
+        '<div><p class="eyebrow-num"><span class="n">§</span>La ventaja</p>'
+        '<h2 class="sol-stmt pr-parallax">Conocemos el fenómeno <span class="pr-accent">por donde se rompe.</span></h2></div>'
+        '<div class="sol-stmt-body">'
+        '<p>Veraly defiende procesos de captación en sus tres frentes. Conoce qué hallazgos activan un requerimiento, qué documentos pide la Superintendencia y qué sostiene la explicación financiera razonable cuando se cuestiona.</p>'
+        '<p>Un modelo se puede estructurar sin esa información. Se estructura mejor con ella.</p>'
+        '</div></div></section>')
+    cump_quiz = (
+        '<section class="section"><div class="container">'
+        '<div class="quiz-cta">'
+        '<div class="quiz-cta-txt">'
+        '<p class="eyebrow-num"><span class="n">§</span>Autodiagnóstico</p>'
+        '<h2 class="pr-big">Diez preguntas para medir su <span class="pr-accent">distancia a los umbrales.</span></h2>'
+        '<p class="lead" style="margin-top:1rem;max-width:52ch;color:var(--dim)">Un cuestionario breve para revisar internamente antes de decidir si conviene una revisión formal. No sustituye un concepto jurídico ni genera relación profesional.</p>'
+        '<div class="cta-row"><a class="btn btn--primary" href="#" data-download="cuestionario">Descargar el cuestionario (PDF)</a></div>'
+        '</div>'
+        '<div class="quiz-cta-badge" aria-hidden="true"><span>10</span><small>preguntas</small></div>'
+        '</div>'
+        '</div></section>')
+    cump_faq = faq_sticky(cumplimiento_faq, title='Preguntas de <span class="pr-accent">encuadre.</span>')
     cumplimiento_body = f'''
-{section("""
-  <p class="eyebrow">Para la empresa preventiva</p>
-  <h1>Cumplimiento normativo para modelos de recaudo masivo</h1>
-  <p class="support" style="max-width:58ch">Fintech, crowdfunding, libranzas, factoring, multinivel y clubes de inversión operan cerca de los umbrales que configuran captación. La distancia a esos umbrales se puede medir.</p>
-  <p class="desc" style="max-width:58ch">Revisamos el encuadre del modelo, fijamos los límites operativos y documentamos los protocolos que sostienen la posición si una superintendencia pregunta.</p>
-  <div class="cta-row">
-    {agendar("Solicitar una revisión de encuadre")}
-    <a class="btn btn--ghost" href="#" data-download="cuestionario">Descargar el cuestionario</a>
-  </div>
-""", cls="hero")}
+{cump_hero}
 
-<section class="section band">
-  <div class="container prose">
-    <h2>Dónde está la línea</h2>
-    <p>El Decreto 1981 de 1988 fija umbrales objetivos: en esencia, hay captación cuando el pasivo con el público involucra a más de veinte personas o más de cincuenta obligaciones, o cuando median ofertas masivas. El artículo 6 del Decreto 4334 de 2008 añade el criterio material: recursos entregados a cambio de bienes, servicios o rendimientos <strong>sin explicación financiera razonable</strong>.</p>
-    <p>El segundo criterio es el que sorprende a los modelos legítimos. Un negocio puede estar por debajo de los umbrales numéricos y aun así quedar señalado si no puede sustentar de dónde sale el rendimiento que ofrece. La defensa de un modelo empieza mucho antes de que haya una investigación: empieza el día en que el modelo se documenta.</p>
-  </div>
-</section>
+{cump_umbral}
 
-{section("""
-  <h2>La revisión de encuadre</h2>
-  <ul class="method-list">
-    <li><strong>Diagnóstico de encuadre y hoja de ruta.</strong> Dictamen de riesgo sobre el modelo actual, con identificación de los puntos en que se aproxima a los supuestos del artículo 6.</li>
-    <li><strong>Blindaje preventivo y estructura.</strong> Definición de límites operativos, arquitectura contractual y protocolos documentados, con especial atención a la sustentación de la explicación financiera del rendimiento ofrecido.</li>
-    <li><strong>Auditoría periódica de cumplimiento.</strong> Revisión recurrente que detecta la deriva del modelo cuando el negocio crece y las condiciones cambian. Incluye alertas tempranas.</li>
-  </ul>
-  <p class="prose" style="margin-top:1.2rem">El objeto de la revisión no es un concepto general sobre la normativa: es una posición defendible sobre <strong>su</strong> modelo, escrita para ser leída por un tercero que la cuestione.</p>
-""")}
+{cump_enc}
 
-<section class="section band">
-  <div class="container prose">
-    <h2>Estructuramos con la información que da litigar</h2>
-    <p>Veraly defiende procesos de captación en sus tres frentes. Eso significa que conoce el fenómeno por el lado en que se rompe: qué hallazgos activan un requerimiento, qué documentos pide la Superintendencia, qué elementos sostienen la explicación financiera razonable cuando se cuestiona y cuáles no resisten.</p>
-    <p>Un modelo se puede estructurar sin esa información. Se estructura mejor con ella.</p>
-  </div>
-</section>
+{cump_stmt}
 
-{section("""
-  <h2>Diez preguntas para medir su distancia a los umbrales</h2>
-  <p class="lead" style="margin-top:1rem;max-width:60ch">Un cuestionario breve para revisar internamente antes de decidir si conviene una revisión formal. No sustituye un concepto jurídico y no genera relación profesional.</p>
-  <div class="cta-row"><a class="btn btn--primary" href="#" data-download="cuestionario">Descargar el cuestionario (PDF)</a></div>
-""")}
+{cump_quiz}
 
-{section(f"""
-  <h2>Preguntas frecuentes</h2>
-  {faq_block(cumplimiento_faq)}
-""", cls="band")}
+{cump_faq}
 
-<section class="section band-2">
+<section class="section band-2" id="formulario">
   <div class="container">
     <h2>Revisar el encuadre</h2>
-    <div class="contact-grid" style="margin-top:1.4rem">
+    <p class="lead" style="margin-top:1rem;max-width:54ch">Una conversación para ubicar el modelo frente a los umbrales y definir si conviene una revisión formal.</p>
+    <div class="contact-grid" style="margin-top:1.6rem">
       <div>{contact_form("cumplimiento", "Solicitar una revisión")}
         <div class="cta-row">{agendar("Agendar una revisión")}</div>
       </div>
