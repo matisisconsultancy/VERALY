@@ -418,7 +418,7 @@
     }
   }
   function initFeatureRows() {
-    var rows = $$('.frow').concat($$('.prac-rows')).concat($$('.pr-timeline')).concat($$('.reveal-up'));
+    var rows = $$('.frow').concat($$('.prac-rows')).concat($$('.pr-timeline')).concat($$('.reveal-up')).concat($$('.plz-sec'));
     rows.forEach(function (r) { if (r.__f) return; r.__f = 1; if (frowIO) frowIO.observe(r); else r.classList.add('in'); });
     if (rows.length && !window.__frowScroll) {
       window.__frowScroll = 1;
@@ -494,7 +494,31 @@
       if (scrIO) scrIO.observe(el); else scrambleText(el);
     });
   }
-  window.__initPins = function () { initStepper(); initReveal(); initFeatureRows(); initBlog(); initScramble(); };
+  /* ---------- Conteo animado (plazos, cifras) ---------- */
+  var countIO = ('IntersectionObserver' in window)
+    ? new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { countIO.unobserve(e.target); if (e.target.__cuRun) e.target.__cuRun(); } });
+      }, { threshold: 0.6 })
+    : null;
+  function initCountUp() {
+    $$('[data-count]').forEach(function (el) {
+      if (el.__cu) return; el.__cu = 1;
+      var target = parseFloat(el.getAttribute('data-count')) || 0;
+      el.__cuRun = function () {
+        if (scrReduce) { el.textContent = String(target); return; }
+        var t0 = 0;
+        function step(now) {
+          if (!t0) t0 = now;
+          var p = Math.min(1, (now - t0) / 1200), eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = String(Math.round(eased * target));
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      };
+      if (countIO) countIO.observe(el); else el.__cuRun();
+    });
+  }
+  window.__initPins = function () { initStepper(); initReveal(); initFeatureRows(); initBlog(); initScramble(); initCountUp(); };
   window.__initPins();
 
   /* ---------- Profundidad de scroll ---------- */

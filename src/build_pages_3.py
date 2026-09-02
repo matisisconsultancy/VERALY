@@ -50,6 +50,19 @@ def build(g):
             for i, (lbl, d) in enumerate(rows))
         return f'<div class="pr-timeline">{r}</div>'
 
+    def via_card(tag, title, desc, recup, scope):
+        segs = "".join(f'<i class="{"on" if k < scope else ""}"></i>' for k in range(3))
+        return (f'<div class="via-card reveal-up"><span class="via-tag">{esc(tag)}</span>'
+                f'<h3>{esc(title)}</h3><p>{esc(desc)}</p>'
+                f'<div class="via-recup"><span class="k">Qué recupera</span>'
+                f'<span class="v">{esc(recup)}</span>'
+                f'<div class="via-scope" aria-hidden="true">{segs}</div></div></div>')
+
+    def plz_step(num, unit, label, detail):
+        return (f'<div class="plz-step"><span class="plz-num"><span data-count="{num}">0</span>'
+                f'<span class="u">{esc(unit)}</span></span>'
+                f'<p class="plz-label">{esc(label)}</p><p class="plz-detail">{esc(detail)}</p></div>')
+
     # =====================================================================
     # /afectados-por-captacion-masiva  (Perfil A)
     # =====================================================================
@@ -90,22 +103,60 @@ def build(g):
          "<li>Reconstrucción de la prenda general por simulación, acción pauliana y revocatoria concursal.</li></ul>"),
     ])
     wa_a = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" data-whatsapp data-pos="afectados">Escribir por WhatsApp</a>' if SITE["whatsapp"] else "")
-    af_fenomeno = sol_two(
-        "El fenómeno",
-        'Probablemente no fue una estafa. <span class="pr-accent">Fue captación masiva.</span>',
-        "<p>La diferencia no es semántica. La estafa y la captación masiva son delitos distintos, con procesos distintos y con vías de recuperación distintas —y se usan como sinónimos incluso en la prensa.</p>"
-        "<p>Hay <strong>captación masiva y habitual no autorizada</strong> cuando se reciben dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable. Los umbrales: más de veinte personas, o más de cincuenta obligaciones, o mediación de ofertas masivas.</p>"
-        "<p>Que su caso encuadre en esta figura cambia todo: activa un procedimiento administrativo especial ante la Superintendencia de Sociedades que no existe en la estafa común, y con él un mecanismo de devolución al que usted puede acceder.</p>")
-    af_vias = sol_timeline([
-        ("Vía administrativa", "Cuando la Superintendencia ordena la toma de posesión para devolver, se abre un trámite de reclamación. Recupera el capital entregado, a prorrata con los demás afectados: es la vía más rápida y la de techo más bajo."),
-        ("Vía penal", "Tras la sentencia condenatoria se abre el incidente de reparación integral: daño emergente, lucro cesante y perjuicios morales. Es la única vía que alcanza lo que la administrativa deja fuera."),
-        ("Vía civil", "Cuando la masa de la intervención no cubre el faltante, la responsabilidad civil persigue el patrimonio personal de administradores, revisores fiscales, contadores y vinculados solventes, y permite reconstruir la prenda general si hubo bienes distraídos antes de la intervención."),
-    ])
-    af_techo = sol_two(
-        "El techo de la vía administrativa",
-        'Lo que la reclamación administrativa <span class="pr-accent">no cubre.</span>',
-        "<p>La devolución dentro de la intervención tiene techo en el capital entregado. Los intereses prometidos, los rendimientos no pagados y los perjuicios <strong>no se recuperan por esa vía</strong>: solo por la penal o la civil. Lo decimos porque es la información que más falta al decidir si vale la pena reclamar.</p>",
-        band=True)
+    af_hero = (
+        '<section class="sol-hero"><div class="container sol-hero-grid">'
+        '<div class="sol-hero-main">'
+        '<p class="eyebrow">Para el afectado</p>'
+        '<h1 class="sol-h1">Recuperar lo que entregó <span class="pr-accent">tiene vías —y un reloj.</span></h1>'
+        '<p class="sol-lede">Perder dinero en una pirámide o en un esquema de rendimientos no autorizado abre tres vías de recuperación, todas con plazos que empiezan a correr desde la toma de posesión.</p>'
+        '<div class="cta-row">' + agendar("Agendar una consulta")
+        + '<a class="btn btn--ghost" href="#formulario">Escribir a la firma</a></div>'
+        '</div>'
+        '<aside class="sol-hero-aside"><div class="sol-facts">'
+        '<div class="sol-fact"><b>3</b><span>vías de recuperación: administrativa, penal y civil</span></div>'
+        '<div class="sol-fact"><b>10<span class="u">días</span></b><span>para reclamar dentro de la intervención</span></div>'
+        '<div class="sol-fact"><b>0</b><span>promesas de resultado — se promete rigor y trabajo</span></div>'
+        '</div></aside>'
+        '</div></section>')
+    af_stmt = (
+        '<section class="section sol-stmt-sec"><div class="container sol-stmt-grid">'
+        '<div><p class="eyebrow-num"><span class="n">§</span>El fenómeno</p>'
+        '<h2 class="sol-stmt pr-parallax">Probablemente no fue una estafa. <span class="pr-accent">Fue captación masiva.</span></h2></div>'
+        '<div class="sol-stmt-body">'
+        '<p>La diferencia no es semántica. La estafa y la captación masiva son delitos distintos, con procesos distintos y con vías de recuperación distintas —y se usan como sinónimos incluso en la prensa.</p>'
+        '<p>Hay <strong>captación masiva y habitual no autorizada</strong> cuando se reciben dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable: más de veinte personas, o más de cincuenta obligaciones, o mediación de ofertas masivas.</p>'
+        '<p>Que su caso encuadre en esta figura lo cambia todo: activa un procedimiento administrativo especial ante la Superintendencia de Sociedades que no existe en la estafa común, y con él un mecanismo de devolución al que usted puede acceder.</p>'
+        '</div></div></section>')
+    af_vias_grid = (
+        '<section class="section band"><div class="container">'
+        '<p class="eyebrow-num"><span class="n">§</span>Las tres vías</p>'
+        '<h2 class="pr-big">Tres vías, tres cosas distintas <span class="pr-accent">que se recuperan.</span></h2>'
+        '<div class="via-grid">'
+        + via_card("Vía administrativa", "La reclamación dentro de la intervención",
+                   "Cuando la Superintendencia ordena la toma de posesión para devolver, se abre un trámite de reclamación a prorrata entre los afectados. Es la vía más rápida.",
+                   "El capital entregado", 1)
+        + via_card("Vía penal", "El incidente de reparación integral",
+                   "Tras la sentencia condenatoria se reclaman daño emergente, lucro cesante y perjuicios morales. Alcanza lo que la administrativa deja fuera.",
+                   "Capital, rendimientos y perjuicios", 3)
+        + via_card("Vía civil", "La responsabilidad de los solventes",
+                   "Cuando la masa no cubre el faltante, persigue el patrimonio de administradores, revisores, contadores y vinculados solventes; y reconstruye la prenda general.",
+                   "El patrimonio de los responsables", 2)
+        + '</div>'
+        '<p class="lead" style="margin-top:clamp(28px,3vw,44px);max-width:66ch;color:var(--dim)">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía penal o la civil. Las tres corren de forma autónoma —no hay que elegir una, hay que ordenarlas.</p>'
+        '</div></section>')
+    af_plazos = (
+        '<section class="plz-sec"><div class="container">'
+        '<p class="eyebrow-num"><span class="n">§</span>El calendario</p>'
+        '<div class="plz-head"><h2 class="plz-title">Los términos corren, <span class="pr-accent">y son cortos.</span></h2></div>'
+        '<p class="plz-sub">Dentro de la intervención administrativa el calendario es estricto y se cuenta en días comunes desde la toma de posesión.</p>'
+        '<div class="plz-track">'
+        + plz_step("2", "días", "El aviso", "El interventor publica el aviso dentro de los dos días siguientes a la toma de posesión.")
+        + plz_step("10", "días", "La reclamación", "Las solicitudes de devolución se presentan por escrito, con presentación personal y original del comprobante.")
+        + plz_step("20", "días", "La decisión", "La providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.")
+        + plz_step("3", "días", "El recurso", "El recurso de reposición contra esa decisión se interpone dentro de los tres días siguientes.")
+        + '</div>'
+        '<p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p>'
+        '</div></section>')
     af_grupo = sol_two(
         "Casos colectivos",
         'Cuando el grupo <span class="pr-accent">ya existe.</span>',
@@ -114,44 +165,13 @@ def build(g):
         band=True, parallax=False)
     af_faq = faq_sticky(afectados_faq, title='Preguntas del <span class="pr-accent">afectado.</span>')
     afectados_body = f'''
-{section(f"""
-  <p class="eyebrow">Para el afectado</p>
-  <span class="prac-rule" aria-hidden="true"></span>
-  <h1 class="prac-h1" style="max-width:20ch">Perdí dinero en un esquema de captación: <span class="pr-accent">qué vías existen.</span></h1>
-  <p class="prac-sub">Entregar recursos a una pirámide, un club de inversión o un esquema de rendimientos sin autorización tiene consecuencias jurídicas concretas y plazos que empiezan a correr desde la toma de posesión. Aquí explicamos cómo funciona el proceso, qué se reclama por cada vía y qué términos corren —para que sirva aunque usted no nos consulte.</p>
-  <div class="cta-row" style="margin-top:clamp(24px,3vw,40px)">
-    {agendar("Agendar una consulta")}
-    <a class="btn btn--ghost" href="#formulario">Escribir a la firma</a>
-  </div>
-""", cls="hero")}
+{af_hero}
 
-{af_fenomeno}
+{af_stmt}
 
-<section class="section band">
-  <div class="container">
-    <p class="eyebrow-num"><span class="n">§</span>Las tres vías</p>
-    <h2 class="pr-big">Tres vías, tres cosas distintas <span class="pr-accent">que se recuperan.</span></h2>
-  </div>
-  {af_vias}
-  <div class="container"><p class="lead" style="margin-top:clamp(28px,3vw,44px);max-width:60ch;color:var(--dim)">Las tres corren de forma autónoma y concurrente. No hay que elegir una: hay que ordenarlas.</p></div>
-</section>
+{af_vias_grid}
 
-<section class="section">
-  <div class="container">
-    <p class="eyebrow-num"><span class="n">§</span>El calendario</p>
-    <h2 class="pr-big">Los términos corren, <span class="pr-accent">y son cortos.</span></h2>
-    <p class="lead" style="margin-top:1rem;max-width:60ch;color:var(--dim)">Dentro de la intervención administrativa el calendario es estricto y se cuenta en días comunes.</p>
-    <div class="plazos" style="margin-top:clamp(28px,3vw,44px)">
-      <div class="plazo"><b>2 días</b><span>El interventor publica el aviso dentro de los dos días siguientes a la toma de posesión.</span></div>
-      <div class="plazo"><b>10 días</b><span>Las solicitudes de devolución se presentan por escrito, con presentación personal y original del comprobante de entrega.</span></div>
-      <div class="plazo"><b>20 días</b><span>La providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.</span></div>
-      <div class="plazo"><b>3 días</b><span>El recurso de reposición contra esa decisión se interpone dentro de los tres días siguientes.</span></div>
-    </div>
-    <p class="prose">La causa más frecuente de rechazo no es la falta de derecho: es la forma. Comprobantes informales, copias sin original, entregas hechas en efectivo sin rastro, o la simple pérdida del término.</p>
-  </div>
-</section>
-
-{af_techo}
+{af_plazos}
 
 <section class="section">
   <div class="container">
