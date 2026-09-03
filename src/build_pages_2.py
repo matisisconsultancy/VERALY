@@ -109,7 +109,7 @@ def build(g):
     </div>
     <div class="pr-two-r">
       <p>Consiste en recibir dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable (art. 6 del Decreto 4334 de 2008). Hay captación cuando el pasivo con el público supera los umbrales del Decreto 1981 de 1988 —más de veinte personas o más de cincuenta obligaciones, o mediación de ofertas masivas—.</p>
-      <p>Es un fenómeno denso y ruidoso, y por eso se litiga mal: la mayoría de los despachos lo trata como una estafa agravada. No lo es.</p>
+      <p>Es un fenómeno denso y ruidoso, y por eso se litiga mal: la mayoría de las firmas lo trata como una estafa agravada. No lo es.</p>
     </div>
   </div>
 </section>
@@ -118,7 +118,7 @@ def build(g):
   <div class="container">
     <p class="eyebrow">Las tres vías</p>
     <h2 style="max-width:22ch">Tres responsabilidades que corren al mismo tiempo</h2>
-    <p class="lead" style="margin-top:1rem;max-width:56ch;color:var(--dim)">Una misma conducta detona, de forma simultánea e independiente, tres procesos. No son fases: son frentes paralelos, y cada uno condiciona a los otros dos. Un despacho que atiende solo una de las tres vías trabaja un tercio del problema.</p>
+    <p class="lead" style="margin-top:1rem;max-width:56ch;color:var(--dim)">Una misma conducta detona, de forma simultánea e independiente, tres procesos. No son fases: son frentes paralelos, y cada uno condiciona a los otros dos. Una firma que atiende solo una de las tres vías trabaja un tercio del problema.</p>
     <div style="margin-top:1.4rem">{g["tres_vias_rows"]()}</div>
   </div>
 </section>

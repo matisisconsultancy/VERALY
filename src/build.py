@@ -23,7 +23,7 @@ SITE = {
     "email": "contacto@veraly.com.co",
     "phone_display": "+57 322 512 6199",
     "phone_href": "+573225126199",
-    "whatsapp": "",  # la firma no cuenta con WhatsApp
+    "whatsapp": "573225126199",  # WhatsApp de la firma (mismo número de contacto)
     "address": "Calle 16 # 4-68, oficina 1204, Bogotá",
     "hours": "Lun a Vie, 8:00–18:00",
     # Agendamiento (Cal.com). Placeholder hasta conectar el calendario de la firma.
@@ -403,7 +403,7 @@ def marco_reveal(eyebrow="El marco que trabajamos", phrases=None, cards=None, se
             "Decreto 4334, artículos 316 y 316A, y la jurisprudencia que los interpreta.",
         ]
     if cards is None:
-        # URLs oficiales (TODO: verificar/ajustar por el despacho — decisión pendiente).
+        # URLs oficiales (TODO: verificar/ajustar por la firma — decisión pendiente).
         cards = [
             ("Decreto 4334 / 2008", "Intervención", "http://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html"),
             ("Art. 316 CP", "Captación masiva", "http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html"),
@@ -443,21 +443,13 @@ def agendar_btn(label="Agendar una consulta", primary=True):
 
 
 def assistant_html():
-    # Asistente guiado (determinista). El flujo vive en main.js; aquí solo el chasis.
-    return '''<div class="asst" id="asst" aria-live="polite">
-  <button class="asst-launch" id="asst-launch" aria-expanded="false" aria-controls="asst-panel">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.6-.8L3 21l1.9-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
-    <span>¿En qué le ayudamos?</span>
-  </button>
-  <div class="asst-panel" id="asst-panel" role="dialog" aria-label="Asistente de orientación" hidden>
-    <div class="asst-head">
-      <span class="asst-title">Orientación rápida</span>
-      <button class="asst-close" id="asst-close" aria-label="Cerrar">&times;</button>
-    </div>
-    <div class="asst-body" id="asst-body"></div>
-    <p class="asst-legal">Información general, no asesoría jurídica. <strong>No comparta los hechos de su caso aquí.</strong></p>
-  </div>
-</div>'''
+    # Botón flotante de WhatsApp, en color de marca (menta sobre teal).
+    if not SITE["whatsapp"]:
+        return ""
+    return f'''<a class="wa-fab" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" data-whatsapp data-pos="fab">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.5 31.5l8-2.1c2.2 1.2 4.8 1.9 7.5 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28c-2.5 0-4.8-.7-6.8-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.9 20.4 3.2 18.3 3.2 16 3.2 8.9 8.9 3.2 16 3.2S28.8 8.9 28.8 16 23.1 28.5 16 28.5zm7-9.6c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.3-.6.1-.3 0-.5 0-.7 0-.2-.9-2.1-1.2-2.9-.3-.7-.6-.6-.9-.7h-.7c-.2 0-.6.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.3 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z"/></svg>
+  <span class="wa-fab-label">WhatsApp</span>
+</a>'''
 
 
 def jsonld(objects):

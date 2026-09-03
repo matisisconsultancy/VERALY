@@ -156,7 +156,6 @@ def run(out_path):
 {mobilebar_global}
 {assistant}
 {templates}
-<div class="preview-flag">Vista previa navegable · Veraly</div>
 <script>{JS}</script>
 """
     open(out_path, "w", encoding="utf-8").write(page)

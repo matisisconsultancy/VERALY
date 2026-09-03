@@ -598,7 +598,7 @@ def build(g):
     <h2>Qué cambia en la práctica</h2>
     <p>La calificación como captación activa el procedimiento administrativo especial del Decreto 4334 de 2008 ante la Superintendencia de Sociedades, con toma de posesión y un mecanismo de devolución que la estafa común no tiene. Para el afectado, eso abre una vía de recuperación adicional. Para el investigado, cambia por completo el mapa de frentes: a lo penal se suma lo administrativo y lo civil.</p>
     <h2>Por qué se confunden</h2>
-    <p>La cobertura pública trata ambos fenómenos como sinónimos, y muchos despachos litigan la captación como si fuera una estafa agravada. No lo es, y trabajarla así deja fuera la vía administrativa —que suele ser la más rápida para el afectado y la más determinante para el vinculado.</p>
+    <p>La cobertura pública trata ambos fenómenos como sinónimos, y muchas firmas litigan la captación como si fuera una estafa agravada. No lo es, y trabajarla así deja fuera la vía administrativa —que suele ser la más rápida para el afectado y la más determinante para el vinculado.</p>
 """,
         "captacion-con-libranzas-y-factoring": """
     <h2>Contratos legales, uso que puede no serlo</h2>

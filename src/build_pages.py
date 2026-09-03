@@ -199,7 +199,7 @@ def build(g):
     <div class="feature-cards">{situ_cards}</div>
     <div class="conflict-note">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
-      <p>El despacho <strong>no representa simultáneamente</strong> a afectados y a vinculados dentro de un mismo proceso de intervención. Cada consulta pasa por una verificación previa de conflicto antes de aceptarse.</p>
+      <p>La firma <strong>no representa simultáneamente</strong> a afectados y a vinculados dentro de un mismo proceso de intervención. Cada consulta pasa por una verificación previa de conflicto antes de aceptarse.</p>
     </div>
   </div>
 </section>
@@ -248,7 +248,7 @@ def build(g):
         {
             "@context": "https://schema.org", "@type": "LegalService",
             "name": SITE["name"],
-            "description": "Despacho boutique colombiano especializado en captación masiva y habitual: defensa administrativa, penal y civil, y recuperación de afectados.",
+            "description": "Firma boutique colombiana especializada en captación masiva y habitual: defensa administrativa, penal y civil, y recuperación de afectados.",
             "url": B + "/",
             "areaServed": {"@type": "Country", "name": "Colombia"},
             "knowsAbout": ["Captación masiva y habitual", "Fraude financiero",
@@ -268,7 +268,7 @@ def build(g):
     ]
     add("/", {
         "title": "Veraly Grupo Jurídico · Defensa en fraude financiero",
-        "description": "Despacho boutique colombiano especializado en captación masiva y habitual. Cinco socios, cinco ramas del derecho, un mismo caso.",
+        "description": "Firma boutique colombiana especializada en captación masiva y habitual. Cinco socios, cinco ramas del derecho, un mismo caso.",
         "active": "", "schema": home_schema,
     }, home_body)
 
