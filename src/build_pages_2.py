@@ -344,7 +344,7 @@ def build(g):
         <p class="eyebrow">Las personas</p>
         <h2 class="pr-big">Detrás de las cinco prácticas, <span class="pr-accent">un equipo.</span></h2>
       </div>
-      <a class="btn btn--primary btn--arrow" href="/equipo/socios/">Equipo</a>
+      <a class="btn btn--primary" href="/equipo/socios/">Equipo</a>
     </div>
     <div class="cta-row" style="margin-top:clamp(28px,3.4vw,44px)">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabajamos</a></div>
   </div>
@@ -578,7 +578,7 @@ def build(g):
     <p>Voz sobria pero no rígida, directa, respetuosa y técnica donde corresponde. Sin promesas de resultado: se promete rigor, criterio y trabajo. Vocabulario propio: fraude financiero, captación masiva y habitual, vinculado, afectado, intervención, rutas jurídicas, convergencia, las cinco prácticas, explicación financiera razonable.</p>
   </div>
   <div class="cta-row">
-    <a class="btn btn--primary btn--arrow" href="/marca/sistema/" data-marca>Ver el brandbook completo</a>
+    <a class="btn btn--primary" href="/marca/sistema/" data-marca>Ver el brandbook completo</a>
     <a class="btn btn--ghost" href="/equipo/">Conocer al equipo</a>
   </div>
 """, cls="band")}

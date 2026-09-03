@@ -140,61 +140,57 @@ strong{font-weight:600;color:var(--text)}
 .divider{border:0;border-top:1px solid var(--line-soft);margin:0}
 
 /* ============================================================
-   Sistema de botones — una geometría, dos jerarquías, estados
-   coherentes (hover, foco, pulsación, carga, deshabilitado).
+   Sistema de botones — "Marco Convergencia".
+   Dos corchetes de esquina que, al interactuar, se cierran en un
+   marco completo (identidad de convergencia: líneas que se
+   encuentran). Esquina viva, versalitas con tracking, sin sombra,
+   sin elevación. Mismo lenguaje para primaria y secundaria.
    ============================================================ */
-.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.55em;
-  font-family:var(--sans);font-weight:500;font-size:var(--step-0);letter-spacing:.01em;line-height:1;
-  padding:.95em 1.65em;min-height:var(--btn-min);
-  border-radius:var(--btn-r);border:1px solid transparent;
-  cursor:pointer;text-decoration:none;white-space:nowrap;user-select:none;
-  -webkit-tap-highlight-color:transparent;
-  transition:transform .3s var(--btn-ease),background-color .3s var(--btn-ease),
-    border-color .3s var(--btn-ease),color .3s var(--btn-ease),box-shadow .3s var(--btn-ease)}
-.btn:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px}
+.btn{--bk:14px;position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+  font-family:var(--sans);font-weight:500;font-size:.8rem;letter-spacing:.13em;text-transform:uppercase;line-height:1;
+  padding:1.18em 2.05em;min-height:var(--btn-min);border-radius:0;border:0;background:transparent;
+  cursor:pointer;text-decoration:none;white-space:nowrap;user-select:none;-webkit-tap-highlight-color:transparent;
+  transition:color .35s var(--btn-ease),background-color .45s var(--btn-ease)}
+/* corchetes de esquina (arriba-izq. / abajo-der.) */
+.btn::before,.btn::after{content:"";position:absolute;width:var(--bk);height:var(--bk);pointer-events:none;
+  transition:width .45s var(--btn-ease),height .45s var(--btn-ease)}
+.btn::before{top:0;left:0;border-top:1px solid;border-left:1px solid}
+.btn::after{right:0;bottom:0;border-right:1px solid;border-bottom:1px solid}
+/* al pasar/enfocar, los corchetes se cierran en marco completo */
+.btn:hover::before,.btn:hover::after,
+.btn:focus-visible::before,.btn:focus-visible::after{width:100%;height:100%}
+.btn:focus-visible{outline:2px solid var(--accent-ink);outline-offset:5px}
+.btn:active{transform:scale(.99);transition-duration:.06s}
 
-/* flecha opcional (línea fina que avanza en hover) */
-.btn--arrow::after{content:"";width:1.05em;height:1.05em;flex:none;margin-left:.1em;margin-right:-.2em;
-  background:currentColor;-webkit-mask:var(--ico-arrow) center/contain no-repeat;
-  mask:var(--ico-arrow) center/contain no-repeat;
-  transition:transform .3s var(--btn-ease)}
-.btn--arrow:hover::after,.btn--arrow:focus-visible::after{transform:translateX(4px)}
+/* primaria: bloque de menta, marco interior oscuro que se cierra */
+.btn--primary{background:var(--accent);color:var(--on-light)}
+.btn--primary::before,.btn--primary::after{border-color:var(--on-light)}
+.btn--primary:hover{background:var(--accent-deep)}
 
-/* primaria: relleno menta, elevación + halo en hover, se asienta al pulsar */
-.btn--primary{background:var(--accent);color:var(--on-light);border-color:var(--accent);
-  box-shadow:0 1px 2px rgba(3,25,27,.12)}
-.btn--primary:hover{background:var(--accent-deep);border-color:var(--accent-deep);transform:translateY(-2px);
-  box-shadow:0 14px 30px -14px color-mix(in srgb,var(--accent-ink) 60%,transparent),0 3px 10px -6px rgba(3,25,27,.35)}
-.btn--primary:active{transform:translateY(0) scale(.985);
-  box-shadow:0 2px 8px -6px rgba(3,25,27,.4);transition-duration:.08s}
-
-/* secundaria (ghost): contorno a hairline, se realza sin rellenarse */
-.btn--ghost{background:transparent;color:var(--text);border-color:var(--line)}
-.btn--ghost:hover{border-color:var(--accent-ink);color:var(--accent-ink);transform:translateY(-2px);
-  background:color-mix(in srgb,var(--accent-ink) 8%,transparent);
-  box-shadow:0 12px 26px -18px color-mix(in srgb,var(--accent-ink) 55%,transparent)}
-.btn--ghost:active{transform:translateY(0) scale(.985);background:color-mix(in srgb,var(--accent-ink) 12%,transparent);transition-duration:.08s}
+/* secundaria: en contorno, corchetes de acento que cierran el marco */
+.btn--ghost{color:var(--text)}
+.btn--ghost::before,.btn--ghost::after{border-color:var(--accent-ink)}
+.btn--ghost:hover{color:var(--accent-ink);background:color-mix(in srgb,var(--accent-ink) 7%,transparent)}
 
 /* tamaños y disposición */
-.btn--sm{padding:.62em 1.15em;min-height:42px;font-size:var(--step--1)}
-.btn--lg{padding:1.05em 2em;min-height:60px;font-size:var(--step-1)}
+.btn--sm{--bk:10px;padding:.85em 1.35em;min-height:42px;font-size:.7rem;letter-spacing:.12em}
+.btn--lg{--bk:16px;padding:1.4em 2.5em;min-height:60px;font-size:.86rem}
 .btn--block{display:flex;width:100%}
 
 /* deshabilitado y carga */
-.btn:disabled,.btn[disabled],.btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed;
-  transform:none!important;box-shadow:none!important;pointer-events:none}
+.btn:disabled,.btn[disabled],.btn[aria-disabled="true"]{opacity:.4;cursor:not-allowed;transform:none!important;pointer-events:none}
 .btn.is-loading{color:transparent!important;pointer-events:none}
-.btn.is-loading::before{content:"";position:absolute;width:1.15em;height:1.15em;border-radius:50%;
-  border:2px solid currentColor;border-top-color:transparent;color:var(--on-light);
-  animation:btn-spin .6s linear infinite}
-.btn--ghost.is-loading::before{color:var(--accent-ink)}
+.btn.is-loading::before{opacity:0}
+.btn.is-loading::after{width:1.1em;height:1.1em;top:50%;left:50%;right:auto;bottom:auto;
+  margin:-.55em 0 0 -.55em;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;
+  color:var(--on-light);animation:btn-spin .6s linear infinite}
+.btn--ghost.is-loading::after{color:var(--accent-ink)}
 @keyframes btn-spin{to{transform:rotate(1turn)}}
 @media (prefers-reduced-motion:reduce){
-  .btn:hover,.btn:active{transform:none}
-  .btn--arrow:hover::after{transform:none}
-  .btn.is-loading::before{animation:none}}
+  .btn:active{transform:none}
+  .btn.is-loading::after{animation:none}}
 
-.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:1.6rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:1.6rem}
 
 /* enlaces de texto: subrayado que se despliega */
 .textlink{position:relative;color:var(--accent-ink);text-decoration:none;font-family:var(--ui);font-weight:600;
@@ -231,7 +227,7 @@ strong{font-weight:600;color:var(--text)}
 .nav-pill a:hover,.nav-pill a[aria-current="page"],.nav-pill .has-sub>button:hover,
 .nav-pill .has-sub[data-open="true"]>button{color:var(--on-light);background:var(--accent)}
 .nav-pill a[aria-current="page"]{color:var(--on-light);background:var(--accent)}
-.nav-cta-pill{min-height:44px;padding:.5em .55em .5em 1.15em;font-size:var(--step-0)}
+.nav-cta-pill{--bk:9px;min-height:42px;padding:.7em 1.25em;font-size:.68rem}
 /* dropdown Situaciones */
 .has-sub{position:relative}
 .has-sub>button svg{width:12px;height:12px;transition:transform .2s}
