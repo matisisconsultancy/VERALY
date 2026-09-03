@@ -170,11 +170,9 @@ def build(g):
     _via_recup = ["El capital entregado", "El patrimonio de los responsables", "Capital, rendimientos y perjuicios"]
     _via_slides = "".join(
         f'<div class="via-slide{" active" if i == 0 else ""}" data-i="{i}">'
-        f'<span class="via-idx">{i+1:02d} / 03</span>'
-        f'<span class="via-tag">{esc(v[0])}</span>'
+        f'<p class="step-chip"><span class="step-n">{i+1:02d}</span><span class="step-l">{esc(v[0])}</span></p>'
         f'<h3 class="via-h">{esc(v[1])}</h3>'
         f'<p class="via-d">{esc(v[2])}</p>'
-        f'<div class="via-recup"><span class="k">Qué recupera</span><span class="v">{esc(_via_recup[i])}</span></div>'
         f'</div>'
         for i, v in enumerate(_via_data))
     # Diagrama de alcance: cada barra queda rotulada con la vía y lo que
@@ -224,9 +222,7 @@ def build(g):
         '<div class="via-stage">'
         f'<div class="via-slides">{_via_slides}</div>'
         '<div class="via-scopewrap" aria-hidden="true">'
-        '<span class="via-scope-k">Alcance de la recuperación</span>'
         f'<div class="via-bars">{_via_bars}</div>'
-        '<span class="via-scope-hint">De la más rápida a la de mayor alcance.</span>'
         '</div>'
         '</div></div></div></div>'
         '<div class="container"><p class="lead via-foot" style="max-width:66ch">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía civil o la penal. Las tres corren de forma autónoma —no hay que elegir una, hay que ordenarlas.</p></div>'
