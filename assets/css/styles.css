@@ -23,8 +23,10 @@
 
   --sans:'Archivo',-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --display:'Archivo',-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --ui:'Jost','Archivo',system-ui,sans-serif;
-  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  /* Una sola familia (Archivo). Jerarquía por peso, tamaño, tracking y color.
+     --ui y --mono se conservan como alias para no tocar cada regla. */
+  --ui:var(--sans);
+  --mono:var(--sans);
 
   --edge:clamp(18px,5vw,64px);
   --head-h:86px;
@@ -114,8 +116,8 @@ strong{font-weight:600;color:var(--text)}
   padding:10px 16px;border-radius:8px;font-family:var(--ui);font-weight:600;z-index:200;transition:top .18s}
 .skip-link:focus{top:12px}
 .container{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--edge)}
-.eyebrow{font-family:var(--sans);text-transform:uppercase;letter-spacing:.24em;font-size:.72rem;
-  color:var(--dim-2);font-weight:600;margin:0 0 1.2rem;display:block}
+.eyebrow{font-family:var(--sans);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;
+  color:var(--dim-2);font-weight:500;margin:0 0 1.2rem;display:block}
 .lead{font-size:var(--lede);color:var(--dim);line-height:1.55;font-weight:300}
 .prose{max-width:var(--readw)}
 .container.prose{max-width:var(--maxw)}      /* recupera el ancho del contenedor */
@@ -343,7 +345,7 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
 }
 
 /* Páginas de práctica — descripción y normas (referente Oris, en clave clara) */
-.eyebrow-num{font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;
+.eyebrow-num{font-family:var(--sans);font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;
   color:var(--dim-2);display:flex;align-items:center;gap:14px;margin:0 0 clamp(20px,2.6vw,34px)}
 .eyebrow-num .n{color:var(--accent-ink);font-weight:600}
 .pr-big{font-family:var(--sans);font-weight:var(--hw);font-size:var(--h2);

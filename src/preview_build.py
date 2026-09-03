@@ -19,8 +19,6 @@ def run(out_path):
     PAGES = build.PAGES
     fonts_css = f"""
 @font-face{{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;src:url({datauri('assets/fonts/archivo-var.woff2')}) format('woff2')}}
-@font-face{{font-family:'Jost';font-style:normal;font-weight:100 900;font-display:swap;src:url({datauri('assets/fonts/jost-var.woff2')}) format('woff2')}}
-@font-face{{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url({datauri('assets/fonts/playfair-700.woff2')}) format('woff2')}}
 """
     styles_css = open(os.path.join(ROOT, "assets/css/styles.css"), encoding="utf-8").read()
     header = build.header_html(""); footer = build.footer_html()

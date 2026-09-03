@@ -467,8 +467,8 @@ def build(g):
             f'<stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs>'
             f'<rect width="320" height="400" fill="url(#g-{sid})"/>'
             f'<rect width="320" height="400" fill="url(#r-{sid})"/>'
-            f'<text x="160" y="230" text-anchor="middle" font-family="Playfair Display,serif" '
-            f'font-weight="500" font-size="132" fill="#EAFBF6" fill-opacity="0.92">{esc(ini)}</text>'
+            f'<text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" '
+            f'font-weight="300" font-size="128" letter-spacing="2" fill="#EAFBF6" fill-opacity="0.92">{esc(ini)}</text>'
             f'</svg>')
     socio_cards = ""
     for s in SOCIOS:
@@ -571,7 +571,7 @@ def build(g):
 
 {section("""
   <h2>El sistema visual</h2>
-  <p class="prose" style="margin-top:1rem">Paleta, tipografía y usos se documentan en el brandbook completo. El sitio aplica la paleta teal con acento menta, la tipografía Playfair Display para los títulos y Archivo para el texto.</p>
+  <p class="prose" style="margin-top:1rem">Paleta, tipografía y usos se documentan en el brandbook completo. El sitio aplica la paleta teal con acento menta y una sola familia tipográfica, Archivo, cuya jerarquía se resuelve con grosor, tamaño y tracking.</p>
   <h2 style="margin-top:2.4rem">El sistema verbal</h2>
   <div class="prose" style="margin-top:1rem">
     <p>Claim institucional: <strong>Defensa en fraude financiero.</strong></p>
