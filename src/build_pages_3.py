@@ -37,7 +37,7 @@ def build(g):
         cls = "section band" if band else "section"
         ppx = " pr-parallax" if parallax else ""
         return (f'<section class="{cls}"><div class="container pr-two">'
-                f'<div class="pr-two-l"><p class="eyebrow-num"><span class="n">§</span>{esc(eyebrow_label)}</p>'
+                f'<div class="pr-two-l"><p class="eyebrow-num">{esc(eyebrow_label)}</p>'
                 f'<h2 class="pr-big{ppx}">{title_html}</h2></div>'
                 f'<div class="pr-two-r">{body_html}</div></div></section>')
 
@@ -150,7 +150,7 @@ def build(g):
         '</div></section>')
     af_stmt = (
         '<section class="section sol-stmt-sec"><div class="container sol-stmt-grid">'
-        '<div><p class="eyebrow-num"><span class="n">§</span>El fenómeno</p>'
+        '<div><p class="eyebrow-num">El fenómeno</p>'
         '<h2 class="sol-stmt pr-parallax">Probablemente no fue una estafa. <span class="pr-accent">Fue captación masiva.</span></h2></div>'
         '<div class="sol-stmt-body">'
         '<p>La diferencia no es semántica. La estafa y la captación masiva son delitos distintos, con procesos distintos y con vías de recuperación distintas —y se usan como sinónimos incluso en la prensa.</p>'
@@ -219,7 +219,7 @@ def build(g):
         '<section class="via-sticky-sec"><div class="via-track"><div class="via-sticky">'
         '<div class="container via-frame">'
         '<div class="via-head">'
-        '<p class="eyebrow-num"><span class="n">§</span>El alcance de cada vía</p>'
+        '<p class="eyebrow-num">El alcance de cada vía</p>'
         '</div>'
         '<div class="via-stage">'
         f'<div class="via-slides">{_via_slides}</div>'
@@ -234,7 +234,7 @@ def build(g):
     af_plazos = (
         '<section class="plz-sec plz-pin"><div class="plz-pin-track">'
         '<div class="plz-pin-sticky"><div class="container">'
-        '<p class="eyebrow-num"><span class="n">§</span>El calendario</p>'
+        '<p class="eyebrow-num">El calendario</p>'
         '<div class="plz-head"><h2 class="plz-title">Los términos corren, <span class="pr-accent">y son cortos.</span></h2></div>'
         '<p class="plz-sub">Dentro de la intervención administrativa el calendario es estricto y se cuenta en días comunes desde la toma de posesión.</p>'
         '<div class="plz-track">'
@@ -265,7 +265,7 @@ def build(g):
 
 <section class="section jn-sec jn-pin">
   <div class="container jn-intro">
-    <p class="eyebrow-num"><span class="n">§</span>El acompañamiento</p>
+    <p class="eyebrow-num">El acompañamiento</p>
     <h2 class="pr-big">El trabajo, <span class="pr-accent">por momento del proceso.</span></h2>
   </div>
   <div class="jn-pin-track"><div class="jn-pin-sticky"><div class="container">
@@ -375,7 +375,7 @@ def build(g):
         for r, n, core in _perim)
     def_perim = (
         '<section class="section"><div class="container">'
-        '<p class="eyebrow-num"><span class="n">§</span>El perímetro</p>'
+        '<p class="eyebrow-num">El perímetro</p>'
         '<h2 class="pr-big">La vinculación no se limita <span class="pr-accent">al captador.</span></h2>'
         '<p class="lead" style="max-width:64ch;margin-top:1.1rem;color:var(--dim)">El artículo 5 del Decreto 4334 de 2008 alcanza a captadores, administradores, socios, revisores fiscales, contadores, beneficiarios y demás personas vinculadas —directa o indirectamente— a la operación. Profesionales y proveedores que actuaron de forma puntual quedan dentro del perímetro por el solo ejercicio del cargo.</p>'
         '<div class="perim-grid">' + _perim_cards + '</div>'
@@ -394,14 +394,14 @@ def build(g):
         for tag, claim, reb in _presu)
     def_presu = (
         '<section class="section band"><div class="container">'
-        '<p class="eyebrow-num"><span class="n">§</span>La carga de la prueba</p>'
+        '<p class="eyebrow-num">La carga de la prueba</p>'
         '<h2 class="pr-big">Dos presunciones <span class="pr-accent">que hay que desvirtuar.</span></h2>'
         '<div class="presu-grid">' + _presu_cards + '</div>'
         '</div></section>')
     def_phases = (
         '<section class="section jn-sec jn-pin">'
         '<div class="container jn-intro">'
-        '<p class="eyebrow-num"><span class="n">§</span>Dónde está su caso</p>'
+        '<p class="eyebrow-num">Dónde está su caso</p>'
         '<h2 class="pr-big">La defensa cambia <span class="pr-accent">según el momento.</span></h2>'
         '<p class="lead" style="max-width:58ch;margin-top:1rem;color:var(--dim)">Abra la fase en la que se encuentra. No necesita leer las demás.</p>'
         '</div>'
@@ -411,7 +411,7 @@ def build(g):
         '</section>')
     def_stmt = (
         '<section class="section sol-stmt-sec"><div class="container sol-stmt-grid">'
-        '<div><p class="eyebrow-num"><span class="n">§</span>El estándar</p>'
+        '<div><p class="eyebrow-num">El estándar</p>'
         '<h2 class="sol-stmt pr-parallax">No basta la creencia honesta. <span class="pr-accent">Exige diligencia comprobable.</span></h2></div>'
         '<div class="sol-stmt-body">'
         '<p>El artículo 7, literal c, del Decreto 4334 permite devolver bienes de personas no vinculadas a la actividad. Y la Sentencia C-145 de 2009 condicionó el artículo 5 para que la intervención no alcance a terceros proveedores que hayan procedido de <strong>buena fe exenta de culpa</strong> en el ámbito de sus actividades lícitas ordinarias.</p>'
@@ -494,7 +494,7 @@ def build(g):
     _umbrales = [
         ("20", "personas o más", "Pasivo con el público que involucra a más de veinte personas.", "num"),
         ("50", "obligaciones o más", "O más de cincuenta obligaciones con el público, o mediación de ofertas masivas.", "num"),
-        ("§6", "criterio material", "O rendimiento entregado sin explicación financiera razonable —aunque los números estén por debajo.", "mat"),
+        ("Art. 6", "criterio material", "O rendimiento entregado sin explicación financiera razonable, aunque los números estén por debajo.", "mat"),
     ]
     _um_cards = "".join(
         '<div class="umbral-metric reveal-up' + (' um-material' if kind == 'mat' else '') + '">' +
@@ -505,7 +505,7 @@ def build(g):
         for val, lbl, d, kind in _umbrales)
     cump_umbral = (
         '<section class="section"><div class="container">'
-        '<p class="eyebrow-num"><span class="n">§</span>Dónde está la línea</p>'
+        '<p class="eyebrow-num">Dónde está la línea</p>'
         '<h2 class="pr-big">Tres disparadores. <span class="pr-accent">Con uno basta.</span></h2>'
         '<p class="lead" style="max-width:64ch;margin-top:1.1rem;color:var(--dim)">El Decreto 1981 de 1988 fija umbrales objetivos y el artículo 6 del Decreto 4334 de 2008 añade el criterio material. Cualquiera de los tres puede configurar captación.</p>'
         '<div class="umbral-grid">' + _um_cards + '</div>'
@@ -518,14 +518,14 @@ def build(g):
     ]
     cump_enc = (
         '<section class="section band"><div class="container">'
-        '<p class="eyebrow-num"><span class="n">§</span>La revisión de encuadre</p>'
+        '<p class="eyebrow-num">La revisión de encuadre</p>'
         '<h2 class="pr-big">Una posición defendible <span class="pr-accent">sobre su modelo.</span></h2>'
         '<p class="lead" style="max-width:62ch;margin-top:1rem;color:var(--dim)">No un concepto general sobre la normativa: una posición escrita para ser leída por un tercero que la cuestione.</p>'
         + sol_timeline(_enc_rows) +
         '</div></section>')
     cump_stmt = (
         '<section class="section sol-stmt-sec"><div class="container sol-stmt-grid">'
-        '<div><p class="eyebrow-num"><span class="n">§</span>La ventaja</p>'
+        '<div><p class="eyebrow-num">La ventaja</p>'
         '<h2 class="sol-stmt pr-parallax">Conocemos el fenómeno <span class="pr-accent">por donde se rompe.</span></h2></div>'
         '<div class="sol-stmt-body">'
         '<p>Veraly defiende procesos de captación en sus tres frentes. Conoce qué hallazgos activan un requerimiento, qué documentos pide la Superintendencia y qué sostiene la explicación financiera razonable cuando se cuestiona.</p>'
@@ -728,7 +728,7 @@ def build(g):
   <section class="section norm-two-sec">
     <div class="container pr-two">
       <div class="pr-two-l">
-        <p class="eyebrow-num"><span class="n">§</span> Fundamento normativo</p>
+        <p class="eyebrow-num"> Fundamento normativo</p>
         <h2 class="pr-big pr-parallax">El marco que <span class="pr-accent">sostiene el análisis.</span></h2>
       </div>
       <div class="pr-two-r norm-flow">{norm_rows}</div>

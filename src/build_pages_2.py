@@ -105,7 +105,7 @@ def build(g):
 <section class="section section-light">
   <div class="container pr-two">
     <div class="pr-two-l">
-      <p class="eyebrow-num"><span class="n">§</span>El fenómeno</p>
+      <p class="eyebrow-num">El fenómeno</p>
       <h2 class="pr-big pr-parallax">Qué es la captación <span class="pr-accent">masiva y habitual.</span></h2>
     </div>
     <div class="pr-two-r">
@@ -126,7 +126,7 @@ def build(g):
 
 <section class="section section-light">
   <div class="container">
-    <p class="eyebrow-num"><span class="n">§</span>El método de convergencia</p>
+    <p class="eyebrow-num">El método de convergencia</p>
     <h2 class="pr-big">Leemos cada expediente en <span class="pr-accent">hechos, actores y rutas.</span></h2>
     <p class="prac-sub">Lo habitual es asignar el caso al socio de la especialidad correspondiente. En captación esa estructura falla: el caso no tiene una especialidad, tiene varias a la vez. Por eso las cinco prácticas trabajan el mismo expediente y el caso se construye en la intersección —a partir de tres lecturas.</p>
     <div class="pr-timeline">{metodo_rows}</div>
@@ -399,7 +399,7 @@ def build(g):
 <section class="section">
   <div class="container pr-two">
     <div class="pr-two-l">
-      <p class="eyebrow-num"><span class="n">01</span>Qué resuelve</p>
+      <p class="eyebrow-num">Qué resuelve</p>
       <h2 class="pr-big pr-parallax">Qué resuelve esta práctica <span class="pr-accent">en un caso de captación.</span></h2>
     </div>
     <div class="pr-two-r">
@@ -411,7 +411,7 @@ def build(g):
 
 <section class="section">
   <div class="container">
-    <p class="eyebrow-num"><span class="n">02</span>A qué situación sirve</p>
+    <p class="eyebrow-num">A qué situación sirve</p>
     <h2 class="pr-big">Desde dónde entra <span class="pr-accent">su caso.</span></h2>
     <div class="acards">{situ_cards_html}</div>
   </div>
@@ -419,7 +419,7 @@ def build(g):
 
 <section class="section">
   <div class="container">
-    <p class="eyebrow-num"><span class="n">03</span>Normatividad asociada</p>
+    <p class="eyebrow-num">Normatividad asociada</p>
     <h2 class="pr-big">El marco que <span class="pr-accent">enmarca esta práctica.</span></h2>
     <div class="pr-timeline">{norm_rows}</div>
   </div>
@@ -510,7 +510,7 @@ def build(g):
     <div class="socio-hero">
       <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg">{socio_portrait(s)}</span></div>
       <div class="socio-hero-txt">
-        <p class="eyebrow-num"><span class="n">§</span>Socio</p>
+        <p class="eyebrow-num">Socio</p>
         <h1 class="socio-h1">{esc(s["nombre"])}</h1>
         <p class="socio-role">Socio · {esc(s["practica"])}</p>
         <div class="socio-bio">

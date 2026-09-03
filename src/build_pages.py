@@ -126,7 +126,7 @@ def build(g):
         ("Me investigan o me vincularon", "Defensa en los tres frentes.",
          "/defensa-en-captacion-masiva/", "investigado", wave()),
         ("Mi empresa recauda de muchas personas", "Revisión de encuadre preventiva.",
-         "/cumplimiento-en-recaudo-masivo/", "empresa", globe()),
+         "/cumplimiento-en-recaudo-masivo/", "empresa", burst()),
     ]
     situ_cards = ""
     for t, sub, url, tag, media in situ_data:
