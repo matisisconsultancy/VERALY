@@ -27,8 +27,7 @@ def build(g):
                 f'<span class="acard-label">{esc(label)}</span>'
                 f'<h3 class="acard-title">{esc(title)}</h3>'
                 f'<p class="acard-desc">{esc(desc)}</p>'
-                f'<span class="acard-tag">{esc(pill)}</span>'
-                f'<div class="acard-media">{media()}</div></a>')
+                f'<span class="acard-tag">{esc(pill)}</span></a>')
 
     def faq_numbered(items):
         rows = ""

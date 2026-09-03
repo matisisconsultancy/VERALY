@@ -728,26 +728,26 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 
 /* Tarjetas tipo artículo (referente) — situaciones dentro de las páginas de práctica */
 .acards{display:flex;flex-wrap:wrap;gap:var(--gutter);margin-top:var(--sp-m)}
-.acard{flex:1 1 300px;max-width:460px;display:flex;flex-direction:column;gap:14px;
+/* Tarjetas de situación: mismo lenguaje editorial que .fcard
+   (hairline, título fino, sin gráfico generativo, pie con flecha). */
+.acard{flex:1 1 300px;max-width:460px;display:flex;flex-direction:column;gap:.9rem;
+  min-height:clamp(230px,22vw,290px);
   background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--card-r);
-  padding:clamp(22px,2.4vw,30px);text-decoration:none;color:inherit;
-  box-shadow:0 1px 2px rgba(12,31,28,.04),0 14px 34px rgba(12,31,28,.06);
-  transition:border-color .2s ease,transform .25s ease,box-shadow .25s ease}
-.acard:hover{border-color:var(--accent-ink);transform:translateY(-4px);
-  box-shadow:0 4px 10px rgba(12,31,28,.06),0 22px 46px rgba(12,31,28,.10)}
-.acard-label{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.68rem;color:var(--dim-2)}
-.acard-title{font-family:var(--display);font-weight:600;font-size:var(--step-2);line-height:1.16;
-  letter-spacing:-.01em;color:var(--text);transition:color .2s;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
-  min-height:calc(1.16em * 2)}
+  padding:clamp(26px,2.8vw,40px);text-decoration:none;color:inherit;
+  transition:border-color .25s var(--btn-ease),transform .25s var(--btn-ease)}
+.acard:hover{border-color:var(--accent-ink);transform:translateY(-3px)}
+.acard-label{font-family:var(--sans);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:500;color:var(--dim-2)}
+.acard-title{font-family:var(--sans);font-weight:500;font-size:var(--step-2);line-height:1.14;
+  letter-spacing:-.01em;color:var(--text);transition:color .25s var(--btn-ease)}
 .acard:hover .acard-title{color:var(--accent-ink)}
-.acard-desc{color:var(--dim);font-size:var(--step-0);line-height:1.5;margin:0;
-  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
-  min-height:calc(1.5em * 3)}
-.acard-tag{margin-top:auto;margin-bottom:6px}
-.acard-media{position:relative;aspect-ratio:16/10;overflow:clip;border-radius:var(--card-r);
-  border:1px solid var(--line-soft);background:radial-gradient(120% 100% at 60% 8%,#0a4a50,#04191b)}
-.acard-media .media-svg,.acard-media>svg{position:absolute;inset:0;width:100%;height:100%}
+.acard-desc{color:var(--dim);font-size:var(--step-0);line-height:1.55;font-weight:300;margin:0;max-width:38ch}
+.acard-tag{margin-top:auto;padding-top:.4rem;display:inline-flex;align-items:center;gap:.55em;
+  font-family:var(--sans);text-transform:uppercase;letter-spacing:.14em;font-size:.7rem;font-weight:500;color:var(--accent-ink)}
+.acard-tag::after{content:"";width:1.05em;height:1.05em;background:currentColor;
+  -webkit-mask:var(--ico-arrow) center/contain no-repeat;mask:var(--ico-arrow) center/contain no-repeat;
+  transition:transform .28s var(--btn-ease)}
+.acard:hover .acard-tag::after{transform:translateX(4px)}
+.acard-media{display:none}
 @media (max-width:900px){.acard{flex:1 1 100%;max-width:none}}
 
 /* FAQ a dos columnas, lista numerada con chevron circular (referente) */
@@ -1077,18 +1077,18 @@ html.js .reveal-up.in{opacity:1;transform:none}
 
 /* Tag pill (categoría) */
 /* Pill de categoría (compartida por todas las cards con pill) + barrido teal en hover */
-.bcard .tag,.bf-body .tag,.acard-tag{display:inline-block;align-self:flex-start;
+.bcard .tag,.bf-body .tag{display:inline-block;align-self:flex-start;
   font-family:var(--ui);font-weight:600;font-size:var(--step--1);color:var(--text);
   border:1px solid var(--line-soft);border-radius:999px;padding:6px 14px;white-space:nowrap;
   background-image:linear-gradient(90deg,var(--accent-ink) 0 50%,var(--panel-2) 50% 100%);
   background-size:200% 100%;background-position:100% 0;background-repeat:no-repeat;
   transition:background-position .5s cubic-bezier(.2,.7,.2,1),color .32s ease,
     border-color .32s ease,transform .32s cubic-bezier(.2,.7,.2,1)}
-.bcard:hover .tag,.blog-feature:hover .tag,.acard:hover .acard-tag{
+.bcard:hover .tag,.blog-feature:hover .tag{
   background-position:0 0;color:#fff;border-color:var(--accent-ink);transform:translateY(-2px)}
 @media (prefers-reduced-motion:reduce){
-  .bcard .tag,.bf-body .tag,.acard-tag{transition:color .2s ease,border-color .2s ease}
-  .bcard:hover .tag,.blog-feature:hover .tag,.acard:hover .acard-tag{transform:none}}
+  .bcard .tag,.bf-body .tag{transition:color .2s ease,border-color .2s ease}
+  .bcard:hover .tag,.blog-feature:hover .tag{transform:none}}
 
 /* Fecha / metadatos en mono */
 .bcard-date,.bf-read{font-family:var(--mono);text-transform:uppercase;
