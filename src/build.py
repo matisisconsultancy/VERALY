@@ -215,52 +215,54 @@ def header_html(active=""):
 </header>'''
 
 def footer_html():
-    wa = (f'<li><a href="https://wa.me/{SITE["whatsapp"]}" data-whatsapp>WhatsApp</a></li>'
+    wa = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="footer">WhatsApp</a>'
           if SITE["whatsapp"] else '')
+    soluciones = "".join(
+        f'<a href="{url}">{esc(t)}</a>' for url, t, d, tag in SITUACIONES)
     return f'''<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      {brand()}
-      <p class="footer-claim">Defensa en fraude financiero por captación masiva y habitual.</p>
-      <p class="footer-status"><span class="dot" aria-hidden="true"></span>{esc(SITE["hours"])}</p>
-    </div>
-    <div class="footer-col">
-      <h4>Dirección</h4>
-      <address class="footer-plain">{esc(SITE["address"])}</address>
-      <h4>Horario</h4>
-      <p class="footer-plain">{esc(SITE["hours"])}</p>
-    </div>
-    <div class="footer-col">
-      <h4>Contacto</h4>
-      <ul>
-        <li><a href="tel:{SITE["phone_href"]}" data-pos="footer">{esc(SITE["phone_display"])}</a></li>
-        <li><a href="mailto:{SITE["email"]}">{esc(SITE["email"])}</a></li>
+  <div class="container footer-top">
+    <div class="footer-invite">
+      <p class="eyebrow">Contacto</p>
+      <p class="footer-lede">Hablemos de su caso<br>con la debida reserva.</p>
+      <div class="footer-cta">
+        {agendar_btn("Agendar una consulta")}
         {wa}
-      </ul>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Navegación</h4>
-      <ul>
-        <li><a href="/firma/">La firma</a></li>
-        <li><a href="/equipo/">El equipo</a></li>
-        <li><a href="/analisis/">Análisis</a></li>
-        <li><a href="/preguntas-frecuentes/">Preguntas frecuentes</a></li>
-        <li><a href="/contacto/">Contacto</a></li>
-      </ul>
-    </div>
+    <dl class="footer-meta">
+      <div class="fm-row"><dt>Correo</dt><dd><a href="mailto:{SITE["email"]}">{esc(SITE["email"])}</a></dd></div>
+      <div class="fm-row"><dt>Teléfono</dt><dd><a href="tel:{SITE["phone_href"]}" data-pos="footer">{esc(SITE["phone_display"])}</a></dd></div>
+      <div class="fm-row"><dt>Oficina</dt><dd>{esc(SITE["address"])}</dd></div>
+      <div class="fm-row"><dt>Horario</dt><dd>{esc(SITE["hours"])}</dd></div>
+    </dl>
   </div>
-  <div class="footer-legal">
-    <div class="container footer-legal-top">
-      <span>© 2026 · {esc(SITE["name"])} · Todos los derechos reservados.</span>
-      <span class="footer-legal-links">
-        <a href="/aviso-de-privacidad/">Aviso de privacidad</a>
-        <a href="/aviso-legal/">Aviso legal</a>
-        <a href="/politica-de-cookies/">Política de cookies</a>
-      </span>
-    </div>
-    <div class="container footer-legal-bottom">
-      <span class="footer-disclaimer">La información publicada en este sitio tiene carácter informativo y no constituye asesoría jurídica ni genera relación profesional.</span>
-    </div>
+
+  <div class="container footer-nav">
+    <nav class="fn-col" aria-label="Navegación del pie">
+      <h4>Navegación</h4>
+      <a href="/firma/">La firma</a>
+      <a href="/equipo/">El equipo</a>
+      <a href="/analisis/">Análisis</a>
+      <a href="/preguntas-frecuentes/">Preguntas frecuentes</a>
+      <a href="/contacto/">Contacto</a>
+    </nav>
+    <nav class="fn-col" aria-label="Soluciones">
+      <h4>Soluciones</h4>
+      {soluciones}
+    </nav>
+    <nav class="fn-col" aria-label="Legal">
+      <h4>Legal</h4>
+      <a href="/aviso-de-privacidad/">Aviso de privacidad</a>
+      <a href="/aviso-legal/">Aviso legal</a>
+      <a href="/politica-de-cookies/">Política de cookies</a>
+    </nav>
+  </div>
+
+  <div class="footer-wordmark" aria-hidden="true"><span>Veraly<i>.</i></span></div>
+
+  <div class="container footer-baseline">
+    <span class="fb-copy">© 2026 · {esc(SITE["name"])}</span>
+    <span class="footer-disclaimer">La información publicada en este sitio tiene carácter informativo y no constituye asesoría jurídica ni genera relación profesional.</span>
   </div>
 </footer>'''
 
