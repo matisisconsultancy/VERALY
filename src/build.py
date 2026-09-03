@@ -458,7 +458,7 @@ def marco_reveal(eyebrow="El marco que trabajamos", phrases=None, cards=None, se
 
 
 def agendar_btn(label="Agendar una consulta", primary=True):
-    cls = "btn btn--primary" if primary else "btn btn--ghost"
+    cls = "btn btn--primary btn--arrow" if primary else "btn btn--ghost"
     return f'<a class="{cls}" href="#agendar" data-cal data-pos="cta">{esc(label)}</a>'
 
 

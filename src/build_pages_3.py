@@ -351,7 +351,7 @@ def build(g):
         '<p class="eyebrow">Para el investigado o vinculado</p>'
         '<h1 class="sol-h1">La defensa se libra en <span class="pr-accent">tres frentes a la vez.</span></h1>'
         '<p class="sol-lede">Actuación administrativa ante la Superintendencia de Sociedades, defensa penal por los artículos 316 y 316A, y defensa patrimonial civil. El momento procesal define lo que todavía es posible.</p>'
-        '<div class="cta-row"><a class="btn btn--primary" href="/contacto/">Escribir ahora</a>'
+        '<div class="cta-row"><a class="btn btn--primary btn--arrow" href="/contacto/">Escribir ahora</a>'
         '<a class="btn btn--ghost" href="tel:' + SITE["phone_href"] + '" data-pos="defensa-hero">Llamar</a></div>'
         '</div>'
         '<aside class="sol-hero-aside"><div class="sol-facts">'
