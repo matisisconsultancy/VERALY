@@ -237,8 +237,7 @@ def build(g):
     <p class="lead" style="margin-top:1.2rem;max-width:58ch">Una primera conversación sirve para saber si hay caso, qué vías están abiertas y qué plazos corren. No requiere aportar documentos ni tomar ninguna decisión.</p>
     <div class="cta-row">
       {agendar("Agendar una consulta")}
-      <a class="btn btn--ghost" href="/contacto/">Escribir</a>
-      <a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="home">Llamar</a>
+      <a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="home">WhatsApp</a>
     </div>
   </div>
 </section>

@@ -269,7 +269,7 @@ def mobile_bar_html():
           if SITE["whatsapp"] else
           '<a class="btn btn--ghost" href="/contacto/" data-pos="mobilebar">Escribir</a>')
     return f'''<div class="mobile-bar is-on">
-  <a class="btn btn--primary" href="tel:{SITE["phone_href"]}" data-pos="mobilebar">Llamar</a>
+  {agendar_btn("Agendar cita")}
   {wa}
 </div>'''
 

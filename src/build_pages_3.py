@@ -132,15 +132,14 @@ def build(g):
          "<li>Responsabilidad civil contra administradores, revisores fiscales, contadores y vinculados solventes.</li>"
          "<li>Reconstrucción de la prenda general por simulación, acción pauliana y revocatoria concursal.</li></ul>"),
     ])
-    wa_a = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" data-whatsapp data-pos="afectados">Escribir por WhatsApp</a>' if SITE["whatsapp"] else "")
+    wa_a = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="afectados">WhatsApp</a>' if SITE["whatsapp"] else "")
     af_hero = (
         '<section class="sol-hero"><div class="container sol-hero-grid">'
         '<div class="sol-hero-main">'
         '<p class="eyebrow">Para el afectado</p>'
         '<h1 class="sol-h1">Recuperar lo que entregó <span class="pr-accent">tiene vías —y un reloj.</span></h1>'
         '<p class="sol-lede">Perder dinero en una pirámide o en un esquema de rendimientos no autorizado abre tres vías de recuperación, todas con plazos que empiezan a correr desde la toma de posesión.</p>'
-        '<div class="cta-row">' + agendar("Agendar una consulta")
-        + '<a class="btn btn--ghost" href="/contacto/">Escribir a la firma</a></div>'
+        '<div class="cta-row">' + agendar("Agendar una consulta") + wa_a + '</div>'
         '</div>'
         '<aside class="sol-hero-aside"><div class="sol-facts">'
         '<div class="sol-fact"><b>3</b><span>vías de recuperación: administrativa, penal y civil</span></div>'
@@ -277,7 +276,7 @@ def build(g):
   <div class="container">
     <h2>Una primera conversación</h2>
     <p class="lead" style="margin-top:1rem;max-width:56ch">No necesita traer documentos ni haber decidido nada. Sirve para saber si hay caso, qué vías siguen abiertas y qué plazos corren.</p>
-    <div class="cta-row" style="margin-top:1.6rem">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="afectados">Llamar</a>{wa_a}</div>
+    <div class="cta-row" style="margin-top:1.6rem">{agendar("Agendar una consulta")}{wa_a}</div>
     <div style="margin-top:1.8rem">{trust_list()}</div>
     <p style="margin-top:1.4rem"><a class="arrowlink" href="/firma/">Conocer cómo trabaja la firma</a></p>
     <p><a class="arrowlink" href="/equipo/">Conocer al equipo</a></p>
@@ -340,15 +339,14 @@ def build(g):
          "<li>Responsabilidad de administradores, simulaciones y acciones paulianas contra el patrimonio del cónyuge, la familia o sociedades relacionadas.</li>"
          "<li>Conciliación y acuerdos de pago con afectados.</li></ul>"),
     ]
-    wa_b = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" data-whatsapp data-pos="defensa">Escribir por WhatsApp</a>' if SITE["whatsapp"] else "")
+    wa_b = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="defensa">WhatsApp</a>' if SITE["whatsapp"] else "")
     def_hero = (
         '<section class="sol-hero"><div class="container sol-hero-grid">'
         '<div class="sol-hero-main">'
         '<p class="eyebrow">Para el investigado o vinculado</p>'
         '<h1 class="sol-h1">La defensa se libra en <span class="pr-accent">tres frentes a la vez.</span></h1>'
         '<p class="sol-lede">Actuación administrativa ante la Superintendencia de Sociedades, defensa penal por los artículos 316 y 316A, y defensa patrimonial civil. El momento procesal define lo que todavía es posible.</p>'
-        '<div class="cta-row"><a class="btn btn--primary" href="/contacto/">Escribir ahora</a>'
-        '<a class="btn btn--ghost" href="tel:' + SITE["phone_href"] + '" data-pos="defensa-hero">Llamar</a></div>'
+        '<div class="cta-row">' + agendar("Agendar una consulta") + wa_b + '</div>'
         '</div>'
         '<aside class="sol-hero-aside"><div class="sol-facts">'
         '<div class="sol-fact"><b>3</b><span>frentes en paralelo: administrativo, penal y civil</span></div>'
@@ -440,7 +438,7 @@ def build(g):
   <div class="container">
     <h2>Hablar hoy</h2>
     <p class="lead" style="margin-top:1rem;max-width:54ch">Una primera conversación para ubicar el momento procesal y lo que todavía es posible. No necesita traer documentos.</p>
-    <div class="cta-row" style="margin-top:1.6rem"><a class="btn btn--primary" href="/contacto/">Escribir a la firma</a><a class="btn btn--ghost" href="tel:{SITE["phone_href"]}" data-pos="defensa">Llamar</a>{wa_b}{agendar("Agendar", primary=False)}</div>
+    <div class="cta-row" style="margin-top:1.6rem">{agendar("Agendar una consulta")}{wa_b}</div>
     <div style="margin-top:1.8rem">{trust_list()}</div>
     <p style="margin-top:1.4rem"><a class="arrowlink" href="/equipo/">Ver al equipo</a></p>
   </div>
@@ -480,7 +478,7 @@ def build(g):
         '<h1 class="sol-h1">La línea de la captación <span class="pr-accent">se puede medir.</span></h1>'
         '<p class="sol-lede">Fintech, crowdfunding, libranzas, factoring, multinivel y clubes de inversión operan cerca de los umbrales que configuran captación. Revisamos el encuadre, fijamos los límites y documentamos la posición antes de que una superintendencia pregunte.</p>'
         '<div class="cta-row">' + agendar("Solicitar una revisión de encuadre") +
-        '<a class="btn btn--ghost" href="/contacto/">Escribir a la firma</a></div>'
+        f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="cumplimiento">WhatsApp</a></div>'
         '</div>'
         '<aside class="sol-hero-aside"><div class="sol-facts">'
         '<div class="sol-fact"><b>+20</b><span>personas con las que hay pasivo con el público</span></div>'
@@ -544,7 +542,7 @@ def build(g):
   <div class="container">
     <h2>Revisar el encuadre</h2>
     <p class="lead" style="margin-top:1rem;max-width:54ch">Una conversación para ubicar el modelo frente a los umbrales y definir si conviene una revisión formal.</p>
-    <div class="cta-row" style="margin-top:1.6rem">{agendar("Agendar una revisión")}<a class="btn btn--ghost" href="/contacto/">Escribir a la firma</a></div>
+    <div class="cta-row" style="margin-top:1.6rem">{agendar("Agendar una revisión")}<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="cumplimiento">WhatsApp</a></div>
     <div style="margin-top:1.8rem">{trust_list()}</div>
   </div>
 </section>
