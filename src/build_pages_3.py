@@ -885,7 +885,7 @@ def build(g):
     add("/politica-de-cookies/", {
         "title": "Política de cookies · Veraly Grupo Jurídico",
         "description": "Cómo usa Veraly Grupo Jurídico las cookies esenciales y analíticas, y cómo gestionar su preferencia.",
-        "active": "",
+        "active": "", "body_class": "theme-light",
     }, cookies_body)
 
     # =====================================================================
@@ -915,7 +915,7 @@ def build(g):
     add("/aviso-de-privacidad/", {
         "title": "Aviso de privacidad · Veraly Grupo Jurídico",
         "description": "Política de tratamiento de datos personales de Veraly Grupo Jurídico conforme a la Ley 1581 de 2012.",
-        "active": "",
+        "active": "", "body_class": "theme-light",
     }, privacidad_body)
 
     legal_body = f'''
@@ -938,5 +938,5 @@ def build(g):
     add("/aviso-legal/", {
         "title": "Aviso legal · Veraly Grupo Jurídico",
         "description": "Titularidad del sitio, alcance de la información publicada y nota de que el contenido es informativo y no constituye asesoría jurídica.",
-        "active": "",
+        "active": "", "body_class": "theme-light",
     }, legal_body)
