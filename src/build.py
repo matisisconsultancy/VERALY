@@ -197,7 +197,7 @@ def header_html(active=""):
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">{ICON_MENU}</button>
     <div class="nav-cluster">
       <nav class="nav-pill" aria-label="Navegación principal">{links()}</nav>
-      <a class="btn btn--primary btn--sm nav-cta-pill" href="/contacto/"{cur('contacto')}>Contacto</a>
+      <a class="nav-cta-btn" href="/contacto/"{cur('contacto')}>Contacto<span class="nav-cta-ico" aria-hidden="true"></span></a>
     </div>
     <div class="nav-menu-wrap" id="nav-menu">
       <ul class="nav-menu">
