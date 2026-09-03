@@ -346,7 +346,6 @@ def build(g):
       </div>
       <a class="btn btn--primary" href="/equipo/socios/">Equipo</a>
     </div>
-    <div class="cta-row" style="margin-top:clamp(28px,3.4vw,44px)">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabajamos</a></div>
   </div>
 </section>
 '''

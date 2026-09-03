@@ -64,6 +64,17 @@
   --lede:var(--step-1);                        /* subtítulos / entradillas */
 
   --gutter:clamp(20px,4vw,40px);
+
+  /* ---------- Escala de espaciado (ritmo vertical único) ----------
+     Un solo conjunto de pasos fluidos para separar textos, encabezados
+     y bloques en todo el sitio. Evita los clamp() sueltos por sección. */
+  --sp-xs:1.2rem;                    /* eyebrow -> título; micro-separaciones */
+  --sp-s:clamp(20px,2.6vw,36px);     /* título -> subtítulo; eyebrow -> h1 */
+  --sp-m:clamp(28px,3.6vw,52px);     /* encabezado -> contenido (grids, listas) */
+  --sp-l:clamp(36px,4.6vw,68px);     /* margen inferior de encabezado de sección */
+  --sp-xl:clamp(48px,8vw,104px);     /* separación entre secciones / cierres */
+  --section-y:clamp(48px,8vw,104px); /* padding vertical estándar de sección */
+  --section-y-tight:clamp(36px,5vw,64px);
 }
 
 /* ---------- Tema claro Veraly (referente bgslaw: fondo blanco, tipografía fina) ---------- */
@@ -130,7 +141,7 @@ strong{font-weight:600;color:var(--text)}
 .skip-link:focus{top:12px}
 .container{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--edge)}
 .eyebrow{font-family:var(--sans);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;
-  color:var(--dim-2);font-weight:500;margin:0 0 1.2rem;display:block}
+  color:var(--dim-2);font-weight:500;margin:0 0 var(--sp-xs);display:block}
 .lead{font-size:var(--lede);color:var(--dim);line-height:1.55;font-weight:300}
 .prose{max-width:var(--readw)}
 .container.prose{max-width:var(--maxw)}      /* recupera el ancho del contenedor */
@@ -140,8 +151,8 @@ strong{font-weight:600;color:var(--text)}
 .prose h3{margin:1.8rem 0 .6rem;color:var(--text)}
 .prose ul,.prose ol{padding-left:1.2rem;margin:0 0 1.2rem}
 .prose li{margin:.35rem 0}
-.section{padding-block:clamp(48px,8vw,104px)}
-.section--tight{padding-block:clamp(36px,5vw,64px)}
+.section{padding-block:var(--section-y)}
+.section--tight{padding-block:var(--section-y-tight)}
 .divider{border:0;border-top:1px solid var(--line-soft);margin:0}
 
 /* ============================================================
@@ -300,8 +311,8 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
 .hero{padding-block:calc(var(--head-h) + clamp(28px,6vh,64px)) clamp(52px,9vw,110px)}
 .hero--vh{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
 .hero h1{max-width:15ch}
-.hero .support{font-size:var(--lede);color:var(--dim);max-width:46ch;margin:1.4rem 0 0;font-family:var(--sans);font-weight:300;line-height:1.55}
-.hero .desc{font-size:var(--lede);max-width:58ch;color:var(--dim);margin:1.4rem 0 0;font-weight:300;line-height:1.55}
+.hero .support{font-size:var(--lede);color:var(--dim);max-width:46ch;margin:var(--sp-s) 0 0;font-family:var(--sans);font-weight:300;line-height:1.55}
+.hero .desc{font-size:var(--lede);max-width:58ch;color:var(--dim);margin:var(--sp-s) 0 0;font-weight:300;line-height:1.55}
 
 /* ---------- Rejillas / tarjetas ---------- */
 .grid{display:grid;gap:var(--gutter)}
@@ -383,8 +394,8 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
    fondo blanco, titulares finos, filas a todo el ancho, color como detalle. */
 .prac-rule{display:block;width:52px;height:2px;background:var(--accent-ink);margin:16px 0 0}
 .prac-h1{font-family:var(--sans);font-weight:var(--hw);font-size:var(--h1);
-  line-height:1.03;letter-spacing:-.02em;max-width:16ch;margin-top:clamp(22px,3vw,40px)}
-.prac-sub{color:var(--dim);margin-top:clamp(20px,2.8vw,38px);max-width:52ch;
+  line-height:1.03;letter-spacing:-.02em;max-width:16ch;margin-top:var(--sp-s)}
+.prac-sub{color:var(--dim);margin-top:var(--sp-s);max-width:52ch;
   font-size:var(--step-1);font-weight:300;line-height:1.5}
 .prac-rows-sec{padding-bottom:clamp(56px,8vw,104px)}
 /* filas a todo el ancho del layout (full-bleed); el contenido respeta el margen */
@@ -425,7 +436,7 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
 
 /* Páginas de práctica — descripción y normas (referente Oris, en clave clara) */
 .eyebrow-num{font-family:var(--sans);font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;
-  color:var(--dim-2);display:flex;align-items:center;gap:14px;margin:0 0 clamp(20px,2.6vw,34px)}
+  color:var(--dim-2);display:flex;align-items:center;gap:14px;margin:0 0 var(--sp-xs)}
 .eyebrow-num .n{color:var(--accent-ink);font-weight:600}
 .pr-big{font-family:var(--sans);font-weight:var(--hw);font-size:var(--h2);
   line-height:1.08;letter-spacing:-.02em;max-width:18ch;margin:0}
@@ -441,9 +452,9 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
 .pr-list li::before{content:"—";position:absolute;left:0;color:var(--accent-ink)}
 .pr-list a{color:var(--text);text-decoration:none;transition:color .18s}
 .pr-list a:hover{color:var(--accent-ink)}
-.pr-more{margin-top:clamp(22px,2.6vw,32px)}
+.pr-more{margin-top:var(--sp-s)}
 /* Timeline de normatividad con imagen (referente milestones) */
-.pr-timeline{margin-top:clamp(28px,4vw,52px);border-top:1px solid var(--line)}
+.pr-timeline{margin-top:var(--sp-m);border-top:1px solid var(--line)}
 .pr-tl-row{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr) clamp(300px,42%,600px);
   gap:clamp(24px,3vw,56px);align-items:stretch;padding:0;
   position:relative;border-bottom:1px solid var(--line);transition:background .22s ease}
@@ -572,7 +583,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   --text:#EAFBF6; --dim:rgba(234,251,246,.66); --dim-2:rgba(234,251,246,.44);
   --line:rgba(137,245,229,.28); --line-soft:rgba(234,251,246,.12); --accent-ink:#89F5E5;
   background:var(--ink);color:var(--text);
-  border-top:1px solid var(--line-soft);margin-top:clamp(48px,8vw,96px)}
+  border-top:1px solid var(--line-soft);margin-top:var(--sp-xl)}
 .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:var(--gutter);
   padding-block:clamp(48px,6vw,84px)}
 @media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
@@ -682,7 +693,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .hero-kicker{margin-top:clamp(16px,2vh,26px);font-family:var(--ui);color:var(--dim);font-weight:500;font-size:var(--step-1)}
 .hero-right{max-width:46ch;justify-self:end;align-self:end}
 .hero-full .hero-right .desc{color:var(--dim)}
-.hero-full .hero-right .cta-row{flex-wrap:nowrap;margin-top:clamp(20px,3vh,34px)}
+.hero-full .hero-right .cta-row{flex-wrap:nowrap;margin-top:var(--sp-s)}
 .hero-full .hero-right .cta-row .btn{white-space:nowrap;flex:none}
 @media (max-width:820px){
   .hero-inner{grid-template-columns:1fr;gap:26px}
@@ -721,7 +732,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .fcard .fbody>p{color:var(--dim);margin:.6rem 0 0;font-size:var(--step-0);max-width:34ch}
 
 /* Tarjetas tipo artículo (referente) — situaciones dentro de las páginas de práctica */
-.acards{display:flex;flex-wrap:wrap;gap:var(--gutter);margin-top:clamp(28px,3.4vw,48px)}
+.acards{display:flex;flex-wrap:wrap;gap:var(--gutter);margin-top:var(--sp-m)}
 .acard{flex:1 1 300px;max-width:460px;display:flex;flex-direction:column;gap:14px;
   background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--card-r);
   padding:clamp(22px,2.4vw,30px);text-decoration:none;color:inherit;
@@ -871,7 +882,7 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
    Stepper con pin/scroll (referente "Get Blue" / The Process)
    ============================================================ */
 .stepper{background:var(--ink);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
-.stepper-intro{padding-top:clamp(48px,8vw,96px)}
+.stepper-intro{padding-top:var(--sp-xl)}
 .stepper-track{position:relative;height:460vh}
 .stepper-sticky{position:sticky;top:0;height:100vh;overflow:clip}
 .stepper-inner{position:relative;width:100%;height:100vh}
@@ -970,7 +981,7 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 .reveal-phrase .w{color:var(--dim-2);transition:color .3s ease}
 .reveal-phrase .w.lit{color:var(--text)}
 /* baraja de tarjetas-enlace de norma (rejilla a lo ancho, con hover de color) */
-.reveal-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%;max-width:1160px;margin-top:clamp(44px,7vh,104px)}
+.reveal-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%;max-width:1160px;margin-top:var(--sp-xl)}
 .reveal-cards .rc{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:22px 24px;min-height:116px;
   background:linear-gradient(160deg,rgba(137,245,229,.06),rgba(10,74,80,.16));text-decoration:none;color:inherit;
   -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;flex-direction:column;gap:8px;justify-content:space-between;
@@ -1164,13 +1175,13 @@ html.js .reveal-up.in{opacity:1;transform:none}
   color:var(--dim-2);font-weight:500;display:block;margin:0}
 .article-kicker .dot{display:none}
 .article-head-row{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(28px,5vw,80px);
-  align-items:start;margin-top:clamp(22px,3vw,40px)}
+  align-items:start;margin-top:var(--sp-s)}
 .article-h1{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1.03;
   font-size:clamp(2.2rem,1.3rem + 3.4vw,4.2rem);margin:0;max-width:15ch}
 .article-lede{color:var(--dim);font-weight:300;font-size:var(--step-1);line-height:1.55;
   max-width:44ch;margin:0;align-self:end}
 .article-byline{display:flex;align-items:center;flex-wrap:wrap;
-  gap:10px;margin-top:clamp(26px,3vw,40px);font-family:var(--ui);font-size:var(--step--1);color:var(--dim-2)}
+  gap:10px;margin-top:var(--sp-s);font-family:var(--ui);font-size:var(--step--1);color:var(--dim-2)}
 .article-byline .ab-name{color:var(--text);font-weight:600}
 .article-byline .brand-mark{width:26px;height:26px;color:var(--accent-ink);display:inline-block}
 .article-byline time{color:var(--dim)}
@@ -1181,7 +1192,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
 }
 
 /* Imagen hero a todo el ancho del viewport */
-.article-hero-media{margin-top:clamp(30px,4vw,56px);width:100%}
+.article-hero-media{margin-top:var(--sp-l);width:100%}
 .ahm-inner{position:relative;overflow:hidden;height:clamp(300px,42vw,600px);
   background:linear-gradient(150deg,#0a4a50,#04191b)}
 .ahm-inner svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
@@ -1193,7 +1204,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .article-intro{font-family:var(--sans);font-weight:300;color:var(--text);
   font-size:clamp(1.25rem,1.05rem + .7vw,1.6rem);line-height:1.5;letter-spacing:-.01em;
   margin:0 0 2.2rem}
-.prose-article{margin-top:clamp(34px,5vw,60px)}
+.prose-article{margin-top:var(--sp-l)}
 .prose-article h2{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;
   font-size:clamp(1.5rem,1.2rem + 1.1vw,2.05rem);line-height:1.15;margin:2.8rem 0 1rem}
 .prose-article p,.prose-article li{font-size:var(--step-1);line-height:1.7;color:var(--dim)}
@@ -1215,7 +1226,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .prose-article p,.prose-article li{font-size:var(--step-1);line-height:1.7;color:var(--dim)}
 .prose-article p strong{color:var(--text)}
 /* Tarjeta de cierre: autoría + compartir agrupadas (integradas, no sueltas) */
-.article-end{margin-top:clamp(36px,5vw,64px);background:var(--ink);
+.article-end{margin-top:var(--sp-l);background:var(--ink);
   border:1px solid var(--line-soft);border-radius:var(--card-r);padding:clamp(24px,3.2vw,40px)}
 .article-byline-card{display:flex;gap:16px;align-items:flex-start}
 .article-byline-card .brand-mark{width:36px;height:36px;flex:none;color:var(--accent-ink);
@@ -1225,7 +1236,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
 
 /* Fila de compartir (dentro de la tarjeta de cierre) */
 .share-row{display:flex;align-items:center;justify-content:space-between;gap:16px;
-  flex-wrap:wrap;margin-top:clamp(22px,2.6vw,30px);padding-top:clamp(22px,2.6vw,30px);
+  flex-wrap:wrap;margin-top:var(--sp-s);padding-top:var(--sp-s);
   border-top:1px solid var(--line)}
 .share-lead{font-family:var(--sans);font-weight:300;font-size:var(--step-1);color:var(--text)}
 .share-links{display:flex;gap:10px}
@@ -1239,7 +1250,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .share-btn.is-copied{background:var(--accent-ink);color:#fff;border-color:var(--accent-ink)}
 
 /* Artículos relacionados */
-.blog-related{margin-top:clamp(48px,8vw,96px);padding:clamp(40px,6vw,72px) 0;
+.blog-related{margin-top:var(--sp-xl);padding:clamp(40px,6vw,72px) 0;
   background:var(--ink);border-top:1px solid var(--line-soft)}
 .related-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .bfilter-pill{font-family:var(--sans);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;
@@ -1281,7 +1292,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
    Animación acorde: una línea tacha cada icono al entrar (gesto de "no")
    ============================================================ */
 .nh-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,5vw,80px);
-  align-items:baseline;margin-bottom:clamp(30px,4vw,56px)}
+  align-items:baseline;margin-bottom:var(--sp-l)}
 .nh-eyebrow{margin:0}
 .nh-title{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1.05;
   font-size:clamp(2rem,1.3rem + 3vw,3.8rem);margin:0;max-width:18ch}
@@ -1346,7 +1357,7 @@ html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico svg{transition-delay:.66s}
   font-size:var(--h1);margin:clamp(16px,2vw,26px) 0 0;max-width:15ch}
 .sol-lede{color:var(--dim);font-weight:300;font-size:var(--step-1);line-height:1.55;max-width:46ch;
   margin:clamp(20px,2.4vw,32px) 0 0}
-.sol-hero .cta-row{margin-top:clamp(26px,3vw,40px)}
+.sol-hero .cta-row{margin-top:var(--sp-s)}
 .sol-facts{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .sol-fact{display:flex;flex-direction:column;gap:4px;padding:clamp(16px,2vw,24px) 0;border-bottom:1px solid var(--line)}
 .sol-fact b{font-family:var(--sans);font-weight:300;font-size:clamp(2rem,1.4rem + 1.8vw,3.2rem);line-height:1;
@@ -1375,7 +1386,7 @@ html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico svg{transition-delay:.66s}
 .plz-title .pr-accent{color:var(--accent)}
 .plz-sub{color:rgba(234,251,246,.7);font-weight:300;line-height:1.55;max-width:56ch;margin:1rem 0 0}
 .plz-track{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.4vw,44px);
-  margin-top:clamp(44px,6vw,76px);position:relative}
+  margin-top:var(--sp-l);position:relative}
 /* la barra es el protagonista: un riel fino que se ilumina de izq. a der. con el scroll */
 .plz-track::before,.plz-track::after{content:"";position:absolute;top:10px;left:0;height:5px;border-radius:5px}
 .plz-track::before{right:0;background:rgba(137,245,229,.12)}
@@ -1427,7 +1438,7 @@ html:not(.js) .plz-track::after{width:100%}
 .via-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center}
 .via-frame{width:100%}
 /* encabezado mínimo: solo el eyebrow, con aire */
-.via-head{padding-bottom:clamp(22px,2.8vw,40px);margin-bottom:clamp(36px,4.4vw,68px);border-bottom:1px solid var(--line)}
+.via-head{padding-bottom:var(--sp-s);margin-bottom:var(--sp-l);border-bottom:1px solid var(--line)}
 .via-head .eyebrow-num{margin:0}
 .via-stage{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,7vw,104px);align-items:center;width:100%}
 .via-slides{position:relative;min-height:clamp(300px,40vh,400px)}
@@ -1461,7 +1472,7 @@ html:not(.js) .plz-track::after{width:100%}
 .via-bar-v{font-family:var(--sans);font-weight:500;font-size:.94rem;line-height:1.25;color:var(--dim);transition:color .45s ease}
 .via-bar.cur .via-bar-v{color:var(--text)}
 .via-scope-hint{display:block;font-family:var(--ui);font-size:var(--step--1);color:var(--dim);margin-top:.2rem}
-.via-foot{color:var(--dim);margin-top:clamp(26px,3.4vw,48px)}
+.via-foot{color:var(--dim);margin-top:var(--sp-m)}
 @media (max-width:860px){
   .via-track{height:auto}
   .via-sticky{position:static;height:auto;display:block;padding:8px 0}
@@ -1477,7 +1488,7 @@ html:not(.js) .plz-track::after{width:100%}
 /* Recorrido (customer journey): escena fijada; al bajar avanza la fase
    activa y las anteriores se cierran (una abierta a la vez) */
 .jn-pin{padding:0}
-.jn-intro{padding-top:clamp(48px,7vw,96px);padding-bottom:clamp(6px,1.4vw,20px)}
+.jn-intro{padding-top:var(--sp-xl);padding-bottom:clamp(6px,1.4vw,20px)}
 /* más recorrido por fase = tiempo para leer la información completa de cada una;
    el titular queda fuera del pin para que quepa la lista completa de cada fase */
 .jn-pin-track{position:relative;height:450vh}
@@ -1594,7 +1605,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 
 /* ============ Soluciones: componentes propios de /defensa y /cumplimiento ============ */
 /* Perímetro (defensa): rejilla de roles alcanzados, con el captador destacado */
-.perim-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,22px);margin:clamp(28px,3.4vw,48px) 0 0}
+.perim-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,22px);margin:var(--sp-m) 0 0}
 .perim-card{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:clamp(20px,2vw,28px);background:var(--panel);
   display:flex;flex-direction:column;gap:.5rem;transition:border-color .4s ease,transform .4s ease}
 .perim-card.is-core{border-color:var(--accent-ink);background:color-mix(in srgb,var(--accent-ink) 9%,var(--panel))}
@@ -1607,7 +1618,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 @media(max-width:760px){.perim-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.perim-grid{grid-template-columns:1fr}}
 /* Dos presunciones (defensa): tarjeta con "se presume" -> "se desvirtúa" */
-.presu-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,32px);margin-top:clamp(28px,3.4vw,48px)}
+.presu-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,32px);margin-top:var(--sp-m)}
 .presu-card{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:clamp(24px,2.4vw,38px);background:var(--panel)}
 .presu-tag{display:block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.66rem;color:var(--dim-2);margin-bottom:1.1rem}
 .presu-k{display:inline-block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;font-size:.62rem;
@@ -1617,7 +1628,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 .presu-rebut{font-weight:300;line-height:1.6;color:var(--dim);margin:.2rem 0 0}
 @media(max-width:720px){.presu-grid{grid-template-columns:1fr}}
 /* Umbrales (cumplimiento): tres disparadores con cifra grande */
-.umbral-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px);margin:clamp(28px,3.4vw,48px) 0 0}
+.umbral-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px);margin:var(--sp-m) 0 0}
 .umbral-metric{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:clamp(24px,2.4vw,38px);background:var(--panel)}
 .umbral-metric.um-material{background:color-mix(in srgb,var(--accent-ink) 9%,var(--panel));border-color:var(--accent-ink)}
 .um-n{display:flex;align-items:baseline;font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:.9;
@@ -1694,11 +1705,11 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 
 /* ============ Equipo (personas): índice con retratos + detalle de socio ============ */
 .equipo-cta{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;
-  margin-top:clamp(48px,7vw,88px);padding-top:clamp(32px,4vw,56px);border-top:1px solid var(--line)}
+  margin-top:var(--sp-xl);padding-top:var(--sp-m);border-top:1px solid var(--line)}
 .equipo-cta .eyebrow{margin:0}
 .equipo-cta .pr-big{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.4rem);margin:.4rem 0 0}
 /* rejilla de retratos (referente Équipe) */
-.socios-grid-sec{padding:clamp(6px,1.6vw,20px) 0 clamp(48px,7vw,96px)}
+.socios-grid-sec{padding:clamp(6px,1.6vw,20px) 0 var(--sp-xl)}
 .socios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.4vw,22px);padding:0 var(--edge)}
 .socio-card{display:block;text-decoration:none;color:inherit}
 .socio-photo{display:block;position:relative;overflow:clip;border-radius:var(--card-r);aspect-ratio:4/5;background:var(--ink)}
@@ -1723,11 +1734,11 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 .socio-h1{font-family:var(--display);font-weight:var(--hw);letter-spacing:-.02em;line-height:1.03;
   font-size:var(--h1);color:var(--text);margin:.5rem 0 0}
 .socio-role{font-family:var(--sans);font-weight:300;font-size:var(--step-1);color:var(--dim);margin:.8rem 0 0}
-.socio-bio{margin-top:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:1.05rem;max-width:62ch}
+.socio-bio{margin-top:var(--sp-s);display:flex;flex-direction:column;gap:1.05rem;max-width:62ch}
 .socio-bio p{color:var(--dim);font-weight:300;line-height:1.7;margin:0}
-.socio-contact{margin-top:clamp(28px,3.4vw,48px);padding-top:1.4rem;border-top:1px solid var(--line)}
+.socio-contact{margin-top:var(--sp-m);padding-top:1.4rem;border-top:1px solid var(--line)}
 .socio-contact .ci-v{margin:.4rem 0 0}
-.socio-next{display:flex;flex-direction:column;gap:.5rem;margin-top:clamp(48px,7vw,96px);
+.socio-next{display:flex;flex-direction:column;gap:.5rem;margin-top:var(--sp-xl);
   padding:clamp(36px,5vw,72px) var(--edge);background:var(--ink);text-decoration:none}
 .sn-k{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;color:var(--dim-2)}
 .sn-name{font-family:var(--display);font-weight:var(--hw);font-size:var(--h2);letter-spacing:-.02em;color:var(--text);transition:color .25s ease}
@@ -2074,7 +2085,6 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
       </div>
       <a class="btn btn--primary" href="#!/equipo/socios/">Equipo</a>
     </div>
-    <div class="cta-row" style="margin-top:clamp(28px,3.4vw,44px)"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a><a class="btn btn--ghost" href="#!/firma/">Cómo trabajamos</a></div>
   </div>
 </section>
 </template>
