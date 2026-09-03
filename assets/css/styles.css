@@ -722,7 +722,8 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   opacity:.55;transition:transform .3s var(--btn-ease),opacity .3s var(--btn-ease)}
 .fcard:hover::before{transform:translateX(5px);opacity:1}
 .fcard .fbody{padding:0;margin-top:auto}
-.fcard h3{font-size:var(--step-2);line-height:1.14;font-weight:500;letter-spacing:-.01em;transition:color .2s}
+.fcard h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.65rem);line-height:1.16;font-weight:500;letter-spacing:-.01em;transition:color .2s;
+  text-wrap:balance;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .fcard:hover h3{color:var(--accent)}
 .fcard .fbody>p{color:var(--dim);margin:.6rem 0 0;font-size:var(--step-0);max-width:34ch}
 
@@ -737,8 +738,9 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   transition:border-color .25s var(--btn-ease),transform .25s var(--btn-ease)}
 .acard:hover{border-color:var(--accent-ink);transform:translateY(-3px)}
 .acard-label{font-family:var(--sans);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:500;color:var(--dim-2)}
-.acard-title{font-family:var(--sans);font-weight:500;font-size:var(--step-2);line-height:1.14;
-  letter-spacing:-.01em;color:var(--text);transition:color .25s var(--btn-ease)}
+.acard-title{font-family:var(--sans);font-weight:500;font-size:clamp(1.3rem,1.05rem + .8vw,1.65rem);line-height:1.16;
+  letter-spacing:-.01em;color:var(--text);transition:color .25s var(--btn-ease);
+  text-wrap:balance;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .acard:hover .acard-title{color:var(--accent-ink)}
 .acard-desc{color:var(--dim);font-size:var(--step-0);line-height:1.55;font-weight:300;margin:0;max-width:38ch}
 .acard-tag{margin-top:auto;padding-top:.4rem;display:inline-flex;align-items:center;gap:.55em;
@@ -770,7 +772,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .qa-n{font-family:var(--sans);font-weight:300;font-size:var(--step-1);color:var(--dim-2);line-height:1;
   min-width:2.2ch;font-variant-numeric:tabular-nums}
 .qa-q{font-family:var(--sans);font-weight:500;font-size:var(--step-1);letter-spacing:-.01em;line-height:1.3;
-  color:var(--text);transition:color .25s var(--btn-ease)}
+  color:var(--text);text-wrap:balance;transition:color .25s var(--btn-ease)}
 .qa>summary:hover .qa-q,.qa[open] .qa-q{color:var(--accent-ink)}
 .qa-ic{position:relative;width:20px;height:20px;flex:none}
 .qa-ic::before,.qa-ic::after{content:"";position:absolute;top:50%;left:50%;background:var(--dim-2);
@@ -1144,10 +1146,9 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .bcard:hover{transform:translateY(-4px);
   box-shadow:0 1px 2px rgba(12,31,28,.05),0 26px 60px -32px rgba(12,31,28,.4)}
 .bcard-head{display:flex;flex-direction:column;gap:12px}
-.bcard-title{font-family:var(--sans);font-weight:300;letter-spacing:-.015em;line-height:1.15;
-  font-size:clamp(1.4rem,1.1rem + 1vw,1.9rem);color:var(--text);
-  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
-  min-height:calc(1.15em * 3)}
+.bcard-title{font-family:var(--sans);font-weight:400;letter-spacing:-.015em;line-height:1.18;
+  font-size:clamp(1.25rem,1.05rem + .7vw,1.55rem);color:var(--text);text-wrap:pretty;
+  min-height:calc(1.18em * 2)}
 .bcard-desc{color:var(--dim);font-weight:300;font-size:var(--step-0);line-height:1.5;
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
   min-height:calc(1.5em * 3)}
@@ -1316,8 +1317,9 @@ html.js .nh-card.in .nh-ico svg{opacity:.24;transition-delay:.34s}
 .nh-card:hover .nh-ico{transform:scale(1.08)}
 .nh-card:hover .nh-ico svg{opacity:.05;transition-delay:0s}
 .nh-card:hover .nh-strike,.nh-card:hover .nh-ico::after{box-shadow:0 0 16px 0 rgba(5,41,44,1)}
-.nh-t{font-family:var(--sans);font-weight:300;letter-spacing:-.015em;line-height:1.15;
-  font-size:clamp(1.35rem,1.05rem + 1vw,1.85rem);color:var(--text);margin:0}
+.nh-t{font-family:var(--sans);font-weight:400;letter-spacing:-.015em;line-height:1.18;
+  font-size:clamp(1.25rem,1.02rem + .7vw,1.55rem);color:var(--text);margin:0;text-wrap:balance;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .nh-d{color:var(--dim);font-weight:300;line-height:1.6;font-size:var(--step-0);
   margin:.9rem 0 0;max-width:34ch}
 /* cascada por columna: las X van saliendo de izquierda a derecha */
