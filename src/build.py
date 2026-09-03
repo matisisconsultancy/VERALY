@@ -351,53 +351,33 @@ def wave_svg():
 
 
 def proceso_stepper():
-    ov_verificar = ('<div class="sv-overlay"><b>Verificación de conflicto</b>'
-                    '<div class="svc-row"><span>Consulta entrante</span><span class="ok">Afectado</span></div>'
-                    '<div class="svc-row"><span>Proceso en curso</span><span class="bad">Investigado</span></div>'
-                    '<div class="svc-flag">Misma intervención → se declina <span class="ok">✓</span></div></div>')
-    ov_hechos = ('<div class="sv-overlay"><b>Expediente</b>'
-                 '<div class="svc-line">Transferencias · 12 movimientos</div>'
-                 '<div class="svc-line">Fechas · 2023 – 2024</div>'
-                 '<div class="svc-line">Trazabilidad · reconstruida</div></div>')
-    ov_actores = ('<div class="sv-overlay"><b>Posiciones vinculadas</b>'
-                  '<div class="svc-tags"><span class="svc-tag">Administrador</span><span class="svc-tag">Revisor fiscal</span>'
-                  '<span class="svc-tag">Contador</span><span class="svc-tag">Proveedor</span><span class="svc-tag">Beneficiario</span></div></div>')
-    ov_rutas = ('<div class="sv-overlay"><b>Vías en paralelo</b>'
-                '<div class="svc-row"><span>Administrativa</span><span class="ok">10 días</span></div>'
-                '<div class="svc-row"><span>Penal</span><span class="ok">art. 316</span></div>'
-                '<div class="svc-row"><span>Civil</span><span class="ok">patrimonio</span></div></div>')
-    ov_converg = ('<div class="sv-overlay"><b>Cinco prácticas · un expediente</b>'
-                  '<div class="svc-line">Contractual · Tributaria · Corporativa</div>'
-                  '<div class="svc-line">Penal · Laboral</div>'
-                  '<div class="svc-flag">El caso se construye en la <span class="ok">intersección</span></div></div>')
     steps = [
-        ("01", "VERIFICAR", "Verificamos el conflicto antes de aceptar",
+        ("01", "Verificar", "Verificamos el conflicto antes de aceptar",
          "Cada consulta pasa por un protocolo interno: si la firma ya interviene en ese proceso por la orilla contraria, se declina y se explica por qué. Es la primera prueba de integridad.",
-         burst_svg(), "Integridad", ov_verificar),
-        ("02", "HECHOS", "Reconstruimos los hechos",
+         burst_svg()),
+        ("02", "Hechos", "Reconstruimos los hechos",
          "Qué ocurrió, con qué documentos, en qué fechas y con qué trazabilidad financiera del esquema. El caso se sostiene sobre el expediente, no sobre la versión.",
-         wave_svg(), "Trazabilidad", ov_hechos),
-        ("03", "ACTORES", "Ubicamos a cada actor",
-         "Quién ocupó cada posición —captador, administrador, revisor, contador, proveedor, afectado— y qué consecuencia jurídica arrastra. La defensa empieza por saber si usted debe estar ahí.",
-         globe_svg(), "Posiciones", ov_actores),
-        ("04", "RUTAS", "Ordenamos las tres vías",
+         wave_svg()),
+        ("03", "Actores", "Ubicamos a cada actor",
+         "Quién ocupó cada posición, captador, administrador, revisor, contador, proveedor o afectado, y qué consecuencia jurídica arrastra. La defensa empieza por saber si usted debe estar ahí.",
+         globe_svg()),
+        ("04", "Rutas", "Ordenamos las tres vías",
          "Qué vías están abiertas, cuáles ya precluyeron y en qué orden conviene activarlas. Administrativa, penal y civil corren autónomas y concurrentes.",
-         wave_svg(), "Estrategia", ov_rutas),
-        ("05", "CONVERGENCIA", "Cinco prácticas, un expediente",
+         wave_svg()),
+        ("05", "Convergencia", "Cinco prácticas, un expediente",
          "Los cinco socios trabajan el mismo caso desde sus ramas del derecho. El resultado no se reparte por especialidad: se construye en la intersección.",
-         convergence_svg(), "Método", ov_converg),
+         convergence_svg()),
     ]
-    rail = "".join(f'<li class="{"on" if i == 0 else ""}">PASO 0{i + 1}</li>' for i in range(len(steps)))
+    rail = "".join(f'<li class="{"on" if i == 0 else ""}"><span>0{i + 1}</span></li>' for i in range(len(steps)))
     steps_html = ""
-    for i, (num, chip, h, d, media, tag, overlay) in enumerate(steps):
+    for i, (num, chip, h, d, media) in enumerate(steps):
         active = " active" if i == 0 else ""
         steps_html += f'''<div class="step{active}" data-i="{i}">
   <div class="step-visual">{media}</div>
   <div class="step-body">
-    <span class="step-chip">{chip}</span>
+    <p class="step-chip"><span class="step-n">{num}</span><span class="step-l">{esc(chip)}</span></p>
     <h2>{esc(h)}</h2>
-    <p>{esc(d)}</p>
-    <div class="stepper-cta">{agendar_btn("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabajamos</a></div>
+    <p class="step-d">{esc(d)}</p>
   </div>
 </div>'''
     return f'''<section class="stepper" id="metodo">

@@ -907,23 +907,21 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
   color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:4px 9px}
 .svc-flag{font-size:.84rem;color:var(--text);border-top:1px solid var(--line-soft);padding-top:9px}
 .svc-flag .ok{color:var(--accent)}
-.step-chip{display:inline-block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.18em;font-size:.7rem;
-  background:var(--text);color:var(--ink);padding:8px 14px;border-radius:6px;margin-bottom:1.4rem}
-.step-body h2{font-size:clamp(2.1rem,1.3rem+3.4vw,4rem);line-height:1.02;letter-spacing:-.02em}
-.step-body p{color:var(--dim);margin-top:1.4rem;max-width:46ch}
-.step-body .arrowlink{margin-top:1.6rem}
-/* riel STEP 01..05 */
+.step-chip{display:inline-flex;align-items:center;gap:.75em;margin-bottom:clamp(18px,2vw,26px);
+  font-family:var(--sans);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:500;color:var(--dim-2)}
+.step-chip .step-n{color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.step-chip .step-n::after{content:"";display:inline-block;width:26px;height:1px;background:var(--line);vertical-align:middle;margin-left:.85em}
+.step-body h2{font-size:clamp(2.1rem,1.3rem+3.4vw,4rem);line-height:1.03;letter-spacing:-.02em;font-weight:var(--hw)}
+.step-body .step-d{color:var(--dim);margin-top:var(--sp-s);max-width:44ch;font-weight:300;line-height:1.6}
+/* riel 01..05 — minimalista, solo numeración */
 .stepper-rail{position:absolute;right:var(--edge);top:50%;transform:translateY(-50%);
-  list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:clamp(28px,7vh,64px);
-  border-left:1px dashed var(--line-soft);padding-left:18px}
-.stepper-rail li{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;color:var(--dim-2);
-  position:relative;transition:color .3s}
-.stepper-rail li::before{content:"";position:absolute;left:-24px;top:50%;transform:translateY(-50%);
-  width:8px;height:8px;border-radius:50%;background:var(--line-soft);transition:background .3s,box-shadow .3s}
+  list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:clamp(20px,4vh,40px)}
+.stepper-rail li{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;color:var(--dim-2);
+  font-variant-numeric:tabular-nums;position:relative;padding-left:22px;transition:color .35s var(--btn-ease)}
+.stepper-rail li::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:6px;height:6px;border-radius:50%;background:var(--line-soft);transition:background .35s var(--btn-ease),transform .35s var(--btn-ease)}
 .stepper-rail li.on{color:var(--text)}
-.stepper-rail li.on::before{background:var(--accent);box-shadow:0 0 0 4px rgba(137,245,229,.18)}
-/* CTA persistente */
-.stepper-cta{margin-top:2rem;display:inline-flex;gap:12px;flex-wrap:wrap}
+.stepper-rail li.on::before{background:var(--accent);transform:translateY(-50%) scale(1.35)}
 
 @media (max-width:900px){
   .stepper-track{height:auto}
