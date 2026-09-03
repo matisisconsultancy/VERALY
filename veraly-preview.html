@@ -257,30 +257,30 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
 .brand b{font-weight:700;letter-spacing:.01em;font-size:1.12rem}
 .brand span{color:var(--dim-2);font-weight:400;font-size:var(--step--1)}
 /* cluster derecho: píldora de vidrio que agrupa enlaces + CTA (ref. AI Finance) */
-.nav-cluster{display:flex;align-items:center;gap:4px;
-  background:color-mix(in srgb,var(--panel) 60%,transparent);
-  border:1px solid var(--line-soft);border-radius:999px;padding:5px 5px 5px 10px;
-  -webkit-backdrop-filter:blur(16px) saturate(1.25);backdrop-filter:blur(16px) saturate(1.25);
-  box-shadow:0 12px 40px -20px rgba(3,25,27,.75)}
+/* liquid glass: fondo translúcido con brillo superior interno + blur alto,
+   radio de marca (rectangular como las cards). El header es position:fixed. */
+.nav-cluster{display:flex;align-items:center;gap:4px;border-radius:var(--card-r);padding:5px 5px 5px 8px;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--panel) 58%,transparent),color-mix(in srgb,var(--panel) 40%,transparent));
+  border:1px solid color-mix(in srgb,var(--text) 12%,transparent);
+  -webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);
+  box-shadow:0 14px 44px -22px rgba(3,25,27,.8),inset 0 1px 0 color-mix(in srgb,var(--text) 16%,transparent)}
 .nav-pill{display:flex;align-items:center;gap:2px;list-style:none;margin:0;background:transparent;border:0;padding:0}
 .nav-pill a,.nav-pill .has-sub>button{display:inline-flex;align-items:center;gap:.4em;text-decoration:none;
-  color:var(--dim);font-family:var(--sans);font-weight:500;font-size:var(--step-0);padding:9px 15px;border-radius:999px;
+  color:var(--dim);font-family:var(--sans);font-weight:500;font-size:var(--step-0);padding:9px 15px;border-radius:var(--r-xs);
   background:none;border:0;cursor:pointer;transition:color .22s var(--btn-ease),background-color .22s var(--btn-ease)}
 .nav-pill a:hover,.nav-pill .has-sub>button:hover,.nav-pill .has-sub[data-open="true"]>button{
   color:var(--text);background:color-mix(in srgb,var(--text) 9%,transparent)}
 .nav-pill a[aria-current="page"]{color:var(--accent-ink);background:transparent}
-/* CTA tipo "Get Started": pill de acento + insignia circular con flecha */
-.nav-cta-btn{display:inline-flex;align-items:center;gap:.65em;background:var(--accent);color:var(--on-light);
-  border-radius:999px;padding:7px 7px 7px 18px;font-family:var(--sans);font-weight:600;font-size:.92rem;
-  text-decoration:none;white-space:nowrap;transition:background-color .25s var(--btn-ease),transform .25s var(--btn-ease)}
-.nav-cta-btn:hover{background:var(--accent-deep);transform:translateY(-1px)}
+/* CTA minimalista y rectangular (radio de card), con flecha de línea */
+.nav-cta-btn{display:inline-flex;align-items:center;gap:.55em;background:var(--accent);color:var(--on-light);
+  border-radius:var(--card-r);padding:.75em 1.1em;font-family:var(--sans);font-weight:600;font-size:.92rem;
+  text-decoration:none;white-space:nowrap;transition:background-color .25s var(--btn-ease)}
+.nav-cta-btn:hover{background:var(--accent-deep)}
 .nav-cta-btn:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px}
-.nav-cta-ico{width:30px;height:30px;flex:none;border-radius:50%;background:var(--on-light);
-  display:inline-flex;align-items:center;justify-content:center}
-.nav-cta-ico::before{content:"";width:14px;height:14px;background:var(--accent);
+.nav-cta-ico{width:16px;height:16px;flex:none;background:currentColor;
   -webkit-mask:var(--ico-arrow) center/contain no-repeat;mask:var(--ico-arrow) center/contain no-repeat;
   transition:transform .25s var(--btn-ease)}
-.nav-cta-btn:hover .nav-cta-ico::before{transform:translateX(2px)}
+.nav-cta-btn:hover .nav-cta-ico{transform:translateX(3px)}
 /* dropdown Situaciones */
 .has-sub{position:relative}
 .has-sub>button svg{width:12px;height:12px;transition:transform .2s}
