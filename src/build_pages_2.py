@@ -66,8 +66,7 @@ def build(g):
         ]
         cards = "".join(
             f'<div class="nh-card reveal-up">'
-            f'<span class="nh-n">/ {i:02d}</span>'
-            f'<span class="nh-ico" aria-hidden="true">{ico}<span class="nh-strike"></span></span>'
+            f'<span class="nh-n">{i:02d}</span>'
             f'<h3 class="nh-t">{esc(t)}</h3><p class="nh-d">{esc(d)}</p></div>'
             for i, (ico, t, d) in enumerate(items, 1))
         return (
@@ -461,8 +460,8 @@ def build(g):
             f'<defs><linearGradient id="g-{sid}" x1="0" y1="0" x2="1" y2="1">'
             f'<stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient>'
             f'<radialGradient id="r-{sid}" cx="0.5" cy="0.34" r="0.75">'
-            f'<stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/>'
-            f'<stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs>'
+            f'<stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/>'
+            f'<stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs>'
             f'<rect width="320" height="400" fill="url(#g-{sid})"/>'
             f'<rect width="320" height="400" fill="url(#r-{sid})"/>'
             f'<text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" '

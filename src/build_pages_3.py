@@ -386,7 +386,8 @@ def build(g):
     _presu_cards = "".join(
         '<div class="presu-card reveal-up"><span class="presu-tag">' + esc(tag) + '</span>'
         '<span class="presu-k">Se presume</span><p class="presu-claim">' + esc(claim) + '</p>'
-        '<span class="presu-k presu-k--ok">Se desvirtúa con</span><p class="presu-rebut">' + esc(reb) + '</p></div>'
+        '<div class="presu-rebut-wrap"><span class="presu-k presu-k--ok">Se desvirtúa con</span>'
+        '<p class="presu-rebut">' + esc(reb) + '</p></div></div>'
         for tag, claim, reb in _presu)
     def_presu = (
         '<section class="section band"><div class="container">'

@@ -15,16 +15,16 @@
   --ink:#03191B;         /* casi-negro teal (secciones alternas) */
   --panel:#073A3F;       /* superficie */
   --panel-2:#0A4A50;     /* superficie elevada / tarjeta tintada */
-  --accent:#89F5E5;      /* menta / acento (fondo de botones/pills) */
-  --accent-deep:#5FD9C7; /* menta apagada para hover */
-  --accent-ink:#89F5E5;  /* acento como TEXTO/gráfico fino (menta en oscuro) */
+  --accent:#4FD9B0;      /* menta / acento (fondo de botones/pills) */
+  --accent-deep:#2FC08E; /* menta apagada para hover */
+  --accent-ink:#4FD9B0;  /* acento como TEXTO/gráfico fino (menta en oscuro) */
   --text:#D9F6EF;        /* texto principal */
   --on-light:#05292C;    /* texto sobre menta */
   --dim:rgba(217,246,239,.70);
   --dim-2:rgba(217,246,239,.48);
-  --line:rgba(137,245,229,.30);
+  --line:rgba(79,217,176,.30);
   --line-soft:rgba(217,246,239,.12);
-  --grid-line:rgba(137,245,229,.14); /* trazos de circuito */
+  --grid-line:rgba(79,217,176,.14); /* trazos de circuito */
 
   --sans:'Archivo',-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --display:'Archivo',-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -524,7 +524,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
 .form-status{margin-top:16px;padding:14px 18px;border-radius:var(--card-r);font-size:var(--step--1);display:none}
 .form-status[data-show="true"]{display:block}
-.form-status.ok{background:rgba(137,245,229,.12);border:1px solid var(--line);color:var(--text)}
+.form-status.ok{background:rgba(79,217,176,.12);border:1px solid var(--line);color:var(--text)}
 .form-status.err{background:color-mix(in srgb,var(--accent-ink) 12%,transparent);border:1px solid var(--accent-ink);color:var(--text)}
 
 /* ---------- Contacto: dos columnas ---------- */
@@ -581,7 +581,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   /* Se fija la paleta OSCURA: el footer permanece oscuro incluso bajo body.theme-light */
   --bg:#05292C; --ink:#03191B; --panel:#073A3F; --panel-2:#0A4A50;
   --text:#D9F6EF; --dim:rgba(217,246,239,.66); --dim-2:rgba(217,246,239,.44);
-  --line:rgba(137,245,229,.28); --line-soft:rgba(217,246,239,.12); --accent-ink:#89F5E5;
+  --line:rgba(79,217,176,.28); --line-soft:rgba(217,246,239,.12); --accent-ink:#4FD9B0;
   background:var(--ink);color:var(--text);
   border-top:1px solid var(--line-soft);margin-top:var(--sp-xl)}
 .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:var(--gutter);
@@ -601,7 +601,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .footer-status{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);
   font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:0}
 .footer-status .dot{width:8px;height:8px;border-radius:50%;background:var(--accent-ink);
-  box-shadow:0 0 0 3px rgba(137,245,229,.16);flex:none}
+  box-shadow:0 0 0 3px rgba(79,217,176,.16);flex:none}
 .footer-legal{border-top:1px solid var(--line-soft)}
 .footer-legal-top{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;
   align-items:baseline;padding-block:22px 8px;color:var(--dim-2);font-size:var(--step--1);
@@ -704,10 +704,10 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 /* chips (marco normativo en el hero, sustituye avatares) */
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem}
 .chip{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--dim);border:1px solid var(--line-soft);border-radius:999px;padding:6px 12px;background:rgba(137,245,229,.04)}
+  color:var(--dim);border:1px solid var(--line-soft);border-radius:999px;padding:6px 12px;background:rgba(79,217,176,.04)}
 
 /* tarjeta glass */
-.glass{background:linear-gradient(160deg,rgba(137,245,229,.08),rgba(10,74,80,.14));
+.glass{background:linear-gradient(160deg,rgba(79,217,176,.08),rgba(10,74,80,.14));
   border:1px solid var(--line-soft);border-radius:var(--card-r);backdrop-filter:blur(4px)}
 
 /* features: tarjetas con imagen dominante + título + subtítulo (referente AI Finance) */
@@ -808,7 +808,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 
 /* nota de conflicto (disclaimer) — versión elegante */
 .conflict-note{display:flex;gap:16px;align-items:center;max-width:900px;margin:2.8rem auto 0;
-  padding:18px 26px;border:1px solid var(--line-soft);border-radius:var(--card-r);background:rgba(137,245,229,.045)}
+  padding:18px 26px;border:1px solid var(--line-soft);border-radius:var(--card-r);background:rgba(79,217,176,.045)}
 .conflict-note svg{width:26px;height:26px;color:var(--accent);flex:none}
 .conflict-note p{margin:0;color:var(--dim);font-size:var(--step--1);line-height:1.55}
 .conflict-note strong{color:var(--text)}
@@ -826,7 +826,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .frow .fr-media .fr-par>*{width:100%;height:100%}
 .fr-index{position:absolute;top:clamp(14px,1.6vw,26px);left:clamp(16px,1.8vw,30px);z-index:2;
   font-family:var(--mono);font-weight:600;font-size:clamp(2.4rem,1.4rem+3vw,4.6rem);line-height:1;
-  letter-spacing:.02em;color:rgba(137,245,229,.16)}
+  letter-spacing:.02em;color:rgba(79,217,176,.16)}
 .frow.reverse .fr-text{order:2}
 .frow.reverse .fr-media{order:1}
 @media (max-width:860px){.frow{grid-template-columns:1fr}.frow.reverse .fr-text,.frow.reverse .fr-media{order:0}}
@@ -854,7 +854,7 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 @media (max-width:900px){.stack-head{position:static}}
 .stack-cards{display:flex;flex-direction:column;gap:20px}
 .bigcard{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:clamp(24px,3vw,40px);
-  background:linear-gradient(160deg,rgba(137,245,229,.06),rgba(10,74,80,.14));min-height:180px;
+  background:linear-gradient(160deg,rgba(79,217,176,.06),rgba(10,74,80,.14));min-height:180px;
   display:flex;flex-direction:column;gap:12px;position:relative;overflow:clip}
 .bigcard h3{font-size:var(--step-2)}
 .bigcard p{color:var(--dim);margin:0;max-width:52ch}
@@ -866,7 +866,7 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 @media (max-width:900px){.tiles{grid-template-columns:repeat(2,1fr)}}
 .tile{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:20px;min-height:104px;
   display:flex;flex-direction:column;justify-content:space-between;gap:10px;
-  background:linear-gradient(160deg,rgba(137,245,229,.05),transparent)}
+  background:linear-gradient(160deg,rgba(79,217,176,.05),transparent)}
 .tile .t-k{font-family:var(--display);font-weight:800;font-size:1.15rem;color:var(--text);letter-spacing:-.01em}
 .tile .t-d{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--dim-2)}
 
@@ -947,8 +947,8 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
    ============================================================ */
 /* isla oscura: fija la paleta oscura aunque la página esté en theme-light */
 .force-dark,.plz-sec{--bg:#05292C;--ink:#03191B;--panel:#073A3F;--panel-2:#0A4A50;--text:#D9F6EF;
-  --dim:rgba(217,246,239,.66);--dim-2:rgba(217,246,239,.44);--line:rgba(137,245,229,.28);
-  --line-soft:rgba(217,246,239,.12);--accent-ink:#89F5E5}
+  --dim:rgba(217,246,239,.66);--dim-2:rgba(217,246,239,.44);--line:rgba(79,217,176,.28);
+  --line-soft:rgba(217,246,239,.12);--accent-ink:#4FD9B0}
 /* tarjetas del reveal cuando nombran las vías (no son enlaces) */
 /* pista muy larga = cada frase se ilumina y se sostiene el tiempo suficiente
    para leerla completa antes de cambiar; las cards salen al final */
@@ -960,8 +960,8 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 /* tarjetas del reveal cuando nombran las vías (no son enlaces) — legibilidad reforzada */
 .rc--via{cursor:default}
 .reveal-cards .rc--via{padding:28px 28px 26px;min-height:168px;gap:14px;
-  background:linear-gradient(160deg,rgba(137,245,229,.11),rgba(3,25,27,.55));
-  border-color:rgba(137,245,229,.24)}
+  background:linear-gradient(160deg,rgba(79,217,176,.11),rgba(3,25,27,.55));
+  border-color:rgba(79,217,176,.24)}
 .reveal-cards .rc--via .t-d{color:var(--accent);font-size:.74rem;letter-spacing:.16em}
 .reveal-cards .rc--via .t-k{font-family:var(--display);font-weight:600;color:var(--text);
   font-size:clamp(1.7rem,1.2rem + 1.3vw,2.3rem);letter-spacing:-.02em;line-height:1.04;margin-top:.15rem}
@@ -983,11 +983,11 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 /* baraja de tarjetas-enlace de norma (rejilla a lo ancho, con hover de color) */
 .reveal-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%;max-width:1160px;margin-top:var(--sp-xl)}
 .reveal-cards .rc{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:22px 24px;min-height:116px;
-  background:linear-gradient(160deg,rgba(137,245,229,.06),rgba(10,74,80,.16));text-decoration:none;color:inherit;
+  background:linear-gradient(160deg,rgba(79,217,176,.06),rgba(10,74,80,.16));text-decoration:none;color:inherit;
   -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;flex-direction:column;gap:8px;justify-content:space-between;
   opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .3s ease,border-color .2s ease,background .2s ease}
 .reveal-cards .rc.in{opacity:1;transform:none}
-.reveal-cards .rc:hover{border-color:var(--accent);background:linear-gradient(160deg,rgba(137,245,229,.16),rgba(10,74,80,.28));transform:translateY(-4px)}
+.reveal-cards .rc:hover{border-color:var(--accent);background:linear-gradient(160deg,rgba(79,217,176,.16),rgba(10,74,80,.28));transform:translateY(-4px)}
 .reveal-cards .rc .t-k{font-family:var(--display);font-weight:600;font-size:1.2rem;color:var(--text);transition:color .2s}
 .reveal-cards .rc:hover .t-k{color:var(--accent)}
 .reveal-cards .rc .t-d{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--dim-2)}
@@ -1277,47 +1277,20 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .nh-eyebrow{margin:0}
 .nh-title{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1.05;
   font-size:clamp(2rem,1.3rem + 3vw,3.8rem);margin:0;max-width:18ch}
+/* Lo que no hacemos — matriz editorial a hairline; índice fino en acento,
+   sin iconos tachados (el "No" ya lo dice el título). */
 .nh-grid{display:grid;grid-template-columns:repeat(3,1fr)}
 .nh-card{padding:clamp(28px,3vw,46px) clamp(20px,2.2vw,38px) clamp(30px,3.4vw,52px);
-  border-top:1px solid var(--line-soft)}
+  border-top:1px solid var(--line-soft);display:flex;flex-direction:column}
 .nh-card:not(:nth-child(3n+1)){border-left:1px solid var(--line-soft)}
-.nh-n{font-family:var(--mono);font-size:.76rem;letter-spacing:.18em;color:var(--dim-2)}
-.nh-ico{position:relative;display:grid;place-items:center;width:clamp(52px,5vw,64px);
-  height:clamp(52px,5vw,64px);border-radius:50%;background:var(--accent);color:var(--on-light);
-  margin:clamp(22px,2.6vw,34px) 0 clamp(20px,2.4vw,30px);
-  transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.nh-ico svg{width:46%;height:46%;opacity:1;transition:opacity .3s ease}
-/* Bloqueo evidente: dos líneas gruesas SE VAN TRAZANDO en X sobre el icono
-   al revelarse cada tarjeta (una tras otra), y el icono se apaga = acción
-   bloqueada. Al pasar el cursor, el bloqueo se intensifica (el icono
-   desaparece bajo la X). */
-.nh-strike,.nh-ico::after{content:"";position:absolute;left:50%;top:50%;
-  width:152%;height:4px;border-radius:3px;background:var(--on-light);
-  box-shadow:0 0 12px -2px rgba(5,41,44,.9);clip-path:inset(0 100% 0 0)}
-.nh-strike{transform:translate(-50%,-50%) rotate(-45deg)}
-.nh-ico::after{transform:translate(-50%,-50%) rotate(45deg)}
-html.js .nh-strike{transition:clip-path .38s cubic-bezier(.4,0,.2,1) .18s}
-html.js .nh-ico::after{transition:clip-path .38s cubic-bezier(.4,0,.2,1) .34s}
-html.js .nh-card.in .nh-strike,html.js .nh-card.in .nh-ico::after{clip-path:inset(0)}
-html:not(.js) .nh-strike,html:not(.js) .nh-ico::after{clip-path:inset(0)}
-html.js .nh-card.in .nh-ico svg{opacity:.24;transition-delay:.34s}
-.nh-card:hover .nh-ico{transform:scale(1.08)}
-.nh-card:hover .nh-ico svg{opacity:.05;transition-delay:0s}
-.nh-card:hover .nh-strike,.nh-card:hover .nh-ico::after{box-shadow:0 0 16px 0 rgba(5,41,44,1)}
+.nh-n{font-family:var(--sans);font-size:clamp(1.5rem,1.1rem + 1vw,2.1rem);font-weight:300;
+  letter-spacing:-.01em;line-height:1;color:var(--accent-ink);font-variant-numeric:tabular-nums;
+  margin-bottom:clamp(22px,2.6vw,36px)}
 .nh-t{font-family:var(--sans);font-weight:400;letter-spacing:-.015em;line-height:1.18;
   font-size:clamp(1.25rem,1.02rem + .7vw,1.55rem);color:var(--text);margin:0;text-wrap:balance;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .nh-d{color:var(--dim);font-weight:300;line-height:1.6;font-size:var(--step-0);
   margin:.9rem 0 0;max-width:34ch}
-/* cascada por columna: las X van saliendo de izquierda a derecha */
-.nh-grid .nh-card:nth-child(3n+2){transition-delay:.09s}
-.nh-grid .nh-card:nth-child(3n){transition-delay:.18s}
-html.js .nh-grid .nh-card:nth-child(3n+2).in .nh-strike{transition-delay:.34s}
-html.js .nh-grid .nh-card:nth-child(3n+2).in .nh-ico::after{transition-delay:.5s}
-html.js .nh-grid .nh-card:nth-child(3n+2).in .nh-ico svg{transition-delay:.5s}
-html.js .nh-grid .nh-card:nth-child(3n).in .nh-strike{transition-delay:.5s}
-html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico::after{transition-delay:.66s}
-html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico svg{transition-delay:.66s}
 @media (max-width:820px){
   .nh-head{grid-template-columns:1fr;gap:14px}
   .nh-grid{grid-template-columns:1fr}
@@ -1371,9 +1344,9 @@ html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico svg{transition-delay:.66s}
   margin-top:var(--sp-l);position:relative}
 /* la barra es el protagonista: un riel fino que se ilumina de izq. a der. con el scroll */
 .plz-track::before,.plz-track::after{content:"";position:absolute;top:10px;left:0;height:5px;border-radius:5px}
-.plz-track::before{right:0;background:rgba(137,245,229,.12)}
+.plz-track::before{right:0;background:rgba(79,217,176,.12)}
 .plz-track::after{width:calc(var(--p,0) * 100%);
-  background:linear-gradient(90deg,rgba(137,245,229,.45) 0%,var(--accent) 78%,var(--text) 100%);
+  background:linear-gradient(90deg,rgba(79,217,176,.45) 0%,var(--accent) 78%,var(--text) 100%);
   box-shadow:0 0 22px 1px var(--accent);transition:width .22s cubic-bezier(.22,.7,.24,1)}
 html:not(.js) .plz-track::after{width:100%}
 /* cada término se ilumina cuando la barra lo alcanza (sin nodos ni bolas) */
@@ -1381,7 +1354,7 @@ html:not(.js) .plz-track::after{width:100%}
   transition:opacity .55s cubic-bezier(.2,.7,.2,1)}
 .plz-step.is-on{opacity:1}
 .plz-ord{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;
-  color:rgba(137,245,229,.5);margin-bottom:.55rem;transition:color .45s ease}
+  color:rgba(79,217,176,.5);margin-bottom:.55rem;transition:color .45s ease}
 .plz-step.is-on .plz-ord{color:var(--accent)}
 .plz-num{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:.95;color:var(--text);
   font-size:clamp(2.8rem,1.8rem + 3vw,4.8rem);display:flex;align-items:baseline;gap:.16em}
@@ -1395,7 +1368,7 @@ html:not(.js) .plz-track::after{width:100%}
   .plz-track::before{right:auto;top:0;bottom:0;left:10px;width:5px;height:auto}
   .plz-track::after{top:0;left:10px;width:5px !important;
     height:calc(var(--p,0) * 100%);
-    background:linear-gradient(180deg,rgba(137,245,229,.45),var(--accent) 80%,var(--text));
+    background:linear-gradient(180deg,rgba(79,217,176,.45),var(--accent) 80%,var(--text));
     transition:height .22s cubic-bezier(.22,.7,.24,1)}
   html:not(.js) .plz-track::after{height:100%}
   .plz-step{padding-top:2px;padding-left:44px;padding-bottom:38px}
@@ -1602,15 +1575,20 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 @media(max-width:760px){.perim-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.perim-grid{grid-template-columns:1fr}}
 /* Dos presunciones (defensa): tarjeta con "se presume" -> "se desvirtúa" */
-.presu-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,32px);margin-top:var(--sp-m)}
-.presu-card{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:clamp(24px,2.4vw,38px);background:var(--panel)}
-.presu-tag{display:block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.66rem;color:var(--dim-2);margin-bottom:1.1rem}
-.presu-k{display:inline-block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;font-size:.62rem;
-  color:var(--dim-2);padding:.28rem .65rem;border:1px solid var(--line);border-radius:999px;margin-bottom:.6rem}
-.presu-k--ok{color:var(--accent-ink);border-color:var(--accent-ink);margin-top:1.4rem}
-.presu-claim{font-family:var(--sans);font-weight:300;font-size:1.2rem;line-height:1.4;color:var(--text);margin:0}
-.presu-rebut{font-weight:300;line-height:1.6;color:var(--dim);margin:.2rem 0 0}
-@media(max-width:720px){.presu-grid{grid-template-columns:1fr}}
+/* Presunciones — editorial, sin caja ni pills; regla superior por columna */
+.presu-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,88px);margin-top:var(--sp-l)}
+.presu-card{background:transparent;border:0;border-top:1px solid var(--line);border-radius:0;
+  padding:clamp(22px,2.2vw,32px) 0 0}
+.presu-tag{display:block;font-family:var(--sans);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;
+  font-weight:500;color:var(--dim-2);margin-bottom:clamp(22px,2.4vw,34px)}
+.presu-k{display:block;font-family:var(--sans);text-transform:uppercase;letter-spacing:.14em;font-size:.66rem;
+  font-weight:500;color:var(--dim-2);margin-bottom:.65rem}
+.presu-claim{font-family:var(--sans);font-weight:300;font-size:clamp(1.15rem,1rem + .55vw,1.45rem);
+  line-height:1.35;letter-spacing:-.01em;color:var(--text);margin:0}
+.presu-rebut-wrap{margin-top:clamp(20px,2.2vw,30px);padding-top:clamp(18px,2vw,26px);border-top:1px solid var(--line-soft)}
+.presu-k--ok{color:var(--accent-ink)}
+.presu-rebut{font-weight:300;line-height:1.65;color:var(--dim);margin:0;max-width:44ch}
+@media(max-width:720px){.presu-grid{grid-template-columns:1fr;gap:clamp(28px,6vw,40px)}}
 /* Umbrales (cumplimiento): tres disparadores con cifra grande */
 .umbral-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px);margin:var(--sp-m) 0 0}
 .umbral-metric{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:clamp(24px,2.4vw,38px);background:var(--panel)}
@@ -1636,7 +1614,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 .contact-hero{position:relative;overflow:clip;background:var(--ink);min-height:80vh;min-height:80svh;
   display:flex;align-items:flex-end;
   --bg:#05292C;--ink:#03191B;--panel:#073A3F;--text:#D9F6EF;--dim:rgba(217,246,239,.7);
-  --dim-2:rgba(217,246,239,.48);--accent-ink:#89F5E5;--line:rgba(137,245,229,.28)}
+  --dim-2:rgba(217,246,239,.48);--accent-ink:#4FD9B0;--line:rgba(79,217,176,.28)}
 .contact-hero-bg{position:absolute;inset:0;opacity:.20;filter:saturate(.5)}
 .contact-hero-bg svg{width:100%;height:100%}
 .contact-hero-in{position:relative;padding:clamp(120px,16vh,180px) 0 clamp(40px,7vh,88px)}
@@ -2000,7 +1978,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   </div>
 </section>
 
-<section class="section band nh-sec"><div class="container"><div class="nh-head"><p class="eyebrow nh-eyebrow">Nuestros límites</p><h2 class="nh-title">Lo que <span class="pr-accent">no hacemos.</span></h2></div><div class="nh-grid"><div class="nh-card reveal-up"><span class="nh-n">/ 01</span><span class="nh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="3.4"/></svg><span class="nh-strike"></span></span><h3 class="nh-t">No prometemos resultados.</h3><p class="nh-d">No prometemos recuperación ni desenlace judicial: se promete rigor, criterio y trabajo, con los límites dichos en voz alta.</p></div><div class="nh-card reveal-up"><span class="nh-n">/ 02</span><span class="nh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8.5" cy="12" r="5"/><circle cx="15.5" cy="12" r="5"/></svg><span class="nh-strike"></span></span><h3 class="nh-t">No mezclamos las dos orillas.</h3><p class="nh-d">La defensa del investigado y la recuperación del afectado nunca se prestan dentro del mismo proceso de intervención.</p></div><div class="nh-card reveal-up"><span class="nh-n">/ 03</span><span class="nh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.6"/></svg><span class="nh-strike"></span></span><h3 class="nh-t">No exponemos casos.</h3><p class="nh-d">No publicamos casos identificables, testimonios ni cifras de damnificados. Escribimos sobre la figura, nunca sobre personas.</p></div><div class="nh-card reveal-up"><span class="nh-n">/ 04</span><span class="nh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 13.5l9 5 9-5"/></svg><span class="nh-strike"></span></span><h3 class="nh-t">No somos un portafolio general.</h3><p class="nh-d">No tratamos la captación masiva como una especialidad más entre muchas: es el único fenómeno sobre el que trabaja la firma.</p></div><div class="nh-card reveal-up"><span class="nh-n">/ 05</span><span class="nh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M6 20h12M5 8h14"/><path d="M5 8 2.6 13a2.9 2.9 0 0 0 4.8 0Z"/><path d="M19 8l-2.4 5a2.9 2.9 0 0 0 4.8 0Z"/></svg><span class="nh-strike"></span></span><h3 class="nh-t">No la litigamos como una estafa.</h3><p class="nh-d">No trabajamos la captación como si fuera una estafa agravada. Es una figura jurídica distinta, con vías y plazos propios.</p></div><div class="nh-card reveal-up"><span class="nh-n">/ 06</span><span class="nh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="3.5" width="13" height="17" rx="2.2"/><path d="M9 8.5h6M9 12h6M9 15.5h3.5"/></svg><span class="nh-strike"></span></span><h3 class="nh-t">No capturamos su caso en un formulario.</h3><p class="nh-d">El primer contacto no pide los hechos por escrito: se conversan. Los datos se tratan conforme a la Ley 1581 de 2012.</p></div></div></div></section>
+<section class="section band nh-sec"><div class="container"><div class="nh-head"><p class="eyebrow nh-eyebrow">Nuestros límites</p><h2 class="nh-title">Lo que <span class="pr-accent">no hacemos.</span></h2></div><div class="nh-grid"><div class="nh-card reveal-up"><span class="nh-n">01</span><h3 class="nh-t">No prometemos resultados.</h3><p class="nh-d">No prometemos recuperación ni desenlace judicial: se promete rigor, criterio y trabajo, con los límites dichos en voz alta.</p></div><div class="nh-card reveal-up"><span class="nh-n">02</span><h3 class="nh-t">No mezclamos las dos orillas.</h3><p class="nh-d">La defensa del investigado y la recuperación del afectado nunca se prestan dentro del mismo proceso de intervención.</p></div><div class="nh-card reveal-up"><span class="nh-n">03</span><h3 class="nh-t">No exponemos casos.</h3><p class="nh-d">No publicamos casos identificables, testimonios ni cifras de damnificados. Escribimos sobre la figura, nunca sobre personas.</p></div><div class="nh-card reveal-up"><span class="nh-n">04</span><h3 class="nh-t">No somos un portafolio general.</h3><p class="nh-d">No tratamos la captación masiva como una especialidad más entre muchas: es el único fenómeno sobre el que trabaja la firma.</p></div><div class="nh-card reveal-up"><span class="nh-n">05</span><h3 class="nh-t">No la litigamos como una estafa.</h3><p class="nh-d">No trabajamos la captación como si fuera una estafa agravada. Es una figura jurídica distinta, con vías y plazos propios.</p></div><div class="nh-card reveal-up"><span class="nh-n">06</span><h3 class="nh-t">No capturamos su caso en un formulario.</h3><p class="nh-d">El primer contacto no pide los hechos por escrito: se conversan. Los datos se tratan conforme a la Ley 1581 de 2012.</p></div></div></div></section>
 
 <section class="section band-2"><div class="container">
   <h2>El equipo</h2>
@@ -2316,7 +2294,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 </div></section>
 
 <section class="socios-grid-sec">
-  <div class="socios-grid"><a class="socio-card" href="#!/equipo/socios/hermes-vergara/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Hermes Vergara"><defs><linearGradient id="g-hermes-vergara" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-hermes-vergara" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-hermes-vergara)"/><rect width="320" height="400" fill="url(#r-hermes-vergara)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">HV</text></svg></span><span class="socio-meta"><span class="socio-name">Hermes Vergara</span><span class="socio-rama">Derecho contractual y constitucional</span></span></a><a class="socio-card" href="#!/equipo/socios/kewin-santiago-canizales/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Kewin Santiago Canizales"><defs><linearGradient id="g-kewin-santiago-canizales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-kewin-santiago-canizales" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-kewin-santiago-canizales)"/><rect width="320" height="400" fill="url(#r-kewin-santiago-canizales)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">KC</text></svg></span><span class="socio-meta"><span class="socio-name">Kewin Santiago Canizales</span><span class="socio-rama">Derecho tributario y migratorio</span></span></a><a class="socio-card" href="#!/equipo/socios/miguel-bayter/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Miguel Bayter"><defs><linearGradient id="g-miguel-bayter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-miguel-bayter" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-miguel-bayter)"/><rect width="320" height="400" fill="url(#r-miguel-bayter)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">MB</text></svg></span><span class="socio-meta"><span class="socio-name">Miguel Bayter</span><span class="socio-rama">Derecho corporativo y urbano</span></span></a><a class="socio-card" href="#!/equipo/socios/juan-david-naar/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Juan David Naar"><defs><linearGradient id="g-juan-david-naar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-juan-david-naar" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-juan-david-naar)"/><rect width="320" height="400" fill="url(#r-juan-david-naar)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JN</text></svg></span><span class="socio-meta"><span class="socio-name">Juan David Naar</span><span class="socio-rama">Derecho penal y derecho informático</span></span></a><a class="socio-card" href="#!/equipo/socios/javier-pisciotti/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Javier Pisciotti"><defs><linearGradient id="g-javier-pisciotti" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-javier-pisciotti" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-javier-pisciotti)"/><rect width="320" height="400" fill="url(#r-javier-pisciotti)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JP</text></svg></span><span class="socio-meta"><span class="socio-name">Javier Pisciotti</span><span class="socio-rama">Derecho laboral y seguros</span></span></a></div>
+  <div class="socios-grid"><a class="socio-card" href="#!/equipo/socios/hermes-vergara/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Hermes Vergara"><defs><linearGradient id="g-hermes-vergara" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-hermes-vergara" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-hermes-vergara)"/><rect width="320" height="400" fill="url(#r-hermes-vergara)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">HV</text></svg></span><span class="socio-meta"><span class="socio-name">Hermes Vergara</span><span class="socio-rama">Derecho contractual y constitucional</span></span></a><a class="socio-card" href="#!/equipo/socios/kewin-santiago-canizales/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Kewin Santiago Canizales"><defs><linearGradient id="g-kewin-santiago-canizales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-kewin-santiago-canizales" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-kewin-santiago-canizales)"/><rect width="320" height="400" fill="url(#r-kewin-santiago-canizales)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">KC</text></svg></span><span class="socio-meta"><span class="socio-name">Kewin Santiago Canizales</span><span class="socio-rama">Derecho tributario y migratorio</span></span></a><a class="socio-card" href="#!/equipo/socios/miguel-bayter/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Miguel Bayter"><defs><linearGradient id="g-miguel-bayter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-miguel-bayter" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-miguel-bayter)"/><rect width="320" height="400" fill="url(#r-miguel-bayter)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">MB</text></svg></span><span class="socio-meta"><span class="socio-name">Miguel Bayter</span><span class="socio-rama">Derecho corporativo y urbano</span></span></a><a class="socio-card" href="#!/equipo/socios/juan-david-naar/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Juan David Naar"><defs><linearGradient id="g-juan-david-naar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-juan-david-naar" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-juan-david-naar)"/><rect width="320" height="400" fill="url(#r-juan-david-naar)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JN</text></svg></span><span class="socio-meta"><span class="socio-name">Juan David Naar</span><span class="socio-rama">Derecho penal y derecho informático</span></span></a><a class="socio-card" href="#!/equipo/socios/javier-pisciotti/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Javier Pisciotti"><defs><linearGradient id="g-javier-pisciotti" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-javier-pisciotti" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-javier-pisciotti)"/><rect width="320" height="400" fill="url(#r-javier-pisciotti)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JP</text></svg></span><span class="socio-meta"><span class="socio-name">Javier Pisciotti</span><span class="socio-rama">Derecho laboral y seguros</span></span></a></div>
   <div class="container">
     <div class="cta-row" style="margin-top:clamp(40px,6vw,72px)"><a class="btn btn--ghost" href="#!/equipo/">Volver a las prácticas</a><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a></div>
   </div>
@@ -2327,7 +2305,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
     <div class="socio-hero">
-      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Hermes Vergara"><defs><linearGradient id="g-hermes-vergara" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-hermes-vergara" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-hermes-vergara)"/><rect width="320" height="400" fill="url(#r-hermes-vergara)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">HV</text></svg></span></div>
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Hermes Vergara"><defs><linearGradient id="g-hermes-vergara" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-hermes-vergara" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-hermes-vergara)"/><rect width="320" height="400" fill="url(#r-hermes-vergara)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">HV</text></svg></span></div>
       <div class="socio-hero-txt">
         <p class="eyebrow-num">Socio</p>
         <h1 class="socio-h1">Hermes Vergara</h1>
@@ -2355,7 +2333,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
     <div class="socio-hero">
-      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Kewin Santiago Canizales"><defs><linearGradient id="g-kewin-santiago-canizales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-kewin-santiago-canizales" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-kewin-santiago-canizales)"/><rect width="320" height="400" fill="url(#r-kewin-santiago-canizales)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">KC</text></svg></span></div>
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Kewin Santiago Canizales"><defs><linearGradient id="g-kewin-santiago-canizales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-kewin-santiago-canizales" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-kewin-santiago-canizales)"/><rect width="320" height="400" fill="url(#r-kewin-santiago-canizales)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">KC</text></svg></span></div>
       <div class="socio-hero-txt">
         <p class="eyebrow-num">Socio</p>
         <h1 class="socio-h1">Kewin Santiago Canizales</h1>
@@ -2383,7 +2361,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
     <div class="socio-hero">
-      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Miguel Bayter"><defs><linearGradient id="g-miguel-bayter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-miguel-bayter" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-miguel-bayter)"/><rect width="320" height="400" fill="url(#r-miguel-bayter)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">MB</text></svg></span></div>
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Miguel Bayter"><defs><linearGradient id="g-miguel-bayter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-miguel-bayter" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-miguel-bayter)"/><rect width="320" height="400" fill="url(#r-miguel-bayter)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">MB</text></svg></span></div>
       <div class="socio-hero-txt">
         <p class="eyebrow-num">Socio</p>
         <h1 class="socio-h1">Miguel Bayter</h1>
@@ -2411,7 +2389,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
     <div class="socio-hero">
-      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Juan David Naar"><defs><linearGradient id="g-juan-david-naar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-juan-david-naar" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-juan-david-naar)"/><rect width="320" height="400" fill="url(#r-juan-david-naar)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JN</text></svg></span></div>
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Juan David Naar"><defs><linearGradient id="g-juan-david-naar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-juan-david-naar" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-juan-david-naar)"/><rect width="320" height="400" fill="url(#r-juan-david-naar)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JN</text></svg></span></div>
       <div class="socio-hero-txt">
         <p class="eyebrow-num">Socio</p>
         <h1 class="socio-h1">Juan David Naar</h1>
@@ -2439,7 +2417,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
     <div class="socio-hero">
-      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Javier Pisciotti"><defs><linearGradient id="g-javier-pisciotti" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-javier-pisciotti" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-javier-pisciotti)"/><rect width="320" height="400" fill="url(#r-javier-pisciotti)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JP</text></svg></span></div>
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Javier Pisciotti"><defs><linearGradient id="g-javier-pisciotti" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-javier-pisciotti" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-javier-pisciotti)"/><rect width="320" height="400" fill="url(#r-javier-pisciotti)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JP</text></svg></span></div>
       <div class="socio-hero-txt">
         <p class="eyebrow-num">Socio</p>
         <h1 class="socio-h1">Javier Pisciotti</h1>
@@ -2582,7 +2560,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 
 <section class="section"><div class="container"><p class="eyebrow-num">El perímetro</p><h2 class="pr-big">La vinculación no se limita <span class="pr-accent">al captador.</span></h2><p class="lead" style="max-width:64ch;margin-top:1.1rem;color:var(--dim)">El artículo 5 del Decreto 4334 de 2008 alcanza a captadores, administradores, socios, revisores fiscales, contadores, beneficiarios y demás personas vinculadas —directa o indirectamente— a la operación. Profesionales y proveedores que actuaron de forma puntual quedan dentro del perímetro por el solo ejercicio del cargo.</p><div class="perim-grid"><div class="perim-card reveal-up is-core"><span class="perim-role">El captador</span><span class="perim-note">El origen del esquema</span></div><div class="perim-card reveal-up"><span class="perim-role">Administradores</span><span class="perim-note">Representantes legales y miembros de junta</span></div><div class="perim-card reveal-up"><span class="perim-role">Socios</span><span class="perim-note">Por su participación en la operación</span></div><div class="perim-card reveal-up"><span class="perim-role">Revisores fiscales</span><span class="perim-note">Por el ejercicio del cargo durante la captación</span></div><div class="perim-card reveal-up"><span class="perim-role">Contadores</span><span class="perim-note">Por el ejercicio del cargo durante la captación</span></div><div class="perim-card reveal-up"><span class="perim-role">Proveedores de buena fe</span><span class="perim-note">Que contrataron con la intervenida</span></div></div><p class="perim-foot">Si usted está en ese perímetro, su defensa no empieza discutiendo los hechos del esquema: <strong>empieza discutiendo si debe estar ahí.</strong></p></div></section>
 
-<section class="section band"><div class="container"><p class="eyebrow-num">La carga de la prueba</p><h2 class="pr-big">Dos presunciones <span class="pr-accent">que hay que desvirtuar.</span></h2><div class="presu-grid"><div class="presu-card reveal-up"><span class="presu-tag">Sobre los recursos</span><span class="presu-k">Se presume</span><p class="presu-claim">Todos los recursos aprehendidos provienen de la actividad ilícita.</p><span class="presu-k presu-k--ok">Se desvirtúa con</span><p class="presu-rebut">Trazabilidad y origen lícito de los activos. Es una presunción legal —así lo precisó la Sentencia C-145 de 2009— y, por tanto, desvirtuable con prueba positiva.</p></div><div class="presu-card reveal-up"><span class="presu-tag">Sobre la participación</span><span class="presu-k">Se presume</span><p class="presu-claim">Participación en el esquema por el solo ejercicio del cargo durante el periodo de captación.</p><span class="presu-k presu-k--ok">Se desvirtúa con</span><p class="presu-rebut">Acreditación de gestión diligente y del origen lícito. No basta con negar: hay que aportar la prueba que la desmonte.</p></div></div></div></section>
+<section class="section band"><div class="container"><p class="eyebrow-num">La carga de la prueba</p><h2 class="pr-big">Dos presunciones <span class="pr-accent">que hay que desvirtuar.</span></h2><div class="presu-grid"><div class="presu-card reveal-up"><span class="presu-tag">Sobre los recursos</span><span class="presu-k">Se presume</span><p class="presu-claim">Todos los recursos aprehendidos provienen de la actividad ilícita.</p><div class="presu-rebut-wrap"><span class="presu-k presu-k--ok">Se desvirtúa con</span><p class="presu-rebut">Trazabilidad y origen lícito de los activos. Es una presunción legal —así lo precisó la Sentencia C-145 de 2009— y, por tanto, desvirtuable con prueba positiva.</p></div></div><div class="presu-card reveal-up"><span class="presu-tag">Sobre la participación</span><span class="presu-k">Se presume</span><p class="presu-claim">Participación en el esquema por el solo ejercicio del cargo durante el periodo de captación.</p><div class="presu-rebut-wrap"><span class="presu-k presu-k--ok">Se desvirtúa con</span><p class="presu-rebut">Acreditación de gestión diligente y del origen lícito. No basta con negar: hay que aportar la prueba que la desmonte.</p></div></div></div></div></section>
 
 <section class="section jn-sec jn-pin"><div class="container jn-intro"><p class="eyebrow-num">Dónde está su caso</p><h2 class="pr-big">La defensa cambia <span class="pr-accent">según el momento.</span></h2><p class="lead" style="max-width:58ch;margin-top:1rem;color:var(--dim)">Abra la fase en la que se encuentra. No necesita leer las demás.</p></div><div class="jn-pin-track"><div class="jn-pin-sticky"><div class="container"><div class="journey"><div class="jn-spine" aria-hidden="true"><i class="jn-fill"></i></div><div class="jn-phase" data-i="0"><div class="jn-node"><span class="jn-n">01</span></div><div class="jn-body"><button type="button" class="jn-toggle" aria-expanded="false"><span class="jn-tag">Fase previa</span><span class="jn-h">Fase administrativa previa — antes de la declaratoria</span><span class="jn-chev" aria-hidden="true"></span></button><div class="jn-actions"><div class="jn-actions-in"><p>Requerimientos, visitas y actuaciones de las Superintendencias que anteceden a la declaratoria de captación. Aquí se sustenta técnicamente el modelo de negocio y se acredita la explicación financiera razonable. Es la fase en la que todavía se puede evitar la declaratoria y la suspensión.</p><ul><li>Defensa en la actuación administrativa previa y sustentación técnica del modelo.</li><li>Recursos contra la orden de suspensión y las multas, y control judicial de la sanción.</li><li>Plan de desmonte voluntario preintervención, cuando la toma de posesión es inminente.</li></ul></div></div></div></div><div class="jn-phase" data-i="1"><div class="jn-node"><span class="jn-n">02</span></div><div class="jn-body"><button type="button" class="jn-toggle" aria-expanded="false"><span class="jn-tag">Intervención</span><span class="jn-h">Fase de intervención — tras la toma de posesión</span><span class="jn-chev" aria-hidden="true"></span></button><div class="jn-actions"><div class="jn-actions-in"><p>La toma de posesión trae nombramiento de agente interventor, remoción de administradores, congelación de activos, exigibilidad inmediata de créditos, suspensión de ejecutivos en curso y prohibición de iniciar nuevos.</p><ul><li>Solicitud de exclusión y desintervención.</li><li>Contradicción de las presunciones sobre recursos y sobre participación.</li><li>Auditoría de trazabilidad y origen lícito de activos, con separación de patrimonios legítimos.</li><li>Objeción al inventario valorado y controversia de avalúos.</li><li>Suspensión de ejecuciones y cobros coactivos paralelos.</li><li>Defensa frente a revocatorias e ineficacias promovidas por el interventor.</li><li>Representación en audiencias y recursos de reposición, aclaración y adición.</li><li>Acciones constitucionales frente a vías de hecho, en un trámite de única instancia.</li></ul></div></div></div></div><div class="jn-phase" data-i="2"><div class="jn-node"><span class="jn-n">03</span></div><div class="jn-body"><button type="button" class="jn-toggle" aria-expanded="false"><span class="jn-tag">Fase penal</span><span class="jn-h">Fase penal</span><span class="jn-chev" aria-hidden="true"></span></button><div class="jn-actions"><div class="jn-actions-in"><ul><li>Defensa en indagación e investigación: interrogatorios, allanamientos, capturas y actos urgentes.</li><li>Audiencias preliminares: imputación, medida de aseguramiento y cautelares reales sobre bienes.</li><li>Defensa técnica en juicio oral frente a acusaciones por captación, no reintegro, estafa o lavado.</li><li>Ejecución penal: subrogados, prisión domiciliaria, libertad condicional y redenciones.</li></ul></div></div></div></div><div class="jn-phase" data-i="3"><div class="jn-node"><span class="jn-n">04</span></div><div class="jn-body"><button type="button" class="jn-toggle" aria-expanded="false"><span class="jn-tag">Fase civil</span><span class="jn-h">Fase civil y patrimonial</span><span class="jn-chev" aria-hidden="true"></span></button><div class="jn-actions"><div class="jn-actions-in"><ul><li>Defensa frente a demandas de afectados por el faltante.</li><li>Responsabilidad de administradores, simulaciones y acciones paulianas contra el patrimonio del cónyuge, la familia o sociedades relacionadas.</li><li>Conciliación y acuerdos de pago con afectados.</li></ul></div></div></div></div></div></div></div></div></section>
 
