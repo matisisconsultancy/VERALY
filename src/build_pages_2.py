@@ -33,11 +33,11 @@ def build(g):
     def faq_numbered(items):
         rows = ""
         for i, (q, a) in enumerate(items, 1):
-            rows += (f'<details class="fq-item"><summary>'
-                     f'<span class="fq-n">{i}</span><span class="fq-q">{esc(q)}</span>'
-                     f'<span class="fq-ic" aria-hidden="true"></span></summary>'
-                     f'<div class="fq-a">{a}</div></details>')
-        return f'<div class="fq-list">{rows}</div>'
+            rows += (f'<details class="qa"><summary>'
+                     f'<span class="qa-n">{i:02d}</span><span class="qa-q">{esc(q)}</span>'
+                     f'<span class="qa-ic" aria-hidden="true"></span></summary>'
+                     f'<div class="qa-a">{a}</div></details>')
+        return f'<div class="qa-list">{rows}</div>'
 
     # =====================================================================
     # /firma
@@ -326,7 +326,7 @@ def build(g):
   <span class="pr-n">{i:02d}</span>
   <span class="pr-t">{esc(pr["rama"])}</span>
   <span class="pr-d">{esc(pr["card"])}</span>
-  <span class="pr-go" aria-hidden="true">→</span>
+  <span class="pr-go" aria-hidden="true"></span>
 </a>'''
     equipo_body = f'''
 {section("""
@@ -506,7 +506,7 @@ def build(g):
         socio_body = f'''
 <section class="section socio-detail">
   <div class="container">
-    <p class="backlink"><a href="/equipo/socios/"><span aria-hidden="true">←</span> Volver al equipo</a></p>
+    <p class="backlink"><a href="/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
     <div class="socio-hero">
       <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg">{socio_portrait(s)}</span></div>
       <div class="socio-hero-txt">
@@ -527,7 +527,7 @@ def build(g):
   </div>
   <a class="socio-next" href="/equipo/socios/{nxt["slug"]}/">
     <span class="sn-k">Siguiente miembro</span>
-    <span class="sn-name">{esc(nxt["nombre"])} <span aria-hidden="true">→</span></span>
+    <span class="sn-name">{esc(nxt["nombre"])} <span class="ico-ar" aria-hidden="true"></span></span>
   </a>
 </section>
 '''

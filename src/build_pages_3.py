@@ -22,16 +22,16 @@ def build(g):
     def faq_sticky(items, title='Las preguntas que <span class="pr-accent">más nos hacen.</span>',
                    eyebrow="Preguntas frecuentes"):
         rows = "".join(
-            f'<details class="faq-acc"><summary><span class="fa-n">{i:02d}</span>'
-            f'<span class="fa-q">{esc(q)}</span>'
-            f'<span class="fa-box" aria-hidden="true"></span></summary>'
-            f'<div class="fa-a">{a}</div></details>'
+            f'<details class="qa"><summary><span class="qa-n">{i:02d}</span>'
+            f'<span class="qa-q">{esc(q)}</span>'
+            f'<span class="qa-ic" aria-hidden="true"></span></summary>'
+            f'<div class="qa-a">{a}</div></details>'
             for i, (q, a) in enumerate(items, 1))
         return ('<section class="section faq-sticky-sec"><div class="container faq-sticky-grid">'
                 '<div class="faq-sticky-l">'
-                f'<p class="faq-pill"><span class="dot" aria-hidden="true"></span>{esc(eyebrow)}</p>'
+                f'<p class="faq-pill">{esc(eyebrow)}</p>'
                 f'<h2 class="faq-sticky-title">{title}</h2></div>'
-                f'<div class="faq-sticky-r">{rows}</div></div></section>')
+                f'<div class="faq-sticky-r qa-list">{rows}</div></div></section>')
 
     def sol_two(eyebrow_label, title_html, body_html, band=False, parallax=True):
         cls = "section band" if band else "section"
@@ -69,7 +69,7 @@ def build(g):
         tabs = "".join(
             f'<button type="button" class="ph-tab{" is-active" if i == 0 else ""}" data-ph="{i}">'
             f'<span class="ph-n">{i+1:02d}</span><span class="ph-l">{esc(lbl)}</span>'
-            f'<span class="ph-go" aria-hidden="true">→</span></button>'
+            f'<span class="ph-go" aria-hidden="true"></span></button>'
             for i, (lbl, title, body) in enumerate(items))
         panels = "".join(
             f'<div class="ph-panel{" is-active" if i == 0 else ""}" data-ph="{i}">'
