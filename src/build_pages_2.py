@@ -466,7 +466,7 @@ def build(g):
             f'<rect width="320" height="400" fill="url(#g-{sid})"/>'
             f'<rect width="320" height="400" fill="url(#r-{sid})"/>'
             f'<text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" '
-            f'font-weight="300" font-size="128" letter-spacing="2" fill="#EAFBF6" fill-opacity="0.92">{esc(ini)}</text>'
+            f'font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">{esc(ini)}</text>'
             f'</svg>')
     socio_cards = ""
     for s in SOCIOS:

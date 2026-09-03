@@ -18,12 +18,12 @@
   --accent:#89F5E5;      /* menta / acento (fondo de botones/pills) */
   --accent-deep:#5FD9C7; /* menta apagada para hover */
   --accent-ink:#89F5E5;  /* acento como TEXTO/gráfico fino (menta en oscuro) */
-  --text:#EAFBF6;        /* texto principal */
+  --text:#D9F6EF;        /* texto principal */
   --on-light:#05292C;    /* texto sobre menta */
-  --dim:rgba(234,251,246,.70);
-  --dim-2:rgba(234,251,246,.48);
+  --dim:rgba(217,246,239,.70);
+  --dim-2:rgba(217,246,239,.48);
   --line:rgba(137,245,229,.30);
-  --line-soft:rgba(234,251,246,.12);
+  --line-soft:rgba(217,246,239,.12);
   --grid-line:rgba(137,245,229,.14); /* trazos de circuito */
 
   --sans:'Archivo',-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -80,27 +80,27 @@
 /* ---------- Tema claro Veraly (referente bgslaw: fondo blanco, tipografía fina) ---------- */
 body.theme-light{
   --bg:#FFFFFF;          /* fondo blanco */
-  --ink:#F5F6F7;         /* superficie alterna / footer (gris muy claro) */
+  --ink:#EEF5F2;         /* superficie alterna / footer (gris muy claro) */
   --panel:#FFFFFF;       /* superficie / tarjeta */
-  --panel-2:#F3F5F6;     /* realce de fila (gris muy claro, como el referente) */
-  --text:#0C1F1C;        /* casi-negro (leve tinte teal) */
-  --dim:rgba(12,31,28,.60);
-  --dim-2:rgba(12,31,28,.42);
-  --line:rgba(12,31,28,.13);
-  --line-soft:rgba(12,31,28,.09);
-  --grid-line:rgba(12,31,28,.05);
+  --panel-2:#F1F7F5;     /* realce de fila (gris muy claro, como el referente) */
+  --text:#05292C;        /* casi-negro (leve tinte teal) */
+  --dim:rgba(5,41,44,.60);
+  --dim-2:rgba(5,41,44,.42);
+  --line:rgba(5,41,44,.13);
+  --line-soft:rgba(5,41,44,.09);
+  --grid-line:rgba(5,41,44,.05);
   --accent-ink:#0C8C79;  /* teal: único detalle de color, legible sobre blanco */
   /* --accent (menta) y --on-light se mantienen: botones/pills rellenos */
 }
 /* Header legible sobre fondo blanco */
 body.theme-light .site-header.floating{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,0))}
-body.theme-light .nav-pill{background:rgba(12,31,28,.04);border-color:rgba(12,31,28,.10)}
+body.theme-light .nav-pill{background:rgba(5,41,44,.04);border-color:rgba(5,41,44,.10)}
 
 /* Isla clara: sección con fondo blanco dentro de una página oscura */
 .section-light{
-  --bg:#FFFFFF;--ink:#F5F6F7;--panel:#FFFFFF;--panel-2:#F3F5F6;--text:#0C1F1C;
-  --dim:rgba(12,31,28,.60);--dim-2:rgba(12,31,28,.42);--line:rgba(12,31,28,.13);
-  --line-soft:rgba(12,31,28,.09);--grid-line:rgba(12,31,28,.05);--accent-ink:#0C8C79;
+  --bg:#FFFFFF;--ink:#EEF5F2;--panel:#FFFFFF;--panel-2:#F1F7F5;--text:#05292C;
+  --dim:rgba(5,41,44,.60);--dim-2:rgba(5,41,44,.42);--line:rgba(5,41,44,.13);
+  --line-soft:rgba(5,41,44,.09);--grid-line:rgba(5,41,44,.05);--accent-ink:#0C8C79;
   background:#FFFFFF;color:var(--text)}
 /* en la isla clara, el tile del gráfico se mantiene oscuro para dar contraste */
 .section-light .frow .fr-media{background:radial-gradient(120% 120% at 30% 20%,#0a4a50,#04191b)}
@@ -301,7 +301,7 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
   .nav-cta{margin:20px 0 0}
   .nav-cta .btn{width:100%}
   .nav-toggle{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;
-    background:rgba(234,251,246,.06);border:1px solid var(--line);border-radius:12px;cursor:pointer;z-index:130;color:var(--text);
+    background:rgba(217,246,239,.06);border:1px solid var(--line);border-radius:12px;cursor:pointer;z-index:130;color:var(--text);
     -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
   .nav-toggle svg{width:22px;height:22px}
   body[data-nav-open="true"]{overflow:hidden}
@@ -513,8 +513,8 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .check{display:flex;gap:12px;align-items:flex-start;margin-bottom:22px}
 .check input{margin-top:4px;width:20px;height:20px;flex:none;accent-color:var(--accent)}
 .check label{font-family:var(--sans);font-weight:400;color:var(--dim);font-size:var(--step--1);margin:0;line-height:1.5}
-.field-error{color:#FFC7B8;font-size:var(--step--1);margin-top:6px;font-family:var(--ui);display:none}
-.field[data-invalid="true"] input{border-color:#F0A08A}
+.field-error{color:var(--accent-ink);font-size:var(--step--1);margin-top:6px;font-family:var(--ui);display:none}
+.field[data-invalid="true"] input{border-color:var(--accent-ink)}
 .field[data-invalid="true"] .field-error{display:block}
 .form-note{color:var(--dim);font-size:var(--step--1);margin:0 0 18px}
 .form-note strong{color:var(--text)}
@@ -525,7 +525,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .form-status{margin-top:16px;padding:14px 18px;border-radius:var(--card-r);font-size:var(--step--1);display:none}
 .form-status[data-show="true"]{display:block}
 .form-status.ok{background:rgba(137,245,229,.12);border:1px solid var(--line);color:var(--text)}
-.form-status.err{background:rgba(240,160,138,.12);border:1px solid #F0A08A;color:#FFD9CE}
+.form-status.err{background:color-mix(in srgb,var(--accent-ink) 12%,transparent);border:1px solid var(--accent-ink);color:var(--text)}
 
 /* ---------- Contacto: dos columnas ---------- */
 .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--gutter);align-items:start}
@@ -580,8 +580,8 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .site-footer{
   /* Se fija la paleta OSCURA: el footer permanece oscuro incluso bajo body.theme-light */
   --bg:#05292C; --ink:#03191B; --panel:#073A3F; --panel-2:#0A4A50;
-  --text:#EAFBF6; --dim:rgba(234,251,246,.66); --dim-2:rgba(234,251,246,.44);
-  --line:rgba(137,245,229,.28); --line-soft:rgba(234,251,246,.12); --accent-ink:#89F5E5;
+  --text:#D9F6EF; --dim:rgba(217,246,239,.66); --dim-2:rgba(217,246,239,.44);
+  --line:rgba(137,245,229,.28); --line-soft:rgba(217,246,239,.12); --accent-ink:#89F5E5;
   background:var(--ink);color:var(--text);
   border-top:1px solid var(--line-soft);margin-top:var(--sp-xl)}
 .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:var(--gutter);
@@ -907,7 +907,7 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 .sv-overlay b{font-family:var(--display);font-weight:600;color:var(--text);font-size:1.02rem}
 .svc-row{display:flex;justify-content:space-between;gap:12px;font-size:.88rem;color:var(--dim)}
 .svc-row .ok{color:var(--accent);font-weight:600}
-.svc-row .bad{color:#F0A08A;font-weight:600}
+.svc-row .bad{color:var(--dim);font-weight:600}
 .svc-line{font-size:.82rem;color:var(--dim);font-family:var(--mono)}
 .svc-tags{display:flex;flex-wrap:wrap;gap:6px}
 .svc-tag{font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;
@@ -946,9 +946,9 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
    Reveal por scroll (word focus + tarjetas) — "El marco"
    ============================================================ */
 /* isla oscura: fija la paleta oscura aunque la página esté en theme-light */
-.force-dark{--bg:#05292C;--ink:#03191B;--panel:#073A3F;--panel-2:#0A4A50;--text:#EAFBF6;
-  --dim:rgba(234,251,246,.66);--dim-2:rgba(234,251,246,.44);--line:rgba(137,245,229,.28);
-  --line-soft:rgba(234,251,246,.12);--accent-ink:#89F5E5}
+.force-dark,.plz-sec{--bg:#05292C;--ink:#03191B;--panel:#073A3F;--panel-2:#0A4A50;--text:#D9F6EF;
+  --dim:rgba(217,246,239,.66);--dim-2:rgba(217,246,239,.44);--line:rgba(137,245,229,.28);
+  --line-soft:rgba(217,246,239,.12);--accent-ink:#89F5E5}
 /* tarjetas del reveal cuando nombran las vías (no son enlaces) */
 /* pista muy larga = cada frase se ilumina y se sostiene el tiempo suficiente
    para leerla completa antes de cambiar; las cards salen al final */
@@ -963,9 +963,9 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
   background:linear-gradient(160deg,rgba(137,245,229,.11),rgba(3,25,27,.55));
   border-color:rgba(137,245,229,.24)}
 .reveal-cards .rc--via .t-d{color:var(--accent);font-size:.74rem;letter-spacing:.16em}
-.reveal-cards .rc--via .t-k{font-family:var(--display);font-weight:600;color:#fff;
+.reveal-cards .rc--via .t-k{font-family:var(--display);font-weight:600;color:var(--text);
   font-size:clamp(1.7rem,1.2rem + 1.3vw,2.3rem);letter-spacing:-.02em;line-height:1.04;margin-top:.15rem}
-.reveal-cards .rc--via .rc-note{font-family:var(--ui);font-size:.95rem;color:rgba(234,251,246,.8);line-height:1.4;margin-top:.1rem}
+.reveal-cards .rc--via .rc-note{font-family:var(--ui);font-size:.95rem;color:rgba(217,246,239,.8);line-height:1.4;margin-top:.1rem}
 .reveal-cards .rc--via:hover{transform:translateY(-4px);border-color:var(--accent)}
 .reveal-cards .rc--via:hover .t-k{color:var(--accent)}
 .reveal{background:var(--ink);border-top:1px solid var(--line-soft)}
@@ -1092,7 +1092,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
   transition:background-position .5s cubic-bezier(.2,.7,.2,1),color .32s ease,
     border-color .32s ease,transform .32s cubic-bezier(.2,.7,.2,1)}
 .bcard:hover .tag,.blog-feature:hover .tag{
-  background-position:0 0;color:#fff;border-color:var(--accent-ink);transform:translateY(-2px)}
+  background-position:0 0;color:var(--on-light);border-color:var(--accent-ink);transform:translateY(-2px)}
 @media (prefers-reduced-motion:reduce){
   .bcard .tag,.bf-body .tag{transition:color .2s ease,border-color .2s ease}
   .bcard:hover .tag,.blog-feature:hover .tag{transform:none}}
@@ -1105,10 +1105,10 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .blog-feature{display:grid;grid-template-columns:1fr 1.12fr;gap:clamp(20px,3vw,44px);
   align-items:stretch;background:var(--panel);border:1px solid var(--line-soft);
   border-radius:var(--card-r);padding:clamp(22px,3vw,40px);text-decoration:none;color:inherit;
-  box-shadow:0 1px 2px rgba(12,31,28,.04),0 18px 48px -30px rgba(12,31,28,.28);
+  box-shadow:0 1px 2px rgba(5,41,44,.04),0 18px 48px -30px rgba(5,41,44,.28);
   transition:box-shadow .4s ease,transform .4s cubic-bezier(.2,.7,.2,1)}
 .blog-feature:hover{transform:translateY(-3px);
-  box-shadow:0 1px 2px rgba(12,31,28,.05),0 30px 70px -34px rgba(12,31,28,.4)}
+  box-shadow:0 1px 2px rgba(5,41,44,.05),0 30px 70px -34px rgba(5,41,44,.4)}
 .bf-body{display:flex;flex-direction:column;gap:16px;padding:8px 4px}
 .bf-title{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:1.05;
   font-size:clamp(1.9rem,1.2rem + 2.4vw,3rem);color:var(--text)}
@@ -1146,10 +1146,10 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .bcard{display:flex;flex-direction:column;background:var(--panel);
   border:1px solid var(--line-soft);border-radius:var(--card-r);padding:clamp(18px,2vw,26px);
   text-decoration:none;color:inherit;
-  box-shadow:0 1px 2px rgba(12,31,28,.04),0 14px 40px -30px rgba(12,31,28,.26);
+  box-shadow:0 1px 2px rgba(5,41,44,.04),0 14px 40px -30px rgba(5,41,44,.26);
   transition:box-shadow .4s ease,transform .4s cubic-bezier(.2,.7,.2,1)}
 .bcard:hover{transform:translateY(-4px);
-  box-shadow:0 1px 2px rgba(12,31,28,.05),0 26px 60px -32px rgba(12,31,28,.4)}
+  box-shadow:0 1px 2px rgba(5,41,44,.05),0 26px 60px -32px rgba(5,41,44,.4)}
 .bcard-head{display:flex;flex-direction:column;gap:12px}
 .bcard-title{font-family:var(--sans);font-weight:400;letter-spacing:-.015em;line-height:1.18;
   font-size:clamp(1.25rem,1.05rem + .7vw,1.55rem);color:var(--text);text-wrap:pretty;
@@ -1246,7 +1246,7 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .share-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text);transform:translateY(-2px)}
 .share-btn:active{transform:translateY(0) scale(.94);transition-duration:.08s}
 .share-btn:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px}
-.share-btn.is-copied{background:var(--accent-ink);color:#fff;border-color:var(--accent-ink)}
+.share-btn.is-copied{background:var(--accent-ink);color:var(--on-light);border-color:var(--accent-ink)}
 
 /* Artículos relacionados */
 .blog-related{margin-top:var(--sp-xl);padding:clamp(40px,6vw,72px) 0;
@@ -1376,22 +1376,22 @@ html.js .nh-grid .nh-card:nth-child(3n).in .nh-ico svg{transition-delay:.66s}
 @media (max-width:860px){.sol-stmt-grid{grid-template-columns:1fr;gap:22px}}
 
 /* Línea de tiempo de plazos: banda oscura, números que suben + línea de progreso */
-.plz-sec{background:radial-gradient(130% 120% at 20% 0%,#0a4a50,#04191b);color:#EAFBF6;
+.plz-sec{background:radial-gradient(130% 120% at 20% 0%,#0a4a50,#04191b);color:#D9F6EF;
   padding:clamp(52px,8vw,116px) 0;position:relative;overflow:clip}
-.plz-sec .eyebrow{color:rgba(234,251,246,.55)}
+.plz-sec .eyebrow{color:rgba(217,246,239,.55)}
 .plz-sec .eyebrow-num .n{color:var(--accent)}
 .plz-head{max-width:none}
 .plz-title{font-family:var(--sans);font-weight:var(--hw);letter-spacing:-.02em;line-height:1.1;
-  font-size:clamp(1.7rem,1.2rem + 2vw,2.7rem);color:#fff;margin:.4rem 0 0;text-wrap:balance;max-width:18ch}
+  font-size:clamp(1.7rem,1.2rem + 2vw,2.7rem);color:var(--text);margin:.4rem 0 0;text-wrap:balance;max-width:18ch}
 .plz-title .pr-accent{color:var(--accent)}
-.plz-sub{color:rgba(234,251,246,.7);font-weight:300;line-height:1.55;max-width:56ch;margin:1rem 0 0}
+.plz-sub{color:rgba(217,246,239,.7);font-weight:300;line-height:1.55;max-width:56ch;margin:1rem 0 0}
 .plz-track{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.4vw,44px);
   margin-top:var(--sp-l);position:relative}
 /* la barra es el protagonista: un riel fino que se ilumina de izq. a der. con el scroll */
 .plz-track::before,.plz-track::after{content:"";position:absolute;top:10px;left:0;height:5px;border-radius:5px}
 .plz-track::before{right:0;background:rgba(137,245,229,.12)}
 .plz-track::after{width:calc(var(--p,0) * 100%);
-  background:linear-gradient(90deg,rgba(137,245,229,.45) 0%,var(--accent) 78%,#fff 100%);
+  background:linear-gradient(90deg,rgba(137,245,229,.45) 0%,var(--accent) 78%,var(--text) 100%);
   box-shadow:0 0 22px 1px var(--accent);transition:width .22s cubic-bezier(.22,.7,.24,1)}
 html:not(.js) .plz-track::after{width:100%}
 /* cada término se ilumina cuando la barra lo alcanza (sin nodos ni bolas) */
@@ -1401,19 +1401,19 @@ html:not(.js) .plz-track::after{width:100%}
 .plz-ord{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;
   color:rgba(137,245,229,.5);margin-bottom:.55rem;transition:color .45s ease}
 .plz-step.is-on .plz-ord{color:var(--accent)}
-.plz-num{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:.95;color:#fff;
+.plz-num{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:.95;color:var(--text);
   font-size:clamp(2.8rem,1.8rem + 3vw,4.8rem);display:flex;align-items:baseline;gap:.16em}
 .plz-num .u{font-size:.28em;color:var(--accent);font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em}
-.plz-label{font-family:var(--ui);font-weight:600;margin-top:.7rem;color:#fff}
-.plz-detail{color:rgba(234,251,246,.62);font-size:var(--step--1);line-height:1.5;margin-top:.4rem;max-width:26ch}
-.plz-note{color:rgba(234,251,246,.66);font-weight:300;line-height:1.6;max-width:64ch;margin:clamp(34px,4vw,56px) 0 0}
-.plz-note strong{color:#fff;font-weight:500}
+.plz-label{font-family:var(--ui);font-weight:600;margin-top:.7rem;color:var(--text)}
+.plz-detail{color:rgba(217,246,239,.62);font-size:var(--step--1);line-height:1.5;margin-top:.4rem;max-width:26ch}
+.plz-note{color:rgba(217,246,239,.66);font-weight:300;line-height:1.6;max-width:64ch;margin:clamp(34px,4vw,56px) 0 0}
+.plz-note strong{color:var(--text);font-weight:500}
 @media (max-width:760px){
   .plz-track{grid-template-columns:1fr;gap:0;margin-left:10px}
   .plz-track::before{right:auto;top:0;bottom:0;left:10px;width:5px;height:auto}
   .plz-track::after{top:0;left:10px;width:5px !important;
     height:calc(var(--p,0) * 100%);
-    background:linear-gradient(180deg,rgba(137,245,229,.45),var(--accent) 80%,#fff);
+    background:linear-gradient(180deg,rgba(137,245,229,.45),var(--accent) 80%,var(--text));
     transition:height .22s cubic-bezier(.22,.7,.24,1)}
   html:not(.js) .plz-track::after{height:100%}
   .plz-step{padding-top:2px;padding-left:44px;padding-bottom:38px}
@@ -1510,7 +1510,7 @@ html:not(.js) .jn-fill{height:100%}
 .jn-phase:last-child{padding-bottom:0}
 .jn-phase.is-on{opacity:1}
 .jn-node{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  background:var(--bg,#fff);border:2px solid var(--line);position:relative;z-index:1;
+  background:var(--bg,var(--text));border:2px solid var(--line);position:relative;z-index:1;
   transition:border-color .5s ease,box-shadow .5s ease}
 .jn-phase.is-on .jn-node{border-color:var(--accent-ink);box-shadow:0 0 0 5px color-mix(in srgb,var(--accent-ink) 14%,transparent);
   animation:jnPop .55s cubic-bezier(.2,.7,.2,1)}
@@ -1653,16 +1653,16 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 /* ============ Página de contacto (referente) + reserva tipo Calendly ============ */
 .contact-hero{position:relative;overflow:clip;background:var(--ink);min-height:80vh;min-height:80svh;
   display:flex;align-items:flex-end;
-  --bg:#05292C;--ink:#03191B;--panel:#073A3F;--text:#EAFBF6;--dim:rgba(234,251,246,.7);
-  --dim-2:rgba(234,251,246,.48);--accent-ink:#89F5E5;--line:rgba(137,245,229,.28)}
+  --bg:#05292C;--ink:#03191B;--panel:#073A3F;--text:#D9F6EF;--dim:rgba(217,246,239,.7);
+  --dim-2:rgba(217,246,239,.48);--accent-ink:#89F5E5;--line:rgba(137,245,229,.28)}
 .contact-hero-bg{position:absolute;inset:0;opacity:.20;filter:saturate(.5)}
 .contact-hero-bg svg{width:100%;height:100%}
 .contact-hero-in{position:relative;padding:clamp(120px,16vh,180px) 0 clamp(40px,7vh,88px)}
 .contact-hero .eyebrow{color:var(--accent-ink)}
 .contact-hero-h1{font-family:var(--display);font-weight:var(--hw);letter-spacing:-.02em;line-height:1.03;
-  font-size:var(--h1);color:#fff;margin:.6rem 0 0;max-width:14ch}
+  font-size:var(--h1);color:var(--text);margin:.6rem 0 0;max-width:14ch}
 .contact-hero-h1 .pr-accent{color:var(--accent-ink)}
-.contact-hero-sub{color:rgba(234,251,246,.7);font-weight:300;line-height:1.5;font-size:var(--step-1);
+.contact-hero-sub{color:rgba(217,246,239,.7);font-weight:300;line-height:1.5;font-size:var(--step-1);
   max-width:52ch;margin:clamp(22px,3vh,38px) 0 0}
 .contact-cols{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,6vw,96px);align-items:start}
 .contact-info{display:flex;flex-direction:column;gap:clamp(24px,3vw,42px)}
@@ -2344,7 +2344,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 </div></section>
 
 <section class="socios-grid-sec">
-  <div class="socios-grid"><a class="socio-card" href="#!/equipo/socios/hermes-vergara/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Hermes Vergara"><defs><linearGradient id="g-hermes-vergara" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-hermes-vergara" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-hermes-vergara)"/><rect width="320" height="400" fill="url(#r-hermes-vergara)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#EAFBF6" fill-opacity="0.92">HV</text></svg></span><span class="socio-meta"><span class="socio-name">Hermes Vergara</span><span class="socio-rama">Derecho contractual y constitucional</span></span></a><a class="socio-card" href="#!/equipo/socios/kewin-santiago-canizales/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Kewin Santiago Canizales"><defs><linearGradient id="g-kewin-santiago-canizales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-kewin-santiago-canizales" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-kewin-santiago-canizales)"/><rect width="320" height="400" fill="url(#r-kewin-santiago-canizales)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#EAFBF6" fill-opacity="0.92">KC</text></svg></span><span class="socio-meta"><span class="socio-name">Kewin Santiago Canizales</span><span class="socio-rama">Derecho tributario y migratorio</span></span></a><a class="socio-card" href="#!/equipo/socios/miguel-bayter/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Miguel Bayter"><defs><linearGradient id="g-miguel-bayter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-miguel-bayter" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-miguel-bayter)"/><rect width="320" height="400" fill="url(#r-miguel-bayter)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#EAFBF6" fill-opacity="0.92">MB</text></svg></span><span class="socio-meta"><span class="socio-name">Miguel Bayter</span><span class="socio-rama">Derecho corporativo y urbano</span></span></a><a class="socio-card" href="#!/equipo/socios/juan-david-naar/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Juan David Naar"><defs><linearGradient id="g-juan-david-naar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-juan-david-naar" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-juan-david-naar)"/><rect width="320" height="400" fill="url(#r-juan-david-naar)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#EAFBF6" fill-opacity="0.92">JN</text></svg></span><span class="socio-meta"><span class="socio-name">Juan David Naar</span><span class="socio-rama">Derecho penal y derecho informático</span></span></a><a class="socio-card" href="#!/equipo/socios/javier-pisciotti/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Javier Pisciotti"><defs><linearGradient id="g-javier-pisciotti" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-javier-pisciotti" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-javier-pisciotti)"/><rect width="320" height="400" fill="url(#r-javier-pisciotti)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#EAFBF6" fill-opacity="0.92">JP</text></svg></span><span class="socio-meta"><span class="socio-name">Javier Pisciotti</span><span class="socio-rama">Derecho laboral y seguros</span></span></a></div>
+  <div class="socios-grid"><a class="socio-card" href="#!/equipo/socios/hermes-vergara/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Hermes Vergara"><defs><linearGradient id="g-hermes-vergara" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-hermes-vergara" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-hermes-vergara)"/><rect width="320" height="400" fill="url(#r-hermes-vergara)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">HV</text></svg></span><span class="socio-meta"><span class="socio-name">Hermes Vergara</span><span class="socio-rama">Derecho contractual y constitucional</span></span></a><a class="socio-card" href="#!/equipo/socios/kewin-santiago-canizales/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Kewin Santiago Canizales"><defs><linearGradient id="g-kewin-santiago-canizales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-kewin-santiago-canizales" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-kewin-santiago-canizales)"/><rect width="320" height="400" fill="url(#r-kewin-santiago-canizales)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">KC</text></svg></span><span class="socio-meta"><span class="socio-name">Kewin Santiago Canizales</span><span class="socio-rama">Derecho tributario y migratorio</span></span></a><a class="socio-card" href="#!/equipo/socios/miguel-bayter/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Miguel Bayter"><defs><linearGradient id="g-miguel-bayter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-miguel-bayter" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-miguel-bayter)"/><rect width="320" height="400" fill="url(#r-miguel-bayter)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">MB</text></svg></span><span class="socio-meta"><span class="socio-name">Miguel Bayter</span><span class="socio-rama">Derecho corporativo y urbano</span></span></a><a class="socio-card" href="#!/equipo/socios/juan-david-naar/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Juan David Naar"><defs><linearGradient id="g-juan-david-naar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-juan-david-naar" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-juan-david-naar)"/><rect width="320" height="400" fill="url(#r-juan-david-naar)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JN</text></svg></span><span class="socio-meta"><span class="socio-name">Juan David Naar</span><span class="socio-rama">Derecho penal y derecho informático</span></span></a><a class="socio-card" href="#!/equipo/socios/javier-pisciotti/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Javier Pisciotti"><defs><linearGradient id="g-javier-pisciotti" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-javier-pisciotti" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-javier-pisciotti)"/><rect width="320" height="400" fill="url(#r-javier-pisciotti)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JP</text></svg></span><span class="socio-meta"><span class="socio-name">Javier Pisciotti</span><span class="socio-rama">Derecho laboral y seguros</span></span></a></div>
   <div class="container">
     <div class="cta-row" style="margin-top:clamp(40px,6vw,72px)"><a class="btn btn--ghost" href="#!/equipo/">Volver a las prácticas</a><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a></div>
   </div>
@@ -2355,7 +2355,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
     <div class="socio-hero">
-      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Hermes Vergara"><defs><linearGradient id="g-hermes-vergara" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-hermes-vergara" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-hermes-vergara)"/><rect width="320" height="400" fill="url(#r-hermes-vergara)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#EAFBF6" fill-opacity="0.92">HV</text></svg></span></div>
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Hermes Vergara"><defs><linearGradient id="g-hermes-vergara" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-hermes-vergara" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-hermes-vergara)"/><rect width="320" height="400" fill="url(#r-hermes-vergara)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">HV</text></svg></span></div>
       <div class="socio-hero-txt">
         <p class="eyebrow-num">Socio</p>
         <h1 class="socio-h1">Hermes Vergara</h1>
@@ -2383,7 +2383,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
     <div class="socio-hero">
-      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Kewin Santiago Canizales"><defs><linearGradient id="g-kewin-santiago-canizales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-kewin-santiago-canizales" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-kewin-santiago-canizales)"/><rect width="320" height="400" fill="url(#r-kewin-santiago-canizales)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#EAFBF6" fill-opacity="0.92">KC</text></svg></span></div>
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Kewin Santiago Canizales"><defs><linearGradient id="g-kewin-santiago-canizales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-kewin-santiago-canizales" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-kewin-santiago-canizales)"/><rect width="320" height="400" fill="url(#r-kewin-santiago-canizales)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">KC</text></svg></span></div>
       <div class="socio-hero-txt">
         <p class="eyebrow-num">Socio</p>
         <h1 class="socio-h1">Kewin Santiago Canizales</h1>
@@ -2411,7 +2411,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
     <div class="socio-hero">
-      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Miguel Bayter"><defs><linearGradient id="g-miguel-bayter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-miguel-bayter" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-miguel-bayter)"/><rect width="320" height="400" fill="url(#r-miguel-bayter)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#EAFBF6" fill-opacity="0.92">MB</text></svg></span></div>
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Miguel Bayter"><defs><linearGradient id="g-miguel-bayter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-miguel-bayter" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-miguel-bayter)"/><rect width="320" height="400" fill="url(#r-miguel-bayter)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">MB</text></svg></span></div>
       <div class="socio-hero-txt">
         <p class="eyebrow-num">Socio</p>
         <h1 class="socio-h1">Miguel Bayter</h1>
@@ -2439,7 +2439,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
     <div class="socio-hero">
-      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Juan David Naar"><defs><linearGradient id="g-juan-david-naar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-juan-david-naar" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-juan-david-naar)"/><rect width="320" height="400" fill="url(#r-juan-david-naar)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#EAFBF6" fill-opacity="0.92">JN</text></svg></span></div>
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Juan David Naar"><defs><linearGradient id="g-juan-david-naar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-juan-david-naar" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-juan-david-naar)"/><rect width="320" height="400" fill="url(#r-juan-david-naar)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JN</text></svg></span></div>
       <div class="socio-hero-txt">
         <p class="eyebrow-num">Socio</p>
         <h1 class="socio-h1">Juan David Naar</h1>
@@ -2467,7 +2467,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
     <div class="socio-hero">
-      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Javier Pisciotti"><defs><linearGradient id="g-javier-pisciotti" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-javier-pisciotti" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-javier-pisciotti)"/><rect width="320" height="400" fill="url(#r-javier-pisciotti)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#EAFBF6" fill-opacity="0.92">JP</text></svg></span></div>
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Javier Pisciotti"><defs><linearGradient id="g-javier-pisciotti" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-javier-pisciotti" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-javier-pisciotti)"/><rect width="320" height="400" fill="url(#r-javier-pisciotti)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JP</text></svg></span></div>
       <div class="socio-hero-txt">
         <p class="eyebrow-num">Socio</p>
         <h1 class="socio-h1">Javier Pisciotti</h1>
