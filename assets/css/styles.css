@@ -1450,16 +1450,18 @@ html:not(.js) .plz-track::after{width:100%}
 /* panel de alcance: diagrama rotulado; la barra de la vía activa se resalta */
 .via-scopewrap{align-self:center}
 .via-scope-k{display:block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;color:var(--dim-2)}
-.via-bars{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.4vw,22px);margin:1.4rem 0 1rem;align-items:end}
+.via-bars{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.4vw,22px);margin:1.4rem 0 1rem;align-items:start}
 .via-bar{display:flex;flex-direction:column;gap:.7rem}
-.via-bar-col{position:relative;display:block;height:clamp(150px,20vh,210px)}
-.via-bar-col i{position:absolute;left:0;right:0;bottom:0;border-radius:12px 12px 5px 5px;background:var(--line);
-  transition:height .6s cubic-bezier(.2,.7,.2,1),background .5s ease,box-shadow .5s ease}
+.via-bar-col{position:relative;display:block;height:clamp(150px,20vh,210px);
+  background:color-mix(in srgb,var(--accent-ink) 7%,transparent);border-radius:3px}
+.via-bar-col i{position:absolute;left:0;right:0;bottom:0;border-radius:3px;
+  background:color-mix(in srgb,var(--accent-ink) 22%,transparent);
+  transition:height .6s cubic-bezier(.2,.7,.2,1),background .5s ease}
 .via-bar[data-i="0"] .via-bar-col i{height:38%}
 .via-bar[data-i="1"] .via-bar-col i{height:66%}
 .via-bar[data-i="2"] .via-bar-col i{height:100%}
-.via-bar.on .via-bar-col i{background:color-mix(in srgb,var(--accent-ink) 42%,transparent)}
-.via-bar.cur .via-bar-col i{background:var(--accent-ink);box-shadow:0 12px 34px -10px var(--accent-ink)}
+.via-bar.on .via-bar-col i{background:color-mix(in srgb,var(--accent-ink) 40%,transparent)}
+.via-bar.cur .via-bar-col i{background:var(--accent-ink)}
 .via-bar-l{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;color:var(--dim-2);transition:color .45s ease}
 .via-bar.cur .via-bar-l{color:var(--accent-ink)}
 .via-bar-v{font-family:var(--sans);font-weight:500;font-size:.94rem;line-height:1.25;color:var(--dim);transition:color .45s ease}
