@@ -105,15 +105,15 @@ ARTICLES = [
 
 # Cinco prácticas (composición de la firma, sin nombres — decisión del cliente).
 PRACTICAS = [
-    {"rama": "Contractual y constitucional",
+    {"slug": "contractual-y-constitucional", "rama": "Contractual y constitucional",
      "aporte": "El debido proceso en un trámite de única instancia y el andamiaje contractual anterior a la toma de posesión."},
-    {"rama": "Tributaria y migratoria",
+    {"slug": "tributaria-y-migratoria", "rama": "Tributaria y migratoria",
      "aporte": "Las contingencias tributarias sobre los flujos del esquema y las consecuencias migratorias de los vinculados."},
-    {"rama": "Corporativa",
+    {"slug": "corporativa", "rama": "Corporativa",
      "aporte": "Las controversias societarias sobre los actos anteriores a la intervención y la responsabilidad de administradores, revisores fiscales y terceros."},
-    {"rama": "Penal e informática",
+    {"slug": "penal-e-informatica", "rama": "Penal e informática",
      "aporte": "La defensa penal por los artículos 316 y 316A y la evidencia digital, desde los actos urgentes hasta el juicio oral."},
-    {"rama": "Empresarial y laboral",
+    {"slug": "empresarial-y-laboral", "rama": "Empresarial y laboral",
      "aporte": "El análisis de la operación de la empresa y sus relaciones laborales para identificar obligaciones y anticipar contingencias en un caso de captación."},
 ]
 
@@ -163,7 +163,7 @@ SITUACIONES = [
 # Plantillas compartidas
 # ----------------------------------------------------------------------------
 def brand(link=True, small=True):
-    inner = (f'<span class="brand-mark" aria-hidden="true" style="width:30px;height:30px;color:var(--accent);display:inline-block">{LOGO_SVG}</span>'
+    inner = (f'<span class="brand-mark" aria-hidden="true" style="width:30px;height:30px;color:currentColor;display:inline-block">{LOGO_SVG}</span>'
              f'<span><b>Veraly</b>{" <span>Grupo Jurídico</span>" if small else ""}</span>')
     if link:
         return f'<a class="brand" href="/" aria-label="Veraly Grupo Jurídico — inicio">{inner}</a>'
@@ -172,16 +172,24 @@ def brand(link=True, small=True):
 def header_html(active=""):
     def cur(key):
         return ' aria-current="page"' if active == key else ''
-    sub = "".join(
+    situ = "".join(
         f'<li><a href="{url}" data-situacion="{tag}"{cur(tag)}>{esc(t)}</a></li>'
         for url, t, d, tag in SITUACIONES)
+    prac = "".join(
+        f'<li><a href="/equipo/{p["slug"]}/">{esc(p["rama"])}</a></li>'
+        for p in PRACTICAS)
+    mega = (f'<div class="submenu submenu--mega">'
+            f'<div class="submenu-col"><span class="submenu-h">Según su situación</span>'
+            f'<ul>{situ}</ul></div>'
+            f'<div class="submenu-col"><span class="submenu-h">Por práctica</span>'
+            f'<ul>{prac}</ul></div></div>')
     # enlaces reutilizados (pill de escritorio y menú móvil)
     def links(prefix=""):
         return f'''<a href="/firma/"{cur('firma')}>La firma</a>
-        <a href="/equipo/"{cur('equipo')}>El equipo</a>
+        <a href="/equipo/"{cur('equipo')}>Prácticas</a>
         <div class="has-sub">
           <button type="button" aria-haspopup="true">Soluciones {ICON_CHEVRON}</button>
-          <ul class="submenu">{sub}</ul>
+          {mega}
         </div>
         <a href="/analisis/"{cur('analisis')}>Análisis</a>'''
     return f'''<a class="skip-link" href="#main">Saltar al contenido</a>
@@ -196,10 +204,10 @@ def header_html(active=""):
     <div class="nav-menu-wrap" id="nav-menu">
       <ul class="nav-menu">
         <li><a href="/firma/"{cur('firma')}>La firma</a></li>
-        <li><a href="/equipo/"{cur('equipo')}>El equipo</a></li>
+        <li><a href="/equipo/"{cur('equipo')}>Prácticas</a></li>
         <li class="has-sub">
           <button type="button" aria-haspopup="true">Soluciones {ICON_CHEVRON}</button>
-          <ul class="submenu">{sub}</ul>
+          {mega}
         </li>
         <li><a href="/analisis/"{cur('analisis')}>Análisis</a></li>
         <li class="nav-cta"><a class="btn btn--primary" href="/contacto/"{cur('contacto')}>Contacto</a></li>
@@ -490,7 +498,7 @@ def document(meta, body):
 </head>
 <body class="{body_class}">
 {header_html(meta.get("active",""))}
-<main id="main">
+<main id="main" tabindex="-1">
 {body}
 </main>
 {footer_html()}

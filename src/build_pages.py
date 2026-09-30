@@ -140,8 +140,11 @@ def build(g):
 
     prac_cards = ""
     for pr in PRACTICAS:
-        prac_cards += (f'<div class="bigcard"><span class="bc-label">Práctica</span>'
-                       f'<h3>{esc(pr["rama"])}</h3><p>{esc(pr["aporte"])}</p></div>')
+        slug = pr.get("slug", "")
+        href = f'/equipo/{slug}/' if slug else '/equipo/'
+        prac_cards += (f'<a class="bigcard bigcard--link" href="{href}"><span class="bc-label">Práctica</span>'
+                       f'<h3>{esc(pr["rama"])}</h3><p>{esc(pr["aporte"])}</p>'
+                       f'<span class="bc-go" aria-hidden="true"></span></a>')
 
     conf = [
         ("3", "Vías del caso", "Administrativa, penal y civil, coordinadas sobre el mismo expediente."),
