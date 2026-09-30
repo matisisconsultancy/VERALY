@@ -370,38 +370,62 @@
     window.addEventListener('resize', upd); upd();
   }
   function initReveal() {
-    var track = $('.reveal-track'); if (!track || track.__i) return; track.__i = 1;
-    var phrases = $$('.reveal-phrase', track), cards = $$('.reveal-cards .rc', track);
-    var np = phrases.length; if (!np) return;
-    var words = phrases.map(function (p) { return $$('.w', p); });
-    // data-litspan (0..1): fracción del avance de cada frase en la que se
-    // iluminan las palabras. Más alto = más lento y las palabras nunca entran de golpe.
-    var litspan = parseFloat(track.getAttribute('data-litspan')) || 0.55;
-    // data-cardstart: fracción del avance donde EMPIEZAN a salir las cards
-    // (permite leer las frases primero y que las cards aparezcan al final).
-    var cardStart = parseFloat(track.getAttribute('data-cardstart'));
-    var hasCardStart = !isNaN(cardStart);
-    function cardThresh(k, n) {
-      if (hasCardStart) return cardStart + (k / n) * (0.98 - cardStart);
-      return (k + 1) / (n + 1);
-    }
-    function upd() {
-      if (window.innerWidth <= 900) {
-        phrases.forEach(function (p) { p.classList.add('active'); });
-        words.forEach(function (ws) { ws.forEach(function (w) { w.classList.add('lit'); }); });
+    $$('.reveal-track').forEach(function (track) {
+      if (track.__i) return; track.__i = 1;
+      var phrases = $$('.reveal-phrase', track), cards = $$('.reveal-cards .rc', track);
+      var np = phrases.length; if (!np) return;
+      var words = phrases.map(function (p) { return $$('.w', p); });
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+      // El titular de cada frase se muestra COMPLETO (visible desde el primer
+      // momento); ya no se ilumina palabra por palabra.
+      function showPhrase(idx) {
+        phrases.forEach(function (ph, i) { ph.classList.toggle('active', i === idx); });
+        words.forEach(function (ws, i) { ws.forEach(function (w) { w.classList.toggle('lit', i === idx); }); });
+      }
+      // Modo rotación automática (frases sin tarjetas): cambian solas cada
+      // 5,5 s, con pausa al pasar el cursor; solo mientras la sección se ve.
+      if (track.getAttribute('data-autorotate') === '1') {
+        showPhrase(0);
         cards.forEach(function (c) { c.classList.add('in'); });
+        if (reduce || np < 2) return;
+        var idx = 0, paused = false, inView = true, timer = null;
+        function tick() { if (paused || !inView) return; idx = (idx + 1) % np; showPhrase(idx); }
+        track.addEventListener('mouseenter', function () { paused = true; });
+        track.addEventListener('mouseleave', function () { paused = false; });
+        track.addEventListener('focusin', function () { paused = true; });
+        track.addEventListener('focusout', function () { paused = false; });
+        if ('IntersectionObserver' in window) {
+          inView = false;
+          new IntersectionObserver(function (es) {
+            es.forEach(function (e) { inView = e.isIntersecting; });
+          }, { threshold: 0.35 }).observe(track);
+        }
+        timer = setInterval(tick, 5500);
         return;
       }
-      var p = pinProgress(track);
-      var idx = Math.min(np - 1, Math.floor(p * np));
-      var local = (p * np) - idx;
-      phrases.forEach(function (ph, i) { ph.classList.toggle('active', i === idx); });
-      var lit = Math.min(1, local / litspan);
-      words[idx].forEach(function (w, j) { w.classList.toggle('lit', (j + 0.6) / words[idx].length <= lit); });
-      cards.forEach(function (c, k) { c.classList.toggle('in', p >= cardThresh(k, cards.length)); });
-    }
-    window.addEventListener('scroll', upd, { passive: true });
-    window.addEventListener('resize', upd); upd();
+      // Modo scroll (con tarjetas): el titular completo visible y las tarjetas
+      // aparecen una a una a medida que se baja.
+      var cardStart = parseFloat(track.getAttribute('data-cardstart'));
+      var hasCardStart = !isNaN(cardStart);
+      function cardThresh(k, n) {
+        if (hasCardStart) return cardStart + (k / n) * (0.98 - cardStart);
+        return (k + 1) / (n + 1);
+      }
+      function upd() {
+        if (window.innerWidth <= 900) {
+          phrases.forEach(function (p) { p.classList.add('active'); });
+          words.forEach(function (ws) { ws.forEach(function (w) { w.classList.add('lit'); }); });
+          cards.forEach(function (c) { c.classList.add('in'); });
+          return;
+        }
+        var p = pinProgress(track);
+        var idx = Math.min(np - 1, Math.floor(p * np));
+        showPhrase(idx);
+        cards.forEach(function (c, k) { c.classList.toggle('in', p >= cardThresh(k, cards.length)); });
+      }
+      window.addEventListener('scroll', upd, { passive: true });
+      window.addEventListener('resize', upd); upd();
+    });
   }
   /* ---------- Las tres vías: entrada + parallax interno ---------- */
   var frowIO = ('IntersectionObserver' in window)
@@ -424,7 +448,7 @@
       $$('.pr-parallax').forEach(function (el) {
         var r = el.getBoundingClientRect();
         var rel = (r.top + r.height / 2) - vh / 2;
-        el.style.transform = 'translateY(' + (rel * -0.12).toFixed(1) + 'px)';
+        el.style.transform = 'translateY(' + (rel * -0.04).toFixed(1) + 'px)';
       });
     }
   }

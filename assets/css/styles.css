@@ -460,7 +460,7 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
 
 /* Páginas de práctica — descripción y normas (referente Oris, en clave clara) */
 .eyebrow-num{font-family:var(--sans);font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;
-  color:var(--dim-2);display:flex;align-items:center;gap:14px;margin:0 0 var(--sp-xs)}
+  color:var(--dim-2);display:flex;align-items:center;gap:14px;margin:0 0 var(--sp-s)}
 .eyebrow-num .n{color:var(--accent-ink);font-weight:600}
 .pr-big{font-family:var(--sans);font-weight:var(--hw);font-size:var(--h2);
   line-height:1.08;letter-spacing:-.02em;max-width:18ch;margin:0}
@@ -1019,6 +1019,10 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 .reveal-track{position:relative;height:170vh}
 .reveal-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:0;overflow:clip;padding:var(--head-h) var(--edge) 6vh}
+/* rotación automática: sección de alto normal, sin fijar */
+.reveal-track[data-autorotate]{height:auto}
+.reveal-track[data-autorotate] .reveal-sticky{position:static;height:auto;min-height:0;
+  padding-block:var(--section-y);overflow:visible}
 .reveal-eyebrow{margin:0 0 clamp(18px,2.6vh,34px)}
 .reveal-phrases{position:relative;width:100%;max-width:1120px;min-height:clamp(180px,26vh,340px);
   display:flex;align-items:center;justify-content:center;text-align:center}
@@ -1449,9 +1453,11 @@ html:not(.js) .plz-track::after{width:100%}
 .via-head .eyebrow-num{margin:0}
 .via-stage{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,7vw,104px);align-items:center;width:100%}
 .via-slides{position:relative;min-height:clamp(300px,40vh,400px)}
+/* cambio limpio entre vías: la anterior se oculta antes de mostrar la
+   siguiente, sin fundido que deje dos titulares superpuestos. */
 .via-slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
-  opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .65s cubic-bezier(.2,.7,.2,1);pointer-events:none}
-.via-slide.active{opacity:1;transform:none;pointer-events:auto}
+  opacity:0;visibility:hidden;transition:opacity .22s ease;pointer-events:none}
+.via-slide.active{opacity:1;visibility:visible;pointer-events:auto}
 .via-idx{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;color:var(--accent-ink)}
 .via-tag{display:block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;
   font-size:.82rem;font-weight:500;color:var(--accent-ink);margin-top:.7rem}

@@ -430,8 +430,11 @@ def marco_reveal(eyebrow="El marco que trabajamos", phrases=None, cards=None, se
         f'<span class="rc-go" aria-hidden="true">Ver norma <i>↗</i></span></a>'
         for k, d, u in cards)
     cards_html = f'<div class="reveal-cards" aria-hidden="true">{rc}</div>' if cards else ""
+    # Sin tarjetas (solo frases) => rotación automática por tiempo, sin fijar
+    # la sección; con tarjetas => reveal por scroll.
+    auto = ' data-autorotate="1"' if not cards else ''
     return f'''<section class="reveal" id="{section_id}">
-  <div class="reveal-track">
+  <div class="reveal-track"{auto}>
     <div class="reveal-sticky">
       <p class="eyebrow reveal-eyebrow">{esc(eyebrow)}</p>
       <div class="reveal-phrases">{phr}</div>
