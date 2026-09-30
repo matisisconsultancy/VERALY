@@ -97,7 +97,7 @@ def build(g):
   <p class="eyebrow">La firma</p>
   <span class="prac-rule" aria-hidden="true"></span>
   <h1 class="prac-h1" style="max-width:24ch">Una firma construida sobre un solo fenómeno jurídico.</h1>
-  <p class="prac-sub">Veraly Grupo Jurídico entiende el fraude financiero en toda su complejidad. Defendemos a quien lo sufre —por haber perdido lo invertido o por estar bajo investigación— con la lectura completa que da un equipo trabajando el problema desde cada una de sus ramas.</p>
+  <p class="prac-sub">Veraly Grupo Jurídico entiende el fraude financiero en toda su complejidad y defiende a quien lo enfrenta, haya perdido lo que invirtió o se encuentre bajo investigación, con la lectura completa de un equipo que trabaja el caso desde cada una de las ramas del derecho que lo atraviesan.</p>
 """, cls="hero hero--vh")}
 
 <section class="section section-light">
@@ -146,7 +146,7 @@ def build(g):
 
 {section(f"""
   <h2>El equipo</h2>
-  <p class="lead" style="margin-top:1rem;max-width:56ch">Cinco socios aportan cinco ramas del derecho al mismo expediente.</p>
+  <p class="lead" style="margin-top:1rem;max-width:56ch">Cinco prácticas aportan cinco ramas del derecho al mismo expediente.</p>
   <div class="cta-row">
     <a class="btn btn--ghost" href="/equipo/">Por qué cinco prácticas</a>
     {agendar("Agendar una consulta")}
@@ -180,12 +180,12 @@ def build(g):
             "slug": "contractual-y-constitucional",
             "rama": "Contractual y constitucional",
             "card": "El debido proceso en un trámite de única instancia y el andamiaje contractual anterior a la toma de posesión.",
-            "lede": "Lee el proceso de captación desde dos planos: las garantías constitucionales del trámite y la arquitectura contractual de todo lo que ocurrió antes de la intervención.",
-            "meta": "La práctica constitucional y contractual en captación masiva: debido proceso en el trámite de única instancia del Decreto 4334 de 2008, control de las decisiones de la Superintendencia de Sociedades y validez de los contratos previos a la toma de posesión.",
+            "lede": "Sus contratos y sus garantías, leídos antes de que los lea la Superintendencia de Sociedades. Revisamos cómo la autoridad va a interpretar cada acuerdo que sostuvo el negocio y defendemos el debido proceso en un trámite que no tiene segunda instancia.",
+            "meta": "Contratos en procesos de captación y debido proceso ante la Superintendencia de Sociedades: lectura de mandatos, mutuos, compraventas de cartera y promesas antes de que los recalifique la autoridad, en un trámite de única instancia del Decreto 4334 de 2008.",
             "paras": [
-                "El procedimiento de intervención por captación masiva y habitual del Decreto 4334 de 2008 es de única instancia y sus decisiones tienen efectos de cosa juzgada frente a todos. Esa concentración exige una lectura constitucional cuidadosa del debido proceso: cuándo se garantiza la contradicción, cómo se ejerce la defensa material dentro de un trámite tan comprimido y qué actos de la Superintendencia de Sociedades son susceptibles de control.",
-                "En paralelo, el esquema casi siempre se construyó sobre contratos —mandatos, mutuos, cuentas en participación, promesas de compraventa— firmados antes de la toma de posesión. Entender ese andamiaje contractual permite distinguir lo lícito de lo que sostuvo la captación, y es la base sobre la que se apoyan las demás prácticas de la firma.",
-                "El trabajo constitucional y contractual, entonces, fija el terreno: qué garantías se pueden invocar, qué decisiones administrativas se pueden controlar y qué relaciones jurídicas anteriores conservan validez. Sobre ese terreno se construyen la defensa penal, la responsabilidad civil y la recuperación del afectado.",
+                "En los procesos de captación masiva y habitual casi todos cometen el mismo error: esperan una segunda oportunidad que no existe, porque la intervención de la Superintendencia de Sociedades no tiene apelación, lo que allí se decide vale frente a todos y ningún juez administrativo lo revisa después, así que el debido proceso se ejerce dentro del trámite o no se ejerce.",
+                "Mientras tanto, los contratos que sostenían el negocio se leen de otra manera, porque la autoridad no mira el nombre que usted les puso sino lo que en realidad fueron, y un mandato, un mutuo, una compraventa de cartera o una promesa sobre planos pueden terminar recalificados sin que nadie le pregunte. De esa lectura depende la posición de cada quien en el proceso.",
+                "Por eso nuestro trabajo empieza por dos frentes al mismo tiempo: defendemos sus garantías constitucionales mientras todavía sirven y revisamos sus contratos como los va a revisar la autoridad, antes de que lo haga. A quien ya enfrenta la intervención, eso le permite saber qué resiste y qué camino le queda; a la empresa que quiere prevenirla, le da el blindaje contractual que evita que un negocio legítimo sea confundido con uno de captación.",
             ],
             "normas": [
                 {"ley": "Decreto 4334 de 2008", "que": "Procedimiento de intervención de única instancia y con efectos de cosa juzgada.", "url": _U["d4334"]},
@@ -201,19 +201,20 @@ def build(g):
                  '<p>El debido proceso del artículo 29 de la Constitución: derecho de defensa, contradicción y control de legalidad, adaptados a un procedimiento de única instancia. Su ejercicio temprano condiciona todo el caso.</p>'),
             ],
             "serves": [("Me investigan o me vincularon", "/defensa-en-captacion-masiva/"),
-                       ("Perdí dinero en un esquema", "/afectados-por-captacion-masiva/")],
-            "articulo": ("que-hace-la-superintendencia-de-sociedades", "Qué hace la Superintendencia de Sociedades"),
+                       ("Perdí dinero en un esquema", "/afectados-por-captacion-masiva/"),
+                       ("Mi empresa recauda de muchas personas", "/cumplimiento-en-recaudo-masivo/")],
+            "articulo": ("captacion-con-libranzas-y-factoring", "Captación montada sobre contratos legales"),
         },
         {
             "slug": "tributaria-y-migratoria",
             "rama": "Tributaria y migratoria",
             "card": "Las contingencias tributarias sobre los flujos del esquema y las consecuencias migratorias de los vinculados.",
-            "lede": "Sigue el dinero y sigue a las personas: las contingencias fiscales que dejan los flujos del esquema y las consecuencias migratorias que alcanzan a vinculados extranjeros.",
-            "meta": "Contingencias tributarias sobre los flujos de un esquema de captación masiva y consecuencias migratorias de los vinculados: obligaciones del Estatuto Tributario, intercambio de información y permanencia de extranjeros vinculados.",
+            "lede": "Analizamos las obligaciones tributarias y la situación migratoria de personas y empresas, y en un caso de captación lo hacemos para identificar contingencias, ordenar la información relevante y orientar una estrategia coherente con los demás frentes jurídicos.",
+            "meta": "Obligaciones tributarias y situación migratoria de personas y empresas en un caso de captación masiva: movimientos de dinero y declaraciones, residencia fiscal de vinculados extranjeros y contingencias ante Migración Colombia.",
             "paras": [
-                "Todo esquema de captación deja un rastro tributario: retenciones, declaraciones, movimientos que la autoridad fiscal puede leer de forma independiente al proceso por captación masiva. Anticipar esas contingencias tributarias evita que una defensa se gane en el frente penal o administrativo y se pierda en el fiscal.",
-                "Cuando hay vinculados extranjeros o estructuras fuera del país, la dimensión migratoria se vuelve real: visados, permanencia y salidas quedan condicionados por el proceso. Integrar el análisis migratorio desde el inicio impide sorpresas que ninguna de las otras prácticas vería venir.",
-                "Los mecanismos de intercambio de información entre autoridades hacen que lo tributario y lo penal-administrativo se lean en conjunto. Por eso la estrategia fiscal y migratoria no puede ir por separado: debe ser coherente con la defensa que se construye en los demás frentes.",
+                "Revisamos los movimientos de dinero, las declaraciones y las obligaciones tributarias de la empresa y de las personas involucradas. Examinamos cómo están organizados sus asuntos tributarios y contables y, cuando no existe una estructura clara, ayudamos a definir una que permita identificar obligaciones, sustentar operaciones y atender los requerimientos que puedan surgir.",
+                "Cuando hay personas extranjeras vinculadas al caso, evaluamos su situación migratoria, el cumplimiento de los requisitos aplicables y las posibles contingencias ante Migración Colombia. También analizamos si, según sus circunstancias, pueden tener obligaciones tributarias en Colombia, incluida la necesidad de determinar su residencia fiscal.",
+                "Integramos estos análisis con las demás prácticas de la firma para que las decisiones sobre la empresa, sus recursos y las personas vinculadas al proceso tengan en cuenta sus efectos tributarios y migratorios.",
             ],
             "normas": [
                 {"ley": "Estatuto Tributario", "que": "Obligaciones formales y sustanciales sobre los flujos del esquema.", "url": _U["et"]},
@@ -233,32 +234,28 @@ def build(g):
             "articulo": None,
         },
         {
-            "slug": "corporativa-y-urbana",
-            "rama": "Corporativa y urbana",
-            "card": "Las controversias societarias sobre actos anteriores a la intervención y los activos inmobiliarios comprometidos.",
-            "lede": "Trabaja la vida societaria de la captadora y los activos reales que suelen sostener el esquema: qué decisiones son atacables y qué pasa con los inmuebles comprometidos.",
-            "meta": "Responsabilidad de administradores y validez de los actos societarios anteriores a la intervención, y suerte de los inmuebles comprometidos en un esquema de captación: Código de Comercio, registro y perímetro de bienes del Decreto 4334 de 2008.",
+            "slug": "corporativa",
+            "rama": "Corporativa",
+            "card": "Las controversias societarias sobre los actos anteriores a la intervención y la responsabilidad de administradores, revisores fiscales y terceros.",
+            "lede": "Trabaja la vida societaria de la captadora: qué decisiones anteriores a la intervención son atacables y cómo se define la responsabilidad de administradores, revisores fiscales y terceros.",
+            "meta": "Responsabilidad de administradores y validez de los actos societarios anteriores a la intervención en un esquema de captación: Código de Comercio y perímetro de la intervención del Decreto 4334 de 2008.",
             "paras": [
                 "La toma de posesión congela una sociedad que, hasta el día anterior, tomaba decisiones: aumentos de capital, cesiones, garantías, operaciones entre vinculadas. Revisar la validez de esos actos societarios anteriores a la intervención define la responsabilidad de administradores, revisores fiscales y terceros.",
-                "Buena parte de los esquemas se apoya en inmuebles —comprados, prometidos o dados en garantía—. La dimensión urbana y registral determina qué activos inmobiliarios entran a la masa de la intervención, cuáles pueden liberarse y cómo se protege a quien contrató de buena fe.",
-                "Leer la sociedad y sus bienes con criterio corporativo y registral define, en la práctica, el tamaño del problema: cuánto patrimonio responde, quién responde por él y qué activos pueden devolverse a los afectados.",
+                "Leer la sociedad con criterio corporativo define, en la práctica, el tamaño del problema: cuánto patrimonio responde, quién responde por él y qué relaciones jurídicas conservan validez frente a la intervención.",
             ],
             "normas": [
                 {"ley": "Código de Comercio", "que": "Validez de actos societarios y responsabilidad de administradores.", "url": _U["ccio"]},
-                {"ley": "Decreto 4334 de 2008", "que": "Perímetro de bienes que entran a la intervención.", "url": _U["d4334"]},
-                {"ley": "Régimen de registro de inmuebles", "que": "Oponibilidad y protección del tercero de buena fe.", "url": None},
+                {"ley": "Decreto 4334 de 2008", "que": "Perímetro de la intervención y de los bienes que entran a la masa.", "url": _U["d4334"]},
             ],
             "faqs": [
                 ("¿Responden los administradores por los actos de la sociedad captadora?",
                  '<p>Pueden responder. Se revisa la validez de las decisiones anteriores a la intervención —aumentos de capital, cesiones, garantías, operaciones entre vinculadas— y de allí se define la responsabilidad de administradores, revisores fiscales y terceros.</p>'),
-                ("¿Qué pasa con los inmuebles del esquema?",
-                 '<p>La dimensión registral determina qué activos inmobiliarios entran a la masa de la intervención, cuáles pueden liberarse y cómo se protege a quien contrató de buena fe.</p>'),
                 ("¿Se pueden anular operaciones societarias previas a la toma de posesión?",
-                 '<p>Según su validez. El Código de Comercio permite examinar esos actos; el resultado incide en el perímetro de bienes y en las responsabilidades que se atribuyen.</p>'),
+                 '<p>Según su validez. El Código de Comercio permite examinar esos actos; el resultado incide en el perímetro de la intervención y en las responsabilidades que se atribuyen.</p>'),
             ],
             "serves": [("Me investigan o me vincularon", "/defensa-en-captacion-masiva/"),
                        ("Perdí dinero en un esquema", "/afectados-por-captacion-masiva/")],
-            "articulo": ("captacion-con-libranzas-y-factoring", "Captación montada sobre contratos legales"),
+            "articulo": ("que-hace-la-superintendencia-de-sociedades", "Qué hace la Superintendencia de Sociedades"),
         },
         {
             "slug": "penal-e-informatica",
@@ -288,26 +285,26 @@ def build(g):
             "articulo": ("diferencia-entre-estafa-y-captacion-masiva", "Diferencia entre estafa y captación masiva"),
         },
         {
-            "slug": "laboral-y-de-seguros",
-            "rama": "Laboral y de seguros",
-            "card": "Las reclamaciones laborales de la sociedad intervenida y la exposición de las pólizas y garantías del recaudo.",
-            "lede": "Resuelve dos frentes que suelen quedar huérfanos: las relaciones laborales de la sociedad intervenida y las pólizas o garantías vinculadas al recaudo.",
-            "meta": "Acreencias laborales de la sociedad intervenida y exposición de pólizas y garantías del recaudo en un esquema de captación: prelación de créditos del Código Sustantivo del Trabajo y régimen de seguros.",
+            "slug": "empresarial-y-laboral",
+            "rama": "Empresarial y laboral",
+            "card": "El análisis de la operación de la empresa y sus relaciones laborales para identificar obligaciones y anticipar contingencias en un caso de captación.",
+            "lede": "Analizamos la operación de la empresa y sus relaciones laborales para identificar obligaciones, anticipar contingencias y orientar la estrategia jurídica en casos de captación.",
+            "meta": "Operación de la empresa y relaciones laborales en un caso de captación: estructura societaria, contratos y vínculos con trabajadores, comisionistas y colaboradores dentro del proceso de intervención.",
             "paras": [
-                "La captadora tuvo empleados, comisionistas y estructuras de pago que la intervención interrumpe de golpe. Ordenar esas relaciones laborales —qué se debe, a quién y con qué prelación de créditos— evita contingencias que crecen en silencio mientras el resto del caso avanza.",
-                "Muchos esquemas se aseguraron: pólizas de cumplimiento, de manejo, garantías de terceros. Leer esa exposición determina si hay una fuente adicional de recuperación para el afectado o un frente adicional de reclamación contra el vinculado.",
-                "Ninguno de estos dos frentes suele estar en el radar de una defensa penal clásica, y sin embargo pueden mover cifras importantes: las acreencias laborales por su prelación, y las pólizas por su capacidad de responder cuando el patrimonio de la sociedad no alcanza.",
+                "Comprender cómo operaba la empresa es fundamental para analizar el caso. Revisamos su estructura, sus contratos y las relaciones entre socios, administradores y terceros para identificar los compromisos asumidos y las posibles responsabilidades.",
+                "En el ámbito laboral, examinamos los vínculos con trabajadores, comisionistas y colaboradores para determinar su naturaleza, las obligaciones pendientes y su tratamiento dentro del proceso de intervención.",
+                "Integramos ambos frentes para evaluar cómo las decisiones empresariales y las obligaciones laborales inciden en la situación de la sociedad y de las personas vinculadas al caso.",
             ],
             "normas": [
-                {"ley": "Código Sustantivo del Trabajo", "que": "Obligaciones laborales y prelación de créditos.", "url": _U["cst"]},
-                {"ley": "Régimen de seguros", "que": "Pólizas de cumplimiento, de manejo y garantías del recaudo.", "url": None},
+                {"ley": "Código de Comercio", "que": "Estructura de la empresa, contratos y responsabilidad de administradores.", "url": _U["ccio"]},
+                {"ley": "Código Sustantivo del Trabajo", "que": "Vínculos laborales, obligaciones pendientes y prelación de créditos.", "url": _U["cst"]},
                 {"ley": "Decreto 4334 de 2008", "que": "Concurrencia de acreencias con la masa de la intervención.", "url": _U["d4334"]},
             ],
             "faqs": [
+                ("¿Por qué revisar la operación de la empresa en un caso de captación?",
+                 '<p>Comprender cómo operaba la empresa —su estructura, sus contratos y las relaciones entre socios, administradores y terceros— permite identificar los compromisos asumidos y las posibles responsabilidades dentro del proceso.</p>'),
                 ("¿Qué pasa con los empleados de la sociedad intervenida?",
-                 '<p>La intervención interrumpe las relaciones laborales; ordenar qué se debe, a quién y con qué prelación de créditos evita contingencias que crecen mientras avanza el resto del caso.</p>'),
-                ("¿Las pólizas pueden ser una fuente de recuperación?",
-                 '<p>Pueden serlo. Las pólizas de cumplimiento, de manejo y las garantías de terceros se revisan para ver si abren una fuente adicional de recuperación o un frente adicional de reclamación.</p>'),
+                 '<p>La intervención interrumpe las relaciones laborales; examinar los vínculos con trabajadores, comisionistas y colaboradores permite determinar su naturaleza, las obligaciones pendientes y su tratamiento dentro del proceso.</p>'),
                 ("¿Cómo se ubican las acreencias laborales frente a los afectados?",
                  '<p>El Código Sustantivo del Trabajo establece una prelación de créditos laborales que debe leerse junto con la masa de la intervención y las demás acreencias.</p>'),
             ],
@@ -479,7 +476,7 @@ def build(g):
   <p class="eyebrow">El equipo</p>
   <span class="prac-rule" aria-hidden="true"></span>
   <h1 class="prac-h1">El equipo detrás <span class="pr-accent">de cada expediente.</span></h1>
-  <p class="prac-sub">Cinco socios, cinco prácticas del derecho que convergen sobre el mismo expediente de captación masiva. Conozca a quienes construyen la defensa.</p>
+  <p class="prac-sub">Las personas que trabajan cada práctica del derecho sobre el mismo expediente de captación masiva. Conozca a quienes construyen la defensa.</p>
 """, cls="hero", tight=True)}
 
 <section class="socios-grid-sec">
@@ -491,7 +488,7 @@ def build(g):
 '''
     add("/equipo/socios/", {
         "title": "El equipo · Los socios · Veraly Grupo Jurídico",
-        "description": "Los cinco socios de Veraly Grupo Jurídico y la práctica del derecho que cada uno aplica a la defensa en captación masiva.",
+        "description": "El equipo de Veraly Grupo Jurídico y la práctica del derecho que cada integrante aplica a la defensa en captación masiva.",
         "active": "equipo", "body_class": "theme-light",
         "schema": [breadcrumb_schema([("Inicio", "/"), ("El equipo", "/equipo/"), ("Los socios", "/equipo/socios/")])],
     }, equipo_socios_body)
@@ -557,7 +554,7 @@ def build(g):
         <h2>El nombre</h2>
         <p>Veraly es una palabra construida. La raíz <em>vera-</em> remite a lo verdadero; la terminación le da textura contemporánea y la aleja de las sonoridades tradicionales del sector. Los socios optaron por no cargar el nombre con un significado declarado: el significado lo construyen la comunicación y la práctica.</p>
         <h2>El isotipo: Convergencia</h2>
-        <p>Cinco formas en V que convergen en un punto central. Una por socio. Es la traducción gráfica del método: cinco prácticas que se encuentran sobre el mismo caso.</p>
+        <p>Cinco formas en V que convergen en un punto central. Una por práctica. Es la traducción gráfica del método: cinco prácticas que se encuentran sobre el mismo caso.</p>
       </div>
       <div style="display:flex;justify-content:center">
         <span aria-hidden="true" style="width:min(260px,60vw);height:min(260px,60vw);color:var(--accent);display:inline-block">{LOGO}</span>

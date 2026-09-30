@@ -49,21 +49,15 @@ ICON_CLOSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-
 # Formación/cargos PENDIENTES (decisión 03) — marcados como placeholder.
 # ----------------------------------------------------------------------------
 SOCIOS = [
-    {"slug": "hermes-vergara", "nombre": "Hermes Vergara",
-     "practica": "Derecho contractual y constitucional",
-     "aporte": "Estructura la lectura constitucional del debido proceso en un trámite de única instancia y el andamiaje contractual de las relaciones anteriores a la toma de posesión."},
     {"slug": "kewin-santiago-canizales", "nombre": "Kewin Santiago Canizales",
      "practica": "Derecho tributario y migratorio",
      "aporte": "Analiza las contingencias tributarias sobre los flujos del esquema y las consecuencias migratorias que alcanzan a vinculados extranjeros."},
     {"slug": "miguel-bayter", "nombre": "Miguel Bayter",
-     "practica": "Derecho corporativo y urbano",
-     "aporte": "Aborda las controversias societarias sobre actos anteriores a la intervención y la situación de los activos inmobiliarios comprometidos."},
+     "practica": "Derecho corporativo",
+     "aporte": "Aborda las controversias societarias sobre los actos anteriores a la intervención y la responsabilidad de administradores, revisores fiscales y terceros."},
     {"slug": "juan-david-naar", "nombre": "Juan David Naar",
      "practica": "Derecho penal y derecho informático",
      "aporte": "Conduce la defensa penal por los artículos 316 y 316A y la evidencia digital del esquema, desde los actos urgentes hasta el juicio oral."},
-    {"slug": "javier-pisciotti", "nombre": "Javier Pisciotti",
-     "practica": "Derecho laboral y seguros",
-     "aporte": "Resuelve las reclamaciones laborales de la sociedad intervenida y la exposición de las pólizas y garantías vinculadas al recaudo."},
 ]
 
 ARTICLES = [
@@ -89,7 +83,7 @@ ARTICLES = [
     },
     {
         "slug": "que-hace-la-superintendencia-de-sociedades",
-        "tema": "La intervención", "perfil": "A", "author": "hermes-vergara",
+        "tema": "La intervención", "perfil": "A", "author": "miguel-bayter",
         "date_iso": "2026-07-10", "date_disp": "10 JUL 2026",
         "title": "Qué hace la Superintendencia de Sociedades con una captadora",
         "h1": "¿Qué hace la Superintendencia de Sociedades cuando interviene una captadora?",
@@ -115,12 +109,12 @@ PRACTICAS = [
      "aporte": "El debido proceso en un trámite de única instancia y el andamiaje contractual anterior a la toma de posesión."},
     {"rama": "Tributaria y migratoria",
      "aporte": "Las contingencias tributarias sobre los flujos del esquema y las consecuencias migratorias de los vinculados."},
-    {"rama": "Corporativa y urbana",
-     "aporte": "Las controversias societarias sobre actos anteriores a la intervención y los activos inmobiliarios comprometidos."},
+    {"rama": "Corporativa",
+     "aporte": "Las controversias societarias sobre los actos anteriores a la intervención y la responsabilidad de administradores, revisores fiscales y terceros."},
     {"rama": "Penal e informática",
      "aporte": "La defensa penal por los artículos 316 y 316A y la evidencia digital, desde los actos urgentes hasta el juicio oral."},
-    {"rama": "Laboral y de seguros",
-     "aporte": "Las reclamaciones laborales de la sociedad intervenida y la exposición de las pólizas y garantías del recaudo."},
+    {"rama": "Empresarial y laboral",
+     "aporte": "El análisis de la operación de la empresa y sus relaciones laborales para identificar obligaciones y anticipar contingencias en un caso de captación."},
 ]
 
 TEMAS = ["El fenómeno", "La intervención", "La defensa", "La recuperación", "Prevención empresarial"]
@@ -367,7 +361,7 @@ def proceso_stepper():
          "Qué vías están abiertas, cuáles ya precluyeron y en qué orden conviene activarlas. Administrativa, penal y civil corren autónomas y concurrentes.",
          wave_svg()),
         ("05", "Convergencia", "Cinco prácticas, un expediente",
-         "Los cinco socios trabajan el mismo caso desde sus ramas del derecho. El resultado no se reparte por especialidad: se construye en la intersección.",
+         "Las cinco prácticas trabajan el mismo caso desde sus ramas del derecho. El resultado no se reparte por especialidad: se construye en la intersección.",
          convergence_svg()),
     ]
     rail = "".join(f'<li class="{"on" if i == 0 else ""}"><span>0{i + 1}</span></li>' for i in range(len(steps)))

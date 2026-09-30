@@ -145,7 +145,7 @@ def build(g):
 
     conf = [
         ("3", "Vías en paralelo", "Administrativa, penal y civil, trabajadas a la vez sobre el mismo expediente."),
-        ("5", "Prácticas del derecho", "Cinco socios aportan cinco ramas al mismo caso; se construye en la intersección."),
+        ("5", "Prácticas del derecho", "Cinco prácticas aportan cinco ramas al mismo caso; se construye en la intersección."),
         ("24 h", "Tiempo de respuesta", "Respondemos toda consulta en un máximo de 24 horas hábiles, tras verificar el conflicto."),
         ("0", "Promesas de resultado", "No prometemos desenlace judicial. Se promete rigor, criterio y trabajo — con los límites dichos en voz alta."),
     ]
@@ -217,7 +217,7 @@ def build(g):
     <div class="stack-head">
       <p class="eyebrow">El equipo</p>
       <h2>Cinco prácticas, un mismo caso</h2>
-      <p class="lead" style="margin-top:1rem">La convergencia no es una declaración: es la composición de la firma. Cinco socios aportan cinco ramas del derecho al mismo expediente.</p>
+      <p class="lead" style="margin-top:1rem">La convergencia no es una declaración: es la composición de la firma. Cinco prácticas aportan cinco ramas del derecho al mismo expediente.</p>
       <div style="margin:1.6rem 0">{convergence()}</div>
       <div class="cta-row"><a class="btn btn--ghost" href="/equipo/">Por qué cinco prácticas</a></div>
     </div>
@@ -267,7 +267,7 @@ def build(g):
     ]
     add("/", {
         "title": "Veraly Grupo Jurídico · Defensa en fraude financiero",
-        "description": "Firma boutique colombiana especializada en captación masiva y habitual. Cinco socios, cinco ramas del derecho, un mismo caso.",
+        "description": "Firma boutique colombiana especializada en captación masiva y habitual. Cinco prácticas, cinco ramas del derecho, un mismo caso.",
         "active": "", "schema": home_schema,
     }, home_body)
 

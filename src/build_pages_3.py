@@ -828,7 +828,7 @@ def build(g):
         ("¿Qué es el agente interventor y qué funciones tiene?",
          '<p>Es la persona designada en la toma de posesión para administrar los bienes intervenidos: remover administradores, congelar y ubicar activos, suspender ejecuciones y adelantar el trámite de devolución de recursos a los afectados. <a class="textlink" href="/analisis/que-hace-la-superintendencia-de-sociedades/">Cómo opera la intervención</a>.</p>'),
         ("Durante la toma de posesión, ¿qué ocurre con los bienes, contratos y procesos en curso?",
-         '<p>Los bienes quedan bajo administración del interventor y se congelan; las ejecuciones y procesos sobre ellos se suspenden, y los actos de disposición anteriores pueden revisarse. Leer esa exposición con criterio societario y registral define cuánto patrimonio responde y qué puede devolverse.</p>'),
+         '<p>Los bienes quedan bajo administración del interventor y se congelan; las ejecuciones y procesos sobre ellos se suspenden, y los actos de disposición anteriores pueden revisarse. Leer esa exposición con criterio societario y corporativo define cuánto patrimonio responde y qué puede devolverse.</p>'),
         ("¿La acción penal por captación prescribe?",
          '<p>Sí, conforme a las reglas generales del Código Penal, cuyos términos dependen de la pena de cada tipo. Por la gravedad de los artículos 316 y 316A y de los delitos que suelen concurrir, esos términos son extensos; el momento procesal, más que la prescripción, suele ser lo determinante.</p>'),
         ("¿Qué otros delitos suelen concurrir con la captación masiva?",
