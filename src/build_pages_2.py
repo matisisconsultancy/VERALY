@@ -29,10 +29,11 @@ def build(g):
                 f'<p class="acard-desc">{esc(desc)}</p>'
                 f'<span class="acard-tag">{esc(pill)}</span></a>')
 
-    def faq_numbered(items):
+    def faq_numbered(items, open_all=False):
         rows = ""
+        op = " open" if open_all else ""
         for i, (q, a) in enumerate(items, 1):
-            rows += (f'<details class="qa"><summary>'
+            rows += (f'<details class="qa"{op}><summary>'
                      f'<span class="qa-n">{i:02d}</span><span class="qa-q">{esc(q)}</span>'
                      f'<span class="qa-ic" aria-hidden="true"></span></summary>'
                      f'<div class="qa-a">{a}</div></details>')
@@ -107,7 +108,7 @@ def build(g):
       <h2 class="pr-big pr-parallax">Qué es la captación <span class="pr-accent">masiva y habitual.</span></h2>
     </div>
     <div class="pr-two-r">
-      <p>Consiste en recibir dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable (art. 6 del Decreto 4334 de 2008). Hay captación cuando el pasivo con el público supera los umbrales del Decreto 1981 de 1988 —más de veinte personas o más de cincuenta obligaciones, o mediación de ofertas masivas—.</p>
+      <p>Hay captación masiva y habitual cuando el pasivo para con el público está compuesto por obligaciones con más de veinte (20) personas o por más de cincuenta (50) obligaciones y, además, concurre una de dos condiciones: que lo recibido supere el cincuenta por ciento (50 %) del patrimonio líquido, o que las operaciones provengan de ofertas públicas o privadas a personas innominadas (artículo 2.18.2.1 del Decreto 1068 de 2015). A ello se suma el criterio material del artículo 6 del Decreto 4334 de 2008: recibir dineros del público entregando a cambio rendimientos sin explicación financiera razonable.</p>
       <p>Es un fenómeno denso y ruidoso, y por eso se litiga mal: la mayoría de las firmas lo trata como una estafa agravada. No lo es.</p>
     </div>
   </div>
@@ -117,7 +118,7 @@ def build(g):
   <div class="container">
     <p class="eyebrow">Las tres vías</p>
     <h2 style="max-width:22ch">Tres responsabilidades que corren al mismo tiempo</h2>
-    <p class="lead" style="margin-top:1rem;max-width:56ch;color:var(--dim)">Una misma conducta detona, de forma simultánea e independiente, tres procesos. No son fases: son frentes paralelos, y cada uno condiciona a los otros dos. Una firma que atiende solo una de las tres vías trabaja un tercio del problema.</p>
+    <p class="lead" style="margin-top:1rem;max-width:62ch;color:var(--dim)">Una misma conducta puede abrir tres procesos: administrativo, civil y penal. Están disponibles y pueden complementarse, pero no siempre conviene activarlos al mismo tiempo ni de la misma manera para todos los afectados. La estrategia está en definir cuál activar, cuándo y contra quién. Una firma que atiende solo una de las tres vías trabaja un tercio del problema.</p>
     <div style="margin-top:1.4rem">{g["tres_vias_rows"]()}</div>
   </div>
 </section>
@@ -413,7 +414,7 @@ def build(g):
 
 <section class="section">
   <div class="container">
-    <p class="eyebrow-num">Normatividad asociada</p>
+    <p class="eyebrow-num">Las normas de esta práctica</p>
     <h2 class="pr-big">El marco que <span class="pr-accent">enmarca esta práctica.</span></h2>
     <div class="pr-timeline">{norm_rows}</div>
   </div>
@@ -422,10 +423,10 @@ def build(g):
 <section class="section">
   <div class="container faq-two">
     <div class="faq-two-l">
-      <p class="faq-pill"><span class="dot" aria-hidden="true"></span>Preguntas</p>
+      <p class="faq-pill"><span class="dot" aria-hidden="true"></span>Preguntas sobre esta práctica</p>
       <h2 class="pr-big">¿Dudas? <span class="pr-accent">Estamos para ayudar.</span></h2>
     </div>
-    <div class="faq-two-r">{faq_numbered(pr["faqs"])}</div>
+    <div class="faq-two-r">{faq_numbered(pr["faqs"], open_all=True)}</div>
   </div>
 </section>
 '''

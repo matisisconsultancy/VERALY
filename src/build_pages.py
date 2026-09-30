@@ -144,7 +144,7 @@ def build(g):
                        f'<h3>{esc(pr["rama"])}</h3><p>{esc(pr["aporte"])}</p></div>')
 
     conf = [
-        ("3", "Vías en paralelo", "Administrativa, penal y civil, trabajadas a la vez sobre el mismo expediente."),
+        ("3", "Vías del caso", "Administrativa, penal y civil, coordinadas sobre el mismo expediente."),
         ("5", "Prácticas del derecho", "Cinco prácticas aportan cinco ramas al mismo caso; se construye en la intersección."),
         ("24 h", "Tiempo de respuesta", "Respondemos toda consulta en un máximo de 24 horas hábiles, tras verificar el conflicto."),
         ("0", "Promesas de resultado", "No prometemos desenlace judicial. Se promete rigor, criterio y trabajo — con los límites dichos en voz alta."),
@@ -156,8 +156,8 @@ def build(g):
 
     norms = [
         ("Decreto 4334 / 2008", "Intervención"), ("Art. 316 CP", "Captación masiva"),
-        ("Art. 316A CP", "No reintegro"), ("Decreto 1981 / 1988", "Umbrales"),
-        ("Ley 1902 / 2018", "Plan de desmonte"), ("Sentencia C‑145 / 2009", "Presunciones"),
+        ("Art. 316A CP", "No reintegro"), ("Decreto 1068 / 2015", "Umbrales"),
+        ("Ley 1902 / 2018", "Libranzas"), ("Sentencia C‑145 / 2009", "Presunciones"),
         ("Supersociedades", "Competencia privativa"), ("Ley 1581 / 2012", "Datos personales"),
     ]
     tiles = "".join(
@@ -180,7 +180,7 @@ def build(g):
       <p class="hero-kicker">Captación masiva y habitual.</p>
     </div>
     <div class="hero-right">
-      <p class="desc">Los procesos por captación avanzan por tres vías —administrativa, penal y civil—, autónomas y concurrentes. Las trabajamos las tres en paralelo, sobre el mismo expediente.</p>
+      <p class="desc">La captación puede abordarse por tres vías: administrativa, civil y penal. La estrategia está en definir cuál activar, cuándo y contra quién, sobre el mismo expediente.</p>
       <div class="cta-row">
         {agendar("Agendar una consulta")}
         <a class="btn btn--ghost" href="#situaciones">Ver mi situación</a>

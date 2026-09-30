@@ -78,7 +78,7 @@ ARTICLES = [
         "title": "Captación montada sobre contratos legales: libranzas y factoring",
         "h1": "¿Cuándo un esquema de libranzas o factoring se convierte en captación?",
         "desc": "Contratos legales como libranzas y factoring pueden configurar captación cuando superan los umbrales y el rendimiento carece de explicación financiera razonable.",
-        "answer": "Un esquema de libranzas o factoring —contratos legales en sí mismos— puede configurar captación masiva cuando el pasivo con el público supera los umbrales del Decreto 1981 de 1988 o cuando el rendimiento ofrecido no tiene explicación financiera razonable, en los términos del artículo 6 del Decreto 4334 de 2008.",
+        "answer": "Un esquema de libranzas o factoring —contratos legales en sí mismos— puede configurar captación masiva cuando el pasivo con el público supera los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015 o cuando el rendimiento ofrecido no tiene explicación financiera razonable, en los términos del artículo 6 del Decreto 4334 de 2008. Además, la Ley 1902 de 2018 introdujo un supuesto propio de la libranza, sin umbral alguno.",
         "cta_target": "cumplimiento",
     },
     {
@@ -92,13 +92,13 @@ ARTICLES = [
         "cta_target": "afectados",
     },
     {
-        "slug": "buena-fe-exenta-de-culpa-tercero-proveedor",
+        "slug": "la-buena-fe-del-tercero-proveedor",
         "tema": "La defensa", "perfil": "B", "author": "juan-david-naar",
         "date_iso": "2026-06-24", "date_disp": "24 JUN 2026",
-        "title": "Buena fe exenta de culpa: el estándar del tercero proveedor",
-        "h1": "¿Qué es la buena fe exenta de culpa en un proceso de captación?",
-        "desc": "El estándar que puede excluir de la intervención a proveedores y terceros que actuaron de buena fe: qué exige y cómo se acredita.",
-        "answer": "La buena fe exenta de culpa es el estándar que, según la Sentencia C-145 de 2009, puede dejar fuera de la intervención a terceros proveedores que actuaron en el ámbito de sus actividades lícitas ordinarias. No basta la creencia honesta: exige diligencia positiva y comprobable, acreditada con documentos, controles y decisiones registradas.",
+        "title": "La buena fe del tercero proveedor",
+        "h1": "¿Qué es la buena fe del tercero proveedor en un proceso de captación?",
+        "desc": "El estándar que, según la Sentencia C-145 de 2009, puede dejar fuera de la intervención a empleados y proveedores que actuaron de buena fe en sus actividades lícitas ordinarias: qué exige y cómo se acredita.",
+        "answer": "La Sentencia C-145 de 2009 condicionó el artículo 5 del Decreto Ley 4334 de 2008 para que la intervención no alcance a los terceros de buena fe distintos de quienes entregaron recursos, como empleados y proveedores que actuaron en el ámbito de sus actividades lícitas ordinarias. Acreditar esa buena fe es un trabajo documental: contratos, controles, comunicaciones y decisiones registradas.",
         "cta_target": "defensa",
     },
 ]
@@ -124,7 +124,7 @@ def tres_vias_rows():
     """Las tres vías/responsabilidades como filas alternadas (compartido home + /firma)."""
     vias = [
         ("01", "VÍA ADMINISTRATIVA", "Ante la Superintendencia de Sociedades",
-         "Procedimiento del Decreto 4334 de 2008. La toma de posesión tiene efectos de cosa juzgada frente a todos y es de única instancia: no hay segunda oportunidad procesal.", wave_svg()),
+         "Las decisiones de toma de posesión para devolver tienen efectos de cosa juzgada erga omnes, se adoptan en única instancia y tienen carácter jurisdiccional (art. 3 del Decreto Ley 4334 de 2008). Contra la providencia que ordena las medidas no procede recurso alguno; contra la que acepta o rechaza las solicitudes de devolución procede reposición dentro de los tres días siguientes.", wave_svg()),
         ("02", "VÍA PENAL", "Artículos 316 y 316A del Código Penal",
          "Captación masiva y habitual, con prisión de 120 a 240 meses, y el tipo autónomo de no reintegro. A ellos suelen sumarse estafa agravada, lavado de activos y concierto para delinquir.", globe_svg()),
         ("03", "VÍA CIVIL", "Responsabilidad patrimonial",
@@ -358,7 +358,7 @@ def proceso_stepper():
          "Quién ocupó cada posición, captador, administrador, revisor, contador, proveedor o afectado, y qué consecuencia jurídica arrastra. La defensa empieza por saber si usted debe estar ahí.",
          globe_svg()),
         ("04", "Rutas", "Ordenamos las tres vías",
-         "Qué vías están abiertas, cuáles ya precluyeron y en qué orden conviene activarlas. Administrativa, penal y civil corren autónomas y concurrentes.",
+         "Qué vías están abiertas, cuáles ya precluyeron y en qué orden conviene activarlas. La estrategia está en definir cuál activar, cuándo y contra quién.",
          wave_svg()),
         ("05", "Convergencia", "Cinco prácticas, un expediente",
          "Las cinco prácticas trabajan el mismo caso desde sus ramas del derecho. El resultado no se reparte por especialidad: se construye en la intersección.",
@@ -404,8 +404,8 @@ def marco_reveal(eyebrow="El marco que trabajamos", phrases=None, cards=None, se
             ("Decreto 4334 / 2008", "Intervención", "http://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html"),
             ("Art. 316 CP", "Captación masiva", "http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html"),
             ("Art. 316A CP", "No reintegro", "http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html"),
-            ("Decreto 1981 / 1988", "Umbrales", "http://www.secretariasenado.gov.co/senado/basedoc/decreto_1981_1988.html"),
-            ("Ley 1902 / 2018", "Plan de desmonte", "http://www.secretariasenado.gov.co/senado/basedoc/ley_1902_2018.html"),
+            ("Decreto 1068 / 2015", "Umbrales", "http://www.secretariasenado.gov.co/senado/basedoc/decreto_1068_2015.html"),
+            ("Ley 1902 / 2018", "Libranzas", "http://www.secretariasenado.gov.co/senado/basedoc/ley_1902_2018.html"),
             ("Sentencia C‑145 / 2009", "Presunciones", "https://www.corteconstitucional.gov.co/relatoria/2009/C-145-09.htm"),
         ]
     def words(s):

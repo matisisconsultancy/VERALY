@@ -100,13 +100,13 @@ def build(g):
         ("¿Cuánto tiempo tengo para reclamar?",
          "<p>Dentro de la intervención administrativa, diez días comunes contados desde el aviso que el interventor publica en los dos días siguientes a la toma de posesión. Fuera de ese trámite, los términos dependen de la vía: la penal y la civil tienen sus propios plazos de prescripción.</p>"),
         ("¿Puedo recuperar los intereses que me prometieron?",
-         "<p>Por la vía administrativa, no: la devolución tiene techo en el capital entregado. Los rendimientos y perjuicios solo se persiguen por la vía penal, en el incidente de reparación integral, o por la vía civil.</p>"),
+         "<p>Por la vía administrativa, no: la devolución tiene techo en el capital entregado. Los rendimientos y perjuicios solo se persiguen por la vía civil o por la penal, en el incidente de reparación integral. Ojo con el plazo: en firme la sentencia condenatoria, el juez convoca a audiencia dentro de los ocho días siguientes a la solicitud, y esa solicitud caduca a los treinta días contados desde la ejecutoria.</p>"),
         ("¿Y si entregué el dinero en efectivo y no tengo comprobante?",
          "<p>Dificulta la reclamación pero no la cierra automáticamente. La trazabilidad se puede reconstruir con otros elementos —transferencias parciales, comunicaciones, registros del propio esquema, declaraciones de terceros—. Es trabajo probatorio, y conviene empezarlo antes de que corra el término.</p>"),
         ("¿Qué diferencia hay entre estafa y captación masiva?",
          "<p>Son tipos penales distintos. La captación masiva, además, activa un procedimiento administrativo especial ante la Superintendencia de Sociedades con un mecanismo de devolución propio que la estafa no tiene. La calificación correcta cambia la estrategia completa.</p>"),
         ("¿Qué es un plan de desmonte y me conviene votarlo?",
-         "<p>Es una propuesta de devolución voluntaria y ordenada conforme a un cronograma. Bajo la Ley 1902 de 2018 requiere aval de la Superintendencia y respaldo del 75 % de los afectados. Conviene o no según lo que ofrezca frente a lo que la prorrata alcanzaría, y según los plazos: hay planes que protegen la igualdad entre afectados y otros que la sacrifican.</p>"),
+         "<p>Es una propuesta de devolución voluntaria y ordenada conforme a un cronograma, prevista en el artículo 7 del Decreto 4334 de 2008. Según el Decreto 1074 de 2015 requiere aval de la Superintendencia y respaldo del 75 % de los afectados. Conviene o no según lo que ofrezca frente a lo que la prorrata alcanzaría, y según los plazos: hay planes que protegen la igualdad entre afectados y otros que la sacrifican.</p>"),
         ("¿Qué pasa si el dinero ya no existe?",
          "<p>Es la pregunta correcta y no siempre tiene respuesta inmediata. Cuando la masa no alcanza, la vía civil persigue el patrimonio personal de administradores y vinculados solventes, y las acciones de simulación y pauliana permiten reintegrar bienes distraídos antes de la intervención. Si hay algo que perseguir, se persigue; si no lo hay, se dice.</p>"),
         ("¿Cuánto cuesta consultar?",
@@ -124,7 +124,7 @@ def build(g):
          "<li>Impugnación del reconocimiento cuando se rechaza o se acepta por menor valor.</li>"
          "<li>Exclusión de bienes propios aprehendidos por error en el inventario.</li>"
          "<li>Gestión de títulos valores y libranzas para acreditar tenencia legítima y prelación sobre los flujos.</li>"
-         "<li>Evaluación y voto de planes de desmonte, que bajo la Ley 1902 de 2018 requieren el respaldo del 75 % de los afectados.</li>"
+         "<li>Evaluación y voto de planes de desmonte, previstos en el artículo 7 del Decreto 4334 de 2008, que según el Decreto 1074 de 2015 requieren el respaldo del 75 % de los afectados.</li>"
          "<li>Vigilancia activa de la intervención: prorrateos incompletos, recursos nuevos sin distribuir, gestión opaca del interventor.</li></ul>"),
         ("Después del fallo", "Después del fallo",
          "<ul><li>Representación de víctimas en el proceso penal, incluidas las salidas negociadas.</li>"
@@ -153,18 +153,18 @@ def build(g):
         '<h2 class="sol-stmt pr-parallax">Probablemente no fue una estafa. <span class="pr-accent">Fue captación masiva.</span></h2></div>'
         '<div class="sol-stmt-body">'
         '<p>La diferencia no es semántica. La estafa y la captación masiva son delitos distintos, con procesos distintos y con vías de recuperación distintas —y se usan como sinónimos incluso en la prensa.</p>'
-        '<p>Hay <strong>captación masiva y habitual no autorizada</strong> cuando se reciben dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable: más de veinte personas, o más de cincuenta obligaciones, o mediación de ofertas masivas.</p>'
+        '<p>Hay <strong>captación masiva y habitual no autorizada</strong> cuando se reciben dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable: más de veinte personas o más de cincuenta obligaciones, siempre que lo recibido supere el 50 % del patrimonio líquido o provenga de ofertas a personas innominadas (art. 2.18.2.1 del Decreto 1068 de 2015).</p>'
         '<p>Que su caso encuadre en esta figura lo cambia todo: activa un procedimiento administrativo especial ante la Superintendencia de Sociedades que no existe en la estafa común, y con él un mecanismo de devolución al que usted puede acceder.</p>'
         '</div></div></section>')
     _via_data = [
         ("Vía administrativa", "La reclamación dentro de la intervención",
-         "Cuando la Superintendencia ordena la toma de posesión para devolver, se abre un trámite de reclamación a prorrata entre los afectados. Es la vía más rápida.",
+         "Cuando la Superintendencia ordena la toma de posesión para devolver, se abre un trámite de reclamación reglado: primero entre los reclamantes reconocidos, con tope en lo entregado, y el saldo a prorrata. Es la vía más rápida.",
          "El capital entregado"),
         ("Vía civil", "La responsabilidad de los solventes",
          "Cuando la masa no cubre el faltante, persigue el patrimonio de administradores, revisores, contadores y vinculados solventes; y reconstruye la prenda general.",
          "El patrimonio de los responsables"),
         ("Vía penal", "El incidente de reparación integral",
-         "Tras la sentencia condenatoria se reclaman daño emergente, lucro cesante y perjuicios morales. Es la vía de mayor alcance: llega a lo que las demás dejan fuera."),
+         "En firme la sentencia condenatoria, se reclaman daño emergente, lucro cesante y perjuicios morales; el juez convoca a audiencia dentro de los ocho días siguientes. Es la de mayor alcance y la de plazo más breve: la solicitud caduca a los treinta días desde la ejecutoria."),
     ]
     _via_recup = ["El capital entregado", "El patrimonio de los responsables", "Capital, rendimientos y perjuicios"]
     _via_slides = "".join(
@@ -224,19 +224,19 @@ def build(g):
         f'<div class="via-bars">{_via_bars}</div>'
         '</div>'
         '</div></div></div></div>'
-        '<div class="container"><p class="lead via-foot" style="max-width:66ch">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía civil o la penal. Las tres corren de forma autónoma —no hay que elegir una, hay que ordenarlas.</p></div>'
+        '<div class="container"><p class="lead via-foot" style="max-width:66ch">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía civil o la penal. Las tres están disponibles y pueden complementarse —no hay que activarlas todas a la vez, hay que ordenarlas.</p></div>'
         '</section>')
     af_plazos = (
         '<section class="plz-sec plz-pin"><div class="plz-pin-track">'
         '<div class="plz-pin-sticky"><div class="container">'
         '<p class="eyebrow-num">El calendario</p>'
         '<div class="plz-head"><h2 class="plz-title">Los términos corren, <span class="pr-accent">y son cortos.</span></h2></div>'
-        '<p class="plz-sub">Dentro de la intervención administrativa el calendario es estricto y se cuenta en días comunes desde la toma de posesión.</p>'
+        '<p class="plz-sub">Se cuentan en días comunes, pero cada hito tiene su propio punto de partida: el aviso corre desde la toma de posesión y la reclamación del afectado, desde la publicación de ese aviso.</p>'
         '<div class="plz-track">'
         + plz_step(1, "2", "días", "El aviso", "El interventor publica el aviso dentro de los dos días siguientes a la toma de posesión.")
-        + plz_step(2, "10", "días", "La reclamación", "Las solicitudes de devolución se presentan por escrito, con presentación personal y original del comprobante.")
-        + plz_step(3, "20", "días", "La decisión", "La providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.")
-        + plz_step(4, "3", "días", "El recurso", "El recurso de reposición contra esa decisión se interpone dentro de los tres días siguientes.")
+        + plz_step(2, "10", "días", "La reclamación", "Desde la publicación del aviso, el afectado dispone de diez días para presentar su reclamación, con presentación personal y original del comprobante.")
+        + plz_step(3, "20", "días", "La decisión", "Vencido ese plazo, la providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.")
+        + plz_step(4, "3", "días", "El recurso", "Contra ella procede reposición dentro de los tres días siguientes a su notificación.")
         + '</div>'
         '<p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p>'
         '</div></div></div></section>')
@@ -303,7 +303,7 @@ def build(g):
     # =====================================================================
     defensa_faq = [
         ("¿Me pueden vincular solo por haber sido revisor fiscal o contador?",
-         "<p>El perímetro del artículo 5 alcanza esas posiciones, y existe además una presunción de participación por el ejercicio del cargo durante el periodo de captación. Es desvirtuable, y la solicitud de exclusión es precisamente la vía para hacerlo.</p>"),
+         "<p>El perímetro del artículo 5 alcanza esas posiciones, pero la vinculación exige demostrar la participación en la operación: la única presunción del decreto es la del numeral 15 del artículo 9, que recae sobre la propiedad y el origen de los recursos aprehendidos y que, conforme a la Sentencia C-145 de 2009, es una presunción legal y por tanto desvirtuable.</p>"),
         ("¿Qué diferencia hay entre el artículo 316 y el 316A?",
          "<p>El 316 tipifica la captación masiva y habitual, con prisión de 120 a 240 meses tras la Ley 1357 de 2009. El 316A es un tipo autónomo que sanciona el no reintegro, con pena de 96 a 180 meses. Son imputaciones distintas y admiten defensas distintas.</p>"),
         ("¿Se puede recurrir la decisión de toma de posesión?",
@@ -371,26 +371,28 @@ def build(g):
         '<section class="section"><div class="container">'
         '<p class="eyebrow-num">El perímetro</p>'
         '<h2 class="pr-big">La vinculación no se limita <span class="pr-accent">al captador.</span></h2>'
-        '<p class="lead" style="max-width:64ch;margin-top:1.1rem;color:var(--dim)">El artículo 5 del Decreto 4334 de 2008 alcanza a captadores, administradores, socios, revisores fiscales, contadores, beneficiarios y demás personas vinculadas —directa o indirectamente— a la operación. Profesionales y proveedores que actuaron de forma puntual quedan dentro del perímetro por el solo ejercicio del cargo.</p>'
+        '<p class="lead" style="max-width:66ch;margin-top:1.1rem;color:var(--dim)">El artículo 5 del Decreto Ley 4334 de 2008 alcanza a representantes legales, miembros de juntas directivas, socios, factores, revisores fiscales, contadores y demás personas vinculadas directa o indirectamente a la operación, y excluye expresamente a quienes solo entregaron sus recursos. La Sentencia C-145 de 2009 condicionó la expresión «o indirectamente» para que no cobije a terceros de buena fe, como empleados y proveedores que actuaron en sus actividades lícitas ordinarias.</p>'
         '<div class="perim-grid">' + _perim_cards + '</div>'
         '<p class="perim-foot">Si usted está en ese perímetro, su defensa no empieza discutiendo los hechos del esquema: <strong>empieza discutiendo si debe estar ahí.</strong></p>'
         '</div></section>')
     _presu = [
-        ("Sobre los recursos", "Todos los recursos aprehendidos provienen de la actividad ilícita.",
-         "Trazabilidad y origen lícito de los activos. Es una presunción legal —así lo precisó la Sentencia C-145 de 2009— y, por tanto, desvirtuable con prueba positiva."),
-        ("Sobre la participación", "Participación en el esquema por el solo ejercicio del cargo durante el periodo de captación.",
-         "Acreditación de gestión diligente y del origen lícito. No basta con negar: hay que aportar la prueba que la desmonte."),
+        ("Sobre los recursos", "Presunción legal · art. 9, núm. 15",
+         "La propiedad y el origen de los recursos aprehendidos corresponden a la actividad ilícita.",
+         "Trazabilidad y origen lícito de los activos. Es la única presunción del decreto —una presunción legal, así lo precisó la Sentencia C-145 de 2009— y, por tanto, desvirtuable con prueba positiva."),
+        ("Sobre la participación", "Lo que la Superintendencia suele presumir",
+         "Participación en el esquema por el solo ejercicio del cargo durante el periodo de captación.",
+         "La Corte Suprema ha exigido que esa vinculación se motive con un examen de la conducta concreta, y ahí está la defensa."),
     ]
     _presu_cards = "".join(
         '<div class="presu-card reveal-up"><span class="presu-tag">' + esc(tag) + '</span>'
-        '<span class="presu-k">Se presume</span><p class="presu-claim">' + esc(claim) + '</p>'
+        '<span class="presu-k">' + esc(plabel) + '</span><p class="presu-claim">' + esc(claim) + '</p>'
         '<div class="presu-rebut-wrap"><span class="presu-k presu-k--ok">Se desvirtúa con</span>'
         '<p class="presu-rebut">' + esc(reb) + '</p></div></div>'
-        for tag, claim, reb in _presu)
+        for tag, plabel, claim, reb in _presu)
     def_presu = (
         '<section class="section band"><div class="container">'
         '<p class="eyebrow-num">La carga de la prueba</p>'
-        '<h2 class="pr-big">Dos presunciones <span class="pr-accent">que hay que desvirtuar.</span></h2>'
+        '<h2 class="pr-big">Lo que hay que <span class="pr-accent">desvirtuar.</span></h2>'
         '<div class="presu-grid">' + _presu_cards + '</div>'
         '</div></section>')
     def_phases = (
@@ -407,15 +409,15 @@ def build(g):
     def_stmt = (
         '<section class="section sol-stmt-sec"><div class="container sol-stmt-grid">'
         '<div><p class="eyebrow-num">El estándar</p>'
-        '<h2 class="sol-stmt pr-parallax">No basta la creencia honesta. <span class="pr-accent">Exige diligencia comprobable.</span></h2></div>'
+        '<h2 class="sol-stmt pr-parallax">La buena fe del tercero <span class="pr-accent">se prueba con documentos.</span></h2></div>'
         '<div class="sol-stmt-body">'
-        '<p>El artículo 7, literal c, del Decreto 4334 permite devolver bienes de personas no vinculadas a la actividad. Y la Sentencia C-145 de 2009 condicionó el artículo 5 para que la intervención no alcance a terceros proveedores que hayan procedido de <strong>buena fe exenta de culpa</strong> en el ámbito de sus actividades lícitas ordinarias.</p>'
-        '<p>El estándar es exigente: exige diligencia positiva y comprobable. Acreditarla es un trabajo documental que se construye hacia atrás —contratos, controles, comunicaciones, decisiones registradas— y es, con frecuencia, la diferencia entre quedar dentro o fuera del perímetro.</p>'
+        '<p>El artículo 7, literal c, del Decreto 4334 permite devolver bienes de personas no vinculadas a la actividad. Y la Sentencia C-145 de 2009 condicionó el artículo 5 para que la intervención no alcance a los terceros de <strong>buena fe</strong> distintos de quienes entregaron recursos, como empleados y proveedores que actuaron en el ámbito de sus actividades lícitas ordinarias.</p>'
+        '<p>Acreditar esa buena fe es un trabajo documental: contratos, controles, comunicaciones y decisiones registradas. Se construye hacia atrás y es, con frecuencia, la diferencia entre quedar dentro o fuera del perímetro.</p>'
         '</div></div></section>')
     def_salidas = sol_two(
         "Cuando la salida es negociada",
         'Dos salidas que <span class="pr-accent">no se trabajan por separado.</span>',
-        "<p><strong>Plan de desmonte en intervención.</strong> Propuesta de devolución voluntaria conforme a cronograma que, bajo la Ley 1902 de 2018, exige aval de la Superintendencia y respaldo del 75 % de los afectados. Su cumplimiento conduce a la desintervención; su incumplimiento reactiva las medidas.</p>"
+        "<p><strong>Plan de desmonte en intervención.</strong> Propuesta de devolución voluntaria conforme a cronograma —previsto en el artículo 7 del Decreto 4334 de 2008— que, según el Decreto 1074 de 2015, exige aval de la Superintendencia y respaldo del 75 % de los afectados. Su cumplimiento conduce a la desintervención; su incumplimiento reactiva las medidas.</p>"
         "<p style='margin-top:1.1rem'><strong>Justicia penal negociada.</strong> Preacuerdos, allanamiento y principio de oportunidad. La reparación y el reintegro tienen efecto directo sobre la exposición punitiva. Coordinar la conciliación civil, la devolución administrativa y la negociación penal —y no por separado, con abogados que no se hablan— es donde se juega el resultado.</p>",
         band=True, parallax=True)
     def_faq = faq_sticky(defensa_faq, title='Preguntas de la <span class="pr-accent">defensa.</span>')
@@ -465,7 +467,7 @@ def build(g):
     # =====================================================================
     cumplimiento_faq = [
         ("¿Mi modelo de crowdfunding puede considerarse captación?",
-         "<p>Depende de dos cosas: si supera los umbrales del Decreto 1981 de 1988 y si el rendimiento que ofrece tiene explicación financiera razonable acreditable. Las dos se pueden revisar antes de que alguien más las revise.</p>"),
+         "<p>Depende de dos cosas: si supera los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015 y si el rendimiento que ofrece tiene explicación financiera razonable acreditable. Las dos se pueden revisar antes de que alguien más las revise.</p>"),
         ("¿Qué pasa si recibimos un requerimiento?",
          "<p>El requerimiento pertenece a la fase administrativa previa, anterior a cualquier declaratoria. Es el momento en que se sustenta técnicamente el modelo, y la calidad de esa sustentación condiciona todo lo que venga después.</p>"),
         ("¿La auditoría periódica es un servicio recurrente?",
@@ -487,9 +489,9 @@ def build(g):
         '</div></aside>'
         '</div></section>')
     _umbrales = [
-        ("20", "personas o más", "Pasivo con el público que involucra a más de veinte personas.", "num"),
-        ("50", "obligaciones o más", "O más de cincuenta obligaciones con el público, o mediación de ofertas masivas.", "num"),
-        ("Art. 6", "criterio material", "O rendimiento entregado sin explicación financiera razonable, aunque los números estén por debajo.", "mat"),
+        ("20", "personas o más", "Pasivo con el público con más de veinte personas —o más de cincuenta obligaciones—.", "num"),
+        ("50", "% del patrimonio", "Y, además, que lo recibido supere el 50 % del patrimonio líquido, o provenga de ofertas a personas innominadas.", "num"),
+        ("Art. 6", "criterio material", "Aparte, el rendimiento entregado sin explicación financiera razonable, aunque las cifras estén por debajo.", "mat"),
     ]
     _um_cards = "".join(
         '<div class="umbral-metric reveal-up' + (' um-material' if kind == 'mat' else '') + '">' +
@@ -500,9 +502,9 @@ def build(g):
         for val, lbl, d, kind in _umbrales)
     cump_umbral = (
         '<section class="section"><div class="container">'
-        '<p class="eyebrow-num">Dónde está la línea</p>'
-        '<h2 class="pr-big">Tres disparadores. <span class="pr-accent">Con uno basta.</span></h2>'
-        '<p class="lead" style="max-width:64ch;margin-top:1.1rem;color:var(--dim)">El Decreto 1981 de 1988 fija umbrales objetivos y el artículo 6 del Decreto 4334 de 2008 añade el criterio material. Cualquiera de los tres puede configurar captación.</p>'
+        '<p class="eyebrow-num">El umbral</p>'
+        '<h2 class="pr-big">Dónde está <span class="pr-accent">la línea.</span></h2>'
+        '<p class="lead" style="max-width:70ch;margin-top:1.1rem;color:var(--dim)">El artículo 2.18.2.1 del Decreto 1068 de 2015 fija la medida: más de 20 personas o más de 50 obligaciones con el público, siempre que lo recibido supere el 50 % del patrimonio líquido o provenga de ofertas a personas innominadas. Aparte, el artículo 6 del Decreto 4334 de 2008 permite intervenir cuando el rendimiento ofrecido no tiene explicación financiera razonable, aunque las cifras estén por debajo.</p>'
         '<div class="umbral-grid">' + _um_cards + '</div>'
         '<p class="perim-foot">Un modelo puede estar <strong>por debajo de los números</strong> y quedar señalado igual si no sustenta de dónde sale el rendimiento que ofrece.</p>'
         '</div></section>')
@@ -554,7 +556,7 @@ def build(g):
         "schema": [
             service_schema(
                 "Revisión de encuadre en recaudo masivo",
-                "Revisión preventiva para fintech, crowdfunding, libranzas, factoring y multinivel frente a los umbrales de captación del Decreto 1981 de 1988.",
+                "Revisión preventiva para fintech, crowdfunding, libranzas, factoring y multinivel frente a los umbrales de captación del Decreto 1068 de 2015.",
                 "/cumplimiento-en-recaudo-masivo/", "Cumplimiento normativo"),
             faq_schema(cumplimiento_faq),
             breadcrumb_schema([("Inicio", "/"),
@@ -603,7 +605,9 @@ def build(g):
     <h2>Contratos legales, uso que puede no serlo</h2>
     <p>La libranza y el factoring son figuras contractuales lícitas. El problema no está en el contrato, sino en el esquema que se construye sobre él: cuando se usan para recibir dineros del público de forma masiva y habitual prometiendo un rendimiento, pueden configurar captación masiva y habitual no autorizada.</p>
     <h2>Los dos criterios que hay que revisar</h2>
-    <p>El primero es objetivo: los umbrales del Decreto 1981 de 1988 —más de veinte personas o más de cincuenta obligaciones, o mediación de ofertas masivas—. El segundo es material: el artículo 6 del Decreto 4334 de 2008 exige que exista una explicación financiera razonable del rendimiento ofrecido. Un modelo puede estar por debajo de los umbrales numéricos y aun así quedar señalado si no puede sustentar de dónde sale ese rendimiento.</p>
+    <p>El primero es objetivo: los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015 —más de veinte personas o más de cincuenta obligaciones con el público, siempre que lo recibido supere el 50 % del patrimonio líquido o provenga de ofertas a personas innominadas—. El segundo es material: el artículo 6 del Decreto 4334 de 2008 exige que exista una explicación financiera razonable del rendimiento ofrecido. Un modelo puede estar por debajo de los umbrales numéricos y aun así quedar señalado si no puede sustentar de dónde sale ese rendimiento.</p>
+    <h2>Los dos caminos de la libranza</h2>
+    <p>Un esquema de libranzas puede dar lugar a la intervención por dos caminos. El general, cuando hay entrega masiva de dineros a cambio de rendimientos sin explicación financiera razonable (artículo 6 del Decreto Ley 4334 de 2008). Y el propio de la libranza, introducido por la Ley 1902 de 2018, cuando se venden derechos patrimoniales de contenido crediticio derivados de operaciones de libranza sin el cumplimiento de los requisitos legales, sin que se exija umbral alguno.</p>
     <h2>Por qué es terreno defendible</h2>
     <p>Cuando el esquema se apoya en contratos legales y en activos reales, la frontera entre el modelo lícito y la captación se vuelve fina, y se juega en la documentación. Es exactamente el tipo de análisis que exige leer el fenómeno desde varias ramas del derecho a la vez.</p>
 """,
@@ -613,15 +617,15 @@ def build(g):
     <h2>Una vía paralela a la penal</h2>
     <p>El procedimiento del Decreto 4334 de 2008 corre de forma autónoma respecto del proceso penal. Sus decisiones tienen carácter jurisdiccional, efectos de cosa juzgada frente a todos y son de única instancia. Para el afectado, esta vía suele ser la más rápida para intentar recuperar el capital.</p>
     <h2>La devolución de recursos</h2>
-    <p>Dentro de la intervención se abre un trámite de reclamación con términos cortos, contados en días comunes desde el aviso del interventor. La devolución tiene techo en el capital entregado y opera a prorrata entre los afectados; los rendimientos prometidos no se recuperan por esta vía.</p>
+    <p>Dentro de la intervención se abre un trámite de reclamación con un reparto reglado: los recursos disponibles se dividen entre los reclamantes reconocidos, con tope en lo efectivamente entregado por cada uno y descuento de las devoluciones ya recibidas, y el saldo se distribuye a prorrata. Es la vía más rápida, y la que tiene techo: la devolución administrativa alcanza el capital, mientras que los intereses y los perjuicios solo se recuperan por la vía civil o la penal.</p>
 """,
-        "buena-fe-exenta-de-culpa-tercero-proveedor": """
+        "la-buena-fe-del-tercero-proveedor": """
     <h2>De dónde viene el estándar</h2>
-    <p>El artículo 5 del Decreto 4334 de 2008 extiende la intervención a un perímetro amplio de vinculados. La Sentencia C-145 de 2009 lo condicionó: la intervención no puede alcanzar a terceros proveedores que hayan procedido de buena fe exenta de culpa en el ámbito de sus actividades lícitas ordinarias.</p>
+    <p>El artículo 5 del Decreto Ley 4334 de 2008 extiende la intervención a un perímetro amplio de vinculados. La Sentencia C-145 de 2009 lo condicionó: la expresión «o indirectamente» no puede cobijar a los terceros de buena fe distintos de quienes entregaron recursos, como empleados y proveedores que actuaron en el ámbito de sus actividades lícitas ordinarias.</p>
     <h2>Qué exige, exactamente</h2>
-    <p>No basta la creencia honesta de estar actuando bien. La buena fe exenta de culpa exige diligencia positiva y comprobable: haber tomado las precauciones que un profesional razonable habría tomado, y poder demostrarlo. Es un estándar más alto que la simple buena fe.</p>
+    <p>No basta afirmar la buena fe: hay que acreditarla. Se demuestra con la diligencia propia de quien actúa en su actividad ordinaria y puede documentarla —haber contratado, cobrado y registrado como lo haría cualquier proveedor legítimo, y poder probarlo—.</p>
     <h2>Cómo se acredita</h2>
-    <p>Se construye hacia atrás, con documentos: contratos, controles internos, comunicaciones, decisiones registradas en su momento. Acreditar ese estándar es, con frecuencia, la diferencia entre quedar dentro o fuera del perímetro de la intervención, y es un trabajo que conviene empezar antes de que la vinculación se formalice.</p>
+    <p>Es un trabajo documental que se construye hacia atrás: contratos, controles internos, comunicaciones y decisiones registradas en su momento. Acreditar esa buena fe es, con frecuencia, la diferencia entre quedar dentro o fuera del perímetro de la intervención, y conviene empezarlo antes de que la vinculación se formalice.</p>
 """,
     }
     READ_MIN = {a["slug"]: read_min(ARTICLE_BODIES[a["slug"]]) for a in ARTICLES}
@@ -690,9 +694,9 @@ def build(g):
         ai = ARTICLES.index(a)
         NORMAS = [
             ("Decreto 4334 de 2008", "Procedimiento de intervención por captación no autorizada."),
-            ("Decreto 1981 de 1988", "Umbrales objetivos de captación."),
+            ("Decreto 1068 de 2015, art. 2.18.2.1", "Umbrales objetivos de captación."),
             ("Artículos 316 y 316A · Código Penal", "Captación masiva y habitual, y no reintegro."),
-            ("Sentencia C-145 de 2009", "Presunciones y buena fe exenta de culpa."),
+            ("Sentencia C-145 de 2009", "Presunciones y buena fe del tercero."),
         ]
         norm_rows = "".join(
             f'<div class="norm-row"><span class="norm-k">{esc(k)}</span>'
@@ -790,7 +794,7 @@ def build(g):
     # =====================================================================
     faq_central = [
         ("¿Qué es la captación masiva y habitual?",
-         '<p>Es recibir dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable (art. 6 del Decreto 4334 de 2008). Hay captación cuando el pasivo con el público supera los umbrales del Decreto 1981 de 1988: más de veinte personas o más de cincuenta obligaciones, o mediación de ofertas masivas.</p>'),
+         '<p>Es recibir dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable (art. 6 del Decreto 4334 de 2008). Hay captación cuando el pasivo con el público supera los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015: más de veinte personas o más de cincuenta obligaciones, siempre que lo recibido supere el 50 % del patrimonio líquido o provenga de ofertas a personas innominadas.</p>'),
         ("¿En qué se diferencia la captación de una estafa?",
          '<p>Son delitos distintos. La estafa (art. 246) exige un engaño que induce a error a una víctima determinada; la captación (art. 316) sanciona recibir dineros del público sin autorización, sin necesidad de probar el engaño individual. La captación, además, activa un trámite administrativo propio ante la Superintendencia de Sociedades. <a class="textlink" href="/analisis/diferencia-entre-estafa-y-captacion-masiva/">Ver el análisis completo</a>.</p>'),
         ("¿Qué es la toma de posesión y qué efectos tiene?",
@@ -800,13 +804,13 @@ def build(g):
         ("¿Qué es el no reintegro del artículo 316A?",
          '<p>Es un tipo penal autónomo que sanciona no devolver los recursos captados. Puede concurrir con el art. 316 y con otros delitos como estafa agravada, lavado de activos o concierto para delinquir.</p>'),
         ("Tengo una empresa que recauda de muchas personas, ¿cuándo se configura captación?",
-         '<p>Se revisa un criterio objetivo —los umbrales del Decreto 1981 de 1988— y uno material —que exista explicación financiera razonable del rendimiento (art. 6 del Decreto 4334 de 2008)—. Un modelo puede estar bajo los umbrales y aun así quedar señalado si no sustenta de dónde sale el rendimiento. <a class="textlink" href="/cumplimiento-en-recaudo-masivo/">Revisión de encuadre</a>.</p>'),
+         '<p>Se revisa un criterio objetivo —los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015— y uno material —que exista explicación financiera razonable del rendimiento (art. 6 del Decreto 4334 de 2008)—. Un modelo puede estar bajo los umbrales y aun así quedar señalado si no sustenta de dónde sale el rendimiento. <a class="textlink" href="/cumplimiento-en-recaudo-masivo/">Revisión de encuadre</a>.</p>'),
         ("¿Qué es la “explicación financiera razonable”?",
          '<p>Es la justificación económica verificable del rendimiento ofrecido: de dónde sale y por qué es sostenible. Su ausencia es uno de los indicios centrales de captación, incluso cuando el esquema se apoya en contratos legales como libranzas o factoring. <a class="textlink" href="/analisis/captacion-con-libranzas-y-factoring/">Cuándo un contrato legal configura captación</a>.</p>'),
         ("Me vincularon a un proceso por captación, ¿qué significa?",
          '<p>La vinculación alcanza a administradores, socios, revisores fiscales, contadores y proveedores por el ejercicio del cargo durante el período de captación. Es desvirtuable: la defensa se construye sobre la exclusión y la prueba del origen lícito. <a class="textlink" href="/defensa-en-captacion-masiva/">Ver la ruta de la defensa</a>.</p>'),
-        ("¿Qué es la buena fe exenta de culpa?",
-         '<p>Es el estándar que, según la Sentencia C-145 de 2009, puede dejar fuera de la intervención a terceros proveedores que actuaron diligentemente en sus actividades lícitas ordinarias. No basta la creencia honesta: exige diligencia comprobable con documentos. <a class="textlink" href="/analisis/buena-fe-exenta-de-culpa-tercero-proveedor/">Cómo se acredita</a>.</p>'),
+        ("¿Qué es la buena fe del tercero proveedor?",
+         '<p>Es el estándar que, según la Sentencia C-145 de 2009, puede dejar fuera de la intervención a empleados y proveedores —distintos de quienes entregaron recursos— que actuaron en el ámbito de sus actividades lícitas ordinarias. Acreditar esa buena fe es un trabajo documental: contratos, controles, comunicaciones y decisiones registradas. <a class="textlink" href="/analisis/la-buena-fe-del-tercero-proveedor/">Cómo se acredita</a>.</p>'),
         ("¿La firma garantiza recuperar el dinero o un resultado?",
          '<p>No. No prometemos recuperación ni desenlace judicial. Lo que se promete es rigor, criterio y trabajo sobre las tres vías, con los límites dichos en voz alta.</p>'),
         ("¿Qué datos piden para una primera consulta?",
@@ -816,13 +820,13 @@ def build(g):
         ("¿Cuál es la diferencia entre la Superintendencia de Sociedades y la Superintendencia Financiera en estos casos?",
          '<p>La Superintendencia Financiera supervisa a las entidades autorizadas para captar y persigue el ejercicio ilegal de la actividad financiera. La captación no autorizada, en cambio, se interviene por la Superintendencia de Sociedades bajo el Decreto 4334 de 2008, que es la que ordena la toma de posesión y adelanta la devolución de recursos.</p>'),
         ("En la devolución, ¿se recupera el capital o también los rendimientos prometidos?",
-         '<p>La devolución opera sobre el capital efectivamente entregado, con techo en ese monto y a prorrata entre los afectados según la masa disponible. Los rendimientos prometidos no se reconocen por esa vía. No prometemos recuperación: el desenlace depende de la masa de la intervención. <a class="textlink" href="/analisis/que-hace-la-superintendencia-de-sociedades/">Cómo funciona la devolución</a>.</p>'),
+         '<p>La devolución opera sobre el capital efectivamente entregado, con un reparto reglado: primero se divide entre los reclamantes reconocidos, con tope en lo entregado por cada uno y descuento de lo ya devuelto, y el saldo se distribuye a prorrata. Los rendimientos prometidos no se reconocen por esa vía. No prometemos recuperación: el desenlace depende de la masa de la intervención. <a class="textlink" href="/analisis/que-hace-la-superintendencia-de-sociedades/">Cómo funciona la devolución</a>.</p>'),
         ("¿Cuánto tiempo hay para presentar la reclamación de devolución?",
          '<p>Los términos son cortos y se cuentan en días comunes desde el aviso del agente interventor. Por eso, ante una toma de posesión, conviene actuar pronto para no perder la oportunidad de reclamar. <a class="textlink" href="/afectados-por-captacion-masiva/">Ver las vías y los plazos</a>.</p>'),
         ("¿Una pirámide o un esquema Ponzi es lo mismo que la captación masiva?",
          '<p>En el lenguaje corriente se usan como sinónimos, pero “pirámide” y “Ponzi” describen el modelo económico. La figura jurídica que activa la intervención administrativa y el tipo penal es la captación masiva y habitual (artículos 316 y 316A del Código Penal y Decreto 4334 de 2008).</p>'),
         ("¿El mercadeo multinivel o en red configura captación?",
-         '<p>No por sí mismo. Puede configurarla cuando, más allá de la venta real de bienes o servicios, el modelo recibe dineros del público de forma masiva y habitual prometiendo rendimientos sin explicación financiera razonable y supera los umbrales del Decreto 1981 de 1988. <a class="textlink" href="/cumplimiento-en-recaudo-masivo/">Revisión de encuadre</a>.</p>'),
+         '<p>No por sí mismo. Puede configurarla cuando, más allá de la venta real de bienes o servicios, el modelo recibe dineros del público de forma masiva y habitual prometiendo rendimientos sin explicación financiera razonable y supera los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015. <a class="textlink" href="/cumplimiento-en-recaudo-masivo/">Revisión de encuadre</a>.</p>'),
         ("¿La captación con criptoactivos o a través de una fintech también está cubierta?",
          '<p>El medio tecnológico no cambia la sustancia. Si hay recaudo masivo y habitual del público, sin autorización y sin explicación financiera razonable del rendimiento, puede configurar captación aunque se instrumente con criptoactivos o una plataforma digital. <a class="textlink" href="/analisis/captacion-con-libranzas-y-factoring/">Cuándo un contrato legal configura captación</a>.</p>'),
         ("¿Qué es el agente interventor y qué funciones tiene?",
