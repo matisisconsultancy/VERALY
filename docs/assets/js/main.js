@@ -370,38 +370,62 @@
     window.addEventListener('resize', upd); upd();
   }
   function initReveal() {
-    var track = $('.reveal-track'); if (!track || track.__i) return; track.__i = 1;
-    var phrases = $$('.reveal-phrase', track), cards = $$('.reveal-cards .rc', track);
-    var np = phrases.length; if (!np) return;
-    var words = phrases.map(function (p) { return $$('.w', p); });
-    // data-litspan (0..1): fracción del avance de cada frase en la que se
-    // iluminan las palabras. Más alto = más lento y las palabras nunca entran de golpe.
-    var litspan = parseFloat(track.getAttribute('data-litspan')) || 0.55;
-    // data-cardstart: fracción del avance donde EMPIEZAN a salir las cards
-    // (permite leer las frases primero y que las cards aparezcan al final).
-    var cardStart = parseFloat(track.getAttribute('data-cardstart'));
-    var hasCardStart = !isNaN(cardStart);
-    function cardThresh(k, n) {
-      if (hasCardStart) return cardStart + (k / n) * (0.98 - cardStart);
-      return (k + 1) / (n + 1);
-    }
-    function upd() {
-      if (window.innerWidth <= 900) {
-        phrases.forEach(function (p) { p.classList.add('active'); });
-        words.forEach(function (ws) { ws.forEach(function (w) { w.classList.add('lit'); }); });
+    $$('.reveal-track').forEach(function (track) {
+      if (track.__i) return; track.__i = 1;
+      var phrases = $$('.reveal-phrase', track), cards = $$('.reveal-cards .rc', track);
+      var np = phrases.length; if (!np) return;
+      var words = phrases.map(function (p) { return $$('.w', p); });
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+      // El titular de cada frase se muestra COMPLETO (visible desde el primer
+      // momento); ya no se ilumina palabra por palabra.
+      function showPhrase(idx) {
+        phrases.forEach(function (ph, i) { ph.classList.toggle('active', i === idx); });
+        words.forEach(function (ws, i) { ws.forEach(function (w) { w.classList.toggle('lit', i === idx); }); });
+      }
+      // Modo rotación automática (frases sin tarjetas): cambian solas cada
+      // 5,5 s, con pausa al pasar el cursor; solo mientras la sección se ve.
+      if (track.getAttribute('data-autorotate') === '1') {
+        showPhrase(0);
         cards.forEach(function (c) { c.classList.add('in'); });
+        if (reduce || np < 2) return;
+        var idx = 0, paused = false, inView = true, timer = null;
+        function tick() { if (paused || !inView) return; idx = (idx + 1) % np; showPhrase(idx); }
+        track.addEventListener('mouseenter', function () { paused = true; });
+        track.addEventListener('mouseleave', function () { paused = false; });
+        track.addEventListener('focusin', function () { paused = true; });
+        track.addEventListener('focusout', function () { paused = false; });
+        if ('IntersectionObserver' in window) {
+          inView = false;
+          new IntersectionObserver(function (es) {
+            es.forEach(function (e) { inView = e.isIntersecting; });
+          }, { threshold: 0.35 }).observe(track);
+        }
+        timer = setInterval(tick, 5500);
         return;
       }
-      var p = pinProgress(track);
-      var idx = Math.min(np - 1, Math.floor(p * np));
-      var local = (p * np) - idx;
-      phrases.forEach(function (ph, i) { ph.classList.toggle('active', i === idx); });
-      var lit = Math.min(1, local / litspan);
-      words[idx].forEach(function (w, j) { w.classList.toggle('lit', (j + 0.6) / words[idx].length <= lit); });
-      cards.forEach(function (c, k) { c.classList.toggle('in', p >= cardThresh(k, cards.length)); });
-    }
-    window.addEventListener('scroll', upd, { passive: true });
-    window.addEventListener('resize', upd); upd();
+      // Modo scroll (con tarjetas): el titular completo visible y las tarjetas
+      // aparecen una a una a medida que se baja.
+      var cardStart = parseFloat(track.getAttribute('data-cardstart'));
+      var hasCardStart = !isNaN(cardStart);
+      function cardThresh(k, n) {
+        if (hasCardStart) return cardStart + (k / n) * (0.98 - cardStart);
+        return (k + 1) / (n + 1);
+      }
+      function upd() {
+        if (window.innerWidth <= 900) {
+          phrases.forEach(function (p) { p.classList.add('active'); });
+          words.forEach(function (ws) { ws.forEach(function (w) { w.classList.add('lit'); }); });
+          cards.forEach(function (c) { c.classList.add('in'); });
+          return;
+        }
+        var p = pinProgress(track);
+        var idx = Math.min(np - 1, Math.floor(p * np));
+        showPhrase(idx);
+        cards.forEach(function (c, k) { c.classList.toggle('in', p >= cardThresh(k, cards.length)); });
+      }
+      window.addEventListener('scroll', upd, { passive: true });
+      window.addEventListener('resize', upd); upd();
+    });
   }
   /* ---------- Las tres vías: entrada + parallax interno ---------- */
   var frowIO = ('IntersectionObserver' in window)
@@ -424,7 +448,7 @@
       $$('.pr-parallax').forEach(function (el) {
         var r = el.getBoundingClientRect();
         var rel = (r.top + r.height / 2) - vh / 2;
-        el.style.transform = 'translateY(' + (rel * -0.12).toFixed(1) + 'px)';
+        el.style.transform = 'translateY(' + (rel * -0.04).toFixed(1) + 'px)';
       });
     }
   }
@@ -502,6 +526,7 @@
   function initScramble() {
     $$('.eyebrow, .eyebrow-num, .faq-pill, .bfilter-pill, .article-kicker, .pr-tl-label').forEach(function (el) {
       if (el.__scr) return; el.__scr = 1;
+      if (scrReduce) return; // reduce-motion: se deja el texto final, sin barajar
       if (scrIO) scrIO.observe(el); else scrambleText(el);
     });
   }
@@ -556,15 +581,11 @@
         track.style.setProperty('--p', fill.toFixed(4));
         var seg = 1 / n;
         steps.forEach(function (s, i) {
-          // cada número cuenta de 0 a su valor justo cuando la barra cruza su tramo
+          // las cifras reales se muestran desde el inicio (legibles en captura,
+          // impresión y buscadores); solo la barra de progreso se anima.
           var sp = Math.max(0, Math.min(1, (fill - i * seg) / seg));
           s.classList.toggle('is-on', fill > i * seg + 0.0005);
           s.classList.toggle('is-cur', sp > 0 && sp < 1);
-          var num = s.querySelector('[data-count]');
-          if (num) {
-            var tgt = parseFloat(num.getAttribute('data-count')) || 0;
-            num.textContent = String(Math.round(tgt * sp));
-          }
         });
       });
     }
@@ -609,51 +630,23 @@
     j.__open = i;
   }
   function initJourney() {
+    // Acordeón normal: la primera fase abierta, el resto se abren al pulsar.
+    // Ya no se despliega solo con el scroll (evita el pin largo).
     var js = $$('.journey'); if (!js.length) return;
     js.forEach(function (j) {
       if (j.__jnInit) return; j.__jnInit = 1;
       var phases = $$('.jn-phase', j);
       phases.forEach(function (ph, i) {
+        ph.classList.add('is-on');
         var t = ph.querySelector('.jn-toggle');
         if (t) t.addEventListener('click', function () {
           jnApplyOpen(j, phases, j.__open === i ? -1 : i);
         });
       });
-      jnApplyOpen(j, phases, 0); j.__lastCur = 0;
+      jnApplyOpen(j, phases, 0);
+      var spine = j.querySelector('.jn-spine');
+      if (spine) spine.style.setProperty('--p', '1');
     });
-    function upd() {
-      var vh = window.innerHeight;
-      js.forEach(function (j) {
-        var spine = j.querySelector('.jn-spine');
-        var phases = $$('.jn-phase', j);
-        var n = phases.length; if (!n) return;
-        var sec = j.closest('.jn-sec');
-        var pin = sec && sec.querySelector('.jn-pin-track');
-        var sticky = sec && sec.querySelector('.jn-pin-sticky');
-        var cur, prog;
-        if (pin && sticky && getComputedStyle(sticky).position === 'sticky') {
-          var h = pin.offsetHeight - vh;
-          prog = h > 0 ? (-pin.getBoundingClientRect().top) / h : 0;
-          prog = Math.max(0, Math.min(0.999, prog));
-          cur = Math.min(n - 1, Math.floor(prog * n));
-        } else {
-          // móvil (sin pin): abre según el borde superior de cada fase
-          var mid = vh * 0.5, r = j.getBoundingClientRect();
-          prog = Math.max(0, Math.min(1, (vh * 0.4 - r.top) / Math.max(1, r.height)));
-          cur = 0;
-          phases.forEach(function (ph, i) { if (ph.getBoundingClientRect().top < mid) cur = i; });
-        }
-        if (spine) spine.style.setProperty('--p', prog.toFixed(3));
-        phases.forEach(function (ph, i) { ph.classList.toggle('is-on', i <= cur); });
-        if (cur !== j.__lastCur) { jnApplyOpen(j, phases, cur); j.__lastCur = cur; }
-      });
-    }
-    if (!window.__jnScroll) {
-      window.__jnScroll = 1;
-      window.addEventListener('scroll', upd, { passive: true });
-      window.addEventListener('resize', upd);
-    }
-    upd();
   }
   /* ---------- Reserva de cita (tipo Calendly, sin backend: compone la solicitud) ---------- */
   function initBooking() {
@@ -677,12 +670,12 @@
       var lbl = dows[dow] + ' ' + d.getDate() + ' ' + months[d.getMonth()];
       var b = document.createElement('button'); b.type = 'button'; b.className = 'cal-day';
       b.innerHTML = '<span class="cal-dow">' + lbl + '</span>';
-      (function (lbl2) {
-        b.addEventListener('click', function () {
+      (function (lbl2, btn) {
+        btn.addEventListener('click', function () {
           $$('.cal-day', w).forEach(function (x) { x.classList.remove('is-active'); });
-          b.classList.add('is-active'); state.day = lbl2; state.dayLabel = lbl2; state.time = null; buildSlots(); upd();
+          btn.classList.add('is-active'); state.day = lbl2; state.dayLabel = lbl2; state.time = null; buildSlots(); upd();
         });
-      })(lbl);
+      })(lbl, b);
       daysEl.appendChild(b); added++;
     }
     function buildSlots() {
@@ -750,6 +743,7 @@
       ticking = false;
       var y = window.pageYOffset || 0;
       var navOpen = document.body.getAttribute('data-nav-open') === 'true';
+      hdr.classList.toggle('is-stuck', y > 10);
       if (y <= 90 || navOpen) { hdr.classList.remove('nav-hidden'); lastY = y; return; }
       var dy = y - lastY;
       if (dy > 6) hdr.classList.add('nav-hidden');        // baja → esconde
@@ -759,5 +753,15 @@
     window.addEventListener('scroll', function () {
       if (!ticking) { ticking = true; requestAnimationFrame(apply); }
     }, { passive: true });
+  })();
+
+  /* ---------- Botón WhatsApp: se oculta al ver el contacto del pie ---------- */
+  (function () {
+    var fab = $('.wa-fab');
+    var target = $('.footer-top') || $('.site-footer');
+    if (!fab || !target || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { fab.classList.toggle('is-hidden', e.isIntersecting); });
+    }, { threshold: 0 }).observe(target);
   })();
 })();
