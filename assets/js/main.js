@@ -502,6 +502,7 @@
   function initScramble() {
     $$('.eyebrow, .eyebrow-num, .faq-pill, .bfilter-pill, .article-kicker, .pr-tl-label').forEach(function (el) {
       if (el.__scr) return; el.__scr = 1;
+      if (scrReduce) return; // reduce-motion: se deja el texto final, sin barajar
       if (scrIO) scrIO.observe(el); else scrambleText(el);
     });
   }
@@ -556,15 +557,11 @@
         track.style.setProperty('--p', fill.toFixed(4));
         var seg = 1 / n;
         steps.forEach(function (s, i) {
-          // cada número cuenta de 0 a su valor justo cuando la barra cruza su tramo
+          // las cifras reales se muestran desde el inicio (legibles en captura,
+          // impresión y buscadores); solo la barra de progreso se anima.
           var sp = Math.max(0, Math.min(1, (fill - i * seg) / seg));
           s.classList.toggle('is-on', fill > i * seg + 0.0005);
           s.classList.toggle('is-cur', sp > 0 && sp < 1);
-          var num = s.querySelector('[data-count]');
-          if (num) {
-            var tgt = parseFloat(num.getAttribute('data-count')) || 0;
-            num.textContent = String(Math.round(tgt * sp));
-          }
         });
       });
     }
@@ -609,51 +606,23 @@
     j.__open = i;
   }
   function initJourney() {
+    // Acordeón normal: la primera fase abierta, el resto se abren al pulsar.
+    // Ya no se despliega solo con el scroll (evita el pin largo).
     var js = $$('.journey'); if (!js.length) return;
     js.forEach(function (j) {
       if (j.__jnInit) return; j.__jnInit = 1;
       var phases = $$('.jn-phase', j);
       phases.forEach(function (ph, i) {
+        ph.classList.add('is-on');
         var t = ph.querySelector('.jn-toggle');
         if (t) t.addEventListener('click', function () {
           jnApplyOpen(j, phases, j.__open === i ? -1 : i);
         });
       });
-      jnApplyOpen(j, phases, 0); j.__lastCur = 0;
+      jnApplyOpen(j, phases, 0);
+      var spine = j.querySelector('.jn-spine');
+      if (spine) spine.style.setProperty('--p', '1');
     });
-    function upd() {
-      var vh = window.innerHeight;
-      js.forEach(function (j) {
-        var spine = j.querySelector('.jn-spine');
-        var phases = $$('.jn-phase', j);
-        var n = phases.length; if (!n) return;
-        var sec = j.closest('.jn-sec');
-        var pin = sec && sec.querySelector('.jn-pin-track');
-        var sticky = sec && sec.querySelector('.jn-pin-sticky');
-        var cur, prog;
-        if (pin && sticky && getComputedStyle(sticky).position === 'sticky') {
-          var h = pin.offsetHeight - vh;
-          prog = h > 0 ? (-pin.getBoundingClientRect().top) / h : 0;
-          prog = Math.max(0, Math.min(0.999, prog));
-          cur = Math.min(n - 1, Math.floor(prog * n));
-        } else {
-          // móvil (sin pin): abre según el borde superior de cada fase
-          var mid = vh * 0.5, r = j.getBoundingClientRect();
-          prog = Math.max(0, Math.min(1, (vh * 0.4 - r.top) / Math.max(1, r.height)));
-          cur = 0;
-          phases.forEach(function (ph, i) { if (ph.getBoundingClientRect().top < mid) cur = i; });
-        }
-        if (spine) spine.style.setProperty('--p', prog.toFixed(3));
-        phases.forEach(function (ph, i) { ph.classList.toggle('is-on', i <= cur); });
-        if (cur !== j.__lastCur) { jnApplyOpen(j, phases, cur); j.__lastCur = cur; }
-      });
-    }
-    if (!window.__jnScroll) {
-      window.__jnScroll = 1;
-      window.addEventListener('scroll', upd, { passive: true });
-      window.addEventListener('resize', upd);
-    }
-    upd();
   }
   /* ---------- Reserva de cita (tipo Calendly, sin backend: compone la solicitud) ---------- */
   function initBooking() {

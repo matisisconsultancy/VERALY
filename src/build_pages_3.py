@@ -60,7 +60,7 @@ def build(g):
 
     def plz_step(idx, num, unit, label, detail):
         return (f'<div class="plz-step"><span class="plz-ord">{idx:02d}</span>'
-                f'<span class="plz-num"><span data-count="{num}">0</span>'
+                f'<span class="plz-num"><span data-count="{num}">{num}</span>'
                 f'<span class="u">{esc(unit)}</span></span>'
                 f'<p class="plz-label">{esc(label)}</p><p class="plz-detail">{esc(detail)}</p></div>')
 

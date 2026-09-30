@@ -937,7 +937,7 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
    ============================================================ */
 .stepper{background:var(--ink);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
 .stepper-intro{padding-top:var(--sp-xl)}
-.stepper-track{position:relative;height:460vh}
+.stepper-track{position:relative;height:185vh}
 .stepper-sticky{position:sticky;top:0;height:100vh;overflow:clip}
 .stepper-inner{position:relative;width:100%;height:100vh}
 /* full-bleed: visual pegado al borde izquierdo, altura completa */
@@ -1004,7 +1004,7 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 /* tarjetas del reveal cuando nombran las vías (no son enlaces) */
 /* pista muy larga = cada frase se ilumina y se sostiene el tiempo suficiente
    para leerla completa antes de cambiar; las cards salen al final */
-#vias-intro .reveal-track{height:660vh}
+#vias-intro .reveal-track{height:170vh}
 /* transición más seca entre frases para que nunca queden dos textos superpuestos */
 #vias-intro .reveal-phrase{transition:opacity .22s ease}
 /* cada palabra aparece con un fundido más suave */
@@ -1021,7 +1021,7 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 .reveal-cards .rc--via:hover{transform:translateY(-4px);border-color:var(--accent)}
 .reveal-cards .rc--via:hover .t-k{color:var(--accent)}
 .reveal{background:var(--ink);border-top:1px solid var(--line-soft)}
-.reveal-track{position:relative;height:520vh}
+.reveal-track{position:relative;height:170vh}
 .reveal-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:0;overflow:clip;padding:var(--head-h) var(--edge) 6vh}
 .reveal-eyebrow{margin:0 0 clamp(18px,2.6vh,34px)}
@@ -1446,7 +1446,7 @@ html:not(.js) .plz-track::after{width:100%}
    mientras la barra de alcance crece (administrativa -> civil -> penal) */
 .via-sticky-sec{padding:clamp(44px,6vw,80px) 0}
 /* pista más alta = el cambio de vía ocurre más despacio y con más aire */
-.via-track{position:relative;height:440vh}
+.via-track{position:relative;height:175vh}
 .via-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center}
 .via-frame{width:100%}
 /* encabezado mínimo: solo el eyebrow, con aire */
@@ -1473,12 +1473,17 @@ html:not(.js) .plz-track::after{width:100%}
 .via-bar{display:flex;flex-direction:column;gap:.7rem}
 .via-bar-col{position:relative;display:block;height:clamp(150px,20vh,210px);
   background:color-mix(in srgb,var(--accent-ink) 7%,transparent);border-radius:3px}
-.via-bar-col i{position:absolute;left:0;right:0;bottom:0;border-radius:3px;
+.via-bar-col i{position:absolute;left:0;right:0;bottom:0;border-radius:3px;height:0;
   background:color-mix(in srgb,var(--accent-ink) 22%,transparent);
   transition:height .6s cubic-bezier(.2,.7,.2,1),background .5s ease}
-.via-bar[data-i="0"] .via-bar-col i{height:38%}
-.via-bar[data-i="1"] .via-bar-col i{height:66%}
-.via-bar[data-i="2"] .via-bar-col i{height:100%}
+/* cada barra crece al llegar a su tarjeta (clase .on por scroll) */
+.via-bar.on[data-i="0"] .via-bar-col i{height:38%}
+.via-bar.on[data-i="1"] .via-bar-col i{height:66%}
+.via-bar.on[data-i="2"] .via-bar-col i{height:100%}
+/* sin JS o con movimiento reducido: se muestran las tres alturas de una vez */
+html:not(.js) .via-bar[data-i="0"] .via-bar-col i{height:38%}
+html:not(.js) .via-bar[data-i="1"] .via-bar-col i{height:66%}
+html:not(.js) .via-bar[data-i="2"] .via-bar-col i{height:100%}
 .via-bar.on .via-bar-col i{background:color-mix(in srgb,var(--accent-ink) 40%,transparent)}
 .via-bar.cur .via-bar-col i{background:var(--accent-ink)}
 .via-bar-l{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;color:var(--dim-2);transition:color .45s ease}
@@ -1503,15 +1508,10 @@ html:not(.js) .plz-track::after{width:100%}
    activa y las anteriores se cierran (una abierta a la vez) */
 .jn-pin{padding:0}
 .jn-intro{padding-top:var(--sp-xl);padding-bottom:clamp(6px,1.4vw,20px)}
-/* más recorrido por fase = tiempo para leer la información completa de cada una;
-   el titular queda fuera del pin para que quepa la lista completa de cada fase */
-.jn-pin-track{position:relative;height:450vh}
-.jn-pin-sticky{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;
-  justify-content:flex-start;padding-top:clamp(28px,4.5vh,60px);padding-bottom:clamp(28px,4vh,56px)}
-@media (max-width:820px){
-  .jn-pin-track{height:auto}
-  .jn-pin-sticky{position:static;min-height:0;display:block;padding:clamp(20px,5vw,40px) 0}
-}
+/* Acordeón normal (sin fijar): la primera fase abierta; el visitante abre la
+   que necesite. Ya no se despliega solo con el scroll. */
+.jn-pin-track{position:relative;height:auto}
+.jn-pin-sticky{position:static;min-height:0;display:block;padding:clamp(20px,4vw,44px) 0}
 .journey{position:relative;margin-top:0}
 .jn-spine{position:absolute;left:22px;top:16px;bottom:16px;width:2px;background:var(--line);overflow:hidden}
 .jn-fill{position:absolute;left:0;top:0;width:100%;height:calc(var(--p,0) * 100%);
@@ -2524,7 +2524,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 
 <section class="via-sticky-sec"><div class="via-track"><div class="via-sticky"><div class="container via-frame"><div class="via-head"><p class="eyebrow-num">El alcance de cada vía</p></div><div class="via-stage"><div class="via-slides"><div class="via-slide active" data-i="0"><p class="step-chip"><span class="step-n">01</span><span class="step-l">Vía administrativa</span></p><h3 class="via-h">La reclamación dentro de la intervención</h3><p class="via-d">Cuando la Superintendencia ordena la toma de posesión para devolver, se abre un trámite de reclamación reglado: primero entre los reclamantes reconocidos, con tope en lo entregado, y el saldo a prorrata. Es la vía más rápida.</p></div><div class="via-slide" data-i="1"><p class="step-chip"><span class="step-n">02</span><span class="step-l">Vía civil</span></p><h3 class="via-h">La responsabilidad de los solventes</h3><p class="via-d">Cuando la masa no cubre el faltante, persigue el patrimonio de administradores, revisores, contadores y vinculados solventes; y reconstruye la prenda general.</p></div><div class="via-slide" data-i="2"><p class="step-chip"><span class="step-n">03</span><span class="step-l">Vía penal</span></p><h3 class="via-h">El incidente de reparación integral</h3><p class="via-d">En firme la sentencia condenatoria, se reclaman daño emergente, lucro cesante y perjuicios morales; el juez convoca a audiencia dentro de los ocho días siguientes. Es la de mayor alcance y la de plazo más breve: la solicitud caduca a los treinta días desde la ejecutoria.</p></div></div><div class="via-scopewrap" aria-hidden="true"><div class="via-bars"><div class="via-bar" data-i="0"><span class="via-bar-col"><i></i></span><span class="via-bar-l">Administrativa</span><span class="via-bar-v">El capital</span></div><div class="via-bar" data-i="1"><span class="via-bar-col"><i></i></span><span class="via-bar-l">Civil</span><span class="via-bar-v">El patrimonio</span></div><div class="via-bar" data-i="2"><span class="via-bar-col"><i></i></span><span class="via-bar-l">Penal</span><span class="via-bar-v">+ Rendimientos y perjuicios</span></div></div></div></div></div></div></div><div class="container"><p class="lead via-foot" style="max-width:66ch">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía civil o la penal. Las tres están disponibles y pueden complementarse —no hay que activarlas todas a la vez, hay que ordenarlas.</p></div></section>
 
-<section class="plz-sec plz-pin"><div class="plz-pin-track"><div class="plz-pin-sticky"><div class="container"><p class="eyebrow-num">El calendario</p><div class="plz-head"><h2 class="plz-title">Los términos corren, <span class="pr-accent">y son cortos.</span></h2></div><p class="plz-sub">Se cuentan en días comunes, pero cada hito tiene su propio punto de partida: el aviso corre desde la toma de posesión y la reclamación del afectado, desde la publicación de ese aviso.</p><div class="plz-track"><div class="plz-step"><span class="plz-ord">01</span><span class="plz-num"><span data-count="2">0</span><span class="u">días</span></span><p class="plz-label">El aviso</p><p class="plz-detail">El interventor publica el aviso dentro de los dos días siguientes a la toma de posesión.</p></div><div class="plz-step"><span class="plz-ord">02</span><span class="plz-num"><span data-count="10">0</span><span class="u">días</span></span><p class="plz-label">La reclamación</p><p class="plz-detail">Desde la publicación del aviso, el afectado dispone de diez días para presentar su reclamación, con presentación personal y original del comprobante.</p></div><div class="plz-step"><span class="plz-ord">03</span><span class="plz-num"><span data-count="20">0</span><span class="u">días</span></span><p class="plz-label">La decisión</p><p class="plz-detail">Vencido ese plazo, la providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.</p></div><div class="plz-step"><span class="plz-ord">04</span><span class="plz-num"><span data-count="3">0</span><span class="u">días</span></span><p class="plz-label">El recurso</p><p class="plz-detail">Contra ella procede reposición dentro de los tres días siguientes a su notificación.</p></div></div><p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p></div></div></div></section>
+<section class="plz-sec plz-pin"><div class="plz-pin-track"><div class="plz-pin-sticky"><div class="container"><p class="eyebrow-num">El calendario</p><div class="plz-head"><h2 class="plz-title">Los términos corren, <span class="pr-accent">y son cortos.</span></h2></div><p class="plz-sub">Se cuentan en días comunes, pero cada hito tiene su propio punto de partida: el aviso corre desde la toma de posesión y la reclamación del afectado, desde la publicación de ese aviso.</p><div class="plz-track"><div class="plz-step"><span class="plz-ord">01</span><span class="plz-num"><span data-count="2">2</span><span class="u">días</span></span><p class="plz-label">El aviso</p><p class="plz-detail">El interventor publica el aviso dentro de los dos días siguientes a la toma de posesión.</p></div><div class="plz-step"><span class="plz-ord">02</span><span class="plz-num"><span data-count="10">10</span><span class="u">días</span></span><p class="plz-label">La reclamación</p><p class="plz-detail">Desde la publicación del aviso, el afectado dispone de diez días para presentar su reclamación, con presentación personal y original del comprobante.</p></div><div class="plz-step"><span class="plz-ord">03</span><span class="plz-num"><span data-count="20">20</span><span class="u">días</span></span><p class="plz-label">La decisión</p><p class="plz-detail">Vencido ese plazo, la providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.</p></div><div class="plz-step"><span class="plz-ord">04</span><span class="plz-num"><span data-count="3">3</span><span class="u">días</span></span><p class="plz-label">El recurso</p><p class="plz-detail">Contra ella procede reposición dentro de los tres días siguientes a su notificación.</p></div></div><p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p></div></div></div></section>
 
 <section class="section jn-sec jn-pin">
   <div class="container jn-intro">
