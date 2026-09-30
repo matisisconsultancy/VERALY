@@ -313,7 +313,7 @@ def convergence_svg():
         parts.append(f'<circle class="node" cx="{x:.0f}" cy="{y:.0f}" r="7"/>')
     parts.append(f'<circle class="dot" cx="{cx}" cy="{cy}" r="9"/>')
     return ('<svg class="circuit" viewBox="0 0 400 300" fill="none" aria-hidden="true" '
-            'style="max-width:520px;margin-inline:auto">' + "".join(parts) + '</svg>')
+            'style="max-width:min(520px,100%);margin-inline:auto">' + "".join(parts) + '</svg>')
 
 
 def globe_svg():

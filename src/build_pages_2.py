@@ -613,7 +613,7 @@ def build(g):
         '</div>'
         '<p class="cal-selected" data-selected hidden></p>'
         '<button type="button" class="btn btn--primary cal-confirm" data-confirm disabled>Confirmar la reserva</button>'
-        '<p class="cal-note">Lunes a viernes · 8:00 – 18:00. No incluya los hechos de su caso; los detalles se conversan en la reunión.</p>'
+        '<p class="cal-note">La agenda en línea estará disponible muy pronto. Por ahora, su selección se envía por correo y confirmamos la cita tras verificar disponibilidad y conflicto de interés. Lunes a viernes · 8:00 – 18:00. No incluya los hechos de su caso; los detalles se conversan en la reunión.</p>'
         '</div>')
     contacto_body = f'''
 <section class="contact-hero">

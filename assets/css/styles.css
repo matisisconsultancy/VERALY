@@ -673,6 +673,18 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   background-size:64px 64px;-webkit-mask-image:radial-gradient(120% 90% at 80% 0%,#000 0%,transparent 70%);
   mask-image:radial-gradient(120% 90% at 80% 0%,#000 0%,transparent 70%);opacity:.7}
 .grid-bg>.container,.hero>.container{position:relative;z-index:1}
+/* la misma retícula en el hero del inicio, para homogeneidad con los
+   encabezados interiores (el contenido va en z-index 2, el fondo en 0) */
+.hero-full::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:64px 64px;-webkit-mask-image:radial-gradient(120% 90% at 80% 0%,#000 0%,transparent 70%);
+  mask-image:radial-gradient(120% 90% at 80% 0%,#000 0%,transparent 70%);opacity:.7}
+/* en el teléfono la retícula se amplía (no queda reducida a una esquina) */
+@media (max-width:640px){
+  .grid-bg::before,.hero::before,.hero-full::before{background-size:44px 44px;
+    -webkit-mask-image:radial-gradient(160% 120% at 50% 0%,#000 0%,transparent 88%);
+    mask-image:radial-gradient(160% 120% at 50% 0%,#000 0%,transparent 88%)}
+}
 
 /* tarjeta blueprint: esquinas rectas, plano técnico y flecha */
 .card{position:relative;border-radius:var(--r-sm);overflow:clip}
@@ -987,6 +999,12 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
   .step-visual{aspect-ratio:16/10;height:auto;border-right:0;border-bottom:1px solid var(--line-soft)}
   .step-body{align-self:auto;padding:32px var(--edge) 44px}
   .stepper-rail{display:none}
+  /* el bloque y su ilustración no deben superar el ancho del contenedor */
+  .stepper{overflow-x:clip}
+  .step{min-width:0}
+  .step-visual,.step-body{min-width:0;max-width:100%}
+  .step-visual .circuit,.step-visual .media-svg{max-width:100%}
+  .step-chip{flex-wrap:wrap}
 }
 
 /* ============================================================
@@ -1058,11 +1076,15 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 
 /* ---------- Asistente guiado ---------- */
 /* Botón flotante de WhatsApp — color de marca (menta sobre teal) */
-.wa-fab{position:fixed;right:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px);z-index:96;
+.wa-fab{position:fixed;right:max(clamp(18px,4vw,28px),env(safe-area-inset-right));
+  bottom:max(clamp(18px,4vw,28px),env(safe-area-inset-bottom));z-index:96;
   display:inline-flex;align-items:center;gap:.6em;background:var(--accent);color:var(--on-light);
   border-radius:999px;padding:13px 20px 13px 18px;font-family:var(--sans);font-weight:600;font-size:.92rem;
   text-decoration:none;box-shadow:0 12px 32px rgba(3,25,27,.4);
-  transition:transform .3s var(--btn-ease),background-color .3s var(--btn-ease),box-shadow .3s var(--btn-ease)}
+  transition:transform .3s var(--btn-ease),background-color .3s var(--btn-ease),box-shadow .3s var(--btn-ease),opacity .3s ease,visibility .3s ease}
+/* se oculta cuando el bloque de contacto del pie está a la vista, para no
+   tapar el contenido del final de la página */
+.wa-fab.is-hidden{opacity:0;visibility:hidden;transform:translateY(10px);pointer-events:none}
 .wa-fab svg{width:22px;height:22px;flex:none}
 .wa-fab:hover{background:var(--accent-deep);transform:translateY(-2px);
   box-shadow:0 18px 40px -10px color-mix(in srgb,var(--accent-ink) 55%,transparent),0 12px 32px rgba(3,25,27,.4)}
@@ -1675,7 +1697,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   --dim-2:rgba(217,246,239,.48);--accent-ink:#4FD9B0;--line:rgba(79,217,176,.28)}
 .contact-hero-bg{position:absolute;inset:0;opacity:.20;filter:saturate(.5)}
 .contact-hero-bg svg{width:100%;height:100%}
-.contact-hero-in{position:relative;padding:clamp(120px,16vh,180px) 0 clamp(40px,7vh,88px)}
+.contact-hero-in{position:relative;padding-block:clamp(120px,16vh,180px) clamp(40px,7vh,88px)}
 .contact-hero .eyebrow{color:var(--accent-ink)}
 .contact-hero-h1{font-family:var(--display);font-weight:var(--hw);letter-spacing:-.02em;line-height:1.03;
   font-size:var(--h1);color:var(--text);margin:.6rem 0 0;max-width:14ch}
@@ -1699,13 +1721,18 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 .cal-chips{display:flex;flex-wrap:wrap;gap:8px}
 /* .cal-chip usa el sistema de pills/filtros (ver "Sistema de pills / filtros") */
 .cal-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2vw,30px);margin-top:1.6rem}
-.cal-days{display:flex;flex-direction:column;gap:6px;max-height:236px;overflow:auto}
-.cal-day{width:100%;text-align:left;font-family:var(--ui);font-size:.9rem;color:var(--dim);background:transparent;
-  border:1px solid var(--line-soft);border-radius:var(--card-r);padding:.62rem .8rem;cursor:pointer;transition:color .2s,border-color .2s,background .2s}
-.cal-day:hover{color:var(--text);border-color:var(--accent-ink)}
-.cal-day.is-active{color:var(--accent-ink);border-color:var(--accent-ink);background:color-mix(in srgb,var(--accent-ink) 8%,transparent)}
+/* paneles de la agenda: verde sobre tinta para separar planos */
+.cal-days{display:flex;flex-direction:column;gap:6px;max-height:236px;overflow:auto;
+  background:var(--ink);border:1px solid var(--line-soft);border-radius:var(--card-r);padding:8px}
+/* disponibles: contorno crema; elegido: menta con texto tinta; atenuados: desactivados */
+.cal-day{width:100%;text-align:left;font-family:var(--ui);font-size:.9rem;color:var(--text);background:transparent;
+  border:1px solid var(--line);border-radius:var(--card-r);padding:.62rem .8rem;cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.cal-day:hover{border-color:var(--accent-ink);background:color-mix(in srgb,var(--accent-ink) 8%,transparent)}
+.cal-day.is-active{color:var(--on-light);border-color:var(--accent);background:var(--accent);font-weight:600}
+.cal-day[disabled],.cal-day.is-off{color:var(--dim-2);border-color:var(--line-soft);opacity:.5;cursor:not-allowed}
 .cal-dow{text-transform:capitalize}
-.cal-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;align-content:start}
+.cal-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;align-content:start;
+  background:var(--ink);border:1px solid var(--line-soft);border-radius:var(--card-r);padding:8px}
 .cal-hint{grid-column:1/-1;color:var(--dim-2);font-size:.85rem;font-weight:300;margin:0}
 .cal-slot{font-family:var(--mono);font-size:.82rem;color:var(--dim);background:transparent;border:1px solid var(--line-soft);
   border-radius:var(--card-r);padding:.5rem .3rem;cursor:pointer;transition:color .2s,border-color .2s,background .2s}

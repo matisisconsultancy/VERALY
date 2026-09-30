@@ -670,12 +670,12 @@
       var lbl = dows[dow] + ' ' + d.getDate() + ' ' + months[d.getMonth()];
       var b = document.createElement('button'); b.type = 'button'; b.className = 'cal-day';
       b.innerHTML = '<span class="cal-dow">' + lbl + '</span>';
-      (function (lbl2) {
-        b.addEventListener('click', function () {
+      (function (lbl2, btn) {
+        btn.addEventListener('click', function () {
           $$('.cal-day', w).forEach(function (x) { x.classList.remove('is-active'); });
-          b.classList.add('is-active'); state.day = lbl2; state.dayLabel = lbl2; state.time = null; buildSlots(); upd();
+          btn.classList.add('is-active'); state.day = lbl2; state.dayLabel = lbl2; state.time = null; buildSlots(); upd();
         });
-      })(lbl);
+      })(lbl, b);
       daysEl.appendChild(b); added++;
     }
     function buildSlots() {
@@ -753,5 +753,15 @@
     window.addEventListener('scroll', function () {
       if (!ticking) { ticking = true; requestAnimationFrame(apply); }
     }, { passive: true });
+  })();
+
+  /* ---------- Botón WhatsApp: se oculta al ver el contacto del pie ---------- */
+  (function () {
+    var fab = $('.wa-fab');
+    var target = $('.footer-top') || $('.site-footer');
+    if (!fab || !target || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { fab.classList.toggle('is-hidden', e.isIntersecting); });
+    }, { threshold: 0 }).observe(target);
   })();
 })();
