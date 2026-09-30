@@ -179,7 +179,7 @@ def build(g):
   <div class="hero-bg" aria-hidden="true"><div class="drape"></div><div class="sphere"></div></div>
   <div class="container hero-inner">
     <div class="hero-left">
-      <h1>Defensa en<br>fraude financiero.</h1>
+      <h1>Defensa en<br>delitos financieros.</h1>
       <p class="hero-kicker">Captación masiva y habitual.</p>
     </div>
     <div class="hero-right">

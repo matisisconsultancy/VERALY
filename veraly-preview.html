@@ -15,23 +15,24 @@
   --ink:#03191B;         /* casi-negro teal (secciones alternas) */
   --panel:#073A3F;       /* superficie */
   --panel-2:#0A4A50;     /* superficie elevada / tarjeta tintada */
-  --accent:#4FD9B0;      /* menta / acento (fondo de botones/pills) */
-  --accent-deep:#2FC08E; /* menta apagada para hover */
-  --accent-ink:#4FD9B0;  /* acento como TEXTO/gráfico fino (menta en oscuro) */
+  --accent:#89F5E5;      /* menta de la marca / acento (fondo de botones/pills) */
+  --accent-deep:#5FE0CE; /* menta apagada para hover */
+  --accent-ink:#89F5E5;  /* acento como TEXTO/gráfico fino (menta en oscuro) */
   --text:#D9F6EF;        /* texto principal */
   --on-light:#05292C;    /* texto sobre menta */
   --dim:rgba(217,246,239,.70);
   --dim-2:rgba(217,246,239,.48);
-  --line:rgba(79,217,176,.30);
+  --line:rgba(137,245,229,.30);
   --line-soft:rgba(217,246,239,.12);
-  --grid-line:rgba(79,217,176,.14); /* trazos de circuito */
+  --grid-line:rgba(137,245,229,.14); /* trazos de circuito */
 
   --sans:'Archivo',-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --display:'Archivo',-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  /* Una sola familia (Archivo). Jerarquía por peso, tamaño, tracking y color.
-     --ui y --mono se conservan como alias para no tocar cada regla. */
-  --ui:var(--sans);
-  --mono:var(--sans);
+  /* Manual de marca: Playfair Display en titulares, Jost en rótulos y botones,
+     Archivo en el cuerpo. */
+  --display:'Playfair Display',Georgia,'Times New Roman',serif;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --ui:'Jost',var(--sans);
+  --mono:'Jost',var(--sans);
 
   --edge:clamp(18px,5vw,64px);
   --head-h:86px;
@@ -89,7 +90,7 @@ body.theme-light{
   --line:rgba(5,41,44,.13);
   --line-soft:rgba(5,41,44,.09);
   --grid-line:rgba(5,41,44,.05);
-  --accent-ink:#0C8C79;  /* teal: único detalle de color, legible sobre blanco */
+  --accent-ink:#1D6F66;  /* acento de texto sobre fondo claro (mejor contraste) */
   /* --accent (menta) y --on-light se mantienen: botones/pills rellenos */
 }
 /* Header legible sobre fondo blanco */
@@ -100,7 +101,7 @@ body.theme-light .nav-cluster{background:color-mix(in srgb,#FFFFFF 68%,transpare
 .section-light{
   --bg:#FFFFFF;--ink:#EEF5F2;--panel:#FFFFFF;--panel-2:#F1F7F5;--text:#05292C;
   --dim:rgba(5,41,44,.60);--dim-2:rgba(5,41,44,.42);--line:rgba(5,41,44,.13);
-  --line-soft:rgba(5,41,44,.09);--grid-line:rgba(5,41,44,.05);--accent-ink:#0C8C79;
+  --line-soft:rgba(5,41,44,.09);--grid-line:rgba(5,41,44,.05);--accent-ink:#1D6F66;
   background:#FFFFFF;color:var(--text)}
 /* en la isla clara, el tile del gráfico se mantiene oscuro para dar contraste */
 .section-light .frow .fr-media{background:radial-gradient(120% 120% at 30% 20%,#0a4a50,#04191b)}
@@ -165,7 +166,7 @@ strong{font-weight:600;color:var(--text)}
    sin elevación. Mismo lenguaje para primaria y secundaria.
    ============================================================ */
 .btn{--bk:14px;position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;
-  font-family:var(--sans);font-weight:500;font-size:.8rem;letter-spacing:.13em;text-transform:uppercase;line-height:1;
+  font-family:var(--ui);font-weight:500;font-size:.8rem;letter-spacing:.13em;text-transform:uppercase;line-height:1;
   padding:1.18em 2.05em;min-height:var(--btn-min);border-radius:0;border:0;background:transparent;
   cursor:pointer;text-decoration:none;white-space:nowrap;user-select:none;-webkit-tap-highlight-color:transparent;
   transition:color .35s var(--btn-ease),background-color .45s var(--btn-ease)}
@@ -555,7 +556,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
 .form-status{margin-top:16px;padding:14px 18px;border-radius:var(--card-r);font-size:var(--step--1);display:none}
 .form-status[data-show="true"]{display:block}
-.form-status.ok{background:rgba(79,217,176,.12);border:1px solid var(--line);color:var(--text)}
+.form-status.ok{background:rgba(137,245,229,.12);border:1px solid var(--line);color:var(--text)}
 .form-status.err{background:color-mix(in srgb,var(--accent-ink) 12%,transparent);border:1px solid var(--accent-ink);color:var(--text)}
 
 /* ---------- Contacto: dos columnas ---------- */
@@ -612,7 +613,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   /* Se fija la paleta OSCURA: el footer permanece oscuro incluso bajo body.theme-light */
   --bg:#05292C; --ink:#03191B; --panel:#073A3F; --panel-2:#0A4A50;
   --text:#D9F6EF; --dim:rgba(217,246,239,.66); --dim-2:rgba(217,246,239,.44);
-  --line:rgba(79,217,176,.28); --line-soft:rgba(217,246,239,.12); --accent-ink:#4FD9B0;
+  --line:rgba(137,245,229,.28); --line-soft:rgba(217,246,239,.12); --accent-ink:#89F5E5;
   background:var(--ink);color:var(--text);
   border-top:1px solid var(--line-soft);margin-top:var(--sp-xl)}
 .site-footer{overflow:hidden}
@@ -760,10 +761,10 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 /* chips (marco normativo en el hero, sustituye avatares) */
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem}
 .chip{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--dim);border:1px solid var(--line-soft);border-radius:999px;padding:6px 12px;background:rgba(79,217,176,.04)}
+  color:var(--dim);border:1px solid var(--line-soft);border-radius:999px;padding:6px 12px;background:rgba(137,245,229,.04)}
 
 /* tarjeta glass */
-.glass{background:linear-gradient(160deg,rgba(79,217,176,.08),rgba(10,74,80,.14));
+.glass{background:linear-gradient(160deg,rgba(137,245,229,.08),rgba(10,74,80,.14));
   border:1px solid var(--line-soft);border-radius:var(--card-r);backdrop-filter:blur(4px)}
 
 /* features: tarjetas con imagen dominante + título + subtítulo (referente AI Finance) */
@@ -864,7 +865,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 
 /* nota de conflicto (disclaimer) — versión elegante */
 .conflict-note{display:flex;gap:16px;align-items:center;max-width:900px;margin:2.8rem auto 0;
-  padding:18px 26px;border:1px solid var(--line-soft);border-radius:var(--card-r);background:rgba(79,217,176,.045)}
+  padding:18px 26px;border:1px solid var(--line-soft);border-radius:var(--card-r);background:rgba(137,245,229,.045)}
 .conflict-note svg{width:26px;height:26px;color:var(--accent);flex:none}
 .conflict-note p{margin:0;color:var(--dim);font-size:var(--step--1);line-height:1.55}
 .conflict-note strong{color:var(--text)}
@@ -882,7 +883,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .frow .fr-media .fr-par>*{width:100%;height:100%}
 .fr-index{position:absolute;top:clamp(14px,1.6vw,26px);left:clamp(16px,1.8vw,30px);z-index:2;
   font-family:var(--mono);font-weight:600;font-size:clamp(2.4rem,1.4rem+3vw,4.6rem);line-height:1;
-  letter-spacing:.02em;color:rgba(79,217,176,.16)}
+  letter-spacing:.02em;color:rgba(137,245,229,.16)}
 .frow.reverse .fr-text{order:2}
 .frow.reverse .fr-media{order:1}
 @media (max-width:860px){.frow{grid-template-columns:1fr}.frow.reverse .fr-text,.frow.reverse .fr-media{order:0}}
@@ -910,7 +911,7 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 @media (max-width:900px){.stack-head{position:static}}
 .stack-cards{display:flex;flex-direction:column;gap:20px}
 .bigcard{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:clamp(24px,3vw,40px);
-  background:linear-gradient(160deg,rgba(79,217,176,.06),rgba(10,74,80,.14));min-height:180px;
+  background:linear-gradient(160deg,rgba(137,245,229,.06),rgba(10,74,80,.14));min-height:180px;
   display:flex;flex-direction:column;gap:12px;position:relative;overflow:clip}
 .bigcard h3{font-size:var(--step-2)}
 .bigcard p{color:var(--dim);margin:0;max-width:52ch}
@@ -918,7 +919,7 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 .bigcard .bc-big{font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,1.4rem+3vw,3.6rem);letter-spacing:-.02em;line-height:1}
 .bigcard--link{text-decoration:none;color:inherit;transition:border-color .22s,transform .22s,background .22s}
 .bigcard--link:hover,.bigcard--link:focus-visible{border-color:var(--line);transform:translateY(-2px);
-  background:linear-gradient(160deg,rgba(79,217,176,.10),rgba(10,74,80,.20))}
+  background:linear-gradient(160deg,rgba(137,245,229,.10),rgba(10,74,80,.20))}
 .bigcard--link .bc-go{position:absolute;top:clamp(24px,3vw,40px);right:clamp(24px,3vw,40px);
   width:20px;height:20px;background:var(--accent-ink);
   -webkit-mask:var(--ico-arrow) center/contain no-repeat;mask:var(--ico-arrow) center/contain no-repeat;
@@ -930,7 +931,7 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 @media (max-width:900px){.tiles{grid-template-columns:repeat(2,1fr)}}
 .tile{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:20px;min-height:104px;
   display:flex;flex-direction:column;justify-content:space-between;gap:10px;
-  background:linear-gradient(160deg,rgba(79,217,176,.05),transparent)}
+  background:linear-gradient(160deg,rgba(137,245,229,.05),transparent)}
 .tile .t-k{font-family:var(--display);font-weight:800;font-size:1.15rem;color:var(--text);letter-spacing:-.01em}
 .tile .t-d{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--dim-2)}
 
@@ -1017,8 +1018,8 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
    ============================================================ */
 /* isla oscura: fija la paleta oscura aunque la página esté en theme-light */
 .force-dark,.plz-sec{--bg:#05292C;--ink:#03191B;--panel:#073A3F;--panel-2:#0A4A50;--text:#D9F6EF;
-  --dim:rgba(217,246,239,.66);--dim-2:rgba(217,246,239,.44);--line:rgba(79,217,176,.28);
-  --line-soft:rgba(217,246,239,.12);--accent-ink:#4FD9B0}
+  --dim:rgba(217,246,239,.66);--dim-2:rgba(217,246,239,.44);--line:rgba(137,245,229,.28);
+  --line-soft:rgba(217,246,239,.12);--accent-ink:#89F5E5}
 /* tarjetas del reveal cuando nombran las vías (no son enlaces) */
 /* pista muy larga = cada frase se ilumina y se sostiene el tiempo suficiente
    para leerla completa antes de cambiar; las cards salen al final */
@@ -1030,8 +1031,8 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 /* tarjetas del reveal cuando nombran las vías (no son enlaces) — legibilidad reforzada */
 .rc--via{cursor:default}
 .reveal-cards .rc--via{padding:28px 28px 26px;min-height:168px;gap:14px;
-  background:linear-gradient(160deg,rgba(79,217,176,.11),rgba(3,25,27,.55));
-  border-color:rgba(79,217,176,.24)}
+  background:linear-gradient(160deg,rgba(137,245,229,.11),rgba(3,25,27,.55));
+  border-color:rgba(137,245,229,.24)}
 .reveal-cards .rc--via .t-d{color:var(--accent);font-size:.74rem;letter-spacing:.16em}
 .reveal-cards .rc--via .t-k{font-family:var(--display);font-weight:600;color:var(--text);
   font-size:clamp(1.7rem,1.2rem + 1.3vw,2.3rem);letter-spacing:-.02em;line-height:1.04;margin-top:.15rem}
@@ -1057,11 +1058,11 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 /* baraja de tarjetas-enlace de norma (rejilla a lo ancho, con hover de color) */
 .reveal-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%;max-width:1160px;margin-top:var(--sp-xl)}
 .reveal-cards .rc{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:22px 24px;min-height:116px;
-  background:linear-gradient(160deg,rgba(79,217,176,.06),rgba(10,74,80,.16));text-decoration:none;color:inherit;
+  background:linear-gradient(160deg,rgba(137,245,229,.06),rgba(10,74,80,.16));text-decoration:none;color:inherit;
   -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;flex-direction:column;gap:8px;justify-content:space-between;
   opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .3s ease,border-color .2s ease,background .2s ease}
 .reveal-cards .rc.in{opacity:1;transform:none}
-.reveal-cards .rc:hover{border-color:var(--accent);background:linear-gradient(160deg,rgba(79,217,176,.16),rgba(10,74,80,.28));transform:translateY(-4px)}
+.reveal-cards .rc:hover{border-color:var(--accent);background:linear-gradient(160deg,rgba(137,245,229,.16),rgba(10,74,80,.28));transform:translateY(-4px)}
 .reveal-cards .rc .t-k{font-family:var(--display);font-weight:600;font-size:1.2rem;color:var(--text);transition:color .2s}
 .reveal-cards .rc:hover .t-k{color:var(--accent)}
 .reveal-cards .rc .t-d{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--dim-2)}
@@ -1427,9 +1428,9 @@ html.js .reveal-up.in{opacity:1;transform:none}
   margin-top:var(--sp-l);position:relative}
 /* la barra es el protagonista: un riel fino que se ilumina de izq. a der. con el scroll */
 .plz-track::before,.plz-track::after{content:"";position:absolute;top:10px;left:0;height:5px;border-radius:5px}
-.plz-track::before{right:0;background:rgba(79,217,176,.12)}
+.plz-track::before{right:0;background:rgba(137,245,229,.12)}
 .plz-track::after{width:calc(var(--p,0) * 100%);
-  background:linear-gradient(90deg,rgba(79,217,176,.45) 0%,var(--accent) 78%,var(--text) 100%);
+  background:linear-gradient(90deg,rgba(137,245,229,.45) 0%,var(--accent) 78%,var(--text) 100%);
   box-shadow:0 0 22px 1px var(--accent);transition:width .22s cubic-bezier(.22,.7,.24,1)}
 html:not(.js) .plz-track::after{width:100%}
 /* cada término se ilumina cuando la barra lo alcanza (sin nodos ni bolas) */
@@ -1437,7 +1438,7 @@ html:not(.js) .plz-track::after{width:100%}
   transition:opacity .55s cubic-bezier(.2,.7,.2,1)}
 .plz-step.is-on{opacity:1}
 .plz-ord{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;
-  color:rgba(79,217,176,.5);margin-bottom:.55rem;transition:color .45s ease}
+  color:rgba(137,245,229,.5);margin-bottom:.55rem;transition:color .45s ease}
 .plz-step.is-on .plz-ord{color:var(--accent)}
 .plz-num{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:.95;color:var(--text);
   font-size:clamp(2.8rem,1.8rem + 3vw,4.8rem);display:flex;align-items:baseline;gap:.16em}
@@ -1451,7 +1452,7 @@ html:not(.js) .plz-track::after{width:100%}
   .plz-track::before{right:auto;top:0;bottom:0;left:10px;width:5px;height:auto}
   .plz-track::after{top:0;left:10px;width:5px !important;
     height:calc(var(--p,0) * 100%);
-    background:linear-gradient(180deg,rgba(79,217,176,.45),var(--accent) 80%,var(--text));
+    background:linear-gradient(180deg,rgba(137,245,229,.45),var(--accent) 80%,var(--text));
     transition:height .22s cubic-bezier(.22,.7,.24,1)}
   html:not(.js) .plz-track::after{height:100%}
   .plz-step{padding-top:2px;padding-left:44px;padding-bottom:38px}
@@ -1699,7 +1700,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 .contact-hero{position:relative;overflow:clip;background:var(--ink);min-height:80vh;min-height:80svh;
   display:flex;align-items:flex-end;
   --bg:#05292C;--ink:#03191B;--panel:#073A3F;--text:#D9F6EF;--dim:rgba(217,246,239,.7);
-  --dim-2:rgba(217,246,239,.48);--accent-ink:#4FD9B0;--line:rgba(79,217,176,.28)}
+  --dim-2:rgba(217,246,239,.48);--accent-ink:#89F5E5;--line:rgba(137,245,229,.28)}
 .contact-hero-bg{position:absolute;inset:0;opacity:.20;filter:saturate(.5)}
 .contact-hero-bg svg{width:100%;height:100%}
 .contact-hero-in{position:relative;padding-block:clamp(120px,16vh,180px) clamp(40px,7vh,88px)}
@@ -1797,6 +1798,20 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 .socio-next:hover .sn-name{color:var(--accent-ink)}
 @media(max-width:820px){.socio-hero{grid-template-columns:1fr;gap:26px}.socio-hero-photo{max-width:340px}}
 
+/* ============================================================
+   Manual de marca — tipografía
+   Titulares en Playfair Display; rótulos y botones en Jost (vía
+   --mono/--ui); el cuerpo permanece en Archivo. Este bloque va al
+   final para prevalecer sobre las reglas que fijaban var(--sans).
+   ============================================================ */
+h1,h2,h3,
+.hero-full h1,.pr-big,.prac-h1,.prac-h1,.sol-h1,.sol-stmt,.plz-title,
+.via-h,.jn-h,.blog-h1,.article-h1,.contact-hero-h1,.step-body h2,
+.footer-lede,.reveal-phrase,.bf-title,.socio-h1,.socio-name,.editorial .t{
+  font-family:var(--display);font-weight:500}
+/* la cursiva de énfasis en los titulares queda en Playfair Display italic */
+.pr-accent{font-family:var(--display);font-style:italic;font-weight:500}
+
 .preview-flag{position:fixed;bottom:12px;left:12px;z-index:60;background:var(--panel-2);border:1px solid var(--line);color:var(--dim);font-family:var(--ui);font-size:12px;padding:6px 12px;border-radius:6px}
 </style>
 <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -1851,7 +1866,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
     <nav class="fn-col" aria-label="Navegación del pie">
       <h4>Navegación</h4>
       <a href="#!/firma/">La firma</a>
-      <a href="#!/equipo/">El equipo</a>
+      <a href="#!/equipo/">Prácticas</a>
       <a href="#!/analisis/">Análisis</a>
       <a href="#!/preguntas-frecuentes/">Preguntas frecuentes</a>
       <a href="#!/contacto/">Contacto</a>
@@ -1888,7 +1903,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <div class="hero-bg" aria-hidden="true"><div class="drape"></div><div class="sphere"></div></div>
   <div class="container hero-inner">
     <div class="hero-left">
-      <h1>Defensa en<br>fraude financiero.</h1>
+      <h1>Defensa en<br>delitos financieros.</h1>
       <p class="hero-kicker">Captación masiva y habitual.</p>
     </div>
     <div class="hero-right">
@@ -2383,7 +2398,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 </div></section>
 
 <section class="socios-grid-sec">
-  <div class="socios-grid"><a class="socio-card" href="#!/equipo/socios/kewin-santiago-canizales/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Kewin Santiago Canizales"><defs><linearGradient id="g-kewin-santiago-canizales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-kewin-santiago-canizales" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-kewin-santiago-canizales)"/><rect width="320" height="400" fill="url(#r-kewin-santiago-canizales)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">KC</text></svg></span><span class="socio-meta"><span class="socio-name">Kewin Santiago Canizales</span><span class="socio-rama">Derecho tributario y migratorio</span></span></a><a class="socio-card" href="#!/equipo/socios/miguel-bayter/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Miguel Bayter"><defs><linearGradient id="g-miguel-bayter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-miguel-bayter" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-miguel-bayter)"/><rect width="320" height="400" fill="url(#r-miguel-bayter)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">MB</text></svg></span><span class="socio-meta"><span class="socio-name">Miguel Bayter</span><span class="socio-rama">Derecho corporativo</span></span></a><a class="socio-card" href="#!/equipo/socios/juan-david-naar/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Juan David Naar"><defs><linearGradient id="g-juan-david-naar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-juan-david-naar" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-juan-david-naar)"/><rect width="320" height="400" fill="url(#r-juan-david-naar)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JN</text></svg></span><span class="socio-meta"><span class="socio-name">Juan David Naar</span><span class="socio-rama">Derecho penal y derecho informático</span></span></a></div>
+  <div class="socios-grid"><a class="socio-card" href="#!/equipo/socios/kewin-santiago-canizales/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Kewin Santiago Canizales"><defs><linearGradient id="g-kewin-santiago-canizales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-kewin-santiago-canizales" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-kewin-santiago-canizales)"/><rect width="320" height="400" fill="url(#r-kewin-santiago-canizales)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">KC</text></svg></span><span class="socio-meta"><span class="socio-name">Kewin Santiago Canizales</span><span class="socio-rama">Derecho tributario y migratorio</span></span></a><a class="socio-card" href="#!/equipo/socios/miguel-bayter/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Miguel Bayter"><defs><linearGradient id="g-miguel-bayter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-miguel-bayter" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-miguel-bayter)"/><rect width="320" height="400" fill="url(#r-miguel-bayter)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">MB</text></svg></span><span class="socio-meta"><span class="socio-name">Miguel Bayter</span><span class="socio-rama">Derecho corporativo</span></span></a><a class="socio-card" href="#!/equipo/socios/juan-david-naar/"><span class="socio-photo"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Juan David Naar"><defs><linearGradient id="g-juan-david-naar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-juan-david-naar" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-juan-david-naar)"/><rect width="320" height="400" fill="url(#r-juan-david-naar)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JN</text></svg></span><span class="socio-meta"><span class="socio-name">Juan David Naar</span><span class="socio-rama">Derecho penal y derecho informático</span></span></a></div>
   <div class="container">
     <div class="cta-row" style="margin-top:clamp(40px,6vw,72px)"><a class="btn btn--ghost" href="#!/equipo/">Volver a las prácticas</a><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a></div>
   </div>
@@ -2394,7 +2409,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
     <div class="socio-hero">
-      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Kewin Santiago Canizales"><defs><linearGradient id="g-kewin-santiago-canizales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-kewin-santiago-canizales" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-kewin-santiago-canizales)"/><rect width="320" height="400" fill="url(#r-kewin-santiago-canizales)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">KC</text></svg></span></div>
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Kewin Santiago Canizales"><defs><linearGradient id="g-kewin-santiago-canizales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-kewin-santiago-canizales" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-kewin-santiago-canizales)"/><rect width="320" height="400" fill="url(#r-kewin-santiago-canizales)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">KC</text></svg></span></div>
       <div class="socio-hero-txt">
         <p class="eyebrow-num">Socio</p>
         <h1 class="socio-h1">Kewin Santiago Canizales</h1>
@@ -2422,7 +2437,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
     <div class="socio-hero">
-      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Miguel Bayter"><defs><linearGradient id="g-miguel-bayter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-miguel-bayter" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-miguel-bayter)"/><rect width="320" height="400" fill="url(#r-miguel-bayter)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">MB</text></svg></span></div>
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Miguel Bayter"><defs><linearGradient id="g-miguel-bayter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-miguel-bayter" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-miguel-bayter)"/><rect width="320" height="400" fill="url(#r-miguel-bayter)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">MB</text></svg></span></div>
       <div class="socio-hero-txt">
         <p class="eyebrow-num">Socio</p>
         <h1 class="socio-h1">Miguel Bayter</h1>
@@ -2450,7 +2465,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
     <div class="socio-hero">
-      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Juan David Naar"><defs><linearGradient id="g-juan-david-naar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-juan-david-naar" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/><stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-juan-david-naar)"/><rect width="320" height="400" fill="url(#r-juan-david-naar)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JN</text></svg></span></div>
+      <div class="socio-hero-photo"><span class="socio-photo socio-photo--lg"><svg class="socio-ph" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retrato de Juan David Naar"><defs><linearGradient id="g-juan-david-naar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient><radialGradient id="r-juan-david-naar" cx="0.5" cy="0.34" r="0.75"><stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/><stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs><rect width="320" height="400" fill="url(#g-juan-david-naar)"/><rect width="320" height="400" fill="url(#r-juan-david-naar)"/><text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="300" font-size="128" letter-spacing="2" fill="#D9F6EF" fill-opacity="0.92">JN</text></svg></span></div>
       <div class="socio-hero-txt">
         <p class="eyebrow-num">Socio</p>
         <h1 class="socio-h1">Juan David Naar</h1>
@@ -2472,43 +2487,6 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
     <span class="sn-name">Kewin Santiago Canizales <span class="ico-ar" aria-hidden="true"></span></span>
   </a>
 </section>
-</template>
-<template data-route="/marca/" data-title="El sistema de marca · Veraly Grupo Jurídico" data-active="" data-mobilebar="0" data-bodyclass="">
-<section class="section hero"><div class="container">
-  <p class="eyebrow">El sistema de marca</p>
-  <h1>El sistema de marca de Veraly</h1>
-  <p class="support" style="max-width:60ch">La identidad de la firma se construyó como se construye un caso: con criterio declarado, decisiones documentadas y límites explícitos. Publicamos el sistema completo porque la disciplina con la que una firma administra su propia marca dice algo sobre la disciplina con la que administra lo demás.</p>
-</div></section>
-
-<section class="section band">
-  <div class="container">
-    <div class="grid grid-2" style="align-items:center">
-      <div class="prose">
-        <h2>El nombre</h2>
-        <p>Veraly es una palabra construida. La raíz <em>vera-</em> remite a lo verdadero; la terminación le da textura contemporánea y la aleja de las sonoridades tradicionales del sector. Los socios optaron por no cargar el nombre con un significado declarado: el significado lo construyen la comunicación y la práctica.</p>
-        <h2>El isotipo: Convergencia</h2>
-        <p>Cinco formas en V que convergen en un punto central. Una por práctica. Es la traducción gráfica del método: cinco prácticas que se encuentran sobre el mismo caso.</p>
-      </div>
-      <div style="display:flex;justify-content:center">
-        <span aria-hidden="true" style="width:min(260px,60vw);height:min(260px,60vw);color:var(--accent);display:inline-block"><svg viewBox="-140 -140 280 280" fill="none" aria-hidden="true" focusable="false"><g stroke="currentColor" stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0" fill="currentColor"/></svg></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section band"><div class="container">
-  <h2>El sistema visual</h2>
-  <p class="prose" style="margin-top:1rem">Paleta, tipografía y usos se documentan en el brandbook completo. El sitio aplica la paleta teal con acento menta y una sola familia tipográfica, Archivo, cuya jerarquía se resuelve con grosor, tamaño y tracking.</p>
-  <h2 style="margin-top:2.4rem">El sistema verbal</h2>
-  <div class="prose" style="margin-top:1rem">
-    <p>Claim institucional: <strong>Defensa en fraude financiero.</strong></p>
-    <p>Voz sobria pero no rígida, directa, respetuosa y técnica donde corresponde. Sin promesas de resultado: se promete rigor, criterio y trabajo. Vocabulario propio: fraude financiero, captación masiva y habitual, vinculado, afectado, intervención, rutas jurídicas, convergencia, las cinco prácticas, explicación financiera razonable.</p>
-  </div>
-  <div class="cta-row">
-    <a class="btn btn--primary" href="#!/marca/sistema/" data-marca>Ver el brandbook completo</a>
-    <a class="btn btn--ghost" href="#!/equipo/">Conocer al equipo</a>
-  </div>
-</div></section>
 </template>
 <template data-route="/contacto/" data-title="Contacto · Veraly Grupo Jurídico" data-active="contacto" data-mobilebar="0" data-bodyclass="">
 <section class="contact-hero">

@@ -458,8 +458,8 @@ def build(g):
             f'<defs><linearGradient id="g-{sid}" x1="0" y1="0" x2="1" y2="1">'
             f'<stop offset="0" stop-color="#0A4A50"/><stop offset="1" stop-color="#03191B"/></linearGradient>'
             f'<radialGradient id="r-{sid}" cx="0.5" cy="0.34" r="0.75">'
-            f'<stop offset="0" stop-color="#4FD9B0" stop-opacity="0.30"/>'
-            f'<stop offset="1" stop-color="#4FD9B0" stop-opacity="0"/></radialGradient></defs>'
+            f'<stop offset="0" stop-color="#89F5E5" stop-opacity="0.30"/>'
+            f'<stop offset="1" stop-color="#89F5E5" stop-opacity="0"/></radialGradient></defs>'
             f'<rect width="320" height="400" fill="url(#g-{sid})"/>'
             f'<rect width="320" height="400" fill="url(#r-{sid})"/>'
             f'<text x="160" y="230" text-anchor="middle" font-family="Archivo,sans-serif" '
@@ -540,50 +540,8 @@ def build(g):
     # =====================================================================
     # /marca  (brandbook — pieza de verificación)
     # =====================================================================
-    LOGO = g["LOGO_SVG"]
-    marca_body = f'''
-{section(f"""
-  <p class="eyebrow">El sistema de marca</p>
-  <h1>El sistema de marca de Veraly</h1>
-  <p class="support" style="max-width:60ch">La identidad de la firma se construyó como se construye un caso: con criterio declarado, decisiones documentadas y límites explícitos. Publicamos el sistema completo porque la disciplina con la que una firma administra su propia marca dice algo sobre la disciplina con la que administra lo demás.</p>
-""", cls="hero")}
-
-<section class="section band">
-  <div class="container">
-    <div class="grid grid-2" style="align-items:center">
-      <div class="prose">
-        <h2>El nombre</h2>
-        <p>Veraly es una palabra construida. La raíz <em>vera-</em> remite a lo verdadero; la terminación le da textura contemporánea y la aleja de las sonoridades tradicionales del sector. Los socios optaron por no cargar el nombre con un significado declarado: el significado lo construyen la comunicación y la práctica.</p>
-        <h2>El isotipo: Convergencia</h2>
-        <p>Cinco formas en V que convergen en un punto central. Una por práctica. Es la traducción gráfica del método: cinco prácticas que se encuentran sobre el mismo caso.</p>
-      </div>
-      <div style="display:flex;justify-content:center">
-        <span aria-hidden="true" style="width:min(260px,60vw);height:min(260px,60vw);color:var(--accent);display:inline-block">{LOGO}</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-{section("""
-  <h2>El sistema visual</h2>
-  <p class="prose" style="margin-top:1rem">Paleta, tipografía y usos se documentan en el brandbook completo. El sitio aplica la paleta teal con acento menta y una sola familia tipográfica, Archivo, cuya jerarquía se resuelve con grosor, tamaño y tracking.</p>
-  <h2 style="margin-top:2.4rem">El sistema verbal</h2>
-  <div class="prose" style="margin-top:1rem">
-    <p>Claim institucional: <strong>Defensa en fraude financiero.</strong></p>
-    <p>Voz sobria pero no rígida, directa, respetuosa y técnica donde corresponde. Sin promesas de resultado: se promete rigor, criterio y trabajo. Vocabulario propio: fraude financiero, captación masiva y habitual, vinculado, afectado, intervención, rutas jurídicas, convergencia, las cinco prácticas, explicación financiera razonable.</p>
-  </div>
-  <div class="cta-row">
-    <a class="btn btn--primary" href="/marca/sistema/" data-marca>Ver el brandbook completo</a>
-    <a class="btn btn--ghost" href="/equipo/">Conocer al equipo</a>
-  </div>
-""", cls="band")}
-'''
-    add("/marca/", {
-        "title": "El sistema de marca · Veraly Grupo Jurídico",
-        "description": "El sistema de marca de Veraly Grupo Jurídico: nombre, isotipo Convergencia, sistema visual y verbal.",
-        "active": "",
-        "robots": "noindex,follow",  # pieza de verificación: no debe competir en búsquedas
-    }, marca_body)
+    # (Las páginas /marca/ y /marca/sistema/ se retiraron del sitio público:
+    #  el manual de marca es un documento de trabajo interno de la firma.)
 
     # =====================================================================
     # /contacto
