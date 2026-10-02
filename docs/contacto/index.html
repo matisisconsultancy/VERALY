@@ -95,9 +95,42 @@
         <p class="ci-v">Lunes a viernes · 8:00 – 18:00</p>
       </div>
     </aside>
-    <div class="contact-book">
-      <span class="ci-k">Reservar una cita</span>
-      <div class="cal-widget" data-booking data-email="contacto@veraly.com.co"><p class="cal-w-title">Reserve una cita en línea</p><p class="cal-w-sub">Elija el motivo, el día y la hora dentro del horario de atención. Enviaremos la confirmación por correo tras verificar disponibilidad y conflicto de interés.</p><div class="cal-field"><span class="cal-label">Motivo</span><div class="cal-chips"><button type="button" class="cal-chip is-active" data-motivo="Afectado por captación">Soy afectado</button><button type="button" class="cal-chip" data-motivo="Investigado o vinculado">Me investigan o me vincularon</button><button type="button" class="cal-chip" data-motivo="Empresa que recauda">Empresa / prevención</button><button type="button" class="cal-chip" data-motivo="Otro">Otro motivo</button></div></div><div class="cal-grid"><div class="cal-col"><span class="cal-label">Día</span><div class="cal-days" data-days></div></div><div class="cal-col"><span class="cal-label">Hora</span><div class="cal-slots" data-slots><p class="cal-hint">Seleccione un día.</p></div></div></div><div class="cal-fields"><div class="cal-input"><label for="bk-nombre">Nombre completo</label><input id="bk-nombre" data-f="nombre" type="text" autocomplete="name"></div><div class="cal-input"><label for="bk-contacto">Correo o teléfono</label><input id="bk-contacto" data-f="contacto" type="text" autocomplete="email"></div></div><p class="cal-selected" data-selected hidden></p><button type="button" class="btn btn--primary cal-confirm" data-confirm disabled>Confirmar la reserva</button><p class="cal-note">La agenda en línea estará disponible muy pronto. Por ahora, su selección se envía por correo y confirmamos la cita tras verificar disponibilidad y conflicto de interés. Lunes a viernes · 8:00 – 18:00. No incluya los hechos de su caso; los detalles se conversan en la reunión.</p></div>
+    <div class="contact-main">
+      <div class="contact-block">
+        <span class="ci-k">Escríbanos</span>
+        <p class="contact-lead">Cuéntenos en una línea su situación y cómo contactarlo. Respondemos dentro de 24 horas hábiles, tras verificar el conflicto de interés.</p>
+        <form class="form-wrap" data-veraly-form data-perfil="contacto" novalidate>
+  <p class="form-note">Pedimos tres datos: su nombre, una vía de contacto y una línea de contexto. <strong>No escriba los hechos de su caso aquí.</strong> Los detalles se conversan; no necesitan quedar por escrito antes de que exista relación profesional.</p>
+  <div class="field">
+    <label for="contacto-nombre">Nombre</label>
+    <input type="text" id="contacto-nombre" name="nombre" required minlength="2" autocomplete="name">
+    <p class="field-error">Indique su nombre (mínimo 2 caracteres).</p>
+  </div>
+  <div class="field">
+    <label for="contacto-contacto">Vía de contacto <span class="hint">Correo o teléfono</span></label>
+    <input type="text" id="contacto-contacto" name="contacto" required data-validate="contact" autocomplete="email">
+    <p class="field-error">Indique un correo o teléfono válido.</p>
+  </div>
+  <div class="field">
+    <label for="contacto-contexto">Una línea de contexto <span class="hint">Opcional · máx. 200 caracteres</span></label>
+    <input type="text" id="contacto-contexto" name="contexto" maxlength="200" data-maxcount="200" aria-describedby="contacto-count">
+    <p class="char-count" id="contacto-count">0 / 200</p>
+  </div>
+  <div class="check">
+    <input type="checkbox" id="contacto-auth" name="autorizacion" required>
+    <label for="contacto-auth">Autorizo el tratamiento de mis datos personales conforme a la <a href="/VERALY/aviso-de-privacidad/">política de tratamiento de datos</a> (Ley 1581 de 2012).</label>
+  </div>
+  <input type="checkbox" name="botcheck" class="hp-field" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <button type="submit" class="btn btn--primary">Enviar mensaje</button>
+  <div class="form-status" role="status" aria-live="polite"></div>
+</form>
+      </div>
+      <div class="contact-block contact-agenda">
+        <span class="ci-k">Agendar una cita</span>
+        <p class="contact-lead">O reserve directamente una primera conversación en el calendario de la firma.</p>
+        <div class="cta-row"><a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una cita</a><a class="btn btn--ghost" href="https://wa.me/573225126199" target="_blank" rel="noopener" data-whatsapp data-pos="contacto">WhatsApp</a></div>
+        <div id="cal-inline" class="cal-inline" aria-live="polite"></div>
+      </div>
     </div>
   </div>
 </section>

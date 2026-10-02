@@ -8,11 +8,17 @@
 
   /* ---- Configuración (placeholders — ver §17 pendientes) ---- */
   var CONFIG = {
-    GA_ID: 'G-XXXXXXXXXX',            // TODO: id real de GA4
-    FORM_ENDPOINT: '',                // TODO: endpoint de formulario (p.ej. Formspree). Vacío = fallback mailto
-    FIRM_EMAIL: 'contacto@veraly.co', // TODO: correo definitivo (pendiente 07)
-    WHATSAPP: '',                     // TODO: número wa.me (pendiente 07)
-    CAL_LINK: '',                     // TODO: enlace Cal.com de la firma, p.ej. 'veraly/consulta'
+    GA_ID: 'G-XXXXXXXXXX',            // TODO: id real de GA4 (se activa con consentimiento)
+    // Formulario: al estar live, pegar la access key de Web3Forms.
+    // Vacío = sigue el fallback por correo (mailto), sin romper nada.
+    WEB3FORMS_KEY: '',
+    WEB3FORMS_ENDPOINT: 'https://api.web3forms.com/submit',
+    FORM_ENDPOINT: '',               // (opcional) endpoint propio; si se usa, tiene prioridad
+    // Agenda: URL pública de la página de citas de Google Calendar
+    // (Appointment schedules). Vacío = el botón lleva al contacto.
+    SCHEDULER_URL: '',
+    FIRM_EMAIL: 'contacto@veraly.com.co',
+    WHATSAPP: '573225126199',
   };
 
   var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -175,14 +181,30 @@
           status.className = 'form-status ' + (success ? 'ok' : 'err');
           status.setAttribute('data-show', 'true');
           status.textContent = success
-            ? 'Recibimos su mensaje. Le respondemos dentro de las próximas 24 horas hábiles. Si su situación tiene un término corriendo, puede escribirnos también por WhatsApp o llamarnos.'
+            ? 'Recibimos su mensaje. Le respondemos dentro de las próximas 24 horas hábiles. Si su situación tiene un término corriendo, puede escribirnos también por WhatsApp.'
             : 'No pudimos enviar el mensaje. Puede intentarlo de nuevo o escribirnos directamente a ' + CONFIG.FIRM_EMAIL + ' o por WhatsApp.';
         }
         if (success) { form.reset(); track('form_submit', { page_path: location.pathname, perfil_inferido: perfil }); }
         else track('form_error', { page_path: location.pathname, tipo_error: 'envio' });
       }
 
-      if (CONFIG.FORM_ENDPOINT) {
+      if (CONFIG.WEB3FORMS_KEY) {
+        // Web3Forms: sin servidor. La access key va en el cuerpo (JSON).
+        var payload = {
+          access_key: CONFIG.WEB3FORMS_KEY,
+          subject: 'Consulta desde el sitio (' + perfil + ')',
+          from_name: 'Sitio Veraly'
+        };
+        new FormData(form).forEach(function (v, k) { payload[k] = v; });
+        fetch(CONFIG.WEB3FORMS_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then(function (r) { return r.json().catch(function () { return { success: r.ok }; }); })
+          .then(function (j) { done(!!(j && j.success)); })
+          .catch(function () { done(false); });
+      } else if (CONFIG.FORM_ENDPOINT) {
         fetch(CONFIG.FORM_ENDPOINT, {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
@@ -234,22 +256,12 @@
     requestAnimationFrame(function () { t.setAttribute('data-show', 'true'); });
     setTimeout(function () { t.removeAttribute('data-show'); setTimeout(function () { t.remove(); }, 300); }, 3600);
   }
-  var calReady = false;
-  function initCal() {
-    if (!CONFIG.CAL_LINK) return;
-    /* eslint-disable */
-    (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-    /* eslint-enable */
-    window.Cal("init", { origin: "https://cal.com" });
-    window.Cal("ui", { theme: "dark", styles: { branding: { brandColor: "#89F5E5" } } });
-    calReady = true;
-  }
-  initCal();
   function openScheduler() {
-    if (calReady && window.Cal) {
-      window.Cal("modal", { calLink: CONFIG.CAL_LINK });
+    if (CONFIG.SCHEDULER_URL) {
+      // Página de citas de Google Calendar (Appointment schedules).
+      window.open(CONFIG.SCHEDULER_URL, '_blank', 'noopener');
     } else {
-      // Fallback sin calendario conectado: llevar al formulario/contacto.
+      // Sin calendario conectado aún: llevar al formulario/contacto.
       toast('Agendamiento en línea: se activa al conectar el calendario de la firma. Puede escribirnos mientras tanto.');
       if (location.pathname.indexOf('/VERALY/contacto') === -1) location.href = '/VERALY/contacto/';
       else { var f = document.querySelector('form[data-veraly-form]'); if (f) f.scrollIntoView({ behavior: 'smooth' }); }
@@ -258,12 +270,19 @@
   $$('[data-cal]').forEach(function (el) {
     el.addEventListener('click', function (e) { e.preventDefault(); track('agendar_click', { page_path: location.pathname }); openScheduler(); });
   });
+  // Agenda embebida en /contacto: iframe de Google Calendar cuando esté configurado.
   var calInline = $('#cal-inline');
   if (calInline) {
-    if (calReady && window.Cal) {
-      window.Cal('inline', { elementOrSelector: '#cal-inline', calLink: CONFIG.CAL_LINK });
+    if (CONFIG.SCHEDULER_URL) {
+      var ifr = document.createElement('iframe');
+      ifr.src = CONFIG.SCHEDULER_URL;
+      ifr.title = 'Agenda de citas';
+      ifr.loading = 'lazy';
+      ifr.style.cssText = 'width:100%;min-height:620px;border:0;border-radius:var(--card-r)';
+      calInline.innerHTML = '';
+      calInline.appendChild(ifr);
     } else {
-      calInline.innerHTML = '<p style="color:var(--dim-2);margin:0">El calendario en línea se activa al conectar la cuenta de la firma. Mientras tanto, puede usar el formulario, WhatsApp o el teléfono.</p>';
+      calInline.innerHTML = '<p style="color:var(--dim-2);margin:0">El calendario en línea se activa al conectar la cuenta de la firma. Mientras tanto, puede usar el formulario o WhatsApp.</p>';
     }
   }
 

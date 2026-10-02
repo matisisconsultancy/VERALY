@@ -547,32 +547,8 @@ def build(g):
     # /contacto
     # =====================================================================
     maps_q = "https://www.google.com/maps/search/?api=1&query=Calle+16+%234-68+oficina+1204+Bogot%C3%A1"
-    booking_motivos = "".join(
-        f'<button type="button" class="cal-chip{" is-active" if i == 0 else ""}" data-motivo="{esc(m)}">{esc(lbl)}</button>'
-        for i, (lbl, m) in enumerate([
-            ("Soy afectado", "Afectado por captación"),
-            ("Me investigan o me vincularon", "Investigado o vinculado"),
-            ("Empresa / prevención", "Empresa que recauda"),
-            ("Otro motivo", "Otro"),
-        ]))
-    booking_widget = (
-        '<div class="cal-widget" data-booking data-email="' + SITE["email"] + '">'
-        '<p class="cal-w-title">Reserve una cita en línea</p>'
-        '<p class="cal-w-sub">Elija el motivo, el día y la hora dentro del horario de atención. Enviaremos la confirmación por correo tras verificar disponibilidad y conflicto de interés.</p>'
-        '<div class="cal-field"><span class="cal-label">Motivo</span>'
-        f'<div class="cal-chips">{booking_motivos}</div></div>'
-        '<div class="cal-grid">'
-        '<div class="cal-col"><span class="cal-label">Día</span><div class="cal-days" data-days></div></div>'
-        '<div class="cal-col"><span class="cal-label">Hora</span><div class="cal-slots" data-slots><p class="cal-hint">Seleccione un día.</p></div></div>'
-        '</div>'
-        '<div class="cal-fields">'
-        '<div class="cal-input"><label for="bk-nombre">Nombre completo</label><input id="bk-nombre" data-f="nombre" type="text" autocomplete="name"></div>'
-        '<div class="cal-input"><label for="bk-contacto">Correo o teléfono</label><input id="bk-contacto" data-f="contacto" type="text" autocomplete="email"></div>'
-        '</div>'
-        '<p class="cal-selected" data-selected hidden></p>'
-        '<button type="button" class="btn btn--primary cal-confirm" data-confirm disabled>Confirmar la reserva</button>'
-        '<p class="cal-note">La agenda en línea estará disponible muy pronto. Por ahora, su selección se envía por correo y confirmamos la cita tras verificar disponibilidad y conflicto de interés. Lunes a viernes · 8:00 – 18:00. No incluya los hechos de su caso; los detalles se conversan en la reunión.</p>'
-        '</div>')
+    wa_contact = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="contacto">WhatsApp</a>'
+                  if SITE["whatsapp"] else '')
     contacto_body = f'''
 <section class="contact-hero">
   <div class="contact-hero-bg" aria-hidden="true">{g["wave_svg"]()}</div>
@@ -604,9 +580,18 @@ def build(g):
         <p class="ci-v">Lunes a viernes · 8:00 – 18:00</p>
       </div>
     </aside>
-    <div class="contact-book">
-      <span class="ci-k">Reservar una cita</span>
-      {booking_widget}
+    <div class="contact-main">
+      <div class="contact-block">
+        <span class="ci-k">Escríbanos</span>
+        <p class="contact-lead">Cuéntenos en una línea su situación y cómo contactarlo. Respondemos dentro de 24 horas hábiles, tras verificar el conflicto de interés.</p>
+        {contact_form("contacto", "Enviar mensaje")}
+      </div>
+      <div class="contact-block contact-agenda">
+        <span class="ci-k">Agendar una cita</span>
+        <p class="contact-lead">O reserve directamente una primera conversación en el calendario de la firma.</p>
+        <div class="cta-row">{agendar("Agendar una cita")}{wa_contact}</div>
+        <div id="cal-inline" class="cal-inline" aria-live="polite"></div>
+      </div>
     </div>
   </div>
 </section>

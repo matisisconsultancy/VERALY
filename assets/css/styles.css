@@ -1712,7 +1712,15 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 .ci-v a{color:var(--text);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
 .ci-v a:hover{border-color:var(--accent-ink)}
 .ci-block .arrowlink{margin-top:.7rem}
-/* widget de reserva */
+/* columna principal de contacto: formulario (Web3Forms) + agenda */
+.contact-main{display:flex;flex-direction:column;gap:clamp(36px,5vw,64px)}
+.contact-block .ci-k{margin-bottom:.8rem}
+.contact-lead{color:var(--dim);font-weight:300;line-height:1.55;margin:0 0 1.4rem;max-width:56ch;font-size:var(--step-0)}
+.contact-agenda{border-top:1px solid var(--line-soft);padding-top:clamp(28px,3vw,44px)}
+.contact-agenda .cta-row{flex-wrap:wrap;gap:12px}
+.cal-inline{margin-top:1.4rem}
+.cal-inline p{color:var(--dim-2);font-size:var(--step--1);font-weight:300;line-height:1.5;margin:0}
+/* widget de reserva (en desuso, retirado de /contacto) */
 .contact-book .ci-k{margin-bottom:1.1rem}
 .cal-widget{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:clamp(22px,2.6vw,40px);background:var(--panel)}
 .cal-w-title{font-family:var(--sans);font-weight:400;font-size:clamp(1.3rem,1.05rem + 1vw,1.7rem);color:var(--text);margin:0}
