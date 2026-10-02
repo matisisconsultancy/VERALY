@@ -1750,6 +1750,21 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 .contact-agenda .cta-row{flex-wrap:wrap;gap:12px}
 .cal-inline{margin-top:1.4rem}
 .cal-inline p{color:var(--dim-2);font-size:var(--step--1);font-weight:300;line-height:1.5;margin:0}
+/* franja de confianza */
+.contact-trust-sec{border-top:1px solid var(--line-soft)}
+.trust-row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,56px)}
+.trust-row li{display:flex;flex-direction:column;gap:.6rem}
+.trust-row .tr-k{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;
+  font-weight:500;color:var(--accent-ink)}
+.trust-row .tr-d{color:var(--dim);font-weight:300;line-height:1.55;margin:0;font-size:var(--step-0);max-width:34ch}
+@media (max-width:720px){.trust-row{grid-template-columns:1fr;gap:22px}}
+/* mapa de la oficina */
+.contact-map-sec{padding-bottom:var(--section-y)}
+.map-frame{border:1px solid var(--line-soft);border-radius:var(--card-r);overflow:hidden;
+  background:var(--panel);aspect-ratio:21/9;min-height:320px}
+.map-frame iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.35) contrast(.95)}
+.map-note{margin:1rem 0 0;color:var(--dim-2);font-family:var(--mono);font-size:var(--step--1);letter-spacing:.04em}
+@media (max-width:620px){.map-frame{aspect-ratio:3/4;min-height:0}}
 /* widget de reserva (en desuso, retirado de /contacto) */
 .contact-book .ci-k{margin-bottom:1.1rem}
 .cal-widget{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:clamp(22px,2.6vw,40px);background:var(--panel)}
@@ -2615,6 +2630,27 @@ h1,h2,h3,
         <div id="cal-inline" class="cal-inline" aria-live="polite"></div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="section section--tight contact-trust-sec">
+  <div class="container">
+    <ul class="trust-row">
+      <li><span class="tr-k">24 h</span><p class="tr-d">Respondemos toda consulta dentro de las 24 horas hábiles siguientes.</p></li>
+      <li><span class="tr-k">Conflicto</span><p class="tr-d">Verificamos el conflicto de interés antes de aceptar cualquier caso.</p></li>
+      <li><span class="tr-k">Ley 1581</span><p class="tr-d">Sus datos se tratan conforme a la ley de protección de datos personales.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact-map-sec" aria-label="Ubicación de la oficina">
+  <div class="container">
+    <div class="map-frame">
+      <iframe title="Mapa de la oficina de Veraly Grupo Jurídico en Bogotá" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+        src="https://maps.google.com/maps?q=Calle%2016%20%234-68%2C%20Bogot%C3%A1%2C%20Colombia&z=16&output=embed"></iframe>
+    </div>
+    <p class="map-note">Calle 16 # 4-68, oficina 1204 · Bogotá, Colombia · <a class="textlink" href="https://www.google.com/maps/search/?api=1&query=Calle+16+%234-68+oficina+1204+Bogot%C3%A1" target="_blank" rel="noopener">Cómo llegar</a></p>
   </div>
 </section>
 </template>

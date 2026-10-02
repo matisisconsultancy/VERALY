@@ -595,6 +595,27 @@ def build(g):
     </div>
   </div>
 </section>
+
+<section class="section section--tight contact-trust-sec">
+  <div class="container">
+    <ul class="trust-row">
+      <li><span class="tr-k">24 h</span><p class="tr-d">Respondemos toda consulta dentro de las 24 horas hábiles siguientes.</p></li>
+      <li><span class="tr-k">Conflicto</span><p class="tr-d">Verificamos el conflicto de interés antes de aceptar cualquier caso.</p></li>
+      <li><span class="tr-k">Ley 1581</span><p class="tr-d">Sus datos se tratan conforme a la ley de protección de datos personales.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact-map-sec" aria-label="Ubicación de la oficina">
+  <div class="container">
+    <div class="map-frame">
+      <iframe title="Mapa de la oficina de Veraly Grupo Jurídico en Bogotá" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+        src="https://maps.google.com/maps?q=Calle%2016%20%234-68%2C%20Bogot%C3%A1%2C%20Colombia&z=16&output=embed"></iframe>
+    </div>
+    <p class="map-note">Calle 16 # 4-68, oficina 1204 · Bogotá, Colombia · <a class="textlink" href="{maps_q}" target="_blank" rel="noopener">Cómo llegar</a></p>
+  </div>
+</section>
 '''
     add("/contacto/", {
         "title": "Contacto · Veraly Grupo Jurídico",
