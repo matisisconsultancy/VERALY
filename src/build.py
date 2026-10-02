@@ -472,6 +472,7 @@ def document(meta, body):
     title = meta["title"]
     desc = meta["description"]
     og_type = meta.get("og_type", "website")
+    og_image = SITE["base_url"] + meta.get("og_image", "/assets/og/og-cover.jpg")
     schema = jsonld(meta.get("schema", []))
     body_class = meta.get("body_class", "")
     mobile_bar = mobile_bar_html() if meta.get("mobile_bar") else ""
@@ -490,10 +491,20 @@ def document(meta, body):
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{esc(canonical)}">
 <meta property="og:locale" content="es_CO">
+<meta property="og:image" content="{esc(og_image)}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{esc(SITE["name"])}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
+<meta name="twitter:image" content="{esc(og_image)}">
 <meta name="theme-color" content="#05292C">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/icon-32.png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/playfair-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/fonts.css">
@@ -575,6 +586,34 @@ Sitemap: {SITE["base_url"]}/sitemap.xml
         f.write(txt)
     print("robots.txt escrito.")
 
+def write_404():
+    situ_links = "".join(
+        f'<li><a class="arrowlink" href="{u}">{esc(t)}</a></li>'
+        for u, t, d, tag in SITUACIONES)
+    body = f'''
+<section class="section hero--vh">
+  <div class="container tc" style="max-width:660px;margin-inline:auto">
+    <p class="eyebrow" style="justify-content:center">Error 404</p>
+    <h1 class="prac-h1" style="margin-inline:auto;max-width:16ch;font-size:clamp(2.4rem,1.6rem + 3vw,4rem)">Esta página no existe o cambió de lugar.</h1>
+    <p class="prac-sub" style="margin-inline:auto">Es posible que el enlace esté roto o que el contenido se haya movido. Desde aquí puede volver al inicio, escribirnos o ir directamente a su situación.</p>
+    <div class="cta-row" style="justify-content:center;flex-wrap:wrap;margin-top:var(--sp-m)">
+      <a class="btn btn--primary" href="/">Volver al inicio</a>
+      <a class="btn btn--ghost" href="/contacto/">Contacto</a>
+    </div>
+    <ul class="nf-links" style="list-style:none;padding:0;margin:var(--sp-l) 0 0;display:flex;flex-direction:column;gap:12px;align-items:center">
+      {situ_links}
+      <li><a class="arrowlink" href="/analisis/">Ir a Análisis</a></li>
+    </ul>
+  </div>
+</section>'''
+    meta = {"path": "/404.html",
+            "title": "Página no encontrada · Veraly Grupo Jurídico",
+            "description": "La página que busca no existe o cambió de lugar.",
+            "robots": "noindex,follow"}
+    with open(os.path.join(ROOT, "404.html"), "w", encoding="utf-8") as f:
+        f.write(document(meta, body))
+    print("404.html escrito.")
+
 # ----------------------------------------------------------------------------
 if __name__ == "__main__":
     import build_pages  # define las páginas usando add()
@@ -582,3 +621,4 @@ if __name__ == "__main__":
     write_all()
     write_sitemap()
     write_robots()
+    write_404()

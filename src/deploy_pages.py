@@ -18,7 +18,8 @@ PAGE_DIRS = [
     "defensa-en-captacion-masiva", "equipo", "firma", "marca",
     "politica-de-cookies", "preguntas-frecuentes",
 ]
-TOP_FILES = ["index.html", "robots.txt", "sitemap.xml"]
+TOP_FILES = ["index.html", "404.html", "robots.txt", "sitemap.xml",
+             "favicon.ico", "favicon.svg", "site.webmanifest"]
 ASSET_DIR = "assets"
 
 # Primeros segmentos de ruta interna válidos (para reescribir strings en JS)
@@ -55,6 +56,10 @@ def rewrite_js(text):
         text = text.replace('"/' + seg, '"' + BASE + "/" + seg)
     return text
 
+def rewrite_manifest(text):
+    # Prefija las rutas raíz-absolutas del manifest ("/..." -> "/BASE/...")
+    return re.sub(r'"/(?!/)', '"' + BASE + '/', text)
+
 def process():
     for dirpath, _dirs, files in os.walk(OUT):
         for name in files:
@@ -62,6 +67,9 @@ def process():
             if name.endswith(".html"):
                 t = open(p, encoding="utf-8").read()
                 open(p, "w", encoding="utf-8").write(rewrite_html(t))
+            elif name.endswith(".webmanifest"):
+                t = open(p, encoding="utf-8").read()
+                open(p, "w", encoding="utf-8").write(rewrite_manifest(t))
             elif name.endswith(".css"):
                 t = open(p, encoding="utf-8").read()
                 open(p, "w", encoding="utf-8").write(rewrite_css(t))

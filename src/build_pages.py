@@ -269,8 +269,8 @@ def build(g):
         },
     ]
     add("/", {
-        "title": "Veraly Grupo Jurídico · Defensa en fraude financiero",
-        "description": "Firma boutique colombiana especializada en captación masiva y habitual. Cinco prácticas, cinco ramas del derecho, un mismo caso.",
+        "title": "Veraly Grupo Jurídico · Defensa en delitos financieros",
+        "description": "Firma boutique colombiana de defensa en delitos financieros y captación masiva y habitual. Cinco prácticas del derecho sobre un mismo caso: vía administrativa, civil y penal.",
         "active": "", "schema": home_schema,
     }, home_body)
 
