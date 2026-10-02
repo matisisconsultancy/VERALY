@@ -520,6 +520,7 @@ def document(meta, body):
 {mobile_bar}
 {assistant_html()}
 <script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/legal-motion.js" defer></script>
 </body>
 </html>'''
 

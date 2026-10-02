@@ -676,13 +676,13 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .grid-bg>.container,.hero>.container{position:relative;z-index:1}
 /* la misma retícula en el hero del inicio, para homogeneidad con los
    encabezados interiores (el contenido va en z-index 2, el fondo en 0) */
-.hero-full::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+.hero-full::before,.hero-sticky::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
   background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
   background-size:64px 64px;-webkit-mask-image:radial-gradient(120% 90% at 80% 0%,#000 0%,transparent 70%);
   mask-image:radial-gradient(120% 90% at 80% 0%,#000 0%,transparent 70%);opacity:.7}
 /* en el teléfono la retícula se amplía (no queda reducida a una esquina) */
 @media (max-width:640px){
-  .grid-bg::before,.hero::before,.hero-full::before{background-size:44px 44px;
+  .grid-bg::before,.hero::before,.hero-full::before,.hero-sticky::before{background-size:44px 44px;
     -webkit-mask-image:radial-gradient(160% 120% at 50% 0%,#000 0%,transparent 88%);
     mask-image:radial-gradient(160% 120% at 50% 0%,#000 0%,transparent 88%)}
 }
@@ -729,20 +729,35 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .hero-full{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;
   justify-content:stretch;overflow:clip;padding-block:clamp(118px,15vh,190px) clamp(40px,6vh,80px);isolation:isolate}
 .hero-full .container{position:relative;z-index:2;width:100%}
+/* ── Escena del hero: recorrido de scroll que "fija" la composición mientras
+   el campo de partículas pasa del estado disperso (A) al convergido (B). ── */
+.hero-scene{position:relative;min-height:172vh;isolation:isolate}
+.hero-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:clip;display:flex;flex-direction:column;
+  justify-content:stretch;padding-block:clamp(118px,15vh,190px) clamp(40px,6vh,80px)}
+.hero-sticky .container{position:relative;z-index:2;width:100%}
+.hero-sticky::after{content:"";position:absolute;left:var(--edge);right:var(--edge);bottom:0;height:1px;
+  background:var(--line-soft);z-index:2}
+/* el contenido cede el protagonismo al converger el campo */
+.hero-scene .hero-inner{opacity:calc(1 - var(--p,0) * 1.35);transform:translateY(calc(var(--p,0) * -26px));
+  will-change:opacity,transform}
+/* segunda lectura: el concepto aparece cuando los puntos convergen */
+.hero-converge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin:0;z-index:2;
+  width:min(90%,30ch);text-align:center;font-family:var(--display);font-weight:var(--hw);
+  font-size:clamp(1.3rem,1rem+1.6vw,2.4rem);line-height:1.12;letter-spacing:-.01em;color:var(--accent-ink);
+  pointer-events:none;opacity:calc((var(--p,0) - .58) * 2.8);text-wrap:balance}
 /* fondo del hero: profundidad sobria */
 .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
   background:radial-gradient(135% 115% at 82% -12%,#0b444b 0%,#062f34 46%,var(--ink) 78%)}
 .hero-bg::after{content:"";position:absolute;inset:0;
   background:linear-gradient(0deg,var(--ink) 2%,transparent 52%)}
-/* figura de marca: Convergencia a gran escala como ancla visual del hero */
-.hero-figure{position:absolute;z-index:1;top:clamp(20px,4vh,70px);right:clamp(-150px,-6vw,-50px);
-  width:min(600px,52vw);aspect-ratio:1;pointer-events:none;
-  -webkit-mask-image:radial-gradient(72% 72% at 50% 50%,#000 50%,transparent 100%);
-  mask-image:radial-gradient(72% 72% at 50% 50%,#000 50%,transparent 100%);
-  opacity:0;transform:scale(.97);animation:heroFigIn 1.2s cubic-bezier(.2,.7,.2,1) .1s forwards}
-.hero-figure svg{width:100%;height:100%;display:block}
-.hero-figure .hf-ray{stroke-opacity:.58}
-@keyframes heroFigIn{to{opacity:1;transform:none}}
+/* campo de partículas del hero (sistema LegalMotion): a pantalla completa,
+   detrás del contenido; se desvanece abajo-izquierda para no restar
+   legibilidad al titular. */
+.hero-field{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none;
+  -webkit-mask-image:radial-gradient(125% 105% at 72% 30%,#000 40%,rgba(0,0,0,.4) 76%,transparent 100%);
+  mask-image:radial-gradient(125% 105% at 72% 30%,#000 40%,rgba(0,0,0,.4) 76%,transparent 100%);
+  opacity:0;animation:heroFigIn 1.4s ease .1s forwards}
+@keyframes heroFigIn{to{opacity:1}}
 /* una regla fina que separa el hero */
 .hero-full::after{content:"";position:absolute;left:var(--edge);right:var(--edge);bottom:0;height:1px;
   background:var(--line-soft);z-index:2}
@@ -751,12 +766,12 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .hero-eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;font-size:.7rem;
   font-weight:500;color:var(--dim-2);margin:0}
 .hero-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(28px,5vw,80px);align-items:end}
-.hero-full h1{font-size:clamp(3rem,1.8rem+6vw,7rem);line-height:.97;letter-spacing:-.02em}
+.hero-full h1,.hero-sticky h1{font-size:clamp(3rem,1.8rem+6vw,7rem);line-height:.97;letter-spacing:-.02em}
 .hero-kicker{margin-top:clamp(16px,2vh,26px);font-family:var(--ui);color:var(--dim);font-weight:500;font-size:var(--step-1)}
 .hero-right{max-width:46ch;justify-self:end;align-self:end}
-.hero-full .hero-right .desc{color:var(--dim)}
-.hero-full .hero-right .cta-row{flex-wrap:nowrap;margin-top:var(--sp-s)}
-.hero-full .hero-right .cta-row .btn{white-space:nowrap;flex:none}
+.hero-full .hero-right .desc,.hero-sticky .hero-right .desc{color:var(--dim)}
+.hero-full .hero-right .cta-row,.hero-sticky .hero-right .cta-row{flex-wrap:nowrap;margin-top:var(--sp-s)}
+.hero-full .hero-right .cta-row .btn,.hero-sticky .hero-right .cta-row .btn{white-space:nowrap;flex:none}
 /* indicador de desplazamiento */
 .hero-scroll{display:inline-flex;align-items:center;gap:12px;align-self:flex-start;margin-top:clamp(24px,3vh,40px);
   font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.64rem;color:var(--dim-2);
@@ -767,15 +782,23 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   animation:heroScroll 2.2s cubic-bezier(.5,0,.5,1) infinite}
 @keyframes heroScroll{0%{transform:translateX(0)}100%{transform:translateX(350%)}}
 @media (max-width:820px){
-  .hero-figure{width:min(360px,78vw);right:-22%;top:2vh;bottom:auto}
-  .hero-figure .hf-ray{stroke-opacity:.34}
+  .hero-field{-webkit-mask-image:radial-gradient(130% 70% at 70% 22%,#000 38%,rgba(0,0,0,.35) 72%,transparent 100%);
+    mask-image:radial-gradient(130% 70% at 70% 22%,#000 38%,rgba(0,0,0,.35) 72%,transparent 100%)}
   .hero-grid{grid-template-columns:1fr;gap:26px}
   .hero-right{justify-self:start;max-width:52ch}
-  .hero-full .hero-right .cta-row{flex-wrap:wrap}
+  .hero-full .hero-right .cta-row,.hero-sticky .hero-right .cta-row{flex-wrap:wrap}
+  /* recorrido de scroll más corto en el teléfono */
+  .hero-scene{min-height:138vh}
+  .hero-converge{font-size:clamp(1.15rem,1rem+2.4vw,1.7rem)}
 }
 @media (prefers-reduced-motion:reduce){
-  .hero-figure{opacity:1;transform:none;animation:none}
+  .hero-field{opacity:1;animation:none}
   .hero-scroll-ln::after{animation:none;left:0;width:100%;opacity:.5}
+  /* sin fijación ni morph: una sola composición, contenido siempre visible */
+  .hero-scene{min-height:auto}
+  .hero-sticky{position:static;height:auto;min-height:100svh}
+  .hero-scene .hero-inner{opacity:1;transform:none}
+  .hero-converge{display:none}
 }
 
 /* chips (marco normativo en el hero, sustituye avatares) */

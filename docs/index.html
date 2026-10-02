@@ -66,46 +66,30 @@
 </header>
 <main id="main" tabindex="-1">
 
-<section class="hero-full">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-figure" aria-hidden="true">
-    <svg viewBox="-160 -160 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs><radialGradient id="heroGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0" stop-color="#89F5E5" stop-opacity="0.20"/>
-        <stop offset="0.6" stop-color="#89F5E5" stop-opacity="0.04"/>
-        <stop offset="1" stop-color="#89F5E5" stop-opacity="0"/>
-      </radialGradient></defs>
-      <circle cx="0" cy="0" r="150" fill="url(#heroGlow)"/>
-      <circle cx="0" cy="0" r="128" fill="none" stroke="#89F5E5" stroke-opacity="0.10"/>
-      <circle cx="0" cy="0" r="92" fill="none" stroke="#89F5E5" stroke-opacity="0.07"/>
-      <g stroke="#89F5E5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.72">
-        <path class="hf-ray" d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/>
-        <path class="hf-ray" d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/>
-        <path class="hf-ray" d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/>
-        <path class="hf-ray" d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/>
-        <path class="hf-ray" d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/>
-      </g>
-      <circle cx="0" cy="0" r="6.5" fill="#89F5E5"/>
-    </svg>
-  </div>
-  <div class="container hero-inner">
-    <p class="hero-eyebrow">Veraly Grupo Jurídico · Bogotá, Colombia</p>
-    <div class="hero-grid">
-      <div class="hero-left">
-        <h1>Defensa en<br>delitos financieros.</h1>
-        <p class="hero-kicker">Captación masiva y habitual.</p>
-      </div>
-      <div class="hero-right">
-        <p class="desc">La captación puede abordarse por tres vías: administrativa, civil y penal. La estrategia está en definir cuál activar, cuándo y contra quién, sobre el mismo expediente.</p>
-        <div class="cta-row">
-          <a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a>
-          <a class="btn btn--ghost" href="#situaciones">Ver mi situación</a>
+<section class="hero-scene">
+  <div class="hero-sticky">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <canvas class="hero-field" data-motion="hero" aria-hidden="true"></canvas>
+    <div class="container hero-inner">
+      <p class="hero-eyebrow">Veraly Grupo Jurídico · Bogotá, Colombia</p>
+      <div class="hero-grid">
+        <div class="hero-left">
+          <h1>Defensa en<br>delitos financieros.</h1>
+          <p class="hero-kicker">Captación masiva y habitual.</p>
+        </div>
+        <div class="hero-right">
+          <p class="desc">La captación puede abordarse por tres vías: administrativa, civil y penal. La estrategia está en definir cuál activar, cuándo y contra quién, sobre el mismo expediente.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="#agendar" data-cal data-pos="cta">Agendar una consulta</a>
+            <a class="btn btn--ghost" href="#situaciones">Ver mi situación</a>
+          </div>
         </div>
       </div>
+      <a class="hero-scroll" href="#situaciones" aria-label="Desplazarse a las situaciones">
+        <span>Su situación</span><span class="hero-scroll-ln" aria-hidden="true"></span>
+      </a>
     </div>
-    <a class="hero-scroll" href="#situaciones" aria-label="Desplazarse a las situaciones">
-      <span>Su situación</span><span class="hero-scroll-ln" aria-hidden="true"></span>
-    </a>
+    <p class="hero-converge" aria-hidden="true">Cinco prácticas. Un mismo expediente.</p>
   </div>
 </section>
 
@@ -279,5 +263,6 @@
   <span class="wa-fab-label">WhatsApp</span>
 </a>
 <script src="/VERALY/assets/js/main.js" defer></script>
+<script src="/VERALY/assets/js/legal-motion.js" defer></script>
 </body>
 </html>
