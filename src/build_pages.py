@@ -75,6 +75,7 @@ def build(g):
     <input type="checkbox" id="{perfil}-auth" name="autorizacion" required>
     <label for="{perfil}-auth">Autorizo el tratamiento de mis datos personales conforme a la <a href="/aviso-de-privacidad/">política de tratamiento de datos</a> (Ley 1581 de 2012).</label>
   </div>
+  <input type="checkbox" name="botcheck" class="hp-field" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
   <button type="submit" class="btn btn--primary">{submit_label}</button>
   <div class="form-status" role="status" aria-live="polite"></div>
 </form>'''
