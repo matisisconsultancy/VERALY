@@ -124,15 +124,17 @@ def tres_vias_rows():
     """Las tres vías/responsabilidades como filas alternadas (compartido home + /firma)."""
     vias = [
         ("01", "VÍA ADMINISTRATIVA", "Ante la Superintendencia de Sociedades",
-         "Las decisiones de toma de posesión para devolver tienen efectos de cosa juzgada erga omnes, se adoptan en única instancia y tienen carácter jurisdiccional (art. 3 del Decreto Ley 4334 de 2008). Contra la providencia que ordena las medidas no procede recurso alguno; contra la que acepta o rechaza las solicitudes de devolución procede reposición dentro de los tres días siguientes.", wave_svg()),
+         "Las decisiones de toma de posesión para devolver tienen efectos de cosa juzgada erga omnes, se adoptan en única instancia y tienen carácter jurisdiccional (art. 3 del Decreto Ley 4334 de 2008). Contra la providencia que ordena las medidas no procede recurso alguno; contra la que acepta o rechaza las solicitudes de devolución procede reposición dentro de los tres días siguientes.", "via-admin", wave_svg()),
         ("02", "VÍA PENAL", "Artículos 316 y 316A del Código Penal",
-         "Captación masiva y habitual, con prisión de 120 a 240 meses, y el tipo autónomo de no reintegro. A ellos suelen sumarse estafa agravada, lavado de activos y concierto para delinquir.", globe_svg()),
+         "Captación masiva y habitual, con prisión de 120 a 240 meses, y el tipo autónomo de no reintegro. A ellos suelen sumarse estafa agravada, lavado de activos y concierto para delinquir.", "via-penal", globe_svg()),
         ("03", "VÍA CIVIL", "Responsabilidad patrimonial",
-         "Persigue el patrimonio personal de administradores, revisores fiscales, contadores y vinculados solventes por el faltante que la masa de la intervención no alcanza a cubrir.", wave_svg()),
+         "Persigue el patrimonio personal de administradores, revisores fiscales, contadores y vinculados solventes por el faltante que la masa de la intervención no alcanza a cubrir.", "via-civil", wave_svg()),
     ]
     rows = ""
-    for i, (num, eyb, h, d, media) in enumerate(vias):
-        media_html = (f'<div class="fr-media"><div class="fr-par">{media}</div>'
+    for i, (num, eyb, h, d, ikey, media) in enumerate(vias):
+        canvas = (f'<canvas class="via-canvas" data-icon="{ikey}" data-max="1500" '
+                  f'data-dot="1.3" data-fit="0.66" aria-hidden="true"></canvas>')
+        media_html = (f'<div class="fr-media"><div class="fr-par">{canvas}{media}</div>'
                       f'<span class="fr-index" aria-hidden="true">{num}</span></div>')
         text_html = (f'<div class="fr-text">'
                      f'<p class="fr-eyebrow">{eyb}</p><h2>{esc(h)}</h2>'

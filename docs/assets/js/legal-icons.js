@@ -33,6 +33,23 @@
       { d: 'M34 80 H62 L48 57 Z' },
       { d: 'M16 34 V62 L39 48 Z' },
       { d: 'M80 34 V62 L57 48 Z' }
+    ],
+    // ---- Las tres vías ----
+    'via-admin': [   // pórtico / institución (Superintendencia)
+      { d: 'M14 33 L48 15 L82 33 Z' },
+      { rect: [17, 35, 62, 8, 2] },
+      { rect: [20, 46, 8, 28, 2] }, { rect: [33, 46, 8, 28, 2] },
+      { rect: [47, 46, 8, 28, 2] }, { rect: [60, 46, 8, 28, 2] },
+      { rect: [14, 76, 68, 8, 2] }
+    ],
+    'via-penal': [   // libro abierto = código
+      { d: 'M48 30 L22 24 V60 L48 66 Z' },
+      { d: 'M48 30 L74 24 V60 L48 66 Z' }
+    ],
+    'via-civil': [   // monedas apiladas = patrimonio
+      { rect: [28, 26, 44, 12, 6] },
+      { rect: [24, 41, 44, 12, 6] },
+      { rect: [29, 56, 44, 12, 6] }
     ]
   };
 
@@ -75,7 +92,7 @@
     });
     var data = c.getImageData(0, 0, G, G).data;
     var pts = [];
-    var step = 2.05;
+    var step = 1.7;
     for (var y = 0; y < G; y += step) {
       for (var x = 0; x < G; x += step) {
         var ix = (Math.floor(y) * G + Math.floor(x)) * 4;
@@ -95,11 +112,13 @@
     if (!shapes) return;
 
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var W = 0, H = 0;
+    var W = 0, H = 0, S = 0, OX = 0, OY = 0;
+    var MAX = +canvas.getAttribute('data-max') || 560;
+    var DOT = +canvas.getAttribute('data-dot') || 1;   // escala del tamaño de punto
+    var FIT = +canvas.getAttribute('data-fit') || 1;   // fracción del lado menor que ocupa la figura
     var targets = sampleTargets(shapes);
     var r = rnd(90210 + name.length * 7);
     // submuestreo para acotar el número de puntos
-    var MAX = 560;
     if (targets.length > MAX) {
       for (var i = targets.length - 1; i > 0; i--) { var j = (r() * (i + 1)) | 0; var t = targets[i]; targets[i] = targets[j]; targets[j] = t; }
       targets = targets.slice(0, MAX);
@@ -112,7 +131,7 @@
         ph: r() * Math.PI * 2, sp: 0.6 + r() * 0.9,
         dl: r() * 0.28,                    // retardo individual (ensamblado orgánico)
         acc: r() < 0.14,                   // fracción en crema
-        sz: r() < 0.3 ? 1.6 : 1.2
+        sz: (r() < 0.3 ? 1.6 : 1.2) * DOT
       };
     });
 
@@ -122,6 +141,7 @@
     function resize() {
       var rect = canvas.getBoundingClientRect();
       W = Math.max(1, rect.width); H = Math.max(1, rect.height);
+      S = Math.min(W, H) * FIT; OX = (W - S) / 2; OY = (H - S) / 2;  // cuadra la figura (respeta aspecto)
       canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
@@ -141,7 +161,7 @@
         var amp = (0.004 + hover * 0.01) * pp;
         x += amp * Math.sin(tt * p.sp + p.ph);
         y += amp * Math.cos(tt * p.sp * 0.9 + p.ph);
-        var px = x * W, py = y * H;
+        var px = OX + x * S, py = OY + y * S;
         (p.acc ? cC : mC).push(px, py, p.sz);
       }
       drawBatch(mC, MENTA); drawBatch(cC, CREMA);
@@ -182,7 +202,7 @@
   }
 
   function init() {
-    var list = document.querySelectorAll('canvas.fic-canvas[data-icon]');
+    var list = document.querySelectorAll('canvas[data-icon]');
     for (var i = 0; i < list.length; i++) { if (list[i].__li) continue; list[i].__li = 1; IconField(list[i]); }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
