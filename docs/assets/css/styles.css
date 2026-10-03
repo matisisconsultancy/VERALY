@@ -821,9 +821,13 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   padding:clamp(26px,2.8vw,40px);min-height:clamp(240px,25vw,310px);
   transition:transform .25s ease,border-color .25s ease,background .25s ease}
 .fcard:hover{transform:translateY(-3px);border-color:var(--accent)}
-/* icono de línea a medida, arriba; el cuerpo queda abajo (margin-bottom:auto) */
-.fcard .fmedia{display:block;margin-bottom:auto;color:var(--accent-ink);line-height:0}
+/* icono a medida, arriba; el cuerpo queda abajo (margin-bottom:auto) */
+.fcard .fmedia{position:relative;display:block;margin-bottom:auto;color:var(--accent-ink);line-height:0}
 .fcard .fic{width:clamp(58px,6.6vw,84px);height:auto;display:block;overflow:visible}
+/* icono de partículas (se ensambla por convergencia); sustituye al SVG con JS */
+.fcard .fic-canvas{display:none;width:clamp(66px,7.4vw,94px);height:clamp(66px,7.4vw,94px)}
+html.js .fcard .fic-canvas{display:block}
+html.js .fcard .fmedia .fic--solid{display:none}
 .fcard .fic .ln{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .fcard .fic .dot{fill:currentColor}
 /* iconos sólidos (formas rellenas con esquinas redondeadas vía stroke del mismo color) */
@@ -856,6 +860,9 @@ html.js .fcard.in .fic--solid .sh{--td:calc(var(--dr,0s) + var(--sd,0s))}
 @media (prefers-reduced-motion:reduce){
   html.js .fcard .fic--solid .sh{opacity:1;transform:none;transition:none}
   .fcard:hover .fic{transform:none}
+  /* sin movimiento: SVG sólido estático, sin canvas de partículas */
+  html.js .fcard .fmedia .fic--solid{display:block}
+  html.js .fcard .fic-canvas{display:none}
 }
 .fcard h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.65rem);line-height:1.16;font-weight:500;letter-spacing:-.01em;transition:color .2s;
   text-wrap:balance;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}

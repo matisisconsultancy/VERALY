@@ -124,16 +124,16 @@ def build(g):
     # =====================================================================
     situ_data = [
         ("Perdí dinero en un esquema de captación", "Vías de recuperación y plazos.",
-         "/afectados-por-captacion-masiva/", "afectado", ic_recup()),
+         "/afectados-por-captacion-masiva/", "afectado", "recuperacion", ic_recup()),
         ("Me investigan o me vincularon", "Defensa en los tres frentes.",
-         "/defensa-en-captacion-masiva/", "investigado", ic_def()),
+         "/defensa-en-captacion-masiva/", "investigado", "defensa", ic_def()),
         ("Mi empresa recauda de muchas personas", "Revisión de encuadre preventiva.",
-         "/cumplimiento-en-recaudo-masivo/", "empresa", ic_recaudo()),
+         "/cumplimiento-en-recaudo-masivo/", "empresa", "recaudo", ic_recaudo()),
     ]
     situ_cards = ""
-    for t, sub, url, tag, media in situ_data:
+    for t, sub, url, tag, ikey, media in situ_data:
         situ_cards += f'''<a class="fcard" href="{url}" data-situacion="{tag}">
-  <div class="fmedia">{media}</div>
+  <div class="fmedia"><canvas class="fic-canvas" data-icon="{ikey}" aria-hidden="true"></canvas>{media}</div>
   <div class="fbody"><h3>{esc(t)}</h3><p>{esc(sub)}</p></div>
 </a>'''
 

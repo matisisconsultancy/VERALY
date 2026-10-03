@@ -554,6 +554,7 @@ def document(meta, body):
 {assistant_html()}
 <script src="/assets/js/main.js" defer></script>
 <script src="/assets/js/legal-motion.js" defer></script>
+<script src="/assets/js/legal-icons.js" defer></script>
 </body>
 </html>'''
 
