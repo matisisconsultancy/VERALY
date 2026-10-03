@@ -354,6 +354,48 @@ def wave_svg():
             'preserveAspectRatio="xMidYMid slice">' + "".join(dots) + '</svg>')
 
 
+# ----------------------------------------------------------------------------
+# Iconos de línea a medida para las tarjetas "Tres situaciones".
+# Trazo fino, mismo lenguaje del isotipo. Cada <path>/<circle> lleva
+# pathLength="1" (clase .ln) para dibujarse por scroll vía CSS; los puntos
+# llevan clase .dot (aparecen por escala/opacidad). viewBox 96×96.
+# ----------------------------------------------------------------------------
+def _fic(inner):
+    return ('<svg class="fic" viewBox="0 0 96 96" fill="none" aria-hidden="true" focusable="false">'
+            + inner + '</svg>')
+
+def icon_recuperacion():
+    # Moneda con arco de retorno + tendencia al alza (recuperar lo perdido).
+    return _fic(
+        '<path class="ln" pathLength="1" d="M72 36 A26 26 0 1 0 75 54"/>'
+        '<path class="ln" pathLength="1" d="M63 31 L73 35 L76 25"/>'
+        '<circle class="ln" pathLength="1" cx="47" cy="54" r="18"/>'
+        '<path class="ln" pathLength="1" d="M47 63 L47 45 M40 52 L47 45 L54 52"/>')
+
+def icon_defensa():
+    # Escudo dividido en tres (defensa en los tres frentes) con marca de validación.
+    return _fic(
+        '<path class="ln" pathLength="1" d="M48 18 L74 28 V50 C74 65 62 74 48 80 C34 74 22 65 22 50 V28 Z"/>'
+        '<path class="ln" pathLength="1" d="M39 24 V74"/>'
+        '<path class="ln" pathLength="1" d="M57 24 V74"/>'
+        '<path class="ln" pathLength="1" d="M41 50 L46 55 L55 44"/>')
+
+def icon_recaudo():
+    # Varios nodos (personas) que convergen hacia una estructura central (la empresa).
+    return _fic(
+        '<path class="ln" pathLength="1" d="M38 46 H58 V74 H38 Z"/>'
+        '<path class="ln" pathLength="1" d="M36 46 L48 37 L60 46"/>'
+        '<path class="ln" pathLength="1" d="M44 74 V60 H52 V74"/>'
+        '<path class="ln" pathLength="1" d="M22 26 L40 50"/>'
+        '<path class="ln" pathLength="1" d="M74 26 L56 50"/>'
+        '<path class="ln" pathLength="1" d="M18 62 L36 60"/>'
+        '<path class="ln" pathLength="1" d="M78 62 L60 60"/>'
+        '<circle class="dot" cx="22" cy="26" r="3.4"/>'
+        '<circle class="dot" cx="74" cy="26" r="3.4"/>'
+        '<circle class="dot" cx="18" cy="62" r="3.4"/>'
+        '<circle class="dot" cx="78" cy="62" r="3.4"/>')
+
+
 def proceso_stepper():
     steps = [
         ("01", "Verificar", "Verificamos el conflicto antes de aceptar",

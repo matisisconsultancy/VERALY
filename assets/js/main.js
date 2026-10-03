@@ -472,7 +472,7 @@
     }
   }
   function initFeatureRows() {
-    var rows = $$('.frow').concat($$('.prac-rows')).concat($$('.pr-timeline')).concat($$('.reveal-up')).concat($$('.plz-sec'));
+    var rows = $$('.frow').concat($$('.prac-rows')).concat($$('.pr-timeline')).concat($$('.reveal-up')).concat($$('.plz-sec')).concat($$('.fcard'));
     rows.forEach(function (r) { if (r.__f) return; r.__f = 1; if (frowIO) frowIO.observe(r); else r.classList.add('in'); });
     if (rows.length && !window.__frowScroll) {
       window.__frowScroll = 1;

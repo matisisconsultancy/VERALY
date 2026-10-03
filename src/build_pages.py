@@ -8,6 +8,7 @@ def build(g):
     PRACTICAS = g["PRACTICAS"]; agendar = g["agendar_btn"]
     burst = g["burst_svg"]; pixels = g["pixels_strip"]; convergence = g["convergence_svg"]
     globe = g["globe_svg"]; wave = g["wave_svg"]
+    ic_recup = g["icon_recuperacion"]; ic_def = g["icon_defensa"]; ic_recaudo = g["icon_recaudo"]
     stepper = g["proceso_stepper"]; marco = g["marco_reveal"]
     B = SITE["base_url"]
 
@@ -123,11 +124,11 @@ def build(g):
     # =====================================================================
     situ_data = [
         ("Perdí dinero en un esquema de captación", "Vías de recuperación y plazos.",
-         "/afectados-por-captacion-masiva/", "afectado", globe()),
+         "/afectados-por-captacion-masiva/", "afectado", ic_recup()),
         ("Me investigan o me vincularon", "Defensa en los tres frentes.",
-         "/defensa-en-captacion-masiva/", "investigado", wave()),
+         "/defensa-en-captacion-masiva/", "investigado", ic_def()),
         ("Mi empresa recauda de muchas personas", "Revisión de encuadre preventiva.",
-         "/cumplimiento-en-recaudo-masivo/", "empresa", burst()),
+         "/cumplimiento-en-recaudo-masivo/", "empresa", ic_recaudo()),
     ]
     situ_cards = ""
     for t, sub, url, tag, media in situ_data:

@@ -816,17 +816,46 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 /* Situaciones (referente AI Finance Features): la imagen es el único marco;
    el título y la línea de apoyo van debajo, sobre el fondo, sin recuadro. */
 /* tarjetas editoriales: marco a hairline, sin gráfico generativo */
-.fcard{text-decoration:none;color:inherit;display:flex;flex-direction:column;
+.fcard{position:relative;text-decoration:none;color:inherit;display:flex;flex-direction:column;
   border:1px solid var(--line-soft);border-radius:var(--card-r);background:var(--panel);
   padding:clamp(26px,2.8vw,40px);min-height:clamp(240px,25vw,310px);
   transition:transform .25s ease,border-color .25s ease,background .25s ease}
 .fcard:hover{transform:translateY(-3px);border-color:var(--accent)}
-.fcard .fmedia{display:none}
-.fcard::before{content:"";width:22px;height:22px;background:var(--accent-ink);
+/* icono de línea a medida, arriba; el cuerpo queda abajo (margin-bottom:auto) */
+.fcard .fmedia{display:block;margin-bottom:auto;color:var(--accent-ink);line-height:0}
+.fcard .fic{width:clamp(58px,6.6vw,84px);height:auto;display:block;overflow:visible}
+.fcard .fic .ln{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fcard .fic .dot{fill:currentColor}
+/* flecha de "ir" en la esquina inferior derecha */
+.fcard::before{content:"";position:absolute;right:clamp(24px,2.6vw,38px);bottom:clamp(24px,2.6vw,38px);
+  width:22px;height:22px;background:var(--accent-ink);
   -webkit-mask:var(--ico-arrow) center/contain no-repeat;mask:var(--ico-arrow) center/contain no-repeat;
-  opacity:.55;transition:transform .3s var(--btn-ease),opacity .3s var(--btn-ease)}
+  opacity:.5;transition:transform .3s var(--btn-ease),opacity .3s var(--btn-ease)}
 .fcard:hover::before{transform:translateX(5px);opacity:1}
-.fcard .fbody{padding:0;margin-top:auto}
+.fcard .fbody{padding:0;margin-top:0}
+.fcard .fbody>p{padding-right:42px}
+/* dibujado del icono al entrar en viewport */
+html.js .fcard .fic .ln{stroke-dasharray:1;stroke-dashoffset:1}
+html.js .fcard .fic .dot{opacity:0;transform:scale(.3);transform-box:fill-box;transform-origin:center}
+html.js .fcard.in .fic .ln{stroke-dashoffset:0;
+  transition:stroke-dashoffset .9s var(--btn-ease) var(--dr,0s)}
+html.js .fcard.in .fic .dot{opacity:1;transform:none;
+  transition:opacity .45s ease var(--dd,.5s),transform .45s var(--btn-ease) var(--dd,.5s)}
+/* escalonado entre tarjetas */
+.feature-cards .fcard:nth-child(1){--dr:.05s;--dd:.55s}
+.feature-cards .fcard:nth-child(2){--dr:.18s;--dd:.68s}
+.feature-cards .fcard:nth-child(3){--dr:.31s;--dd:.81s}
+/* micro-movimiento al pasar el cursor */
+.fcard .fic{transition:transform .35s var(--btn-ease)}
+.fcard:hover .fic{transform:translateY(-3px)}
+.fcard:hover .fic .dot{animation:ficPulse 1.6s ease-in-out infinite}
+@keyframes ficPulse{0%,100%{opacity:1}50%{opacity:.4}}
+@media (prefers-reduced-motion:reduce){
+  html.js .fcard .fic .ln{stroke-dashoffset:0;transition:none}
+  html.js .fcard .fic .dot{opacity:1;transform:none;transition:none}
+  .fcard:hover .fic{transform:none}
+  .fcard:hover .fic .dot{animation:none}
+}
 .fcard h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.65rem);line-height:1.16;font-weight:500;letter-spacing:-.01em;transition:color .2s;
   text-wrap:balance;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .fcard:hover h3{color:var(--accent)}
