@@ -50,8 +50,47 @@
       { rect: [28, 26, 44, 12, 6] },
       { rect: [24, 41, 44, 12, 6] },
       { rect: [29, 56, 44, 12, 6] }
+    ],
+    // ---- El método, paso a paso ----
+    'metodo-verificar': [   // visto bueno = verificación
+      { d: 'M40 73 L19 52 L28 43 L40 55 L71 24 L80 33 Z' }
+    ],
+    'metodo-hechos': [      // documento (marco de página + líneas de texto)
+      { rect: [27, 14, 42, 4, 2] }, { rect: [27, 76, 42, 4, 2] },
+      { rect: [27, 14, 4, 66, 2] }, { rect: [65, 14, 4, 66, 2] },
+      { rect: [37, 32, 22, 3.4, 1.7] }, { rect: [37, 42, 22, 3.4, 1.7] },
+      { rect: [37, 52, 22, 3.4, 1.7] }, { rect: [37, 62, 13, 3.4, 1.7] }
+    ],
+    'metodo-actores': [     // tres personas = actores
+      { d: 'M48 20 a10 10 0 1 0 0.1 0 Z' },
+      { d: 'M30 72 C30 56 66 56 66 72 L66 78 L30 78 Z' },
+      { d: 'M21 34 a7 7 0 1 0 0.1 0 Z' },
+      { d: 'M9 70 C9 58 33 58 33 70 L33 78 L9 78 Z' },
+      { d: 'M75 34 a7 7 0 1 0 0.1 0 Z' },
+      { d: 'M63 70 C63 58 87 58 87 70 L87 78 L63 78 Z' }
+    ],
+    'metodo-rutas': [       // tres flechas = tres vías/rutas
+      { rect: [16, 24, 34, 6, 3] }, { d: 'M50 18 L68 27 L50 36 Z' },
+      { rect: [16, 45, 34, 6, 3] }, { d: 'M50 39 L68 48 L50 57 Z' },
+      { rect: [16, 66, 34, 6, 3] }, { d: 'M50 60 L68 69 L50 78 Z' }
     ]
+    // 'metodo-convergencia' se genera abajo (estrella del isotipo).
   };
+
+  // Estrella de convergencia (isotipo): cinco radios que convergen a un punto.
+  (function () {
+    var cx = 48, cy = 48, spk = [];
+    for (var k = 0; k < 5; k++) {
+      var a = -Math.PI / 2 + k * 2 * Math.PI / 5;
+      var nx = Math.cos(a), ny = Math.sin(a), px = -ny, py = nx;
+      var r0 = 12, r1 = 42, w = 3.6;
+      var ax = cx + nx * r0, ay = cy + ny * r0, bx = cx + nx * r1, by = cy + ny * r1;
+      spk.push({ d: 'M' + (ax + px * w) + ' ' + (ay + py * w) + ' L' + (bx + px * w) + ' ' + (by + py * w)
+        + ' L' + (bx - px * w) + ' ' + (by - py * w) + ' L' + (ax - px * w) + ' ' + (ay - py * w) + ' Z' });
+    }
+    spk.push({ rect: [cx - 8, cy - 8, 16, 16, 8] });
+    ICONS['metodo-convergencia'] = spk;
+  })();
 
   function rnd(seed) {
     return function () { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; };
@@ -176,7 +215,9 @@
       progress += (target - progress) * 0.055;
       hover += (hoverT - hover) * 0.08;
       render(time);
-      raf = inView ? requestAnimationFrame(frame) : null;
+      // deja de pintar cuando ya está totalmente disperso (ahorra CPU)
+      var settled = (target === 0 && progress < 0.004);
+      raf = (inView && !settled) ? requestAnimationFrame(frame) : null;
     }
     function start() { if (!raf) raf = requestAnimationFrame(frame); }
     function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
@@ -186,10 +227,35 @@
 
     if (reduce) { progress = 1; target = 1; render(0); return; }
 
-    var card = canvas.closest('.fcard') || canvas;
-    card.addEventListener('pointerenter', function () { hoverT = 1; });
-    card.addEventListener('pointerleave', function () { hoverT = 0; });
+    var step = canvas.closest('.step');
+    if (step) {
+      // En el stepper: converge cuando el paso se activa; se re-dispersa después.
+      var section = canvas.closest('.stepper') || step;
+      var sectionIn = false, stepIn = false;
+      function recompute() {
+        var staticVisible = (getComputedStyle(step).position !== 'absolute');
+        target = (step.classList.contains('active') || (staticVisible && stepIn)) ? 1 : 0;
+      }
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) {
+          es.forEach(function (e) { sectionIn = e.isIntersecting; inView = sectionIn; if (inView) { recompute(); start(); } else stop(); });
+        }, { threshold: 0 }).observe(section);
+        new IntersectionObserver(function (es) {
+          es.forEach(function (e) { stepIn = e.isIntersecting; recompute(); if (inView) start(); });
+        }, { threshold: 0.3 }).observe(step);
+      } else { inView = true; target = 1; }
+      new MutationObserver(function () { recompute(); if (inView) start(); })
+        .observe(step, { attributes: true, attributeFilter: ['class'] });
+      window.addEventListener('resize', recompute);
+      recompute(); start();
+      return;
+    }
 
+    var card = canvas.closest('.fcard') || canvas;
+    if (canvas.closest('.fcard')) {
+      card.addEventListener('pointerenter', function () { hoverT = 1; });
+      card.addEventListener('pointerleave', function () { hoverT = 0; });
+    }
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) {
         es.forEach(function (e) {

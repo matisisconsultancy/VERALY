@@ -393,26 +393,28 @@ def proceso_stepper():
     steps = [
         ("01", "Verificar", "Verificamos el conflicto antes de aceptar",
          "Cada consulta pasa por un protocolo interno: si la firma ya interviene en ese proceso por la orilla contraria, se declina y se explica por qué. Es la primera prueba de integridad.",
-         burst_svg()),
+         "metodo-verificar", burst_svg()),
         ("02", "Hechos", "Reconstruimos los hechos",
          "Qué ocurrió, con qué documentos, en qué fechas y con qué trazabilidad financiera del esquema. El caso se sostiene sobre el expediente, no sobre la versión.",
-         wave_svg()),
+         "metodo-hechos", wave_svg()),
         ("03", "Actores", "Ubicamos a cada actor",
          "Quién ocupó cada posición, captador, administrador, revisor, contador, proveedor o afectado, y qué consecuencia jurídica arrastra. La defensa empieza por saber si usted debe estar ahí.",
-         globe_svg()),
+         "metodo-actores", globe_svg()),
         ("04", "Rutas", "Ordenamos las tres vías",
          "Qué vías están abiertas, cuáles ya precluyeron y en qué orden conviene activarlas. La estrategia está en definir cuál activar, cuándo y contra quién.",
-         wave_svg()),
+         "metodo-rutas", wave_svg()),
         ("05", "Convergencia", "Cinco prácticas, un expediente",
          "Las cinco prácticas trabajan el mismo caso desde sus ramas del derecho. El resultado no se reparte por especialidad: se construye en la intersección.",
-         convergence_svg()),
+         "metodo-convergencia", convergence_svg()),
     ]
     rail = "".join(f'<li class="{"on" if i == 0 else ""}"><span>0{i + 1}</span></li>' for i in range(len(steps)))
     steps_html = ""
-    for i, (num, chip, h, d, media) in enumerate(steps):
+    for i, (num, chip, h, d, ikey, media) in enumerate(steps):
         active = " active" if i == 0 else ""
+        canvas = (f'<canvas class="step-canvas" data-icon="{ikey}" data-max="1200" '
+                  f'data-dot="1.3" data-fit="0.62" aria-hidden="true"></canvas>')
         steps_html += f'''<div class="step{active}" data-i="{i}">
-  <div class="step-visual">{media}</div>
+  <div class="step-visual">{canvas}{media}</div>
   <div class="step-body">
     <p class="step-chip"><span class="step-n">{num}</span><span class="step-l">{esc(chip)}</span></p>
     <h2>{esc(h)}</h2>
