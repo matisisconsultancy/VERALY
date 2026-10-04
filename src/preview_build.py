@@ -23,6 +23,9 @@ def run(out_path):
     styles_css = open(os.path.join(ROOT, "assets/css/styles.css"), encoding="utf-8").read()
     motion_js = open(os.path.join(ROOT, "assets/js/legal-motion.js"), encoding="utf-8").read()
     icons_js = open(os.path.join(ROOT, "assets/js/legal-icons.js"), encoding="utf-8").read()
+    herovid_js = open(os.path.join(ROOT, "assets/js/hero-video.js"), encoding="utf-8").read()
+    _webp = base64.b64encode(open(os.path.join(ROOT, "assets/video/placeholder.webp"), "rb").read()).decode()
+    _webp_uri = "data:image/webp;base64," + _webp
     header = build.header_html(""); footer = build.footer_html()
     mobilebar = build.mobile_bar_html(); assistant = build.assistant_html()
     routes = {}
@@ -39,6 +42,7 @@ def run(out_path):
     def rw(h):
         return re.sub(r'href="/(?![/])', 'href="#!/', h).replace('href="/"', 'href="#!/"')
     header, footer, mobilebar, templates, assistant = map(rw, (header, footer, mobilebar, templates, assistant))
+    templates = templates.replace("/assets/video/placeholder.webp", _webp_uri)  # incrusta el video de muestra
 
     JS = r"""
 (function(){
@@ -93,7 +97,7 @@ def run(out_path):
     body.classList.toggle('theme-light',(t.getAttribute('data-bodyclass')||'').indexOf('theme-light')>=0);
     var mw=document.querySelector('.nav-menu-wrap');if(mw){mw.setAttribute('data-open','false');body.setAttribute('data-nav-open','false');}
     var tg=document.querySelector('.nav-toggle');if(tg){tg.setAttribute('aria-expanded','false');tg.innerHTML=ICON_MENU;}
-    window.scrollTo(0,0);bindDynamic(app);initStepper();initReveal();initFeatureRows();initBlog();initScramble();initCountUp();initPlazos();initViaSticky();initPhases();initJourney();initBooking();if(window.initLegalMotion)window.initLegalMotion();if(window.initLegalIcons)window.initLegalIcons();}
+    window.scrollTo(0,0);bindDynamic(app);initStepper();initReveal();initFeatureRows();initBlog();initScramble();initCountUp();initPlazos();initViaSticky();initPhases();initJourney();initBooking();if(window.initLegalMotion)window.initLegalMotion();if(window.initLegalIcons)window.initLegalIcons();if(window.initHeroVideo)window.initHeroVideo();}
   function initViaSticky(){var track=document.querySelector('.via-track');if(!track)return;var slides=[].slice.call(track.querySelectorAll('.via-slide')),bars=[].slice.call(track.querySelectorAll('.via-bar')),n=slides.length;if(!n)return;function upd(){var h=track.offsetHeight-window.innerHeight;var p=h>0?(-track.getBoundingClientRect().top)/h:0;p=Math.max(0,Math.min(0.999,p));var idx=Math.floor(p*n);slides.forEach(function(s,i){s.classList.toggle('active',i===idx);});bars.forEach(function(b,i){b.classList.toggle('on',i<=idx);b.classList.toggle('cur',i===idx);});}if(!window.__viaScroll){window.__viaScroll=1;window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);}upd();}
   function initPlazos(){var secs=[].slice.call(document.querySelectorAll('.plz-sec'));if(!secs.length)return;function upd(){var vh=window.innerHeight;secs.forEach(function(sec){var track=sec.querySelector('.plz-track');if(!track)return;var steps=[].slice.call(track.querySelectorAll('.plz-step'));var pin=sec.querySelector('.plz-pin-track');var p;if(pin&&getComputedStyle(sec.querySelector('.plz-pin-sticky')).position==='sticky'){var h=pin.offsetHeight-vh;p=h>0?(-pin.getBoundingClientRect().top)/h:0;}else{var r=sec.getBoundingClientRect();p=(vh*0.72-r.top)/Math.max(1,r.height*0.55);}p=Math.max(0,Math.min(1,p));var n=steps.length,fill=Math.min(1,p/0.82),seg=1/n;track.style.setProperty('--p',fill.toFixed(4));steps.forEach(function(s,i){var sp=Math.max(0,Math.min(1,(fill-i*seg)/seg));s.classList.toggle('is-on',fill>i*seg+0.0005);s.classList.toggle('is-cur',sp>0&&sp<1);var num=s.querySelector('[data-count]');if(num){var tgt=parseFloat(num.getAttribute('data-count'))||0;num.textContent=String(Math.round(tgt*sp));}});});}if(!window.__plzScroll){window.__plzScroll=1;window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);}upd();}
   function jnApplyOpen(j,phases,i){phases.forEach(function(ph,k){var on=k===i;ph.classList.toggle('open',on);var t=ph.querySelector('.jn-toggle');if(t)t.setAttribute('aria-expanded',on?'true':'false');});j.__open=i;}
@@ -160,6 +164,7 @@ def run(out_path):
 {templates}
 <script>{motion_js}</script>
 <script>{icons_js}</script>
+<script>{herovid_js}</script>
 <script>{JS}</script>
 """
     open(out_path, "w", encoding="utf-8").write(page)

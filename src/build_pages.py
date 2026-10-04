@@ -204,6 +204,15 @@ def build(g):
   </div>
 </section>
 
+<section class="video-scene" data-video-scene aria-label="Presentación en video">
+  <div class="video-sticky">
+    <div class="vs-frame">
+      <img class="vs-media" src="/assets/video/placeholder.webp" alt="" aria-hidden="true">
+      <span class="vs-badge">Video de muestra</span>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="situaciones">
   <div class="container">
     <div class="tc">

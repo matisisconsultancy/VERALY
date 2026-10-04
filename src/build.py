@@ -412,8 +412,8 @@ def proceso_stepper():
     steps_html = ""
     for i, (num, chip, h, d, ikey, media) in enumerate(steps):
         active = " active" if i == 0 else ""
-        canvas = (f'<canvas class="step-canvas" data-icon="{ikey}" data-max="1750" '
-                  f'data-dot="1.25" data-fit="0.9" data-net data-glow aria-hidden="true"></canvas>')
+        canvas = (f'<canvas class="step-canvas" data-icon="{ikey}" data-max="2600" '
+                  f'data-dot="1.2" data-fit="0.96" data-net data-glow aria-hidden="true"></canvas>')
         steps_html += f'''<div class="step{active}" data-i="{i}">
   <div class="step-visual">{canvas}{media}</div>
   <div class="step-body">
@@ -560,6 +560,7 @@ def document(meta, body):
 <script src="/assets/js/main.js" defer></script>
 <script src="/assets/js/legal-motion.js" defer></script>
 <script src="/assets/js/legal-icons.js" defer></script>
+<script src="/assets/js/hero-video.js" defer></script>
 </body>
 </html>'''
 

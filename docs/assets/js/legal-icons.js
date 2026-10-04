@@ -49,12 +49,13 @@
         + 'M38 33 H64 V36 H38 Z' + 'M38 42 H64 V45 H38 Z'
         + 'M38 51 H64 V54 H38 Z' + 'M38 60 H56 V63 H38 Z' }
     ],
-    'via-civil': [   // billetera = patrimonio personal (responsabilidad patrimonial)
+    'via-civil': [   // casa + candado = patrimonio protegido (responsabilidad patrimonial)
+      { d: 'M20 50 L48 25 L76 50', stroke: 4.5 },          // techo
+      { d: 'M28 50 V82 H68 V50', stroke: 4.5 },            // cuerpo de la casa (contorno)
+      { d: 'M42 61 V56 a6 6 0 0 1 12 0 V61', stroke: 3.6 },// arco del candado
       { rule: 'evenodd',
-        d: 'M18 34 H74 Q80 34 80 40 V64 Q80 70 74 70 H18 Q14 70 14 66 V38 Q14 34 18 34 Z'
-          + 'M60 46 a7 7 0 1 0 14 0 a7 7 0 1 0 -14 0'   // broche/moneda (hueco)
-          + 'M24 44 H50 V48 H24 Z' },                    // ranura (hueco)
-      { d: 'M20 34 H64 Q64 26 56 26 H30 Q20 26 20 34 Z' } // solapa superior
+        d: 'M39 61 H57 Q59 61 59 63 V75 Q59 77 57 77 H39 Q37 77 37 75 V63 Q37 61 39 61 Z'
+          + 'M48 65 a2.6 2.6 0 1 0 0.1 0 Z' + 'M47 68 H49 V74 H47 Z' }  // candado + ojo de cerradura (huecos)
     ],
     // ---- El método, paso a paso ----
     'metodo-verificar': [   // visto bueno en círculo = verificación
@@ -96,7 +97,7 @@
       [-124.0, -9.6, -37.6, -12.0, -56.0, -59.6]
     ];
     var shp = arms.map(function (a) {
-      return { d: 'M' + m(a[0], a[1]) + ' L' + m(a[2], a[3]) + ' L' + m(a[4], a[5]), stroke: 17.6 * S };
+      return { d: 'M' + m(a[0], a[1]) + ' L' + m(a[2], a[3]) + ' L' + m(a[4], a[5]), stroke: 30 * S };
     });
     shp.push({ d: 'M' + (O - 4.8) + ' ' + O + ' a4.8 4.8 0 1 0 9.6 0 a4.8 4.8 0 1 0 -9.6 0' }); // punto central
     ICONS['metodo-convergencia'] = shp;
@@ -166,7 +167,7 @@
     var MAX = +canvas.getAttribute('data-max') || 560;
     var DOT = +canvas.getAttribute('data-dot') || 1;   // escala del tamaño de punto
     var FIT = +canvas.getAttribute('data-fit') || 1;   // fracción del lado menor que ocupa la figura
-    var NET = canvas.hasAttribute('data-net');         // red de conexiones (tejido)
+    var NET = canvas.hasAttribute('data-net') && name !== 'metodo-convergencia'; // red (no en el logo)
     var GLOW = canvas.hasAttribute('data-glow');       // halo menta de fondo
     var targets = sampleTargets(shapes);
     var r = rnd(90210 + name.length * 7);

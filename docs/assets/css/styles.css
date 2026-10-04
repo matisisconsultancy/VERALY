@@ -745,6 +745,25 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   width:min(90%,30ch);text-align:center;font-family:var(--display);font-weight:var(--hw);
   font-size:clamp(1.3rem,1rem+1.6vw,2.4rem);line-height:1.12;letter-spacing:-.01em;color:var(--accent-ink);
   pointer-events:none;opacity:calc((var(--p,0) - .58) * 2.8);text-wrap:balance}
+/* ── Escena de video del hero: entra, crece y se fija (efecto 3D al scroll) ── */
+.video-scene{position:relative;height:200vh}
+.video-sticky{position:sticky;top:0;height:100vh;height:100svh;display:grid;place-items:center;
+  perspective:1400px;overflow:clip;padding-inline:var(--edge)}
+.vs-frame{position:relative;width:min(1040px,90vw);aspect-ratio:16/9;border-radius:clamp(12px,1.5vw,22px);
+  overflow:hidden;transform-origin:center 42%;will-change:transform,opacity;
+  border:1px solid var(--line-soft);background:var(--ink);
+  box-shadow:0 50px 140px -50px rgba(0,0,0,.8),0 0 0 1px rgba(137,245,229,.05)}
+.vs-media{width:100%;height:100%;object-fit:cover;display:block}
+.vs-badge{position:absolute;top:14px;left:14px;z-index:2;font-family:var(--mono);font-size:.6rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);
+  background:rgba(3,25,27,.55);padding:5px 10px;border-radius:7px;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+@media (max-width:820px){.video-scene{height:170vh}.vs-frame{width:92vw}}
+@media (prefers-reduced-motion:reduce){
+  .video-scene{height:auto}
+  .video-sticky{position:static;height:auto;padding-block:clamp(44px,8vh,104px)}
+  .vs-frame{transform:none!important;opacity:1!important}
+}
 /* fondo del hero: profundidad sobria */
 .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
   background:radial-gradient(135% 115% at 82% -12%,#0b444b 0%,#062f34 46%,var(--ink) 78%)}
