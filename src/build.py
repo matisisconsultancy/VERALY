@@ -295,6 +295,14 @@ def burst_svg():
             'style="color:var(--accent)">' + "".join(parts) + '</svg>')
 
 
+def hero_media():
+    """Capa de video en loop para el fondo de los heroes. El texto va encima con
+    un velo (scrim) que deja apreciar el fondo. Reemplazable por un <video>."""
+    return ('<div class="hero-media" aria-hidden="true">'
+            '<img class="hero-media-el" src="/assets/video/placeholder.webp" alt="">'
+            '</div>')
+
+
 def tl_video_media():
     """Media de galería tipo timeline: placeholder de video que se reproduce al
     pasar el cursor (póster estático -> animación en hover). Reutilizable."""

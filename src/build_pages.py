@@ -13,11 +13,15 @@ def build(g):
     B = SITE["base_url"]
 
     # -------- helpers de componentes --------
-    def section(inner, cls="", tight=False):
+    hero_media = g["hero_media"]
+    def section(inner, cls="", tight=False, media=None):
         c = "section" + (" section--tight" if tight else "")
         if cls:
             c += " " + cls
-        return f'<section class="{c}"><div class="container">{inner}</div></section>'
+        # los heroes llevan un video de fondo en loop automáticamente
+        if media is None:
+            media = hero_media() if "hero" in cls.split() else ""
+        return f'<section class="{c}">{media}<div class="container">{inner}</div></section>'
 
     def crumbs(items):
         # items: list of (label, href|None)

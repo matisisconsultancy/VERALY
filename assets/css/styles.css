@@ -341,6 +341,19 @@ body.theme-light .site-header.floating.is-stuck{background:rgba(255,255,255,.92)
 .hero h1{max-width:15ch}
 .hero .support{font-size:var(--lede);color:var(--dim);max-width:46ch;margin:var(--sp-s) 0 0;font-family:var(--sans);font-weight:300;line-height:1.55}
 .hero .desc{font-size:var(--lede);max-width:58ch;color:var(--dim);margin:var(--sp-s) 0 0;font-weight:300;line-height:1.55}
+/* ── Video de fondo del hero (loop) + velo para integrar el texto ── */
+/* Todos los heroes con video adoptan la paleta oscura: el texto queda claro
+   y legible sobre la banda de video, con el fondo visible por detrás. */
+.hero,.sol-hero{position:relative;overflow:clip;
+  --bg:#05292C;--ink:#03191B;--panel:#073A3F;--panel-2:#0A4A50;--text:#D9F6EF;
+  --dim:rgba(217,246,239,.72);--dim-2:rgba(217,246,239,.48);
+  --line:rgba(137,245,229,.28);--accent-ink:#89F5E5;color:var(--text)}
+.hero-media{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:var(--ink)}
+.hero-media-el{width:100%;height:100%;object-fit:cover;display:block;opacity:.55}
+.hero-media::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(3,25,27,.74) 0%,rgba(3,25,27,.52) 44%,rgba(3,25,27,.82) 100%)}
+.hero>.container,.sol-hero>.container,.contact-hero-in{position:relative;z-index:2}
+@media (prefers-reduced-motion:reduce){.hero-media-el{opacity:.5}}
 
 /* ---------- Rejillas / tarjetas ---------- */
 .grid{display:grid;gap:var(--gutter)}

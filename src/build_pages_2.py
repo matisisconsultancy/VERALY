@@ -87,6 +87,7 @@ def build(g):
         ("Rutas", "Qué vías están abiertas, cuáles precluyeron y en qué orden activarlas."),
     ]
     tl_video_media = g["tl_video_media"]
+    hero_media = g["hero_media"]
     metodo_rows = "".join(
         f'<div class="pr-tl-row"><span class="pr-tl-label">{esc(t)}</span>'
         f'<div class="pr-tl-body"><p class="pr-tl-desc">{esc(d)}</p></div>'
@@ -551,6 +552,7 @@ def build(g):
                   if SITE["whatsapp"] else '')
     contacto_body = f'''
 <section class="contact-hero">
+  {hero_media()}
   <div class="contact-hero-bg" aria-hidden="true">{g["wave_svg"]()}</div>
   <div class="container contact-hero-in">
     <p class="eyebrow">Contacto</p>

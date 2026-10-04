@@ -17,7 +17,7 @@ def build(g):
         return f'<div class="accordion">{rows}</div>'
 
     # --- componentes reutilizables para las páginas de soluciones ---
-    globe = g["globe_svg"]; wave = g["wave_svg"]
+    globe = g["globe_svg"]; wave = g["wave_svg"]; hero_media = g["hero_media"]
 
     def faq_sticky(items, title='Las preguntas que <span class="pr-accent">más nos hacen.</span>',
                    eyebrow="Preguntas frecuentes"):
@@ -134,7 +134,7 @@ def build(g):
     ])
     wa_a = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="afectados">WhatsApp</a>' if SITE["whatsapp"] else "")
     af_hero = (
-        '<section class="sol-hero"><div class="container sol-hero-grid">'
+        '<section class="sol-hero">' + hero_media() + '<div class="container sol-hero-grid">'
         '<div class="sol-hero-main">'
         '<p class="eyebrow">Para el afectado</p>'
         '<h1 class="sol-h1">Recuperar lo que entregó <span class="pr-accent">tiene vías —y un reloj.</span></h1>'
@@ -341,7 +341,7 @@ def build(g):
     ]
     wa_b = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="defensa">WhatsApp</a>' if SITE["whatsapp"] else "")
     def_hero = (
-        '<section class="sol-hero"><div class="container sol-hero-grid">'
+        '<section class="sol-hero">' + hero_media() + '<div class="container sol-hero-grid">'
         '<div class="sol-hero-main">'
         '<p class="eyebrow">Para el investigado o vinculado</p>'
         '<h1 class="sol-h1">La defensa se libra en <span class="pr-accent">tres frentes a la vez.</span></h1>'
@@ -474,7 +474,7 @@ def build(g):
          "<p>Sí. Los modelos derivan cuando crecen: cambian los volúmenes, los productos y las contrapartes. La revisión periódica existe para detectar esa deriva antes de que sea material.</p>"),
     ]
     cump_hero = (
-        '<section class="sol-hero"><div class="container sol-hero-grid">'
+        '<section class="sol-hero">' + hero_media() + '<div class="container sol-hero-grid">'
         '<div class="sol-hero-main">'
         '<p class="eyebrow">Para la empresa preventiva</p>'
         '<h1 class="sol-h1">La línea de la captación <span class="pr-accent">se puede medir.</span></h1>'
