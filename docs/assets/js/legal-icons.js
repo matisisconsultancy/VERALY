@@ -20,19 +20,20 @@
   // Definición de cada icono en el espacio del viewBox 96×96 (mismas formas
   // que los SVG sólidos de build.py). 'd' = path; 'rect' = [x,y,w,h,r].
   var ICONS = {
-    recuperacion: [
-      { d: 'M48 19 L74 45 L65 54 L48 37 L31 54 L22 45 Z' },
-      { rect: [25, 59, 46, 15, 5] }
+    recuperacion: [   // moneda ($) con flecha de retorno = recuperar lo perdido
+      { d: 'M28 52 a20 20 0 1 0 40 0 a20 20 0 1 0 -40 0', stroke: 3.6 },
+      { d: 'M48 43 V61 M53 46.5 C53 43 43 43 43 47 C43 51 53 51 53 55 C53 59 43 59 43 55.5', stroke: 3 },
+      { d: 'M66 27 A24 24 0 0 0 31 22', stroke: 3 }, { d: 'M31 14 L31 22 L39 23', stroke: 3 }
     ],
-    defensa: [
-      { d: 'M45.5 15 L23 24 V47 C23 63 34 72.5 45.5 78 Z' },
-      { d: 'M50.5 15 L73 24 V47 C73 63 62 72.5 50.5 78 Z' }
+    defensa: [        // escudo + visto = defensa
+      { d: 'M48 15 L74 25 V48 C74 64 62 73 48 79 C34 73 22 64 22 48 V25 Z', stroke: 4 },
+      { d: 'M37 47 L45 55 L60 39', stroke: 4 }
     ],
-    recaudo: [
-      { d: 'M34 16 H62 L48 39 Z' },
-      { d: 'M34 80 H62 L48 57 Z' },
-      { d: 'M16 34 V62 L39 48 Z' },
-      { d: 'M80 34 V62 L57 48 Z' }
+    recaudo: [        // edificio con ventanas = la empresa
+      { d: 'M30 37 H66 V79 H30 Z', stroke: 4 },
+      { d: 'M27 37 L48 23 L69 37', stroke: 4 },
+      { rect: [37, 47, 8, 9, 1] }, { rect: [51, 47, 8, 9, 1] },
+      { rect: [37, 61, 8, 9, 1] }, { rect: [51, 61, 8, 9, 1] }
     ],
     // ---- Las tres vías ----
     'via-admin': [   // pórtico / institución (Superintendencia)
@@ -52,14 +53,15 @@
       { rect: [29, 56, 44, 12, 6] }
     ],
     // ---- El método, paso a paso ----
-    'metodo-verificar': [   // visto bueno = verificación
-      { d: 'M40 73 L19 52 L28 43 L40 55 L71 24 L80 33 Z' }
+    'metodo-verificar': [   // visto bueno en círculo = verificación
+      { d: 'M20 48 a28 28 0 1 0 56 0 a28 28 0 1 0 -56 0', stroke: 4 },
+      { d: 'M35 49 L45 59 L63 37', stroke: 5 }
     ],
-    'metodo-hechos': [      // documento (marco de página + líneas de texto)
-      { rect: [27, 14, 42, 4, 2] }, { rect: [27, 76, 42, 4, 2] },
-      { rect: [27, 14, 4, 66, 2] }, { rect: [65, 14, 4, 66, 2] },
-      { rect: [37, 32, 22, 3.4, 1.7] }, { rect: [37, 42, 22, 3.4, 1.7] },
-      { rect: [37, 52, 22, 3.4, 1.7] }, { rect: [37, 62, 13, 3.4, 1.7] }
+    'metodo-hechos': [      // documento con esquina doblada + líneas
+      { d: 'M30 14 H58 L68 24 V82 H30 Z', stroke: 4 },
+      { d: 'M58 14 V24 H68', stroke: 3.4 },
+      { d: 'M38 37 H60', stroke: 3 }, { d: 'M38 47 H60', stroke: 3 },
+      { d: 'M38 57 H60', stroke: 3 }, { d: 'M38 67 H52', stroke: 3 }
     ],
     'metodo-actores': [     // tres personas = actores
       { d: 'M48 20 a10 10 0 1 0 0.1 0 Z' },
@@ -111,7 +113,7 @@
     var off = document.createElement('canvas');
     off.width = G; off.height = G;
     var c = off.getContext('2d');
-    c.fillStyle = '#fff';
+    c.fillStyle = '#fff'; c.strokeStyle = '#fff'; c.lineCap = 'round'; c.lineJoin = 'round';
     shapes.forEach(function (s) {
       var p = new Path2D();
       if (s.rect) {
@@ -127,7 +129,8 @@
       } else {
         p = new Path2D(s.d);
       }
-      c.fill(p);
+      if (s.stroke) { c.lineWidth = s.stroke; c.stroke(p); }   // figura de contorno (línea)
+      else c.fill(p, s.rule || 'nonzero');
     });
     var data = c.getImageData(0, 0, G, G).data;
     var pts = [];
@@ -155,6 +158,8 @@
     var MAX = +canvas.getAttribute('data-max') || 560;
     var DOT = +canvas.getAttribute('data-dot') || 1;   // escala del tamaño de punto
     var FIT = +canvas.getAttribute('data-fit') || 1;   // fracción del lado menor que ocupa la figura
+    var NET = canvas.hasAttribute('data-net');         // red de conexiones (tejido)
+    var GLOW = canvas.hasAttribute('data-glow');       // halo menta de fondo
     var targets = sampleTargets(shapes);
     var r = rnd(90210 + name.length * 7);
     // submuestreo para acotar el número de puntos
@@ -174,6 +179,23 @@
       };
     });
 
+    // Red: para cada punto, sus 2 vecinos más cercanos (en la figura formada).
+    var edges = [];
+    if (NET) {
+      var n = pts.length;
+      for (var a = 0; a < n; a++) {
+        var b1 = -1, b2 = -1, d1 = 9, d2 = 9;
+        for (var b = 0; b < n; b++) {
+          if (b === a) continue;
+          var ddx = pts[a].tx - pts[b].tx, ddy = pts[a].ty - pts[b].ty, dd = ddx * ddx + ddy * ddy;
+          if (dd < d1) { d2 = d1; b2 = b1; d1 = dd; b1 = b; }
+          else if (dd < d2) { d2 = dd; b2 = b; }
+        }
+        if (b1 > a) edges.push(a, b1);
+        if (b2 > a) edges.push(a, b2);
+      }
+    }
+
     var progress = 0, target = 0, hover = 0, hoverT = 0;
     var raf = null, inView = true;
 
@@ -190,6 +212,14 @@
     function render(time) {
       ctx.clearRect(0, 0, W, H);
       var tt = (time || 0) * 0.001;
+      // halo menta de fondo (profundidad / impacto)
+      if (GLOW && progress > 0.02) {
+        var gcx = OX + S * 0.5, gcy = OY + S * 0.5, gr = S * 0.62;
+        var g = ctx.createRadialGradient(gcx, gcy, 0, gcx, gcy, gr);
+        g.addColorStop(0, 'rgba(' + MENTA + ',' + (0.12 * progress).toFixed(3) + ')');
+        g.addColorStop(1, 'rgba(' + MENTA + ',0)');
+        ctx.fillStyle = g; ctx.fillRect(OX - S * 0.2, OY - S * 0.2, S * 1.4, S * 1.4);
+      }
       var mC = [], cC = [];
       for (var i = 0; i < pts.length; i++) {
         var p = pts[i];
@@ -200,8 +230,21 @@
         var amp = (0.004 + hover * 0.01) * pp;
         x += amp * Math.sin(tt * p.sp + p.ph);
         y += amp * Math.cos(tt * p.sp * 0.9 + p.ph);
-        var px = OX + x * S, py = OY + y * S;
-        (p.acc ? cC : mC).push(px, py, p.sz);
+        p._x = OX + x * S; p._y = OY + y * S;
+        (p.acc ? cC : mC).push(p._x, p._y, p.sz);
+      }
+      // red de conexiones (sólo cuando está suficientemente formado y si están cerca)
+      if (NET && edges.length && progress > 0.25) {
+        var cap = S * 0.16, cap2 = cap * cap;
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(' + MENTA + ',' + (0.16 * (progress - 0.25) / 0.75).toFixed(3) + ')';
+        ctx.beginPath();
+        for (var e = 0; e < edges.length; e += 2) {
+          var pa = pts[edges[e]], pb = pts[edges[e + 1]];
+          var dx = pa._x - pb._x, dy = pa._y - pb._y;
+          if (dx * dx + dy * dy < cap2) { ctx.moveTo(pa._x, pa._y); ctx.lineTo(pb._x, pb._y); }
+        }
+        ctx.stroke();
       }
       drawBatch(mC, MENTA); drawBatch(cC, CREMA);
     }
@@ -234,7 +277,8 @@
       var sectionIn = false, stepIn = false;
       function recompute() {
         var staticVisible = (getComputedStyle(step).position !== 'absolute');
-        target = (step.classList.contains('active') || (staticVisible && stepIn)) ? 1 : 0;
+        // móvil (apilado): converge al entrar el paso; escritorio: según .active
+        target = staticVisible ? (stepIn ? 1 : 0) : (step.classList.contains('active') ? 1 : 0);
       }
       if ('IntersectionObserver' in window) {
         new IntersectionObserver(function (es) {
