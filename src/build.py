@@ -132,8 +132,8 @@ def tres_vias_rows():
     ]
     rows = ""
     for i, (num, eyb, h, d, ikey, media) in enumerate(vias):
-        canvas = (f'<canvas class="via-canvas" data-icon="{ikey}" data-max="1500" '
-                  f'data-dot="1.3" data-fit="0.66" aria-hidden="true"></canvas>')
+        canvas = (f'<canvas class="via-canvas" data-icon="{ikey}" data-max="2300" '
+                  f'data-dot="1.45" data-fit="0.84" aria-hidden="true"></canvas>')
         media_html = (f'<div class="fr-media"><div class="fr-par">{canvas}{media}</div>'
                       f'<span class="fr-index" aria-hidden="true">{num}</span></div>')
         text_html = (f'<div class="fr-text">'
@@ -412,7 +412,7 @@ def proceso_stepper():
     steps_html = ""
     for i, (num, chip, h, d, ikey, media) in enumerate(steps):
         active = " active" if i == 0 else ""
-        canvas = (f'<canvas class="step-canvas" data-icon="{ikey}" data-max="1300" '
+        canvas = (f'<canvas class="step-canvas" data-icon="{ikey}" data-max="1750" '
                   f'data-dot="1.25" data-fit="0.9" data-net data-glow aria-hidden="true"></canvas>')
         steps_html += f'''<div class="step{active}" data-i="{i}">
   <div class="step-visual">{canvas}{media}</div>

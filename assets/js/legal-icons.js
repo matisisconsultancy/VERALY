@@ -49,10 +49,12 @@
         + 'M38 33 H64 V36 H38 Z' + 'M38 42 H64 V45 H38 Z'
         + 'M38 51 H64 V54 H38 Z' + 'M38 60 H56 V63 H38 Z' }
     ],
-    'via-civil': [   // monedas apiladas = patrimonio
-      { rect: [28, 26, 44, 12, 6] },
-      { rect: [24, 41, 44, 12, 6] },
-      { rect: [29, 56, 44, 12, 6] }
+    'via-civil': [   // billetera = patrimonio personal (responsabilidad patrimonial)
+      { rule: 'evenodd',
+        d: 'M18 34 H74 Q80 34 80 40 V64 Q80 70 74 70 H18 Q14 70 14 66 V38 Q14 34 18 34 Z'
+          + 'M60 46 a7 7 0 1 0 14 0 a7 7 0 1 0 -14 0'   // broche/moneda (hueco)
+          + 'M24 44 H50 V48 H24 Z' },                    // ranura (hueco)
+      { d: 'M20 34 H64 Q64 26 56 26 H30 Q20 26 20 34 Z' } // solapa superior
     ],
     // ---- El método, paso a paso ----
     'metodo-verificar': [   // visto bueno en círculo = verificación

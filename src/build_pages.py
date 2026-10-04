@@ -243,19 +243,6 @@ def build(g):
 {stepper()}
 
 {marco()}
-
-<section class="hero-full" style="min-height:auto;justify-content:center">
-  <div class="hero-bg" aria-hidden="true"><div class="drape"></div><div class="sphere"></div></div>
-  <div class="container">
-    <p class="eyebrow">Contacto</p>
-    <h2 style="font-size:clamp(2rem,1.3rem+3vw,3.6rem);max-width:22ch">Cuando un fraude financiero atraviesa una situación, la claridad jurídica es el primer paso.</h2>
-    <p class="lead" style="margin-top:1.2rem;max-width:58ch">Una primera conversación sirve para saber si hay caso, qué vías están abiertas y qué plazos corren. No requiere aportar documentos ni tomar ninguna decisión.</p>
-    <div class="cta-row">
-      {agendar("Agendar una consulta")}
-      <a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="home">WhatsApp</a>
-    </div>
-  </div>
-</section>
 '''
 
     home_schema = [
