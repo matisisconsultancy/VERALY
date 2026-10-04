@@ -675,14 +675,21 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   letter-spacing:.2em;color:var(--dim-2);font-weight:500;margin:0 0 6px}
 .fn-col a{color:var(--dim);text-decoration:none;font-size:var(--step-0);transition:color .18s;width:fit-content}
 .fn-col a:hover{color:var(--accent-ink)}
-/* --- firma tipográfica sobredimensionada --- */
-.footer-wordmark{padding-inline:var(--gutter);margin-top:clamp(8px,2vw,24px);line-height:.8;
-  overflow:hidden;-webkit-user-select:none;user-select:none}
-.footer-wordmark span{display:block;font-family:var(--display);font-weight:var(--hw);
-  font-size:clamp(4.5rem,20vw,17rem);letter-spacing:-.03em;
-  color:transparent;-webkit-text-stroke:1px rgba(217,246,239,.16);
-  white-space:nowrap;transform:translateY(.12em)}
-.footer-wordmark i{font-style:normal;color:var(--accent-ink);-webkit-text-stroke:0}
+/* --- banner de marca: lockup minimalista (isotipo + firma) --- */
+.footer-brand{display:flex;align-items:center;gap:clamp(18px,2.6vw,38px);
+  margin-top:clamp(24px,4vw,56px);padding-block:clamp(30px,4vw,52px) 0;
+  border-top:1px solid var(--line-soft)}
+.footer-brand-mark{flex:none;display:block;color:var(--accent-ink);
+  width:clamp(44px,5.5vw,76px);height:clamp(44px,5.5vw,76px)}
+.footer-brand-mark svg{width:100%;height:100%;display:block}
+.footer-brand-copy{display:flex;flex-direction:column;gap:.35em;min-width:0}
+.footer-brand-word{font-family:var(--display);font-weight:var(--hw);
+  font-size:clamp(2.6rem,7vw,5.25rem);letter-spacing:-.025em;line-height:.92;
+  color:var(--text)}
+.footer-brand-word i{font-style:normal;color:var(--accent-ink)}
+.footer-brand-tag{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;
+  font-size:clamp(.62rem,1.3vw,.74rem);color:var(--dim-2)}
+@media (max-width:560px){.footer-brand{gap:16px}}
 /* --- línea base legal --- */
 .footer-baseline{display:flex;flex-wrap:wrap;gap:10px 32px;justify-content:space-between;
   align-items:baseline;padding-block:22px clamp(24px,3vw,32px);border-top:1px solid var(--line-soft)}
@@ -1566,12 +1573,16 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .sol-lede{color:var(--dim);font-weight:300;font-size:var(--step-1);line-height:1.55;max-width:46ch;
   margin:clamp(20px,2.4vw,32px) 0 0}
 .sol-hero .cta-row{margin-top:var(--sp-s)}
-.sol-facts{display:flex;flex-direction:column;border-top:1px solid var(--line)}
-.sol-fact{display:flex;flex-direction:column;gap:4px;padding:clamp(16px,2vw,24px) 0;border-bottom:1px solid var(--line)}
+/* Panel de datos integrado en el hero: sin marco cerrado, hairlines sutiles
+   entre cifras para que el video de fondo respire a través del bloque. */
+.sol-facts{display:flex;flex-direction:column}
+.sol-fact{display:flex;flex-direction:column;gap:7px;padding:clamp(18px,2.2vw,26px) 0;
+  border-top:1px solid rgba(217,246,239,.13)}
+.sol-fact:first-child{border-top:0;padding-top:0}
 .sol-fact b{font-family:var(--sans);font-weight:300;font-size:clamp(2rem,1.4rem + 1.8vw,3.2rem);line-height:1;
   letter-spacing:-.02em;color:var(--text)}
 .sol-fact b .u{color:var(--accent-ink);font-size:.5em;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;margin-left:.25em}
-.sol-fact span{font-family:var(--ui);font-size:var(--step--1);color:var(--dim)}
+.sol-fact span{font-family:var(--ui);font-size:var(--step--1);color:var(--dim);line-height:1.45;max-width:34ch}
 @media (max-width:860px){.sol-hero-grid{grid-template-columns:1fr;gap:32px;align-items:start}}
 
 /* Declaración grande (pull statement) */
@@ -2080,7 +2091,13 @@ h1,h2,h3,
     </nav>
   </div>
 
-  <div class="footer-wordmark" aria-hidden="true"><span>Veraly<i>.</i></span></div>
+  <div class="container footer-brand">
+    <span class="footer-brand-mark" aria-hidden="true"><svg viewBox="-140 -140 280 280" fill="none" aria-hidden="true" focusable="false"><g stroke="currentColor" stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0" fill="currentColor"/></svg></span>
+    <span class="footer-brand-copy">
+      <span class="footer-brand-word">Veraly<i>.</i></span>
+      <span class="footer-brand-tag">Grupo Jurídico</span>
+    </span>
+  </div>
 
   <div class="container footer-baseline">
     <span class="fb-copy">© 2026 · Veraly Grupo Jurídico</span>
@@ -3889,7 +3906,7 @@ h1,h2,h3,
   var SCR_GLYPHS='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   function scrambleText(el){var node=null;for(var i=el.childNodes.length-1;i>=0;i--){var n=el.childNodes[i];if(n.nodeType===3&&n.nodeValue.replace(/\s/g,'')){node=n;break;}}var text=node?node.nodeValue:el.textContent;var set=node?function(v){node.nodeValue=v;}:function(v){el.textContent=v;};var start=0,dur=Math.min(1100,text.length*55+280);function frame(now){if(!start)start=now;var p=Math.min(1,(now-start)/dur);var reveal=p*text.length,out='';for(var i=0;i<text.length;i++){var c=text.charAt(i);if(c===' '||c==='/'||c==='·'||i<reveal-0.4){out+=c;}else{out+=SCR_GLYPHS.charAt((Math.random()*SCR_GLYPHS.length)|0);}}set(out);if(p<1)requestAnimationFrame(frame);else set(text);}requestAnimationFrame(frame);}
   var scrIO=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){scrIO.unobserve(e.target);scrambleText(e.target);}});},{threshold:0.6}):null;
-  function initScramble(){[].slice.call(document.querySelectorAll('.eyebrow, .eyebrow-num, .faq-pill, .bfilter-pill, .article-kicker, .pr-tl-label')).forEach(function(el){if(el.__scr)return;el.__scr=1;if(scrIO)scrIO.observe(el);else scrambleText(el);});}
+  function initScramble(){[].slice.call(document.querySelectorAll('.faq-pill, .bfilter-pill, .pr-tl-label')).forEach(function(el){if(el.__scr)return;el.__scr=1;if(scrIO)scrIO.observe(el);else scrambleText(el);});}
   document.addEventListener('click',function(e){var el=e.target.closest('[data-cal]');if(el){e.preventDefault();openScheduler();}});
   var tg=document.querySelector('.nav-toggle'),mw=document.querySelector('.nav-menu-wrap');
   if(tg&&mw){tg.addEventListener('click',function(){var o=mw.getAttribute('data-open')==='true';mw.setAttribute('data-open',String(!o));tg.setAttribute('aria-expanded',String(!o));tg.innerHTML=o?ICON_MENU:ICON_CLOSE;body.setAttribute('data-nav-open',String(!o));});}

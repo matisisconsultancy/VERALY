@@ -670,14 +670,21 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   letter-spacing:.2em;color:var(--dim-2);font-weight:500;margin:0 0 6px}
 .fn-col a{color:var(--dim);text-decoration:none;font-size:var(--step-0);transition:color .18s;width:fit-content}
 .fn-col a:hover{color:var(--accent-ink)}
-/* --- firma tipográfica sobredimensionada --- */
-.footer-wordmark{padding-inline:var(--gutter);margin-top:clamp(8px,2vw,24px);line-height:.8;
-  overflow:hidden;-webkit-user-select:none;user-select:none}
-.footer-wordmark span{display:block;font-family:var(--display);font-weight:var(--hw);
-  font-size:clamp(4.5rem,20vw,17rem);letter-spacing:-.03em;
-  color:transparent;-webkit-text-stroke:1px rgba(217,246,239,.16);
-  white-space:nowrap;transform:translateY(.12em)}
-.footer-wordmark i{font-style:normal;color:var(--accent-ink);-webkit-text-stroke:0}
+/* --- banner de marca: lockup minimalista (isotipo + firma) --- */
+.footer-brand{display:flex;align-items:center;gap:clamp(18px,2.6vw,38px);
+  margin-top:clamp(24px,4vw,56px);padding-block:clamp(30px,4vw,52px) 0;
+  border-top:1px solid var(--line-soft)}
+.footer-brand-mark{flex:none;display:block;color:var(--accent-ink);
+  width:clamp(44px,5.5vw,76px);height:clamp(44px,5.5vw,76px)}
+.footer-brand-mark svg{width:100%;height:100%;display:block}
+.footer-brand-copy{display:flex;flex-direction:column;gap:.35em;min-width:0}
+.footer-brand-word{font-family:var(--display);font-weight:var(--hw);
+  font-size:clamp(2.6rem,7vw,5.25rem);letter-spacing:-.025em;line-height:.92;
+  color:var(--text)}
+.footer-brand-word i{font-style:normal;color:var(--accent-ink)}
+.footer-brand-tag{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;
+  font-size:clamp(.62rem,1.3vw,.74rem);color:var(--dim-2)}
+@media (max-width:560px){.footer-brand{gap:16px}}
 /* --- línea base legal --- */
 .footer-baseline{display:flex;flex-wrap:wrap;gap:10px 32px;justify-content:space-between;
   align-items:baseline;padding-block:22px clamp(24px,3vw,32px);border-top:1px solid var(--line-soft)}
@@ -1561,12 +1568,16 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .sol-lede{color:var(--dim);font-weight:300;font-size:var(--step-1);line-height:1.55;max-width:46ch;
   margin:clamp(20px,2.4vw,32px) 0 0}
 .sol-hero .cta-row{margin-top:var(--sp-s)}
-.sol-facts{display:flex;flex-direction:column;border-top:1px solid var(--line)}
-.sol-fact{display:flex;flex-direction:column;gap:4px;padding:clamp(16px,2vw,24px) 0;border-bottom:1px solid var(--line)}
+/* Panel de datos integrado en el hero: sin marco cerrado, hairlines sutiles
+   entre cifras para que el video de fondo respire a través del bloque. */
+.sol-facts{display:flex;flex-direction:column}
+.sol-fact{display:flex;flex-direction:column;gap:7px;padding:clamp(18px,2.2vw,26px) 0;
+  border-top:1px solid rgba(217,246,239,.13)}
+.sol-fact:first-child{border-top:0;padding-top:0}
 .sol-fact b{font-family:var(--sans);font-weight:300;font-size:clamp(2rem,1.4rem + 1.8vw,3.2rem);line-height:1;
   letter-spacing:-.02em;color:var(--text)}
 .sol-fact b .u{color:var(--accent-ink);font-size:.5em;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;margin-left:.25em}
-.sol-fact span{font-family:var(--ui);font-size:var(--step--1);color:var(--dim)}
+.sol-fact span{font-family:var(--ui);font-size:var(--step--1);color:var(--dim);line-height:1.45;max-width:34ch}
 @media (max-width:860px){.sol-hero-grid{grid-template-columns:1fr;gap:32px;align-items:start}}
 
 /* Declaración grande (pull statement) */
