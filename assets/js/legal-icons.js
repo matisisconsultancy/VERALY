@@ -20,20 +20,20 @@
   // Definición de cada icono en el espacio del viewBox 96×96 (mismas formas
   // que los SVG sólidos de build.py). 'd' = path; 'rect' = [x,y,w,h,r].
   var ICONS = {
-    recuperacion: [   // moneda ($) con flecha de retorno = recuperar lo perdido
-      { d: 'M28 52 a20 20 0 1 0 40 0 a20 20 0 1 0 -40 0', stroke: 3.6 },
-      { d: 'M48 43 V61 M53 46.5 C53 43 43 43 43 47 C43 51 53 51 53 55 C53 59 43 59 43 55.5', stroke: 3 },
-      { d: 'M66 27 A24 24 0 0 0 31 22', stroke: 3 }, { d: 'M31 14 L31 22 L39 23', stroke: 3 }
+    recuperacion: [   // moneda sólida con flecha al alza (hueco) = recuperar dinero
+      { rule: 'evenodd', d: 'M21 48 a27 27 0 1 0 54 0 a27 27 0 1 0 -54 0'
+        + 'M48 31 L63 47 L55 47 L55 65 L41 65 L41 47 L33 47 Z' }
     ],
-    defensa: [        // escudo + visto = defensa
-      { d: 'M48 15 L74 25 V48 C74 64 62 73 48 79 C34 73 22 64 22 48 V25 Z', stroke: 4 },
-      { d: 'M37 47 L45 55 L60 39', stroke: 4 }
+    defensa: [        // escudo sólido con visto (hueco) = defensa
+      { rule: 'evenodd', d: 'M48 14 L76 25 V47 C76 65 63 75 48 81 C33 75 20 65 20 47 V25 Z'
+        + 'M44 61 L30 47 L36 41 L44 49 L62 31 L68 37 Z' }
     ],
-    recaudo: [        // edificio con ventanas = la empresa
-      { d: 'M30 37 H66 V79 H30 Z', stroke: 4 },
-      { d: 'M27 37 L48 23 L69 37', stroke: 4 },
-      { rect: [37, 47, 8, 9, 1] }, { rect: [51, 47, 8, 9, 1] },
-      { rect: [37, 61, 8, 9, 1] }, { rect: [51, 61, 8, 9, 1] }
+    recaudo: [        // edificio sólido con ventanas y puerta (huecos) = la empresa
+      { d: 'M26 36 L48 21 L70 36 Z' },
+      { rule: 'evenodd', d: 'M31 36 H65 V80 H31 Z'
+        + 'M37 43 H45 V52 H37 Z' + 'M51 43 H59 V52 H51 Z'
+        + 'M37 57 H45 V66 H37 Z' + 'M51 57 H59 V66 H51 Z'
+        + 'M43 80 V68 H53 V80 Z' }
     ],
     // ---- Las tres vías ----
     'via-admin': [   // pórtico / institución (Superintendencia)
@@ -43,9 +43,11 @@
       { rect: [47, 46, 8, 28, 2] }, { rect: [60, 46, 8, 28, 2] },
       { rect: [14, 76, 68, 8, 2] }
     ],
-    'via-penal': [   // libro abierto = código
-      { d: 'M48 30 L22 24 V60 L48 66 Z' },
-      { d: 'M48 30 L74 24 V60 L48 66 Z' }
+    'via-penal': [   // libro (código) con lomo y líneas de página (huecos)
+      { d: 'M22 24 H30 V72 H22 Z' },
+      { rule: 'evenodd', d: 'M30 24 H72 V72 H30 Z'
+        + 'M38 33 H64 V36 H38 Z' + 'M38 42 H64 V45 H38 Z'
+        + 'M38 51 H64 V54 H38 Z' + 'M38 60 H56 V63 H38 Z' }
     ],
     'via-civil': [   // monedas apiladas = patrimonio
       { rect: [28, 26, 44, 12, 6] },

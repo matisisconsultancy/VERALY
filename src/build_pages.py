@@ -133,7 +133,7 @@ def build(g):
     situ_cards = ""
     for t, sub, url, tag, ikey, media in situ_data:
         situ_cards += f'''<a class="fcard" href="{url}" data-situacion="{tag}">
-  <div class="fmedia"><canvas class="fic-canvas" data-icon="{ikey}" aria-hidden="true"></canvas>{media}</div>
+  <div class="fmedia"><canvas class="fic-canvas" data-icon="{ikey}" data-max="680" data-dot="1.2" aria-hidden="true"></canvas>{media}</div>
   <div class="fbody"><h3>{esc(t)}</h3><p>{esc(sub)}</p></div>
 </a>'''
 

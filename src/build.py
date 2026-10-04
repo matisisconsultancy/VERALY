@@ -369,24 +369,25 @@ def _fic(inner):
             + inner + '</svg>')
 
 def icon_recuperacion():
-    # Galón hacia arriba sobre una base: valor que se recupera / vuelve a subir.
+    # Moneda sólida con flecha al alza (hueco): recuperar el dinero.
     return _fic(
-        '<path class="sh" d="M48 19 L74 45 L65 54 L48 37 L31 54 L22 45 Z"/>'
-        '<rect class="sh" x="25" y="59" width="46" height="15" rx="5"/>')
+        '<path class="sh" fill-rule="evenodd" d="M21 48 a27 27 0 1 0 54 0 a27 27 0 1 0 -54 0'
+        'M48 31 L63 47 L55 47 L55 65 L41 65 L41 47 L33 47 Z"/>')
 
 def icon_defensa():
-    # Escudo sólido partido por un eje: defensa, en frentes distintos.
+    # Escudo sólido con visto (hueco): defensa.
     return _fic(
-        '<path class="sh" d="M45.5 15 L23 24 V47 C23 63 34 72.5 45.5 78 Z"/>'
-        '<path class="sh" d="M50.5 15 L73 24 V47 C73 63 62 72.5 50.5 78 Z"/>')
+        '<path class="sh" fill-rule="evenodd" d="M48 14 L76 25 V47 C76 65 63 75 48 81 C33 75 20 65 20 47 V25 Z'
+        'M44 61 L30 47 L36 41 L44 49 L62 31 L68 37 Z"/>')
 
 def icon_recaudo():
-    # Cuatro cuñas que convergen a un centro: muchas personas → una estructura.
+    # Edificio sólido con ventanas y puerta (huecos): la empresa.
     return _fic(
-        '<path class="sh" d="M34 16 H62 L48 39 Z"/>'
-        '<path class="sh" d="M34 80 H62 L48 57 Z"/>'
-        '<path class="sh" d="M16 34 V62 L39 48 Z"/>'
-        '<path class="sh" d="M80 34 V62 L57 48 Z"/>')
+        '<path class="sh" d="M26 36 L48 21 L70 36 Z"/>'
+        '<path class="sh" fill-rule="evenodd" d="M31 36 H65 V80 H31 Z'
+        'M37 43 H45 V52 H37 Z M51 43 H59 V52 H51 Z'
+        'M37 57 H45 V66 H37 Z M51 57 H59 V66 H51 Z'
+        'M43 80 V68 H53 V80 Z"/>')
 
 
 def proceso_stepper():
