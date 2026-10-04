@@ -1014,6 +1014,23 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
   opacity:0;transform:translateX(-4px);transition:opacity .22s,transform .22s}
 .bigcard--link:hover .bc-go,.bigcard--link:focus-visible .bc-go{opacity:1;transform:none}
 
+/* Sección "Cinco prácticas": fondo + tarjetas glass (sin figura central) */
+.stack-sec{position:relative;overflow:clip}
+.stack-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(58% 48% at 80% 14%,rgba(137,245,229,.10),transparent 70%),
+    radial-gradient(52% 46% at 10% 88%,rgba(10,74,80,.38),transparent 76%)}
+.stack-bg::after{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(120% 95% at 82% 4%,#000,transparent 72%);
+  mask-image:radial-gradient(120% 95% at 82% 4%,#000,transparent 72%);opacity:.5}
+.stack-sec .container{position:relative;z-index:1}
+.stack-sec .stack-cards .bigcard{background:rgba(9,54,59,.42);
+  -webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);
+  border-color:rgba(137,245,229,.16)}
+.stack-sec .stack-cards .bigcard--link:hover,
+.stack-sec .stack-cards .bigcard--link:focus-visible{background:rgba(12,70,76,.5);border-color:var(--accent)}
+
 /* tiles de marco normativo (sustituye logos de clientes) */
 .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:2rem}
 @media (max-width:900px){.tiles{grid-template-columns:repeat(2,1fr)}}
@@ -1050,10 +1067,6 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 .step-visual{height:100%;overflow:clip;position:relative;border:0;border-right:1px solid var(--line-soft);
   background:radial-gradient(120% 100% at 30% 15%,rgba(10,74,80,.6),var(--ink))}
 .step-visual .media-svg{opacity:.9}
-/* número gigante de fondo (editorial) */
-.step-visual .sv-num{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:0;
-  font-family:var(--display);font-weight:var(--hw);font-size:min(46vh,30vw);line-height:1;
-  color:var(--accent-ink);opacity:.05;letter-spacing:-.04em;pointer-events:none;user-select:none}
 /* método: canvas de partículas que convergen al activarse el paso */
 .step-visual .step-canvas{display:none}
 html.js .step-visual .step-canvas{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:1}

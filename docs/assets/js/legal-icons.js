@@ -79,19 +79,23 @@
     // 'metodo-convergencia' se genera abajo (estrella del isotipo).
   };
 
-  // Estrella de convergencia (isotipo): cinco radios que convergen a un punto.
+  // Isotipo real de Veraly: cinco galones (V) que convergen a un punto central.
+  // Geometría del LOGO_SVG (viewBox -140..140) mapeada al espacio 0..96.
   (function () {
-    var cx = 48, cy = 48, spk = [];
-    for (var k = 0; k < 5; k++) {
-      var a = -Math.PI / 2 + k * 2 * Math.PI / 5;
-      var nx = Math.cos(a), ny = Math.sin(a), px = -ny, py = nx;
-      var r0 = 12, r1 = 42, w = 3.6;
-      var ax = cx + nx * r0, ay = cy + ny * r0, bx = cx + nx * r1, by = cy + ny * r1;
-      spk.push({ d: 'M' + (ax + px * w) + ' ' + (ay + py * w) + ' L' + (bx + px * w) + ' ' + (by + py * w)
-        + ' L' + (bx - px * w) + ' ' + (by - py * w) + ' L' + (ax - px * w) + ' ' + (ay - py * w) + ' Z' });
-    }
-    spk.push({ rect: [cx - 8, cy - 8, 16, 16, 8] });
-    ICONS['metodo-convergencia'] = spk;
+    var S = 0.3, O = 48;  // escala y traslación (x' = 48 + x*0.3)
+    function m(x, y) { return (O + x * S).toFixed(1) + ' ' + (O + y * S).toFixed(1); }
+    var arms = [
+      [-29.2, -120.8, 0, -39.6, 39.6, -72.0],
+      [105.6, -64.8, 37.6, -12.0, 80.4, 15.6],
+      [94.4, 80.4, 23.2, 32.0, 10.0, 81.2],
+      [-47.2, 114.8, -23.2, 32.0, -74.0, 34.8],
+      [-124.0, -9.6, -37.6, -12.0, -56.0, -59.6]
+    ];
+    var shp = arms.map(function (a) {
+      return { d: 'M' + m(a[0], a[1]) + ' L' + m(a[2], a[3]) + ' L' + m(a[4], a[5]), stroke: 17.6 * S };
+    });
+    shp.push({ d: 'M' + (O - 4.8) + ' ' + O + ' a4.8 4.8 0 1 0 9.6 0 a4.8 4.8 0 1 0 -9.6 0' }); // punto central
+    ICONS['metodo-convergencia'] = shp;
   })();
 
   function rnd(seed) {

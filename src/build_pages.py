@@ -227,14 +227,14 @@ def build(g):
   </div>
 </section>
 
-<section class="section">
+<section class="section stack-sec">
+  <div class="stack-bg" aria-hidden="true"></div>
   <div class="container stack">
     <div class="stack-head">
       <p class="eyebrow">El equipo</p>
       <h2>Cinco prácticas, un mismo caso</h2>
       <p class="lead" style="margin-top:1rem">La convergencia no es una declaración: es la composición de la firma. Cinco prácticas aportan cinco ramas del derecho al mismo expediente.</p>
-      <div style="margin:1.6rem 0">{convergence()}</div>
-      <div class="cta-row"><a class="btn btn--ghost" href="/equipo/">Por qué cinco prácticas</a></div>
+      <div class="cta-row" style="margin-top:1.8rem"><a class="btn btn--ghost" href="/equipo/">Por qué cinco prácticas</a></div>
     </div>
     <div class="stack-cards">{prac_cards}</div>
   </div>
