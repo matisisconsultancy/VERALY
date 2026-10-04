@@ -426,6 +426,7 @@
       // aparecen una a una a medida que se baja.
       var cardStart = parseFloat(track.getAttribute('data-cardstart'));
       var hasCardStart = !isNaN(cardStart);
+      var litspan = parseFloat(track.getAttribute('data-litspan')) || 0.55;
       function cardThresh(k, n) {
         if (hasCardStart) return cardStart + (k / n) * (0.98 - cardStart);
         return (k + 1) / (n + 1);
@@ -438,8 +439,15 @@
           return;
         }
         var p = pinProgress(track);
-        var idx = Math.min(np - 1, Math.floor(p * np));
-        showPhrase(idx);
+        var seg = 1 / np;
+        var idx = Math.min(np - 1, Math.floor(p / seg));
+        var local = (p / seg) - idx;                               // avance dentro de la frase (0..1)
+        var litFrac = Math.min(1, local / litspan);               // palabras alumbradas progresivamente
+        phrases.forEach(function (ph, i) { ph.classList.toggle('active', i === idx); });
+        words.forEach(function (ws, i) {
+          if (i !== idx) { ws.forEach(function (w) { w.classList.remove('lit'); }); return; }
+          ws.forEach(function (w, k) { w.classList.toggle('lit', (k + 0.6) / ws.length <= litFrac); });
+        });
         cards.forEach(function (c, k) { c.classList.toggle('in', p >= cardThresh(k, cards.length)); });
       }
       window.addEventListener('scroll', upd, { passive: true });
@@ -650,23 +658,44 @@
     j.__open = i;
   }
   function initJourney() {
-    // Acordeón normal: la primera fase abierta, el resto se abren al pulsar.
-    // Ya no se despliega solo con el scroll (evita el pin largo).
+    // Escritorio: la sección se fija y las fases se abren una a una con el
+    // scroll (pin, sin saltos de layout). Móvil: acordeón por clic.
     var js = $$('.journey'); if (!js.length) return;
     js.forEach(function (j) {
       if (j.__jnInit) return; j.__jnInit = 1;
       var phases = $$('.jn-phase', j);
       phases.forEach(function (ph, i) {
-        ph.classList.add('is-on');
         var t = ph.querySelector('.jn-toggle');
         if (t) t.addEventListener('click', function () {
           jnApplyOpen(j, phases, j.__open === i ? -1 : i);
         });
       });
-      jnApplyOpen(j, phases, 0);
-      var spine = j.querySelector('.jn-spine');
-      if (spine) spine.style.setProperty('--p', '1');
+      jnApplyOpen(j, phases, 0); j.__lastCur = 0;
     });
+    function upd() {
+      var vh = window.innerHeight;
+      js.forEach(function (j) {
+        var spine = j.querySelector('.jn-spine');
+        var phases = $$('.jn-phase', j); var n = phases.length; if (!n) return;
+        var sec = j.closest('.jn-sec');
+        var pin = sec && sec.querySelector('.jn-pin-track');
+        var sticky = sec && sec.querySelector('.jn-pin-sticky');
+        if (pin && sticky && getComputedStyle(sticky).position === 'sticky') {
+          var h = pin.offsetHeight - vh;
+          var prog = h > 0 ? (-pin.getBoundingClientRect().top) / h : 0;
+          prog = Math.max(0, Math.min(0.999, prog));
+          var cur = Math.min(n - 1, Math.floor(prog * n));
+          if (spine) spine.style.setProperty('--p', prog.toFixed(3));
+          phases.forEach(function (ph, i) { ph.classList.toggle('is-on', i <= cur); });
+          if (cur !== j.__lastCur) { jnApplyOpen(j, phases, cur); j.__lastCur = cur; }
+        } else {
+          phases.forEach(function (ph) { ph.classList.add('is-on'); });
+          if (spine) spine.style.setProperty('--p', '1');
+        }
+      });
+    }
+    window.addEventListener('scroll', upd, { passive: true });
+    window.addEventListener('resize', upd); upd();
   }
   /* ---------- Reserva de cita (tipo Calendly, sin backend: compone la solicitud) ---------- */
   function initBooking() {

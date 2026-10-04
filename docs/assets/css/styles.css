@@ -1174,11 +1174,11 @@ html.js .step-visual>svg{display:none}
 /* tarjetas del reveal cuando nombran las vías (no son enlaces) */
 /* pista muy larga = cada frase se ilumina y se sostiene el tiempo suficiente
    para leerla completa antes de cambiar; las cards salen al final */
-#vias-intro .reveal-track{height:170vh}
-/* transición más seca entre frases para que nunca queden dos textos superpuestos */
-#vias-intro .reveal-phrase{transition:opacity .22s ease}
-/* cada palabra aparece con un fundido más suave */
-#vias-intro .reveal-phrase .w{transition:color .5s ease}
+#vias-intro .reveal-track{height:270vh}   /* más recorrido = ritmo más pausado */
+/* fundido suave entre frases (cruce sin salto) */
+#vias-intro .reveal-phrase{transition:opacity .6s ease}
+/* cada palabra se alumbra con un fundido suave y progresivo con el scroll */
+#vias-intro .reveal-phrase .w{transition:color .55s ease}
 /* tarjetas del reveal cuando nombran las vías (no son enlaces) — legibilidad reforzada */
 .rc--via{cursor:default}
 .reveal-cards .rc--via{padding:28px 28px 26px;min-height:168px;gap:14px;
@@ -1688,10 +1688,15 @@ html:not(.js) .via-bar[data-i="2"] .via-bar-col i{height:100%}
    activa y las anteriores se cierran (una abierta a la vez) */
 .jn-pin{padding:0}
 .jn-intro{padding-top:var(--sp-xl);padding-bottom:clamp(6px,1.4vw,20px)}
-/* Acordeón normal (sin fijar): la primera fase abierta; el visitante abre la
-   que necesite. Ya no se despliega solo con el scroll. */
-.jn-pin-track{position:relative;height:auto}
-.jn-pin-sticky{position:static;min-height:0;display:block;padding:clamp(20px,4vw,44px) 0}
+/* Recorrido fijado (escritorio): la sección se "pin-ea" y las fases se abren
+   una a una con el scroll, sin saltos de layout. En móvil vuelve a acordeón. */
+.jn-pin-track{position:relative;height:230vh}
+.jn-pin-sticky{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;padding:clamp(40px,8vh,96px) 0}
+@media (max-width:900px){
+  .jn-pin-track{height:auto}
+  .jn-pin-sticky{position:static;min-height:0;display:block;padding:clamp(20px,4vw,44px) 0}
+}
 .journey{position:relative;margin-top:0}
 .jn-spine{position:absolute;left:22px;top:16px;bottom:16px;width:2px;background:var(--line);overflow:hidden}
 .jn-fill{position:absolute;left:0;top:0;width:100%;height:calc(var(--p,0) * 100%);
