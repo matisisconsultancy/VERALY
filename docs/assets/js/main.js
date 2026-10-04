@@ -467,7 +467,8 @@
       $$('.pr-parallax').forEach(function (el) {
         var r = el.getBoundingClientRect();
         var rel = (r.top + r.height / 2) - vh / 2;
-        el.style.transform = 'translateY(' + (rel * -0.04).toFixed(1) + 'px)';
+        var ty = Math.max(-10, Math.min(10, rel * -0.03));  // limitado: no invade el eyebrow
+        el.style.transform = 'translateY(' + ty.toFixed(1) + 'px)';
       });
     }
   }

@@ -86,11 +86,17 @@ def build(g):
         ("Actores", "Quién ocupó cada posición y qué consecuencia jurídica arrastra."),
         ("Rutas", "Qué vías están abiertas, cuáles precluyeron y en qué orden activarlas."),
     ]
-    _metodo_media = [globe, wave]
+    _tl_video = (
+        '<div class="pr-tl-par">'
+        '<img class="pr-tl-poster" src="/assets/video/poster.webp" alt="" aria-hidden="true">'
+        '<img class="pr-tl-anim" src="/assets/video/placeholder.webp" alt="" aria-hidden="true">'
+        '</div>'
+        '<span class="pr-tl-play" aria-hidden="true"></span>'
+        '<span class="pr-tl-vbadge">Video</span>')
     metodo_rows = "".join(
         f'<div class="pr-tl-row"><span class="pr-tl-label">{esc(t)}</span>'
         f'<div class="pr-tl-body"><p class="pr-tl-desc">{esc(d)}</p></div>'
-        f'<div class="pr-tl-media"><div class="pr-tl-par">{_metodo_media[i % 2]()}</div></div></div>'
+        f'<div class="pr-tl-media pr-tl-media--video">{_tl_video}</div></div>'
         for i, (t, d) in enumerate(_metodo))
 
     firma_body = f'''

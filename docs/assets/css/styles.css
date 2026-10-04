@@ -98,8 +98,8 @@ body.theme-light .nav-cluster{background:color-mix(in srgb,#FFFFFF 68%,transpare
   --dim:rgba(5,41,44,.60);--dim-2:rgba(5,41,44,.42);--line:rgba(5,41,44,.13);
   --line-soft:rgba(5,41,44,.09);--grid-line:rgba(5,41,44,.05);--accent-ink:#1D6F66;
   background:#FFFFFF;color:var(--text)}
-/* en la isla clara, el tile del gráfico se mantiene oscuro para dar contraste */
-.section-light .frow .fr-media{background:radial-gradient(120% 120% at 30% 20%,#0a4a50,#04191b)}
+/* en la isla clara, el emblema de puntos va sin caja y el número en tono oscuro */
+.section-light .fr-index{color:rgba(5,41,44,.2)}
 
 /* ---------- Reset ---------- */
 *,*::before,*::after{box-sizing:border-box}
@@ -469,6 +469,7 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
    lo pulsable). En G6 se sube a Playfair Display italic. */
 .pr-accent{color:inherit;font-style:italic}
 .pr-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.pr-two-l .pr-big{margin-top:.5rem}   /* colchón: el parallax no toca el eyebrow */
 @media (max-width:860px){.pr-two{grid-template-columns:1fr;gap:26px}}
 .pr-two-r p{color:var(--dim);line-height:1.65;margin:0 0 1.1rem}
 .pr-two-r p:last-child{margin-bottom:0}
@@ -507,6 +508,22 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
 .pr-tl-row:hover .pr-tl-par,.pr-tl-row:focus-within .pr-tl-par{animation:tl-ken 8s ease-out forwards}
 @keyframes tl-ken{from{transform:scale(1.05)}to{transform:scale(1.16) translate(-2%,-1.5%)}}
 .pr-tl-par .media-svg,.pr-tl-par>svg{position:absolute;inset:0;width:100%;height:100%}
+/* placeholder de video del timeline: póster por defecto, se reproduce al hover */
+.pr-tl-media--video .pr-tl-poster,.pr-tl-media--video .pr-tl-anim{position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;display:block}
+.pr-tl-media--video .pr-tl-anim{opacity:0;transition:opacity .45s ease}
+.pr-tl-row:hover .pr-tl-anim,.pr-tl-row:focus-within .pr-tl-anim{opacity:1}
+.pr-tl-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
+  width:clamp(44px,4vw,58px);aspect-ratio:1;border-radius:999px;border:1.5px solid rgba(217,246,239,.55);
+  background:rgba(3,25,27,.38);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+  display:grid;place-items:center;transition:opacity .3s,transform .3s}
+.pr-tl-play::after{content:"";width:0;height:0;margin-left:3px;
+  border-left:11px solid var(--accent-ink);border-top:7px solid transparent;border-bottom:7px solid transparent}
+.pr-tl-row:hover .pr-tl-play,.pr-tl-row:focus-within .pr-tl-play{opacity:0;transform:translate(-50%,-50%) scale(.85)}
+.pr-tl-vbadge{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--mono);font-size:.58rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);
+  background:rgba(3,25,27,.55);padding:4px 9px;border-radius:6px;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 @media (max-width:720px){
   .pr-tl-row{grid-template-columns:1fr;gap:0;padding:26px var(--edge) 0;align-items:start}
   .pr-tl-label{padding-left:0}
@@ -731,7 +748,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .hero-full .container{position:relative;z-index:2;width:100%}
 /* ── Escena del hero: recorrido de scroll que "fija" la composición mientras
    el campo de partículas pasa del estado disperso (A) al convergido (B). ── */
-.hero-scene{position:relative;min-height:240vh;isolation:isolate}
+.hero-scene{position:relative;min-height:172vh;isolation:isolate}
 .hero-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:clip;display:flex;flex-direction:column;
   justify-content:stretch;padding-block:clamp(118px,15vh,190px) clamp(40px,6vh,80px)}
 .hero-sticky .container{position:relative;z-index:2;width:100%}

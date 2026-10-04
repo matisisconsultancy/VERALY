@@ -161,6 +161,10 @@
     var name = canvas.getAttribute('data-icon');
     var shapes = ICONS[name];
     if (!shapes) return;
+    // Sobre fondo claro (.section-light) los puntos van oscuros (contraste).
+    var light = !!canvas.closest('.section-light');
+    var COL_M = light ? '7,56,61' : MENTA;
+    var COL_C = light ? '11,70,76' : CREMA;
 
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     var W = 0, H = 0, S = 0, OX = 0, OY = 0;
@@ -225,8 +229,8 @@
       if (GLOW && progress > 0.02) {
         var gcx = OX + S * 0.5, gcy = OY + S * 0.5, gr = S * 0.62;
         var g = ctx.createRadialGradient(gcx, gcy, 0, gcx, gcy, gr);
-        g.addColorStop(0, 'rgba(' + MENTA + ',' + (0.12 * progress).toFixed(3) + ')');
-        g.addColorStop(1, 'rgba(' + MENTA + ',0)');
+        g.addColorStop(0, 'rgba(' + COL_M + ',' + (0.12 * progress).toFixed(3) + ')');
+        g.addColorStop(1, 'rgba(' + COL_M + ',0)');
         ctx.fillStyle = g; ctx.fillRect(OX - S * 0.2, OY - S * 0.2, S * 1.4, S * 1.4);
       }
       var mC = [], cC = [];
@@ -246,7 +250,7 @@
       if (NET && edges.length && progress > 0.25) {
         var cap = S * 0.16, cap2 = cap * cap;
         ctx.lineWidth = 1;
-        ctx.strokeStyle = 'rgba(' + MENTA + ',' + (0.16 * (progress - 0.25) / 0.75).toFixed(3) + ')';
+        ctx.strokeStyle = 'rgba(' + COL_M + ',' + (0.16 * (progress - 0.25) / 0.75).toFixed(3) + ')';
         ctx.beginPath();
         for (var e = 0; e < edges.length; e += 2) {
           var pa = pts[edges[e]], pb = pts[edges[e + 1]];
@@ -255,7 +259,7 @@
         }
         ctx.stroke();
       }
-      drawBatch(mC, MENTA); drawBatch(cC, CREMA);
+      drawBatch(mC, COL_M); drawBatch(cC, COL_C);
     }
     function drawBatch(arr, col) {
       if (!arr.length) return;
