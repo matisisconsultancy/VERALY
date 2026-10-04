@@ -32,6 +32,9 @@
   --edge:clamp(18px,5vw,64px);
   --head-h:86px;
   --maxw:1280px;
+  /* margen lateral para bloques full-bleed: alinea su contenido al contenedor
+     centrado (mismo margen que .container) sin perder el fondo a todo el ancho */
+  --pad-bleed:max(var(--edge), calc((100% - var(--maxw)) / 2 + var(--edge)));
   --readw:68ch;
   /* Sistema de cards: un solo radio, borde, fondo y padding en todo el sitio */
   --card-r:5px;
@@ -427,7 +430,7 @@ body.theme-light .site-header.floating.is-stuck{background:rgba(255,255,255,.92)
 .prac-rows{border-top:1px solid var(--line)}
 .prac-row{display:grid;grid-template-columns:44px minmax(0,1fr) clamp(200px,26%,340px) 22px;
   gap:clamp(20px,3.5vw,64px);align-items:center;
-  padding:clamp(26px,3.4vw,50px) var(--edge);
+  padding-block:clamp(26px,3.4vw,50px);padding-inline:var(--pad-bleed);
   border-bottom:1px solid var(--line);text-decoration:none;color:inherit;
   transition:background .22s ease}
 .prac-row:hover,.prac-row:focus-visible{background:var(--panel-2)}
@@ -441,7 +444,7 @@ body.theme-light .site-header.floating.is-stuck{background:rgba(255,255,255,.92)
   opacity:0;transform:translateX(-8px);transition:opacity .22s,transform .22s}
 .prac-row:hover .pr-go,.prac-row:focus-visible .pr-go{opacity:1;transform:none}
 @media (max-width:820px){
-  .prac-row{grid-template-columns:auto 1fr;column-gap:18px;row-gap:.7rem;padding:26px var(--edge)}
+  .prac-row{grid-template-columns:auto 1fr;column-gap:18px;row-gap:.7rem;padding:26px var(--pad-bleed)}
   .prac-row .pr-n{grid-column:1;grid-row:1;align-self:center}
   .prac-row .pr-t{grid-column:2;grid-row:1}
   .prac-row .pr-d{grid-column:1 / -1;grid-row:2}
@@ -1342,8 +1345,8 @@ html.js .reveal-up.in{opacity:1;transform:none}
    ============================================================ */
 .bfilter,.practica-nav a,.cal-chip{
   font-family:var(--sans);font-weight:500;font-size:var(--step--1);line-height:1.2;letter-spacing:.01em;
-  color:var(--dim);background:transparent;border:1px solid var(--line-soft);border-radius:999px;
-  padding:.62em 1.15em;cursor:pointer;text-decoration:none;white-space:nowrap;
+  color:var(--dim);background:transparent;border:1px solid var(--line-soft);border-radius:var(--card-r);
+  padding:.6em 1.05em;cursor:pointer;text-decoration:none;white-space:nowrap;
   transition:color .25s var(--btn-ease),border-color .25s var(--btn-ease),background-color .25s var(--btn-ease)}
 .bfilter:hover,.practica-nav a:hover,.cal-chip:hover{color:var(--text);border-color:var(--accent-ink)}
 .bfilter:focus-visible,.practica-nav a:focus-visible,.cal-chip:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px}

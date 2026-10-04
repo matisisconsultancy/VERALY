@@ -86,17 +86,11 @@ def build(g):
         ("Actores", "Quién ocupó cada posición y qué consecuencia jurídica arrastra."),
         ("Rutas", "Qué vías están abiertas, cuáles precluyeron y en qué orden activarlas."),
     ]
-    _tl_video = (
-        '<div class="pr-tl-par">'
-        '<img class="pr-tl-poster" src="/assets/video/poster.webp" alt="" aria-hidden="true">'
-        '<img class="pr-tl-anim" src="/assets/video/placeholder.webp" alt="" aria-hidden="true">'
-        '</div>'
-        '<span class="pr-tl-play" aria-hidden="true"></span>'
-        '<span class="pr-tl-vbadge">Video</span>')
+    tl_video_media = g["tl_video_media"]
     metodo_rows = "".join(
         f'<div class="pr-tl-row"><span class="pr-tl-label">{esc(t)}</span>'
         f'<div class="pr-tl-body"><p class="pr-tl-desc">{esc(d)}</p></div>'
-        f'<div class="pr-tl-media pr-tl-media--video">{_tl_video}</div></div>'
+        f'{tl_video_media()}</div>'
         for i, (t, d) in enumerate(_metodo))
 
     firma_body = f'''
@@ -380,7 +374,7 @@ def build(g):
             media = _media_cycle[i % 2]()
             norm_rows += (f'<div class="pr-tl-row"><span class="pr-tl-label">{esc(n["ley"])}</span>'
                           f'<div class="pr-tl-body"><p class="pr-tl-desc">{esc(n["que"])}</p>{go}</div>'
-                          f'<div class="pr-tl-media"><div class="pr-tl-par">{media}</div></div></div>')
+                          f'{tl_video_media()}</div>')
         art = ""
         if pr["articulo"]:
             aslug, atitle = pr["articulo"]
@@ -432,7 +426,7 @@ def build(g):
       <p class="faq-pill"><span class="dot" aria-hidden="true"></span>Preguntas sobre esta práctica</p>
       <h2 class="pr-big">¿Dudas? <span class="pr-accent">Estamos para ayudar.</span></h2>
     </div>
-    <div class="faq-two-r">{faq_numbered(pr["faqs"], open_all=True)}</div>
+    <div class="faq-two-r">{faq_numbered(pr["faqs"])}</div>
   </div>
 </section>
 '''

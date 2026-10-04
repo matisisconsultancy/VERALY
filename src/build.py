@@ -295,6 +295,18 @@ def burst_svg():
             'style="color:var(--accent)">' + "".join(parts) + '</svg>')
 
 
+def tl_video_media():
+    """Media de galería tipo timeline: placeholder de video que se reproduce al
+    pasar el cursor (póster estático -> animación en hover). Reutilizable."""
+    return ('<div class="pr-tl-media pr-tl-media--video">'
+            '<div class="pr-tl-par">'
+            '<img class="pr-tl-poster" src="/assets/video/poster.webp" alt="" aria-hidden="true">'
+            '<img class="pr-tl-anim" src="/assets/video/placeholder.webp" alt="" aria-hidden="true">'
+            '</div>'
+            '<span class="pr-tl-play" aria-hidden="true"></span>'
+            '<span class="pr-tl-vbadge">Video</span></div>')
+
+
 def pixels_strip(n=48, on_every=5):
     cells = "".join(
         f'<i class="{"on" if (k % on_every == 0 or k % on_every == 1) else ""}"></i>'

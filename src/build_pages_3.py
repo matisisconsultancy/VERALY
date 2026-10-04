@@ -42,11 +42,11 @@ def build(g):
                 f'<div class="pr-two-r">{body_html}</div></div></section>')
 
     def sol_timeline(rows):
-        media = [globe, wave]
+        tl_video_media = g["tl_video_media"]
         r = "".join(
             f'<div class="pr-tl-row"><span class="pr-tl-label">{esc(lbl)}</span>'
             f'<div class="pr-tl-body"><p class="pr-tl-desc">{esc(d)}</p></div>'
-            f'<div class="pr-tl-media"><div class="pr-tl-par">{media[i % 2]()}</div></div></div>'
+            f'{tl_video_media()}</div>'
             for i, (lbl, d) in enumerate(rows))
         return f'<div class="pr-timeline">{r}</div>'
 
