@@ -177,7 +177,7 @@ def build(g):
 </a>'''
 
     home_body = f'''
-<section class="hero-scene">
+<section class="hero-scene" data-video-scene>
   <div class="hero-sticky">
     <div class="hero-bg" aria-hidden="true"></div>
     <canvas class="hero-field" data-motion="hero" aria-hidden="true"></canvas>
@@ -201,14 +201,11 @@ def build(g):
       </a>
     </div>
     <p class="hero-converge" aria-hidden="true">Cinco prácticas. Un mismo expediente.</p>
-  </div>
-</section>
-
-<section class="video-scene" data-video-scene aria-label="Presentación en video">
-  <div class="video-sticky">
-    <div class="vs-frame">
-      <img class="vs-media" src="/assets/video/placeholder.webp" alt="" aria-hidden="true">
-      <span class="vs-badge">Video de muestra</span>
+    <div class="hero-video" aria-hidden="true">
+      <div class="vs-frame">
+        <img class="vs-media" src="/assets/video/placeholder.webp" alt="">
+        <span class="vs-badge">Video de muestra</span>
+      </div>
     </div>
   </div>
 </section>

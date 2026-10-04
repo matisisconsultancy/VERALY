@@ -23,14 +23,16 @@
       var range = Math.max(1, scene.offsetHeight - vh);
       var p = Math.min(1, Math.max(0, -r.top / range));
       var scale, ty, rx, op;
-      if (p < 0.30) {                 // entrada: baja, crece, se endereza
-        var t = ease(p / 0.30);
-        scale = 0.64 + 0.36 * t; rx = (1 - t) * 13; ty = (1 - t) * 7; op = 0.35 + 0.65 * t;
-      } else if (p < 0.72) {          // fijo: a tamaño completo
+      if (p < 0.22) {                 // título solo: video oculto
+        scale = 0.82; rx = 12; ty = 16; op = 0;
+      } else if (p < 0.5) {           // sube y cubre el titular (3D → plano)
+        var t = ease((p - 0.22) / 0.28);
+        scale = 0.82 + 0.18 * t; rx = (1 - t) * 12; ty = (1 - t) * 16; op = t;
+      } else if (p < 0.72) {          // fijo: reproduciéndose
         scale = 1; rx = 0; ty = 0; op = 1;
-      } else {                        // salida: sube y se encoge
+      } else {                        // sube y revela el resto
         var t2 = ease((p - 0.72) / 0.28);
-        scale = 1 - 0.1 * t2; rx = 0; ty = -13 * t2; op = 1 - 0.45 * t2;
+        scale = 1 - 0.1 * t2; rx = 0; ty = -16 * t2; op = 1 - 0.75 * t2;
       }
       frame.style.transform = 'translateY(' + ty.toFixed(2) + 'vh) rotateX(' + rx.toFixed(2) + 'deg) scale(' + scale.toFixed(3) + ')';
       frame.style.opacity = op.toFixed(3);
