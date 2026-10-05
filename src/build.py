@@ -300,9 +300,13 @@ def burst_svg():
 
 def hero_media():
     """Capa de video en loop para el fondo de los heroes. El texto va encima con
-    un velo (scrim) que deja apreciar el fondo. Reemplazable por un <video>."""
+    un velo (scrim) que deja apreciar el fondo. Si el navegador no puede
+    reproducir el video, el póster estático sirve de respaldo."""
     return ('<div class="hero-media" aria-hidden="true">'
-            '<img class="hero-media-el" src="/assets/video/placeholder.webp" alt="">'
+            '<video class="hero-media-el" autoplay muted loop playsinline preload="auto" '
+            'poster="/assets/video/poster.webp">'
+            '<source src="/assets/video/hero.mp4" type="video/mp4">'
+            '</video>'
             '</div>')
 
 
