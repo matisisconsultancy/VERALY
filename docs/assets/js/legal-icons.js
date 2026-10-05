@@ -173,7 +173,22 @@
     var FIT = +canvas.getAttribute('data-fit') || 1;   // fracción del lado menor que ocupa la figura
     var NET = canvas.hasAttribute('data-net') && name !== 'metodo-convergencia'; // red (no en el logo)
     var GLOW = canvas.hasAttribute('data-glow');       // halo menta de fondo
+    var SOLIDMODE = canvas.hasAttribute('data-solid'); // estado final sólido: los puntos se unen en un icono line-art
     var targets = sampleTargets(shapes);
+    // Formas sólidas (line-art) en el espacio 0..96, para el estado final.
+    var SOLID = shapes.map(function (s) {
+      if (s.rect) {
+        var p = new Path2D(), r = s.rect, x = r[0], y = r[1], w = r[2], h = r[3], rr = r[4] || 0;
+        p.moveTo(x + rr, y);
+        p.arcTo(x + w, y, x + w, y + h, rr);
+        p.arcTo(x + w, y + h, x, y + h, rr);
+        p.arcTo(x, y + h, x, y, rr);
+        p.arcTo(x, y, x + w, y, rr);
+        p.closePath();
+        return { p: p, stroke: 0, rule: 'nonzero' };
+      }
+      return { p: new Path2D(s.d), stroke: s.stroke || 0, rule: s.rule || 'nonzero' };
+    });
     var r = rnd(90210 + name.length * 7);
     // submuestreo para acotar el número de puntos
     if (targets.length > MAX) {
@@ -233,6 +248,10 @@
         g.addColorStop(1, 'rgba(' + COL_M + ',0)');
         ctx.fillStyle = g; ctx.fillRect(OX - S * 0.2, OY - S * 0.2, S * 1.4, S * 1.4);
       }
+      // estado sólido: a medida que los puntos terminan de unirse, el icono se
+      // vuelve line-art sólido y los puntos se desvanecen dentro de él.
+      var solidA = SOLIDMODE ? ease((progress - 0.5) / 0.5) : 0;
+      var dotFade = 1 - solidA * 0.82;
       var mC = [], cC = [];
       for (var i = 0; i < pts.length; i++) {
         var p = pts[i];
@@ -250,7 +269,7 @@
       if (NET && edges.length && progress > 0.25) {
         var cap = S * 0.16, cap2 = cap * cap;
         ctx.lineWidth = 1;
-        ctx.strokeStyle = 'rgba(' + COL_M + ',' + (0.16 * (progress - 0.25) / 0.75).toFixed(3) + ')';
+        ctx.strokeStyle = 'rgba(' + COL_M + ',' + (0.16 * (progress - 0.25) / 0.75 * dotFade).toFixed(3) + ')';
         ctx.beginPath();
         for (var e = 0; e < edges.length; e += 2) {
           var pa = pts[edges[e]], pb = pts[edges[e + 1]];
@@ -259,11 +278,30 @@
         }
         ctx.stroke();
       }
-      drawBatch(mC, COL_M); drawBatch(cC, COL_C);
+      drawBatch(mC, COL_M, dotFade); drawBatch(cC, COL_C, dotFade);
+      if (solidA > 0.02) drawSolid(solidA);
     }
-    function drawBatch(arr, col) {
+    function drawSolid(alpha) {
+      ctx.save();
+      ctx.translate(OX, OY);
+      ctx.scale(S / 96, S / 96);
+      ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      for (var i = 0; i < SOLID.length; i++) {
+        var sh = SOLID[i];
+        if (sh.stroke) {
+          ctx.lineWidth = sh.stroke;
+          ctx.strokeStyle = 'rgba(' + COL_M + ',' + (0.95 * alpha).toFixed(3) + ')';
+          ctx.stroke(sh.p);
+        } else {
+          ctx.fillStyle = 'rgba(' + COL_M + ',' + (0.9 * alpha).toFixed(3) + ')';
+          ctx.fill(sh.p, sh.rule);
+        }
+      }
+      ctx.restore();
+    }
+    function drawBatch(arr, col, a) {
       if (!arr.length) return;
-      ctx.fillStyle = 'rgba(' + col + ',0.92)';
+      ctx.fillStyle = 'rgba(' + col + ',' + (0.92 * (a == null ? 1 : a)).toFixed(3) + ')';
       for (var i = 0; i < arr.length; i += 3) ctx.fillRect(arr[i], arr[i + 1], arr[i + 2], arr[i + 2]);
     }
 

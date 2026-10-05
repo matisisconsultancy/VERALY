@@ -461,7 +461,7 @@ def build(g):
         "title": "Defensa en captación masiva · Arts. 316 y 316A",
         "description": "Defensa administrativa ante la Superintendencia de Sociedades, penal por los arts. 316 y 316A, y civil patrimonial.",
         "active": "investigado", "og_type": "article", "mobile_bar": True,
-        "body_class": "has-mobile-bar",
+        "body_class": "theme-light has-mobile-bar",
         "schema": [
             service_schema(
                 "Defensa en captación masiva y habitual",
@@ -559,7 +559,7 @@ def build(g):
     add("/cumplimiento-en-recaudo-masivo/", {
         "title": "Cumplimiento en recaudo masivo · Captación",
         "description": "Revisión de encuadre para fintech, crowdfunding, libranzas y multinivel frente a los umbrales de captación.",
-        "active": "empresa", "og_type": "article",
+        "active": "empresa", "og_type": "article", "body_class": "theme-light",
         "schema": [
             service_schema(
                 "Revisión de encuadre en recaudo masivo",

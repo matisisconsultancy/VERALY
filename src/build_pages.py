@@ -186,7 +186,7 @@ def build(g):
     home_body = f'''
 <section class="hero-scene">
   <div class="hero-sticky">
-    {hero_media(1)}
+    {hero_media(4)}
     <div class="container hero-inner">
       <p class="hero-eyebrow">Veraly Grupo Jurídico · Bogotá, Colombia</p>
       <div class="hero-grid">
