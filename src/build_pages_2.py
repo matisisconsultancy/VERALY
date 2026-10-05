@@ -146,14 +146,22 @@ def build(g):
 
 {no_hacemos_section()}
 
-{section(f"""
-  <h2>El equipo</h2>
-  <p class="lead" style="margin-top:1rem;max-width:56ch">Cinco prácticas aportan cinco ramas del derecho al mismo expediente.</p>
-  <div class="cta-row">
-    <a class="btn btn--ghost" href="/equipo/">Por qué cinco prácticas</a>
-    {agendar("Agendar una consulta")}
+<section class="section clarity-sec">
+  <div class="container">
+    <div class="clarity-card" data-spotlight>
+      <div class="clarity-glow" aria-hidden="true"></div>
+      <div class="clarity-inner">
+        <p class="eyebrow">El primer paso</p>
+        <h2 class="clarity-h">El primer paso es <span class="pr-accent">tener claridad.</span></h2>
+        <p class="clarity-sub">Antes de decidir qué hacer, hay que ver el caso completo: qué pasó, quién responde y qué vías siguen abiertas. Esa lectura —con las cinco prácticas sobre el mismo expediente— es lo primero que ponemos de su lado.</p>
+        <div class="cta-row">
+          {agendar("Agendar una consulta")}
+          <a class="btn btn--ghost" href="/equipo/">Por qué cinco prácticas</a>
+        </div>
+      </div>
+    </div>
   </div>
-""", cls="band-2")}
+</section>
 '''
     add("/firma/", {
         "title": "La firma · Veraly Grupo Jurídico",
@@ -387,7 +395,7 @@ def build(g):
   <span class="prac-rule" aria-hidden="true"></span>
   <h1 class="prac-h1">{esc(pr["rama"])}</h1>
   <p class="prac-sub">{esc(pr["lede"])}</p>
-""", cls="hero", tight=True, hero_v=(_pi % 4) + 1)}
+""", cls="hero", tight=True, hero_v=(_pi % 5) + 1)}
 
 {practica_nav(pr["slug"])}
 

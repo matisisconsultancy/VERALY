@@ -474,7 +474,7 @@ def build(g):
          "<p>Sí. Los modelos derivan cuando crecen: cambian los volúmenes, los productos y las contrapartes. La revisión periódica existe para detectar esa deriva antes de que sea material.</p>"),
     ]
     cump_hero = (
-        '<section class="sol-hero">' + hero_media(2) + '<div class="container sol-hero-grid">'
+        '<section class="sol-hero">' + hero_media(5) + '<div class="container sol-hero-grid">'
         '<div class="sol-hero-main">'
         '<p class="eyebrow">Para la empresa preventiva</p>'
         '<h1 class="sol-h1">La línea de la captación <span class="pr-accent">se puede medir.</span></h1>'
@@ -844,7 +844,7 @@ def build(g):
   <span class="prac-rule" aria-hidden="true"></span>
   <h1 class="prac-h1">Preguntas frecuentes sobre captación masiva.</h1>
   <p class="prac-sub">Las dudas más frecuentes sobre el fraude financiero por captación —qué es, cómo se investiga, qué vías abre y qué se puede hacer—. Respuestas sobre la figura jurídica, nunca sobre casos identificables.</p>
-""", cls="hero", hero_v=4)}
+""", cls="hero", hero_v=5)}
 
 {faq_sticky(faq_central)}
 

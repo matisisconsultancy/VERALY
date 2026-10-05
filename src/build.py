@@ -307,7 +307,7 @@ def hero_media(variant=1):
         v = int(str(variant))
     except ValueError:
         v = 1
-    if v < 1 or v > 4:
+    if v < 1 or v > 5:
         v = 1
     return (f'<div class="hero-media" aria-hidden="true">'
             f'<video class="hero-media-el" autoplay muted loop playsinline preload="auto" '
@@ -325,7 +325,7 @@ def tl_video_media():
     las cuatro tomas) para que no se repita el mismo preview. El póster se ve por
     defecto y el video real se reproduce al pasar el cursor."""
     _tl_counter[0] += 1
-    v = ((_tl_counter[0] - 1) % 4) + 1
+    v = ((_tl_counter[0] - 1) % 5) + 1
     return (f'<div class="pr-tl-media pr-tl-media--video">'
             f'<div class="pr-tl-par">'
             f'<img class="pr-tl-poster" src="/assets/video/poster-{v}.webp" alt="" aria-hidden="true">'

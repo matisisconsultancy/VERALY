@@ -813,6 +813,19 @@
     window.addEventListener(ev, playHeroVideos, { passive: true, once: true });
   });
 
+  /* ---------- Tarjeta "claridad": el fondo se ilumina siguiendo el cursor ---------- */
+  function initSpotlight() {
+    $$('[data-spotlight]').forEach(function (el) {
+      if (el.__sp) return; el.__sp = 1;
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (((e.clientX - r.left) / r.width) * 100).toFixed(1) + '%');
+        el.style.setProperty('--my', (((e.clientY - r.top) / r.height) * 100).toFixed(1) + '%');
+      });
+    });
+  }
+  initSpotlight();
+
   /* ---------- Galerías: el video se reproduce al pasar el cursor ---------- */
   function initTlVideos() {
     $$('.pr-tl-media--video').forEach(function (m) {
