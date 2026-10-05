@@ -62,11 +62,19 @@
       '<button type="button" class="btn btn--primary btn--sm" data-consent="accepted">Aceptar analítica</button>' +
       '</div>';
     document.body.appendChild(bar);
+    // Sube el botón flotante de WhatsApp por encima del banner para que no se
+    // solapen (mide la altura real, que en móvil cambia al ajustarse el texto).
+    function syncH() { document.body.style.setProperty('--cookie-h', bar.offsetHeight + 'px'); }
+    document.body.classList.add('has-cookie'); syncH();
+    window.addEventListener('resize', syncH);
     $$('[data-consent]', bar).forEach(function (b) {
       b.addEventListener('click', function () {
         consent = b.getAttribute('data-consent');
         localStorage.setItem('veraly-consent', consent);
         if (consent === 'accepted') loadGA();
+        window.removeEventListener('resize', syncH);
+        document.body.classList.remove('has-cookie');
+        document.body.style.removeProperty('--cookie-h');
         bar.remove();
       });
     });

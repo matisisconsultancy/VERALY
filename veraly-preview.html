@@ -96,9 +96,7 @@ body.theme-light{
   --accent-ink:#1D6F66;  /* acento de texto sobre fondo claro (mejor contraste) */
   /* --accent (menta) y --on-light se mantienen: botones/pills rellenos */
 }
-/* Header legible sobre fondo blanco */
-body.theme-light .site-header.floating{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,0))}
-body.theme-light .nav-cluster{background:color-mix(in srgb,#FFFFFF 68%,transparent);border-color:rgba(5,41,44,.10);box-shadow:0 12px 40px -22px rgba(5,41,44,.4)}
+/* La barra flotante es oscura en todas las páginas (ver .site-header). */
 
 /* Isla clara: sección con fondo blanco dentro de una página oscura */
 .section-light{
@@ -252,6 +250,12 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
 .ar-box:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px}
 
 /* ---------- Header flotante con pill glass (estilo AI Finance) ---------- */
+/* La barra adopta SIEMPRE la paleta oscura (como el footer) para verse idéntica
+   en todas las páginas, claras u oscuras. Todos los heroes son banda oscura,
+   así que el logo y los enlaces claros se leen siempre sobre el degradado. */
+.site-header{--bg:#05292C;--ink:#03191B;--panel:#073A3F;--panel-2:#0A4A50;--text:#D9F6EF;
+  --dim:rgba(217,246,239,.80);--dim-2:rgba(217,246,239,.54);--line-soft:rgba(217,246,239,.12);
+  --accent-ink:#89F5E5;--on-light:#05292C}
 .site-header.floating{position:fixed;top:0;left:0;right:0;z-index:100;
   background:linear-gradient(180deg,rgba(3,25,27,.72),rgba(3,25,27,0));border:0;
   border-bottom:1px solid transparent;
@@ -261,8 +265,6 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
 .site-header.floating.is-stuck{background:rgba(3,25,27,.86);
   -webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);
   border-bottom-color:var(--line-soft)}
-body.theme-light .site-header.floating.is-stuck{background:rgba(255,255,255,.92);
-  border-bottom-color:rgba(5,41,44,.10)}
 .site-header.floating.nav-hidden{transform:translateY(-118%)}
 @media (prefers-reduced-motion:reduce){.site-header.floating{transition:none}}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:var(--head-h);padding-top:14px}
@@ -1270,6 +1272,9 @@ html.js .step-visual>svg{display:none}
 /* se oculta cuando el bloque de contacto del pie está a la vista, para no
    tapar el contenido del final de la página */
 .wa-fab.is-hidden{opacity:0;visibility:hidden;transform:translateY(10px);pointer-events:none}
+/* Con el banner de cookies visible, el botón flotante sube por encima para no
+   taparse con los botones de consentimiento. */
+body.has-cookie .wa-fab{bottom:calc(var(--cookie-h,120px) + clamp(14px,3vw,22px) + env(safe-area-inset-bottom))}
 .wa-fab svg{width:22px;height:22px;flex:none}
 .wa-fab:hover{background:var(--accent-deep);transform:translateY(-2px);
   box-shadow:0 18px 40px -10px color-mix(in srgb,var(--accent-ink) 55%,transparent),0 12px 32px rgba(3,25,27,.4)}
