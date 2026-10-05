@@ -41,9 +41,9 @@ def copy_all():
             shutil.copytree(src, os.path.join(OUT, d))
 
 def rewrite_html(text):
-    # href="/..." y src="/..." (comillas dobles o simples), sin tocar "//"
-    text = re.sub(r'(\b(?:href|src)=")/(?!/)', r'\1' + BASE + '/', text)
-    text = re.sub(r"(\b(?:href|src)=')/(?!/)", r'\1' + BASE + '/', text)
+    # href/src/poster="/..." (comillas dobles o simples), sin tocar "//"
+    text = re.sub(r'(\b(?:href|src|poster)=")/(?!/)', r'\1' + BASE + '/', text)
+    text = re.sub(r"(\b(?:href|src|poster)=')/(?!/)", r'\1' + BASE + '/', text)
     return text
 
 def rewrite_css(text):

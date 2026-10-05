@@ -44,12 +44,10 @@ def run(out_path):
     def rw(h):
         return re.sub(r'href="/(?![/])', 'href="#!/', h).replace('href="/"', 'href="#!/"')
     header, footer, mobilebar, templates, assistant = map(rw, (header, footer, mobilebar, templates, assistant))
-    # En la vista previa (archivo único) NO incrustamos el mp4 de 12 MB: se
-    # sustituye el <video> del hero por el webp animado liviano para no superar
-    # el límite de tamaño del artifact. El sitio real sí usa el video.
-    templates = re.sub(r'<video class="hero-media-el".*?</video>',
-                       '<img class="hero-media-el" src="/assets/video/placeholder.webp" alt="" aria-hidden="true">',
-                       templates, flags=re.S)
+    # El mp4 (~12 MB) NO se incrusta (superaría el límite del artifact): se
+    # referencia como archivo adjunto con ruta RELATIVA y se publica aparte,
+    # de modo que la vista previa reproduzca el video real sin inflar el HTML.
+    templates = templates.replace("/assets/video/hero.mp4", "assets/video/hero.mp4")
     templates = templates.replace("/assets/video/poster.webp", _poster_uri)      # incrusta el póster
     templates = templates.replace("/assets/video/placeholder.webp", _webp_uri)   # incrusta el webp animado
 
