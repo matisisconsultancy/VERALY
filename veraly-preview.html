@@ -723,15 +723,16 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .clarity-card{position:relative;overflow:hidden;border-radius:20px;isolation:isolate;
   --bg:#05292C;--ink:#03191B;--panel:#073A3F;--text:#D9F6EF;--dim:rgba(217,246,239,.74);
   --dim-2:rgba(217,246,239,.5);--accent-ink:#89F5E5;--line:rgba(137,245,229,.28);color:var(--text);
-  border:1px solid rgba(217,246,239,.14);
-  background:linear-gradient(160deg,rgba(10,74,80,.30),rgba(3,25,27,.55));
+  border:1px solid rgba(137,245,229,.16);
+  /* mismo verde oscuro del fondo de arriba: la luz del cursor hace el contraste */
+  background:#03191B;
   padding:clamp(34px,6vw,84px) clamp(26px,5vw,76px)}
-/* velo base muy sutil para que no se vea plana sin cursor */
-.clarity-card::before{content:"";position:absolute;inset:-1px;z-index:-2;
-  background:radial-gradient(70% 120% at 12% 0%,rgba(137,245,229,.12),transparent 60%)}
-/* foco que sigue al cursor (--mx/--my los fija el JS) */
-.clarity-glow{position:absolute;inset:-1px;z-index:-1;opacity:0;transition:opacity .45s ease;
-  background:radial-gradient(460px circle at var(--mx,50%) var(--my,25%),rgba(137,245,229,.30),rgba(137,245,229,.06) 42%,transparent 66%)}
+/* foco que sigue al cursor (--mx/--my los fija el JS): núcleo brillante + halo,
+   intenso para un contraste marcado sobre el verde oscuro */
+.clarity-glow{position:absolute;inset:-1px;z-index:-1;opacity:0;transition:opacity .4s ease;
+  background:
+    radial-gradient(240px circle at var(--mx,50%) var(--my,28%),rgba(137,245,229,.55),rgba(137,245,229,.22) 42%,transparent 64%),
+    radial-gradient(620px circle at var(--mx,50%) var(--my,28%),rgba(95,224,206,.20),transparent 72%)}
 .clarity-card:hover .clarity-glow,.clarity-card:focus-within .clarity-glow{opacity:1}
 .clarity-inner{position:relative;z-index:1}
 .clarity-h{font-family:var(--display);font-weight:var(--hw);font-size:var(--h1);line-height:1.05;
@@ -2216,7 +2217,7 @@ h1,h2,h3,
   </div>
 </section>
 
-<section class="section band">
+<section class="section section-light">
   <div class="container">
     <p class="eyebrow">Las tres vías</p>
     <h2 style="max-width:22ch">Tres responsabilidades que corren al mismo tiempo</h2>
