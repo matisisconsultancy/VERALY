@@ -277,6 +277,8 @@ def build(g):
         {
             "@context": "https://schema.org", "@type": "LegalService",
             "name": SITE["name"],
+            "legalName": SITE["legal_name"],
+            "taxID": SITE["nit"],
             "description": "Firma boutique colombiana especializada en captación masiva y habitual: defensa administrativa, penal y civil, y recuperación de afectados.",
             "url": B + "/",
             "areaServed": {"@type": "Country", "name": "Colombia"},

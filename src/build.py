@@ -17,6 +17,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # ----------------------------------------------------------------------------
 SITE = {
     "name": "Veraly Grupo Jurídico",
+    "legal_name": "VERALY ABOGADOS S.A.S.",
+    "nit": "902.052.667-7",
     "claim": "Defensa en fraude financiero",
     "base_url": "https://veraly.com.co",
     "locale": "es-CO",
