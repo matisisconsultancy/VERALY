@@ -187,7 +187,6 @@ def build(g):
 <section class="hero-scene">
   <div class="hero-sticky">
     {hero_media(1)}
-    <canvas class="hero-field" data-motion="hero" aria-hidden="true"></canvas>
     <div class="container hero-inner">
       <p class="hero-eyebrow">Veraly Grupo Jurídico · Bogotá, Colombia</p>
       <div class="hero-grid">
@@ -253,8 +252,7 @@ def build(g):
 
 <section class="section clarity-sec">
   <div class="container">
-    <div class="clarity-card clarity-card--split" data-spotlight>
-      <div class="clarity-glow" aria-hidden="true"></div>
+    <div class="clarity-card clarity-card--split reveal-up">
       <div class="clarity-inner">
         <div class="clarity-main">
           <p class="eyebrow">Cómo empezamos</p>

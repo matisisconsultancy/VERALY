@@ -287,8 +287,10 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
 .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:var(--head-h);padding-top:14px}
 .brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);font-family:var(--sans);font-weight:600}
 .brand svg{width:30px;height:30px;flex:none}
-.brand b{font-weight:700;letter-spacing:.01em;font-size:1.12rem}
-.brand span{color:var(--dim-2);font-weight:400;font-size:var(--step--1)}
+.brand-name{display:inline-flex;align-items:baseline;gap:.32em;white-space:nowrap}
+.brand b{font-family:var(--sans);font-weight:700;letter-spacing:-.01em;font-size:1.12rem}
+/* lockup real: "Grupo Jurídico" en serif itálica menta (brandbook) */
+.brand i{font-family:var(--display);font-style:italic;font-weight:400;color:var(--accent-ink);font-size:1.04rem}
 /* cluster derecho: píldora de vidrio que agrupa enlaces + CTA (ref. AI Finance) */
 /* liquid glass: fondo translúcido con brillo superior interno + blur alto,
    radio de marca (rectangular como las cards). El header es position:fixed. */
@@ -723,10 +725,11 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   width:clamp(38px,4vw,54px);height:clamp(38px,4vw,54px)}
 .footer-brand-mark svg{width:100%;height:100%;display:block}
 .footer-brand-name{display:flex;align-items:baseline;gap:.55em;flex-wrap:wrap;line-height:1}
-.footer-brand-name b{font-family:var(--display);font-weight:var(--hw);
-  font-size:clamp(1.75rem,3.4vw,2.7rem);letter-spacing:-.015em;color:var(--text)}
-.footer-brand-name span{font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;
-  font-size:clamp(.6rem,1.1vw,.72rem);color:var(--dim-2)}
+.footer-brand-name b{font-family:var(--sans);font-weight:700;
+  font-size:clamp(1.75rem,3.4vw,2.7rem);letter-spacing:-.02em;color:var(--text)}
+/* lockup horizontal real: "Grupo Jurídico" en serif itálica menta (brandbook) */
+.footer-brand-name i{font-family:var(--display);font-style:italic;font-weight:400;
+  font-size:clamp(1.65rem,3.2vw,2.5rem);letter-spacing:-.01em;color:var(--accent-ink)}
 @media (max-width:560px){.footer-brand{gap:14px}}
 /* --- línea base legal --- */
 .footer-baseline{display:flex;flex-wrap:wrap;gap:10px 32px;justify-content:space-between;
@@ -741,18 +744,9 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   --bg:#05292C;--ink:#03191B;--panel:#073A3F;--text:#D9F6EF;--dim:rgba(217,246,239,.74);
   --dim-2:rgba(217,246,239,.5);--accent-ink:#89F5E5;--line:rgba(137,245,229,.28);color:var(--text);
   border:1px solid rgba(137,245,229,.16);
-  /* mismo verde oscuro del fondo de arriba: la luz del cursor hace el contraste */
+  /* panel verde oscuro, limpio; la entrada se anima con reveal-up (fade + rise) */
   background:#03191B;
   padding:clamp(34px,6vw,84px) clamp(26px,5vw,76px)}
-/* foco que sigue al cursor (--mx/--my los fija el JS): núcleo brillante + halo,
-   intenso para un contraste marcado sobre el verde oscuro */
-/* Luz suave estilo Apple: un halo amplio y difuso que "baña" la superficie,
-   poco saturado (no un núcleo neón), que se desvanece con delicadeza. */
-.clarity-glow{position:absolute;inset:-1px;z-index:-1;opacity:0;transition:opacity .6s ease;
-  background:
-    radial-gradient(600px circle at var(--mx,50%) var(--my,32%),rgba(210,250,243,.14),rgba(137,245,229,.05) 48%,transparent 72%),
-    radial-gradient(260px circle at var(--mx,50%) var(--my,32%),rgba(234,255,251,.12),transparent 64%)}
-.clarity-card:hover .clarity-glow,.clarity-card:focus-within .clarity-glow{opacity:1}
 .clarity-inner{position:relative;z-index:1}
 .clarity-h{font-family:var(--display);font-weight:var(--hw);font-size:var(--h1);line-height:1.05;
   letter-spacing:-.02em;max-width:17ch;margin:clamp(14px,1.8vw,22px) 0 0}
@@ -786,9 +780,6 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   .clarity-card--split .clarity-h{max-width:18ch}
 }
 /* en táctil (sin cursor) se ilumina con una pulsación suave y constante */
-@media (hover:none){.clarity-glow{opacity:.75;animation:clarity-pulse 7s ease-in-out infinite}}
-@keyframes clarity-pulse{0%,100%{opacity:.35}50%{opacity:.85}}
-@media (prefers-reduced-motion:reduce){.clarity-glow{animation:none}}
 /* Cierre de situaciones: misma card de claridad con el contenido de
    "una primera conversación" (encabezado + CTA + garantías + enlaces) */
 .cierre-sec .clarity-h{font-size:clamp(2.1rem,1.4rem + 2.4vw,3.4rem);max-width:20ch}
@@ -2138,7 +2129,7 @@ h1,h2,h3,
 <a class="skip-link" href="#main">Saltar al contenido</a>
 <header class="site-header floating">
   <div class="container nav">
-    <a class="brand" href="#!/" aria-label="Veraly Grupo Jurídico, inicio"><span class="brand-mark" aria-hidden="true" style="width:30px;height:30px;color:currentColor;display:inline-block"><svg viewBox="-140 -140 280 280" fill="none" aria-hidden="true" focusable="false"><g stroke="currentColor" stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0" fill="currentColor"/></svg></span><span><b>Veraly</b> <span>Grupo Jurídico</span></span></a>
+    <a class="brand" href="#!/" aria-label="Veraly Grupo Jurídico, inicio"><span class="brand-mark" aria-hidden="true" style="width:30px;height:30px;color:currentColor;display:inline-block"><svg viewBox="-140 -140 280 280" fill="none" aria-hidden="true" focusable="false"><g stroke="currentColor" stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0" fill="currentColor"/></svg></span><span class="brand-name"><b>Veraly</b> <i>Grupo Jurídico</i></span></a>
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     <div class="nav-cluster">
       <nav class="nav-pill" aria-label="Navegación principal"><a href="#!/firma/">La firma</a>
@@ -2206,7 +2197,7 @@ h1,h2,h3,
 
   <div class="container footer-brand">
     <span class="footer-brand-mark" aria-hidden="true"><svg viewBox="-140 -140 280 280" fill="none" aria-hidden="true" focusable="false"><g stroke="currentColor" stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0" fill="currentColor"/></svg></span>
-    <span class="footer-brand-name"><b>Veraly</b> <span>Grupo Jurídico</span></span>
+    <span class="footer-brand-name"><b>Veraly</b> <i>Grupo Jurídico</i></span>
   </div>
 
   <div class="container footer-baseline">
@@ -2225,7 +2216,6 @@ h1,h2,h3,
 <section class="hero-scene">
   <div class="hero-sticky">
     <div class="hero-media" aria-hidden="true"><video class="hero-media-el" autoplay muted loop playsinline preload="auto" poster="assets/video/poster-1.webp"><source src="assets/video/hero-1.webm" type="video/webm"><source src="assets/video/hero-1.mp4" type="video/mp4"></video></div>
-    <canvas class="hero-field" data-motion="hero" aria-hidden="true"></canvas>
     <div class="container hero-inner">
       <p class="hero-eyebrow">Veraly Grupo Jurídico · Bogotá, Colombia</p>
       <div class="hero-grid">
@@ -2355,8 +2345,7 @@ h1,h2,h3,
 
 <section class="section clarity-sec">
   <div class="container">
-    <div class="clarity-card clarity-card--split" data-spotlight>
-      <div class="clarity-glow" aria-hidden="true"></div>
+    <div class="clarity-card clarity-card--split reveal-up">
       <div class="clarity-inner">
         <div class="clarity-main">
           <p class="eyebrow">Cómo empezamos</p>
@@ -2435,8 +2424,7 @@ h1,h2,h3,
 
 <section class="section clarity-sec">
   <div class="container">
-    <div class="clarity-card clarity-card--split" data-spotlight>
-      <div class="clarity-glow" aria-hidden="true"></div>
+    <div class="clarity-card clarity-card--split reveal-up">
       <div class="clarity-inner">
         <div class="clarity-main">
           <p class="eyebrow">Cómo empezamos</p>
@@ -2975,8 +2963,7 @@ h1,h2,h3,
 
 <section class="section clarity-sec cierre-sec">
   <div class="container">
-    <div class="clarity-card" data-spotlight>
-      <div class="clarity-glow" aria-hidden="true"></div>
+    <div class="clarity-card reveal-up">
       <div class="clarity-inner">
         <p class="eyebrow">El primer paso</p>
         <h2 class="clarity-h">Una primera <span class="pr-accent">conversación.</span></h2>
@@ -3010,8 +2997,7 @@ h1,h2,h3,
 
 <section class="section clarity-sec cierre-sec">
   <div class="container">
-    <div class="clarity-card" data-spotlight>
-      <div class="clarity-glow" aria-hidden="true"></div>
+    <div class="clarity-card reveal-up">
       <div class="clarity-inner">
         <p class="eyebrow">El primer paso</p>
         <h2 class="clarity-h">Hablar <span class="pr-accent">hoy.</span></h2>
@@ -3041,8 +3027,7 @@ h1,h2,h3,
 
 <section class="section clarity-sec cierre-sec">
   <div class="container">
-    <div class="clarity-card" data-spotlight>
-      <div class="clarity-glow" aria-hidden="true"></div>
+    <div class="clarity-card reveal-up">
       <div class="clarity-inner">
         <p class="eyebrow">El primer paso</p>
         <h2 class="clarity-h">Revisar el modelo <span class="pr-accent">a tiempo.</span></h2>

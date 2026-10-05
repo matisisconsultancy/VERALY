@@ -22,8 +22,7 @@ def build(g):
         # (verde oscuro + luz que sigue al cursor).
         return f'''<section class="section clarity-sec cierre-sec">
   <div class="container">
-    <div class="clarity-card" data-spotlight>
-      <div class="clarity-glow" aria-hidden="true"></div>
+    <div class="clarity-card reveal-up">
       <div class="clarity-inner">
         <p class="eyebrow">{esc(eyebrow)}</p>
         <h2 class="clarity-h">{h_html}</h2>

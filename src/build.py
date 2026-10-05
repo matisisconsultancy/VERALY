@@ -168,7 +168,7 @@ SITUACIONES = [
 # ----------------------------------------------------------------------------
 def brand(link=True, small=True):
     inner = (f'<span class="brand-mark" aria-hidden="true" style="width:30px;height:30px;color:currentColor;display:inline-block">{LOGO_SVG}</span>'
-             f'<span><b>Veraly</b>{" <span>Grupo Jurídico</span>" if small else ""}</span>')
+             f'<span class="brand-name"><b>Veraly</b>{" <i>Grupo Jurídico</i>" if small else ""}</span>')
     if link:
         return f'<a class="brand" href="/" aria-label="Veraly Grupo Jurídico, inicio">{inner}</a>'
     return f'<span class="brand">{inner}</span>'
@@ -266,7 +266,7 @@ def footer_html():
 
   <div class="container footer-brand">
     <span class="footer-brand-mark" aria-hidden="true">{LOGO_SVG}</span>
-    <span class="footer-brand-name"><b>Veraly</b> <span>Grupo Jurídico</span></span>
+    <span class="footer-brand-name"><b>Veraly</b> <i>Grupo Jurídico</i></span>
   </div>
 
   <div class="container footer-baseline">

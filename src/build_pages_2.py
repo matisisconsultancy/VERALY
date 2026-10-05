@@ -148,8 +148,7 @@ def build(g):
 
 <section class="section clarity-sec">
   <div class="container">
-    <div class="clarity-card clarity-card--split" data-spotlight>
-      <div class="clarity-glow" aria-hidden="true"></div>
+    <div class="clarity-card clarity-card--split reveal-up">
       <div class="clarity-inner">
         <div class="clarity-main">
           <p class="eyebrow">Cómo empezamos</p>
