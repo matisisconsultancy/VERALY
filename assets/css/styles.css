@@ -909,8 +909,10 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 /* una regla fina que separa el hero */
 .hero-full::after{content:"";position:absolute;left:var(--edge);right:var(--edge);bottom:0;height:1px;
   background:var(--line-soft);z-index:2}
-/* contenido distribuido en toda la altura: eyebrow arriba, bloque abajo */
-.hero-inner{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(40px,8vh,96px)}
+/* contenido anclado a la base como bloque cohesivo: el video respira arriba,
+   y eyebrow + titular/descripción + indicador quedan agrupados y equilibrados */
+.hero-inner{flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-end;
+  gap:clamp(22px,3.4vh,40px);padding-bottom:clamp(16px,3vh,40px)}
 .hero-eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;font-size:.7rem;
   font-weight:500;color:var(--dim-2);margin:0}
 .hero-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(28px,5vw,80px);align-items:end}
@@ -1165,7 +1167,10 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 .bigcard--link:hover .bc-go,.bigcard--link:focus-visible .bc-go{opacity:1;transform:none}
 
 /* Sección "Cinco prácticas": fondo + tarjetas glass (sin figura central) */
-.stack-sec{position:relative;overflow:clip}
+/* teal continuo que fluye hacia el stepper (mismo color en el límite) y lifta
+   el tono para que no se vea casi negro */
+.stack-sec{position:relative;overflow:clip;
+  background:linear-gradient(180deg,#07373d 0%,#0a454c 100%)}
 .stack-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
   background:radial-gradient(58% 48% at 80% 14%,rgba(137,245,229,.10),transparent 70%),
     radial-gradient(52% 46% at 10% 88%,rgba(10,74,80,.38),transparent 76%)}
@@ -1204,9 +1209,9 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
    Stepper con pin/scroll (referente "Get Blue" / The Process)
    ============================================================ */
 .stepper{background:
-  radial-gradient(85% 120% at 100% 50%,rgba(13,74,80,.38),transparent 62%),
-  linear-gradient(110deg,#0a3b41 0%,#073236 54%,#06292d 100%);
-  border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+  radial-gradient(80% 120% at 100% 45%,rgba(16,92,99,.34),transparent 60%),
+  linear-gradient(180deg,#0a454c 0%,#0c4b53 42%,#07373d 100%);
+  border-top:0;border-bottom:1px solid var(--line-soft)}
 .stepper-intro{padding-top:var(--sp-xl)}
 .stepper-track{position:relative;height:300vh}
 .stepper-sticky{position:sticky;top:0;height:100vh;overflow:clip}
@@ -1985,8 +1990,11 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   display:flex;align-items:flex-end;
   --bg:#05292C;--ink:#03191B;--panel:#073A3F;--text:#D9F6EF;--dim:rgba(217,246,239,.7);
   --dim-2:rgba(217,246,239,.48);--accent-ink:#89F5E5;--line:rgba(137,245,229,.28)}
-.contact-hero-bg{position:absolute;inset:0;opacity:.20;filter:saturate(.5)}
-.contact-hero-bg svg{width:100%;height:100%}
+/* isotipo de marca en líneas, como marca de agua a la derecha (no puntos) */
+.contact-hero-mark{position:absolute;top:50%;right:clamp(-70px,-1vw,10px);transform:translateY(-50%);
+  width:clamp(300px,40vw,580px);aspect-ratio:1;color:var(--accent-ink);opacity:.14;pointer-events:none;z-index:1}
+.contact-hero-mark svg{width:100%;height:100%}
+@media (max-width:720px){.contact-hero-mark{width:300px;right:-80px;opacity:.1}}
 .contact-hero-in{position:relative;padding-block:clamp(120px,16vh,180px) clamp(40px,7vh,88px)}
 .contact-hero .eyebrow{color:var(--accent-ink)}
 .contact-hero-h1{font-family:var(--display);font-weight:var(--hw);letter-spacing:-.02em;line-height:1.03;

@@ -574,7 +574,7 @@ def build(g):
     contacto_body = f'''
 <section class="contact-hero">
   {hero_media(3)}
-  <div class="contact-hero-bg" aria-hidden="true">{g["wave_svg"]()}</div>
+  <div class="contact-hero-mark" aria-hidden="true">{g["LOGO_SVG"]}</div>
   <div class="container contact-hero-in">
     <p class="eyebrow">Contacto</p>
     <h1 class="contact-hero-h1">No dude en <span class="pr-accent">contactarnos.</span></h1>
