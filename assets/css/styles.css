@@ -252,16 +252,30 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
   --dim:rgba(217,246,239,.80);--dim-2:rgba(217,246,239,.54);--line-soft:rgba(217,246,239,.12);
   --accent-ink:#89F5E5;--on-light:#05292C}
 .site-header.floating{position:fixed;top:0;left:0;right:0;z-index:100;
-  /* velo oscuro más fuerte y alto: garantiza contraste del menú claro sobre
-     cualquier fondo (también páginas claras), accesible siempre */
-  background:linear-gradient(180deg,rgba(3,25,27,.94) 0%,rgba(3,25,27,.82) 46%,rgba(3,25,27,.4) 78%,rgba(3,25,27,0) 100%);
-  border:0;border-bottom:1px solid transparent;
-  transition:transform .35s cubic-bezier(.2,.7,.2,1),background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
-/* Al desplazar: fondo sólido/translúcido con leve desenfoque (en vez del
-   degradado que termina transparente) para que el logo se lea siempre. */
-.site-header.floating.is-stuck{background:rgba(3,25,27,.86);
+  /* Velo oscuro: opaco donde está el menú (contraste accesible sobre cualquier
+     fondo) y desvanecido en varias paradas suaves hacia abajo, sin borde ni
+     corte visible, para que se integre con el contenido. El padding inferior
+     da aire extra al degradado para que la transición sea más larga. */
+  padding-bottom:clamp(12px,1.6vw,22px);
+  background:linear-gradient(180deg,
+    rgba(3,25,27,.92) 0%,
+    rgba(3,25,27,.86) 26%,
+    rgba(3,25,27,.68) 50%,
+    rgba(3,25,27,.4) 72%,
+    rgba(3,25,27,.16) 88%,
+    rgba(3,25,27,0) 100%);
+  border:0;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),background .3s ease,backdrop-filter .3s ease}
+/* Al desplazar: mismo degradado algo más denso + leve desenfoque para que el
+   logo y el menú se lean siempre; sin línea inferior, el borde queda difuso. */
+.site-header.floating.is-stuck{
+  background:linear-gradient(180deg,
+    rgba(3,25,27,.95) 0%,
+    rgba(3,25,27,.9) 40%,
+    rgba(3,25,27,.74) 74%,
+    rgba(3,25,27,.52) 100%);
   -webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);
-  border-bottom-color:var(--line-soft)}
+  border:0}
 .site-header.floating.nav-hidden{transform:translateY(-118%)}
 @media (prefers-reduced-motion:reduce){.site-header.floating{transition:none}}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:var(--head-h);padding-top:14px}
@@ -743,6 +757,13 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 @media (hover:none){.clarity-glow{opacity:.75;animation:clarity-pulse 7s ease-in-out infinite}}
 @keyframes clarity-pulse{0%,100%{opacity:.35}50%{opacity:.85}}
 @media (prefers-reduced-motion:reduce){.clarity-glow{animation:none}}
+/* Cierre de situaciones: misma card de claridad con el contenido de
+   "una primera conversación" (encabezado + CTA + garantías + enlaces) */
+.cierre-sec .clarity-h{font-size:clamp(2.1rem,1.4rem + 2.4vw,3.4rem);max-width:20ch}
+.cierre-trust{margin-top:clamp(20px,2.6vw,32px)}
+.cierre-trust .trust-list{margin-top:0}
+.cierre-links{display:flex;flex-wrap:wrap;gap:12px 28px;margin:clamp(18px,2.2vw,26px) 0 0}
+.cierre-links .arrowlink{font-weight:600}
 
 /* ---------- Situaciones (home tarjetas de puerta) ---------- */
 .doors{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);margin-top:1.8rem}
@@ -1164,7 +1185,10 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 /* ============================================================
    Stepper con pin/scroll (referente "Get Blue" / The Process)
    ============================================================ */
-.stepper{background:var(--ink);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.stepper{background:
+  radial-gradient(85% 120% at 100% 50%,rgba(13,74,80,.38),transparent 62%),
+  linear-gradient(110deg,#0a3b41 0%,#073236 54%,#06292d 100%);
+  border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
 .stepper-intro{padding-top:var(--sp-xl)}
 .stepper-track{position:relative;height:300vh}
 .stepper-sticky{position:sticky;top:0;height:100vh;overflow:clip}
@@ -1412,9 +1436,9 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .bf-by{font-family:var(--sans);font-weight:500;font-size:var(--step-0);color:var(--text)}
 .bf-media{position:relative;border-radius:var(--card-r);overflow:hidden;min-height:300px;
   background:linear-gradient(150deg,#0a4a50,#04191b)}
-.bf-media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+.bf-media svg,.bf-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.blog-feature:hover .bf-media svg{transform:scale(1.06)}
+.blog-feature:hover .bf-media svg,.blog-feature:hover .bf-media img{transform:scale(1.06)}
 
 /* -------- Filtros -------- */
 .blog-filters{display:flex;flex-wrap:wrap;gap:8px;margin:clamp(30px,5vw,54px) 0 clamp(20px,3vw,30px)}
@@ -1453,9 +1477,9 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .bcard-tag{margin-top:auto;margin-bottom:20px}
 .bcard-media{position:relative;border-radius:var(--card-r);overflow:hidden;
   aspect-ratio:16/10;background:linear-gradient(150deg,#0a4a50,#04191b)}
-.bcard-media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+.bcard-media svg,.bcard-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.bcard:hover .bcard-media svg{transform:scale(1.06)}
+.bcard:hover .bcard-media svg,.bcard:hover .bcard-media img{transform:scale(1.06)}
 
 /* ============================================================
    Artículo del blog
@@ -1487,9 +1511,9 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .article-hero-media{margin-top:var(--sp-l);width:100%}
 .ahm-inner{position:relative;overflow:hidden;height:clamp(300px,42vw,600px);
   background:linear-gradient(150deg,#0a4a50,#04191b)}
-.ahm-inner svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+.ahm-inner svg,.ahm-inner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   transition:transform .8s cubic-bezier(.2,.7,.2,1)}
-.article-hero-media:hover .ahm-inner svg{transform:scale(1.05)}
+.article-hero-media:hover .ahm-inner svg,.article-hero-media:hover .ahm-inner img{transform:scale(1.05)}
 
 /* Columna de lectura */
 .article-col{max-width:44rem;margin-left:auto;margin-right:auto}
@@ -2029,7 +2053,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 
 /* ============ Equipo (personas): índice con retratos + detalle de socio ============ */
 .equipo-cta{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;
-  margin-top:var(--sp-xl);padding-top:var(--sp-m);border-top:1px solid var(--line)}
+  margin-top:var(--sp-xl);padding-top:var(--sp-m)}
 .equipo-cta .eyebrow{margin:0}
 .equipo-cta .pr-big{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.4rem);margin:.4rem 0 0}
 /* rejilla de retratos (referente Équipe) */

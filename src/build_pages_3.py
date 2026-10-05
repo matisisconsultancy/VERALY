@@ -16,6 +16,26 @@ def build(g):
             for fid, t, body in items)
         return f'<div class="accordion">{rows}</div>'
 
+    def cierre_banner(h_html, lead, cta_html, links_html="", eyebrow="El primer paso"):
+        # Cierre de las páginas de situaciones: el contenido de "una primera
+        # conversación" montado sobre la estética de la card de claridad
+        # (verde oscuro + luz que sigue al cursor).
+        return f'''<section class="section clarity-sec cierre-sec">
+  <div class="container">
+    <div class="clarity-card" data-spotlight>
+      <div class="clarity-glow" aria-hidden="true"></div>
+      <div class="clarity-inner">
+        <p class="eyebrow">{esc(eyebrow)}</p>
+        <h2 class="clarity-h">{h_html}</h2>
+        <p class="clarity-sub">{esc(lead)}</p>
+        <div class="cta-row">{cta_html}</div>
+        <div class="cierre-trust">{trust_list()}</div>
+        {links_html}
+      </div>
+    </div>
+  </div>
+</section>'''
+
     # --- componentes reutilizables para las páginas de soluciones ---
     globe = g["globe_svg"]; wave = g["wave_svg"]; hero_media = g["hero_media"]
 
@@ -272,16 +292,12 @@ def build(g):
 
 {af_faq}
 
-<section class="section band-2">
-  <div class="container">
-    <h2>Una primera conversación</h2>
-    <p class="lead" style="margin-top:1rem;max-width:56ch">No necesita traer documentos ni haber decidido nada. Sirve para saber si hay caso, qué vías siguen abiertas y qué plazos corren.</p>
-    <div class="cta-row" style="margin-top:1.6rem">{agendar("Agendar una consulta")}{wa_a}</div>
-    <div style="margin-top:1.8rem">{trust_list()}</div>
-    <p style="margin-top:1.4rem"><a class="arrowlink" href="/firma/">Conocer cómo trabaja la firma</a></p>
-    <p><a class="arrowlink" href="/equipo/">Conocer al equipo</a></p>
-  </div>
-</section>
+{cierre_banner(
+    'Una primera <span class="pr-accent">conversación.</span>',
+    "No necesita traer documentos ni haber decidido nada. Sirve para saber si hay caso, qué vías siguen abiertas y qué plazos corren.",
+    agendar("Agendar una consulta") + wa_a,
+    '<p class="cierre-links"><a class="arrowlink" href="/firma/">Conocer cómo trabaja la firma</a>'
+    '<a class="arrowlink" href="/equipo/">Conocer al equipo</a></p>')}
 '''
     add("/afectados-por-captacion-masiva/", {
         "title": "Afectados por captación masiva: vías y plazos",
@@ -436,15 +452,11 @@ def build(g):
 
 {def_faq}
 
-<section class="section band-2">
-  <div class="container">
-    <h2>Hablar hoy</h2>
-    <p class="lead" style="margin-top:1rem;max-width:54ch">Una primera conversación para ubicar el momento procesal y lo que todavía es posible. No necesita traer documentos.</p>
-    <div class="cta-row" style="margin-top:1.6rem">{agendar("Agendar una consulta")}{wa_b}</div>
-    <div style="margin-top:1.8rem">{trust_list()}</div>
-    <p style="margin-top:1.4rem"><a class="arrowlink" href="/equipo/">Ver al equipo</a></p>
-  </div>
-</section>
+{cierre_banner(
+    'Hablar <span class="pr-accent">hoy.</span>',
+    "Una primera conversación para ubicar el momento procesal y lo que todavía es posible. No necesita traer documentos.",
+    agendar("Agendar una consulta") + wa_b,
+    '<p class="cierre-links"><a class="arrowlink" href="/equipo/">Ver al equipo</a></p>')}
 '''
     add("/defensa-en-captacion-masiva/", {
         "title": "Defensa en captación masiva · Arts. 316 y 316A",
@@ -540,14 +552,10 @@ def build(g):
 
 {cump_faq}
 
-<section class="section band-2">
-  <div class="container">
-    <h2>Revisar el encuadre</h2>
-    <p class="lead" style="margin-top:1rem;max-width:54ch">Una conversación para ubicar el modelo frente a los umbrales y definir si conviene una revisión formal.</p>
-    <div class="cta-row" style="margin-top:1.6rem">{agendar("Agendar una revisión")}<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="cumplimiento">WhatsApp</a></div>
-    <div style="margin-top:1.8rem">{trust_list()}</div>
-  </div>
-</section>
+{cierre_banner(
+    'Revisar el <span class="pr-accent">encuadre.</span>',
+    "Una conversación para ubicar el modelo frente a los umbrales y definir si conviene una revisión formal.",
+    agendar("Agendar una revisión") + f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="cumplimiento">WhatsApp</a>')}
 '''
     add("/cumplimiento-en-recaudo-masivo/", {
         "title": "Cumplimiento en recaudo masivo · Captación",
@@ -572,7 +580,10 @@ def build(g):
     _GRAPHICS = [g["globe_svg"], g["wave_svg"], g["burst_svg"], g["convergence_svg"]]
 
     def art_media(i):
-        return _GRAPHICS[i % len(_GRAPHICS)]()
+        # Fotograma real tomado de los videos del sitio (ciudad / arquitectura).
+        n = (i % 5) + 1
+        return (f'<img class="blog-frame" src="/assets/img/blog/frame-{n}.webp" '
+                f'alt="" loading="lazy" decoding="async">')
 
     def read_min(html):
         import re as _re
@@ -588,7 +599,7 @@ def build(g):
             f'<p class="bcard-desc">{esc(a["desc"])}</p>'
             f'</div>'
             f'<span class="tag bcard-tag">{esc(a["tema"])}</span>'
-            f'<div class="bcard-media">{art_media(ridx)}</div>'
+            f'<div class="bcard-media">{art_media(ARTICLES.index(a))}</div>'
             f'</a>')
 
     # ---- Cuerpos de los artículos (necesarios para calcular el tiempo de lectura)

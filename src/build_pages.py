@@ -250,6 +250,27 @@ def build(g):
 {stepper()}
 
 {marco()}
+
+<section class="section clarity-sec">
+  <div class="container">
+    <div class="clarity-card" data-spotlight>
+      <div class="clarity-glow" aria-hidden="true"></div>
+      <div class="clarity-inner">
+        <p class="eyebrow">El primer paso</p>
+        <h2 class="clarity-h">El primer paso es <span class="pr-accent">tener claridad.</span></h2>
+        <p class="clarity-sub">Antes de decidir qué hacer hay que ver el caso completo: qué pasó, quién responde y qué vías siguen abiertas. Esa lectura, con las cinco prácticas sobre el mismo expediente, es lo primero que ponemos de su lado.</p>
+        <div class="cta-row">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabaja la firma</a></div>
+        <nav class="clarity-nav" aria-label="Explorar el sitio">
+          <a class="arrowlink" href="/afectados-por-captacion-masiva/">Perdí dinero en un esquema</a>
+          <a class="arrowlink" href="/defensa-en-captacion-masiva/">Me vinculan a una investigación</a>
+          <a class="arrowlink" href="/cumplimiento-en-recaudo-masivo/">Mi empresa recauda de muchos</a>
+          <a class="arrowlink" href="/equipo/">Las cinco prácticas</a>
+          <a class="arrowlink" href="/analisis/">Análisis</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
 '''
 
     home_schema = [

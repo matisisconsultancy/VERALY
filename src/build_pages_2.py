@@ -176,14 +176,14 @@ def build(g):
     # situación sirve y qué normas toca. Habla de la disciplina, no de personas.
     # Fuentes oficiales (best-effort — la firma debe verificar cada enlace).
     _U = {
-        "d4334": "http://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html",
-        "cp": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html",
-        "d1981": "http://www.secretariasenado.gov.co/senado/basedoc/decreto_1981_1988.html",
-        "const": "http://www.secretariasenado.gov.co/senado/basedoc/constitucion_politica_1991.html",
-        "ccio": "http://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio.html",
-        "et": "http://www.secretariasenado.gov.co/senado/basedoc/estatuto_tributario.html",
-        "cst": "http://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
-        "l906": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0906_2004.html",
+        "d4334": "https://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html",
+        "cp": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html",
+        "d1981": "https://www.secretariasenado.gov.co/senado/basedoc/decreto_1981_1988.html",
+        "const": "https://www.secretariasenado.gov.co/senado/basedoc/constitucion_politica_1991.html",
+        "ccio": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio.html",
+        "et": "https://www.secretariasenado.gov.co/senado/basedoc/estatuto_tributario.html",
+        "cst": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+        "l906": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0906_2004.html",
     }
     PRACTICAS_DEV = [
         {

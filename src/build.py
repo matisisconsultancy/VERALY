@@ -490,11 +490,11 @@ def marco_reveal(eyebrow="El marco que trabajamos", phrases=None, cards=None, se
     if cards is None:
         # URLs oficiales (TODO: verificar/ajustar por la firma — decisión pendiente).
         cards = [
-            ("Decreto 4334 / 2008", "Intervención", "http://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html"),
-            ("Art. 316 CP", "Captación masiva", "http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html"),
-            ("Art. 316A CP", "No reintegro", "http://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html"),
-            ("Decreto 1068 / 2015", "Umbrales", "http://www.secretariasenado.gov.co/senado/basedoc/decreto_1068_2015.html"),
-            ("Ley 1902 / 2018", "Libranzas", "http://www.secretariasenado.gov.co/senado/basedoc/ley_1902_2018.html"),
+            ("Decreto 4334 / 2008", "Intervención", "https://www.secretariasenado.gov.co/senado/basedoc/decreto_4334_2008.html"),
+            ("Art. 316 CP", "Captación masiva", "https://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html"),
+            ("Art. 316A CP", "No reintegro", "https://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr012.html"),
+            ("Decreto 1068 / 2015", "Umbrales", "https://www.secretariasenado.gov.co/senado/basedoc/decreto_1068_2015.html"),
+            ("Ley 1902 / 2018", "Libranzas", "https://www.secretariasenado.gov.co/senado/basedoc/ley_1902_2018.html"),
             ("Sentencia C‑145 / 2009", "Presunciones", "https://www.corteconstitucional.gov.co/relatoria/2009/C-145-09.htm"),
         ]
     def words(s):
