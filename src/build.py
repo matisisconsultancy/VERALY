@@ -264,10 +264,7 @@ def footer_html():
 
   <div class="container footer-brand">
     <span class="footer-brand-mark" aria-hidden="true">{LOGO_SVG}</span>
-    <span class="footer-brand-copy">
-      <span class="footer-brand-word">Veraly<i>.</i></span>
-      <span class="footer-brand-tag">Grupo Jurídico</span>
-    </span>
+    <span class="footer-brand-name"><b>Veraly</b> <span>Grupo Jurídico</span></span>
   </div>
 
   <div class="container footer-baseline">

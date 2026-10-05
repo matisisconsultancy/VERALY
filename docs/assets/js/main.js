@@ -375,6 +375,17 @@
     var total = track.offsetHeight - window.innerHeight;
     return total > 0 ? Math.min(1, Math.max(0, (-r.top) / total)) : 0;
   }
+  // Limita un handler de scroll a un frame (rAF): evita el "thrash" de layout
+  // que hace que el desplazamiento se sienta a tirones. Devuelve la versión
+  // acelerada; úsese para el listener de 'scroll'.
+  function rafThrottle(fn) {
+    var queued = false;
+    return function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; fn(); });
+    };
+  }
   function initStepper() {
     var track = $('.stepper-track'); if (!track || track.__i) return; track.__i = 1;
     var steps = $$('.step', track), rail = $$('.stepper-rail li', track), n = steps.length;
@@ -385,7 +396,7 @@
       steps.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
       rail.forEach(function (li, i) { li.classList.toggle('on', i === idx); });
     }
-    window.addEventListener('scroll', upd, { passive: true });
+    window.addEventListener('scroll', rafThrottle(upd), { passive: true });
     window.addEventListener('resize', upd); upd();
   }
   function initReveal() {
@@ -434,7 +445,7 @@
       function upd() {
         if (window.innerWidth <= 900) {
           phrases.forEach(function (p) { p.classList.add('active'); });
-          words.forEach(function (ws) { ws.forEach(function (w) { w.classList.add('lit'); }); });
+          words.forEach(function (ws) { ws.forEach(function (w) { w.style.setProperty('--lit', '1'); }); });
           cards.forEach(function (c) { c.classList.add('in'); });
           return;
         }
@@ -442,15 +453,21 @@
         var seg = 1 / np;
         var idx = Math.min(np - 1, Math.floor(p / seg));
         var local = (p / seg) - idx;                               // avance dentro de la frase (0..1)
-        var litFrac = Math.min(1, local / litspan);               // palabras alumbradas progresivamente
+        var litFrac = Math.min(1, local / litspan);               // 0..1 de la frase alumbrada
         phrases.forEach(function (ph, i) { ph.classList.toggle('active', i === idx); });
+        // Alumbrado CONTINUO palabra por palabra (--lit 0..1): el frente de luz
+        // avanza con el scroll y cada palabra se interpola suave (color-mix).
         words.forEach(function (ws, i) {
-          if (i !== idx) { ws.forEach(function (w) { w.classList.remove('lit'); }); return; }
-          ws.forEach(function (w, k) { w.classList.toggle('lit', (k + 0.6) / ws.length <= litFrac); });
+          if (i !== idx) { ws.forEach(function (w) { w.style.setProperty('--lit', '0'); }); return; }
+          var edge = litFrac * ws.length;                          // frente de luz, en palabras
+          ws.forEach(function (w, k) {
+            var amt = edge - k; amt = amt < 0 ? 0 : amt > 1 ? 1 : amt;
+            w.style.setProperty('--lit', amt.toFixed(3));
+          });
         });
         cards.forEach(function (c, k) { c.classList.toggle('in', p >= cardThresh(k, cards.length)); });
       }
-      window.addEventListener('scroll', upd, { passive: true });
+      window.addEventListener('scroll', rafThrottle(upd), { passive: true });
       window.addEventListener('resize', upd); upd();
     });
   }
@@ -485,7 +502,7 @@
     rows.forEach(function (r) { if (r.__f) return; r.__f = 1; if (frowIO) frowIO.observe(r); else r.classList.add('in'); });
     if (rows.length && !window.__frowScroll) {
       window.__frowScroll = 1;
-      window.addEventListener('scroll', frowPar, { passive: true });
+      window.addEventListener('scroll', rafThrottle(frowPar), { passive: true });
       window.addEventListener('resize', frowPar);
     }
     frowPar();
@@ -619,7 +636,7 @@
     }
     if (!window.__plzScroll) {
       window.__plzScroll = 1;
-      window.addEventListener('scroll', upd, { passive: true });
+      window.addEventListener('scroll', rafThrottle(upd), { passive: true });
       window.addEventListener('resize', upd);
     }
     upd();
@@ -642,7 +659,7 @@
     }
     if (!window.__viaScroll) {
       window.__viaScroll = 1;
-      window.addEventListener('scroll', upd, { passive: true });
+      window.addEventListener('scroll', rafThrottle(upd), { passive: true });
       window.addEventListener('resize', upd);
     }
     upd();
@@ -694,7 +711,7 @@
         }
       });
     }
-    window.addEventListener('scroll', upd, { passive: true });
+    window.addEventListener('scroll', rafThrottle(upd), { passive: true });
     window.addEventListener('resize', upd); upd();
   }
   /* ---------- Reserva de cita (tipo Calendly, sin backend: compone la solicitud) ---------- */

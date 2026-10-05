@@ -670,21 +670,19 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   letter-spacing:.2em;color:var(--dim-2);font-weight:500;margin:0 0 6px}
 .fn-col a{color:var(--dim);text-decoration:none;font-size:var(--step-0);transition:color .18s;width:fit-content}
 .fn-col a:hover{color:var(--accent-ink)}
-/* --- banner de marca: lockup minimalista (isotipo + firma) --- */
-.footer-brand{display:flex;align-items:center;gap:clamp(18px,2.6vw,38px);
-  margin-top:clamp(24px,4vw,56px);padding-block:clamp(30px,4vw,52px) 0;
+/* --- banner de marca: lockup real (isotipo + firma), minimalista --- */
+.footer-brand{display:flex;align-items:center;gap:clamp(13px,1.8vw,22px);
+  margin-top:clamp(24px,4vw,56px);padding-block:clamp(26px,3.4vw,44px) 0;
   border-top:1px solid var(--line-soft)}
 .footer-brand-mark{flex:none;display:block;color:var(--accent-ink);
-  width:clamp(44px,5.5vw,76px);height:clamp(44px,5.5vw,76px)}
+  width:clamp(38px,4vw,54px);height:clamp(38px,4vw,54px)}
 .footer-brand-mark svg{width:100%;height:100%;display:block}
-.footer-brand-copy{display:flex;flex-direction:column;gap:.35em;min-width:0}
-.footer-brand-word{font-family:var(--display);font-weight:var(--hw);
-  font-size:clamp(2.6rem,7vw,5.25rem);letter-spacing:-.025em;line-height:.92;
-  color:var(--text)}
-.footer-brand-word i{font-style:normal;color:var(--accent-ink)}
-.footer-brand-tag{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;
-  font-size:clamp(.62rem,1.3vw,.74rem);color:var(--dim-2)}
-@media (max-width:560px){.footer-brand{gap:16px}}
+.footer-brand-name{display:flex;align-items:baseline;gap:.55em;flex-wrap:wrap;line-height:1}
+.footer-brand-name b{font-family:var(--display);font-weight:var(--hw);
+  font-size:clamp(1.75rem,3.4vw,2.7rem);letter-spacing:-.015em;color:var(--text)}
+.footer-brand-name span{font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;
+  font-size:clamp(.6rem,1.1vw,.72rem);color:var(--dim-2)}
+@media (max-width:560px){.footer-brand{gap:14px}}
 /* --- línea base legal --- */
 .footer-baseline{display:flex;flex-wrap:wrap;gap:10px 32px;justify-content:space-between;
   align-items:baseline;padding-block:22px clamp(24px,3vw,32px);border-top:1px solid var(--line-soft)}
@@ -1197,8 +1195,9 @@ html.js .step-visual>svg{display:none}
 #vias-intro .reveal-track{height:270vh}   /* más recorrido = ritmo más pausado */
 /* fundido suave entre frases (cruce sin salto) */
 #vias-intro .reveal-phrase{transition:opacity .6s ease}
-/* cada palabra se alumbra con un fundido suave y progresivo con el scroll */
-#vias-intro .reveal-phrase .w{transition:color .55s ease}
+/* cada palabra se alumbra con un fundido suave; transición corta para que el
+   frente de luz siga el scroll de cerca (con --lit continuo se siente fluido) */
+#vias-intro .reveal-phrase .w{transition:color .22s linear}
 /* tarjetas del reveal cuando nombran las vías (no son enlaces) — legibilidad reforzada */
 .rc--via{cursor:default}
 .reveal-cards .rc--via{padding:28px 28px 26px;min-height:168px;gap:14px;
@@ -1224,8 +1223,12 @@ html.js .step-visual>svg{display:none}
 .reveal-phrase{position:absolute;margin:0;opacity:0;transition:opacity .45s ease;
   font-family:var(--display);font-weight:500;font-size:clamp(2.4rem, 1.4rem + 3.2vw, 4.6rem);line-height:1.06;letter-spacing:-.03em}
 .reveal-phrase.active{opacity:1}
-.reveal-phrase .w{color:var(--dim-2);transition:color .3s ease}
-.reveal-phrase .w.lit{color:var(--text)}
+/* Alumbrado continuo: --lit (0..1) interpola el color de cada palabra para que
+   el frente de luz avance de forma fluida con el scroll (no por saltos). */
+.reveal-phrase .w{--lit:0;color:var(--dim-2);
+  color:color-mix(in srgb, var(--text) calc(var(--lit) * 100%), var(--dim-2));
+  transition:color .22s linear}
+.reveal-phrase .w.lit{--lit:1;color:var(--text)}
 /* baraja de tarjetas-enlace de norma (rejilla a lo ancho, con hover de color) */
 .reveal-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%;max-width:1160px;margin-top:var(--sp-xl)}
 .reveal-cards .rc{border:1px solid var(--line-soft);border-radius:var(--card-r);padding:22px 24px;min-height:116px;
