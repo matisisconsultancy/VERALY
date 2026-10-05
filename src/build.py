@@ -457,7 +457,7 @@ def proceso_stepper():
     for i, (num, chip, h, d, ikey, media) in enumerate(steps):
         active = " active" if i == 0 else ""
         canvas = (f'<canvas class="step-canvas" data-icon="{ikey}" data-max="2600" '
-                  f'data-dot="1.2" data-fit="0.96" data-net data-glow data-solid aria-hidden="true"></canvas>')
+                  f'data-dot="1.2" data-fit="0.96" data-net data-glow aria-hidden="true"></canvas>')
         steps_html += f'''<div class="step{active}" data-i="{i}">
   <div class="step-visual">{canvas}{media}</div>
   <div class="step-body">
