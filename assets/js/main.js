@@ -813,6 +813,22 @@
     window.addEventListener(ev, playHeroVideos, { passive: true, once: true });
   });
 
+  /* ---------- Galerías: el video se reproduce al pasar el cursor ---------- */
+  function initTlVideos() {
+    $$('.pr-tl-media--video').forEach(function (m) {
+      if (m.__tl) return; m.__tl = 1;
+      var v = m.querySelector('video.pr-tl-anim'); if (!v) return;
+      var row = m.closest('.pr-tl-row') || m;
+      var start = function () { v.muted = true; var p; try { p = v.play(); } catch (e) {} if (p && p.catch) p.catch(function () {}); };
+      var stop = function () { try { v.pause(); } catch (e) {} };
+      row.addEventListener('pointerenter', start);
+      row.addEventListener('focusin', start);
+      row.addEventListener('pointerleave', stop);
+      row.addEventListener('focusout', stop);
+    });
+  }
+  initTlVideos();
+
   /* ---------- Profundidad de scroll ---------- */
   var fired = {};
   function onScroll() {

@@ -299,10 +299,16 @@ def burst_svg():
 
 
 def hero_media(variant=1):
-    """Capa de video en loop para el fondo de los heroes. Hay dos tomas (1 y 2)
-    que se reparten por temática para que no se sienta repetido. Si el navegador
-    no puede reproducir el video, el póster estático sirve de respaldo."""
-    v = 2 if str(variant) == "2" else 1
+    """Capa de video en loop para el fondo de los heroes. Hay cuatro tomas
+    (1–4), sin el rótulo 'Bogotá', que se reparten entre páginas para que cada
+    hero muestre una escena distinta. El póster (fotograma real de la misma
+    toma) se ve de inmediato, así no hay destello de fondo al cambiar de página."""
+    try:
+        v = int(str(variant))
+    except ValueError:
+        v = 1
+    if v < 1 or v > 4:
+        v = 1
     return (f'<div class="hero-media" aria-hidden="true">'
             f'<video class="hero-media-el" autoplay muted loop playsinline preload="auto" '
             f'poster="/assets/video/poster-{v}.webp">'
@@ -312,16 +318,24 @@ def hero_media(variant=1):
             f'</div>')
 
 
+_tl_counter = [0]
+
 def tl_video_media():
-    """Media de galería tipo timeline: placeholder de video que se reproduce al
-    pasar el cursor (póster estático -> animación en hover). Reutilizable."""
-    return ('<div class="pr-tl-media pr-tl-media--video">'
-            '<div class="pr-tl-par">'
-            '<img class="pr-tl-poster" src="/assets/video/poster-1.webp" alt="" aria-hidden="true">'
-            '<img class="pr-tl-anim" src="/assets/video/placeholder.webp" alt="" aria-hidden="true">'
-            '</div>'
-            '<span class="pr-tl-play" aria-hidden="true"></span>'
-            '<span class="pr-tl-vbadge">Video</span></div>')
+    """Media de galería tipo timeline: cada llamada usa una escena distinta (de
+    las cuatro tomas) para que no se repita el mismo preview. El póster se ve por
+    defecto y el video real se reproduce al pasar el cursor."""
+    _tl_counter[0] += 1
+    v = ((_tl_counter[0] - 1) % 4) + 1
+    return (f'<div class="pr-tl-media pr-tl-media--video">'
+            f'<div class="pr-tl-par">'
+            f'<img class="pr-tl-poster" src="/assets/video/poster-{v}.webp" alt="" aria-hidden="true">'
+            f'<video class="pr-tl-anim" muted loop playsinline preload="none" '
+            f'poster="/assets/video/poster-{v}.webp">'
+            f'<source src="/assets/video/hero-{v}.webm" type="video/webm">'
+            f'<source src="/assets/video/hero-{v}.mp4" type="video/mp4"></video>'
+            f'</div>'
+            f'<span class="pr-tl-play" aria-hidden="true"></span>'
+            f'<span class="pr-tl-vbadge">Video</span></div>')
 
 
 def pixels_strip(n=48, on_every=5):

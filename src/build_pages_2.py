@@ -382,13 +382,12 @@ def build(g):
             art = f'<p class="pr-more"><a class="arrowlink" href="/analisis/{aslug}/">Análisis · {esc(atitle)}</a></p>'
         situ_cards_html = "".join(situ_card(t, u) for t, u in pr["serves"])
         practica_body = f'''
-{crumbs([("Inicio", "/"), ("El equipo", "/equipo/"), (pr["rama"], None)])}
-{section(f"""
+{section(crumbs([("Inicio", "/"), ("El equipo", "/equipo/"), (pr["rama"], None)], inline=True) + f"""
   <p class="eyebrow">Una de las cinco prácticas</p>
   <span class="prac-rule" aria-hidden="true"></span>
   <h1 class="prac-h1">{esc(pr["rama"])}</h1>
   <p class="prac-sub">{esc(pr["lede"])}</p>
-""", cls="hero", tight=True, hero_v=(2 if _pi % 2 else 1))}
+""", cls="hero", tight=True, hero_v=(_pi % 4) + 1)}
 
 {practica_nav(pr["slug"])}
 
@@ -552,7 +551,7 @@ def build(g):
                   if SITE["whatsapp"] else '')
     contacto_body = f'''
 <section class="contact-hero">
-  {hero_media()}
+  {hero_media(3)}
   <div class="contact-hero-bg" aria-hidden="true">{g["wave_svg"]()}</div>
   <div class="container contact-hero-in">
     <p class="eyebrow">Contacto</p>

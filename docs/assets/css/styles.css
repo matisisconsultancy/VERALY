@@ -270,22 +270,25 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
 /* cluster derecho: píldora de vidrio que agrupa enlaces + CTA (ref. AI Finance) */
 /* liquid glass: fondo translúcido con brillo superior interno + blur alto,
    radio de marca (rectangular como las cards). El header es position:fixed. */
-.nav-cluster{display:flex;align-items:center;gap:4px;border-radius:var(--card-r);padding:5px 5px 5px 8px;
-  background:linear-gradient(180deg,color-mix(in srgb,var(--panel) 58%,transparent),color-mix(in srgb,var(--panel) 40%,transparent));
-  border:1px solid color-mix(in srgb,var(--text) 12%,transparent);
-  -webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);
-  box-shadow:0 14px 44px -22px rgba(3,25,27,.8),inset 0 1px 0 color-mix(in srgb,var(--text) 16%,transparent)}
-.nav-pill{display:flex;align-items:center;gap:2px;list-style:none;margin:0;background:transparent;border:0;padding:0}
+/* Barra minimalista: los enlaces flotan sin "pastilla" pesada; solo un
+   divisor sutil separa la navegación del CTA. Elegante y despejado. */
+.nav-cluster{display:flex;align-items:center;gap:clamp(6px,1vw,16px);border-radius:0;padding:0;
+  background:none;border:0;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
+.nav-pill{display:flex;align-items:center;gap:clamp(2px,.6vw,8px);list-style:none;margin:0;background:transparent;border:0;padding:0}
 .nav-pill a,.nav-pill .has-sub>button{display:inline-flex;align-items:center;gap:.4em;text-decoration:none;
-  color:var(--dim);font-family:var(--sans);font-weight:500;font-size:var(--step-0);padding:9px 15px;border-radius:var(--r-xs);
-  background:none;border:0;cursor:pointer;transition:color .22s var(--btn-ease),background-color .22s var(--btn-ease)}
+  color:var(--dim);font-family:var(--sans);font-weight:400;font-size:var(--step-0);letter-spacing:.005em;
+  padding:8px 13px;border-radius:var(--r-xs);
+  background:none;border:0;cursor:pointer;transition:color .22s var(--btn-ease)}
 .nav-pill a:hover,.nav-pill .has-sub>button:hover,.nav-pill .has-sub[data-open="true"]>button{
-  color:var(--text);background:color-mix(in srgb,var(--text) 9%,transparent)}
+  color:var(--text);background:none}
 .nav-pill a[aria-current="page"]{color:var(--accent-ink);background:transparent}
-/* CTA minimalista y rectangular (radio de card), con flecha de línea */
-.nav-cta-btn{display:inline-flex;align-items:center;gap:.55em;background:var(--accent);color:var(--on-light);
-  border-radius:var(--card-r);padding:.75em 1.1em;font-family:var(--sans);font-weight:600;font-size:.92rem;
-  text-decoration:none;white-space:nowrap;transition:background-color .25s var(--btn-ease)}
+/* CTA: contorno fino en reposo -> relleno menta al hover (más sobrio) */
+.nav-cta-btn{display:inline-flex;align-items:center;gap:.5em;margin-left:clamp(4px,.6vw,10px);
+  background:transparent;color:var(--text);
+  border:1px solid color-mix(in srgb,var(--accent-ink) 55%,transparent);
+  border-radius:var(--card-r);padding:.62em 1.05em;font-family:var(--sans);font-weight:500;font-size:.9rem;
+  text-decoration:none;white-space:nowrap;transition:background-color .25s var(--btn-ease),color .25s var(--btn-ease),border-color .25s var(--btn-ease)}
+.nav-cta-btn:hover{background:var(--accent);color:var(--on-light);border-color:var(--accent)}
 .nav-cta-btn:hover{background:var(--accent-deep)}
 .nav-cta-btn:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px}
 .nav-cta-ico{width:16px;height:16px;flex:none;background:currentColor;
@@ -296,12 +299,13 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
 .has-sub{position:relative}
 .has-sub>button svg{width:12px;height:12px;transition:transform .2s}
 .has-sub[data-open="true"]>button svg{transform:rotate(180deg)}
-.submenu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);
-  min-width:300px;background:var(--panel-2);border:1px solid var(--line-soft);border-radius:var(--card-r);padding:8px;list-style:none;margin:0;
-  box-shadow:0 24px 60px rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:opacity .18s,transform .18s,visibility .18s}
+.submenu{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(-6px);
+  min-width:300px;background:rgba(6,18,17,.86);border:1px solid rgba(217,246,239,.12);border-radius:14px;padding:12px;list-style:none;margin:0;
+  -webkit-backdrop-filter:blur(26px) saturate(1.4);backdrop-filter:blur(26px) saturate(1.4);
+  box-shadow:0 30px 70px -20px rgba(0,0,0,.6);opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s}
 .has-sub[data-open="true"] .submenu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
-.submenu a{display:block;padding:12px 14px;border-radius:var(--r-xs);color:var(--dim);text-decoration:none;line-height:1.35}
-.submenu a:hover{background:var(--line-soft);color:var(--text)}
+.submenu a{display:block;padding:11px 14px;border-radius:var(--r-xs);color:var(--dim);text-decoration:none;line-height:1.35;transition:color .18s,background-color .18s}
+.submenu a:hover{background:rgba(217,246,239,.07);color:var(--text)}
 .submenu a small{display:block;color:var(--dim-2);font-size:var(--step--1);font-family:var(--sans)}
 .submenu--mega{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;min-width:min(560px,86vw)}
 .submenu--mega .submenu-col ul{list-style:none;margin:0;padding:0}
@@ -312,14 +316,16 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
 /* Menú móvil */
 @media (max-width:900px){
   .nav-cluster{display:none}
-  .nav-menu-wrap{position:fixed;inset:0;background:var(--ink);z-index:120;
-    opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s ease;overflow-y:auto;
-    display:flex;flex-direction:column;padding:96px var(--edge) 40px}
+  .nav-menu-wrap{position:fixed;inset:0;background:#05100f;z-index:120;
+    opacity:0;visibility:hidden;transition:opacity .24s ease,visibility .24s ease;overflow-y:auto;
+    display:flex;flex-direction:column;padding:104px var(--edge) 44px}
   .nav-menu-wrap[data-open="true"]{opacity:1;visibility:visible}
-  .nav-menu{flex-direction:column;align-items:stretch;gap:2px;width:100%;list-style:none;margin:0;padding:0}
+  .nav-menu{flex-direction:column;align-items:stretch;gap:0;width:100%;list-style:none;margin:0;padding:0}
   .nav-menu a{display:block;text-decoration:none;color:var(--text)}
-  .nav-menu>li>a,.has-sub>button{width:100%;padding:16px 12px;font-size:var(--step-1);border-radius:12px;
-    font-family:var(--sans);font-weight:500;background:none;border:0;color:var(--text);text-align:left}
+  .nav-menu>li{border-top:1px solid rgba(217,246,239,.08)}
+  .nav-menu>li:last-child{border-bottom:1px solid rgba(217,246,239,.08)}
+  .nav-menu>li>a,.has-sub>button{width:100%;padding:18px 4px;font-size:var(--step-1);border-radius:0;letter-spacing:.005em;
+    font-family:var(--sans);font-weight:400;background:none;border:0;color:var(--text);text-align:left}
   .has-sub>button{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
   .has-sub>button svg{display:none}
   .submenu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;
@@ -350,9 +356,11 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
   --bg:#05292C;--ink:#03191B;--panel:#073A3F;--panel-2:#0A4A50;--text:#D9F6EF;
   --dim:rgba(217,246,239,.72);--dim-2:rgba(217,246,239,.48);
   --line:rgba(137,245,229,.28);--accent-ink:#89F5E5;color:var(--text)}
-.hero-media{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:var(--ink)}
+/* Fondo neutro casi-negro (no verde): si el video tarda un instante en pintar,
+   el destello no se nota; el póster (fotograma real) aparece de inmediato. */
+.hero-media{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:#0a0f0e}
 /* Video a color pleno (sin tinte): se ve tal cual. */
-.hero-media-el{width:100%;height:100%;object-fit:cover;display:block;opacity:1}
+.hero-media-el{width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:1;background:#0a0f0e}
 /* Sin "película de color": solo un degradado NEUTRO (negro) para anclar el
    texto arriba y abajo; el centro deja ver el video en sus colores reales. */
 .hero-media::after{content:"";position:absolute;inset:0;
@@ -618,6 +626,13 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .crumbs a{color:var(--dim);text-decoration:none}
 .crumbs a:hover{color:var(--accent)}
 .crumbs span{margin:0 .5em;color:var(--dim-2)}
+/* Migas integradas en el hero (sobre el video): claras y sin ocupar su propio
+   bloque; el hero ya reserva el espacio de la barra fija. */
+.crumbs--hero{font-family:var(--ui);font-size:var(--step--1);letter-spacing:.01em;
+  padding:0;margin:0 0 clamp(18px,2.4vw,30px);color:rgba(217,246,239,.55)}
+.crumbs--hero a{color:rgba(217,246,239,.82);text-decoration:none;transition:color .18s}
+.crumbs--hero a:hover{color:var(--accent-ink)}
+.crumbs--hero span{margin:0 .5em;color:rgba(217,246,239,.4)}
 
 /* ---------- Artículo ---------- */
 .article-head{max-width:var(--readw)}

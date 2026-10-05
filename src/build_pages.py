@@ -23,8 +23,10 @@ def build(g):
             media = hero_media(hero_v) if "hero" in cls.split() else ""
         return f'<section class="{c}">{media}<div class="container">{inner}</div></section>'
 
-    def crumbs(items):
+    def crumbs(items, inline=False):
         # items: list of (label, href|None)
+        # inline=True: migas integradas DENTRO del hero (sobre el video), sin su
+        # propio contenedor ni el espacio para la barra fija.
         parts = []
         for i, (label, href) in enumerate(items):
             if href:
@@ -33,7 +35,8 @@ def build(g):
                 parts.append(esc(label))
             if i < len(items) - 1:
                 parts.append('<span>›</span>')
-        return f'<nav class="crumbs container" aria-label="Migas de pan">{"".join(parts)}</nav>'
+        cls = "crumbs crumbs--hero" if inline else "crumbs container"
+        return f'<nav class="{cls}" aria-label="Migas de pan">{"".join(parts)}</nav>'
 
     def faq_block(items):
         # items: list of (question, answer_html)
