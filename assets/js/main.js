@@ -798,6 +798,21 @@
   window.__initPins = function () { initStepper(); initReveal(); initFeatureRows(); initBlog(); initScramble(); initCountUp(); initPlazos(); initViaSticky(); initPhases(); initJourney(); initBooking(); };
   window.__initPins();
 
+  /* ---------- Video de fondo del hero: asegura la reproducción ----------
+     El atributo autoplay basta en el sitio estático, pero si el navegador o un
+     iframe bloquean el autoplay, se reintenta al primer gesto del usuario. */
+  function playHeroVideos() {
+    $$('video.hero-media-el').forEach(function (v) {
+      v.muted = true; v.playsInline = true; v.setAttribute('muted', '');
+      var pr; try { pr = v.play(); } catch (e) {}
+      if (pr && pr.catch) pr.catch(function () {});
+    });
+  }
+  playHeroVideos();
+  ['pointerdown', 'touchstart', 'keydown', 'scroll'].forEach(function (ev) {
+    window.addEventListener(ev, playHeroVideos, { passive: true, once: true });
+  });
+
   /* ---------- Profundidad de scroll ---------- */
   var fired = {};
   function onScroll() {
