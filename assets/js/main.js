@@ -817,11 +817,23 @@
   function initSpotlight() {
     $$('[data-spotlight]').forEach(function (el) {
       if (el.__sp) return; el.__sp = 1;
+      // la luz se desliza suavemente hacia el cursor (estilo Apple), no de golpe
+      var tx = 50, ty = 32, cx = 50, cy = 32, raf = null, moving = false;
+      function frame() {
+        cx += (tx - cx) * 0.1; cy += (ty - cy) * 0.1;
+        el.style.setProperty('--mx', cx.toFixed(2) + '%');
+        el.style.setProperty('--my', cy.toFixed(2) + '%');
+        if (moving || Math.abs(tx - cx) > 0.1 || Math.abs(ty - cy) > 0.1) raf = requestAnimationFrame(frame);
+        else raf = null;
+      }
       el.addEventListener('pointermove', function (e) {
         var r = el.getBoundingClientRect();
-        el.style.setProperty('--mx', (((e.clientX - r.left) / r.width) * 100).toFixed(1) + '%');
-        el.style.setProperty('--my', (((e.clientY - r.top) / r.height) * 100).toFixed(1) + '%');
+        tx = ((e.clientX - r.left) / r.width) * 100;
+        ty = ((e.clientY - r.top) / r.height) * 100;
+        moving = true;
+        if (!raf) raf = requestAnimationFrame(frame);
       });
+      el.addEventListener('pointerleave', function () { moving = false; });
     });
   }
   initSpotlight();

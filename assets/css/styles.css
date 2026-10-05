@@ -252,8 +252,10 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
   --dim:rgba(217,246,239,.80);--dim-2:rgba(217,246,239,.54);--line-soft:rgba(217,246,239,.12);
   --accent-ink:#89F5E5;--on-light:#05292C}
 .site-header.floating{position:fixed;top:0;left:0;right:0;z-index:100;
-  background:linear-gradient(180deg,rgba(3,25,27,.72),rgba(3,25,27,0));border:0;
-  border-bottom:1px solid transparent;
+  /* velo oscuro más fuerte y alto: garantiza contraste del menú claro sobre
+     cualquier fondo (también páginas claras), accesible siempre */
+  background:linear-gradient(180deg,rgba(3,25,27,.94) 0%,rgba(3,25,27,.82) 46%,rgba(3,25,27,.4) 78%,rgba(3,25,27,0) 100%);
+  border:0;border-bottom:1px solid transparent;
   transition:transform .35s cubic-bezier(.2,.7,.2,1),background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
 /* Al desplazar: fondo sólido/translúcido con leve desenfoque (en vez del
    degradado que termina transparente) para que el logo se lea siempre. */
@@ -724,10 +726,12 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   padding:clamp(34px,6vw,84px) clamp(26px,5vw,76px)}
 /* foco que sigue al cursor (--mx/--my los fija el JS): núcleo brillante + halo,
    intenso para un contraste marcado sobre el verde oscuro */
-.clarity-glow{position:absolute;inset:-1px;z-index:-1;opacity:0;transition:opacity .4s ease;
+/* Luz suave estilo Apple: un halo amplio y difuso que "baña" la superficie,
+   poco saturado (no un núcleo neón), que se desvanece con delicadeza. */
+.clarity-glow{position:absolute;inset:-1px;z-index:-1;opacity:0;transition:opacity .6s ease;
   background:
-    radial-gradient(240px circle at var(--mx,50%) var(--my,28%),rgba(137,245,229,.55),rgba(137,245,229,.22) 42%,transparent 64%),
-    radial-gradient(620px circle at var(--mx,50%) var(--my,28%),rgba(95,224,206,.20),transparent 72%)}
+    radial-gradient(600px circle at var(--mx,50%) var(--my,32%),rgba(210,250,243,.14),rgba(137,245,229,.05) 48%,transparent 72%),
+    radial-gradient(260px circle at var(--mx,50%) var(--my,32%),rgba(234,255,251,.12),transparent 64%)}
 .clarity-card:hover .clarity-glow,.clarity-card:focus-within .clarity-glow{opacity:1}
 .clarity-inner{position:relative;z-index:1}
 .clarity-h{font-family:var(--display);font-weight:var(--hw);font-size:var(--h1);line-height:1.05;
@@ -871,7 +875,8 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .hero-eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;font-size:.7rem;
   font-weight:500;color:var(--dim-2);margin:0}
 .hero-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(28px,5vw,80px);align-items:end}
-.hero-full h1,.hero-sticky h1{font-size:clamp(3rem,1.8rem+6vw,7rem);line-height:.97;letter-spacing:-.02em}
+/* mismo tamaño de titular en todos los heroes (incluida la home) */
+.hero-full h1,.hero-sticky h1{font-size:var(--h1);line-height:1.03;letter-spacing:-.02em}
 .hero-kicker{margin-top:clamp(16px,2vh,26px);font-family:var(--ui);color:var(--dim);font-weight:500;font-size:var(--step-1)}
 .hero-right{max-width:46ch;justify-self:end;align-self:end}
 .hero-full .hero-right .desc,.hero-sticky .hero-right .desc{color:var(--dim)}
@@ -1661,21 +1666,28 @@ html.js .reveal-up.in{opacity:1;transform:none}
 .plz-track::before,.plz-track::after{content:"";position:absolute;top:10px;left:0;height:5px;border-radius:5px}
 .plz-track::before{right:0;background:rgba(137,245,229,.12)}
 .plz-track::after{width:calc(var(--p,0) * 100%);
-  background:linear-gradient(90deg,rgba(137,245,229,.45) 0%,var(--accent) 78%,var(--text) 100%);
-  box-shadow:0 0 22px 1px var(--accent);transition:width .22s cubic-bezier(.22,.7,.24,1)}
+  background:linear-gradient(90deg,rgba(137,245,229,.45) 0%,var(--accent) 72%,#eafffb 100%);
+  box-shadow:0 0 30px 2px var(--accent),0 0 64px 6px rgba(137,245,229,.42);
+  transition:width .22s cubic-bezier(.22,.7,.24,1)}
 html:not(.js) .plz-track::after{width:100%}
-/* cada término se ilumina cuando la barra lo alcanza (sin nodos ni bolas) */
-.plz-step{position:relative;padding-top:clamp(32px,4vw,48px);opacity:.34;
-  transition:opacity .55s cubic-bezier(.2,.7,.2,1)}
-.plz-step.is-on{opacity:1}
+/* cada término pasa de OSCURO a ILUMINADO (menta) cuando la barra lo alcanza */
+.plz-step{position:relative;padding-top:clamp(32px,4vw,48px)}
 .plz-ord{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;
-  color:rgba(137,245,229,.5);margin-bottom:.55rem;transition:color .45s ease}
+  color:rgba(137,245,229,.28);margin-bottom:.55rem;transition:color .5s ease}
 .plz-step.is-on .plz-ord{color:var(--accent)}
-.plz-num{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:.95;color:var(--text);
-  font-size:clamp(2.8rem,1.8rem + 3vw,4.8rem);display:flex;align-items:baseline;gap:.16em}
-.plz-num .u{font-size:.28em;color:var(--accent);font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em}
-.plz-label{font-family:var(--ui);font-weight:600;margin-top:.7rem;color:var(--text)}
-.plz-detail{color:rgba(217,246,239,.62);font-size:var(--step--1);line-height:1.5;margin-top:.4rem;max-width:26ch}
+.plz-num{font-family:var(--sans);font-weight:300;letter-spacing:-.02em;line-height:.95;
+  color:rgba(217,246,239,.22);font-size:clamp(2.8rem,1.8rem + 3vw,4.8rem);display:flex;align-items:baseline;gap:.16em;
+  transition:color .6s ease,text-shadow .6s ease}
+.plz-step.is-on .plz-num{color:var(--text)}
+.plz-step.is-cur .plz-num{color:var(--accent-ink);
+  text-shadow:0 0 34px rgba(137,245,229,.6),0 0 12px rgba(137,245,229,.45)}
+.plz-num .u{font-size:.28em;color:rgba(137,245,229,.3);font-family:var(--mono);text-transform:uppercase;
+  letter-spacing:.12em;transition:color .5s ease}
+.plz-step.is-on .plz-num .u{color:var(--accent)}
+.plz-label{font-family:var(--ui);font-weight:600;margin-top:.7rem;color:rgba(217,246,239,.4);transition:color .55s ease}
+.plz-step.is-on .plz-label{color:var(--text)}
+.plz-detail{color:rgba(217,246,239,.3);font-size:var(--step--1);line-height:1.5;margin-top:.4rem;max-width:26ch;transition:color .55s ease}
+.plz-step.is-on .plz-detail{color:rgba(217,246,239,.62)}
 .plz-note{color:rgba(217,246,239,.66);font-weight:300;line-height:1.6;max-width:64ch;margin:clamp(34px,4vw,56px) 0 0}
 .plz-note strong{color:var(--text);font-weight:500}
 @media (max-width:760px){
