@@ -331,7 +331,7 @@ def build(g):
   <span class="prac-rule" aria-hidden="true"></span>
   <h1 class="prac-h1">Cinco prácticas al servicio de su defensa.</h1>
   <p class="prac-sub">Cada proceso por captación abre a la vez frentes administrativos, penales, civiles, societarios, tributarios y laborales. La firma los cubre con cinco prácticas que trabajan el mismo expediente.</p>
-""", cls="hero")}
+""", cls="hero", hero_v=2)}
 
 <section class="prac-rows-sec">
   <div class="prac-rows">{prac_rows}</div>
@@ -363,7 +363,7 @@ def build(g):
                 f'<nav class="practica-nav" aria-label="Las cinco prácticas">{items}</nav></div>')
 
     # --- páginas de desarrollo por práctica: contenido + normatividad + FAQ ---
-    for pr in PRACTICAS_DEV:
+    for _pi, pr in enumerate(PRACTICAS_DEV):
         url = "/equipo/" + pr["slug"] + "/"
         paras = "".join(f"<p>{esc(t)}</p>" for t in pr["paras"])
         # timeline de normatividad (etiqueta · descripción+enlace · imagen)
@@ -388,7 +388,7 @@ def build(g):
   <span class="prac-rule" aria-hidden="true"></span>
   <h1 class="prac-h1">{esc(pr["rama"])}</h1>
   <p class="prac-sub">{esc(pr["lede"])}</p>
-""", cls="hero", tight=True)}
+""", cls="hero", tight=True, hero_v=(2 if _pi % 2 else 1))}
 
 {practica_nav(pr["slug"])}
 

@@ -351,10 +351,18 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
   --dim:rgba(217,246,239,.72);--dim-2:rgba(217,246,239,.48);
   --line:rgba(137,245,229,.28);--accent-ink:#89F5E5;color:var(--text)}
 .hero-media{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:var(--ink)}
-.hero-media-el{width:100%;height:100%;object-fit:cover;display:block;opacity:.55}
+/* Video a color pleno (sin tinte): se ve tal cual. */
+.hero-media-el{width:100%;height:100%;object-fit:cover;display:block;opacity:1}
+/* Sin "película de color": solo un degradado NEUTRO (negro) para anclar el
+   texto arriba y abajo; el centro deja ver el video en sus colores reales. */
 .hero-media::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(3,25,27,.74) 0%,rgba(3,25,27,.52) 44%,rgba(3,25,27,.82) 100%)}
+  background:linear-gradient(180deg,rgba(0,0,0,.52) 0%,rgba(0,0,0,.22) 34%,rgba(0,0,0,.18) 58%,rgba(0,0,0,.6) 100%)}
 .hero>.container,.sol-hero>.container,.contact-hero-in{position:relative;z-index:2}
+/* Sombra sutil en el texto del hero: legible sobre cualquier fotograma sin
+   necesidad de un velo de color encima del video. */
+.hero>.container,.sol-hero>.container,.contact-hero-in{
+  text-shadow:0 1px 2px rgba(0,0,0,.42),0 2px 22px rgba(0,0,0,.34)}
+.hero .btn,.sol-hero .btn,.contact-hero-in .btn,.hero .nav-cta-btn{text-shadow:none}
 @media (prefers-reduced-motion:reduce){.hero-media-el{opacity:.5}}
 
 /* ---------- Rejillas / tarjetas ---------- */

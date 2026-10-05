@@ -134,7 +134,7 @@ def build(g):
     ])
     wa_a = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="afectados">WhatsApp</a>' if SITE["whatsapp"] else "")
     af_hero = (
-        '<section class="sol-hero">' + hero_media() + '<div class="container sol-hero-grid">'
+        '<section class="sol-hero">' + hero_media(2) + '<div class="container sol-hero-grid">'
         '<div class="sol-hero-main">'
         '<p class="eyebrow">Para el afectado</p>'
         '<h1 class="sol-h1">Recuperar lo que entregó <span class="pr-accent">tiene vías —y un reloj.</span></h1>'
@@ -341,7 +341,7 @@ def build(g):
     ]
     wa_b = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="defensa">WhatsApp</a>' if SITE["whatsapp"] else "")
     def_hero = (
-        '<section class="sol-hero">' + hero_media() + '<div class="container sol-hero-grid">'
+        '<section class="sol-hero">' + hero_media(1) + '<div class="container sol-hero-grid">'
         '<div class="sol-hero-main">'
         '<p class="eyebrow">Para el investigado o vinculado</p>'
         '<h1 class="sol-h1">La defensa se libra en <span class="pr-accent">tres frentes a la vez.</span></h1>'
@@ -474,7 +474,7 @@ def build(g):
          "<p>Sí. Los modelos derivan cuando crecen: cambian los volúmenes, los productos y las contrapartes. La revisión periódica existe para detectar esa deriva antes de que sea material.</p>"),
     ]
     cump_hero = (
-        '<section class="sol-hero">' + hero_media() + '<div class="container sol-hero-grid">'
+        '<section class="sol-hero">' + hero_media(2) + '<div class="container sol-hero-grid">'
         '<div class="sol-hero-main">'
         '<p class="eyebrow">Para la empresa preventiva</p>'
         '<h1 class="sol-h1">La línea de la captación <span class="pr-accent">se puede medir.</span></h1>'
@@ -844,7 +844,7 @@ def build(g):
   <span class="prac-rule" aria-hidden="true"></span>
   <h1 class="prac-h1">Preguntas frecuentes sobre captación masiva.</h1>
   <p class="prac-sub">Las dudas más frecuentes sobre el fraude financiero por captación —qué es, cómo se investiga, qué vías abre y qué se puede hacer—. Respuestas sobre la figura jurídica, nunca sobre casos identificables.</p>
-""", cls="hero")}
+""", cls="hero", hero_v=2)}
 
 {faq_sticky(faq_central)}
 
@@ -869,7 +869,7 @@ def build(g):
 {section("""
   <p class="eyebrow">Legal</p>
   <h1>Política de cookies</h1>
-""", cls="hero", tight=True)}
+""", cls="hero", tight=True, hero_v=1)}
 <section class="section band">
   <div class="container prose">
     <p style="color:var(--dim-2)"><em>Borrador. Requiere revisión y aprobación de los socios antes de publicar (§17, pendiente 06).</em></p>
@@ -897,7 +897,7 @@ def build(g):
 {section("""
   <p class="eyebrow">Legal</p>
   <h1>Aviso de privacidad y política de tratamiento de datos</h1>
-""", cls="hero", tight=True)}
+""", cls="hero", tight=True, hero_v=2)}
 <section class="section band">
   <div class="container prose">
     <p style="color:var(--dim-2)"><em>Borrador. Requiere revisión y aprobación de los socios antes de publicar (§17, pendiente 06).</em></p>
@@ -924,7 +924,7 @@ def build(g):
 {section("""
   <p class="eyebrow">Legal</p>
   <h1>Aviso legal</h1>
-""", cls="hero", tight=True)}
+""", cls="hero", tight=True, hero_v=1)}
 <section class="section band">
   <div class="container prose">
     <p style="color:var(--dim-2)"><em>Borrador. Requiere revisión y aprobación de los socios antes de publicar (§17, pendiente 06).</em></p>

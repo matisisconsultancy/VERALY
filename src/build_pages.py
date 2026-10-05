@@ -14,13 +14,13 @@ def build(g):
 
     # -------- helpers de componentes --------
     hero_media = g["hero_media"]
-    def section(inner, cls="", tight=False, media=None):
+    def section(inner, cls="", tight=False, media=None, hero_v=1):
         c = "section" + (" section--tight" if tight else "")
         if cls:
             c += " " + cls
-        # los heroes llevan un video de fondo en loop automáticamente
+        # los heroes llevan un video de fondo en loop automáticamente (toma hero_v)
         if media is None:
-            media = hero_media() if "hero" in cls.split() else ""
+            media = hero_media(hero_v) if "hero" in cls.split() else ""
         return f'<section class="{c}">{media}<div class="container">{inner}</div></section>'
 
     def crumbs(items):

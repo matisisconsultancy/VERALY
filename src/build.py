@@ -298,17 +298,18 @@ def burst_svg():
             'style="color:var(--accent)">' + "".join(parts) + '</svg>')
 
 
-def hero_media():
-    """Capa de video en loop para el fondo de los heroes. El texto va encima con
-    un velo (scrim) que deja apreciar el fondo. Si el navegador no puede
-    reproducir el video, el póster estático sirve de respaldo."""
-    return ('<div class="hero-media" aria-hidden="true">'
-            '<video class="hero-media-el" autoplay muted loop playsinline preload="auto" '
-            'poster="/assets/video/poster.webp">'
-            '<source src="/assets/video/hero.webm" type="video/webm">'
-            '<source src="/assets/video/hero.mp4" type="video/mp4">'
-            '</video>'
-            '</div>')
+def hero_media(variant=1):
+    """Capa de video en loop para el fondo de los heroes. Hay dos tomas (1 y 2)
+    que se reparten por temática para que no se sienta repetido. Si el navegador
+    no puede reproducir el video, el póster estático sirve de respaldo."""
+    v = 2 if str(variant) == "2" else 1
+    return (f'<div class="hero-media" aria-hidden="true">'
+            f'<video class="hero-media-el" autoplay muted loop playsinline preload="auto" '
+            f'poster="/assets/video/poster-{v}.webp">'
+            f'<source src="/assets/video/hero-{v}.webm" type="video/webm">'
+            f'<source src="/assets/video/hero-{v}.mp4" type="video/mp4">'
+            f'</video>'
+            f'</div>')
 
 
 def tl_video_media():
@@ -316,7 +317,7 @@ def tl_video_media():
     pasar el cursor (póster estático -> animación en hover). Reutilizable."""
     return ('<div class="pr-tl-media pr-tl-media--video">'
             '<div class="pr-tl-par">'
-            '<img class="pr-tl-poster" src="/assets/video/poster.webp" alt="" aria-hidden="true">'
+            '<img class="pr-tl-poster" src="/assets/video/poster-1.webp" alt="" aria-hidden="true">'
             '<img class="pr-tl-anim" src="/assets/video/placeholder.webp" alt="" aria-hidden="true">'
             '</div>'
             '<span class="pr-tl-play" aria-hidden="true"></span>'

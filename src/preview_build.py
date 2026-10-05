@@ -24,10 +24,6 @@ def run(out_path):
     motion_js = open(os.path.join(ROOT, "assets/js/legal-motion.js"), encoding="utf-8").read()
     icons_js = open(os.path.join(ROOT, "assets/js/legal-icons.js"), encoding="utf-8").read()
     herovid_js = open(os.path.join(ROOT, "assets/js/hero-video.js"), encoding="utf-8").read()
-    _webp = base64.b64encode(open(os.path.join(ROOT, "assets/video/placeholder.webp"), "rb").read()).decode()
-    _webp_uri = "data:image/webp;base64," + _webp
-    _poster = base64.b64encode(open(os.path.join(ROOT, "assets/video/poster.webp"), "rb").read()).decode()
-    _poster_uri = "data:image/webp;base64," + _poster
     header = build.header_html(""); footer = build.footer_html()
     mobilebar = build.mobile_bar_html(); assistant = build.assistant_html()
     routes = {}
@@ -47,12 +43,9 @@ def run(out_path):
     # El mp4 (~12 MB) NO se incrusta (superaría el límite del artifact): se
     # referencia como archivo adjunto con ruta RELATIVA y se publica aparte,
     # de modo que la vista previa reproduzca el video real sin inflar el HTML.
-    # Medios pesados (video, póster, webp) se sirven como archivos adjuntos con
+    # Medios pesados (videos, pósters, webp) se sirven como archivos adjuntos con
     # ruta relativa, no incrustados, para mantener el HTML del preview liviano.
-    templates = templates.replace("/assets/video/hero.webm", "assets/video/hero.webm")
-    templates = templates.replace("/assets/video/hero.mp4", "assets/video/hero.mp4")
-    templates = templates.replace("/assets/video/poster.webp", "assets/video/poster.webp")
-    templates = templates.replace("/assets/video/placeholder.webp", "assets/video/placeholder.webp")
+    templates = templates.replace("/assets/video/", "assets/video/")
 
     JS = r"""
 (function(){
