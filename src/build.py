@@ -305,6 +305,7 @@ def hero_media():
     return ('<div class="hero-media" aria-hidden="true">'
             '<video class="hero-media-el" autoplay muted loop playsinline preload="auto" '
             'poster="/assets/video/poster.webp">'
+            '<source src="/assets/video/hero.webm" type="video/webm">'
             '<source src="/assets/video/hero.mp4" type="video/mp4">'
             '</video>'
             '</div>')

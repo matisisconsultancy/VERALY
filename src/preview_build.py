@@ -47,9 +47,12 @@ def run(out_path):
     # El mp4 (~12 MB) NO se incrusta (superaría el límite del artifact): se
     # referencia como archivo adjunto con ruta RELATIVA y se publica aparte,
     # de modo que la vista previa reproduzca el video real sin inflar el HTML.
+    # Medios pesados (video, póster, webp) se sirven como archivos adjuntos con
+    # ruta relativa, no incrustados, para mantener el HTML del preview liviano.
+    templates = templates.replace("/assets/video/hero.webm", "assets/video/hero.webm")
     templates = templates.replace("/assets/video/hero.mp4", "assets/video/hero.mp4")
-    templates = templates.replace("/assets/video/poster.webp", _poster_uri)      # incrusta el póster
-    templates = templates.replace("/assets/video/placeholder.webp", _webp_uri)   # incrusta el webp animado
+    templates = templates.replace("/assets/video/poster.webp", "assets/video/poster.webp")
+    templates = templates.replace("/assets/video/placeholder.webp", "assets/video/placeholder.webp")
 
     JS = r"""
 (function(){
