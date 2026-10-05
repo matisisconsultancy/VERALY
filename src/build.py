@@ -27,7 +27,7 @@ SITE = {
     "phone_href": "+573225126199",
     "whatsapp": "573225126199",  # WhatsApp de la firma (mismo número de contacto)
     "address": "Calle 16 # 4-68, oficina 1204, Bogotá",
-    "hours": "Lun a Vie, 8:00–18:00",
+    "hours": "Lunes a viernes, 8:00 a 18:00",
     # Agendamiento (Cal.com). Placeholder hasta conectar el calendario de la firma.
     "cal_link": "",  # p.ej. "veraly/consulta"  (TODO: cuenta Cal.com de la firma)
 }
@@ -80,7 +80,7 @@ ARTICLES = [
         "title": "Captación montada sobre contratos legales: libranzas y factoring",
         "h1": "¿Cuándo un esquema de libranzas o factoring se convierte en captación?",
         "desc": "Contratos legales como libranzas y factoring pueden configurar captación cuando superan los umbrales y el rendimiento carece de explicación financiera razonable.",
-        "answer": "Un esquema de libranzas o factoring —contratos legales en sí mismos— puede configurar captación masiva cuando el pasivo con el público supera los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015 o cuando el rendimiento ofrecido no tiene explicación financiera razonable, en los términos del artículo 6 del Decreto 4334 de 2008. Además, la Ley 1902 de 2018 introdujo un supuesto propio de la libranza, sin umbral alguno.",
+        "answer": "Un esquema de libranzas o factoring, que son contratos legales en sí mismos, puede configurar captación masiva cuando el pasivo con el público supera los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015 o cuando el rendimiento ofrecido no tiene explicación financiera razonable, en los términos del artículo 6 del Decreto 4334 de 2008. Además, la Ley 1902 de 2018 introdujo un supuesto propio de la libranza, sin umbral alguno.",
         "cta_target": "cumplimiento",
     },
     {
@@ -170,7 +170,7 @@ def brand(link=True, small=True):
     inner = (f'<span class="brand-mark" aria-hidden="true" style="width:30px;height:30px;color:currentColor;display:inline-block">{LOGO_SVG}</span>'
              f'<span><b>Veraly</b>{" <span>Grupo Jurídico</span>" if small else ""}</span>')
     if link:
-        return f'<a class="brand" href="/" aria-label="Veraly Grupo Jurídico — inicio">{inner}</a>'
+        return f'<a class="brand" href="/" aria-label="Veraly Grupo Jurídico, inicio">{inner}</a>'
     return f'<span class="brand">{inner}</span>'
 
 def header_html(active=""):
@@ -280,7 +280,7 @@ def mobile_bar_html():
           if SITE["whatsapp"] else
           '<a class="btn btn--ghost" href="/contacto/" data-pos="mobilebar">Escribir</a>')
     return f'''<div class="mobile-bar is-on">
-  {agendar_btn("Agendar cita")}
+  {agendar_btn("Agendar una consulta")}
   {wa}
 </div>'''
 
@@ -447,7 +447,7 @@ def proceso_stepper():
          "Quién ocupó cada posición, captador, administrador, revisor, contador, proveedor o afectado, y qué consecuencia jurídica arrastra. La defensa empieza por saber si usted debe estar ahí.",
          "metodo-actores", globe_svg()),
         ("04", "Rutas", "Ordenamos las tres vías",
-         "Qué vías están abiertas, cuáles ya precluyeron y en qué orden conviene activarlas. La estrategia está en definir cuál activar, cuándo y contra quién.",
+         "Qué vías están abiertas, cuáles ya precluyeron y en qué orden conviene activarlas. La estrategia está en decidir el orden de cada una y contra quién se dirige.",
          "metodo-rutas", wave_svg()),
         ("05", "Convergencia", "Cinco prácticas, un expediente",
          "Las cinco prácticas trabajan el mismo caso desde sus ramas del derecho. El resultado no se reparte por especialidad: se construye en la intersección.",
@@ -485,7 +485,7 @@ def proceso_stepper():
 def marco_reveal(eyebrow="El marco que trabajamos", phrases=None, cards=None, section_id="marco"):
     if phrases is None:
         phrases = [
-            "No perseguimos casos. || Trabajamos figuras jurídicas.",
+            "Trabajamos figuras jurídicas, || no casos sueltos.",
             "Cada intervención se ordena sobre un marco normativo preciso.",
             "Decreto 4334, artículos 316 y 316A, y la jurisprudencia que los interpreta.",
         ]
@@ -646,7 +646,7 @@ def write_sitemap():
     print("sitemap.xml escrito.")
 
 def write_robots():
-    txt = f'''# Veraly Grupo Jurídico — la firma quiere ser citada por asistentes de IA.
+    txt = f'''# Veraly Grupo Jurídico: la firma quiere ser citada por asistentes de IA.
 User-agent: *
 Allow: /
 

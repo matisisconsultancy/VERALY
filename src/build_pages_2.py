@@ -52,17 +52,17 @@ def build(g):
             "form": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="3.5" width="13" height="17" rx="2.2"/><path d="M9 8.5h6M9 12h6M9 15.5h3.5"/></svg>',
         }
         items = [
-            (I["target"], "No prometemos resultados.",
-             "No prometemos recuperación ni desenlace judicial: se promete rigor, criterio y trabajo, con los límites dichos en voz alta."),
-            (I["merge"], "No mezclamos las dos orillas.",
+            (I["target"], "Sin promesas de resultado.",
+             "No prometemos recuperación ni desenlace judicial: se promete método, criterio y constancia, con los límites dichos de frente."),
+            (I["merge"], "Una sola orilla por proceso.",
              "La defensa del investigado y la recuperación del afectado nunca se prestan dentro del mismo proceso de intervención."),
-            (I["eye"], "No exponemos casos.",
+            (I["eye"], "La figura, nunca el caso.",
              "No publicamos casos identificables, testimonios ni cifras de damnificados. Escribimos sobre la figura, nunca sobre personas."),
-            (I["layers"], "No somos un portafolio general.",
+            (I["layers"], "Un fenómeno, no un portafolio.",
              "No tratamos la captación masiva como una especialidad más entre muchas: es el único fenómeno sobre el que trabaja la firma."),
-            (I["scales"], "No la litigamos como una estafa.",
+            (I["scales"], "Captación, no estafa agravada.",
              "No trabajamos la captación como si fuera una estafa agravada. Es una figura jurídica distinta, con vías y plazos propios."),
-            (I["form"], "No capturamos su caso en un formulario.",
+            (I["form"], "Su caso no cabe en un formulario.",
              "El primer contacto no pide los hechos por escrito: se conversan. Los datos se tratan conforme a la Ley 1581 de 2012."),
         ]
         cards = "".join(
@@ -110,7 +110,7 @@ def build(g):
     </div>
     <div class="pr-two-r">
       <p>Hay captación masiva y habitual cuando el pasivo para con el público está compuesto por obligaciones con más de veinte (20) personas o por más de cincuenta (50) obligaciones y, además, concurre una de dos condiciones: que lo recibido supere el cincuenta por ciento (50 %) del patrimonio líquido, o que las operaciones provengan de ofertas públicas o privadas a personas innominadas (artículo 2.18.2.1 del Decreto 1068 de 2015). A ello se suma el criterio material del artículo 6 del Decreto 4334 de 2008: recibir dineros del público entregando a cambio rendimientos sin explicación financiera razonable.</p>
-      <p>Es un fenómeno denso y ruidoso, y por eso se litiga mal: la mayoría de las firmas lo trata como una estafa agravada. No lo es.</p>
+      <p>Es un fenómeno complejo y muy mediático, y por eso se litiga mal: la mayoría de las firmas lo trata como una estafa agravada, y no lo es.</p>
     </div>
   </div>
 </section>
@@ -118,7 +118,7 @@ def build(g):
 <section class="section section-light">
   <div class="container">
     <p class="eyebrow">Las tres vías</p>
-    <h2 style="max-width:22ch">Tres responsabilidades que corren al mismo tiempo</h2>
+    <h2 style="max-width:22ch">Tres frentes que avanzan en paralelo</h2>
     <p class="lead" style="margin-top:1rem;max-width:62ch;color:var(--dim)">Una misma conducta puede abrir tres procesos: administrativo, civil y penal. Están disponibles y pueden complementarse, pero no siempre conviene activarlos al mismo tiempo ni de la misma manera para todos los afectados. La estrategia está en definir cuál activar, cuándo y contra quién. Una firma que atiende solo una de las tres vías trabaja un tercio del problema.</p>
     <div style="margin-top:1.4rem">{g["tres_vias_rows"]()}</div>
   </div>
@@ -128,7 +128,7 @@ def build(g):
   <div class="container">
     <p class="eyebrow-num">El método de convergencia</p>
     <h2 class="pr-big">Leemos cada expediente en <span class="pr-accent">hechos, actores y rutas.</span></h2>
-    <p class="prac-sub">Lo habitual es asignar el caso al socio de la especialidad correspondiente. En captación esa estructura falla: el caso no tiene una especialidad, tiene varias a la vez. Por eso las cinco prácticas trabajan el mismo expediente y el caso se construye en la intersección —a partir de tres lecturas.</p>
+    <p class="prac-sub">Lo habitual es asignar el caso al socio de la especialidad correspondiente. En captación esa estructura falla: el caso no tiene una especialidad, tiene varias a la vez. Por eso las cinco prácticas trabajan el mismo expediente y el caso se construye en la intersección , a partir de tres lecturas.</p>
     <div class="pr-timeline">{metodo_rows}</div>
   </div>
 </section>
@@ -153,7 +153,7 @@ def build(g):
       <div class="clarity-inner">
         <p class="eyebrow">El primer paso</p>
         <h2 class="clarity-h">El primer paso es <span class="pr-accent">tener claridad.</span></h2>
-        <p class="clarity-sub">Antes de decidir qué hacer, hay que ver el caso completo: qué pasó, quién responde y qué vías siguen abiertas. Esa lectura —con las cinco prácticas sobre el mismo expediente— es lo primero que ponemos de su lado.</p>
+        <p class="clarity-sub">Antes de decidir qué hacer, hay que ver el caso completo: qué ocurrió, quién responde y qué caminos siguen abiertos. Esa lectura, con las cinco prácticas sobre el mismo expediente, es lo primero que ponemos de su lado.</p>
         <div class="cta-row">
           {agendar("Agendar una consulta")}
           <a class="btn btn--ghost" href="/equipo/">Por qué cinco prácticas</a>
@@ -259,7 +259,7 @@ def build(g):
             ],
             "faqs": [
                 ("¿Responden los administradores por los actos de la sociedad captadora?",
-                 '<p>Pueden responder. Se revisa la validez de las decisiones anteriores a la intervención —aumentos de capital, cesiones, garantías, operaciones entre vinculadas— y de allí se define la responsabilidad de administradores, revisores fiscales y terceros.</p>'),
+                 '<p>Pueden responder. Se revisa la validez de las decisiones anteriores a la intervención (aumentos de capital, cesiones, garantías, operaciones entre vinculadas), y de allí se define la responsabilidad de administradores, revisores fiscales y terceros.</p>'),
                 ("¿Se pueden anular operaciones societarias previas a la toma de posesión?",
                  '<p>Según su validez. El Código de Comercio permite examinar esos actos; el resultado incide en el perímetro de la intervención y en las responsabilidades que se atribuyen.</p>'),
             ],
@@ -271,11 +271,11 @@ def build(g):
             "slug": "penal-e-informatica",
             "rama": "Penal e informática",
             "card": "La defensa penal por los artículos 316 y 316A y la evidencia digital, desde los actos urgentes hasta el juicio oral.",
-            "lede": "Conduce el frente penal —los artículos 316 y 316A y los delitos que suelen concurrir— y la prueba digital que hoy sostiene o desmonta la acusación.",
+            "lede": "Conduce el frente penal (los artículos 316 y 316A y los delitos que suelen concurrir) y la prueba digital que hoy sostiene o desmonta la acusación.",
             "meta": "Defensa penal por captación masiva y habitual (art. 316) y no reintegro (art. 316A), delitos concurrentes y tratamiento de la evidencia digital: de los actos urgentes y la imputación al juicio oral.",
             "paras": [
                 "El proceso penal por captación masiva y habitual (artículo 316 del Código Penal) y no reintegro (artículo 316A) suele venir acompañado de estafa agravada, lavado de activos y concierto para delinquir. La defensa penal se juega desde los actos urgentes y la audiencia de imputación: cada decisión temprana condiciona el juicio oral.",
-                "Casi toda la prueba es digital: registros de plataformas, comunicaciones, trazas de pagos, billeteras. Tratar esa evidencia digital con criterio informático —cadena de custodia, autenticidad, alcance— es lo que permite excluir lo mal recaudado y sostener el origen lícito de lo que sí lo tiene.",
+                "Casi toda la prueba es digital: registros de plataformas, comunicaciones, trazas de pagos, billeteras. Tratar esa evidencia digital con criterio informático (cadena de custodia, autenticidad, alcance) es lo que permite excluir lo mal recaudado y sostener el origen lícito de lo que sí lo tiene.",
                 "La combinación de derecho penal y competencia informática es la que permite discutir, a la vez, la calificación del delito y la validez de la prueba que lo sostiene. Ese doble frente es difícil de cubrir cuando la defensa se apoya en una sola especialidad.",
             ],
             "normas": [
@@ -289,7 +289,7 @@ def build(g):
                 ("¿Qué es el no reintegro del artículo 316A?",
                  '<p>Es un tipo penal autónomo que sanciona no devolver los recursos captados, y puede concurrir con el artículo 316.</p>'),
                 ("¿La evidencia digital se puede excluir del proceso?",
-                 '<p>Sí, cuando fue mal recaudada. El tratamiento con criterio informático —cadena de custodia, autenticidad y alcance— permite excluir lo indebido y sostener el origen lícito de lo demás.</p>'),
+                 '<p>Sí, cuando fue mal recaudada. El tratamiento con criterio informático (cadena de custodia, autenticidad y alcance) permite excluir lo indebido y sostener el origen lícito de lo demás.</p>'),
             ],
             "serves": [("Me investigan o me vincularon", "/defensa-en-captacion-masiva/")],
             "articulo": ("diferencia-entre-estafa-y-captacion-masiva", "Diferencia entre estafa y captación masiva"),
@@ -312,7 +312,7 @@ def build(g):
             ],
             "faqs": [
                 ("¿Por qué revisar la operación de la empresa en un caso de captación?",
-                 '<p>Comprender cómo operaba la empresa —su estructura, sus contratos y las relaciones entre socios, administradores y terceros— permite identificar los compromisos asumidos y las posibles responsabilidades dentro del proceso.</p>'),
+                 '<p>Comprender cómo operaba la empresa (su estructura, sus contratos y las relaciones entre socios, administradores y terceros) permite identificar los compromisos asumidos y las posibles responsabilidades dentro del proceso.</p>'),
                 ("¿Qué pasa con los empleados de la sociedad intervenida?",
                  '<p>La intervención interrumpe las relaciones laborales; examinar los vínculos con trabajadores, comisionistas y colaboradores permite determinar su naturaleza, las obligaciones pendientes y su tratamiento dentro del proceso.</p>'),
                 ("¿Cómo se ubican las acreencias laborales frente a los afectados?",
@@ -586,7 +586,7 @@ def build(g):
       </div>
       <div class="ci-block">
         <span class="ci-k">Horario</span>
-        <p class="ci-v">Lunes a viernes · 8:00 – 18:00</p>
+        <p class="ci-v">Lunes a viernes · 8:00 a 18:00</p>
       </div>
     </aside>
     <div class="contact-main">
@@ -596,9 +596,9 @@ def build(g):
         {contact_form("contacto", "Enviar mensaje")}
       </div>
       <div class="contact-block contact-agenda">
-        <span class="ci-k">Agendar una cita</span>
+        <span class="ci-k">Agendar una consulta</span>
         <p class="contact-lead">O reserve directamente una primera conversación en el calendario de la firma.</p>
-        <div class="cta-row">{agendar("Agendar una cita")}{wa_contact}</div>
+        <div class="cta-row">{agendar("Agendar una consulta")}{wa_contact}</div>
         <div id="cal-inline" class="cal-inline" aria-live="polite"></div>
       </div>
     </div>

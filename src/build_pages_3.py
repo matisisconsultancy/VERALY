@@ -122,7 +122,7 @@ def build(g):
         ("¿Puedo recuperar los intereses que me prometieron?",
          "<p>Por la vía administrativa, no: la devolución tiene techo en el capital entregado. Los rendimientos y perjuicios solo se persiguen por la vía civil o por la penal, en el incidente de reparación integral. Ojo con el plazo: en firme la sentencia condenatoria, el juez convoca a audiencia dentro de los ocho días siguientes a la solicitud, y esa solicitud caduca a los treinta días contados desde la ejecutoria.</p>"),
         ("¿Y si entregué el dinero en efectivo y no tengo comprobante?",
-         "<p>Dificulta la reclamación pero no la cierra automáticamente. La trazabilidad se puede reconstruir con otros elementos —transferencias parciales, comunicaciones, registros del propio esquema, declaraciones de terceros—. Es trabajo probatorio, y conviene empezarlo antes de que corra el término.</p>"),
+         "<p>Dificulta la reclamación pero no la cierra automáticamente. La trazabilidad se puede reconstruir con otros elementos: transferencias parciales, comunicaciones, registros del propio esquema o declaraciones de terceros. Es trabajo probatorio, y conviene empezarlo antes de que corra el término.</p>"),
         ("¿Qué diferencia hay entre estafa y captación masiva?",
          "<p>Son tipos penales distintos. La captación masiva, además, activa un procedimiento administrativo especial ante la Superintendencia de Sociedades con un mecanismo de devolución propio que la estafa no tiene. La calificación correcta cambia la estrategia completa.</p>"),
         ("¿Qué es un plan de desmonte y me conviene votarlo?",
@@ -157,7 +157,7 @@ def build(g):
         '<section class="sol-hero">' + hero_media(3) + '<div class="container sol-hero-grid">'
         '<div class="sol-hero-main">'
         '<p class="eyebrow">Para el afectado</p>'
-        '<h1 class="sol-h1">Recuperar lo que entregó <span class="pr-accent">tiene vías —y un reloj.</span></h1>'
+        '<h1 class="sol-h1">Recuperar lo que entregó <span class="pr-accent">tiene vías, y un plazo que corre.</span></h1>'
         '<p class="sol-lede">Perder dinero en una pirámide o en un esquema de rendimientos no autorizado abre tres vías de recuperación, todas con plazos que empiezan a correr desde la toma de posesión.</p>'
         '<div class="cta-row">' + agendar("Agendar una consulta") + wa_a + '</div>'
         '</div>'
@@ -172,7 +172,7 @@ def build(g):
         '<div><p class="eyebrow-num">El fenómeno</p>'
         '<h2 class="sol-stmt pr-parallax">Probablemente no fue una estafa. <span class="pr-accent">Fue captación masiva.</span></h2></div>'
         '<div class="sol-stmt-body">'
-        '<p>La diferencia no es semántica. La estafa y la captación masiva son delitos distintos, con procesos distintos y con vías de recuperación distintas —y se usan como sinónimos incluso en la prensa.</p>'
+        '<p>La diferencia no es semántica. La estafa y la captación masiva son delitos distintos, con procesos distintos y con vías de recuperación distintas, y aun así se usan como sinónimos, incluso en la prensa.</p>'
         '<p>Hay <strong>captación masiva y habitual no autorizada</strong> cuando se reciben dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable: más de veinte personas o más de cincuenta obligaciones, siempre que lo recibido supere el 50 % del patrimonio líquido o provenga de ofertas a personas innominadas (art. 2.18.2.1 del Decreto 1068 de 2015).</p>'
         '<p>Que su caso encuadre en esta figura lo cambia todo: activa un procedimiento administrativo especial ante la Superintendencia de Sociedades que no existe en la estafa común, y con él un mecanismo de devolución al que usted puede acceder.</p>'
         '</div></div></section>')
@@ -209,7 +209,7 @@ def build(g):
         return " ".join("<br>" if w == "||" else f'<span class="w">{esc(w)}</span>'
                         for w in s.split(" "))
     _vr_phrases = [
-        "Recuperar no es una sola cosa. || Son tres caminos distintos.",
+        "Recuperar no es un solo trámite. || Son tres caminos que corren a la vez.",
         "Cada vía persigue algo diferente || y avanza por su cuenta.",
         "No hay que elegir una. || Hay que ordenarlas.",
     ]
@@ -244,7 +244,7 @@ def build(g):
         f'<div class="via-bars">{_via_bars}</div>'
         '</div>'
         '</div></div></div></div>'
-        '<div class="container"><p class="lead via-foot" style="max-width:66ch">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía civil o la penal. Las tres están disponibles y pueden complementarse —no hay que activarlas todas a la vez, hay que ordenarlas.</p></div>'
+        '<div class="container"><p class="lead via-foot" style="max-width:66ch">La devolución administrativa tiene <strong>techo en el capital</strong>: los intereses y los perjuicios solo se recuperan por la vía civil o la penal. Las tres están disponibles y pueden complementarse: no hay que activarlas todas a la vez, sino ordenarlas.</p></div>'
         '</section>')
     af_plazos = (
         '<section class="plz-sec plz-pin"><div class="plz-pin-track">'
@@ -258,7 +258,7 @@ def build(g):
         + plz_step(3, "20", "días", "La decisión", "Vencido ese plazo, la providencia que acepta o rechaza se profiere dentro de los veinte días siguientes.")
         + plz_step(4, "3", "días", "El recurso", "Contra ella procede reposición dentro de los tres días siguientes a su notificación.")
         + '</div>'
-        '<p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho: es <strong>la forma</strong> —comprobantes informales, copias sin original, entregas en efectivo sin rastro, o la simple pérdida del término.</p>'
+        '<p class="plz-note">La causa más frecuente de rechazo no es la falta de derecho, sino <strong>la forma</strong>: comprobantes informales, copias sin original, entregas en efectivo sin rastro o la simple pérdida del término.</p>'
         '</div></div></div></section>')
     af_grupo = sol_two(
         "Casos colectivos",
@@ -296,8 +296,8 @@ def build(g):
     'Una primera <span class="pr-accent">conversación.</span>',
     "No necesita traer documentos ni haber decidido nada. Sirve para saber si hay caso, qué vías siguen abiertas y qué plazos corren.",
     agendar("Agendar una consulta") + wa_a,
-    '<p class="cierre-links"><a class="arrowlink" href="/firma/">Conocer cómo trabaja la firma</a>'
-    '<a class="arrowlink" href="/equipo/">Conocer al equipo</a></p>')}
+    '<p class="cierre-links"><a class="arrowlink" href="/firma/">Cómo trabaja la firma</a>'
+    '<a class="arrowlink" href="/equipo/">Ver al equipo</a></p>')}
 '''
     add("/afectados-por-captacion-masiva/", {
         "title": "Afectados por captación masiva: vías y plazos",
@@ -330,12 +330,12 @@ def build(g):
          "<p>Es habitual que se intenten, por la vía de la simulación y de la acción pauliana. La defensa se construye acreditando origen lícito y separación real de patrimonios, y es un trabajo probatorio que conviene empezar antes de que la demanda llegue.</p>"),
     ]
     def_phase_items = [
-        ("Fase previa", "Fase administrativa previa — antes de la declaratoria",
+        ("Fase previa", "Fase administrativa previa, antes de la declaratoria",
          "<p>Requerimientos, visitas y actuaciones de las Superintendencias que anteceden a la declaratoria de captación. Aquí se sustenta técnicamente el modelo de negocio y se acredita la explicación financiera razonable. Es la fase en la que todavía se puede evitar la declaratoria y la suspensión.</p>"
          "<ul><li>Defensa en la actuación administrativa previa y sustentación técnica del modelo.</li>"
          "<li>Recursos contra la orden de suspensión y las multas, y control judicial de la sanción.</li>"
          "<li>Plan de desmonte voluntario preintervención, cuando la toma de posesión es inminente.</li></ul>"),
-        ("Intervención", "Fase de intervención — tras la toma de posesión",
+        ("Intervención", "Fase de intervención, tras la toma de posesión",
          "<p>La toma de posesión trae nombramiento de agente interventor, remoción de administradores, congelación de activos, exigibilidad inmediata de créditos, suspensión de ejecutivos en curso y prohibición de iniciar nuevos.</p>"
          "<ul><li>Solicitud de exclusión y desintervención.</li>"
          "<li>Contradicción de las presunciones sobre recursos y sobre participación.</li>"
@@ -394,7 +394,7 @@ def build(g):
     _presu = [
         ("Sobre los recursos", "Presunción legal · art. 9, núm. 15",
          "La propiedad y el origen de los recursos aprehendidos corresponden a la actividad ilícita.",
-         "Trazabilidad y origen lícito de los activos. Es la única presunción del decreto —una presunción legal, así lo precisó la Sentencia C-145 de 2009— y, por tanto, desvirtuable con prueba positiva."),
+         "Trazabilidad y origen lícito de los activos. Es la única presunción del decreto (una presunción legal, según precisó la Sentencia C-145 de 2009) y, por tanto, desvirtuable con prueba positiva."),
         ("Sobre la participación", "Lo que la Superintendencia suele presumir",
          "Participación en el esquema por el solo ejercicio del cargo durante el periodo de captación.",
          "La Corte Suprema ha exigido que esa vinculación se motive con un examen de la conducta concreta, y ahí está la defensa."),
@@ -433,8 +433,8 @@ def build(g):
     def_salidas = sol_two(
         "Cuando la salida es negociada",
         'Dos salidas que <span class="pr-accent">no se trabajan por separado.</span>',
-        "<p><strong>Plan de desmonte en intervención.</strong> Propuesta de devolución voluntaria conforme a cronograma —previsto en el artículo 7 del Decreto 4334 de 2008— que, según el Decreto 1074 de 2015, exige aval de la Superintendencia y respaldo del 75 % de los afectados. Su cumplimiento conduce a la desintervención; su incumplimiento reactiva las medidas.</p>"
-        "<p style='margin-top:1.1rem'><strong>Justicia penal negociada.</strong> Preacuerdos, allanamiento y principio de oportunidad. La reparación y el reintegro tienen efecto directo sobre la exposición punitiva. Coordinar la conciliación civil, la devolución administrativa y la negociación penal —y no por separado, con abogados que no se hablan— es donde se juega el resultado.</p>",
+        "<p><strong>Plan de desmonte en intervención.</strong> Propuesta de devolución voluntaria conforme a un cronograma (prevista en el artículo 7 del Decreto 4334 de 2008) que, según el Decreto 1074 de 2015, exige aval de la Superintendencia y respaldo del 75 % de los afectados. Su cumplimiento conduce a la desintervención; su incumplimiento reactiva las medidas.</p>"
+        "<p style='margin-top:1.1rem'><strong>Justicia penal negociada.</strong> Preacuerdos, allanamiento y principio de oportunidad. La reparación y el reintegro tienen efecto directo sobre la exposición punitiva. Coordinar la conciliación civil, la devolución administrativa y la negociación penal , y no por separado con equipos que no coordinan, es donde se juega el resultado.</p>",
         band=True, parallax=True)
     def_faq = faq_sticky(defensa_faq, title='Preguntas de la <span class="pr-accent">defensa.</span>')
     defensa_body = f'''
@@ -501,7 +501,7 @@ def build(g):
         '</div></aside>'
         '</div></section>')
     _umbrales = [
-        ("20", "personas o más", "Pasivo con el público con más de veinte personas —o más de cincuenta obligaciones—.", "num"),
+        ("20", "personas o más", "Pasivo con el público con más de veinte personas (o más de cincuenta obligaciones).", "num"),
         ("50", "% del patrimonio", "Y, además, que lo recibido supere el 50 % del patrimonio líquido, o provenga de ofertas a personas innominadas.", "num"),
         ("Art. 6", "criterio material", "Aparte, el rendimiento entregado sin explicación financiera razonable, aunque las cifras estén por debajo.", "mat"),
     ]
@@ -516,7 +516,7 @@ def build(g):
         '<section class="section"><div class="container">'
         '<p class="eyebrow-num">El umbral</p>'
         '<h2 class="pr-big">Dónde está <span class="pr-accent">la línea.</span></h2>'
-        '<p class="lead" style="max-width:70ch;margin-top:1.1rem;color:var(--dim)">El artículo 2.18.2.1 del Decreto 1068 de 2015 fija la medida: más de 20 personas o más de 50 obligaciones con el público, siempre que lo recibido supere el 50 % del patrimonio líquido o provenga de ofertas a personas innominadas. Aparte, el artículo 6 del Decreto 4334 de 2008 permite intervenir cuando el rendimiento ofrecido no tiene explicación financiera razonable, aunque las cifras estén por debajo.</p>'
+        '<p class="lead" style="max-width:70ch;margin-top:1.1rem;color:var(--dim)">El artículo 2.18.2.1 del Decreto 1068 de 2015 fija la medida: más de veinte personas o más de cincuenta obligaciones con el público, siempre que lo recibido supere el 50 % del patrimonio líquido o provenga de ofertas a personas innominadas. Aparte, el artículo 6 del Decreto 4334 de 2008 permite intervenir cuando el rendimiento ofrecido no tiene explicación financiera razonable, aunque las cifras estén por debajo.</p>'
         '<div class="umbral-grid">' + _um_cards + '</div>'
         '<p class="perim-foot">Un modelo puede estar <strong>por debajo de los números</strong> y quedar señalado igual si no sustenta de dónde sale el rendimiento que ofrece.</p>'
         '</div></section>')
@@ -529,7 +529,7 @@ def build(g):
         '<section class="section band"><div class="container">'
         '<p class="eyebrow-num">La revisión de encuadre</p>'
         '<h2 class="pr-big">Una posición defendible <span class="pr-accent">sobre su modelo.</span></h2>'
-        '<p class="lead" style="max-width:62ch;margin-top:1rem;color:var(--dim)">No un concepto general sobre la normativa: una posición escrita para ser leída por un tercero que la cuestione.</p>'
+        '<p class="lead" style="max-width:62ch;margin-top:1rem;color:var(--dim)">No entregamos un concepto general sobre la norma, sino una posición escrita para resistir el cuestionamiento de un tercero.</p>'
         + sol_timeline(_enc_rows) +
         '</div></section>')
     cump_stmt = (
@@ -553,7 +553,7 @@ def build(g):
 {cump_faq}
 
 {cierre_banner(
-    'Revisar el <span class="pr-accent">encuadre.</span>',
+    'Revisar el modelo <span class="pr-accent">a tiempo.</span>',
     "Una conversación para ubicar el modelo frente a los umbrales y definir si conviene una revisión formal.",
     agendar("Agendar una revisión") + f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="cumplimiento">WhatsApp</a>')}
 '''
@@ -610,13 +610,13 @@ def build(g):
     <h2>Qué cambia en la práctica</h2>
     <p>La calificación como captación activa el procedimiento administrativo especial del Decreto 4334 de 2008 ante la Superintendencia de Sociedades, con toma de posesión y un mecanismo de devolución que la estafa común no tiene. Para el afectado, eso abre una vía de recuperación adicional. Para el investigado, cambia por completo el mapa de frentes: a lo penal se suma lo administrativo y lo civil.</p>
     <h2>Por qué se confunden</h2>
-    <p>La cobertura pública trata ambos fenómenos como sinónimos, y muchas firmas litigan la captación como si fuera una estafa agravada. No lo es, y trabajarla así deja fuera la vía administrativa —que suele ser la más rápida para el afectado y la más determinante para el vinculado.</p>
+    <p>La cobertura pública trata ambos fenómenos como sinónimos, y muchas firmas litigan la captación como si fuera una estafa agravada. No lo es, y trabajarla así deja fuera la vía administrativa, que suele ser la más rápida para el afectado y la más determinante para el vinculado.</p>
 """,
         "captacion-con-libranzas-y-factoring": """
     <h2>Contratos legales, uso que puede no serlo</h2>
     <p>La libranza y el factoring son figuras contractuales lícitas. El problema no está en el contrato, sino en el esquema que se construye sobre él: cuando se usan para recibir dineros del público de forma masiva y habitual prometiendo un rendimiento, pueden configurar captación masiva y habitual no autorizada.</p>
     <h2>Los dos criterios que hay que revisar</h2>
-    <p>El primero es objetivo: los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015 —más de veinte personas o más de cincuenta obligaciones con el público, siempre que lo recibido supere el 50 % del patrimonio líquido o provenga de ofertas a personas innominadas—. El segundo es material: el artículo 6 del Decreto 4334 de 2008 exige que exista una explicación financiera razonable del rendimiento ofrecido. Un modelo puede estar por debajo de los umbrales numéricos y aun así quedar señalado si no puede sustentar de dónde sale ese rendimiento.</p>
+    <p>El primero es objetivo: los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015 (más de veinte personas o más de cincuenta obligaciones con el público, siempre que lo recibido supere el 50 % del patrimonio líquido o provenga de ofertas a personas innominadas). El segundo es material: el artículo 6 del Decreto 4334 de 2008 exige que exista una explicación financiera razonable del rendimiento ofrecido. Un modelo puede estar por debajo de los umbrales numéricos y aun así quedar señalado si no puede sustentar de dónde sale ese rendimiento.</p>
     <h2>Los dos caminos de la libranza</h2>
     <p>Un esquema de libranzas puede dar lugar a la intervención por dos caminos. El general, cuando hay entrega masiva de dineros a cambio de rendimientos sin explicación financiera razonable (artículo 6 del Decreto Ley 4334 de 2008). Y el propio de la libranza, introducido por la Ley 1902 de 2018, cuando se venden derechos patrimoniales de contenido crediticio derivados de operaciones de libranza sin el cumplimiento de los requisitos legales, sin que se exija umbral alguno.</p>
     <h2>Por qué es terreno defendible</h2>
@@ -634,7 +634,7 @@ def build(g):
     <h2>De dónde viene el estándar</h2>
     <p>El artículo 5 del Decreto Ley 4334 de 2008 extiende la intervención a un perímetro amplio de vinculados. La Sentencia C-145 de 2009 lo condicionó: la expresión «o indirectamente» no puede cobijar a los terceros de buena fe distintos de quienes entregaron recursos, como empleados y proveedores que actuaron en el ámbito de sus actividades lícitas ordinarias.</p>
     <h2>Qué exige, exactamente</h2>
-    <p>No basta afirmar la buena fe: hay que acreditarla. Se demuestra con la diligencia propia de quien actúa en su actividad ordinaria y puede documentarla —haber contratado, cobrado y registrado como lo haría cualquier proveedor legítimo, y poder probarlo—.</p>
+    <p>No basta afirmar la buena fe: hay que acreditarla. Se demuestra con la diligencia propia de quien actúa en su actividad ordinaria y puede documentarla: haber contratado, cobrado y registrado como lo haría cualquier proveedor legítimo, y poder probarlo.</p>
     <h2>Cómo se acredita</h2>
     <p>Es un trabajo documental que se construye hacia atrás: contratos, controles internos, comunicaciones y decisiones registradas en su momento. Acreditar esa buena fe es, con frecuencia, la diferencia entre quedar dentro o fuera del perímetro de la intervención, y conviene empezarlo antes de que la vinculación se formalice.</p>
 """,
@@ -698,7 +698,7 @@ def build(g):
         art_url = B + "/analisis/" + a["slug"] + "/"
         share_ln = "https://www.linkedin.com/sharing/share-offsite/?url=" + _url.quote(art_url, safe="")
         share_x = ("https://twitter.com/intent/tweet?text="
-                   + _url.quote(a["title"] + " — Veraly Grupo Jurídico", safe="")
+                   + _url.quote(a["title"] + " | Veraly Grupo Jurídico", safe="")
                    + "&url=" + _url.quote(art_url, safe=""))
         related = [x for x in ARTICLES if x["slug"] != a["slug"]][:3]
         rel_cards = "".join(bcard(x, i) for i, x in enumerate(related))
@@ -738,7 +738,7 @@ def build(g):
   <section class="section norm-two-sec">
     <div class="container pr-two">
       <div class="pr-two-l">
-        <p class="eyebrow-num"> Fundamento normativo</p>
+        <p class="eyebrow-num">Fundamento normativo</p>
         <h2 class="pr-big pr-parallax">El marco que <span class="pr-accent">sostiene el análisis.</span></h2>
       </div>
       <div class="pr-two-r norm-flow">{norm_rows}</div>
@@ -750,7 +750,7 @@ def build(g):
         <span class="brand-mark" aria-hidden="true">{LOGO_SVG}</span>
         <div>
           <p class="abc-role">Preparado y revisado por la firma</p>
-          <p class="abc-text">Las <a class="textlink" href="/equipo/">cinco prácticas del derecho</a> —constitucional, penal, corporativa, tributaria y laboral— especializadas en captación masiva y habitual. Contenido informativo con fundamento normativo verificable. Más respuestas en las <a class="textlink" href="/preguntas-frecuentes/">preguntas frecuentes</a>.</p>
+          <p class="abc-text">Las <a class="textlink" href="/equipo/">cinco prácticas del derecho</a> (constitucional, penal, corporativa, tributaria y laboral), especializadas en captación masiva y habitual. Contenido informativo con fundamento normativo verificable. Más respuestas en las <a class="textlink" href="/preguntas-frecuentes/">preguntas frecuentes</a>.</p>
         </div>
       </div>
       <div class="share-row">
@@ -811,19 +811,19 @@ def build(g):
         ("¿Qué es la toma de posesión y qué efectos tiene?",
          '<p>Es la medida con la que la Superintendencia de Sociedades interviene los bienes de la captadora bajo el Decreto 4334 de 2008. Tiene carácter jurisdiccional, efectos de cosa juzgada frente a todos y es de única instancia. <a class="textlink" href="/analisis/que-hace-la-superintendencia-de-sociedades/">Cómo funciona la intervención</a>.</p>'),
         ("Perdí dinero en un esquema, ¿por dónde empiezo?",
-         '<p>Existen tres vías —administrativa, penal y civil— y cada una tiene términos propios que corren desde la toma de posesión. Identificar cuál aplica y en qué plazo es la primera decisión. No prometemos recuperación: el desenlace depende de la masa de la intervención y de cada caso. <a class="textlink" href="/afectados-por-captacion-masiva/">Ver las vías y los plazos</a>.</p>'),
+         '<p>Existen tres vías (administrativa, penal y civil) y cada una tiene términos propios que corren desde la toma de posesión. Identificar cuál aplica y en qué plazo es la primera decisión. No prometemos recuperación: el desenlace depende de la masa de la intervención y de cada caso. <a class="textlink" href="/afectados-por-captacion-masiva/">Ver las vías y los plazos</a>.</p>'),
         ("¿Qué es el no reintegro del artículo 316A?",
          '<p>Es un tipo penal autónomo que sanciona no devolver los recursos captados. Puede concurrir con el art. 316 y con otros delitos como estafa agravada, lavado de activos o concierto para delinquir.</p>'),
         ("Tengo una empresa que recauda de muchas personas, ¿cuándo se configura captación?",
-         '<p>Se revisa un criterio objetivo —los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015— y uno material —que exista explicación financiera razonable del rendimiento (art. 6 del Decreto 4334 de 2008)—. Un modelo puede estar bajo los umbrales y aun así quedar señalado si no sustenta de dónde sale el rendimiento. <a class="textlink" href="/cumplimiento-en-recaudo-masivo/">Revisión de encuadre</a>.</p>'),
-        ("¿Qué es la “explicación financiera razonable”?",
+         '<p>Se revisa un criterio objetivo, los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015, y uno material: que exista explicación financiera razonable del rendimiento (art. 6 del Decreto 4334 de 2008). Un modelo puede estar bajo los umbrales y aun así quedar señalado si no sustenta de dónde sale el rendimiento. <a class="textlink" href="/cumplimiento-en-recaudo-masivo/">Revisión de encuadre</a>.</p>'),
+        ("¿Qué es la «explicación financiera razonable»?",
          '<p>Es la justificación económica verificable del rendimiento ofrecido: de dónde sale y por qué es sostenible. Su ausencia es uno de los indicios centrales de captación, incluso cuando el esquema se apoya en contratos legales como libranzas o factoring. <a class="textlink" href="/analisis/captacion-con-libranzas-y-factoring/">Cuándo un contrato legal configura captación</a>.</p>'),
         ("Me vincularon a un proceso por captación, ¿qué significa?",
-         '<p>La vinculación alcanza a administradores, socios, revisores fiscales, contadores y proveedores por el ejercicio del cargo durante el período de captación. Es desvirtuable: la defensa se construye sobre la exclusión y la prueba del origen lícito. <a class="textlink" href="/defensa-en-captacion-masiva/">Ver la ruta de la defensa</a>.</p>'),
+         '<p>La vinculación alcanza a administradores, socios, revisores fiscales, contadores y proveedores por el ejercicio del cargo durante el periodo de captación. Es desvirtuable: la defensa se construye sobre la exclusión y la prueba del origen lícito. <a class="textlink" href="/defensa-en-captacion-masiva/">Ver la ruta de la defensa</a>.</p>'),
         ("¿Qué es la buena fe del tercero proveedor?",
-         '<p>Es el estándar que, según la Sentencia C-145 de 2009, puede dejar fuera de la intervención a empleados y proveedores —distintos de quienes entregaron recursos— que actuaron en el ámbito de sus actividades lícitas ordinarias. Acreditar esa buena fe es un trabajo documental: contratos, controles, comunicaciones y decisiones registradas. <a class="textlink" href="/analisis/la-buena-fe-del-tercero-proveedor/">Cómo se acredita</a>.</p>'),
+         '<p>Es el estándar que, según la Sentencia C-145 de 2009, puede dejar fuera de la intervención a empleados y proveedores, distintos de quienes entregaron recursos, que actuaron en el ámbito de sus actividades lícitas ordinarias. Acreditar esa buena fe es un trabajo documental: contratos, controles, comunicaciones y decisiones registradas. <a class="textlink" href="/analisis/la-buena-fe-del-tercero-proveedor/">Cómo se acredita</a>.</p>'),
         ("¿La firma garantiza recuperar el dinero o un resultado?",
-         '<p>No. No prometemos recuperación ni desenlace judicial. Lo que se promete es rigor, criterio y trabajo sobre las tres vías, con los límites dichos en voz alta.</p>'),
+         '<p>No. No prometemos recuperación ni desenlace judicial. Lo que se promete es trabajo serio y criterio sobre las tres vías, con los límites dichos de frente.</p>'),
         ("¿Qué datos piden para una primera consulta?",
          '<p>Solo su nombre, una vía de contacto y una línea de contexto. No pedimos los hechos del caso por escrito: se conversan. Los datos se tratan conforme a la Ley 1581 de 2012. <a class="textlink" href="/contacto/">Agendar una consulta</a>.</p>'),
         ("¿Atienden al afectado y al investigado en el mismo caso?",
@@ -835,7 +835,7 @@ def build(g):
         ("¿Cuánto tiempo hay para presentar la reclamación de devolución?",
          '<p>Los términos son cortos y se cuentan en días comunes desde el aviso del agente interventor. Por eso, ante una toma de posesión, conviene actuar pronto para no perder la oportunidad de reclamar. <a class="textlink" href="/afectados-por-captacion-masiva/">Ver las vías y los plazos</a>.</p>'),
         ("¿Una pirámide o un esquema Ponzi es lo mismo que la captación masiva?",
-         '<p>En el lenguaje corriente se usan como sinónimos, pero “pirámide” y “Ponzi” describen el modelo económico. La figura jurídica que activa la intervención administrativa y el tipo penal es la captación masiva y habitual (artículos 316 y 316A del Código Penal y Decreto 4334 de 2008).</p>'),
+         '<p>En el lenguaje corriente se usan como sinónimos, pero «pirámide» y «Ponzi» describen el modelo económico. La figura jurídica que activa la intervención administrativa y el tipo penal es la captación masiva y habitual (artículos 316 y 316A del Código Penal y Decreto 4334 de 2008).</p>'),
         ("¿El mercadeo multinivel o en red configura captación?",
          '<p>No por sí mismo. Puede configurarla cuando, más allá de la venta real de bienes o servicios, el modelo recibe dineros del público de forma masiva y habitual prometiendo rendimientos sin explicación financiera razonable y supera los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015. <a class="textlink" href="/cumplimiento-en-recaudo-masivo/">Revisión de encuadre</a>.</p>'),
         ("¿La captación con criptoactivos o a través de una fintech también está cubierta?",
@@ -854,7 +854,7 @@ def build(g):
   <p class="eyebrow">Preguntas frecuentes</p>
   <span class="prac-rule" aria-hidden="true"></span>
   <h1 class="prac-h1">Preguntas frecuentes sobre captación masiva.</h1>
-  <p class="prac-sub">Las dudas más frecuentes sobre el fraude financiero por captación —qué es, cómo se investiga, qué vías abre y qué se puede hacer—. Respuestas sobre la figura jurídica, nunca sobre casos identificables.</p>
+  <p class="prac-sub">Las dudas más frecuentes sobre el fraude financiero por captación: qué es, cómo se investiga, qué vías abre y qué se puede hacer. Respuestas sobre la figura jurídica, nunca sobre casos identificables.</p>
 """, cls="hero", hero_v=5)}
 
 {faq_sticky(faq_central)}
@@ -887,7 +887,7 @@ def build(g):
     <h2>Qué son las cookies</h2>
     <p>Las cookies son pequeños archivos que un sitio guarda en su navegador para recordar preferencias y entender cómo se usa el sitio. Este sitio funciona sin necesidad de aceptarlas.</p>
     <h2>Qué cookies usamos</h2>
-    <p>Usamos dos categorías. Las <strong>esenciales</strong> permiten recordar su preferencia sobre las cookies y no requieren consentimiento. Las <strong>analíticas</strong> —opcionales— nos ayudan a entender de forma agregada cómo se navega el sitio; solo se activan si usted las acepta en el aviso inicial.</p>
+    <p>Usamos dos categorías. Las <strong>esenciales</strong> permiten recordar su preferencia sobre las cookies y no requieren consentimiento. Las <strong>analíticas</strong> (opcionales) nos ayudan a entender de forma agregada cómo se navega el sitio; solo se activan si usted las acepta en el aviso inicial.</p>
     <h2>Cómo gestionar su preferencia</h2>
     <p>Puede aceptar o continuar sin las cookies analíticas desde el aviso que aparece al entrar. También puede borrar o bloquear las cookies desde la configuración de su navegador en cualquier momento.</p>
     <h2>Datos personales</h2>
@@ -915,7 +915,7 @@ def build(g):
     <h2>Responsable del tratamiento</h2>
     <p>{esc(SITE["legal_name"])}, NIT {esc(SITE["nit"])}, que ejerce bajo la marca «{esc(SITE["name"])}», con domicilio en {esc(SITE["address"])}, correo {esc(SITE["email"])} y teléfono {esc(SITE["phone_display"])}, es responsable del tratamiento de los datos personales recogidos a través de este sitio.</p>
     <h2>Finalidades</h2>
-    <p>Los datos que usted proporciona a través del formulario de contacto —nombre, una vía de contacto y una línea de contexto opcional— se tratan con la única finalidad de atender su solicitud de contacto y realizar la verificación previa de conflicto de interés. No se solicitan los hechos del caso ni datos sensibles a través del sitio.</p>
+    <p>Los datos que usted proporciona a través del formulario de contacto (nombre, una vía de contacto y una línea de contexto opcional) se tratan con la única finalidad de atender su solicitud de contacto y realizar la verificación previa de conflicto de interés. No se solicitan los hechos del caso ni datos sensibles a través del sitio.</p>
     <h2>Derechos del titular</h2>
     <p>Conforme a la Ley 1581 de 2012 y al Decreto 1074 de 2015, usted puede conocer, actualizar, rectificar y suprimir sus datos, así como revocar la autorización otorgada. Para ejercer estos derechos puede escribir a {esc(SITE["email"])}.</p>
     <h2>Término de conservación</h2>

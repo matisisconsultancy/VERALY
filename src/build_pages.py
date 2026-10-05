@@ -159,7 +159,7 @@ def build(g):
         ("3", "Vías del caso", "Administrativa, penal y civil, coordinadas sobre el mismo expediente."),
         ("5", "Prácticas del derecho", "Cinco prácticas aportan cinco ramas al mismo caso; se construye en la intersección."),
         ("24 h", "Tiempo de respuesta", "Respondemos toda consulta en un máximo de 24 horas hábiles, tras verificar el conflicto."),
-        ("0", "Promesas de resultado", "No prometemos desenlace judicial. Se promete rigor, criterio y trabajo — con los límites dichos en voz alta."),
+        ("0", "Promesas de resultado", "No prometemos desenlace judicial. Se promete trabajo riguroso y criterio, con los límites dichos de frente."),
     ]
     conf_cards = ""
     for big, label, d in conf:
@@ -240,7 +240,7 @@ def build(g):
     <div class="stack-head">
       <p class="eyebrow">El equipo</p>
       <h2>Cinco prácticas, un mismo caso</h2>
-      <p class="lead" style="margin-top:1rem">La convergencia no es una declaración: es la composición de la firma. Cinco prácticas aportan cinco ramas del derecho al mismo expediente.</p>
+      <p class="lead" style="margin-top:1rem">La convergencia no es un eslogan; es la composición misma de la firma. Cinco prácticas aportan cinco ramas del derecho al mismo expediente.</p>
       <div class="cta-row" style="margin-top:1.8rem"><a class="btn btn--ghost" href="/equipo/">Por qué cinco prácticas</a></div>
     </div>
     <div class="stack-cards">{prac_cards}</div>

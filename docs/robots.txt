@@ -1,4 +1,4 @@
-# Veraly Grupo Jurídico — la firma quiere ser citada por asistentes de IA.
+# Veraly Grupo Jurídico: la firma quiere ser citada por asistentes de IA.
 User-agent: *
 Allow: /
 
