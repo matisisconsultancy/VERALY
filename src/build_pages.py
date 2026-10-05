@@ -186,7 +186,7 @@ def build(g):
     home_body = f'''
 <section class="hero-scene">
   <div class="hero-sticky">
-    <div class="hero-bg" aria-hidden="true"></div>
+    {hero_media(1)}
     <canvas class="hero-field" data-motion="hero" aria-hidden="true"></canvas>
     <div class="container hero-inner">
       <p class="hero-eyebrow">Veraly Grupo Jurídico · Bogotá, Colombia</p>
@@ -253,19 +253,27 @@ def build(g):
 
 <section class="section clarity-sec">
   <div class="container">
-    <div class="clarity-card" data-spotlight>
+    <div class="clarity-card clarity-card--split" data-spotlight>
       <div class="clarity-glow" aria-hidden="true"></div>
       <div class="clarity-inner">
-        <p class="eyebrow">El primer paso</p>
-        <h2 class="clarity-h">El primer paso es <span class="pr-accent">tener claridad.</span></h2>
-        <p class="clarity-sub">Antes de decidir qué hacer hay que ver el caso completo: qué pasó, quién responde y qué vías siguen abiertas. Esa lectura, con las cinco prácticas sobre el mismo expediente, es lo primero que ponemos de su lado.</p>
-        <div class="cta-row">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabaja la firma</a></div>
-        <nav class="clarity-nav" aria-label="Explorar el sitio">
-          <a class="arrowlink" href="/afectados-por-captacion-masiva/">Perdí dinero en un esquema</a>
-          <a class="arrowlink" href="/defensa-en-captacion-masiva/">Me vinculan a una investigación</a>
-          <a class="arrowlink" href="/cumplimiento-en-recaudo-masivo/">Mi empresa recauda de muchos</a>
-          <a class="arrowlink" href="/equipo/">Las cinco prácticas</a>
-          <a class="arrowlink" href="/analisis/">Análisis</a>
+        <div class="clarity-main">
+          <p class="eyebrow">Cómo empezamos</p>
+          <h2 class="clarity-h">El primer paso es <span class="pr-accent">tener claridad.</span></h2>
+          <p class="clarity-sub">Antes de decidir qué hacer hay que ver el caso completo: qué pasó, quién responde y qué vías siguen abiertas. Esa lectura, con las cinco prácticas sobre el mismo expediente, es lo primero que ponemos de su lado.</p>
+          <div class="cta-row">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabaja la firma</a></div>
+        </div>
+        <nav class="clarity-aside" aria-label="Por dónde empezar">
+          <p class="clarity-aside-k">Según su situación</p>
+          <ul class="clarity-nav">
+            <li><a href="/afectados-por-captacion-masiva/"><span>Perdí dinero en un esquema</span><i aria-hidden="true">→</i></a></li>
+            <li><a href="/defensa-en-captacion-masiva/"><span>Me vinculan a una investigación</span><i aria-hidden="true">→</i></a></li>
+            <li><a href="/cumplimiento-en-recaudo-masivo/"><span>Mi empresa recauda de muchos</span><i aria-hidden="true">→</i></a></li>
+          </ul>
+          <p class="clarity-aside-k">Explorar</p>
+          <ul class="clarity-nav clarity-nav--sec">
+            <li><a href="/equipo/"><span>Las cinco prácticas</span><i aria-hidden="true">→</i></a></li>
+            <li><a href="/analisis/"><span>Análisis</span><i aria-hidden="true">→</i></a></li>
+          </ul>
         </nav>
       </div>
     </div>

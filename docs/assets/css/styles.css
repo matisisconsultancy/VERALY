@@ -753,6 +753,32 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .clarity-sub{color:var(--dim);font-weight:300;font-size:var(--step-1);line-height:1.55;max-width:58ch;
   margin:clamp(16px,2vw,26px) 0 0}
 .clarity-card .cta-row{margin-top:clamp(22px,3vw,38px)}
+/* Variante a dos columnas: la declaración a la izquierda y una guía de
+   navegación por situación a la derecha. Llena el ancho de la card y
+   convierte los enlaces en una orientación intencional (no una fila suelta). */
+.clarity-card--split .clarity-inner{display:grid;grid-template-columns:1.5fr .9fr;
+  gap:clamp(30px,5vw,76px);align-items:center}
+.clarity-card--split .clarity-h{font-size:clamp(2.3rem,1.5rem + 3vw,4rem);max-width:15ch}
+.clarity-aside{min-width:0}
+.clarity-aside-k{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;
+  font-size:.66rem;color:var(--dim-2);margin:0 0 .5rem}
+.clarity-nav{list-style:none;margin:0 0 clamp(20px,2.4vw,30px);padding:0;display:flex;flex-direction:column}
+.clarity-nav:last-child{margin-bottom:0}
+.clarity-nav li{border-top:1px solid var(--line)}
+.clarity-nav li:last-child{border-bottom:1px solid var(--line)}
+.clarity-nav a{display:flex;align-items:center;justify-content:space-between;gap:1.2em;padding:.72em 0;
+  color:var(--text);text-decoration:none;font-family:var(--sans);font-weight:500;font-size:var(--step-0);
+  transition:color .2s var(--btn-ease),padding-left .25s var(--btn-ease)}
+.clarity-nav a i{font-style:normal;color:var(--accent-ink);transition:transform .25s var(--btn-ease)}
+.clarity-nav a:hover{color:var(--accent-ink);padding-left:.35em}
+.clarity-nav a:hover i{transform:translateX(4px)}
+.clarity-nav a:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px;border-radius:2px}
+.clarity-nav--sec a{font-weight:400;color:var(--dim);font-size:var(--step--1)}
+.clarity-nav--sec a:hover{color:var(--text)}
+@media (max-width:860px){
+  .clarity-card--split .clarity-inner{grid-template-columns:1fr;gap:clamp(26px,5vw,36px)}
+  .clarity-card--split .clarity-h{max-width:18ch}
+}
 /* en táctil (sin cursor) se ilumina con una pulsación suave y constante */
 @media (hover:none){.clarity-glow{opacity:.75;animation:clarity-pulse 7s ease-in-out infinite}}
 @keyframes clarity-pulse{0%,100%{opacity:.35}50%{opacity:.85}}

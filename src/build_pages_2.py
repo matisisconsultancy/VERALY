@@ -148,16 +148,31 @@ def build(g):
 
 <section class="section clarity-sec">
   <div class="container">
-    <div class="clarity-card" data-spotlight>
+    <div class="clarity-card clarity-card--split" data-spotlight>
       <div class="clarity-glow" aria-hidden="true"></div>
       <div class="clarity-inner">
-        <p class="eyebrow">El primer paso</p>
-        <h2 class="clarity-h">El primer paso es <span class="pr-accent">tener claridad.</span></h2>
-        <p class="clarity-sub">Antes de decidir qué hacer, hay que ver el caso completo: qué ocurrió, quién responde y qué caminos siguen abiertos. Esa lectura, con las cinco prácticas sobre el mismo expediente, es lo primero que ponemos de su lado.</p>
-        <div class="cta-row">
-          {agendar("Agendar una consulta")}
-          <a class="btn btn--ghost" href="/equipo/">Por qué cinco prácticas</a>
+        <div class="clarity-main">
+          <p class="eyebrow">Cómo empezamos</p>
+          <h2 class="clarity-h">El primer paso es <span class="pr-accent">tener claridad.</span></h2>
+          <p class="clarity-sub">Antes de decidir qué hacer, hay que ver el caso completo: qué ocurrió, quién responde y qué caminos siguen abiertos. Esa lectura, con las cinco prácticas sobre el mismo expediente, es lo primero que ponemos de su lado.</p>
+          <div class="cta-row">
+            {agendar("Agendar una consulta")}
+            <a class="btn btn--ghost" href="/equipo/">Por qué cinco prácticas</a>
+          </div>
         </div>
+        <nav class="clarity-aside" aria-label="Por dónde empezar">
+          <p class="clarity-aside-k">Según su situación</p>
+          <ul class="clarity-nav">
+            <li><a href="/afectados-por-captacion-masiva/"><span>Perdí dinero en un esquema</span><i aria-hidden="true">→</i></a></li>
+            <li><a href="/defensa-en-captacion-masiva/"><span>Me vinculan a una investigación</span><i aria-hidden="true">→</i></a></li>
+            <li><a href="/cumplimiento-en-recaudo-masivo/"><span>Mi empresa recauda de muchos</span><i aria-hidden="true">→</i></a></li>
+          </ul>
+          <p class="clarity-aside-k">Explorar</p>
+          <ul class="clarity-nav clarity-nav--sec">
+            <li><a href="/equipo/"><span>Las cinco prácticas</span><i aria-hidden="true">→</i></a></li>
+            <li><a href="/analisis/"><span>Análisis</span><i aria-hidden="true">→</i></a></li>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>

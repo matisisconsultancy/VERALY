@@ -271,7 +271,6 @@ def footer_html():
 
   <div class="container footer-baseline">
     <span class="fb-copy">© 2026 · {esc(SITE["name"])}</span>
-    <span class="footer-disclaimer">La información publicada en este sitio tiene carácter informativo y no constituye asesoría jurídica ni genera relación profesional.</span>
   </div>
 </footer>'''
 
