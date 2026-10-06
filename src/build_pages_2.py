@@ -341,7 +341,9 @@ def build(g):
     # --- hub /equipo: titular grande + filas numeradas (referente Expertise) ---
     prac_rows = ""
     for i, pr in enumerate(PRACTICAS_DEV, 1):
+        hv = ((i - 1) % 5) + 1  # mismo clip/póster que el hero de su página
         prac_rows += f'''<a class="prac-row" href="/equipo/{pr["slug"]}/">
+  <img class="pr-preview" src="/assets/video/poster-{hv}.webp" alt="" aria-hidden="true" loading="lazy">
   <span class="pr-n">{i:02d}</span>
   <span class="pr-t">{esc(pr["rama"])}</span>
   <span class="pr-d">{esc(pr["card"])}</span>

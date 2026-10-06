@@ -352,10 +352,17 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
   .nav-menu>li>a,.has-sub>button{width:100%;padding:18px 4px;font-size:var(--step-1);border-radius:0;letter-spacing:.005em;
     font-family:var(--sans);font-weight:400;background:none;border:0;color:var(--text);text-align:left}
   .has-sub>button{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-  .has-sub>button svg{display:none}
-  .submenu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;
+  /* chevron visible: indica que la sección se expande (acordeón) */
+  .has-sub>button svg{display:inline-block;width:15px;height:15px;flex:none;color:var(--accent-ink);
+    transition:transform .25s var(--btn-ease)}
+  .has-sub[data-open="true"]>button svg{transform:rotate(180deg)}
+  /* submenú como acordeón: colapsado por defecto, se abre al tocar */
+  .submenu{position:static;visibility:visible;transform:none;box-shadow:none;
     background:transparent;border:0;border-left:2px solid var(--line);border-radius:0;
-    margin:2px 0 10px 12px;padding:0 0 0 12px;min-width:0}
+    margin:0 0 0 12px;padding:0 0 0 12px;min-width:0;
+    max-height:0;opacity:0;overflow:hidden;
+    transition:max-height .34s var(--btn-ease),opacity .28s ease,margin .34s ease,padding .34s ease}
+  .has-sub[data-open="true"] .submenu{max-height:1200px;opacity:1;transform:none;margin:2px 0 12px 12px;padding:4px 0 8px 12px}
   .submenu--mega{display:block;min-width:0}
   .submenu-h{padding:12px 8px 2px}
   .submenu a{padding:12px 8px}
@@ -499,11 +506,15 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
   -webkit-mask:var(--ico-arrow) center/contain no-repeat;mask:var(--ico-arrow) center/contain no-repeat;
   opacity:0;transform:translateX(-8px);transition:opacity .22s,transform .22s}
 .prac-row:hover .pr-go,.prac-row:focus-visible .pr-go{opacity:1;transform:none}
+.prac-row .pr-preview{display:none}
 @media (max-width:820px){
-  .prac-row{grid-template-columns:auto 1fr;column-gap:18px;row-gap:.7rem;padding:26px var(--pad-bleed)}
-  .prac-row .pr-n{grid-column:1;grid-row:1;align-self:center}
-  .prac-row .pr-t{grid-column:2;grid-row:1}
-  .prac-row .pr-d{grid-column:1 / -1;grid-row:2}
+  .prac-row{grid-template-columns:auto 1fr;column-gap:16px;row-gap:.7rem;padding:24px var(--pad-bleed) 30px;align-items:center}
+  /* preview del hero de cada práctica (solo en responsive) */
+  .prac-row .pr-preview{display:block;grid-column:1 / -1;grid-row:1;width:100%;aspect-ratio:16/9;
+    object-fit:cover;border-radius:var(--card-r);margin-bottom:8px;filter:saturate(.92)}
+  .prac-row .pr-n{grid-column:1;grid-row:2;align-self:center}
+  .prac-row .pr-t{grid-column:2;grid-row:2}
+  .prac-row .pr-d{grid-column:1 / -1;grid-row:3}
   .prac-row .pr-go{display:none}
 }
 /* Entrada escalonada al hacer scroll (solo con JS; sin JS todo visible) */
