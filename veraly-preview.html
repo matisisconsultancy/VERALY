@@ -371,8 +371,13 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
   .submenu--mega{display:block;min-width:0}
   .submenu-h{padding:12px 8px 2px}
   .submenu a{padding:12px 8px}
-  .nav-cta{margin:20px 0 0}
-  .nav-cta .btn{width:100%}
+  /* "Contacto" se muestra como un ítem más del menú (título, sin mayúsculas) */
+  .nav-cta{margin:0}
+  .nav-cta .btn{width:100%;background:none;border:0;box-shadow:none;color:var(--text);
+    text-transform:none;font-family:var(--sans);font-weight:400;font-size:var(--step-1);
+    letter-spacing:.005em;justify-content:flex-start;text-align:left;padding:18px 4px;min-height:0}
+  .nav-cta .btn::before,.nav-cta .btn::after{content:none}
+  .nav-cta .btn:hover,.nav-cta .btn:focus-visible{background:none;color:var(--accent-ink)}
   .nav-toggle{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;
     background:rgba(217,246,239,.06);border:1px solid var(--line);border-radius:12px;cursor:pointer;z-index:130;color:var(--text);
     -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
@@ -1478,6 +1483,13 @@ html.js .reveal-up.in{opacity:1;transform:none}
 
 /* -------- Filtros -------- */
 .blog-filters{display:flex;flex-wrap:wrap;gap:8px;margin:clamp(30px,5vw,54px) 0 clamp(20px,3vw,30px)}
+/* En teléfono: una sola fila deslizable (no envuelve en varias líneas) */
+@media (max-width:560px){
+  .blog-filters{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    margin-inline:calc(var(--edge) * -1);padding:2px var(--edge);scrollbar-width:none}
+  .blog-filters::-webkit-scrollbar{display:none}
+  .blog-filters .bfilter{flex:none}
+}
 /* ============================================================
    Sistema de pills / filtros — un solo control de selección,
    replicado en todo el sitio: selector de las cinco prácticas,
