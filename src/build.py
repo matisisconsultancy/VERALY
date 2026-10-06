@@ -136,7 +136,8 @@ def tres_vias_rows():
     for i, (num, eyb, h, d, ikey, media) in enumerate(vias):
         canvas = (f'<canvas class="via-canvas" data-icon="{ikey}" data-max="2300" '
                   f'data-dot="1.45" data-fit="0.84" aria-hidden="true"></canvas>')
-        media_html = (f'<div class="fr-media"><div class="fr-par">{canvas}{media}</div>'
+        solid = solid_icon_svg(ikey, "ico-solid ico-solid--via", pad=18)
+        media_html = (f'<div class="fr-media"><div class="fr-par">{media}{solid}{canvas}</div>'
                       f'<span class="fr-index" aria-hidden="true">{num}</span></div>')
         text_html = (f'<div class="fr-text">'
                      f'<p class="fr-eyebrow">{eyb}</p><h2>{esc(h)}</h2>'
@@ -433,6 +434,64 @@ def icon_recaudo():
         'M43 80 V68 H53 V80 Z"/>')
 
 
+# ----------------------------------------------------------------------------
+# Iconos SÓLIDOS de respaldo — MISMAS formas que legal-icons.js ICONS{}.
+# Se usan como respaldo accesible: se muestran con prefers-reduced-motion y
+# cuando el lienzo de partículas no llega a pintarse (algunos navegadores
+# móviles). Así el icono SIEMPRE aparece; la animación queda para quien no
+# tiene restricciones de movimiento. viewBox 96×96.
+# ----------------------------------------------------------------------------
+_ICON_SHAPES = {
+    "recuperacion": [{"r": "evenodd", "d": "M21 48 a27 27 0 1 0 54 0 a27 27 0 1 0 -54 0M48 31 L63 47 L55 47 L55 65 L41 65 L41 47 L33 47 Z"}],
+    "defensa": [{"r": "evenodd", "d": "M48 14 L76 25 V47 C76 65 63 75 48 81 C33 75 20 65 20 47 V25 ZM44 61 L30 47 L36 41 L44 49 L62 31 L68 37 Z"}],
+    "recaudo": [{"d": "M26 36 L48 21 L70 36 Z"}, {"r": "evenodd", "d": "M31 36 H65 V80 H31 ZM37 43 H45 V52 H37 ZM51 43 H59 V52 H51 ZM37 57 H45 V66 H37 ZM51 57 H59 V66 H51 ZM43 80 V68 H53 V80 Z"}],
+    "via-admin": [{"d": "M14 33 L48 15 L82 33 Z"}, {"rect": [17, 35, 62, 8, 2]}, {"rect": [20, 46, 8, 28, 2]}, {"rect": [33, 46, 8, 28, 2]}, {"rect": [47, 46, 8, 28, 2]}, {"rect": [60, 46, 8, 28, 2]}, {"rect": [14, 76, 68, 8, 2]}],
+    "via-penal": [{"d": "M22 24 H30 V72 H22 Z"}, {"r": "evenodd", "d": "M30 24 H72 V72 H30 ZM38 33 H64 V36 H38 ZM38 42 H64 V45 H38 ZM38 51 H64 V54 H38 ZM38 60 H56 V63 H38 Z"}],
+    "via-civil": [{"d": "M20 50 L48 25 L76 50", "s": 4.5}, {"d": "M28 50 V82 H68 V50", "s": 4.5}, {"d": "M42 61 V56 a6 6 0 0 1 12 0 V61", "s": 3.6}, {"r": "evenodd", "d": "M39 61 H57 Q59 61 59 63 V75 Q59 77 57 77 H39 Q37 77 37 75 V63 Q37 61 39 61 ZM48 65 a2.6 2.6 0 1 0 0.1 0 ZM47 68 H49 V74 H47 Z"}],
+    "metodo-verificar": [{"d": "M20 48 a28 28 0 1 0 56 0 a28 28 0 1 0 -56 0", "s": 4}, {"d": "M35 49 L45 59 L63 37", "s": 5}],
+    "metodo-hechos": [{"d": "M30 14 H58 L68 24 V82 H30 Z", "s": 4}, {"d": "M58 14 V24 H68", "s": 3.4}, {"d": "M38 37 H60", "s": 3}, {"d": "M38 47 H60", "s": 3}, {"d": "M38 57 H60", "s": 3}, {"d": "M38 67 H52", "s": 3}],
+    "metodo-actores": [{"d": "M48 20 a10 10 0 1 0 0.1 0 Z"}, {"d": "M30 72 C30 56 66 56 66 72 L66 78 L30 78 Z"}, {"d": "M21 34 a7 7 0 1 0 0.1 0 Z"}, {"d": "M9 70 C9 58 33 58 33 70 L33 78 L9 78 Z"}, {"d": "M75 34 a7 7 0 1 0 0.1 0 Z"}, {"d": "M63 70 C63 58 87 58 87 70 L87 78 L63 78 Z"}],
+    "metodo-rutas": [{"rect": [16, 24, 34, 6, 3]}, {"d": "M50 18 L68 27 L50 36 Z"}, {"rect": [16, 45, 34, 6, 3]}, {"d": "M50 39 L68 48 L50 57 Z"}, {"rect": [16, 66, 34, 6, 3]}, {"d": "M50 60 L68 69 L50 78 Z"}],
+}
+
+def _convergence_shapes():
+    # Isotipo: cinco galones que convergen a un punto (mapeado a 96×96, igual que
+    # en legal-icons.js: x' = 48 + x*0.3).
+    S, O = 0.3, 48
+    def m(x, y):
+        return f"{O + x * S:.1f} {O + y * S:.1f}"
+    arms = [
+        [-29.2, -120.8, 0, -39.6, 39.6, -72.0],
+        [105.6, -64.8, 37.6, -12.0, 80.4, 15.6],
+        [94.4, 80.4, 23.2, 32.0, 10.0, 81.2],
+        [-47.2, 114.8, -23.2, 32.0, -74.0, 34.8],
+        [-124.0, -9.6, -37.6, -12.0, -56.0, -59.6],
+    ]
+    shp = [{"d": f"M{m(a[0], a[1])} L{m(a[2], a[3])} L{m(a[4], a[5])}", "s": 30 * S} for a in arms]
+    shp.append({"d": f"M{O - 4.8} {O} a4.8 4.8 0 1 0 9.6 0 a4.8 4.8 0 1 0 -9.6 0"})
+    return shp
+
+def solid_icon_svg(key, cls="ico-solid", pad=0):
+    """SVG sólido del icono <key> (relleno para figuras sólidas, trazo para las
+    de contorno), a juego con la versión de partículas. <pad> agrega margen al
+    viewBox para que, al rellenar un panel completo, la figura quede centrada y
+    más pequeña (equivalente al data-fit del lienzo)."""
+    shapes = _convergence_shapes() if key == "metodo-convergencia" else _ICON_SHAPES.get(key, [])
+    parts = []
+    for s in shapes:
+        if "rect" in s:
+            x, y, w, h, r = s["rect"]
+            parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{r}" fill="currentColor"/>')
+        elif s.get("s"):
+            parts.append(f'<path d="{s["d"]}" fill="none" stroke="currentColor" stroke-width="{s["s"]}" '
+                         f'stroke-linecap="round" stroke-linejoin="round"/>')
+        else:
+            parts.append(f'<path d="{s["d"]}" fill="currentColor" fill-rule="{s.get("r", "nonzero")}"/>')
+    vb = f"{-pad} {-pad} {96 + 2 * pad} {96 + 2 * pad}"
+    return (f'<svg class="{cls}" viewBox="{vb}" aria-hidden="true" focusable="false">'
+            + "".join(parts) + '</svg>')
+
+
 def proceso_stepper():
     steps = [
         ("01", "Verificar", "Verificamos el conflicto antes de aceptar",
@@ -457,8 +516,9 @@ def proceso_stepper():
         active = " active" if i == 0 else ""
         canvas = (f'<canvas class="step-canvas" data-icon="{ikey}" data-max="2600" '
                   f'data-dot="1.2" data-fit="0.96" data-net data-glow aria-hidden="true"></canvas>')
+        solid = solid_icon_svg(ikey, "ico-solid ico-solid--step", pad=16)
         steps_html += f'''<div class="step{active}" data-i="{i}">
-  <div class="step-visual">{canvas}{media}</div>
+  <div class="step-visual">{media}{solid}{canvas}</div>
   <div class="step-body">
     <p class="step-chip"><span class="step-n">{num}</span><span class="step-l">{esc(chip)}</span></p>
     <h2>{esc(h)}</h2>

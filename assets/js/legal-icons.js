@@ -289,10 +289,19 @@
     function start() { if (!raf) raf = requestAnimationFrame(frame); }
     function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
 
+    // Respaldo accesible: el contenedor muestra un SVG SÓLIDO del icono por
+    // defecto. Solo "encendemos" el lienzo de partículas (clase .ico-ok en el
+    // contenedor) cuando NO hay movimiento reducido y el lienzo puede medirse.
+    // Si algo falla, queda el sólido visible — el icono nunca desaparece.
+    var host = canvas.parentElement;
+    if (reduce) { return; }                         // movimiento reducido → SVG sólido
+    if (host) host.classList.add('ico-ok');         // revela el lienzo (el CSS lo tenía oculto)
     resize();
+    if (W < 2 || H < 2) {                           // el lienzo no obtuvo tamaño → vuelve al sólido
+      if (host) host.classList.remove('ico-ok');
+      return;
+    }
     window.addEventListener('resize', function () { resize(); });
-
-    if (reduce) { progress = 1; target = 1; render(0); return; }
 
     var step = canvas.closest('.step');
     if (step) {
