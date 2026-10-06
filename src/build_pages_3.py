@@ -301,7 +301,7 @@ def build(g):
     add("/afectados-por-captacion-masiva/", {
         "title": "Afectados por captación masiva: vías y plazos",
         "description": "Vías administrativa, penal y civil para reclamar tras una captación no autorizada, con los términos que corren desde la toma de posesión.",
-        "active": "afectado", "og_type": "article", "body_class": "theme-light",
+        "active": "afectado", "og_type": "article", "body_class": "theme-light flush-footer",
         "schema": [
             service_schema(
                 "Recuperación para afectados por captación masiva",
@@ -489,7 +489,7 @@ def build(g):
         "title": "Defensa en captación masiva · Arts. 316 y 316A",
         "description": "Defensa administrativa ante la Superintendencia de Sociedades, penal por los arts. 316 y 316A, y civil patrimonial.",
         "active": "investigado", "og_type": "article", "mobile_bar": True,
-        "body_class": "theme-light has-mobile-bar",
+        "body_class": "theme-light flush-footer",
         "schema": [
             service_schema(
                 "Defensa en captación masiva y habitual",
@@ -587,7 +587,7 @@ def build(g):
     add("/cumplimiento-en-recaudo-masivo/", {
         "title": "Cumplimiento en recaudo masivo · Captación",
         "description": "Revisión de encuadre para fintech, crowdfunding, libranzas y multinivel frente a los umbrales de captación.",
-        "active": "empresa", "og_type": "article", "body_class": "theme-light",
+        "active": "empresa", "og_type": "article", "body_class": "theme-light flush-footer",
         "schema": [
             service_schema(
                 "Revisión de encuadre en recaudo masivo",
