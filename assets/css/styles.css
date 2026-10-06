@@ -1499,6 +1499,24 @@ html.js .step-visual.ico-ok .ico-solid--step{display:none}
   /* en táctil no hay hover: el enlace "Ver norma" se muestra siempre */
   .reveal-cards .rc .rc-go{opacity:1;transform:none;margin-top:2px}
 }
+/* Movimiento reducido: la sección de frases que se "revela" con el scroll no
+   puede fijarse ni intercambiar frases una a una. El JS entonces activa TODAS
+   las frases; como son position:absolute (centradas en el mismo punto) se
+   SUPERPONÍAN. Aquí las devolvemos al flujo normal (apiladas, legibles) y
+   mostramos también las tarjetas. No afecta al modo de autorrotación, que ya
+   muestra una sola frase. */
+@media (prefers-reduced-motion:reduce){
+  .reveal-track:not([data-autorotate]){height:auto}
+  .reveal-track:not([data-autorotate]) .reveal-sticky{position:static;height:auto;min-height:0;
+    overflow:visible;padding-block:var(--section-y)}
+  .reveal-track:not([data-autorotate]) .reveal-phrases{position:static;min-height:0;display:block;
+    width:100%;max-width:none}
+  .reveal-track:not([data-autorotate]) .reveal-phrase{position:static;inset:auto;opacity:1;
+    transform:none;margin:0 0 .55em;display:block}
+  .reveal-track:not([data-autorotate]) .reveal-phrase:last-of-type{margin-bottom:0}
+  .reveal-track:not([data-autorotate]) .reveal-phrase .w{color:var(--text)}
+  .reveal-track:not([data-autorotate]) .reveal-cards .rc{opacity:1;transform:none}
+}
 
 /* ---------- Asistente guiado ---------- */
 /* Botón flotante de WhatsApp — color de marca (menta sobre teal) */
