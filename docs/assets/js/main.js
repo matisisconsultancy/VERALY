@@ -414,6 +414,33 @@
       var np = phrases.length; if (!np) return;
       var words = phrases.map(function (p) { return $$('.w', p); });
       var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+      // --- Móvil: cada frase aparece y se ILUMINA al entrar en pantalla (en vez
+      // de un recorrido fijado con scroll). Compacto, sin huecos de fondo. ---
+      if (window.matchMedia && window.matchMedia('(max-width: 900px)').matches) {
+        if (!('IntersectionObserver' in window) || reduce) {
+          phrases.forEach(function (p) { p.classList.add('active'); });
+          words.forEach(function (ws) { ws.forEach(function (w) { w.style.setProperty('--lit', '1'); }); });
+          cards.forEach(function (c) { c.classList.add('in'); });
+          return;
+        }
+        var pio = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            var i = phrases.indexOf(e.target);
+            e.target.classList.add('active');
+            if (i >= 0) words[i].forEach(function (w) { w.style.setProperty('--lit', '1'); });
+            pio.unobserve(e.target);
+          });
+        }, { threshold: 0.55, rootMargin: '0px 0px -12% 0px' });
+        phrases.forEach(function (p) { pio.observe(p); });
+        if (cards.length) {
+          var cio = new IntersectionObserver(function (es) {
+            es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); cio.unobserve(e.target); } });
+          }, { threshold: 0.25 });
+          cards.forEach(function (c) { cio.observe(c); });
+        }
+        return;
+      }
       // El titular de cada frase se muestra COMPLETO (visible desde el primer
       // momento); ya no se ilumina palabra por palabra.
       function showPhrase(idx) {
@@ -612,6 +639,25 @@
   /* ---------- Línea de tiempo de plazos: avance con el scroll ---------- */
   function initPlazos() {
     var secs = $$('.plz-sec'); if (!secs.length) return;
+    // Móvil: la barra queda completa y cada hito se ilumina al entrar en
+    // pantalla (dorso oscuro -> menta), con scroll nativo fluido.
+    if (window.matchMedia && window.matchMedia('(max-width: 720px)').matches) {
+      secs.forEach(function (sec) {
+        var track = sec.querySelector('.plz-track'); if (!track) return;
+        var steps = $$('.plz-step', track);
+        track.style.setProperty('--p', '1');
+        if ('IntersectionObserver' in window) {
+          var pio = new IntersectionObserver(function (es) {
+            es.forEach(function (e) {
+              e.target.classList.add('is-on');
+              e.target.classList.toggle('is-cur', e.isIntersecting);
+            });
+          }, { threshold: 0.6 });
+          steps.forEach(function (s) { pio.observe(s); });
+        } else { steps.forEach(function (s) { s.classList.add('is-on'); }); }
+      });
+      return;
+    }
     function upd() {
       var vh = window.innerHeight;
       secs.forEach(function (sec) {
@@ -654,6 +700,18 @@
     var track = $('.via-track'); if (!track) return;
     var slides = $$('.via-slide', track), bars = $$('.via-bar', track), n = slides.length;
     if (!n) return;
+    // Móvil: sin escenario fijado. Todas las vías visibles y apiladas; cada una
+    // se resalta al entrar en pantalla (scroll nativo, fluido).
+    if (window.matchMedia && window.matchMedia('(max-width: 860px)').matches) {
+      bars.forEach(function (b) { b.classList.add('on'); });
+      if ('IntersectionObserver' in window) {
+        var vio = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { e.target.classList.toggle('active', e.isIntersecting); });
+        }, { threshold: 0.3 });
+        slides.forEach(function (s) { vio.observe(s); });
+      } else { slides.forEach(function (s) { s.classList.add('active'); }); }
+      return;
+    }
     function upd() {
       var h = track.offsetHeight - window.innerHeight;
       var p = h > 0 ? (-track.getBoundingClientRect().top) / h : 0;
@@ -840,16 +898,26 @@
 
   /* ---------- Galerías: el video se reproduce al pasar el cursor ---------- */
   function initTlVideos() {
+    var touch = !!(window.matchMedia && window.matchMedia('(hover: none)').matches);
+    var play = function (v) { v.muted = true; var p; try { p = v.play(); } catch (e) {} if (p && p.catch) p.catch(function () {}); };
+    var pause = function (v) { try { v.pause(); } catch (e) {} };
+    // En táctil: se reproduce solo al entrar en pantalla (no hay cursor).
+    var io = (touch && 'IntersectionObserver' in window) ? new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var v = e.target.querySelector('video.pr-tl-anim'); if (!v) return;
+        if (e.isIntersecting) play(v); else pause(v);
+      });
+    }, { threshold: 0.35 }) : null;
     $$('.pr-tl-media--video').forEach(function (m) {
       if (m.__tl) return; m.__tl = 1;
       var v = m.querySelector('video.pr-tl-anim'); if (!v) return;
       var row = m.closest('.pr-tl-row') || m;
-      var start = function () { v.muted = true; var p; try { p = v.play(); } catch (e) {} if (p && p.catch) p.catch(function () {}); };
-      var stop = function () { try { v.pause(); } catch (e) {} };
-      row.addEventListener('pointerenter', start);
-      row.addEventListener('focusin', start);
-      row.addEventListener('pointerleave', stop);
-      row.addEventListener('focusout', stop);
+      if (touch) { if (io) io.observe(row); else play(v); return; }
+      // Escritorio: se reproduce al pasar el cursor (o al enfocar).
+      row.addEventListener('pointerenter', function () { play(v); });
+      row.addEventListener('focusin', function () { play(v); });
+      row.addEventListener('pointerleave', function () { pause(v); });
+      row.addEventListener('focusout', function () { pause(v); });
     });
   }
   initTlVideos();

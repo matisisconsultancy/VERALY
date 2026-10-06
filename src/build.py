@@ -335,8 +335,7 @@ def tl_video_media():
             f'<source src="/assets/video/hero-{v}.webm" type="video/webm">'
             f'<source src="/assets/video/hero-{v}.mp4" type="video/mp4"></video>'
             f'</div>'
-            f'<span class="pr-tl-play" aria-hidden="true"></span>'
-            f'<span class="pr-tl-vbadge">Video</span></div>')
+            f'</div>')
 
 
 def pixels_strip(n=48, on_every=5):

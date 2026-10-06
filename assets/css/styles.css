@@ -207,6 +207,12 @@ strong{font-weight:600;color:var(--text)}
   .btn.is-loading::after{animation:none}}
 
 .cta-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:1.6rem}
+/* En teléfono los botones se apilan a ancho completo: quedan alineados y los
+   corchetes de esquina no se solapan. */
+@media (max-width:560px){
+  .cta-row{flex-direction:column;align-items:stretch;gap:12px}
+  .cta-row>.btn{width:100%}
+}
 
 /* enlaces de texto: subrayado que se despliega */
 .textlink{position:relative;color:var(--accent-ink);text-decoration:none;font-family:var(--ui);font-weight:600;
@@ -566,17 +572,8 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
   width:100%;height:100%;object-fit:cover;display:block}
 .pr-tl-media--video .pr-tl-anim{opacity:0;transition:opacity .45s ease}
 .pr-tl-row:hover .pr-tl-anim,.pr-tl-row:focus-within .pr-tl-anim{opacity:1}
-.pr-tl-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
-  width:clamp(44px,4vw,58px);aspect-ratio:1;border-radius:999px;border:1.5px solid rgba(217,246,239,.55);
-  background:rgba(3,25,27,.38);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
-  display:grid;place-items:center;transition:opacity .3s,transform .3s}
-.pr-tl-play::after{content:"";width:0;height:0;margin-left:3px;
-  border-left:11px solid var(--accent-ink);border-top:7px solid transparent;border-bottom:7px solid transparent}
-.pr-tl-row:hover .pr-tl-play,.pr-tl-row:focus-within .pr-tl-play{opacity:0;transform:translate(-50%,-50%) scale(.85)}
-.pr-tl-vbadge{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--mono);font-size:.58rem;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);
-  background:rgba(3,25,27,.55);padding:4px 9px;border-radius:6px;
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+/* en táctil (sin cursor) el video se ve y se reproduce solo al entrar en pantalla */
+@media (hover:none){.pr-tl-media--video .pr-tl-anim{opacity:1}}
 @media (max-width:720px){
   .pr-tl-row{grid-template-columns:1fr;gap:0;padding:26px var(--edge) 0;align-items:start}
   .pr-tl-label{padding-left:0}
@@ -1126,7 +1123,13 @@ html.js .fr-par .media-svg{display:none}
   letter-spacing:.02em;color:rgba(137,245,229,.16)}
 .frow.reverse .fr-text{order:2}
 .frow.reverse .fr-media{order:1}
-@media (max-width:860px){.frow{grid-template-columns:1fr}.frow.reverse .fr-text,.frow.reverse .fr-media{order:0}}
+/* En móvil las filas en zig-zag (alternan orden en el DOM) se apilan con un
+   orden uniforme: primero el texto, luego la figura, en todas las filas. */
+@media (max-width:860px){
+  .frow{grid-template-columns:1fr}
+  .frow .fr-text{order:1}
+  .frow .fr-media{order:2;aspect-ratio:16/10;margin-top:clamp(18px,4vw,28px)}
+}
 .fr-eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--dim-2);margin:.4rem 0 1rem}
 .frow h2{font-size:clamp(2rem,1.3rem+2.9vw,3.4rem);line-height:1.06;letter-spacing:-.02em}
 /* Estado de entrada (solo con JS; sin JS todo se ve) */

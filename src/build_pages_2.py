@@ -128,7 +128,7 @@ def build(g):
   <div class="container">
     <p class="eyebrow-num">El método de convergencia</p>
     <h2 class="pr-big">Leemos cada expediente en <span class="pr-accent">hechos, actores y rutas.</span></h2>
-    <p class="prac-sub">Lo habitual es asignar el caso al socio de la especialidad correspondiente. En captación esa estructura falla: el caso no tiene una especialidad, tiene varias a la vez. Por eso las cinco prácticas trabajan el mismo expediente y el caso se construye en la intersección , a partir de tres lecturas.</p>
+    <p class="prac-sub">Lo habitual es asignar el caso al socio de la especialidad correspondiente. En captación esa estructura falla: el caso no tiene una especialidad, tiene varias a la vez. Por eso las cinco prácticas trabajan el mismo expediente y el caso se construye en la intersección, a partir de tres lecturas.</p>
     <div class="pr-timeline">{metodo_rows}</div>
   </div>
 </section>
