@@ -166,7 +166,9 @@ def run(out_path):
 })();
 """
     mobilebar_global = mobilebar.replace('class="mobile-bar is-on"', 'class="mobile-bar" id="mobilebar"')
-    page = f"""<title>Veraly Grupo Jurídico</title>
+    page = f"""<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veraly Grupo Jurídico</title>
 <style>
 {fonts_css}
 {styles_css}
