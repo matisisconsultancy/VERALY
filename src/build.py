@@ -264,10 +264,10 @@ def footer_html():
     </nav>
   </div>
 
-  <div class="container footer-brand">
+  <a class="container footer-brand" href="/" aria-label="Veraly Grupo Jurídico, inicio">
     <span class="footer-brand-mark" aria-hidden="true">{LOGO_SVG}</span>
     <span class="footer-brand-name"><b>Veraly</b> <i>Grupo Jurídico</i></span>
-  </div>
+  </a>
 
   <div class="container footer-baseline">
     <span class="fb-copy">© 2026 · {esc(SITE["name"])}</span>
