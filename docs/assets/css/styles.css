@@ -982,7 +982,17 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 
 /* features: tarjetas con imagen dominante + título + subtítulo (referente AI Finance) */
 .feature-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);margin-top:2.4rem}
-@media (max-width:900px){.feature-cards{grid-template-columns:1fr}}
+@media (max-width:900px) and (min-width:761px){.feature-cards{grid-template-columns:1fr}}
+/* Galería horizontal en teléfono: scroll con snap, sangrado a los bordes */
+@media (max-width:760px){
+  .feature-cards{display:flex;grid-template-columns:none;gap:16px;margin-top:2rem;
+    overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    scroll-padding-left:var(--pad-bleed);margin-left:calc(-1*var(--pad-bleed));margin-right:calc(-1*var(--pad-bleed));
+    padding:4px var(--pad-bleed) 10px;scrollbar-width:none}
+  .feature-cards::-webkit-scrollbar{display:none}
+  .feature-cards .fcard{flex:0 0 82%;scroll-snap-align:start;min-height:clamp(260px,64vw,320px)}
+  .feature-cards .fcard:last-child{margin-right:0}
+}
 /* Situaciones (referente AI Finance Features): la imagen es el único marco;
    el título y la línea de apoyo van debajo, sobre el fondo, sin recuadro. */
 /* tarjetas editoriales: marco a hairline, sin gráfico generativo */
