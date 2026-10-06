@@ -1451,13 +1451,19 @@ html.js .step-visual>svg{display:none}
     font-size:clamp(1.7rem, 1rem + 3.1vw, 2.3rem);line-height:1.12;letter-spacing:-.02em;
     transition:opacity .5s ease,transform .6s var(--btn-ease)}
   .reveal-phrase.active{opacity:1;transform:translateY(-50%)}
-  /* tarjetas: fila horizontal con snap, al pie del panel fijo */
-  .reveal-cards{flex:0 0 auto;display:flex;grid-template-columns:none;gap:10px;margin:16px 0 0;
+  /* tarjetas: fila horizontal con snap, al pie del panel fijo.
+     align-self:stretch evita que, con align-items:center del panel, la fila tome
+     su ancho de contenido (max-content) y se desborde/corte. */
+  .reveal-cards{flex:0 0 auto;align-self:stretch;display:flex;grid-template-columns:none;gap:10px;margin:16px 0 0;
     width:auto;max-width:none;overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;
     -webkit-overflow-scrolling:touch;margin-left:calc(-1*var(--edge));margin-right:calc(-1*var(--edge));
     scroll-padding-left:var(--edge);padding:2px var(--edge);scrollbar-width:none}
   .reveal-cards::-webkit-scrollbar{display:none}
-  .reveal-cards .rc{flex:0 0 60%;scroll-snap-align:start;min-height:0}
+  .reveal-cards .rc{flex:0 0 66%;scroll-snap-align:start;min-height:122px;
+    padding:16px 18px;gap:6px;justify-content:space-between}
+  .reveal-cards .rc .t-k{font-size:1.06rem;line-height:1.2}
+  /* en táctil no hay hover: el enlace "Ver norma" se muestra siempre */
+  .reveal-cards .rc .rc-go{opacity:1;transform:none;margin-top:2px}
 }
 
 /* ---------- Asistente guiado ---------- */
