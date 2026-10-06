@@ -414,6 +414,12 @@
       var np = phrases.length; if (!np) return;
       var words = phrases.map(function (p) { return $$('.w', p); });
       var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+      // Recorrido en dos fases: primero TODAS las frases (una a una), y solo
+      // cuando terminan, aparecen las tarjetas (escalonadas). Sin tarjetas, las
+      // frases ocupan todo el recorrido.
+      var cardStart = parseFloat(track.getAttribute('data-cardstart'));
+      var tCards = !isNaN(cardStart) ? cardStart : (cards.length ? 0.62 : 1);
+      var litspan = parseFloat(track.getAttribute('data-litspan')) || 0.55;
       // --- Móvil ---
       if (window.matchMedia && window.matchMedia('(max-width: 900px)').matches) {
         if (!('IntersectionObserver' in window) || reduce) {
@@ -422,16 +428,16 @@
           cards.forEach(function (c) { c.classList.add('in'); });
           return;
         }
-        // TODAS las secciones: se fija (sticky) y las frases aparecen una a
-        // una, centradas, con el scroll (igual que en escritorio). Las tarjetas,
-        // si las hay, se muestran como fila al pie del panel.
-        cards.forEach(function (c) { c.classList.add('in'); });
         if (np > 1) {
           var updMA = function () {
             var p = pinProgress(track);
-            var idx = Math.min(np - 1, Math.floor(p * np * 0.999));
+            var pa = Math.min(1, p / tCards);                 // avance de la fase de frases
+            var idx = Math.min(np - 1, Math.floor(pa * np * 0.999));
             phrases.forEach(function (ph, i) { ph.classList.toggle('active', i === idx); });
             words.forEach(function (ws, i) { ws.forEach(function (w) { w.style.setProperty('--lit', i === idx ? '1' : '0'); }); });
+            // las tarjetas entran una a una DESPUÉS de las frases
+            var pb = p <= tCards ? 0 : (p - tCards) / (1 - tCards);
+            cards.forEach(function (c, k) { c.classList.toggle('in', pb >= (k + 0.5) / cards.length * 0.9); });
           };
           window.addEventListener('scroll', rafThrottle(updMA), { passive: true });
           window.addEventListener('resize', updMA); updMA();
@@ -439,6 +445,7 @@
         }
         phrases[0].classList.add('active');
         words[0].forEach(function (w) { w.style.setProperty('--lit', '1'); });
+        cards.forEach(function (c) { c.classList.add('in'); });
         return;
       }
       // El titular de cada frase se muestra COMPLETO (visible desde el primer
@@ -468,15 +475,8 @@
         timer = setInterval(tick, 5500);
         return;
       }
-      // Modo scroll (con tarjetas): el titular completo visible y las tarjetas
-      // aparecen una a una a medida que se baja.
-      var cardStart = parseFloat(track.getAttribute('data-cardstart'));
-      var hasCardStart = !isNaN(cardStart);
-      var litspan = parseFloat(track.getAttribute('data-litspan')) || 0.55;
-      function cardThresh(k, n) {
-        if (hasCardStart) return cardStart + (k / n) * (0.98 - cardStart);
-        return (k + 1) / (n + 1);
-      }
+      // Modo scroll (con tarjetas): primero las frases, una a una (fase 0..tCards);
+      // y solo cuando terminan, las tarjetas aparecen escalonadas (tCards..1).
       function upd() {
         if (window.innerWidth <= 900) {
           phrases.forEach(function (p) { p.classList.add('active'); });
@@ -485,9 +485,10 @@
           return;
         }
         var p = pinProgress(track);
+        var pa = Math.min(1, p / tCards);                          // avance de la fase de frases
         var seg = 1 / np;
-        var idx = Math.min(np - 1, Math.floor(p / seg));
-        var local = (p / seg) - idx;                               // avance dentro de la frase (0..1)
+        var idx = Math.min(np - 1, Math.floor(pa / seg));
+        var local = (pa / seg) - idx;                              // avance dentro de la frase (0..1)
         var litFrac = Math.min(1, local / litspan);               // 0..1 de la frase alumbrada
         phrases.forEach(function (ph, i) { ph.classList.toggle('active', i === idx); });
         // Alumbrado CONTINUO palabra por palabra (--lit 0..1): el frente de luz
@@ -500,7 +501,9 @@
             w.style.setProperty('--lit', amt.toFixed(3));
           });
         });
-        cards.forEach(function (c, k) { c.classList.toggle('in', p >= cardThresh(k, cards.length)); });
+        // Tarjetas: entran una a una DESPUÉS de que terminan las frases.
+        var pb = p <= tCards ? 0 : (p - tCards) / (1 - tCards);
+        cards.forEach(function (c, k) { c.classList.toggle('in', pb >= (k + 0.5) / cards.length * 0.9); });
       }
       window.addEventListener('scroll', rafThrottle(upd), { passive: true });
       window.addEventListener('resize', upd); upd();
