@@ -1204,7 +1204,9 @@ html.js .fcard.in .fic--solid .sh{--td:calc(var(--dr,0s) + var(--sd,0s))}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,88px);align-items:center;
   padding-block:clamp(44px,7vw,104px)}
 /* vías sin caja: la figura de partículas flota sobre el fondo de la sección */
-.frow .fr-media{border:0;border-radius:0;overflow:visible;aspect-ratio:4/3;
+/* clip: el parallax escala/mueve la imagen DENTRO del marco; sin clip, el
+   scale(hasta 1.24) de .fr-par se sale y provoca scroll horizontal. */
+.frow .fr-media{border:0;border-radius:0;overflow:clip;aspect-ratio:4/3;
   position:relative;background:none}
 .frow .fr-media .fr-par{position:absolute;left:0;right:0;top:-14%;height:128%;will-change:transform}
 .frow .fr-media .fr-par>*{width:100%;height:100%}
