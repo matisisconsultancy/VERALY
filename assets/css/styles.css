@@ -352,6 +352,16 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
     opacity:0;visibility:hidden;transition:opacity .24s ease,visibility .24s ease;overflow-y:auto;
     display:flex;flex-direction:column;padding:104px var(--edge) 44px}
   .nav-menu-wrap[data-open="true"]{opacity:1;visibility:visible}
+  /* El menú es position:fixed PERO vive dentro de .site-header.floating, que al
+     desplazar adquiere transform (.nav-hidden) y backdrop-filter (.is-stuck).
+     Cualquiera de los dos convierte al header en bloque contenedor de los
+     elementos fixed (regla estricta en iOS Safari), y el menú deja de cubrir la
+     pantalla: queda recortado a la caja del header. Al abrir el menú anulamos
+     esos efectos para que el overlay se ancle al viewport (pantalla completa). */
+  body[data-nav-open="true"] .site-header.floating{
+    transform:none !important;
+    -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
+  }
   .nav-menu{flex-direction:column;align-items:stretch;gap:0;width:100%;list-style:none;margin:0;padding:0}
   .nav-menu a{display:block;text-decoration:none;color:var(--text)}
   .nav-menu>li{border-top:1px solid rgba(217,246,239,.08)}
@@ -1074,8 +1084,9 @@ body.flush-footer .site-footer{margin-top:0}
 .fcard .fic{width:clamp(58px,6.6vw,84px);height:auto;display:block;overflow:visible}
 /* icono de partículas (se ensambla por convergencia); sustituye al SVG con JS */
 .fcard .fic-canvas{display:none;width:clamp(66px,7.4vw,94px);height:clamp(66px,7.4vw,94px)}
-html.js .fcard .fic-canvas{display:block}
-html.js .fcard .fmedia .fic--solid{display:none}
+/* el lienzo solo sustituye al SVG sólido cuando el JS confirma que pinta (.ico-ok) */
+html.js .fcard .fmedia.ico-ok .fic-canvas{display:block}
+html.js .fcard .fmedia.ico-ok .fic--solid{display:none}
 .fcard .fic .ln{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .fcard .fic .dot{fill:currentColor}
 /* iconos sólidos (formas rellenas con esquinas redondeadas vía stroke del mismo color) */
@@ -1108,9 +1119,7 @@ html.js .fcard.in .fic--solid .sh{--td:calc(var(--dr,0s) + var(--sd,0s))}
 @media (prefers-reduced-motion:reduce){
   html.js .fcard .fic--solid .sh{opacity:1;transform:none;transition:none}
   .fcard:hover .fic{transform:none}
-  /* sin movimiento: SVG sólido estático, sin canvas de partículas */
-  html.js .fcard .fmedia .fic--solid{display:block}
-  html.js .fcard .fic-canvas{display:none}
+  /* sin movimiento: el JS no añade .ico-ok, así que queda el SVG sólido estático */
 }
 .fcard h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.65rem);line-height:1.16;font-weight:500;letter-spacing:-.01em;transition:color .2s;
   text-wrap:balance;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -1212,14 +1221,14 @@ html.js .fcard.in .fic--solid .sh{--td:calc(var(--dr,0s) + var(--sd,0s))}
   position:relative;background:none}
 .frow .fr-media .fr-par{position:absolute;left:0;right:0;top:-14%;height:128%;will-change:transform}
 .frow .fr-media .fr-par>*{width:100%;height:100%}
-/* vías: canvas de partículas que convergen (sustituye al SVG abstracto con JS) */
+/* vías: icono SÓLIDO de respaldo por defecto; el lienzo de partículas solo
+   sustituye cuando el JS confirma que pinta (.ico-ok) y no hay movimiento
+   reducido. Así el icono SIEMPRE aparece, incluso si el lienzo falla. */
 .fr-par .via-canvas{display:none}
-html.js .fr-par .via-canvas{display:block;position:absolute;inset:0}
-html.js .fr-par .media-svg{display:none}
-@media (prefers-reduced-motion:reduce){
-  html.js .fr-par .via-canvas{display:none}
-  html.js .fr-par .media-svg{display:block}
-}
+.fr-par .media-svg{display:none}                 /* ya no usamos la escena decorativa como respaldo */
+.frow .fr-media .fr-par .ico-solid--via{display:block;color:var(--accent-ink)}
+html.js .fr-par.ico-ok .via-canvas{display:block;position:absolute;inset:0;z-index:1}
+html.js .fr-par.ico-ok .ico-solid--via{display:none}
 .fr-index{position:absolute;top:clamp(14px,1.6vw,26px);left:clamp(16px,1.8vw,30px);z-index:2;
   font-family:var(--mono);font-weight:600;font-size:clamp(2.4rem,1.4rem+3vw,4.6rem);line-height:1;
   letter-spacing:.02em;color:rgba(137,245,229,.16)}
@@ -1330,14 +1339,15 @@ html.js .frow.in .fr-text>*:nth-child(3){transition-delay:.22s}
 .step-visual{height:100%;overflow:clip;position:relative;border:0;border-right:1px solid var(--line-soft);
   background:radial-gradient(120% 100% at 30% 15%,rgba(10,74,80,.6),var(--ink))}
 .step-visual .media-svg{opacity:.9}
-/* método: canvas de partículas que convergen al activarse el paso */
+/* método: icono SÓLIDO de respaldo por defecto; el lienzo de partículas solo
+   sustituye cuando el JS confirma que pinta (.ico-ok) y sin movimiento reducido.
+   El icono SIEMPRE aparece, aunque el lienzo no llegue a dibujarse. */
 .step-visual .step-canvas{display:none}
-html.js .step-visual .step-canvas{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:1}
-html.js .step-visual>svg{display:none}
-@media (prefers-reduced-motion:reduce){
-  html.js .step-visual .step-canvas{display:none}
-  html.js .step-visual>svg{display:block}
-}
+.step-visual>svg:not(.ico-solid){display:none}              /* escena decorativa: fuera (no es el icono) */
+.step-visual .ico-solid--step{display:block;position:absolute;inset:0;width:100%;height:100%;
+  color:var(--accent-ink);z-index:1}
+html.js .step-visual.ico-ok .step-canvas{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:2}
+html.js .step-visual.ico-ok .ico-solid--step{display:none}
 .step-visual .sv-tag{position:absolute;left:20px;top:20px;font-family:var(--mono);font-size:.62rem;
   text-transform:uppercase;letter-spacing:.14em;color:var(--accent);background:rgba(3,25,27,.7);
   border:1px solid var(--line-soft);border-radius:var(--pill-r);padding:6px 12px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
