@@ -116,19 +116,27 @@
     p.closeType = 1;
   }
 
+  // Contexto de prueba COMPARTIDO (1×1), solo para pruebas geométricas de punto
+  // dentro de figura. No se dibuja ni se leen píxeles: isPointInPath/InStroke son
+  // puramente geométricas y no dependen del tamaño del lienzo. Evitamos
+  // getImageData por completo (iOS Safari lo "envenena" con su protección
+  // antihuella tras unas pocas llamadas, devolviendo datos en blanco → iconos
+  // vacíos). Así cada icono se forma igual, sin leer píxeles y con un único
+  // lienzo auxiliar en toda la página.
+  var _probe = document.createElement('canvas');
+  _probe.width = 1; _probe.height = 1;
+  var _pctx = _probe.getContext('2d');
+  if (_pctx) { _pctx.lineCap = 'round'; _pctx.lineJoin = 'round'; }
+
   // Muestrea la silueta del icono en una rejilla y devuelve targets normalizados.
   function sampleTargets(shapes) {
-    var G = 96;
-    var off = document.createElement('canvas');
-    off.width = G; off.height = G;
-    var c = off.getContext('2d');
-    c.fillStyle = '#fff'; c.strokeStyle = '#fff'; c.lineCap = 'round'; c.lineJoin = 'round';
-    shapes.forEach(function (s) {
-      var p = new Path2D();
+    var G = 96, c = _pctx;
+    // Prepara los Path2D (con metadatos de relleno/trazo) una sola vez.
+    var paths = shapes.map(function (s) {
+      var p;
       if (s.rect) {
-        var r = s.rect;
-        // rect redondeado
-        var x = r[0], y = r[1], w = r[2], h = r[3], rr = r[4];
+        p = new Path2D();
+        var r = s.rect, x = r[0], y = r[1], w = r[2], h = r[3], rr = r[4];
         p.moveTo(x + rr, y);
         p.arcTo(x + w, y, x + w, y + h, rr);
         p.arcTo(x + w, y + h, x, y + h, rr);
@@ -138,18 +146,21 @@
       } else {
         p = new Path2D(s.d);
       }
-      if (s.stroke) { c.lineWidth = s.stroke; c.stroke(p); }   // figura de contorno (línea)
-      else c.fill(p, s.rule || 'nonzero');
+      return { p: p, stroke: s.stroke || 0, rule: s.rule || 'nonzero' };
     });
-    var data = c.getImageData(0, 0, G, G).data;
     var pts = [];
     var step = 1.7;
     for (var y = 0; y < G; y += step) {
       for (var x = 0; x < G; x += step) {
-        var ix = (Math.floor(y) * G + Math.floor(x)) * 4;
-        if (data[ix + 3] > 130) {
-          pts.push([x / G, y / G]);
+        var hit = false;
+        for (var k = 0; k < paths.length; k++) {
+          var pa = paths[k];
+          if (pa.stroke) {
+            c.lineWidth = pa.stroke;
+            if (c.isPointInStroke(pa.p, x, y)) { hit = true; break; }   // figura de contorno (línea)
+          } else if (c.isPointInPath(pa.p, x, y, pa.rule)) { hit = true; break; }
         }
+        if (hit) pts.push([x / G, y / G]);
       }
     }
     return pts;
