@@ -422,9 +422,11 @@
           cards.forEach(function (c) { c.classList.add('in'); });
           return;
         }
-        // Reveal sin tarjetas (solo frases): se fija (sticky) y las frases
-        // aparecen una a una con el scroll, igual que en escritorio.
-        if (track.getAttribute('data-autorotate') === '1' && np > 1) {
+        // TODAS las secciones: se fija (sticky) y las frases aparecen una a
+        // una, centradas, con el scroll (igual que en escritorio). Las tarjetas,
+        // si las hay, se muestran como fila al pie del panel.
+        cards.forEach(function (c) { c.classList.add('in'); });
+        if (np > 1) {
           var updMA = function () {
             var p = pinProgress(track);
             var idx = Math.min(np - 1, Math.floor(p * np * 0.999));
@@ -435,23 +437,8 @@
           window.addEventListener('resize', updMA); updMA();
           return;
         }
-        // Reveal con tarjetas: cada frase se ilumina al entrar en pantalla.
-        var pio = new IntersectionObserver(function (es) {
-          es.forEach(function (e) {
-            if (!e.isIntersecting) return;
-            var i = phrases.indexOf(e.target);
-            e.target.classList.add('active');
-            if (i >= 0) words[i].forEach(function (w) { w.style.setProperty('--lit', '1'); });
-            pio.unobserve(e.target);
-          });
-        }, { threshold: 0.55, rootMargin: '0px 0px -12% 0px' });
-        phrases.forEach(function (p) { pio.observe(p); });
-        if (cards.length) {
-          var cio = new IntersectionObserver(function (es) {
-            es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); cio.unobserve(e.target); } });
-          }, { threshold: 0.25 });
-          cards.forEach(function (c) { cio.observe(c); });
-        }
+        phrases[0].classList.add('active');
+        words[0].forEach(function (w) { w.style.setProperty('--lit', '1'); });
         return;
       }
       // El titular de cada frase se muestra COMPLETO (visible desde el primer
@@ -766,7 +753,10 @@
           jnApplyOpen(j, phases, j.__open === i ? -1 : i);
         });
       });
-      jnApplyOpen(j, phases, 0); j.__lastCur = 0;
+      // En móvil (acordeón por clic) empiezan todas cerradas; en escritorio
+      // (escena fijada) abre la primera para arrancar el recorrido.
+      var jnMob = window.matchMedia && window.matchMedia('(max-width: 900px)').matches;
+      jnApplyOpen(j, phases, jnMob ? -1 : 0); j.__lastCur = 0;
     });
     function upd() {
       var vh = window.innerHeight;

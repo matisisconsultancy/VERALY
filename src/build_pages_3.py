@@ -369,31 +369,40 @@ def build(g):
         '<div class="sol-fact"><b>Art.<span class="u">5</span></b><span>el perímetro que alcanza a los vinculados</span></div>'
         '</div></aside>'
         '</div></section>')
-    # Iconos de línea (mismo lenguaje de trazo fino que el resto del sitio:
-    # viewBox 24, fill:none, stroke currentColor). Uno por rol del perímetro.
+    # Iconos en el lenguaje gráfico de la marca: construidos con nodos (puntos)
+    # y líneas finas que convergen, como el isotipo. viewBox 32, trazo 1.5,
+    # remates redondos; los nodos rellenos recogen el punto central del logo.
     def _pic(inner):
-        return ('<svg class="perim-ic-svg" viewBox="0 0 24 24" fill="none" '
-                'stroke="currentColor" stroke-width="1.6" stroke-linecap="round" '
+        return ('<svg class="perim-ic-svg" viewBox="0 0 32 32" fill="none" '
+                'stroke="currentColor" stroke-width="1.5" stroke-linecap="round" '
                 'stroke-linejoin="round" aria-hidden="true">' + inner + '</svg>')
+    def _node(cx, cy, r=2):
+        return f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="currentColor" stroke="none"/>'
     _perim = [
+        # El captador: epicentro — nodo central con líneas que irradian (origen).
         ("El captador", "El origen del esquema", True,
-         _pic('<circle cx="12" cy="12" r="3"/><path d="M12 3.5v3M12 17.5v3M3.5 12h3M17.5 12h3'
-              'M5.8 5.8l2 2M16.2 16.2l2 2M18.2 5.8l-2 2M7.8 16.2l-2 2"/>')),
+         _pic(_node(16, 16, 2.6) +
+              '<path d="M16 6v4M16 22v4M6 16h4M22 16h4M9 9l2.8 2.8M20.2 20.2l2.8 2.8'
+              'M23 9l-2.8 2.8M11.8 20.2l-2.8 2.8"/>')),
+        # Administradores: nodo superior que gobierna dos nodos (jerarquía).
         ("Administradores", "Representantes legales y miembros de junta", False,
-         _pic('<rect x="3" y="7.5" width="18" height="12.5" rx="2"/>'
-              '<path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5M3 12.5h18"/>')),
+         _pic(_node(16, 7) + _node(9, 24) + _node(23, 24) +
+              '<path d="M16 9v4M9 22v-3h14v3M16 13v6"/>')),
+        # Socios: dos nodos unidos por una línea (participación compartida).
         ("Socios", "Por su participación en la operación", False,
-         _pic('<circle cx="8.5" cy="8" r="2.6"/><circle cx="16" cy="9" r="2.2"/>'
-              '<path d="M4 19a4.5 4.5 0 0 1 9 0M14 19a4 4 0 0 1 6-3.2"/>')),
+         _pic(_node(10, 11, 2.4) + _node(22, 21, 2.4) +
+              '<path d="M11.7 12.7l8.6 7.6"/><path d="M10 15.5v2M22 14.5v2"/>')),
+        # Revisores fiscales: nodo examinado por una lente (revisión).
         ("Revisores fiscales", "Por el ejercicio del cargo durante la captación", False,
-         _pic('<path d="M7 3.5h7l4 4v4.2"/><path d="M7 3.5v17h5.5"/>'
-              '<circle cx="16.5" cy="16.5" r="3"/><path d="M18.7 18.7l2.3 2.3"/>')),
+         _pic('<circle cx="14" cy="14" r="7"/>' + _node(14, 14, 2) +
+              '<path d="M19 19l5.5 5.5"/>')),
+        # Contadores: columna de nodos sobre una línea (el registro, las cuentas).
         ("Contadores", "Por el ejercicio del cargo durante la captación", False,
-         _pic('<rect x="5" y="3.5" width="14" height="17" rx="2"/>'
-              '<path d="M9 8h6M9 12h6M9 16h3.5"/>')),
+         _pic(_node(10, 10, 1.7) + _node(10, 16, 1.7) + _node(10, 22, 1.7) +
+              '<path d="M14 10h8M14 16h8M14 22h5"/>')),
+        # Proveedores de buena fe: nodo FUERA de un perímetro (quedan excluidos).
         ("Proveedores de buena fe", "Que contrataron con la intervenida", False,
-         _pic('<path d="M12 3.2l8 4.4v8.8L12 20.8l-8-4.4V7.6z"/>'
-              '<path d="M4.2 7.7l7.8 4.3 7.8-4.3M12 12v8.6"/>')),
+         _pic('<circle cx="13" cy="16" r="8.5" stroke-dasharray="2.6 3"/>' + _node(27, 16, 2.2))),
     ]
     _perim_cards = "".join(
         '<div class="perim-card reveal-up' + (' is-core' if core else '') + '">'

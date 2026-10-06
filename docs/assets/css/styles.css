@@ -603,20 +603,25 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
   .pr-tl-body{padding-block:12px 18px}
   .pr-tl-media{min-height:180px;border-left:0;border-radius:var(--card-r);margin-bottom:26px;filter:none}
 }
-/* Variante galería horizontal del marco de normas (solo teléfono): cada norma
-   es una tarjeta deslizable con la imagen arriba, el rótulo y la descripción. */
+/* Marco de normas: tarjetas con icono geométrico (lenguaje de la marca).
+   Rejilla de tres en web; galería horizontal con snap en teléfono. */
+.norma-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,24px);margin-top:var(--sp-m)}
+.norma-card{border:1px solid var(--line-soft);border-radius:var(--card-r);background:var(--panel);
+  padding:clamp(22px,2.2vw,30px);display:flex;flex-direction:column;gap:.7rem;
+  transition:border-color .35s ease,transform .35s ease}
+.norma-card:hover{border-color:var(--accent-ink);transform:translateY(-3px)}
+.norma-ic{display:inline-flex;color:var(--accent-ink);line-height:0;margin-bottom:.2rem}
+.norma-ic-svg{width:34px;height:34px;display:block}
+.norma-k{font-family:var(--display);font-weight:600;font-size:1.22rem;color:var(--text);line-height:1.18}
+.norma-d{margin:0;color:var(--dim);font-weight:300;font-size:var(--step-0);line-height:1.5}
+.norma-go{margin-top:auto;padding-top:.3rem}
 @media (max-width:760px){
-  .pr-timeline--cards{display:flex;border-top:0;margin-top:1.6rem;gap:14px;
+  .norma-grid{display:flex;grid-template-columns:none;gap:12px;margin-top:1.6rem;
     overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
     margin-left:calc(-1*var(--edge));margin-right:calc(-1*var(--edge));scroll-padding-left:var(--edge);
     padding:4px var(--edge) 12px;scrollbar-width:none}
-  .pr-timeline--cards::-webkit-scrollbar{display:none}
-  .pr-timeline--cards .pr-tl-row{flex:0 0 80%;scroll-snap-align:start;display:flex;flex-direction:column;
-    gap:0;padding:0;border:1px solid var(--line);border-radius:var(--card-r);overflow:hidden;background:var(--panel)}
-  .pr-timeline--cards .pr-tl-row::before{display:none}
-  .pr-timeline--cards .pr-tl-media{order:-1;min-height:148px;border-left:0;border-radius:0;margin:0;filter:none}
-  .pr-timeline--cards .pr-tl-label{padding:15px var(--edge) 0}
-  .pr-timeline--cards .pr-tl-body{padding:8px var(--edge) 18px}
+  .norma-grid::-webkit-scrollbar{display:none}
+  .norma-card{flex:0 0 76%;scroll-snap-align:start}
 }
 /* entrada suave de las filas al hacer scroll */
 html.js .pr-timeline .pr-tl-row{opacity:0;transform:translateY(22px);
@@ -752,7 +757,7 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 /* --- banner de marca: lockup real (isotipo + firma), minimalista --- */
 .footer-brand{display:flex;align-items:center;gap:clamp(13px,1.8vw,22px);
   margin-top:clamp(8px,1.5vw,18px);padding-block:clamp(24px,3.2vw,40px) clamp(6px,1vw,14px);
-  text-decoration:none;color:inherit;width:fit-content}
+  text-decoration:none;color:inherit}
 .footer-brand .footer-brand-mark,.footer-brand .footer-brand-name b,.footer-brand .footer-brand-name i{transition:color .25s ease}
 .footer-brand:hover .footer-brand-mark{color:var(--accent)}
 .footer-brand:hover .footer-brand-name b{color:var(--accent-ink)}
@@ -1363,9 +1368,8 @@ html.js .step-visual>svg{display:none}
 /* pista muy larga = cada frase se ilumina y se sostiene el tiempo suficiente
    para leerla completa antes de cambiar; las cards salen al final */
 #vias-intro .reveal-track{height:270vh}   /* más recorrido = ritmo más pausado */
-/* En móvil no se fija ni se escala el recorrido: se colapsa para que no quede
-   un espacio verde vacío debajo de las tarjetas. */
-@media (max-width:900px){#vias-intro .reveal-track{height:auto}}
+/* En móvil usa el mismo recorrido unificado que el resto de reveals. */
+@media (max-width:900px){#vias-intro .reveal-track{height:220vh}}
 /* fundido suave entre frases (cruce sin salto) */
 #vias-intro .reveal-phrase{transition:opacity .6s ease}
 /* cada palabra se alumbra con un fundido suave; transición corta para que el
@@ -1418,39 +1422,34 @@ html.js .step-visual>svg{display:none}
 .reveal-cards .rc:hover .rc-go{opacity:1;transform:none}
 .reveal-cards .rc .rc-go i{font-style:normal;transition:transform .2s}
 .reveal-cards .rc:hover .rc-go i{transform:translate(2px,-2px)}
+/* ===== Reveal en móvil: TODAS las secciones con el mismo patrón =====
+   Panel fijo (sticky). La frase aparece centrada y cambia, una a una, con el
+   scroll (animación fluida). Las tarjetas, si las hay, van como una fila
+   horizontal deslizable al pie del panel. */
 @media (max-width:900px){
-  .reveal-track{height:auto}
-  .reveal-sticky{position:static;height:auto;display:block;padding:56px var(--edge)}
-  .reveal-phrases{min-height:0;max-width:none;display:block}
-  .reveal-phrase{position:static;transform:none;opacity:1;margin-bottom:1.4rem}
-  .reveal-cards{grid-template-columns:repeat(2,1fr);margin-top:2rem}
-  .reveal-cards .rc{transform:none;opacity:1}
-  /* Reveal sin tarjetas (autorotate): sticky también en móvil, las frases
-     aparecen una a una con el scroll. */
-  .reveal-track[data-autorotate]{height:220vh}
-  .reveal-track[data-autorotate] .reveal-sticky{position:sticky;top:0;height:100vh;min-height:100svh;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--head-h) var(--edge) 40px}
-  .reveal-track[data-autorotate] .reveal-eyebrow{margin:0 0 clamp(22px,4.5vh,44px)}
-  .reveal-track[data-autorotate] .reveal-phrases{position:relative;width:100%;min-height:clamp(220px,40vh,400px);display:block;max-width:none}
-  /* Cada frase ocupa el mismo cuadro, alineada desde arriba (debajo del eyebrow);
-     las palabras fluyen como texto normal, sin apilarse ni sobreponerse. */
-  .reveal-track[data-autorotate] .reveal-phrase{position:absolute;left:0;right:0;top:0;bottom:auto;inset:auto;
-    margin:0;opacity:0;transform:translateY(16px);text-align:center;
+  .reveal-track{height:220vh}
+  .reveal-sticky{position:sticky;top:0;height:100vh;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:0;overflow:clip;padding:var(--head-h) var(--edge) 24px}
+  .reveal-eyebrow{flex:0 0 auto;margin:0 0 clamp(16px,3vh,30px)}
+  /* La caja de frases tiene altura propia (cabe la frase más larga) y se centra
+     como grupo con el eyebrow y las tarjetas (justify-content:center del panel). */
+  .reveal-phrases{position:relative;flex:0 0 auto;width:100%;min-height:clamp(170px,34vh,300px);
+    max-width:none;display:block}
+  /* Cada frase ocupa el mismo cuadro y se centra; las palabras fluyen como
+     texto normal (sin apilarse ni sobreponerse). */
+  .reveal-phrase{position:absolute;inset:auto;top:50%;left:0;right:0;bottom:auto;
+    margin:0;opacity:0;text-align:center;transform:translateY(calc(-50% + 14px));
+    font-size:clamp(1.7rem, 1rem + 3.1vw, 2.3rem);line-height:1.12;letter-spacing:-.02em;
     transition:opacity .5s ease,transform .6s var(--btn-ease)}
-  .reveal-track[data-autorotate] .reveal-phrase.active{opacity:1;transform:none}
-}
-/* Teléfono: frases más compactas (sin torre gigante) y la baraja de normas
-   como galería horizontal con snap, igual que las situaciones. */
-@media (max-width:760px){
-  .reveal-sticky{padding:44px var(--edge)}
-  .reveal-phrase{font-size:clamp(1.7rem, 1rem + 3.1vw, 2.3rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:1rem}
-  .reveal-track:not([data-autorotate]) .reveal-phrases{min-height:0}
-  .reveal-cards{display:flex;grid-template-columns:none;gap:12px;margin-top:1.6rem;width:auto;
-    overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
-    margin-left:calc(-1*var(--edge));margin-right:calc(-1*var(--edge));scroll-padding-left:var(--edge);
-    padding:2px var(--edge) 10px;scrollbar-width:none}
+  .reveal-phrase.active{opacity:1;transform:translateY(-50%)}
+  /* tarjetas: fila horizontal con snap, al pie del panel fijo */
+  .reveal-cards{flex:0 0 auto;display:flex;grid-template-columns:none;gap:10px;margin:16px 0 0;
+    width:auto;max-width:none;overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;margin-left:calc(-1*var(--edge));margin-right:calc(-1*var(--edge));
+    scroll-padding-left:var(--edge);padding:2px var(--edge);scrollbar-width:none}
   .reveal-cards::-webkit-scrollbar{display:none}
-  .reveal-cards .rc{flex:0 0 66%;scroll-snap-align:start;min-height:118px}
+  .reveal-cards .rc{flex:0 0 60%;scroll-snap-align:start;min-height:0}
 }
 
 /* ---------- Asistente guiado ---------- */
@@ -1711,6 +1710,16 @@ html.js .reveal-up.in{opacity:1;transform:none}
   .bf-foot{flex-direction:column;align-items:flex-start;gap:8px}
   .share-row{flex-direction:column;align-items:flex-start}
 }
+/* "También puede interesarle": galería horizontal deslizable en teléfono
+   (solo en el bloque de relacionados, no en el listado del blog). */
+@media (max-width:760px){
+  .blog-related .blog-grid{display:flex;grid-template-columns:none;gap:14px;
+    overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    margin-left:calc(-1*var(--edge));margin-right:calc(-1*var(--edge));scroll-padding-left:var(--edge);
+    padding:4px var(--edge) 12px;scrollbar-width:none}
+  .blog-related .blog-grid::-webkit-scrollbar{display:none}
+  .blog-related .bcard{flex:0 0 80%;scroll-snap-align:start}
+}
 
 /* ============================================================
    FAQ sticky — título estático (izq) + acordeón numerado (der)
@@ -1835,14 +1844,25 @@ html:not(.js) .plz-track::after{width:100%}
 .plz-note{color:rgba(217,246,239,.66);font-weight:300;line-height:1.6;max-width:64ch;margin:clamp(34px,4vw,56px) 0 0}
 .plz-note strong{color:var(--text);font-weight:500}
 @media (max-width:760px){
-  .plz-track{grid-template-columns:1fr;gap:0;margin-left:10px}
-  .plz-track::before{right:auto;top:0;bottom:0;left:10px;width:5px;height:auto}
-  .plz-track::after{top:0;left:10px;width:5px !important;
+  .plz-track{grid-template-columns:1fr;gap:0;margin-left:6px}
+  .plz-track::before{right:auto;top:6px;bottom:6px;left:6px;width:2px;height:auto}
+  .plz-track::after{top:6px;left:6px;width:2px !important;
     height:calc(var(--p,0) * 100%);
     background:linear-gradient(180deg,rgba(137,245,229,.45),var(--accent) 80%,var(--text));
     transition:height .22s cubic-bezier(.22,.7,.24,1)}
   html:not(.js) .plz-track::after{height:100%}
-  .plz-step{padding-top:2px;padding-left:44px;padding-bottom:38px}
+  /* Pasos compactos, con un nodo en la línea; sin huecos grandes entre ellos. */
+  .plz-step{padding:0 0 clamp(26px,5.5vw,34px) 34px}
+  .plz-step:last-child{padding-bottom:0}
+  .plz-step::before{content:"";position:absolute;left:-1px;top:7px;width:14px;height:14px;border-radius:50%;
+    background:var(--bg,#05292C);border:2px solid rgba(137,245,229,.3);transition:border-color .5s ease,background .5s ease;z-index:1}
+  .plz-step.is-on::before{border-color:var(--accent)}
+  .plz-step.is-cur::before{border-color:var(--accent-ink);background:var(--accent-ink);
+    box-shadow:0 0 16px rgba(137,245,229,.6)}
+  .plz-ord{margin-bottom:.15rem}
+  .plz-num{font-size:clamp(2.2rem,1.5rem + 2.4vw,3rem)}
+  .plz-label{margin-top:.5rem}
+  .plz-detail{max-width:none;margin-top:.45rem}
 }
 
 /* El calendario fijado (sticky): el panel se ancla al viewport mientras

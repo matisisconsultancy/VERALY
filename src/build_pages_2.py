@@ -390,16 +390,33 @@ def build(g):
     for _pi, pr in enumerate(PRACTICAS_DEV):
         url = "/equipo/" + pr["slug"] + "/"
         paras = "".join(f"<p>{esc(t)}</p>" for t in pr["paras"])
-        # timeline de normatividad (etiqueta · descripción+enlace · imagen)
+        # Tarjetas de normatividad: icono geométrico (lenguaje de la marca),
+        # norma, descripción y enlace. Se diagraman en rejilla (web) / galería
+        # horizontal (teléfono).
+        def _nic(inner):
+            return ('<svg class="norma-ic-svg" viewBox="0 0 32 32" fill="none" '
+                    'stroke="currentColor" stroke-width="1.5" stroke-linecap="round" '
+                    'stroke-linejoin="round" aria-hidden="true">' + inner + '</svg>')
+        _norma_icons = [
+            # balanza (la ley que pondera)
+            _nic('<circle cx="16" cy="6.4" r="1.5" fill="currentColor" stroke="none"/>'
+                 '<path d="M16 7.9v18.1M8.5 26h15"/><path d="M16 10.5l-8.5 2M16 10.5l8.5 2"/>'
+                 '<path d="M7.5 12.5l-3 6.2a3.1 3.1 0 0 0 6 0z"/><path d="M24.5 12.5l-3 6.2a3.1 3.1 0 0 0 6 0z"/>'),
+            # documento/artículo con nodo
+            _nic('<path d="M9 5h8.5l5.5 5.5V27H9z"/><path d="M17.5 5v5.5H23"/>'
+                 '<path d="M12.5 17h7M12.5 21h7"/><circle cx="12.8" cy="12.6" r="1.2" fill="currentColor" stroke="none"/>'),
+            # código/tomo con nodo
+            _nic('<path d="M9 7a2 2 0 0 1 2-2h13v20H11a2 2 0 0 0-2 2z"/><path d="M24 25H11a2 2 0 0 0-2 2"/>'
+                 '<path d="M13.5 11h7"/><circle cx="13.5" cy="15" r="1.2" fill="currentColor" stroke="none"/>'),
+        ]
         norm_rows = ""
-        _media_cycle = [globe, wave]
         for i, n in enumerate(pr["normas"]):
-            go = (f'<a class="pr-tl-go" href="{n["url"]}" target="_blank" rel="noopener">Ver norma <i>↗</i></a>'
+            go = (f'<a class="arrowlink norma-go" href="{n["url"]}" target="_blank" rel="noopener">Ver norma</a>'
                   if n.get("url") else '')
-            media = _media_cycle[i % 2]()
-            norm_rows += (f'<div class="pr-tl-row"><span class="pr-tl-label">{esc(n["ley"])}</span>'
-                          f'<div class="pr-tl-body"><p class="pr-tl-desc">{esc(n["que"])}</p>{go}</div>'
-                          f'{tl_video_media()}</div>')
+            ic = _norma_icons[i % len(_norma_icons)]
+            norm_rows += (f'<div class="norma-card reveal-up"><span class="norma-ic" aria-hidden="true">{ic}</span>'
+                          f'<span class="norma-k">{esc(n["ley"])}</span>'
+                          f'<p class="norma-d">{esc(n["que"])}</p>{go}</div>')
         art = ""
         if pr["articulo"]:
             aslug, atitle = pr["articulo"]
@@ -439,8 +456,8 @@ def build(g):
 <section class="section">
   <div class="container">
     <p class="eyebrow-num">Las normas de esta práctica</p>
-    <h2 class="pr-big">El marco que <span class="pr-accent">enmarca esta práctica.</span></h2>
-    <div class="pr-timeline pr-timeline--cards">{norm_rows}</div>
+    <h2 class="pr-big">El derecho que <span class="pr-accent">ordena esta práctica.</span></h2>
+    <div class="norma-grid">{norm_rows}</div>
   </div>
 </section>
 
