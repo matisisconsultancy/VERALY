@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnóstico Veraly</title>
+<link rel="stylesheet" href="/VERALY/assets/css/styles.css?v=34b76de96a">
+<script>
+window.__errs = [];
+window.addEventListener('error', function(e){
+  window.__errs.push((e.filename||'').split('/').slice(-1)[0] + ':' + (e.lineno||'?') + ' — ' + (e.message||e.type));
+}, true);
+window.addEventListener('unhandledrejection', function(e){
+  window.__errs.push('promesa: ' + (e.reason && e.reason.message || e.reason));
+});
+</script>
+<style>
+  #diag{position:relative;z-index:99999;margin:90px 12px 40px;font:15px/1.5 -apple-system,system-ui,sans-serif;
+        background:#06181a;color:#eafffb;border:1px solid #1d4a4e;border-radius:14px;padding:16px 16px 20px}
+  #diag h1{font-size:18px;margin:0 0 4px}
+  #diag .sub{color:#8fd;opacity:.7;font-size:13px;margin:0 0 14px}
+  #diag .row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid #12383c;align-items:flex-start}
+  #diag .k{color:#bfeee6;flex:1}
+  #diag .v{font-weight:700;text-align:right;max-width:52%;word-break:break-word}
+  #diag .ok{color:#5ff0c8} #diag .bad{color:#ff8a6b} #diag .warn{color:#ffd27a}
+  #diag canvas{background:#02100f;border-radius:10px;display:block}
+  #cvwrap{display:flex;gap:12px;margin:14px 0 4px}
+  #diag .note{font-size:12px;opacity:.65;margin-top:12px;word-break:break-word}
+  #diag .big{font-size:16px;font-weight:800;margin:14px 0 2px}
+  #diag .pending{color:#ffd27a}
+</style>
+</head>
+<body class="theme-light flush-footer">
+<header class="site-header floating">
+  <div class="container nav">
+    <a class="brand" href="/VERALY/" aria-label="Veraly Grupo Jurídico, inicio"><span class="brand-mark" aria-hidden="true" style="width:30px;height:30px;color:currentColor;display:inline-block"><svg viewBox="-140 -140 280 280" fill="none" aria-hidden="true" focusable="false"><g stroke="currentColor" stroke-width="17.6" stroke-linecap="round" stroke-linejoin="round"><path d="M -29.2 -120.8 L 0.0 -39.6 L 39.6 -72.0"/><path d="M 105.6 -64.8 L 37.6 -12.0 L 80.4 15.6"/><path d="M 94.4 80.4 L 23.2 32.0 L 10.0 81.2"/><path d="M -47.2 114.8 L -23.2 32.0 L -74.0 34.8"/><path d="M -124.0 -9.6 L -37.6 -12.0 L -56.0 -59.6"/></g><circle cx="0" cy="0" r="16.0" fill="currentColor"/></svg></span><span class="brand-name"><b>Veraly</b> <i>Grupo Jurídico</i></span></a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <div class="nav-cluster">
+      <nav class="nav-pill" aria-label="Navegación principal"><a href="/VERALY/firma/">La firma</a>
+        <a href="/VERALY/equipo/">Prácticas</a>
+        <div class="has-sub">
+          <button type="button" aria-haspopup="true">Soluciones <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="submenu submenu--mega"><div class="submenu-col"><span class="submenu-h">Según su situación</span><ul><li><a href="/VERALY/afectados-por-captacion-masiva/" data-situacion="afectado">Perdí dinero en un esquema de captación</a></li><li><a href="/VERALY/defensa-en-captacion-masiva/" data-situacion="investigado">Me investigan o me vincularon</a></li><li><a href="/VERALY/cumplimiento-en-recaudo-masivo/" data-situacion="empresa">Mi empresa recauda de muchas personas</a></li></ul></div><div class="submenu-col"><span class="submenu-h">Por práctica</span><ul><li><a href="/VERALY/equipo/contractual-y-constitucional/">Contractual y constitucional</a></li><li><a href="/VERALY/equipo/tributaria-y-migratoria/">Tributaria y migratoria</a></li><li><a href="/VERALY/equipo/corporativa/">Corporativa</a></li><li><a href="/VERALY/equipo/penal-e-informatica/">Penal e informática</a></li><li><a href="/VERALY/equipo/empresarial-y-laboral/">Empresarial y laboral</a></li></ul></div></div>
+        </div>
+        <a href="/VERALY/analisis/">Análisis</a></nav>
+      <a class="nav-cta-btn" href="/VERALY/contacto/">Contacto<span class="nav-cta-ico" aria-hidden="true"></span></a>
+    </div>
+    <div class="nav-menu-wrap" id="nav-menu">
+      <ul class="nav-menu">
+        <li><a href="/VERALY/firma/">La firma</a></li>
+        <li><a href="/VERALY/equipo/">Prácticas</a></li>
+        <li class="has-sub">
+          <button type="button" aria-haspopup="true">Soluciones <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="submenu submenu--mega"><div class="submenu-col"><span class="submenu-h">Según su situación</span><ul><li><a href="/VERALY/afectados-por-captacion-masiva/" data-situacion="afectado">Perdí dinero en un esquema de captación</a></li><li><a href="/VERALY/defensa-en-captacion-masiva/" data-situacion="investigado">Me investigan o me vincularon</a></li><li><a href="/VERALY/cumplimiento-en-recaudo-masivo/" data-situacion="empresa">Mi empresa recauda de muchas personas</a></li></ul></div><div class="submenu-col"><span class="submenu-h">Por práctica</span><ul><li><a href="/VERALY/equipo/contractual-y-constitucional/">Contractual y constitucional</a></li><li><a href="/VERALY/equipo/tributaria-y-migratoria/">Tributaria y migratoria</a></li><li><a href="/VERALY/equipo/corporativa/">Corporativa</a></li><li><a href="/VERALY/equipo/penal-e-informatica/">Penal e informática</a></li><li><a href="/VERALY/equipo/empresarial-y-laboral/">Empresarial y laboral</a></li></ul></div></div>
+        </li>
+        <li><a href="/VERALY/analisis/">Análisis</a></li>
+        <li class="nav-cta"><a class="btn btn--primary" href="/VERALY/contacto/">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div id="diag">
+  <h1>Diagnóstico técnico — iPhone Safari</h1>
+  <p class="sub">Usa el CSS y el JS reales del sitio. Espera a que diga «LISTO» abajo y envíame una captura de todo.</p>
+  <div class="big">Moléculas (iconos de puntos)</div>
+  <div id="cvwrap">
+    <canvas class="fic-canvas" data-icon="recuperacion" data-max="2600" data-dot="1.05" data-fit="0.92" style="width:120px;height:120px" aria-hidden="true"></canvas>
+    <canvas class="fic-canvas" data-icon="metodo-convergencia" data-net data-glow data-max="2600" data-dot="1.05" data-fit="0.92" style="width:120px;height:120px" aria-hidden="true"></canvas>
+  </div>
+  <div id="out"></div>
+  <p class="note" id="status">Ejecutando pruebas…</p>
+  <p class="note" id="ua"></p>
+</div>
+</main>
+<script src="/VERALY/assets/js/main.js?v=34b76de96a" defer></script>
+<script src="/VERALY/assets/js/legal-motion.js?v=34b76de96a" defer></script>
+<script src="/VERALY/assets/js/legal-icons.js?v=34b76de96a" defer></script>
+<script>
+function add(k,v,cls){
+  var d=document.createElement('div'); d.className='row';
+  d.innerHTML='<span class="k">'+k+'</span><span class="v '+(cls||'')+'">'+v+'</span>';
+  document.getElementById('out').appendChild(d);
+}
+function canvasDrawn(cv){
+  try{
+    var ctx=cv.getContext('2d'); if(!ctx) return 'sin contexto 2D';
+    var w=cv.width,h=cv.height; if(!w||!h) return 'tamaño 0 ('+w+'x'+h+')';
+    var d=ctx.getImageData(0,0,w,h).data, n=0;
+    for(var i=3;i<d.length;i+=4) if(d[i]>8) n++;
+    return n>40 ? 'OK ('+n+' px)' : 'EN BLANCO ('+n+' px, '+w+'x'+h+')';
+  }catch(e){ return 'ERROR: '+e.message; }
+}
+setTimeout(function(){
+  var mq = window.matchMedia('(max-width:900px)').matches;
+  add('Ancho de ventana', window.innerWidth+' px', window.innerWidth<=430?'ok':'warn');
+  add('devicePixelRatio', (window.devicePixelRatio||1), 'ok');
+  add('Media query móvil (≤900px)', mq?'ACTIVA (móvil)':'NO (modo escritorio)', mq?'ok':'bad');
+  add('Path2D', ('Path2D' in window)?'sí':'NO', ('Path2D' in window)?'ok':'bad');
+  add('IntersectionObserver', ('IntersectionObserver' in window)?'sí':'NO', ('IntersectionObserver' in window)?'ok':'warn');
+  add('initLegalIcons cargó', (typeof window.initLegalIcons==='function')?'sí':'NO', (typeof window.initLegalIcons==='function')?'ok':'bad');
+  var cvs=document.querySelectorAll('canvas[data-icon]');
+  for(var i=0;i<cvs.length;i++){ var r=canvasDrawn(cvs[i]); add('Molécula «'+cvs[i].getAttribute('data-icon')+'»', r, r.indexOf('OK')===0?'ok':'bad'); }
+  var tg=document.querySelector('.nav-toggle'), mw=document.querySelector('.nav-menu-wrap');
+  if(tg){
+    var disp=getComputedStyle(tg).display;
+    add('Botón de menú visible', disp!=='none'?('sí ('+disp+')'):'NO (oculto)', disp!=='none'?'ok':'bad');
+    try{
+      tg.click();  // abrir — esperar a la transición antes de medir
+      setTimeout(function(){
+        var cs=getComputedStyle(mw);
+        var open = cs.display!=='none' && cs.visibility!=='hidden' && parseFloat(cs.opacity)>0.1;
+        add('Menú abre al tocar', open?('sí (op '+(+cs.opacity).toFixed(2)+')'):('NO (disp '+cs.display+', vis '+cs.visibility+', op '+cs.opacity+')'), open?'ok':'bad');
+        tg.click();  // cerrar
+        if(window.__errs.length){ for(var k=0;k<window.__errs.length;k++) add('⚠ Error JS', window.__errs[k], 'bad'); }
+        else add('Errores de JavaScript','ninguno','ok');
+        document.getElementById('status').innerHTML='<b style="color:#5ff0c8">LISTO.</b> Envíame una captura de todo.';
+        document.getElementById('ua').textContent = navigator.userAgent;
+      }, 600);
+    }catch(e){ add('Menú abre al tocar','ERROR: '+e.message,'bad'); document.getElementById('status').textContent='LISTO (con error).'; }
+  } else { add('Botón de menú','NO existe','bad'); document.getElementById('status').textContent='LISTO.'; }
+}, 2800);
+</script>
+</body>
+</html>
