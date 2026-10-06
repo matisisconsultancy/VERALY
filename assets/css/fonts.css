@@ -1,0 +1,8 @@
+/* Fuentes autoalojadas (subconjunto latino) */
+/* Cuerpo: Archivo variable */
+@font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;src:url(../fonts/archivo-var.woff2) format('woff2')}
+/* Titulares: Playfair Display (manual de marca) */
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400 800;font-display:swap;src:url(../fonts/playfair-700.woff2) format('woff2')}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400 800;font-display:swap;src:url(../fonts/playfair-italic.woff2) format('woff2')}
+/* Rótulos y botones: Jost variable (manual de marca) */
+@font-face{font-family:'Jost';font-style:normal;font-weight:100 900;font-display:swap;src:url(../fonts/jost-var.woff2) format('woff2')}
