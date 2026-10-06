@@ -202,9 +202,6 @@ def build(g):
           </div>
         </div>
       </div>
-      <a class="hero-scroll" href="#situaciones" aria-label="Desplazarse a las situaciones">
-        <span>Su situación</span><span class="hero-scroll-ln" aria-hidden="true"></span>
-      </a>
     </div>
     <p class="hero-converge" aria-hidden="true">Cinco prácticas. Un mismo expediente.</p>
   </div>

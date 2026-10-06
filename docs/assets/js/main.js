@@ -414,8 +414,7 @@
       var np = phrases.length; if (!np) return;
       var words = phrases.map(function (p) { return $$('.w', p); });
       var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-      // --- Móvil: cada frase aparece y se ILUMINA al entrar en pantalla (en vez
-      // de un recorrido fijado con scroll). Compacto, sin huecos de fondo. ---
+      // --- Móvil ---
       if (window.matchMedia && window.matchMedia('(max-width: 900px)').matches) {
         if (!('IntersectionObserver' in window) || reduce) {
           phrases.forEach(function (p) { p.classList.add('active'); });
@@ -423,6 +422,20 @@
           cards.forEach(function (c) { c.classList.add('in'); });
           return;
         }
+        // Reveal sin tarjetas (solo frases): se fija (sticky) y las frases
+        // aparecen una a una con el scroll, igual que en escritorio.
+        if (track.getAttribute('data-autorotate') === '1' && np > 1) {
+          var updMA = function () {
+            var p = pinProgress(track);
+            var idx = Math.min(np - 1, Math.floor(p * np * 0.999));
+            phrases.forEach(function (ph, i) { ph.classList.toggle('active', i === idx); });
+            words.forEach(function (ws, i) { ws.forEach(function (w) { w.style.setProperty('--lit', i === idx ? '1' : '0'); }); });
+          };
+          window.addEventListener('scroll', rafThrottle(updMA), { passive: true });
+          window.addEventListener('resize', updMA); updMA();
+          return;
+        }
+        // Reveal con tarjetas: cada frase se ilumina al entrar en pantalla.
         var pio = new IntersectionObserver(function (es) {
           es.forEach(function (e) {
             if (!e.isIntersecting) return;

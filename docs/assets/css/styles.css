@@ -784,8 +784,14 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .clarity-nav--sec a{font-weight:400;color:var(--dim);font-size:var(--step--1)}
 .clarity-nav--sec a:hover{color:var(--text)}
 @media (max-width:860px){
-  .clarity-card--split .clarity-inner{grid-template-columns:1fr;gap:clamp(26px,5vw,36px)}
+  .clarity-card--split .clarity-inner{grid-template-columns:1fr;gap:clamp(24px,6vw,34px)}
   .clarity-card--split .clarity-h{max-width:18ch}
+}
+@media (max-width:560px){
+  .clarity-card{padding:clamp(26px,7vw,40px) clamp(20px,5.5vw,28px)}
+  .clarity-card--split .clarity-h{font-size:clamp(2rem,1.3rem + 3.4vw,2.6rem)}
+  .clarity-sub{font-size:var(--step-0)}
+  .clarity-aside-k:not(:first-child){margin-top:6px}
 }
 /* en táctil (sin cursor) se ilumina con una pulsación suave y constante */
 /* Cierre de situaciones: misma card de claridad con el contenido de
@@ -1373,6 +1379,15 @@ html.js .step-visual>svg{display:none}
   .reveal-phrase{position:static;transform:none;opacity:1;margin-bottom:1.4rem}
   .reveal-cards{grid-template-columns:repeat(2,1fr);margin-top:2rem}
   .reveal-cards .rc{transform:none;opacity:1}
+  /* Reveal sin tarjetas (autorotate): sticky también en móvil, las frases
+     aparecen una a una con el scroll. */
+  .reveal-track[data-autorotate]{height:230vh}
+  .reveal-track[data-autorotate] .reveal-sticky{position:sticky;top:0;height:100vh;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--head-h) var(--edge) 40px}
+  .reveal-track[data-autorotate] .reveal-phrases{position:relative;min-height:clamp(260px,50vh,440px);display:block;max-width:none}
+  .reveal-track[data-autorotate] .reveal-phrase{position:absolute;inset:0;margin:0;opacity:0;transform:none;
+    display:flex;flex-direction:column;justify-content:center}
+  .reveal-track[data-autorotate] .reveal-phrase.active{opacity:1}
 }
 
 /* ---------- Asistente guiado ---------- */

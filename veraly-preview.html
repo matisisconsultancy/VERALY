@@ -789,8 +789,14 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .clarity-nav--sec a{font-weight:400;color:var(--dim);font-size:var(--step--1)}
 .clarity-nav--sec a:hover{color:var(--text)}
 @media (max-width:860px){
-  .clarity-card--split .clarity-inner{grid-template-columns:1fr;gap:clamp(26px,5vw,36px)}
+  .clarity-card--split .clarity-inner{grid-template-columns:1fr;gap:clamp(24px,6vw,34px)}
   .clarity-card--split .clarity-h{max-width:18ch}
+}
+@media (max-width:560px){
+  .clarity-card{padding:clamp(26px,7vw,40px) clamp(20px,5.5vw,28px)}
+  .clarity-card--split .clarity-h{font-size:clamp(2rem,1.3rem + 3.4vw,2.6rem)}
+  .clarity-sub{font-size:var(--step-0)}
+  .clarity-aside-k:not(:first-child){margin-top:6px}
 }
 /* en táctil (sin cursor) se ilumina con una pulsación suave y constante */
 /* Cierre de situaciones: misma card de claridad con el contenido de
@@ -1378,6 +1384,15 @@ html.js .step-visual>svg{display:none}
   .reveal-phrase{position:static;transform:none;opacity:1;margin-bottom:1.4rem}
   .reveal-cards{grid-template-columns:repeat(2,1fr);margin-top:2rem}
   .reveal-cards .rc{transform:none;opacity:1}
+  /* Reveal sin tarjetas (autorotate): sticky también en móvil, las frases
+     aparecen una a una con el scroll. */
+  .reveal-track[data-autorotate]{height:230vh}
+  .reveal-track[data-autorotate] .reveal-sticky{position:sticky;top:0;height:100vh;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--head-h) var(--edge) 40px}
+  .reveal-track[data-autorotate] .reveal-phrases{position:relative;min-height:clamp(260px,50vh,440px);display:block;max-width:none}
+  .reveal-track[data-autorotate] .reveal-phrase{position:absolute;inset:0;margin:0;opacity:0;transform:none;
+    display:flex;flex-direction:column;justify-content:center}
+  .reveal-track[data-autorotate] .reveal-phrase.active{opacity:1}
 }
 
 /* ---------- Asistente guiado ---------- */
@@ -2265,9 +2280,6 @@ h1,h2,h3,
           </div>
         </div>
       </div>
-      <a class="hero-scroll" href="#situaciones" aria-label="Desplazarse a las situaciones">
-        <span>Su situación</span><span class="hero-scroll-ln" aria-hidden="true"></span>
-      </a>
     </div>
     <p class="hero-converge" aria-hidden="true">Cinco prácticas. Un mismo expediente.</p>
   </div>
@@ -4072,7 +4084,7 @@ h1,h2,h3,
   function initReveal(){[].slice.call(document.querySelectorAll('.reveal-track')).forEach(function(track){if(track.__i)return;track.__i=1;
     var phrases=[].slice.call(track.querySelectorAll('.reveal-phrase')),cards=[].slice.call(track.querySelectorAll('.reveal-cards .rc')),np=phrases.length;if(!np)return;
     var words=phrases.map(function(p){return [].slice.call(p.querySelectorAll('.w'));});
-    if(window.matchMedia&&window.matchMedia('(max-width: 900px)').matches){if(!('IntersectionObserver' in window)||scrReduce){phrases.forEach(function(p){p.classList.add('active');});words.forEach(function(ws){ws.forEach(function(w){w.style.setProperty('--lit','1');});});cards.forEach(function(c){c.classList.add('in');});return;}var pio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var i=phrases.indexOf(e.target);e.target.classList.add('active');if(i>=0)words[i].forEach(function(w){w.style.setProperty('--lit','1');});pio.unobserve(e.target);});},{threshold:0.55,rootMargin:'0px 0px -12% 0px'});phrases.forEach(function(p){pio.observe(p);});if(cards.length){var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');cio.unobserve(e.target);}});},{threshold:0.25});cards.forEach(function(c){cio.observe(c);});}return;}
+    if(window.matchMedia&&window.matchMedia('(max-width: 900px)').matches){if(!('IntersectionObserver' in window)||scrReduce){phrases.forEach(function(p){p.classList.add('active');});words.forEach(function(ws){ws.forEach(function(w){w.style.setProperty('--lit','1');});});cards.forEach(function(c){c.classList.add('in');});return;}if(track.getAttribute('data-autorotate')==='1'&&np>1){var updMA=function(){var p=pinProgress(track);var idx=Math.min(np-1,Math.floor(p*np*0.999));phrases.forEach(function(ph,i){ph.classList.toggle('active',i===idx);});words.forEach(function(ws,i){ws.forEach(function(w){w.style.setProperty('--lit',i===idx?'1':'0');});});};window.addEventListener('scroll',rafThrottle(updMA),{passive:true});window.addEventListener('resize',updMA);updMA();return;}var pio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var i=phrases.indexOf(e.target);e.target.classList.add('active');if(i>=0)words[i].forEach(function(w){w.style.setProperty('--lit','1');});pio.unobserve(e.target);});},{threshold:0.55,rootMargin:'0px 0px -12% 0px'});phrases.forEach(function(p){pio.observe(p);});if(cards.length){var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');cio.unobserve(e.target);}});},{threshold:0.25});cards.forEach(function(c){cio.observe(c);});}return;}
     function showPhrase(idx){phrases.forEach(function(ph,i){ph.classList.toggle('active',i===idx);});words.forEach(function(ws,i){ws.forEach(function(w){w.classList.toggle('lit',i===idx);});});}
     if(track.getAttribute('data-autorotate')==='1'){showPhrase(0);cards.forEach(function(c){c.classList.add('in');});if(scrReduce||np<2)return;
       var idx=0,paused=false,inView=true;function tick(){if(paused||!inView)return;idx=(idx+1)%np;showPhrase(idx);}
