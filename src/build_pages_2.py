@@ -110,7 +110,7 @@ def build(g):
     </div>
     <div class="pr-two-r">
       <p>Hay captación masiva y habitual cuando el pasivo para con el público está compuesto por obligaciones con más de veinte (20) personas o por más de cincuenta (50) obligaciones y, además, concurre una de dos condiciones: que lo recibido supere el cincuenta por ciento (50 %) del patrimonio líquido, o que las operaciones provengan de ofertas públicas o privadas a personas innominadas (artículo 2.18.2.1 del Decreto 1068 de 2015). A ello se suma el criterio material del artículo 6 del Decreto 4334 de 2008: recibir dineros del público entregando a cambio rendimientos sin explicación financiera razonable.</p>
-      <p>Es un fenómeno complejo y muy mediático, y por eso se litiga mal: la mayoría de las firmas lo trata como una estafa agravada, y no lo es.</p>
+      <p>Es un fenómeno denso y muy mediático, y tratarlo como una estafa agravada lleva a errores de estrategia, porque no lo es.</p>
     </div>
   </div>
 </section>
@@ -465,7 +465,7 @@ def build(g):
   <div class="container faq-two">
     <div class="faq-two-l">
       <p class="faq-pill"><span class="dot" aria-hidden="true"></span>Preguntas sobre esta práctica</p>
-      <h2 class="pr-big">¿Dudas? <span class="pr-accent">Estamos para ayudar.</span></h2>
+      <h2 class="pr-big">Las preguntas que <span class="pr-accent">más nos hacen.</span></h2>
     </div>
     <div class="faq-two-r">{faq_numbered(pr["faqs"])}</div>
   </div>

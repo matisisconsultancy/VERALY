@@ -316,13 +316,13 @@
       page: ['Ver la ruta de la defensa', '/defensa-en-captacion-masiva/'], cta: 'urgente' },
     B2: { text: 'El momento procesal define lo que aún es posible. La defensa se juega desde los actos urgentes y la audiencia de imputación.',
       page: ['Ver la ruta de la defensa', '/defensa-en-captacion-masiva/'], cta: 'urgente' },
-    B3: { text: 'La vinculación alcanza esas posiciones por el ejercicio del cargo, pero es desvirtuable: la exclusión se construye sobre la buena fe exenta de culpa y el origen lícito.',
+    B3: { text: 'La vinculación alcanza esas posiciones por el ejercicio del cargo, pero exige demostrar la participación en la operación: la buena fe del tercero y el origen lícito de los recursos la desvirtúan.',
       page: ['Ver la ruta de la defensa', '/defensa-en-captacion-masiva/'], cta: 'urgente' },
     C: { q: '¿Qué tipo de modelo?', options: [
       { label: 'Fintech o crowdfunding', to: 'C1' },
       { label: 'Libranzas, factoring o multinivel', to: 'C1' },
       { label: 'Otro modelo de recaudo', to: 'C1' } ] },
-    C1: { text: 'La clave es doble: los umbrales del Decreto 1981 de 1988 y la explicación financiera razonable del rendimiento. Ambas se revisan antes de que las revise una superintendencia.',
+    C1: { text: 'La clave es doble: los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015 y la explicación financiera razonable del rendimiento. Ambas se revisan antes de que las revise una superintendencia.',
       page: ['Ver la ruta preventiva', '/cumplimiento-en-recaudo-masivo/'], cta: 'agendar' },
     INFO: { text: 'Publicamos sobre las figuras del fraude financiero: cómo se estructuran, cómo se investigan y qué vías abren. Nunca sobre casos identificables.',
       page: ['Ir a Análisis', '/analisis/'], cta: 'none' }

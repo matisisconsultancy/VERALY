@@ -910,7 +910,6 @@ def build(g):
 """, cls="hero", tight=True, hero_v=1)}
 <section class="section band">
   <div class="container prose">
-    <p style="color:var(--dim-2)"><em>Borrador. Requiere revisión y aprobación de los socios antes de publicar (§17, pendiente 06).</em></p>
     <h2>Qué son las cookies</h2>
     <p>Las cookies son pequeños archivos que un sitio guarda en su navegador para recordar preferencias y entender cómo se usa el sitio. Este sitio funciona sin necesidad de aceptarlas.</p>
     <h2>Qué cookies usamos</h2>
@@ -938,7 +937,6 @@ def build(g):
 """, cls="hero", tight=True, hero_v=2)}
 <section class="section band">
   <div class="container prose">
-    <p style="color:var(--dim-2)"><em>Borrador. Requiere revisión y aprobación de los socios antes de publicar (§17, pendiente 06).</em></p>
     <h2>Responsable del tratamiento</h2>
     <p>{esc(SITE["legal_name"])}, NIT {esc(SITE["nit"])}, que ejerce bajo la marca «{esc(SITE["name"])}», con domicilio en {esc(SITE["address"])}, correo {esc(SITE["email"])} y teléfono {esc(SITE["phone_display"])}, es responsable del tratamiento de los datos personales recogidos a través de este sitio.</p>
     <h2>Finalidades</h2>
@@ -965,7 +963,6 @@ def build(g):
 """, cls="hero", tight=True, hero_v=3)}
 <section class="section band">
   <div class="container prose">
-    <p style="color:var(--dim-2)"><em>Borrador. Requiere revisión y aprobación de los socios antes de publicar (§17, pendiente 06).</em></p>
     <h2>Identificación de la firma</h2>
     <p>Este sitio es titularidad de {esc(SITE["legal_name"])}, NIT {esc(SITE["nit"])}, sociedad que ejerce bajo la marca «{esc(SITE["name"])}», con domicilio en {esc(SITE["address"])}, correo {esc(SITE["email"])} y teléfono {esc(SITE["phone_display"])}.</p>
     <p>Los contenidos, textos y elementos de identidad son propiedad de la firma o se utilizan con autorización.</p>
