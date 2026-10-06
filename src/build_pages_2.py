@@ -570,7 +570,7 @@ def build(g):
         add(url, {
             "title": f'{s["nombre"]} · Socio · Veraly Grupo Jurídico',
             "description": f'{s["nombre"]}, socio de Veraly Grupo Jurídico en {practica_lc}, aplicada a la defensa en captación masiva.',
-            "active": "equipo", "body_class": "theme-light",
+            "active": "equipo", "body_class": "theme-light flush-footer",
             "schema": [
                 person_schema(s),
                 breadcrumb_schema([("Inicio", "/"), ("El equipo", "/equipo/"),

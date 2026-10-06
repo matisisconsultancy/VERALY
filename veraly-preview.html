@@ -735,6 +735,9 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   background:var(--ink);color:var(--text);
   border-top:1px solid var(--line-soft);margin-top:var(--sp-xl)}
 .site-footer{overflow:hidden}
+/* Páginas que cierran con una banda full-bleed (p. ej. "siguiente miembro"):
+   el footer va a ras, sin la franja blanca de separación. */
+body.flush-footer .site-footer{margin-top:0}
 /* --- invitación de cierre + contacto --- */
 .footer-top{display:grid;grid-template-columns:1.4fr 1fr;gap:var(--gutter) clamp(40px,7vw,120px);
   align-items:start;padding-block:clamp(56px,7vw,104px) clamp(40px,5vw,64px)}
@@ -2244,6 +2247,9 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 .socio-bio p{color:var(--dim);font-weight:300;line-height:1.7;margin:0}
 .socio-contact{margin-top:var(--sp-m);padding-top:1.4rem;border-top:1px solid var(--line)}
 .socio-contact .ci-v{margin:.4rem 0 0}
+/* La banda de "siguiente miembro" cierra la sección a ras del footer: sin el
+   padding inferior de la sección no queda una franja blanca (corte) debajo. */
+.socio-detail{padding-bottom:0}
 .socio-next{display:flex;flex-direction:column;gap:.5rem;margin-top:var(--sp-xl);
   padding:clamp(36px,5vw,72px) var(--edge);background:var(--ink);text-decoration:none}
 .sn-k{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;color:var(--dim-2)}
@@ -2902,7 +2908,7 @@ h1,h2,h3,
   </div>
 </section>
 </template>
-<template data-route="/equipo/socios/kewin-santiago-canizales/" data-title="Kewin Santiago Canizales · Socio · Veraly Grupo Jurídico" data-active="equipo" data-mobilebar="0" data-bodyclass="theme-light">
+<template data-route="/equipo/socios/kewin-santiago-canizales/" data-title="Kewin Santiago Canizales · Socio · Veraly Grupo Jurídico" data-active="equipo" data-mobilebar="0" data-bodyclass="theme-light flush-footer">
 <section class="section socio-detail">
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
@@ -2930,7 +2936,7 @@ h1,h2,h3,
   </a>
 </section>
 </template>
-<template data-route="/equipo/socios/miguel-bayter/" data-title="Miguel Bayter · Socio · Veraly Grupo Jurídico" data-active="equipo" data-mobilebar="0" data-bodyclass="theme-light">
+<template data-route="/equipo/socios/miguel-bayter/" data-title="Miguel Bayter · Socio · Veraly Grupo Jurídico" data-active="equipo" data-mobilebar="0" data-bodyclass="theme-light flush-footer">
 <section class="section socio-detail">
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
@@ -2958,7 +2964,7 @@ h1,h2,h3,
   </a>
 </section>
 </template>
-<template data-route="/equipo/socios/juan-david-naar/" data-title="Juan David Naar · Socio · Veraly Grupo Jurídico" data-active="equipo" data-mobilebar="0" data-bodyclass="theme-light">
+<template data-route="/equipo/socios/juan-david-naar/" data-title="Juan David Naar · Socio · Veraly Grupo Jurídico" data-active="equipo" data-mobilebar="0" data-bodyclass="theme-light flush-footer">
 <section class="section socio-detail">
   <div class="container">
     <p class="backlink"><a href="#!/equipo/socios/"><span class="ico-ar ico-ar--l" aria-hidden="true"></span> Volver al equipo</a></p>
