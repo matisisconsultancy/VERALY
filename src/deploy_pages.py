@@ -5,11 +5,30 @@ raíz-absolutas reescritas al subpath del proyecto (p. ej. /VERALY/).
 Uso:  python3 src/deploy_pages.py [BASE]
 BASE por defecto: /VERALY  (nombre del repositorio en la URL de Pages)
 """
-import os, re, sys, shutil
+import os, re, sys, shutil, hashlib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "docs")
 BASE = (sys.argv[1] if len(sys.argv) > 1 else "/VERALY").rstrip("/")
+
+def _asset_version():
+    """Hash corto del contenido de los assets versionables (css/js). Cambia
+    solo cuando cambian los archivos, de modo que el navegador y el CDN de
+    GitHub Pages descargan la versión nueva en cada despliegue real."""
+    h = hashlib.sha1()
+    files = [
+        "assets/css/fonts.css", "assets/css/styles.css",
+        "assets/js/main.js", "assets/js/legal-motion.js",
+        "assets/js/legal-icons.js", "assets/js/hero-video.js",
+    ]
+    for rel in files:
+        p = os.path.join(ROOT, rel)
+        if os.path.exists(p):
+            h.update(rel.encode("utf-8"))
+            h.update(open(p, "rb").read())
+    return h.hexdigest()[:10]
+
+VER = _asset_version()
 
 # Carpetas/archivos de la salida estática que se copian a docs/
 PAGE_DIRS = [
@@ -44,6 +63,11 @@ def rewrite_html(text):
     # href/src/poster="/..." (comillas dobles o simples), sin tocar "//"
     text = re.sub(r'(\b(?:href|src|poster)=")/(?!/)', r'\1' + BASE + '/', text)
     text = re.sub(r"(\b(?:href|src|poster)=')/(?!/)", r'\1' + BASE + '/', text)
+    # Cache-busting: añade ?v=<hash> a los assets css/js para forzar que el
+    # navegador y el CDN descarguen la versión nueva en cada despliegue real.
+    text = re.sub(
+        r'((?:href|src)=["\'][^"\']+/assets/(?:css|js)/[^"\']+?\.(?:css|js))(["\'])',
+        r'\1?v=' + VER + r'\2', text)
     return text
 
 def rewrite_css(text):
