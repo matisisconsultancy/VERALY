@@ -891,9 +891,16 @@
      iframe bloquean el autoplay, se reintenta al primer gesto del usuario. */
   function playHeroVideos() {
     $$('video.hero-media-el').forEach(function (v) {
-      v.muted = true; v.playsInline = true; v.setAttribute('muted', '');
+      v.muted = true; v.playsInline = true; v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
       var pr; try { pr = v.play(); } catch (e) {}
       if (pr && pr.catch) pr.catch(function () {});
+      // reintenta en cuanto haya datos (más robusto en móviles)
+      if (!v.__hpb) {
+        v.__hpb = 1;
+        ['loadeddata', 'canplay'].forEach(function (ev) {
+          v.addEventListener(ev, function () { v.muted = true; var p; try { p = v.play(); } catch (e) {} if (p && p.catch) p.catch(function () {}); });
+        });
+      }
     });
   }
   playHeroVideos();

@@ -388,7 +388,9 @@ a:hover>.ico-ar--ne,.ar-hover:hover .ico-ar--ne{transform:rotate(-45deg) transla
 }
 
 /* ---------- Hero ---------- */
-.hero{padding-block:calc(var(--head-h) + clamp(28px,6vh,64px)) clamp(52px,9vw,110px)}
+/* Heros de página interior a pantalla completa, uniforme en web y móvil. */
+.hero{padding-block:calc(var(--head-h) + clamp(28px,6vh,64px)) clamp(52px,9vw,110px);
+  min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
 .hero--vh{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
 .hero h1{max-width:15ch}
 .hero .support{font-size:var(--lede);color:var(--dim);max-width:46ch;margin:var(--sp-s) 0 0;font-family:var(--sans);font-weight:300;line-height:1.55}
@@ -1811,7 +1813,8 @@ html.js .reveal-up.in{opacity:1;transform:none}
    Páginas de soluciones — heros y recursos de alto impacto
    ============================================================ */
 /* Hero editorial pensado para cuerpos largos: título + lede corto + panel de datos */
-.sol-hero{padding-top:calc(var(--head-h) + clamp(30px,7vh,80px));padding-bottom:clamp(44px,7vw,96px)}
+.sol-hero{padding-top:calc(var(--head-h) + clamp(30px,7vh,80px));padding-bottom:clamp(44px,7vw,96px);
+  min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
 .sol-hero-grid{display:grid;grid-template-columns:1.4fr .8fr;gap:clamp(32px,6vw,96px);align-items:end}
 .sol-h1{font-family:var(--sans);font-weight:var(--hw);letter-spacing:-.02em;line-height:1.03;
   font-size:var(--h1);margin:clamp(16px,2vw,26px) 0 0;max-width:15ch}
@@ -2173,7 +2176,7 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
 @media(max-width:720px){.quiz-cta{grid-template-columns:1fr}.quiz-cta-badge{display:none}}
 
 /* ============ Página de contacto (referente) + reserva tipo Calendly ============ */
-.contact-hero{position:relative;overflow:clip;background:var(--ink);min-height:80vh;min-height:80svh;
+.contact-hero{position:relative;overflow:clip;background:var(--ink);min-height:100vh;min-height:100svh;
   display:flex;align-items:flex-end;
   --bg:#05292C;--ink:#03191B;--panel:#073A3F;--text:#D9F6EF;--dim:rgba(217,246,239,.7);
   --dim-2:rgba(217,246,239,.48);--accent-ink:#89F5E5;--line:rgba(137,245,229,.28)}
