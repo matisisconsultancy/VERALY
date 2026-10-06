@@ -440,7 +440,7 @@ def build(g):
   <div class="container">
     <p class="eyebrow-num">Las normas de esta práctica</p>
     <h2 class="pr-big">El marco que <span class="pr-accent">enmarca esta práctica.</span></h2>
-    <div class="pr-timeline">{norm_rows}</div>
+    <div class="pr-timeline pr-timeline--cards">{norm_rows}</div>
   </div>
 </section>
 

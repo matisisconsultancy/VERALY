@@ -369,19 +369,38 @@ def build(g):
         '<div class="sol-fact"><b>Art.<span class="u">5</span></b><span>el perímetro que alcanza a los vinculados</span></div>'
         '</div></aside>'
         '</div></section>')
+    # Iconos de línea (mismo lenguaje de trazo fino que el resto del sitio:
+    # viewBox 24, fill:none, stroke currentColor). Uno por rol del perímetro.
+    def _pic(inner):
+        return ('<svg class="perim-ic-svg" viewBox="0 0 24 24" fill="none" '
+                'stroke="currentColor" stroke-width="1.6" stroke-linecap="round" '
+                'stroke-linejoin="round" aria-hidden="true">' + inner + '</svg>')
     _perim = [
-        ("El captador", "El origen del esquema", True),
-        ("Administradores", "Representantes legales y miembros de junta", False),
-        ("Socios", "Por su participación en la operación", False),
-        ("Revisores fiscales", "Por el ejercicio del cargo durante la captación", False),
-        ("Contadores", "Por el ejercicio del cargo durante la captación", False),
-        ("Proveedores de buena fe", "Que contrataron con la intervenida", False),
+        ("El captador", "El origen del esquema", True,
+         _pic('<circle cx="12" cy="12" r="3"/><path d="M12 3.5v3M12 17.5v3M3.5 12h3M17.5 12h3'
+              'M5.8 5.8l2 2M16.2 16.2l2 2M18.2 5.8l-2 2M7.8 16.2l-2 2"/>')),
+        ("Administradores", "Representantes legales y miembros de junta", False,
+         _pic('<rect x="3" y="7.5" width="18" height="12.5" rx="2"/>'
+              '<path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5M3 12.5h18"/>')),
+        ("Socios", "Por su participación en la operación", False,
+         _pic('<circle cx="8.5" cy="8" r="2.6"/><circle cx="16" cy="9" r="2.2"/>'
+              '<path d="M4 19a4.5 4.5 0 0 1 9 0M14 19a4 4 0 0 1 6-3.2"/>')),
+        ("Revisores fiscales", "Por el ejercicio del cargo durante la captación", False,
+         _pic('<path d="M7 3.5h7l4 4v4.2"/><path d="M7 3.5v17h5.5"/>'
+              '<circle cx="16.5" cy="16.5" r="3"/><path d="M18.7 18.7l2.3 2.3"/>')),
+        ("Contadores", "Por el ejercicio del cargo durante la captación", False,
+         _pic('<rect x="5" y="3.5" width="14" height="17" rx="2"/>'
+              '<path d="M9 8h6M9 12h6M9 16h3.5"/>')),
+        ("Proveedores de buena fe", "Que contrataron con la intervenida", False,
+         _pic('<path d="M12 3.2l8 4.4v8.8L12 20.8l-8-4.4V7.6z"/>'
+              '<path d="M4.2 7.7l7.8 4.3 7.8-4.3M12 12v8.6"/>')),
     ]
     _perim_cards = "".join(
         '<div class="perim-card reveal-up' + (' is-core' if core else '') + '">'
+        '<span class="perim-ic" aria-hidden="true">' + ic + '</span>'
         '<span class="perim-role">' + esc(r) + '</span>'
         '<span class="perim-note">' + esc(n) + '</span></div>'
-        for r, n, core in _perim)
+        for r, n, core, ic in _perim)
     def_perim = (
         '<section class="section"><div class="container">'
         '<p class="eyebrow-num">El perímetro</p>'

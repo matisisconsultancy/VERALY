@@ -213,6 +213,13 @@ strong{font-weight:600;color:var(--text)}
   .cta-row{flex-direction:column;align-items:stretch;gap:12px}
   .cta-row>.btn{width:100%}
 }
+/* En táctil no existe hover para "cerrar" los corchetes en un marco completo,
+   así que un botón secundario a ancho completo queda con dos marcas sueltas en
+   esquinas opuestas. En táctil se muestran ya cerrados (marco hairline) para que
+   se lea como botón y la información quede integrada. */
+@media (hover:none){
+  .btn--ghost::before,.btn--ghost::after{width:100%;height:100%}
+}
 
 /* enlaces de texto: subrayado que se despliega */
 .textlink{position:relative;color:var(--accent-ink);text-decoration:none;font-family:var(--ui);font-weight:600;
@@ -596,6 +603,21 @@ html.js .prac-rows.in .prac-row:nth-child(5){transition-delay:.28s}
   .pr-tl-body{padding-block:12px 18px}
   .pr-tl-media{min-height:180px;border-left:0;border-radius:var(--card-r);margin-bottom:26px;filter:none}
 }
+/* Variante galería horizontal del marco de normas (solo teléfono): cada norma
+   es una tarjeta deslizable con la imagen arriba, el rótulo y la descripción. */
+@media (max-width:760px){
+  .pr-timeline--cards{display:flex;border-top:0;margin-top:1.6rem;gap:14px;
+    overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    margin-left:calc(-1*var(--edge));margin-right:calc(-1*var(--edge));scroll-padding-left:var(--edge);
+    padding:4px var(--edge) 12px;scrollbar-width:none}
+  .pr-timeline--cards::-webkit-scrollbar{display:none}
+  .pr-timeline--cards .pr-tl-row{flex:0 0 80%;scroll-snap-align:start;display:flex;flex-direction:column;
+    gap:0;padding:0;border:1px solid var(--line);border-radius:var(--card-r);overflow:hidden;background:var(--panel)}
+  .pr-timeline--cards .pr-tl-row::before{display:none}
+  .pr-timeline--cards .pr-tl-media{order:-1;min-height:148px;border-left:0;border-radius:0;margin:0;filter:none}
+  .pr-timeline--cards .pr-tl-label{padding:15px var(--edge) 0}
+  .pr-timeline--cards .pr-tl-body{padding:8px var(--edge) 18px}
+}
 /* entrada suave de las filas al hacer scroll */
 html.js .pr-timeline .pr-tl-row{opacity:0;transform:translateY(22px);
   transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1),background .22s ease}
@@ -650,8 +672,9 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
   padding:12px var(--edge) calc(12px + env(safe-area-inset-bottom));
   background:rgba(5,41,44,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
 .mobile-bar .btn{flex:1}
-@media (max-width:900px){.mobile-bar.is-on{display:flex}
-  .has-mobile-bar main{padding-bottom:90px}}
+/* La barra inferior de "Agendar una consulta" se retira en responsive en todas
+   las páginas (el WhatsApp flotante ya ofrece contacto directo). */
+.mobile-bar,.mobile-bar.is-on{display:none!important}
 
 /* ---------- Breadcrumbs ---------- */
 .crumbs{font-family:var(--ui);font-size:var(--step--1);color:var(--dim-2);padding-top:calc(var(--head-h) + 22px)}
@@ -806,6 +829,11 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 .cierre-trust .trust-list{margin-top:0}
 .cierre-links{display:flex;flex-wrap:wrap;gap:12px 28px;margin:clamp(18px,2.2vw,26px) 0 0}
 .cierre-links .arrowlink{font-weight:600}
+@media (max-width:560px){
+  /* enlaces de cierre apilados: cada uno en su línea, separados por hairline */
+  .cierre-links{flex-direction:column;gap:0;margin-top:22px;border-top:1px solid var(--line)}
+  .cierre-links .arrowlink{justify-content:space-between;width:100%;padding:.85em 0;border-bottom:1px solid var(--line)}
+}
 
 /* ---------- Situaciones (home tarjetas de puerta) ---------- */
 .doors{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);margin-top:1.8rem}
@@ -1335,6 +1363,9 @@ html.js .step-visual>svg{display:none}
 /* pista muy larga = cada frase se ilumina y se sostiene el tiempo suficiente
    para leerla completa antes de cambiar; las cards salen al final */
 #vias-intro .reveal-track{height:270vh}   /* más recorrido = ritmo más pausado */
+/* En móvil no se fija ni se escala el recorrido: se colapsa para que no quede
+   un espacio verde vacío debajo de las tarjetas. */
+@media (max-width:900px){#vias-intro .reveal-track{height:auto}}
 /* fundido suave entre frases (cruce sin salto) */
 #vias-intro .reveal-phrase{transition:opacity .6s ease}
 /* cada palabra se alumbra con un fundido suave; transición corta para que el
@@ -1442,7 +1473,6 @@ body.has-cookie .wa-fab{bottom:calc(var(--cookie-h,120px) + clamp(14px,3vw,22px)
 .wa-fab:active{transform:translateY(0) scale(.98);transition-duration:.08s}
 .wa-fab:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px}
 @media (max-width:900px){
-  body.has-mobile-bar .wa-fab{bottom:calc(72px + env(safe-area-inset-bottom))}
   .wa-fab{padding:13px;gap:0}
   .wa-fab .wa-fab-label{display:none}}
 
@@ -2015,13 +2045,23 @@ html.js .jn-phase.open .jn-actions li{opacity:1;transform:none}
   display:flex;flex-direction:column;gap:.5rem;transition:border-color .4s ease,transform .4s ease}
 .perim-card.is-core{border-color:var(--accent-ink);background:color-mix(in srgb,var(--accent-ink) 9%,var(--panel))}
 .perim-card:hover{transform:translateY(-3px);border-color:var(--accent-ink)}
+.perim-ic{display:inline-flex;color:var(--accent-ink);line-height:0;margin-bottom:.35rem}
+.perim-ic-svg{width:30px;height:30px;display:block}
+.perim-card.is-core .perim-ic{color:var(--accent-ink)}
 .perim-role{font-family:var(--display);font-weight:600;font-size:1.15rem;color:var(--text);line-height:1.15}
 .perim-card.is-core .perim-role{color:var(--accent-ink)}
 .perim-note{font-family:var(--ui);font-size:.9rem;color:var(--dim);line-height:1.4}
 .perim-foot{margin:clamp(26px,3vw,44px) 0 0;font-weight:300;line-height:1.6;max-width:64ch;color:var(--dim);font-size:var(--step-1)}
 .perim-foot strong{color:var(--text);font-weight:500}
-@media(max-width:760px){.perim-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.perim-grid{grid-template-columns:1fr}}
+@media(max-width:760px){
+  /* Galería horizontal: cada rol en su tarjeta, se desliza de lado con snap */
+  .perim-grid{display:flex;grid-template-columns:none;gap:12px;margin-top:1.6rem;
+    overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    margin-left:calc(-1*var(--edge));margin-right:calc(-1*var(--edge));scroll-padding-left:var(--edge);
+    padding:4px var(--edge) 12px;scrollbar-width:none}
+  .perim-grid::-webkit-scrollbar{display:none}
+  .perim-grid .perim-card{flex:0 0 70%;scroll-snap-align:start}
+}
 /* Dos presunciones (defensa): tarjeta con "se presume" -> "se desvirtúa" */
 /* Presunciones — editorial, sin caja ni pills; regla superior por columna */
 .presu-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,88px);margin-top:var(--sp-l)}
