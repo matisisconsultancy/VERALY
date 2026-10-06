@@ -642,22 +642,46 @@
   /* ---------- Línea de tiempo de plazos: avance con el scroll ---------- */
   function initPlazos() {
     var secs = $$('.plz-sec'); if (!secs.length) return;
-    // Móvil: la barra queda completa y cada hito se ilumina al entrar en
-    // pantalla (dorso oscuro -> menta), con scroll nativo fluido.
+    // Móvil: el riel se DIBUJA con el scroll, los números CUENTAN de 0 a su
+    // valor al activarse, cada hito entra (fade+slide) y el nodo actual pulsa.
     if (window.matchMedia && window.matchMedia('(max-width: 720px)').matches) {
       secs.forEach(function (sec) {
         var track = sec.querySelector('.plz-track'); if (!track) return;
         var steps = $$('.plz-step', track);
-        track.style.setProperty('--p', '1');
-        if ('IntersectionObserver' in window) {
-          var pio = new IntersectionObserver(function (es) {
-            es.forEach(function (e) {
-              e.target.classList.add('is-on');
-              e.target.classList.toggle('is-cur', e.isIntersecting);
-            });
-          }, { threshold: 0.6 });
-          steps.forEach(function (s) { pio.observe(s); });
-        } else { steps.forEach(function (s) { s.classList.add('is-on'); }); }
+        var n = steps.length, counted = steps.map(function () { return false; });
+        var reduceP = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+        function countStep(i) {
+          if (counted[i]) return; counted[i] = true;
+          var el = steps[i].querySelector('[data-count]'); if (!el) return;
+          var target = parseFloat(el.getAttribute('data-count')) || 0;
+          if (reduceP) { el.textContent = target; return; }
+          var dur = 650, t0 = null;
+          function run(ts) {
+            if (t0 === null) t0 = ts;
+            var k = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+            el.textContent = Math.round(target * e);
+            if (k < 1) requestAnimationFrame(run); else el.textContent = target;
+          }
+          requestAnimationFrame(run);
+        }
+        function updM() {
+          var vh = window.innerHeight, r = track.getBoundingClientRect();
+          // línea de lectura al 55% del viewport: barre el track de arriba a abajo
+          var p = (vh * 0.55 - r.top) / Math.max(1, r.height);
+          p = Math.max(0, Math.min(1, p));
+          var fill = Math.min(1, p / 0.9);
+          track.style.setProperty('--p', fill.toFixed(4));
+          var seg = 1 / n;
+          steps.forEach(function (s, i) {
+            var sp = Math.max(0, Math.min(1, (fill - i * seg) / seg));
+            var on = fill > i * seg + 0.0005;
+            s.classList.toggle('is-on', on);
+            s.classList.toggle('is-cur', sp > 0 && sp < 1);
+            if (on) countStep(i);
+          });
+        }
+        window.addEventListener('scroll', rafThrottle(updM), { passive: true });
+        window.addEventListener('resize', updM); updM();
       });
       return;
     }
