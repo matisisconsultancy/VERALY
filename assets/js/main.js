@@ -666,18 +666,11 @@
         var n = steps.length, counted = steps.map(function () { return false; });
         var reduceP = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
         function countStep(i) {
+          // Las cifras reales se muestran desde el inicio (igual que en escritorio):
+          // legibles en captura, impresión y buscadores. Solo la barra de progreso
+          // y el nodo activo se animan con el scroll (carta 4.4).
           if (counted[i]) return; counted[i] = true;
-          var el = steps[i].querySelector('[data-count]'); if (!el) return;
-          var target = parseFloat(el.getAttribute('data-count')) || 0;
-          if (reduceP) { el.textContent = target; return; }
-          var dur = 650, t0 = null;
-          function run(ts) {
-            if (t0 === null) t0 = ts;
-            var k = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - k, 3);
-            el.textContent = Math.round(target * e);
-            if (k < 1) requestAnimationFrame(run); else el.textContent = target;
-          }
-          requestAnimationFrame(run);
+          var el = steps[i].querySelector('[data-count]'); if (el) el.textContent = el.getAttribute('data-count');
         }
         function updM() {
           var vh = window.innerHeight, r = track.getBoundingClientRect();
