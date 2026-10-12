@@ -13,13 +13,15 @@ final se commitea en rutas limpias (`carpeta/index.html`).
 Arquitectura de dos capas:
 
 - **Capa 1 · institucional:** `/`, `/firma`, `/equipo` (+ ficha por socio),
-  `/marca`, `/contacto`.
+  `/contacto`.
 - **Capa 2 · intención:** `/afectados-por-captacion-masiva`,
   `/defensa-en-captacion-masiva`, `/cumplimiento-en-recaudo-masivo`,
   `/analisis` (+ artículos).
-- **Legales:** `/aviso-de-privacidad`, `/aviso-legal`.
+- **Legales:** `/aviso-de-privacidad`, `/aviso-legal`, `/politica-de-cookies`.
 
-El brandbook interactivo (Workstream 1) vive en `/marca/sistema/`.
+El brandbook interactivo ("Sistema de marca") NO lo genera este build: vive como
+página independiente en `brandbook/` dentro de la rama `gh-pages` (se sirve en
+`…/VERALY/brandbook/`). No lo sobrescribas al desplegar.
 
 ## Estructura
 
@@ -34,8 +36,24 @@ sitemap.xml, robots.txt         Generados por el build
 ## Regenerar el sitio
 
 ```bash
-python3 src/build.py
+python3 src/build.py          # genera el HTML en la raíz del repo
+python3 src/build_pages.py    # + build_pages_2.py, build_pages_3.py (copy de cada página)
 ```
+
+El HTML de la raíz usa rutas absolutas desde `/` (listo para un dominio propio).
+
+## Compilar para publicar
+
+`src/deploy_pages.py` copia la salida a `docs/` reescribiendo las rutas al subpath
+indicado:
+
+```bash
+python3 src/deploy_pages.py            # base /VERALY  (vista previa en GitHub Pages de proyecto)
+python3 src/deploy_pages.py ""         # base /        (dominio propio, p. ej. veraly.com.co)
+```
+
+Para producción en dominio propio se usa la base `/`; verificar que
+`grep -r "/VERALY" docs/` no devuelva nada antes de publicar.
 
 ## Diseño
 

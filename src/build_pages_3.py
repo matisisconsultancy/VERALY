@@ -6,6 +6,7 @@ def build(g):
     socio_by_slug = g["socio_by_slug"]; TEMAS = g["TEMAS"]
     section = g["section"]; crumbs = g["crumbs"]; faq_block = g["faq_block"]
     faq_schema = g["faq_schema"]; contact_form = g["contact_form"]; trust_list = g["trust_list"]
+    lead_magnet_block = g["lead_magnet_block"]
     breadcrumb_schema = g["breadcrumb_schema"]; B = g["B"]; agendar = g["agendar_btn"]
     service_schema = g["service_schema"]; faq_block = g["faq_block"]
 
@@ -32,6 +33,20 @@ def build(g):
         {links_html}
       </div>
     </div>
+  </div>
+</section>'''
+
+    def solicitud_section(perfil):
+        # M23: el mismo formulario de contacto al final de cada página de
+        # intención, con data-perfil propio para saber de dónde viene la consulta.
+        return f'''<section class="section solicitud-sec" id="solicitar">
+  <div class="container solicitud-wrap">
+    <div class="solicitud-head">
+      <p class="eyebrow">Escríbanos</p>
+      <h2 class="pr-big">Cuéntenos su situación en <span class="pr-accent">una línea.</span></h2>
+      <p class="lead">Déjenos su nombre y una vía de contacto. Respondemos dentro de 24 horas hábiles, tras verificar el conflicto de interés.</p>
+    </div>
+    {contact_form(perfil, "Enviar mensaje")}
   </div>
 </section>'''
 
@@ -118,6 +133,8 @@ def build(g):
     afectados_faq = [
         ("¿Cuánto tiempo tengo para reclamar?",
          "<p>Dentro de la intervención administrativa, diez días comunes contados desde el aviso que el interventor publica en los dos días siguientes a la toma de posesión. Fuera de ese trámite, los términos dependen de la vía: la penal y la civil tienen sus propios plazos de prescripción.</p>"),
+        ("¿Cómo denunciar una captación ilegal de dinero?",
+         "<p>Por dos frentes, que pueden coexistir: ante la Superintendencia de Sociedades, para que evalúe la intervención administrativa por hechos objetivos o notorios, y ante la Fiscalía, por la vía penal del artículo 316. Conviene organizar antes lo que sustenta la entrega (transferencias, comunicaciones, registros del esquema) para que la denuncia tenga respaldo probatorio.</p>"),
         ("¿Puedo recuperar los intereses que me prometieron?",
          "<p>Por la vía administrativa, no: la devolución tiene techo en el capital entregado. Los rendimientos y perjuicios solo se persiguen por la vía civil o por la penal, en el incidente de reparación integral. Ojo con el plazo: en firme la sentencia condenatoria, el juez convoca a audiencia dentro de los ocho días siguientes a la solicitud, y esa solicitud caduca a los treinta días contados desde la ejecutoria.</p>"),
         ("¿Y si entregué el dinero en efectivo y no tengo comprobante?",
@@ -289,7 +306,15 @@ def build(g):
 
 {af_grupo}
 
+{lead_magnet_block(
+    "guia-afectados",
+    "Qué reunir y qué pasos existen si entregó dinero a una captadora",
+    "Una guía breve e informativa con lo que conviene reunir y las vías que existen. Déjenos su correo y se la enviamos cuando esté disponible.",
+    "Guía en preparación; la revisa la firma antes de enviarse.")}
+
 {af_faq}
+
+{solicitud_section("afectado")}
 
 {cierre_banner(
     'Una primera <span class="pr-accent">conversación.</span>',
@@ -479,6 +504,8 @@ def build(g):
 
 {def_faq}
 
+{solicitud_section("investigado")}
+
 {cierre_banner(
     'Hablar <span class="pr-accent">hoy.</span>',
     "Una primera conversación para ubicar el momento procesal y lo que todavía es posible. No necesita traer documentos.",
@@ -487,7 +514,7 @@ def build(g):
 '''
     add("/defensa-en-captacion-masiva/", {
         "title": "Defensa en captación masiva · Arts. 316 y 316A",
-        "description": "Defensa administrativa ante la Superintendencia de Sociedades, penal por los arts. 316 y 316A, y civil patrimonial.",
+        "description": "Abogados en captación masiva: defensa administrativa ante la Superintendencia de Sociedades, penal por los arts. 316 y 316A, y civil patrimonial.",
         "active": "investigado", "og_type": "article", "mobile_bar": True,
         "body_class": "theme-light flush-footer",
         "schema": [
@@ -579,6 +606,8 @@ def build(g):
 
 {cump_faq}
 
+{solicitud_section("empresa")}
+
 {cierre_banner(
     'Revisar el modelo <span class="pr-accent">a tiempo.</span>',
     "Una conversación para ubicar el modelo frente a los umbrales y definir si conviene una revisión formal.",
@@ -650,7 +679,7 @@ def build(g):
     <p>Cuando el esquema se apoya en contratos legales y en activos reales, la frontera entre el modelo lícito y la captación se vuelve fina, y se juega en la documentación. Es exactamente el tipo de análisis que exige leer el fenómeno desde varias ramas del derecho a la vez.</p>
 """,
         "que-hace-la-superintendencia-de-sociedades": """
-    <h2>La toma de posesión</h2>
+    <h2>La toma de posesión, bajo el Decreto 4334 de 2008</h2>
     <p>Ante indicios de captación no autorizada, la Superintendencia de Sociedades puede ordenar la toma de posesión de los bienes, haberes y negocios de la persona o entidad. La medida trae nombramiento de agente interventor, remoción de administradores, congelación de activos y suspensión de las ejecuciones en curso.</p>
     <h2>Una vía paralela a la penal</h2>
     <p>El procedimiento del Decreto 4334 de 2008 corre de forma autónoma respecto del proceso penal. Sus decisiones tienen carácter jurisdiccional, efectos de cosa juzgada frente a todos y son de única instancia. Para el afectado, esta vía suele ser la más rápida para intentar recuperar el capital.</p>
@@ -832,7 +861,7 @@ def build(g):
     # =====================================================================
     faq_central = [
         ("¿Qué es la captación masiva y habitual?",
-         '<p>Es recibir dineros del público sin autorización estatal, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable (art. 6 del Decreto 4334 de 2008). Hay captación cuando el pasivo con el público supera los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015: más de veinte personas o más de cincuenta obligaciones, siempre que lo recibido supere el 50 % del patrimonio líquido o provenga de ofertas a personas innominadas.</p>'),
+         '<p>Es recibir dineros del público sin autorización estatal —lo que suele llamarse captación ilegal de dinero—, entregando a cambio bienes, servicios o rendimientos sin explicación financiera razonable (art. 6 del Decreto 4334 de 2008). Hay captación cuando el pasivo con el público supera los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015: más de veinte personas o más de cincuenta obligaciones, siempre que lo recibido supere el 50 % del patrimonio líquido o provenga de ofertas a personas innominadas.</p>'),
         ("¿En qué se diferencia la captación de una estafa?",
          '<p>Son delitos distintos. La estafa (art. 246) exige un engaño que induce a error a una víctima determinada; la captación (art. 316) sanciona recibir dineros del público sin autorización, sin necesidad de probar el engaño individual. La captación, además, activa un trámite administrativo propio ante la Superintendencia de Sociedades. <a class="textlink" href="/analisis/diferencia-entre-estafa-y-captacion-masiva/">Ver el análisis completo</a>.</p>'),
         ("¿Qué es la toma de posesión y qué efectos tiene?",
@@ -840,7 +869,7 @@ def build(g):
         ("Perdí dinero en un esquema, ¿por dónde empiezo?",
          '<p>Existen tres vías (administrativa, penal y civil) y cada una tiene términos propios que corren desde la toma de posesión. Identificar cuál aplica y en qué plazo es la primera decisión. No prometemos recuperación: el desenlace depende de la masa de la intervención y de cada caso. <a class="textlink" href="/afectados-por-captacion-masiva/">Ver las vías y los plazos</a>.</p>'),
         ("¿Qué es el no reintegro del artículo 316A?",
-         '<p>Es un tipo penal autónomo que sanciona no devolver los recursos captados. Puede concurrir con el art. 316 y con otros delitos como estafa agravada, lavado de activos o concierto para delinquir.</p>'),
+         '<p>Es un tipo penal autónomo que sanciona no devolver los recursos captados. Puede concurrir con el artículo 316 del Código Penal colombiano y con otros delitos como estafa agravada, lavado de activos o concierto para delinquir.</p>'),
         ("Tengo una empresa que recauda de muchas personas, ¿cuándo se configura captación?",
          '<p>Se revisa un criterio objetivo, los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015, y uno material: que exista explicación financiera razonable del rendimiento (art. 6 del Decreto 4334 de 2008). Un modelo puede estar bajo los umbrales y aun así quedar señalado si no sustenta de dónde sale el rendimiento. <a class="textlink" href="/cumplimiento-en-recaudo-masivo/">Revisión de encuadre</a>.</p>'),
         ("¿Qué es la «explicación financiera razonable»?",

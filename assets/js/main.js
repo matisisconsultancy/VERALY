@@ -160,6 +160,9 @@
           var isPhone = /^[+\d][\d\s().-]{6,}$/.test(val);
           if (!isEmail && !isPhone) bad = true;
         }
+        if (input.dataset.validate === 'email' && val) {
+          if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val)) bad = true;
+        }
         setInvalid(field, bad);
         if (bad) { ok = false; firstBad = firstBad || input; }
       });
@@ -183,16 +186,25 @@
       var btn = $('button[type=submit]', form);
       if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Enviando…'; }
 
+      var isLead = form.getAttribute('data-form-kind') === 'lead';
       function done(success) {
         if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label; }
         if (status) {
           status.className = 'form-status ' + (success ? 'ok' : 'err');
           status.setAttribute('data-show', 'true');
           status.textContent = success
-            ? 'Recibimos su mensaje. Le respondemos dentro de las próximas 24 horas hábiles. Si su situación tiene un término corriendo, puede escribirnos también por WhatsApp.'
-            : 'No pudimos enviar el mensaje. Puede intentarlo de nuevo o escribirnos directamente a ' + CONFIG.FIRM_EMAIL + ' o por WhatsApp.';
+            ? (isLead
+                ? 'Listo. Le enviaremos el recurso a su correo en breve.'
+                : 'Recibimos su mensaje. Le respondemos dentro de las próximas 24 horas hábiles. Si su situación tiene un término corriendo, puede escribirnos también por WhatsApp.')
+            : (isLead
+                ? 'No pudimos registrar su correo. Puede intentarlo de nuevo o escribirnos a ' + CONFIG.FIRM_EMAIL + '.'
+                : 'No pudimos enviar el mensaje. Puede intentarlo de nuevo o escribirnos directamente a ' + CONFIG.FIRM_EMAIL + ' o por WhatsApp.');
         }
-        if (success) { form.reset(); track('form_submit', { page_path: location.pathname, perfil_inferido: perfil }); }
+        if (success) {
+          form.reset();
+          if (isLead) track('lead_magnet_submit', { page_path: location.pathname, recurso: form.getAttribute('data-lead') || '' });
+          else track('form_submit', { page_path: location.pathname, perfil_inferido: perfil });
+        }
         else track('form_error', { page_path: location.pathname, tipo_error: 'envio' });
       }
 

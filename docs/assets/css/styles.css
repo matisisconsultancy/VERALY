@@ -650,6 +650,20 @@ html.js .pr-timeline.in .pr-tl-row:nth-child(4){transition-delay:.24s}
 /* ---------- Formulario ---------- */
 .form-wrap{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r);
   padding:clamp(22px,3.4vw,36px)}
+/* M23 · bloque de solicitud al final de las páginas de intención */
+.solicitud-wrap{max-width:760px;margin-inline:auto}
+.solicitud-head{text-align:center;margin-bottom:clamp(26px,4vw,44px)}
+.solicitud-head .lead{margin:.8rem auto 0;max-width:54ch}
+/* M24 · bloque de lead magnet (captación de correo para un recurso) */
+.lead-magnet-sec{border-top:1px solid var(--line-soft)}
+.lead-magnet{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,56px);
+  align-items:center;max-width:1040px;margin-inline:auto}
+.lm-title{font-family:var(--display);font-weight:600;line-height:1.12;margin:.35rem 0 0;
+  font-size:clamp(1.5rem,1.1rem + 1.6vw,2.1rem)}
+.lm-desc{color:var(--dim);margin-top:.9rem;line-height:1.55;max-width:42ch}
+.lm-note{color:var(--dim-2);font-size:var(--step--1);margin-top:.9rem}
+.lm-form{margin:0}
+@media (max-width:860px){.lead-magnet{grid-template-columns:1fr;gap:24px}}
 .field{margin-bottom:20px}
 .field label{display:block;font-family:var(--ui);font-weight:600;margin-bottom:8px;color:var(--text)}
 .field .hint{display:block;color:var(--dim-2);font-size:var(--step--1);font-weight:400;margin-top:2px}

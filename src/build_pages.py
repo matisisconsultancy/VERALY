@@ -98,6 +98,46 @@ def build(g):
     def conflict_block(text):
         return f'<div class="conflict"><p>{text}</p></div>'
 
+    def lead_magnet_block(nombre, titulo, desc, nota=""):
+        # M24: bloque reutilizable de captación de correo para entregar un recurso
+        # (lead magnet). Usa el mismo mecanismo de envío que el formulario
+        # (data-veraly-form) con un perfil propio y data-form-kind="lead", de modo
+        # que main.js registra lead_magnet_submit. El recurso (PDF) y el destino de
+        # los correos quedan pendientes de decisión (D10); el bloque queda visible
+        # para conectarlo enseguida. La autorización es específica de esta
+        # finalidad (envío del recurso) y la de información de la firma es opcional.
+        nota_html = f'<p class="lm-note">{esc(nota)}</p>' if nota else ''
+        return f'''<section class="section lead-magnet-sec">
+  <div class="container">
+    <div class="lead-magnet reveal-up">
+      <div class="lm-copy">
+        <p class="eyebrow">Guía informativa</p>
+        <h2 class="lm-title">{titulo}</h2>
+        <p class="lm-desc">{esc(desc)}</p>
+        {nota_html}
+      </div>
+      <form class="form-wrap lm-form" data-veraly-form data-form-kind="lead" data-perfil="lead-{nombre}" data-lead="{nombre}" novalidate>
+        <div class="field">
+          <label for="lm-{nombre}-email">Correo</label>
+          <input type="email" id="lm-{nombre}-email" name="email" required data-validate="email" autocomplete="email" placeholder="nombre@correo.com">
+          <p class="field-error">Indique un correo válido.</p>
+        </div>
+        <div class="check">
+          <input type="checkbox" id="lm-{nombre}-auth" name="autorizacion_recurso" required>
+          <label for="lm-{nombre}-auth">Autorizo el tratamiento de mis datos para que me envíen este recurso, conforme a la <a href="/aviso-de-privacidad/">política de tratamiento de datos</a> (Ley 1581 de 2012).</label>
+        </div>
+        <div class="check">
+          <input type="checkbox" id="lm-{nombre}-info" name="autorizacion_info">
+          <label for="lm-{nombre}-info">Opcional: también deseo recibir información de la firma.</label>
+        </div>
+        <input type="checkbox" name="botcheck" class="hp-field" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="btn btn--primary">Recibir el recurso</button>
+        <div class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>'''
+
     def person_schema(s):
         return {
             "@context": "https://schema.org", "@type": "Person",
@@ -314,6 +354,7 @@ def build(g):
     ctx.update({"section": section, "crumbs": crumbs, "faq_block": faq_block,
                 "faq_schema": faq_schema, "contact_form": contact_form,
                 "trust_list": trust_list, "conflict_block": conflict_block,
+                "lead_magnet_block": lead_magnet_block,
                 "person_schema": person_schema, "breadcrumb_schema": breadcrumb_schema,
                 "service_schema": service_schema, "faq_block": faq_block,
                 "re_text": re_text, "B": B})
