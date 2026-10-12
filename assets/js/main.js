@@ -279,35 +279,12 @@
     requestAnimationFrame(function () { t.setAttribute('data-show', 'true'); });
     setTimeout(function () { t.removeAttribute('data-show'); setTimeout(function () { t.remove(); }, 300); }, 3600);
   }
-  function openScheduler() {
-    if (CONFIG.SCHEDULER_URL) {
-      // Página de citas de Google Calendar (Appointment schedules).
-      window.open(CONFIG.SCHEDULER_URL, '_blank', 'noopener');
-    } else {
-      // Sin calendario conectado aún: llevar al formulario/contacto.
-      toast('Agendamiento en línea: se activa al conectar el calendario de la firma. Puede escribirnos mientras tanto.');
-      if (location.pathname.indexOf('/contacto') === -1) location.href = '/contacto/';
-      else { var f = document.querySelector('form[data-veraly-form]'); if (f) f.scrollIntoView({ behavior: 'smooth' }); }
-    }
-  }
-  $$('[data-cal]').forEach(function (el) {
-    el.addEventListener('click', function (e) { e.preventDefault(); track('agendar_click', { page_path: location.pathname }); openScheduler(); });
+  // Canal principal = formulario. Los botones "Solicitar una consulta" son
+  // enlaces a /contacto/ (o al formulario de la página); registramos el clic
+  // como evento de conversión pero dejamos que el enlace navegue normalmente.
+  $$('a[data-pos="cta"]').forEach(function (el) {
+    el.addEventListener('click', function () { track('agendar_click', { page_path: location.pathname }); });
   });
-  // Agenda embebida en /contacto: iframe de Google Calendar cuando esté configurado.
-  var calInline = $('#cal-inline');
-  if (calInline) {
-    if (CONFIG.SCHEDULER_URL) {
-      var ifr = document.createElement('iframe');
-      ifr.src = CONFIG.SCHEDULER_URL;
-      ifr.title = 'Agenda de citas';
-      ifr.loading = 'lazy';
-      ifr.style.cssText = 'width:100%;min-height:620px;border:0;border-radius:var(--card-r)';
-      calInline.innerHTML = '';
-      calInline.appendChild(ifr);
-    } else {
-      calInline.innerHTML = '<p style="color:var(--dim-2);margin:0">El calendario en línea se activa al conectar la cuenta de la firma. Mientras tanto, puede usar el formulario o WhatsApp.</p>';
-    }
-  }
 
   /* ---------- Asistente guiado (determinista, sin IA, sin campo libre) ---------- */
   var FLOW = {
@@ -358,7 +335,7 @@
       var p = document.createElement('p'); p.className = 'asst-text'; p.textContent = node.text; asstBody.appendChild(p);
       var acts = document.createElement('div'); acts.className = 'asst-actions';
       if (node.cta === 'agendar') {
-        acts.appendChild(mkA('Agendar una consulta', '#agendar', 'primary', true));
+        acts.appendChild(mkA('Solicitar una consulta', '/contacto/', 'primary', false));
       } else if (node.cta === 'urgente') {
         acts.appendChild(mkA('Escribir ahora', '/contacto/', 'primary', false));
       }
@@ -371,12 +348,11 @@
       back.addEventListener('click', function () { asstRender('start'); }); asstBody.appendChild(back);
     }
   }
-  function mkA(label, href, kind, isCal, isTel) {
+  function mkA(label, href, kind, _unused, isTel) {
     var a = document.createElement('a'); a.className = 'btn btn--' + kind + ' btn--sm';
     if (isTel) { a.href = 'tel:'; a.setAttribute('data-pos', 'asistente'); }
-    else a.href = href;
+    else { a.href = href; a.setAttribute('data-pos', 'cta'); }
     a.textContent = label;
-    if (isCal) { a.setAttribute('data-cal', ''); a.addEventListener('click', function (e) { e.preventDefault(); openScheduler(); }); }
     return a;
   }
   function asstToggle(open) {

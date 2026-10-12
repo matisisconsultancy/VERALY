@@ -175,7 +175,7 @@ def build(g):
         '<p class="eyebrow">Para el afectado</p>'
         '<h1 class="sol-h1">Recuperar lo que entregó <span class="pr-accent">tiene vías, y un plazo que corre.</span></h1>'
         '<p class="sol-lede">Perder dinero en una pirámide o en un esquema de rendimientos no autorizado abre tres vías de recuperación, todas con plazos que empiezan a correr desde la toma de posesión.</p>'
-        '<div class="cta-row">' + agendar("Agendar una consulta") + wa_a + '</div>'
+        '<div class="cta-row">' + agendar("Solicitar una consulta") + wa_a + '</div>'
         '</div>'
         '<aside class="sol-hero-aside"><div class="sol-facts">'
         '<div class="sol-fact"><b>3</b><span>vías de recuperación: administrativa, penal y civil</span></div>'
@@ -319,7 +319,7 @@ def build(g):
 {cierre_banner(
     'Una primera <span class="pr-accent">conversación.</span>',
     "No necesita traer documentos ni haber decidido nada. Sirve para saber si hay caso, qué vías siguen abiertas y qué plazos corren.",
-    agendar("Agendar una consulta") + wa_a,
+    agendar("Solicitar una consulta") + wa_a,
     '<p class="cierre-links"><a class="arrowlink" href="/firma/">Cómo trabaja la firma</a>'
     '<a class="arrowlink" href="/equipo/">Ver al equipo</a></p>')}
 '''
@@ -386,7 +386,7 @@ def build(g):
         '<p class="eyebrow">Para el investigado o vinculado</p>'
         '<h1 class="sol-h1">La defensa se libra en <span class="pr-accent">tres frentes a la vez.</span></h1>'
         '<p class="sol-lede">Actuación administrativa ante la Superintendencia de Sociedades, defensa penal por los artículos 316 y 316A, y defensa patrimonial civil. El momento procesal define lo que todavía es posible.</p>'
-        '<div class="cta-row">' + agendar("Agendar una consulta") + wa_b + '</div>'
+        '<div class="cta-row">' + agendar("Solicitar una consulta") + wa_b + '</div>'
         '</div>'
         '<aside class="sol-hero-aside"><div class="sol-facts">'
         '<div class="sol-fact"><b>3</b><span>frentes en paralelo: administrativo, penal y civil</span></div>'
@@ -509,7 +509,7 @@ def build(g):
 {cierre_banner(
     'Hablar <span class="pr-accent">hoy.</span>',
     "Una primera conversación para ubicar el momento procesal y lo que todavía es posible. No necesita traer documentos.",
-    agendar("Agendar una consulta") + wa_b,
+    agendar("Solicitar una consulta") + wa_b,
     '<p class="cierre-links"><a class="arrowlink" href="/equipo/">Ver al equipo</a></p>')}
 '''
     add("/defensa-en-captacion-masiva/", {
@@ -611,7 +611,7 @@ def build(g):
 {cierre_banner(
     'Revisar el modelo <span class="pr-accent">a tiempo.</span>',
     "Una conversación para ubicar el modelo frente a los umbrales y definir si conviene una revisión formal.",
-    agendar("Agendar una revisión") + f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="cumplimiento">WhatsApp</a>')}
+    agendar("Solicitar una revisión") + f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="cumplimiento">WhatsApp</a>')}
 '''
     add("/cumplimiento-en-recaudo-masivo/", {
         "title": "Cumplimiento en recaudo masivo · Captación",
@@ -881,7 +881,7 @@ def build(g):
         ("¿La firma garantiza recuperar el dinero o un resultado?",
          '<p>No. No prometemos recuperación ni desenlace judicial. Lo que se promete es trabajo serio y criterio sobre las tres vías, con los límites dichos de frente.</p>'),
         ("¿Qué datos piden para una primera consulta?",
-         '<p>Solo su nombre, una vía de contacto y una línea de contexto. No pedimos los hechos del caso por escrito: se conversan. Los datos se tratan conforme a la Ley 1581 de 2012. <a class="textlink" href="/contacto/">Agendar una consulta</a>.</p>'),
+         '<p>Solo su nombre, una vía de contacto y una línea de contexto. No pedimos los hechos del caso por escrito: se conversan. Los datos se tratan conforme a la Ley 1581 de 2012. <a class="textlink" href="/contacto/">Solicitar una consulta</a>.</p>'),
         ("¿Atienden al afectado y al investigado en el mismo caso?",
          '<p>No. La defensa del investigado y la recuperación del afectado nunca se prestan dentro del mismo proceso de intervención. Cada consulta pasa por verificación previa de conflicto de interés antes de aceptarse.</p>'),
         ("¿Cuál es la diferencia entre la Superintendencia de Sociedades y la Superintendencia Financiera en estos casos?",
@@ -917,7 +917,7 @@ def build(g):
 
 <section class="section" style="padding-top:0">
   <div class="container">
-    <div class="cta-row">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/analisis/">Leer los análisis</a></div>
+    <div class="cta-row">{agendar("Solicitar una consulta")}<a class="btn btn--ghost" href="/analisis/">Leer los análisis</a></div>
   </div>
 </section>
 '''

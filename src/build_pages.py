@@ -237,7 +237,7 @@ def build(g):
         <div class="hero-right">
           <p class="desc">La captación puede abordarse por tres vías: administrativa, civil y penal. La estrategia está en definir cuál activar, cuándo y contra quién, sobre el mismo expediente.</p>
           <div class="cta-row">
-            {agendar("Agendar una consulta")}
+            {agendar("Solicitar una consulta")}
             <a class="btn btn--ghost" href="#situaciones">Ver mi situación</a>
           </div>
         </div>
@@ -295,7 +295,7 @@ def build(g):
           <p class="eyebrow">Cómo empezamos</p>
           <h2 class="clarity-h">El primer paso es <span class="pr-accent">tener claridad.</span></h2>
           <p class="clarity-sub">Antes de decidir qué hacer hay que ver el caso completo: qué pasó, quién responde y qué vías siguen abiertas. Esa lectura, con las cinco prácticas sobre el mismo expediente, es lo primero que ponemos de su lado.</p>
-          <div class="cta-row">{agendar("Agendar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabaja la firma</a></div>
+          <div class="cta-row">{agendar("Solicitar una consulta")}<a class="btn btn--ghost" href="/firma/">Cómo trabaja la firma</a></div>
         </div>
         <nav class="clarity-aside" aria-label="Por dónde empezar">
           <p class="clarity-aside-k">Según su situación</p>

@@ -258,7 +258,7 @@ def footer_html():
       <p class="eyebrow">Contacto</p>
       <p class="footer-lede">Hablemos de su caso<br>con la debida reserva.</p>
       <div class="footer-cta">
-        {agendar_btn("Agendar una consulta")}
+        {agendar_btn("Solicitar una consulta")}
         {wa}
       </div>
     </div>
@@ -307,7 +307,7 @@ def mobile_bar_html():
           if SITE["whatsapp"] else
           '<a class="btn btn--ghost" href="/contacto/" data-pos="mobilebar">Escribir</a>')
     return f'''<div class="mobile-bar is-on">
-  {agendar_btn("Agendar una consulta")}
+  {agendar_btn("Solicitar una consulta")}
   {wa}
 </div>'''
 
@@ -612,9 +612,13 @@ def marco_reveal(eyebrow="El marco que trabajamos", phrases=None, cards=None, se
 </section>'''
 
 
-def agendar_btn(label="Agendar una consulta", primary=True):
+def agendar_btn(label="Solicitar una consulta", primary=True, href="/contacto/"):
+    # Canal principal = formulario. El botón lleva al formulario de /contacto/
+    # (no a una agenda): la firma verifica el conflicto de interés antes de la
+    # primera conversación, así que una reserva directa no aplica. WhatsApp es la
+    # vía rápida.
     cls = "btn btn--primary" if primary else "btn btn--ghost"
-    return f'<a class="{cls}" href="#agendar" data-cal data-pos="cta">{esc(label)}</a>'
+    return f'<a class="{cls}" href="{href}" data-pos="cta">{esc(label)}</a>'
 
 
 def assistant_html():

@@ -155,7 +155,7 @@ def build(g):
           <h2 class="clarity-h">El primer paso es <span class="pr-accent">tener claridad.</span></h2>
           <p class="clarity-sub">Antes de decidir qué hacer, hay que ver el caso completo: qué ocurrió, quién responde y qué caminos siguen abiertos. Esa lectura, con las cinco prácticas sobre el mismo expediente, es lo primero que ponemos de su lado.</p>
           <div class="cta-row">
-            {agendar("Agendar una consulta")}
+            {agendar("Solicitar una consulta")}
             <a class="btn btn--ghost" href="/equipo/">Por qué cinco prácticas</a>
           </div>
         </div>
@@ -528,7 +528,7 @@ def build(g):
 <section class="socios-grid-sec">
   <div class="socios-grid">{socio_cards}</div>
   <div class="container">
-    <div class="cta-row" style="margin-top:clamp(40px,6vw,72px)"><a class="btn btn--ghost" href="/equipo/">Volver a las prácticas</a>{agendar("Agendar una consulta")}</div>
+    <div class="cta-row" style="margin-top:clamp(40px,6vw,72px)"><a class="btn btn--ghost" href="/equipo/">Volver a las prácticas</a>{agendar("Solicitar una consulta")}</div>
   </div>
 </section>
 '''
@@ -601,7 +601,7 @@ def build(g):
   <div class="container contact-hero-in">
     <p class="eyebrow">Contacto</p>
     <h1 class="contact-hero-h1">No dude en <span class="pr-accent">contactarnos.</span></h1>
-    <p class="contact-hero-sub">Para cualquier solicitud de información o para agendar una primera conversación, la firma queda a su disposición.</p>
+    <p class="contact-hero-sub">Para cualquier solicitud de información o para solicitar una primera conversación, la firma queda a su disposición.</p>
   </div>
 </section>
 
@@ -632,11 +632,10 @@ def build(g):
         <p class="contact-lead">Cuéntenos en una línea su situación y cómo contactarlo. Respondemos dentro de 24 horas hábiles, tras verificar el conflicto de interés.</p>
         {contact_form("contacto", "Enviar mensaje")}
       </div>
-      <div class="contact-block contact-agenda">
-        <span class="ci-k">Agendar una consulta</span>
-        <p class="contact-lead">O reserve directamente una primera conversación en el calendario de la firma.</p>
-        <div class="cta-row">{agendar("Agendar una consulta")}{wa_contact}</div>
-        <div id="cal-inline" class="cal-inline" aria-live="polite"></div>
+      <div class="contact-block">
+        <span class="ci-k">Vía rápida</span>
+        <p class="contact-lead">Si su situación es urgente o tiene un término corriendo, escríbanos por WhatsApp.</p>
+        <div class="cta-row">{wa_contact}</div>
       </div>
     </div>
   </div>
