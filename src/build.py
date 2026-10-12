@@ -19,7 +19,7 @@ SITE = {
     "name": "Veraly Grupo Jurídico",
     "legal_name": "VERALY ABOGADOS S.A.S.",
     "nit": "902.052.667-7",
-    "claim": "Defensa en fraude financiero",
+    "claim": "Defensa en delitos financieros",
     "base_url": "https://veraly.com.co",
     "locale": "es-CO",
     "email": "contacto@veraly.com.co",
@@ -30,6 +30,12 @@ SITE = {
     "hours": "Lunes a viernes, 8:00 a 18:00",
     # Agendamiento (Cal.com). Placeholder hasta conectar el calendario de la firma.
     "cal_link": "",  # p.ej. "veraly/consulta"  (TODO: cuenta Cal.com de la firma)
+    # Redes sociales existentes (se enlazan en el pie y en sameAs del JSON-LD).
+    # LinkedIn: dejar vacío hasta que exista la página de la firma (M16).
+    "instagram": "https://www.instagram.com/veraly.col/",
+    "linkedin": "",
+    # Verificación de Google Search Console: dejar vacío hasta tener el código (M17).
+    "gsc_verification": "",
 }
 
 # Isotipo "Convergencia" reutilizado del brandbook (cinco V hacia un punto).
@@ -69,7 +75,7 @@ ARTICLES = [
         "date_iso": "2026-08-12", "date_disp": "12 AGO 2026",
         "title": "Diferencia entre estafa y captación masiva",
         "h1": "¿Qué diferencia hay entre estafa y captación masiva?",
-        "desc": "Estafa y captación masiva son delitos distintos: cambian el proceso, la defensa y la vía de recuperación. La captación activa además un trámite administrativo propio.",
+        "desc": "Estafa y captación masiva son delitos distintos: cambian el proceso, la defensa y la vía de recuperación. La captación activa un trámite administrativo.",
         "answer": "La estafa y la captación masiva y habitual son tipos penales distintos. La captación, además del proceso penal del artículo 316, activa un procedimiento administrativo especial ante la Superintendencia de Sociedades, con un mecanismo de devolución que la estafa no tiene. La calificación correcta cambia la estrategia completa.",
         "cta_target": "afectados",
     },
@@ -78,8 +84,9 @@ ARTICLES = [
         "tema": "El fenómeno", "perfil": "A · B · C", "author": "miguel-bayter",
         "date_iso": "2026-07-28", "date_disp": "28 JUL 2026",
         "title": "Captación montada sobre contratos legales: libranzas y factoring",
+        "seo_title": "Libranzas y factoring: cuándo son captación · Veraly",
         "h1": "¿Cuándo un esquema de libranzas o factoring se convierte en captación?",
-        "desc": "Contratos legales como libranzas y factoring pueden configurar captación cuando superan los umbrales y el rendimiento carece de explicación financiera razonable.",
+        "desc": "Contratos legales como libranzas y factoring pueden configurar captación cuando superan los umbrales o el rendimiento no tiene explicación razonable.",
         "answer": "Un esquema de libranzas o factoring, que son contratos legales en sí mismos, puede configurar captación masiva cuando el pasivo con el público supera los umbrales del artículo 2.18.2.1 del Decreto 1068 de 2015 o cuando el rendimiento ofrecido no tiene explicación financiera razonable, en los términos del artículo 6 del Decreto 4334 de 2008. Además, la Ley 1902 de 2018 introdujo un supuesto propio de la libranza, sin umbral alguno.",
         "cta_target": "cumplimiento",
     },
@@ -88,6 +95,7 @@ ARTICLES = [
         "tema": "La intervención", "perfil": "A", "author": "miguel-bayter",
         "date_iso": "2026-07-10", "date_disp": "10 JUL 2026",
         "title": "Qué hace la Superintendencia de Sociedades con una captadora",
+        "seo_title": "Qué hace la Supersociedades con una captadora · Veraly",
         "h1": "¿Qué hace la Superintendencia de Sociedades cuando interviene una captadora?",
         "desc": "La ruta administrativa del Decreto 4334 de 2008: toma de posesión, devolución de recursos y plazos, en paralelo al proceso penal.",
         "answer": "La Superintendencia de Sociedades ordena la toma de posesión de los bienes de la captadora mediante el procedimiento del Decreto 4334 de 2008. Sus decisiones tienen carácter jurisdiccional, efectos de cosa juzgada frente a todos y son de única instancia. A partir de ahí se abre el trámite de devolución de recursos a los afectados.",
@@ -99,7 +107,7 @@ ARTICLES = [
         "date_iso": "2026-06-24", "date_disp": "24 JUN 2026",
         "title": "La buena fe del tercero proveedor",
         "h1": "¿Qué es la buena fe del tercero proveedor en un proceso de captación?",
-        "desc": "El estándar que, según la Sentencia C-145 de 2009, puede dejar fuera de la intervención a empleados y proveedores que actuaron de buena fe en sus actividades lícitas ordinarias: qué exige y cómo se acredita.",
+        "desc": "El estándar que, según la Sentencia C-145 de 2009, puede dejar fuera de la intervención a empleados y proveedores que actuaron de buena fe.",
         "answer": "La Sentencia C-145 de 2009 condicionó el artículo 5 del Decreto Ley 4334 de 2008 para que la intervención no alcance a los terceros de buena fe distintos de quienes entregaron recursos, como empleados y proveedores que actuaron en el ámbito de sus actividades lícitas ordinarias. Acreditar esa buena fe es un trabajo documental: contratos, controles, comunicaciones y decisiones registradas.",
         "cta_target": "defensa",
     },
@@ -221,6 +229,24 @@ def header_html(active=""):
   </div>
 </header>'''
 
+def _social_links():
+    """Enlaces a las redes existentes (no vacías). Orden: Instagram, LinkedIn."""
+    out = []
+    if SITE.get("instagram"):
+        out.append(("Instagram", SITE["instagram"]))
+    if SITE.get("linkedin"):
+        out.append(("LinkedIn", SITE["linkedin"]))
+    return out
+
+def _social_row():
+    links = _social_links()
+    if not links:
+        return ""
+    anchors = " ".join(
+        f'<a href="{esc(url)}" target="_blank" rel="noopener me" data-pos="footer">{esc(name)}</a>'
+        for name, url in links)
+    return f'<div class="fm-row fm-row--social"><dt>Redes</dt><dd>{anchors}</dd></div>'
+
 def footer_html():
     wa = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="footer">WhatsApp</a>'
           if SITE["whatsapp"] else '')
@@ -241,6 +267,7 @@ def footer_html():
       <div class="fm-row"><dt>Teléfono</dt><dd><a href="tel:{SITE["phone_href"]}" data-pos="footer">{esc(SITE["phone_display"])}</a></dd></div>
       <div class="fm-row"><dt>Oficina</dt><dd>{esc(SITE["address"])}</dd></div>
       <div class="fm-row"><dt>Horario</dt><dd>{esc(SITE["hours"])}</dd></div>
+      {_social_row()}
     </dl>
   </div>
 
@@ -625,7 +652,7 @@ def document(meta, body):
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{esc(canonical)}">
-<meta name="robots" content="{esc(meta.get("robots", "index,follow,max-image-preview:large"))}">
+<meta name="robots" content="{esc(meta.get("robots", "index,follow,max-image-preview:large"))}">{(chr(10) + '<meta name="google-site-verification" content="' + esc(SITE["gsc_verification"]) + '">') if SITE.get("gsc_verification") else ''}
 <meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="{esc(SITE["name"])}">
 <meta property="og:title" content="{esc(title)}">

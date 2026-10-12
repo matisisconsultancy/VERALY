@@ -205,7 +205,7 @@ def build(g):
             "rama": "Contractual y constitucional",
             "card": "El debido proceso en un trámite de única instancia y el andamiaje contractual anterior a la toma de posesión.",
             "lede": "Sus contratos y sus garantías, leídos antes de que los lea la Superintendencia de Sociedades. Revisamos cómo la autoridad va a interpretar cada acuerdo que sostuvo el negocio y defendemos el debido proceso en un trámite que no tiene segunda instancia.",
-            "meta": "Contratos en procesos de captación y debido proceso ante la Superintendencia de Sociedades: lectura de mandatos, mutuos, compraventas de cartera y promesas antes de que los recalifique la autoridad, en un trámite de única instancia del Decreto 4334 de 2008.",
+            "meta": "Contratos en procesos de captación y debido proceso ante la Superintendencia de Sociedades, en un trámite de única instancia del Decreto 4334 de 2008.",
             "paras": [
                 "En los procesos de captación masiva y habitual casi todos cometen el mismo error: esperan una segunda oportunidad que no existe, porque la intervención de la Superintendencia de Sociedades no tiene apelación, lo que allí se decide vale frente a todos y ningún juez administrativo lo revisa después, así que el debido proceso se ejerce dentro del trámite o no se ejerce.",
                 "Mientras tanto, los contratos que sostenían el negocio se leen de otra manera, porque la autoridad no mira el nombre que usted les puso sino lo que en realidad fueron, y un mandato, un mutuo, una compraventa de cartera o una promesa sobre planos pueden terminar recalificados sin que nadie le pregunte. De esa lectura depende la posición de cada quien en el proceso.",
@@ -234,7 +234,7 @@ def build(g):
             "rama": "Tributaria y migratoria",
             "card": "Las contingencias tributarias sobre los flujos del esquema y las consecuencias migratorias de los vinculados.",
             "lede": "Analizamos las obligaciones tributarias y la situación migratoria de personas y empresas, y en un caso de captación lo hacemos para identificar contingencias, ordenar la información relevante y orientar una estrategia coherente con los demás frentes jurídicos.",
-            "meta": "Obligaciones tributarias y situación migratoria de personas y empresas en un caso de captación masiva: movimientos de dinero y declaraciones, residencia fiscal de vinculados extranjeros y contingencias ante Migración Colombia.",
+            "meta": "Obligaciones tributarias y situación migratoria de personas y empresas en un caso de captación masiva: contingencias fiscales y ante Migración Colombia.",
             "paras": [
                 "Revisamos los movimientos de dinero, las declaraciones y las obligaciones tributarias de la empresa y de las personas involucradas. Examinamos cómo están organizados sus asuntos tributarios y contables y, cuando no existe una estructura clara, ayudamos a definir una que permita identificar obligaciones, sustentar operaciones y atender los requerimientos que puedan surgir.",
                 "Cuando hay personas extranjeras vinculadas al caso, evaluamos su situación migratoria, el cumplimiento de los requisitos aplicables y las posibles contingencias ante Migración Colombia. También analizamos si, según sus circunstancias, pueden tener obligaciones tributarias en Colombia, incluida la necesidad de determinar su residencia fiscal.",
@@ -262,7 +262,7 @@ def build(g):
             "rama": "Corporativa",
             "card": "Las controversias societarias sobre los actos anteriores a la intervención y la responsabilidad de administradores, revisores fiscales y terceros.",
             "lede": "Trabaja la vida societaria de la captadora: qué decisiones anteriores a la intervención son atacables y cómo se define la responsabilidad de administradores, revisores fiscales y terceros.",
-            "meta": "Responsabilidad de administradores y validez de los actos societarios anteriores a la intervención en un esquema de captación: Código de Comercio y perímetro de la intervención del Decreto 4334 de 2008.",
+            "meta": "Responsabilidad de administradores y validez de los actos societarios anteriores a la intervención en un esquema de captación masiva.",
             "paras": [
                 "La toma de posesión congela una sociedad que, hasta el día anterior, tomaba decisiones: aumentos de capital, cesiones, garantías, operaciones entre vinculadas. Revisar la validez de esos actos societarios anteriores a la intervención define la responsabilidad de administradores, revisores fiscales y terceros.",
                 "Leer la sociedad con criterio corporativo define, en la práctica, el tamaño del problema: cuánto patrimonio responde, quién responde por él y qué relaciones jurídicas conservan validez frente a la intervención.",
@@ -286,7 +286,7 @@ def build(g):
             "rama": "Penal e informática",
             "card": "La defensa penal por los artículos 316 y 316A y la evidencia digital, desde los actos urgentes hasta el juicio oral.",
             "lede": "Conduce el frente penal (los artículos 316 y 316A y los delitos que suelen concurrir) y la prueba digital que hoy sostiene o desmonta la acusación.",
-            "meta": "Defensa penal por captación masiva y habitual (art. 316) y no reintegro (art. 316A), delitos concurrentes y tratamiento de la evidencia digital: de los actos urgentes y la imputación al juicio oral.",
+            "meta": "Defensa penal por captación masiva (art. 316) y no reintegro (art. 316A), delitos concurrentes y evidencia digital, de los actos urgentes al juicio oral.",
             "paras": [
                 "El proceso penal por captación masiva y habitual (artículo 316 del Código Penal) y no reintegro (artículo 316A) suele venir acompañado de estafa agravada, lavado de activos y concierto para delinquir. La defensa penal se juega desde los actos urgentes y la audiencia de imputación: cada decisión temprana condiciona el juicio oral.",
                 "Casi toda la prueba es digital: registros de plataformas, comunicaciones, trazas de pagos, billeteras. Tratar esa evidencia digital con criterio informático (cadena de custodia, autenticidad, alcance) es lo que permite excluir lo mal recaudado y sostener el origen lícito de lo que sí lo tiene.",
@@ -313,7 +313,7 @@ def build(g):
             "rama": "Empresarial y laboral",
             "card": "El análisis de la operación de la empresa y sus relaciones laborales para identificar obligaciones y anticipar contingencias en un caso de captación.",
             "lede": "Analizamos la operación de la empresa y sus relaciones laborales para identificar obligaciones, anticipar contingencias y orientar la estrategia jurídica en casos de captación.",
-            "meta": "Operación de la empresa y relaciones laborales en un caso de captación: estructura societaria, contratos y vínculos con trabajadores, comisionistas y colaboradores dentro del proceso de intervención.",
+            "meta": "Operación de la empresa y relaciones laborales en un caso de captación masiva: estructura, contratos y vínculos con trabajadores dentro de la intervención.",
             "paras": [
                 "Comprender cómo operaba la empresa es fundamental para analizar el caso. Revisamos su estructura, sus contratos y las relaciones entre socios, administradores y terceros para identificar los compromisos asumidos y las posibles responsabilidades.",
                 "En el ámbito laboral, examinamos los vínculos con trabajadores, comisionistas y colaboradores para determinar su naturaleza, las obligaciones pendientes y su tratamiento dentro del proceso de intervención.",
@@ -372,7 +372,7 @@ def build(g):
 '''
     add("/equipo/", {
         "title": "El equipo · Las cinco prácticas · Veraly Grupo Jurídico",
-        "description": "La firma se compone de cinco prácticas del derecho que convergen sobre el mismo expediente de captación masiva: constitucional, penal, corporativa, tributaria y laboral.",
+        "description": "Cinco prácticas del derecho que convergen sobre el mismo expediente de captación masiva: constitucional, penal, corporativa, tributaria y laboral.",
         "active": "equipo", "body_class": "theme-light",
         "schema": [breadcrumb_schema([("Inicio", "/"), ("El equipo", "/equipo/")])],
     }, equipo_body)
@@ -471,8 +471,12 @@ def build(g):
   </div>
 </section>
 '''
+        # Título: conserva "en captación masiva" (palabra clave) si cabe en 60;
+        # si no, usa la forma corta "{rama} · Veraly Grupo Jurídico" (M07).
+        _full_title = f'{pr["rama"]} en captación masiva · Veraly Grupo Jurídico'
+        _title = _full_title if len(_full_title) <= 60 else f'{pr["rama"]} · Veraly Grupo Jurídico'
         add(url, {
-            "title": f'{pr["rama"]} en captación masiva · Veraly Grupo Jurídico',
+            "title": _title,
             "description": pr["meta"],
             "active": "equipo", "body_class": "theme-light",
             "schema": [

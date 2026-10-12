@@ -819,7 +819,7 @@ def build(g):
             "inLanguage": "es-CO",
         }
         add("/analisis/" + a["slug"] + "/", {
-            "title": f'{a["title"]} · Veraly',
+            "title": a.get("seo_title") or f'{a["title"]} · Veraly',
             "description": a["desc"],
             "active": "analisis", "og_type": "article", "body_class": "theme-light",
             "schema": [article_schema, breadcrumb_schema([

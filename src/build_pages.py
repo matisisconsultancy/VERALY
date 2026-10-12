@@ -282,7 +282,7 @@ def build(g):
             "name": SITE["name"],
             "legalName": SITE["legal_name"],
             "taxID": SITE["nit"],
-            "description": "Firma boutique colombiana especializada en captación masiva y habitual: defensa administrativa, penal y civil, y recuperación de afectados.",
+            "description": "Firma boutique colombiana especializada en captación masiva y habitual: defensa administrativa, penal y civil, y representación de personas afectadas.",
             "url": B + "/",
             "areaServed": {"@type": "Country", "name": "Colombia"},
             "knowsAbout": ["Captación masiva y habitual", "Fraude financiero",
@@ -292,6 +292,8 @@ def build(g):
             "telephone": SITE["phone_display"],
             "address": {"@type": "PostalAddress", "addressCountry": "CO",
                         "streetAddress": SITE["address"]},
+            **({"sameAs": [u for u in (SITE.get("instagram"), SITE.get("linkedin")) if u]}
+               if any((SITE.get("instagram"), SITE.get("linkedin"))) else {}),
         },
         {
             "@context": "https://schema.org", "@type": "WebSite",
@@ -302,7 +304,7 @@ def build(g):
     ]
     add("/", {
         "title": "Veraly Grupo Jurídico · Defensa en delitos financieros",
-        "description": "Firma boutique colombiana de defensa en delitos financieros y captación masiva y habitual. Cinco prácticas del derecho sobre un mismo caso: vía administrativa, civil y penal.",
+        "description": "Firma boutique colombiana de defensa en captación masiva y delitos financieros. Cinco prácticas sobre un mismo caso: administrativa, civil y penal.",
         "active": "", "schema": home_schema,
     }, home_body)
 

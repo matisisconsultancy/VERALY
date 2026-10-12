@@ -235,6 +235,9 @@
   $$('a[href^="tel:"]').forEach(function (a) {
     a.addEventListener('click', function () { track('phone_click', { page_path: location.pathname, posicion: a.dataset.pos || 'body' }); });
   });
+  $$('a[href^="mailto:"]').forEach(function (a) {
+    a.addEventListener('click', function () { track('email_click', { page_path: location.pathname, posicion: a.dataset.pos || 'body' }); });
+  });
   $$('a[href*="wa.me"],a[data-whatsapp]').forEach(function (a) {
     a.addEventListener('click', function () { track('whatsapp_click', { page_path: location.pathname, posicion: a.dataset.pos || 'body' }); });
   });
