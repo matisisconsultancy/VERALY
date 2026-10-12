@@ -443,6 +443,67 @@
     .ls-mark .mark-cinco circle{opacity:1!important;transform:none!important;transition:none!important}
   }
 </style>
+<style id="rt-style">
+/* Cap. 07 · Retrato del equipo */
+.rt-block{margin-top:clamp(40px,7vh,84px)}
+.chead+.rt-block{margin-top:0}
+.rt-h{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--text);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.rt-h::before{content:"";width:22px;height:1px;background:var(--line)}
+.rt-palette{grid-template-columns:repeat(2,1fr)}
+.rt-palette .pcell{min-height:clamp(132px,15vw,190px)}
+.rt-palette .hex{font-size:13.5px}
+.rt-palette .meta{padding-top:30px}
+.rt-two{margin-top:clamp(22px,4vh,36px)}
+.rt-efl{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:16px}
+.rt-panel{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r);padding:clamp(18px,3vw,36px);display:grid;place-items:center}
+.rt-diagram{width:min(100%,360px);height:auto;display:block}
+.rt-frame{width:100%;height:auto;display:block;border-radius:calc(var(--r) - 4px)}
+.rt-bgd{fill:#3F5053}
+.rt-fig{fill:#A9BDBA}
+.rt-guide path{stroke:rgba(217,246,239,.20);stroke-width:.6;fill:none}
+.rt-mark path{stroke:var(--accent);stroke-width:1;fill:none}
+.rt-mark circle{fill:var(--accent)}
+.rt-crop{fill:none;stroke:var(--text);stroke-width:1;stroke-dasharray:4 4;opacity:.75}
+.rt-line path{stroke:var(--line);stroke-width:1.2;fill:none}
+.rt-node circle{fill:var(--text)}
+.rt-subject{fill:var(--accent)}
+.rt-gear{fill:var(--bg);stroke:var(--text);stroke-width:1.2}
+.rt-key{fill:var(--mint-light);stroke:none}
+.rt-lab text{font-family:var(--ui);font-size:10px;letter-spacing:.14em;text-transform:uppercase;fill:var(--dim)}
+.rt-obj path{stroke:#647679;stroke-width:1.4;fill:none}
+.rt-obj rect{fill:#5A6C6F}
+.rt-shadow{fill:#1B2A2C}
+.rt-pat-a{fill:#A9BDBA}.rt-pat-b{fill:#51666A}
+.rt-cards .card{min-height:0}
+.rt-cards .card h4{margin-top:22px;padding-top:0}
+.rt-ref{display:grid;grid-template-columns:1fr;gap:clamp(18px,3vw,36px);align-items:center;border:1px solid var(--accent);
+  background:color-mix(in srgb,var(--accent) 9%,var(--panel));border-radius:var(--r);padding:clamp(20px,3vw,36px);margin-bottom:16px}
+.rt-refimg{max-width:200px}
+.rt-refcopy .cc-k{display:inline-block}
+.rt-refcopy .cc-v{padding-top:16px;margin-top:0;color:var(--accent)}
+.rt-refcopy .cc-v .s{color:var(--accent)}
+.rt-refcopy p:last-child{color:var(--dim);line-height:1.6;max-width:56ch;margin-top:.8em}
+.rt-errs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.rt-err{margin:0;background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r);padding:clamp(12px,1.6vw,18px);display:flex;flex-direction:column;gap:14px}
+.rt-err .rt-frame{opacity:.92}
+.rt-err figcaption{display:grid;grid-template-columns:auto 1fr;column-gap:10px;row-gap:4px;align-items:center}
+.rt-err figcaption b{font-size:.98rem;letter-spacing:-.01em;color:var(--text)}
+.rt-err figcaption span:last-child{grid-column:1/-1;color:var(--dim);font-size:.86rem;line-height:1.5}
+.rt-x{width:14px;height:14px;border-radius:50%;border:1.5px dashed var(--dim-2);position:relative}
+.rt-x::after{content:"";position:absolute;left:1px;right:1px;top:50%;height:1.5px;background:var(--dim-2);transform:rotate(-45deg)}
+.rt-more{margin-top:18px}
+@media(min-width:760px){
+  .rt-palette{grid-template-columns:repeat(3,1fr)}
+  .rt-efl{grid-template-columns:1fr 1fr}
+  .rt-ref{grid-template-columns:auto 1fr}
+  .rt-errs{grid-template-columns:repeat(3,1fr)}
+}
+@media(min-width:1100px){
+  .rt-palette{grid-template-columns:repeat(6,1fr)}
+  .rt-errs{grid-template-columns:repeat(6,1fr)}
+  .rt-err figcaption span:last-child{font-size:.8rem}
+}
+</style>
 </head>
 <body>
 
@@ -458,7 +519,7 @@
     <nav class="main" aria-label="Capítulos">
       <a href="#origen">Origen</a><a href="#nombre">Nombre</a>
       <a href="#color">Color</a><a href="#tipografia">Tipografía</a>
-      <a href="#grafico">Gráfico</a><a href="#voz">Voz</a><a href="#descargables">Recursos</a>
+      <a href="#grafico">Gráfico</a><a href="#voz">Voz</a><a href="#retrato">Retrato</a><a href="#descargables">Recursos</a>
     </nav>
     <span class="lbl deskonly">Brandbook · v1</span>
     <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
@@ -473,7 +534,8 @@
     <a href="#tipografia"><span class="n">04</span> Tipografía</a>
     <a href="#grafico"><span class="n">05</span> Sistema <span class="s">gráfico</span></a>
     <a href="#voz"><span class="n">06</span> Sistema verbal</a>
-    <a href="#descargables"><span class="n">07</span> Descargables</a>
+    <a href="#retrato"><span class="n">07</span> Retrato <span class="s">del equipo</span></a>
+    <a href="#descargables"><span class="n">08</span> Descargables</a>
   </nav>
 </div>
 
@@ -486,7 +548,7 @@
         <span class="lbl">Sistema de marca · 2026</span>
       </div>
       <h1>Defensa en <span class="s">delitos</span> financieros.</h1>
-      <div class="sub"><p class="lbl">Brandbook navegable · el sistema visual de la firma: origen, nombre, color, tipografía, sistema gráfico y voz.</p></div>
+      <div class="sub"><p class="lbl">Brandbook navegable · el sistema visual de la firma: origen, nombre, color, tipografía, sistema gráfico, voz y retrato del equipo.</p></div>
       <span class="scroll"><span class="ln"></span> Desplázate · Índice</span>
     </div>
     <div class="hero-vis">
@@ -500,7 +562,7 @@
   <section class="chapter" id="indice">
     <div class="wrap">
       <div class="chead"><div class="cnum"><span class="lbl mint">Índice</span></div>
-        <h2>Seis capítulos.</h2>
+        <h2>Siete capítulos.</h2>
         <p class="sd">Un documento breve y navegable que expone el sistema de marca y explica de dónde proviene cada decisión visual.</p></div>
       <div class="idx">
         <a href="#origen"><span class="n">01</span><span class="t">Origen <span class="s">del sistema</span></span><span class="d">De dónde viene</span></a>
@@ -509,7 +571,8 @@
         <a href="#tipografia"><span class="n">04</span><span class="t">Tipografía</span><span class="d">Sistema dual</span></a>
         <a href="#grafico"><span class="n">05</span><span class="t">Sistema <span class="s">gráfico</span></span><span class="d">Construcción · nodos</span></a>
         <a href="#voz"><span class="n">06</span><span class="t">Sistema verbal</span><span class="d">Voz y claims</span></a>
-        <a href="#descargables"><span class="n">07</span><span class="t">Descargables</span><span class="d">Recursos del equipo</span></a>
+        <a href="#retrato"><span class="n">07</span><span class="t">Retrato <span class="s">del equipo</span></span><span class="d">Vestuario · encuadre · luz</span></a>
+        <a href="#descargables"><span class="n">08</span><span class="t">Descargables</span><span class="d">Recursos del equipo</span></a>
       </div>
     </div>
   </section>
@@ -680,6 +743,96 @@
           <article class="claimcard reveal"><div class="cc-top"><span class="cc-k">Claim 04 · Económico</span><span class="cc-i">04</span></div><p class="cc-v">Honorarios vinculados al resultado, con reglas claras desde el inicio.</p><span class="cc-ctx">Modelo económico</span></article>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 07 RETRATO DEL EQUIPO -->
+  <section class="chapter" id="retrato">
+    <div class="wrap">
+      <div class="chead"><div class="cnum"><span class="lbl mint">Cap. 07</span><span class="lbl">Retrato del equipo</span></div>
+        <h2>Sobrios, <span class="s">no uniformados</span>.</h2>
+        <p class="sd">Cómo se viste y cómo se fotografía el equipo para sus perfiles, de modo que cada retrato sea de una persona y todos juntos se lean como una sola firma.</p></div>
+
+      <div class="rt-block">
+        <h4 class="rt-h">Vestuario · paleta y tonos</h4>
+        <div class="palette rt-palette reveal">
+          <div class="pcell rt-sw" data-hex="#1B2A3B" role="button" tabindex="0" aria-label="Copiar #1B2A3B" style="background:#1B2A3B;color:#D9F6EF"><span class="copy">Copiar hex</span><div class="meta"><div class="role">Traje o blazer</div><div class="hex">Azul marino · #1B2A3B</div></div></div>
+          <div class="pcell rt-sw" data-hex="#2E3338" role="button" tabindex="0" aria-label="Copiar #2E3338" style="background:#2E3338;color:#D9F6EF"><span class="copy">Copiar hex</span><div class="meta"><div class="role">Traje o blazer</div><div class="hex">Gris carbón · #2E3338</div></div></div>
+          <div class="pcell rt-sw" data-hex="#5E676C" role="button" tabindex="0" aria-label="Copiar #5E676C" style="background:#5E676C;color:#FFFFFF"><span class="copy">Copiar hex</span><div class="meta"><div class="role">Traje o punto</div><div class="hex">Gris medio · #5E676C</div></div></div>
+          <div class="pcell rt-sw" data-hex="#FFFFFF" role="button" tabindex="0" aria-label="Copiar #FFFFFF" style="background:#FFFFFF;color:#05292C"><span class="copy">Copiar hex</span><div class="meta"><div class="role">Camisa o blusa</div><div class="hex">Blanco · #FFFFFF</div></div></div>
+          <div class="pcell rt-sw" data-hex="#DCE5EC" role="button" tabindex="0" aria-label="Copiar #DCE5EC" style="background:#DCE5EC;color:#05292C"><span class="copy">Copiar hex</span><div class="meta"><div class="role">Camisa o blusa</div><div class="hex">Azul claro · #DCE5EC</div></div></div>
+          <div class="pcell rt-sw" data-hex="#0F3F40" role="button" tabindex="0" aria-label="Copiar #0F3F40" style="background:#0F3F40;color:#D9F6EF"><span class="copy">Copiar hex</span><div class="meta"><div class="role">Acento · una prenda</div><div class="hex">Verde profundo · #0F3F40</div></div></div>
+        </div>
+        <div class="voz rt-two">
+          <div class="reveal"><h4>Funciona</h4>
+            <div class="lex"><span>Tonos fríos y profundos</span><span>Tejidos mate</span><span>Prendas lisas</span><span>Camisa clara bajo chaqueta oscura</span>
+              <span>Un solo acento</span><span>Corbata opcional, lisa</span><span>Joyería discreta</span><span>Prenda a la medida, planchada</span></div></div>
+          <div class="reveal"><h4>No funciona</h4>
+            <div class="lex no"><span>Negro total</span><span>Blanco total</span><span>Menta o colores de la marca</span><span>Rojos y naranjas saturados</span>
+              <span>Rayas finas y cuadros pequeños</span><span>Logotipos visibles</span><span>Brillos y satinados</span><span>Gafas de sol o tintadas</span></div></div>
+        </div>
+        <p class="color-note reveal">Toca un tono para copiar su HEX. La menta es de la marca, no de la ropa: en una prenda se lee como uniforme. El negro total se funde con el traje del de al lado y aplana la figura; el marino y el carbón dan la misma seriedad con más matiz.</p>
+      </div>
+
+      <div class="rt-block">
+        <h4 class="rt-h">Encuadre, fondo y luz</h4>
+        <div class="rt-efl">
+          <div class="rt-panel reveal"><svg class="rt-diagram" viewBox="0 0 320 400" role="img" aria-label="Esquema de encuadre: formato vertical 4 a 5, ojos en el tercio superior y recorte cuadrado">
+  <rect class="rt-bgd" x="40" y="20" width="240" height="300"/>
+  <g class="rt-guide" transform="translate(40 20) scale(1.5)"><path d="M0 66.7H160M0 133.3H160M53.3 0V200M106.7 0V200"/></g>
+  <g class="rt-fig" transform="translate(40 20) scale(1.5)"><ellipse cx="80" cy="72" rx="21" ry="26"/><path d="M70 94 h20 v14 c0 6 4 9 10 11 c20 6 32 26 32 81 H28 c0 -55 12 -75 32 -81 c6 -2 10 -5 10 -11 z"/></g>
+  <rect class="rt-crop" x="40" y="32" width="240" height="240"/>
+  <g class="rt-mark"><path d="M24 120H296"/><circle cx="24" cy="120" r="3"/><circle cx="296" cy="120" r="3"/>
+    <path d="M160 20V46"/><circle cx="160" cy="46" r="3"/></g>
+  <g class="rt-lab"><text x="40" y="344">Formato 4:5 vertical</text><text x="40" y="362">Ojos en el tercio superior</text>
+    <text x="40" y="380">Línea punteada: recorte 1:1</text></g>
+</svg></div>
+          <div class="rt-panel reveal"><svg class="rt-diagram" viewBox="0 0 320 400" role="img" aria-label="Esquema de iluminación visto desde arriba: luz principal suave a 45 grados, relleno al lado contrario y fondo a metro y medio">
+  <g class="rt-line"><path d="M40 44H280"/><path d="M160 44V140"/><path d="M160 140V292"/><path d="M160 140L66 234"/><path d="M160 140L262 196"/>
+    <path d="M160 200A60 60 0 0 1 117.6 182.4"/></g>
+  <g class="rt-node"><circle cx="40" cy="44" r="3"/><circle cx="280" cy="44" r="3"/></g>
+  <circle class="rt-subject" cx="160" cy="140" r="13"/>
+  <rect class="rt-gear" x="146" y="292" width="28" height="20" rx="3"/>
+  <rect class="rt-key" x="34" y="222" width="46" height="14" rx="3" transform="rotate(-45 57 229)"/>
+  <rect class="rt-gear" x="258" y="176" width="8" height="42" rx="2" transform="rotate(-28 262 197)"/>
+  <g class="rt-lab"><text x="160" y="32" text-anchor="middle">Fondo liso</text><text x="172" y="96">1,5 m</text>
+    <text x="186" y="146">Persona</text><text x="160" y="330" text-anchor="middle">Cámara · altura de los ojos</text>
+    <text x="22" y="272">Luz principal</text><text x="22" y="288">suave · 45°</text>
+    <text x="228" y="238">Relleno</text><text x="104" y="212">45°</text></g>
+  <g class="rt-lab"><text x="40" y="362">Una luz suave, un relleno, un fondo.</text><text x="40" y="380">El mismo montaje para todo el equipo.</text></g>
+</svg></div>
+        </div>
+        <div class="cards c3 rt-cards">
+          <div class="card reveal"><span class="tag">Encuadre</span><h4>De pecho <span class="s">hacia arriba</span></h4>
+            <p>Formato vertical 4:5, con los ojos sobre el tercio superior y algo de aire sobre la cabeza. Hombros girados unos 20–30°, rostro y mirada a cámara. Cámara a la altura de los ojos, con una focal de retrato (85 mm o equivalente). Cada retrato debe admitir un recorte cuadrado sin cortar la cabeza.</p></div>
+          <div class="card reveal"><span class="tag">Fondo</span><h4>Liso, el mismo <span class="s">para todos</span></h4>
+            <p>Un fondo continuo en gris frío medio, sin textura ni degradados marcados. La persona se separa metro y medio para que no proyecte sombra. Sin bibliotecas, diplomas ni oficinas; y, como en toda la marca, sin balanzas, martillos ni togas.</p></div>
+          <div class="card reveal"><span class="tag">Luz</span><h4>Suave, lateral <span class="s">y pareja</span></h4>
+            <p>Una luz principal difusa a unos 45° y algo por encima de los ojos, con relleno del lado contrario para que la sombra conserve detalle. Temperatura neutra. Sin flash directo, sin ventana a un lado, sin contraluz. El montaje no se mueve entre una persona y la siguiente.</p></div>
+        </div>
+        <p class="color-note reveal">Expresión serena y atenta: ni sonrisa de catálogo ni gesto severo. Brazos sueltos; los brazos cruzados cierran la figura. Retoque mínimo: se corrige el color y lo accidental, no los rasgos.</p>
+      </div>
+
+      <div class="rt-block">
+        <h4 class="rt-h">Lo que no funciona</h4>
+        <div class="rt-ref reveal">
+          <div class="rt-refimg"><svg class="rt-frame " viewBox="0 0 160 200" aria-hidden="true"><rect class="rt-bgd" width="160" height="200"/><g class="rt-guide"><path d="M0 66.7H160M0 133.3H160M53.3 0V200M106.7 0V200"/></g><g class="rt-fig"><ellipse cx="80" cy="72" rx="21" ry="26"/><path d="M70 94 h20 v14 c0 6 4 9 10 11 c20 6 32 26 32 81 H28 c0 -55 12 -75 32 -81 c6 -2 10 -5 10 -11 z"/></g><g class="rt-mark"><path d="M14 66.7H146"/><circle cx="14" cy="66.7" r="2.4"/><circle cx="146" cy="66.7" r="2.4"/></g></svg></div>
+          <div class="rt-refcopy"><span class="cc-k">Referencia</span>
+            <p class="cc-v">Una persona, un fondo, <span class="s">una luz</span>.</p>
+            <p>El retrato correcto es el que no llama la atención sobre sí mismo. Los seis casos siguientes son los errores más frecuentes; con uno solo, la serie deja de parecer de la misma firma.</p></div>
+        </div>
+        <div class="rt-errs">
+          <figure class="rt-err reveal"><svg class="rt-frame " viewBox="0 0 160 200" aria-hidden="true"><rect class="rt-bgd" width="160" height="200"/><g class="rt-fig" transform="translate(44 108) scale(.46)"><ellipse cx="80" cy="72" rx="21" ry="26"/><path d="M70 94 h20 v14 c0 6 4 9 10 11 c20 6 32 26 32 81 H28 c0 -55 12 -75 32 -81 c6 -2 10 -5 10 -11 z"/></g></svg><figcaption><span class="rt-x" aria-hidden="true"></span><b>Demasiado abierto</b><span>Cuerpo entero o medio cuerpo: la cara queda pequeña y no se lee en un perfil.</span></figcaption></figure>
+          <figure class="rt-err reveal"><svg class="rt-frame " viewBox="0 0 160 200" aria-hidden="true"><rect class="rt-bgd" width="160" height="200"/><g class="rt-fig" transform="translate(-72 -84) scale(1.9)"><ellipse cx="80" cy="72" rx="21" ry="26"/><path d="M70 94 h20 v14 c0 6 4 9 10 11 c20 6 32 26 32 81 H28 c0 -55 12 -75 32 -81 c6 -2 10 -5 10 -11 z"/></g></svg><figcaption><span class="rt-x" aria-hidden="true"></span><b>Demasiado cerrado</b><span>El corte en la frente o en el mentón resulta agresivo y no deja aire al recortar a cuadrado.</span></figcaption></figure>
+          <figure class="rt-err reveal"><svg class="rt-frame " viewBox="0 0 160 200" aria-hidden="true"><rect class="rt-bgd" width="160" height="200"/><g class="rt-obj"><path d="M0 44H160M0 92H160M0 140H160"/><rect x="8" y="12" width="9" height="32"/><rect x="19" y="16" width="7" height="28"/><rect x="28" y="10" width="11" height="34"/><rect x="118" y="14" width="8" height="30"/><rect x="128" y="9" width="10" height="35"/><rect x="140" y="18" width="9" height="26"/><rect x="6" y="58" width="12" height="34"/><rect x="20" y="62" width="8" height="30"/><rect x="124" y="56" width="9" height="36"/><rect x="135" y="62" width="12" height="30"/><rect x="10" y="104" width="10" height="36"/><rect x="132" y="106" width="11" height="34"/></g><g class="rt-fig"><ellipse cx="80" cy="72" rx="21" ry="26"/><path d="M70 94 h20 v14 c0 6 4 9 10 11 c20 6 32 26 32 81 H28 c0 -55 12 -75 32 -81 c6 -2 10 -5 10 -11 z"/></g></svg><figcaption><span class="rt-x" aria-hidden="true"></span><b>Fondo con objetos</b><span>Bibliotecas, diplomas, oficinas, ventanas. El fondo compite con la persona y cada retrato sale distinto.</span></figcaption></figure>
+          <figure class="rt-err reveal"><svg class="rt-frame " viewBox="0 0 160 200" aria-hidden="true"><rect class="rt-bgd" width="160" height="200"/><defs><clipPath id="rtHalf"><rect x="80" y="0" width="80" height="200"/></clipPath></defs><g class="rt-fig"><ellipse cx="80" cy="72" rx="21" ry="26"/><path d="M70 94 h20 v14 c0 6 4 9 10 11 c20 6 32 26 32 81 H28 c0 -55 12 -75 32 -81 c6 -2 10 -5 10 -11 z"/></g><g class="rt-shadow" clip-path="url(#rtHalf)"><ellipse cx="80" cy="72" rx="21" ry="26"/><path d="M70 94 h20 v14 c0 6 4 9 10 11 c20 6 32 26 32 81 H28 c0 -55 12 -75 32 -81 c6 -2 10 -5 10 -11 z"/></g></svg><figcaption><span class="rt-x" aria-hidden="true"></span><b>Luz dura o de un solo lado</b><span>Flash directo, sol de ventana o contraluz: media cara en sombra, brillos en la piel y en las gafas.</span></figcaption></figure>
+          <figure class="rt-err reveal"><svg class="rt-frame " viewBox="0 0 160 200" aria-hidden="true"><rect class="rt-bgd" width="160" height="200"/><defs><pattern id="rtRayas" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><rect width="5" height="5" class="rt-pat-a"/><rect width="2" height="5" class="rt-pat-b"/></pattern></defs><g class="rt-fig"><ellipse cx="80" cy="72" rx="21" ry="26"/></g><path fill="url(#rtRayas)" d="M70 94 h20 v14 c0 6 4 9 10 11 c20 6 32 26 32 81 H28 c0 -55 12 -75 32 -81 c6 -2 10 -5 10 -11 z"/></svg><figcaption><span class="rt-x" aria-hidden="true"></span><b>Estampados y rayas finas</b><span>Las tramas pequeñas vibran en pantalla. Tampoco logotipos, brillos ni tejidos satinados.</span></figcaption></figure>
+          <figure class="rt-err reveal"><svg class="rt-frame " viewBox="0 0 160 200" aria-hidden="true"><rect class="rt-bgd" width="160" height="200"/><g class="rt-fig" transform="translate(30 6) rotate(9 80 120)"><ellipse cx="80" cy="72" rx="21" ry="26"/><path d="M70 94 h20 v14 c0 6 4 9 10 11 c20 6 32 26 32 81 H28 c0 -55 12 -75 32 -81 c6 -2 10 -5 10 -11 z"/></g></svg><figcaption><span class="rt-x" aria-hidden="true"></span><b>Inclinado o descentrado</b><span>Cabeza ladeada, cámara desde abajo o figura corrida a un lado: rompe la serie cuando los retratos van juntos.</span></figcaption></figure>
+        </div>
+        <div class="lex no rt-more reveal"><span>Selfis y fotos de celular</span><span>Fotos de eventos recortadas</span><span>Filtros y fondos virtuales</span>
+          <span>Blanco y negro para unos y color para otros</span><span>Retratos de épocas distintas</span><span>Piel alisada con retoque</span></div>
+      </div>
+
     </div>
   </section>
 
