@@ -4,6 +4,25 @@ Sitio institucional de Veraly Grupo Jurídico, despacho boutique especializado e
 captación masiva y habitual (fraude financiero). Implementa la especificación
 funcional v1.0 (Workstream 2, bloques #1 y #3).
 
+## Publicación (dominio propio `veraly.com.co`)
+
+Este repositorio se sirve con **GitHub Pages desde la rama `main`, carpeta raíz
+(`/root`)**, con dominio propio `veraly.com.co` (archivo `CNAME`). El HTML de la
+raíz ya usa rutas absolutas desde `/`, listo para el dominio.
+
+Para publicar un cambio: editar en `src/`, regenerar y subir.
+
+```bash
+python3 src/build.py && python3 src/build_pages.py \
+  && python3 src/build_pages_2.py && python3 src/build_pages_3.py
+git add -A && git commit -m "..." && git push
+```
+
+El brandbook («Sistema de marca») vive como página aparte en `brandbook/`
+(`veraly.com.co/brandbook/`); no lo genera el build. No hace falta `deploy_pages.py`
+con el dominio propio: ese script solo sirve para una página de proyecto en un
+subpath (`…github.io/REPO/`).
+
 ## Arquitectura
 
 Sitio **estático** (HTML/CSS/JS sin dependencias) servido por GitHub Pages. Las
