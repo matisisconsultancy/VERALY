@@ -591,7 +591,7 @@ def build(g):
     # =====================================================================
     # /contacto
     # =====================================================================
-    maps_q = "https://www.google.com/maps/search/?api=1&query=Calle+16+%234-68+oficina+1204+Bogot%C3%A1"
+    maps_q = "https://www.google.com/maps/search/?api=1&query=Calle+16+%234-68+oficina+1207+Bogot%C3%A1"
     wa_contact = (f'<a class="btn btn--ghost" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener" data-whatsapp data-pos="contacto">WhatsApp</a>'
                   if SITE["whatsapp"] else '')
     contacto_body = f'''
@@ -610,7 +610,7 @@ def build(g):
     <aside class="contact-info">
       <div class="ci-block">
         <span class="ci-k">Dirección</span>
-        <p class="ci-v">Calle 16 # 4-68<br>Oficina 1204<br>Bogotá, Colombia</p>
+        <p class="ci-v">Calle 16 # 4-68<br>Oficina 1207<br>Bogotá, Colombia</p>
         <a class="arrowlink" href="{maps_q}" target="_blank" rel="noopener">Cómo llegar</a>
       </div>
       <div class="ci-block">
@@ -658,7 +658,7 @@ def build(g):
         referrerpolicy="no-referrer-when-downgrade" allowfullscreen
         src="https://maps.google.com/maps?q=Calle%2016%20%234-68%2C%20Bogot%C3%A1%2C%20Colombia&z=16&output=embed"></iframe>
     </div>
-    <p class="map-note">Calle 16 # 4-68, oficina 1204 · Bogotá, Colombia · <a class="textlink" href="{maps_q}" target="_blank" rel="noopener">Cómo llegar</a></p>
+    <p class="map-note">Calle 16 # 4-68, oficina 1207 · Bogotá, Colombia · <a class="textlink" href="{maps_q}" target="_blank" rel="noopener">Cómo llegar</a></p>
   </div>
 </section>
 '''

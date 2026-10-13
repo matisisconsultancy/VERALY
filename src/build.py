@@ -26,7 +26,7 @@ SITE = {
     "phone_display": "+57 322 512 6199",
     "phone_href": "+573225126199",
     "whatsapp": "573225126199",  # WhatsApp de la firma (mismo número de contacto)
-    "address": "Calle 16 # 4-68, oficina 1204, Bogotá",
+    "address": "Calle 16 # 4-68, oficina 1207, Bogotá",
     "hours": "Lunes a viernes, 8:00 a 18:00",
     # Agendamiento (Cal.com). Placeholder hasta conectar el calendario de la firma.
     "cal_link": "",  # p.ej. "veraly/consulta"  (TODO: cuenta Cal.com de la firma)
