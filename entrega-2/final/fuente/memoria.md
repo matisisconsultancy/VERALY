@@ -127,7 +127,7 @@ section: Anexo B · Herramientas
 | **Google PageSpeed Insights** | Rendimiento móvil y escritorio | Puntuaciones de laboratorio y Core Web Vitals de usuarios reales |
 | **Webs de los competidores** | Oferta, precios, CTAs, contenidos, SEO técnico (robots.txt y sitemap) | Precios, estructura, errores técnicos |
 | **Legal 500** | Reputación de terceros | Tier 3 de Sintura y CMS en compliance y cuello blanco |
-| **Google Maps, Biblioteca de anuncios de Meta, Google Ads Transparency, redes sociales** | Ficha de Google, publicidad y comunidad | Valoraciones, anuncios activos, seguidores |
+| **Perfiles públicos de redes sociales y directorios jurídicos** (Legaltica, LegalRank) | Comunidad y reseñas | Seguidores y valoraciones visibles públicamente |
 | **Google Chrome (modo headless)** | Capturas automáticas de páginas públicas | Unas 50 capturas nombradas para el anexo |
 | **Claude (Anthropic)** | Diagnóstico del feedback, reestructuración, transcripción de capturas y maquetación (anexo D) | Ver la declaración de uso de IA |
 === orig 32
@@ -302,11 +302,19 @@ section: Anexo B · Capturas
 </div>
 === new
 label: ANEXO B · CAPTURAS · COMPETENCIA
-title: Capturas de redes sociales, fichas de Google y anuncios
-subtitle: Perfiles sociales, Google Maps y bibliotecas de anuncios de los cuatro competidores.
-section: Anexo B · Capturas
+title: Redes sociales, fichas de Google y publicidad: fuentes públicas
+subtitle: Datos recogidos el 31/10/2026 de los perfiles enlazados desde cada web, de páginas públicas y de directorios. Publicidad: Semrush.
+section: Anexo B · Fuentes
 ---
-`PENDIENTE`
+| Firma | Redes sociales | Ficha de Google / reseñas | Publicidad (Semrush) | Fuente |
+|---|---|---|---|---|
+| **Estudio Penal** | Instagram @estudiopenalcol, Facebook, LinkedIn y YouTube enlazados desde su web; seguidores no visibles en fuentes públicas | No localizada. Dos direcciones publicadas (web y about.me) | 0 keywords de pago | estudiopenal.com (código *sameAs*), about.me/penal |
+| **Sintura** | Sin perfiles corporativos; perfiles personales de socios en LinkedIn (F. Sintura, ~1K seguidores) | No localizada | 0 keywords de pago | Búsqueda pública, linkedin.com/in |
+| **CMS Rodríguez-Azuero** | LinkedIn 13.733 seguidores · Facebook 1,8K · Instagram con actividad mínima | No localizada | 0 keywords de pago | linkedin.com/company/cms-rodriguez-azuero, facebook.com/CMSRodriguezAzuero |
+| **Affirma Legal** | Facebook 710 · Instagram, TikTok y YouTube enlazados · X 22 | 4,6 ★, 124–130 opiniones (directorios que replican Google Maps) | Google Ads activo: 3 keywords de penal tributario | facebook.com/affirmalegal, legaltica.com, legalrank.com.co, Semrush |
+| **Veraly** | Instagram @veraly.col (354 seguidores, contenido de cobranza); sin página de empresa en LinkedIn | No existe | Sin publicidad | Auditoría del 17/07/2026 y búsqueda pública |
+
+> **NOTA METODOLÓGICA.** Las cifras de seguidores proceden de páginas públicas indexadas y pueden variar con el tiempo. Cuando una cifra no era visible públicamente se indica así en lugar de estimarla.
 === orig 36
 === orig 37
 === orig 38
@@ -348,6 +356,8 @@ Hacer todas las capturas con sus cuentas, decidir los competidores, el presupues
 > "Presenta el presupuesto con la estructura real de Matisis."
 
 > "Avísame cuando los dos proyectos estén listos para entregar y subir. No le pongas el nombre del autor."
+
+> "Haz lo que puedas para completarlo."
 
 </div>
 </div>

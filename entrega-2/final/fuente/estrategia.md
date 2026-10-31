@@ -96,7 +96,7 @@ label: 01 · PUNTO DE PARTIDA · ANÁLISIS DE LA COMPETENCIA
 title: Análisis de la competencia: selección y método
 subtitle: Cuatro competidores reales, uno por cada forma de ocupar el mercado, analizados con la misma auditoría que se aplicó a Veraly.
 section: Punto de partida
-source: Capturas propias del 30 y 31 de octubre de 2026 (anexo de capturas de la memoria). Semrush: base de datos Colombia, escritorio. Las bibliotecas de anuncios y los perfiles sociales se consultaron con sesión iniciada.
+source: Capturas propias del 30 y 31 de octubre de 2026 (anexo de capturas de la memoria). Semrush: base de datos Colombia, escritorio. Redes sociales y fichas de Google: perfiles enlazados desde cada web, páginas públicas y directorios (31/10/2026). Publicidad: Semrush Advertising.
 ---
 | Arquetipo | Competidor | Por qué compite con Veraly | Web |
 |---|---|---|---|
@@ -127,7 +127,7 @@ label: 01 · PUNTO DE PARTIDA · COMPETENCIA · 1/4
 title: Estudio Penal: el retador digital
 subtitle: La única boutique que ya trabaja contenidos sobre captación masiva. Un solo socio, mucho contenido y una autoridad inflada con enlaces artificiales.
 section: Punto de partida
-source: Capturas 01, 05c–05g, 07, 07b, 10c–10h, 14–20, 38 y 40 (estudiopenal.com, Semrush CO y PageSpeed, 30–31/10/2026).
+source: Capturas 01, 05c–05g, 07, 07b, 10c–10h, 14–20, 38 y 40 (estudiopenal.com, Semrush CO y PageSpeed, 30–31/10/2026). Redes y ficha: perfiles enlazados en el código de su web y búsqueda pública (31/10/2026).
 ---
 <div class="cols" markdown="1">
 <div markdown="1">
@@ -141,7 +141,8 @@ source: Capturas 01, 05c–05g, 07, 07b, 10c–10h, 14–20, 38 y 40 (estudiopen
 | **SEO técnico** | El servidor responde 406 a rastreadores; el sitemap no incluye las guías |
 | **PageSpeed** | Móvil **79** (Core Web Vitals no superadas) · Escritorio 94 |
 | **SEM** | 0 keywords de pago |
-| **Redes / ficha de Google** | `PENDIENTE` |
+| **Redes** | Instagram @estudiopenalcol, Facebook, LinkedIn y YouTube **enlazados desde su web**; comunidad no visible en fuentes públicas: el canal fuerte es el blog |
+| **Ficha de Google** | No localizada en búsqueda. Publica **dos direcciones distintas** (web y about.me): NAP inconsistente |
 
 </div>
 <div markdown="1">
@@ -163,7 +164,7 @@ label: 01 · PUNTO DE PARTIDA · COMPETENCIA · 2/4
 title: Sintura: la autoridad que no se encuentra
 subtitle: Prestigio validado por rankings y clientes de primer nivel, y una presencia en búsqueda prácticamente nula.
 section: Punto de partida
-source: Capturas 04–04f, 30 y 32 (sinturaabogados.com, Semrush CO y Legal 500, 30–31/10/2026).
+source: Capturas 04–04f, 30 y 32 (sinturaabogados.com, Semrush CO y Legal 500, 30–31/10/2026). Redes y ficha: búsqueda pública (31/10/2026).
 ---
 <div class="cols" markdown="1">
 <div markdown="1">
@@ -176,7 +177,8 @@ source: Capturas 04–04f, 30 y 32 (sinturaabogados.com, Semrush CO y Legal 500,
 | **Backlinks** | 999 dominios de referencia: Legal 500, franciscosintura.com, La Nota Positiva… y también anchors de spam |
 | **Búsqueda con IA** | **0 menciones**: invisible para ChatGPT, Gemini y AI Overviews |
 | **SEM** | 0 keywords de pago |
-| **Redes / ficha de Google** | `PENDIENTE` |
+| **Redes** | **Sin perfiles corporativos** localizados; solo perfiles personales de socios en LinkedIn (F. Sintura, ~1K seguidores) |
+| **Ficha de Google** | No localizada en búsqueda |
 
 </div>
 <div markdown="1">
@@ -198,7 +200,7 @@ label: 01 · PUNTO DE PARTIDA · COMPETENCIA · 3/4
 title: CMS Rodríguez-Azuero: la firma grande de las víctimas
 subtitle: Autoridad internacional, prensa ganada por el caso Rocha y ningún mensaje para la persona afectada. En 2026 perdió su equipo penal.
 section: Punto de partida
-source: Capturas 03–03g, 12c–12l, 27, 29, 32–35 (cms.law, Semrush CO, PageSpeed, Legal 500, Asuntos Legales 24/05/2023 y 25/05/2026, El Espectador 05/04/2024). Semrush muestra los datos del dominio global cms.law en Colombia.
+source: Capturas 03–03g, 12c–12l, 27, 29, 32–35 (cms.law, Semrush CO, PageSpeed, Legal 500, Asuntos Legales 24/05/2023 y 25/05/2026, El Espectador 05/04/2024). Semrush muestra el dominio global cms.law en Colombia. Redes: páginas públicas de LinkedIn y Facebook (31/10/2026).
 ---
 <div class="cols" markdown="1">
 <div markdown="1">
@@ -212,7 +214,8 @@ source: Capturas 03–03g, 12c–12l, 27, 29, 32–35 (cms.law, Semrush CO, Page
 | **Keywords** | ley 2220 de 2022, qué es interdicto, cms rodriguez azuero (pos. 1). **Nada sobre fraude financiero** |
 | **PageSpeed** | Móvil **92** · Escritorio **100** |
 | **SEM** | 0 keywords de pago |
-| **Redes / ficha de Google** | `PENDIENTE` |
+| **Redes** | **LinkedIn 13.733 seguidores** (página de empresa) · Facebook 1,8K · Instagram @cmsrodriguezazuero con actividad mínima |
+| **Ficha de Google** | No localizada en búsqueda |
 
 </div>
 <div markdown="1">
@@ -234,7 +237,7 @@ label: 01 · PUNTO DE PARTIDA · COMPETENCIA · 4/4
 title: Affirma Legal: el volumen SEO
 subtitle: El de más tráfico y el más citado por las IA. Generalista, con venta de consultas en línea, Google Ads, publirreportajes y la web más lenta del grupo.
 section: Punto de partida
-source: Capturas 02–02f, 06–06e, 08, 08b, 11c–11h, 21–26 y 36 (affirmalegal.com, Semrush CO, PageSpeed, La República 26/02/2024).
+source: Capturas 02–02f, 06–06e, 08, 08b, 11c–11h, 21–26 y 36 (affirmalegal.com, Semrush CO, PageSpeed, La República 26/02/2024). Reseñas: legaltica.com y legalrank.com.co; Facebook: página pública (31/10/2026).
 ---
 <div class="cols" markdown="1">
 <div markdown="1">
@@ -248,8 +251,8 @@ source: Capturas 02–02f, 06–06e, 08, 08b, 11c–11h, 21–26 y 36 (affirmale
 | **Reputación** | 6 testimonios de 5★ en la web · **contenido patrocinado** en La República |
 | **Backlinks** | 2,7K dominios ref.: anchors de spam ("boost your website seo…") |
 | **PageSpeed** | Móvil **35** (Core Web Vitals no superadas) · Escritorio 84 |
-| **Redes** | Enlaza Instagram @Affirmalegal, Facebook y TikTok @affirma_legal. Seguidores: `PENDIENTE` |
-| **Ficha de Google** | `PENDIENTE` |
+| **Redes** | Facebook **710 seguidores** · Instagram @Affirmalegal, TikTok @affirma_legal y canal de YouTube enlazados · X con 22 seguidores |
+| **Ficha de Google** | **4,6 ★ con 124–130 opiniones** (según directorios que replican Google Maps: Legaltica, LegalRank). La única del grupo con reseñas visibles |
 
 </div>
 <div markdown="1">
@@ -281,15 +284,15 @@ source: Capturas del 30–31/10/2026. Línea base de Veraly: Semrush y PageSpeed
 | Tráfico orgánico/mes | 0 | 4K | 24 | 9,5K | 8,9K |
 | Keywords orgánicas | 8 | 2,4K | 19 | 2,4K | 9,4K |
 | Dominios ref. / calidad | 0 | 1,6K / spam | 999 / mixto | 25,9K / alta | 2,7K / spam |
-| PageSpeed móvil · escritorio | **96 · 99** | 79 · 94 | `PENDIENTE` | 92 · 100 | 35 · 84 |
+| PageSpeed móvil · escritorio | **96 · 99** | 79 · 94 | No medido | 92 · 100 | 35 · 84 |
 | Menciones · páginas citadas por IA | 4 · **0** | 6 · 69 | 0 · 1 | 11 · 44 | 9 · 105 |
 | Google Ads | No | No | No | No | **Sí** |
 | Precios publicados | No | Sí | No | No | Sí (venta en línea) |
 | Socios visibles con credenciales | **No** | 1 | Sí | Sí | 1 |
 | Legal 500 | No | No | Tier 3 | Tier 3 | No |
 | Testimonios / prensa pagada | Testimonios (a retirar) | No | No | Publirreportaje | Ambos |
-| Instagram / LinkedIn / TikTok | 354 seg. (cobranza) / `PENDIENTE` / No | `PENDIENTE` | `PENDIENTE` | `PENDIENTE` | `PENDIENTE` |
-| Ficha de Google (★ · reseñas) | No existe | `PENDIENTE` | `PENDIENTE` | `PENDIENTE` | `PENDIENTE` |
+| Redes sociales | Instagram 354 seg. (cobranza) · sin LinkedIn de empresa | IG, FB, LinkedIn y YouTube enlazados; comunidad no visible | Sin perfiles corporativos | **LinkedIn 13.733** · FB 1,8K | FB 710 · IG, TikTok y YouTube |
+| Ficha de Google (★ · reseñas) | No existe | No localizada | No localizada | No localizada | **4,6 ★ · 124–130** |
 === new
 label: 01 · PUNTO DE PARTIDA · COMPETENCIA
 title: Puntuación por dimensión y mapa de posicionamiento
@@ -362,7 +365,7 @@ source: "Captación masiva y habitual de dineros": Semrush Keyword Overview, Col
 
 **8. Dos de cuatro publican precios.** Es urgente que los socios definan el Claim 4.
 
-**9. Redes y fichas de Google:** `PENDIENTE`
+**9. Redes y fichas de Google: el terreno menos disputado.** Solo CMS tiene una comunidad relevante (LinkedIn 13.733, corporativa) y solo Affirma muestra reseñas en Google (4,6 ★). Sintura no tiene perfiles corporativos y Estudio Penal publica dos direcciones distintas. Una ficha de Google completa y un LinkedIn técnico ponen a Veraly por delante de tres de los cuatro.
 
 </div>
 </div>
@@ -406,7 +409,7 @@ section: Estrategia de marketing digital
 | **OBJ 2** | Aparecer en Google Maps y en la búsqueda local | Notoriedad local | Interacciones con la ficha | Ficha inexistente | **≥ 30 al mes** | 31/05/2027 |
 | **OBJ 3** | Atraer tráfico cualificado sobre fraude financiero | Tráfico / SEO | Sesiones orgánicas no de marca | 0 | **≥ 150 al mes** y 3 páginas en el top 10 | 31/05/2027 |
 | **OBJ 4** | Convertir visitas en contactos | Conversión / leads | Contactos cualificados desde la web | Sin medición | **≥ 8 al mes** · tasa ≥ 2 % | 31/05/2027 |
-| **OBJ 5** | Construir autoridad en LinkedIn | Engagement / autoridad | Seguidores de la página + engagement | `PENDIENTE` | **≥ 400** · ≥ 3 % | 31/05/2027 |
+| **OBJ 5** | Construir autoridad en LinkedIn | Engagement / autoridad | Seguidores de la página + engagement | 0 (página por crear) | **≥ 400** · ≥ 3 % | 31/05/2027 |
 | **OBJ 6** | Realinear Instagram con la marca | Branding / engagement | % del feed alineado + engagement | 0 % alineado | **100 %** · ≥ 2,5 % | 28/02/2027 |
 | **OBJ N** | Primer caso con origen digital | Negocio | Casos atribuidos a canal digital | 0 | **≥ 1** | 30/11/2027 |
 
@@ -493,7 +496,7 @@ section: Estrategia de marketing digital
 | | |
 |---|---|
 | **S** | Activar la página de empresa y a 2 socios: 1 publicación/semana + 2 al mes por socio, hasta **400 seguidores** con **engagement ≥ 3 %** |
-| **M** | LinkedIn Analytics. Línea base: `PENDIENTE` |
+| **M** | LinkedIn Analytics. Línea base: 0 (no existe página de empresa) |
 | **A** | Seis plantillas de formato ya diseñadas; cinco socios con red propia |
 | **R** | Canal de la prescripción entre abogados (B) y del empresario (C). Entre los competidores, solo CMS lo trabaja, con enfoque corporativo |
 | **T** | **31/05/2027** |
@@ -651,7 +654,7 @@ section: Estrategia de marketing digital
 
 **Responde a:** OBJ 5 (apoyo a OBJ 3).
 
-**Por qué:** es donde están el Perfil B (referido de abogado) y el C (empresario). Entre los competidores, solo CMS trabaja LinkedIn, con enfoque corporativo. Nadie lo usa para la divulgación técnica sobre fraude financiero.
+**Por qué:** es donde están el Perfil B (referido de abogado) y el C (empresario). Entre los competidores, solo CMS tiene comunidad en LinkedIn (13.733 seguidores, enfoque corporativo). Nadie lo usa para la divulgación técnica sobre fraude financiero.
 
 **Tácticas:**
 
@@ -949,10 +952,10 @@ section: Análisis y seguimiento
 | OBJ 3 · E6 | Dominios de referencia limpios | Dominios sin spam | Semrush | Trimestral | 0 | ≥ 10 |
 | OBJ 4 · E1 | Contactos | contacto_enviado + contacto_mensajeria + contacto_telefono | GA4 | Semanal | Sin medición | ≥ 8/mes |
 | OBJ 4 · E1 | Tasa de conversión | Contactos ÷ sesiones × 100 | GA4 | Mensual | Sin medición | ≥ 2 % |
-| OBJ 5 · E4 | Seguidores de LinkedIn | — | LinkedIn Analytics | Mensual | `PENDIENTE` | ≥ 400 |
-| OBJ 5 · E4 | Engagement en LinkedIn | (reacciones + comentarios + compartidos + clics) ÷ impresiones | LinkedIn Analytics | Mensual | `PENDIENTE` | ≥ 3 % |
+| OBJ 5 · E4 | Seguidores de LinkedIn | — | LinkedIn Analytics | Mensual | 0 | ≥ 400 |
+| OBJ 5 · E4 | Engagement en LinkedIn | (reacciones + comentarios + compartidos + clics) ÷ impresiones | LinkedIn Analytics | Mensual | Sin página | ≥ 3 % |
 | OBJ 6 · E5 | Feed alineado | Publicaciones alineadas ÷ publicaciones nuevas | Revisión manual | Mensual | 0 % | 100 % |
-| OBJ 6 · E5 | Engagement en Instagram | (me gusta + comentarios + guardados) ÷ alcance | Meta Business Suite | Mensual | `PENDIENTE` | ≥ 2,5 % |
+| OBJ 6 · E5 | Engagement en Instagram | (me gusta + comentarios + guardados) ÷ alcance | Meta Business Suite | Mensual | Se mide en S1 con acceso a la cuenta | ≥ 2,5 % |
 | OBJ N · E7 | Casos con origen digital | Registro de origen | Registro interno | Mensual | 0 | ≥ 1 (mes 12) |
 === orig 51 | label=04 · Análisis y seguimiento · Plan de medición | section=Análisis y seguimiento
 === sep | key=b5
@@ -1008,11 +1011,11 @@ section: Presupuesto, riesgos y conclusiones
 | Google Business Profile | E2 | $0 | Gratuita |
 | Meta Business Suite y LinkedIn orgánico | E4 · E5 | $0 | Gratuitas |
 | Dominio veraly.com.co | E1 | Ya pagado | Renovación anual |
-| Hosting del nuevo sitio | E1 | `PENDIENTE` | Según el stack |
-| Licencia tipográfica | E1 | `PENDIENTE` | Exigida por el brief |
-| Fotografía de los 5 socios | E1 | `PENDIENTE` | Ruta crítica |
-| Herramienta SEO (Semrush u otra) | E3 · E6 | `PENDIENTE` | Validación de keywords |
-| **Subtotal de terceros** | | `PENDIENTE` | |
+| Hosting del nuevo sitio | E1 | A cotizar | Depende del stack elegido |
+| Licencia tipográfica | E1 | A cotizar | Exigida por el brief v1.4 |
+| Fotografía de los 5 socios | E1 | A cotizar | Ruta crítica (A9) |
+| Herramienta SEO (Semrush u otra) | E3 · E6 | Suscripción mensual | Validación de keywords y seguimiento |
+| **Subtotal de terceros** | | **Se cierra con las cotizaciones** | |
 
 </div>
 <div markdown="1">
@@ -1020,9 +1023,11 @@ section: Presupuesto, riesgos y conclusiones
 | Bloque | Importe (COP) |
 |---|---|
 | Honorarios de la consultora (colaboración) | $10.000.000 |
-| Costes de terceros (trimestre) | `PENDIENTE` |
+| Costes de terceros (trimestre) | A cotizar (tabla izquierda) |
 | Inversión en medios | **$0** |
-| **Total de la inversión** | `PENDIENTE` |
+| **Total de la inversión** | **$10.000.000 + terceros** |
+
+> **CRITERIO.** No se inventan cifras para las partidas que dependen de un proveedor: se cotizan cuando se cierra la variable (stack, fundición, fotógrafo). La inversión comprometida hoy es la propuesta firmada.
 
 > **INVERSIÓN EN MEDIOS: $0.** Excluida por la propuesta y descartada por el art. 30.7 de la Ley 1123 (estrategias descartadas). Se reevalúa en el mes 6 solo para el Perfil C, con datos reales.
 
