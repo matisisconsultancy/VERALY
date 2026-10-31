@@ -217,7 +217,10 @@ Haz esto con cada competidor y **guarda captura de todo** (fecha visible). Las c
 | **Web: conversión** | CTA principal: WhatsApp ("respuesta inmediata"). Secundario: agendar consulta virtual **gratuita** | estudiopenal.com/contactanos · /programa-una-consulta | Fricción mínima. Veraly puede adoptar WhatsApp con mensaje neutro |
 | **Web: precios** | Consulta inicial gratis. "Sesión estratégica presencial" de $400.000 COP, descontable de los honorarios. Rangos por etapa: indagación 2–5 SMMLV, acusación 5–15, juicio 10–25, apelación 3–8, casación 20–30. Proceso completo: 12–50 SMMLV | estudiopenal.com/cuanto-cobra-un-abogado-penalista-en-colombia-tarifas-reales-por-etapa-procesal-2026 | **Corrige tu p. 25:** la primera consulta es gratis; los $400.000 son la sesión presencial. La transparencia de precios es un argumento de confianza que Veraly todavía no tiene (Claim 4) |
 | **SEO: contenidos** | Blog "Derecho Penal Actual" con más de 30 guías largas actualizadas a 2026. **Tiene una guía de captación masiva (arts. 316 y 316A)** y otra de estafa en masa, fraude empresarial y reportes a la UIAF | estudiopenal.com/captacion-masiva-y-habitual-de-dinero-delito-o-inversion-guia-legal-y-defensa-2026 · /estafa-masa-en-colombia-elementos-cuantia-y-pena | **Hallazgo clave:** la cola larga de captación masiva **no está vacía**. Veraly tiene que diferenciarse por **profundidad y especialización** (ver conclusiones) |
-| SEO: métricas | Tráfico orgánico `[COMPLETAR]` · Keywords `[COMPLETAR]` · Authority Score `[COMPLETAR]` · Backlinks / dominios ref. `[COMPLETAR]` · Top 5 keywords `[COMPLETAR]` | Semrush, Domain Overview, Colombia | Comprueba en qué posición está su guía del art. 316 |
+| SEO: backlinks (Semrush, 31/10/2026) | **~1.900 backlinks** (1.710 *follow* y 189 *nofollow*; 100% de texto). Las páginas con más enlaces son la home (127 dominios / 228 backlinks), "el lavado de activos" y "feminicidio en Colombia". Hay enlaces *nofollow* desde Wikipedia (artículos sobre feminicidio y lavado de dinero) | Captura `05_EP_semrush_backlinks.png` | Su perfil tiene enlaces valiosos (Wikipedia) |
+| SEO: calidad del perfil de enlaces | **Señal de enlaces artificiales:** el anchor más frecuente es *"expert backlink building servic…"* (1.262 dominios), seguido de *"high quality dofollow backlinks…"* y *"high quality white hat seo links…"*. Los dominios de referencia principales son de baja calidad (netflas.blogspot.com, seol.store, knows.sbs, mexpedia.org) | Captura `05_EP_semrush_backlinks.png` | **Autoridad inflada con enlaces de servicios de link building.** Es un riesgo de penalización de Google. Veraly debe construir autoridad con enlaces ganados (prensa, directorios, universidades), no comprados |
+| SEO técnico | En el índice de Semrush, el título de la home y de las páginas aparece como **"Not Acceptable!"**: el servidor responde con un error 406 a algunos rastreadores | Captura `05b_EP_semrush_paginas_indexadas.png` | Problema técnico: bloquear rastreadores puede limitar su visibilidad en herramientas y en IA |
+| SEO: tráfico, keywords y Authority Score | `[COMPLETAR: captura de la parte superior del Domain Overview de estudiopenal.com, base CO]` | Semrush | Comprueba en qué posición está su guía del art. 316 |
 | **Medición** | Google Tag Manager instalado (según tu auditoría del 17/07/2026) | Tu documento, p. 25 | Optimiza sobre datos |
 | **SEM** | Google Ads `[COMPLETAR]` · Meta Ads `[COMPLETAR]` | adstransparency.google.com · facebook.com/ads/library | |
 | **Redes sociales** | No se encontraron perfiles de empresa en Instagram, Facebook, LinkedIn, TikTok ni YouTube (en Instagram solo aparecen homónimos argentinos). Hay vídeos divulgativos del socio incrustados en algunos artículos | Búsquedas del 31/10/2026 | `[VERIFICAR en el pie de página de la web]`. Si se confirma, **las redes son su punto débil**: Veraly puede ganar en LinkedIn |
@@ -248,7 +251,9 @@ Haz esto con cada competidor y **guarda captura de todo** (fecha visible). Las c
 | **Posicionamiento** | Firma *full service* de la red internacional CMS. Socios relevantes: Sergio Rodríguez Azuero (fundador, Dispute Resolution) y Daniel Rodríguez (Compliance y Penal Corporativo) | cms.law/es/col · legal500.com | Corporativa, no especializada |
 | **Web** | Title: "CMS Rodríguez-Azuero - Firma de Abogados Internacional en Colombia". Páginas de "Derecho Penal Corporativo" (prevención y compliance) y "Solución de Conflictos". **Ninguna página dirigida a víctimas de fraude** | cms.law/es/col · /expertise/derecho-penal-corporativo | El Perfil A no encuentra una puerta |
 | **Contenidos** | Insight Hub activo (última publicación encontrada: 21/08/2026, sobre plazos tributarios). En penal, la última es de mayo de 2025 | cms.law/es/col/insight-hub | Publica, pero no sobre fraude financiero |
-| **SEO** | `[COMPLETAR en Semrush: cms.law/es/col]` | | Al ser un subdirectorio de un dominio global, su autoridad es alta |
+| **SEO (Semrush, base Colombia, 30/10/2026)** | Datos del dominio cms.law en Google Colombia: el análisis de la subcarpeta /es/col solo está disponible en Semrush de pago. **Authority Score 55 ("Excellent")** · **tráfico orgánico 9,5K/mes (−20%)** · **2.400 palabras clave orgánicas (+0,9%)** · tráfico de pago 0 · **25,9K dominios de referencia** · **2,2M backlinks** · cuota de tráfico 16% | Captura `03_CMS_semrush_overview.png` | Autoridad de dominio internacional imposible de igualar: Veraly no compite por autoridad general, sino por especialización |
+| SEO: palabras clave | Top: "ley 2220 de 2022" (pos. 7, 14,8K búsquedas), "qué es interdicto" (2,4K), "cms" (pos. 1), "cms rodriguez azuero" (pos. 1, 320 búsquedas), "lasolar" (pos. 7). Intención: **89,1% informacional**, 4,6% navegacional, 3,7% comercial, 2,6% transaccional | Captura `03b_CMS_semrush_keywords.png` | Ninguna keyword top sobre captación, pirámides o fraude: su tráfico viene de normativa general. Además, **no invierte en Google Ads** (0 keywords de pago) |
+| **Búsqueda con IA (Semrush)** | AI Visibility 14 · **11 menciones** · **44 páginas citadas** (ChatGPT 3/7, AI Overview 1/20, AI Mode 5/25, Gemini 2/18) | Captura `03_CMS_semrush_overview.png` | Comparación directa con Veraly (4 menciones, **0 páginas citadas**): la IA cita a CMS porque tiene contenido citable |
 | **SEM / publicidad** | Contenido patrocinado en Portafolio ("una firma de abogados multinacional full service"). Google y Meta Ads `[COMPLETAR]` | portafolio.co/contenido-patrocinado/…-584744 | Invierte en prensa pagada |
 | **LinkedIn** | Página /company/cms-rodriguez-azuero con unos **13.000 seguidores** (dato del buscador, varía entre ~13.014 y ~13.733: `[VERIFICAR la cifra exacta]`) | linkedin.com/company/cms-rodriguez-azuero | Es la referencia de LinkedIn del grupo: la meta de 400 seguidores de Veraly es modesta frente a esta cifra |
 | **Facebook** | Existe (/CMSRodriguezAzuero), con pestaña de reseñas. Seguidores `[COMPLETAR]` | facebook.com/CMSRodriguezAzuero | |
@@ -267,7 +272,9 @@ Haz esto con cada competidor y **guarda captura de todo** (fecha visible). Las c
 | **Web: conversión** | Teléfono y formulario. **Venta de la consulta en línea**: virtual de 30 min $200.000 COP; presencial de 1 h $499.000 COP, con pago por PayU. Portal "Consulte cómo va su caso" | affirmalegal.com/pago-de-servicios/ · /consulte-como-va-su-caso/ | Modelo de e-commerce de servicios: tu tabla de descartes lo justifica para Veraly |
 | **Contenidos** | Blog con categorías de aduanero, familia, asesoría jurídica y propiedad intelectual. Última entrada encontrada: 08/04/2026. **No se encontró contenido sobre captación masiva, pirámides ni fraude financiero** | affirmalegal.com/blog | La especialización está libre en este competidor |
 | **Restos de marca anterior** | Una página del blog conserva el título "AGT Abogados S.A.S." | affirmalegal.com/blog/categoria/derecho-de-familia/page/2/ | Inconsistencia de marca |
-| **SEO: métricas** | `[COMPLETAR en Semrush]` | | Probablemente el de más tráfico de los cuatro |
+| **SEO: tendencia (Semrush, 2 años)** `[CONFIRMAR que la captura 02 es de affirmalegal.com]` | Tráfico orgánico con **pico de ~38K visitas/mes (oct. 2025)** y caída posterior hasta **~8–10K/mes en oct. 2026** (lectura aproximada del gráfico). Unas **9–10K palabras clave** posicionadas. Tráfico de pago ≈ 0 | Captura `02_AF_semrush_tendencia_e_IA.png` | El de más tráfico del grupo, pero en descenso: el SEO de volumen generalista se erosiona (posible efecto de AI Overviews y actualizaciones de Google) |
+| **Búsqueda con IA (Semrush)** | Visibilidad IA 19 · **10 menciones** (9 en Colombia, 1 en México). Fuentes más citadas: affirmalegal.com (7), tiktok.com (3), tusabogadosycontadores.co (2). Posiciones en SERP: 95,9% orgánico, 3,9% AI Overviews | Captura `02_AF_semrush_tendencia_e_IA.png` | Las IA ya lo citan, incluso desde TikTok: su contenido es citable. Es el modelo a superar en GEO |
+| SEO: datos exactos | `[COMPLETAR: captura de la cabecera del Domain Overview (Authority Score, tráfico, keywords, backlinks)]` | Semrush | |
 | **Redes sociales** | Su web enlaza Instagram @Affirmalegal, Facebook "Affirmalegal" y TikTok @affirma_legal. Seguidores y actividad `[COMPLETAR]`. LinkedIn y YouTube no encontrados | affirmalegal.com/su-compra-ha-sido-exitosa/ | Es el único de los cuatro con presencia en redes de consumo (incluido TikTok) |
 | **Ficha de Google** | `[COMPLETAR]` | | |
 | **Reputación y publicidad** | Forbes Colombia (2024, dos artículos). **Publirreportajes pagados** en La República ("Desafíos legales 2024") y Portafolio. Página de testimonios propios | forbes.co/2024/02/06/… · larepublica.co/especiales/desafios-legales-2024/… · affirmalegal.com/testimonios | Autoridad comprada y testimonios: justo lo que la Ley 1123 (art. 31.2) restringe a Veraly |
@@ -283,10 +290,10 @@ Haz esto con cada competidor y **guarda captura de todo** (fecha visible). Las c
 | Página o mensaje para víctimas | No | Sí ("Denuncias y víctimas") | No | No | No |
 | Web alineada con su negocio | **No** | Sí | Sin web confirmada `[verificar]` | Sí | Sí |
 | PageSpeed móvil | 96 | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
-| Tráfico orgánico/mes (Semrush) | 0 | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
-| Palabras clave orgánicas | 8 | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
-| Authority Score | n/a | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
-| Backlinks / dominios ref. | 0 / 0 | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
+| Tráfico orgánico/mes (Semrush, CO) | 0 | `[ ]` | `[ ]` | 9,5K (dominio global cms.law) | ~8–10K (gráfico) `[confirmar]` |
+| Palabras clave orgánicas | 8 | `[ ]` | `[ ]` | 2.400 | ~9–10K `[confirmar]` |
+| Authority Score | n/a | `[ ]` | `[ ]` | 55 | `[ ]` |
+| Backlinks / dominios ref. | 0 / 0 | ~1.900 (muchos artificiales) / `[ ]` | `[ ]` | 2,2M / 25,9K | `[ ]` |
 | Blog | No | Sí, más de 30 guías de 2026 | No | Insight Hub (poco penal) | Sí (sin penal-financiero) |
 | Contenido sobre captación masiva | No | **Sí** | No | No (solo prensa) | No |
 | CTA principal | Formulario genérico | WhatsApp + consulta gratis | — | Contacto corporativo | Teléfono + pago en línea |
@@ -296,10 +303,10 @@ Haz esto con cada competidor y **guarda captura de todo** (fecha visible). Las c
 | LinkedIn empresa | `[ ]` | No encontrado | No encontrado | ~13.000 seg. `[verificar]` | No encontrado |
 | Facebook / TikTok | `[ ]` | No encontrado | No encontrado | Facebook sí `[seg.]` | Facebook + TikTok `[seg.]` |
 | Ficha de Google (★ · reseñas) | No existe | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
-| Google / Meta Ads | No / No | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
+| Google / Meta Ads | No / No | `[ ]` | `[ ]` | Google: 0 kw de pago / Meta `[ ]` | Google: ≈0 / Meta `[ ]` |
 | Prensa pagada | No | No | No | Sí (Portafolio) | Sí (La República, Portafolio) |
 | Rankings (Legal 500 / Leaders League) | No | No | Sí | Sí | No |
-| Citado por IA (ChatGPT/Gemini) | 4 menciones · 0 citas | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
+| Citado por IA (Semrush AI Search) | 4 menciones · 0 páginas citadas | `[ ]` | `[ ]` | 11 menciones · 44 páginas citadas | 10 menciones (fuente: su web 7, TikTok 3) |
 | Testimonios / autoelogio | Sí, hoy (a retirar) | Autoelogio | No | No | Testimonios + autoelogio |
 
 **Recomendado:** añade debajo una **puntuación de 1 a 5 por dimensión** (Web, SEO, SEM, Redes, Ficha de Google, Reputación, Contenidos) con un gráfico de radar. Con los datos de arriba, una propuesta inicial (ajústala cuando tengas Semrush y Google Maps):
@@ -332,7 +339,9 @@ Haz esto con cada competidor y **guarda captura de todo** (fecha visible). Las c
 >    - prensa pagada, en el caso de Affirma.
 >
 >    Veraly tiene 0 backlinks y 0 menciones. Debe ganar menciones con análisis de casos públicos (E6), **sin** testimonios ni publirreportajes laudatorios (art. 31.2 de la Ley 1123).
-> 7. **Precios:** dos de los cuatro competidores publican precios y Estudio Penal ofrece la primera consulta gratis. Esto refuerza la urgencia de que los socios definan el Claim 4 (honorarios conversados, con reglas claras).
+> 7. **Calidad de la autoridad:** Estudio Penal tiene unos 1.900 backlinks, pero el anchor dominante es "expert backlink building services", una señal de enlaces comprados. CMS tiene autoridad real (AS 55, 25,9K dominios), pero de un dominio global. Veraly parte de 0 y tiene que construir **autoridad limpia y especializada**: es más lenta, pero no arriesga penalizaciones.
+> 8. **Búsqueda con IA:** CMS (44 páginas citadas) y Affirma (10 menciones, citada desde su web y TikTok) ya son fuentes para las IA. Veraly tiene 4 menciones y 0 citas. El contenido citable (E3 + GEO) es una brecha medible frente a la competencia.
+> 9. **Precios:** dos de los cuatro competidores publican precios y Estudio Penal ofrece la primera consulta gratis. Esto refuerza la urgencia de que los socios definan el Claim 4 (honorarios conversados, con reglas claras).
 
 ## 3.7 Correcciones que la investigación obliga a hacer en tu documento original
 
