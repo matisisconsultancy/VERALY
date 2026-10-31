@@ -17,6 +17,8 @@ La ruta va **por herramienta, no por competidor**: abres una herramienta una sol
 
 ---
 
+> ⚠️ **MUY IMPORTANTE · CANCELA LA PRUEBA GRATUITA DE SEMRUSH** en cuanto termines el Paso 1 y antes del **5 de noviembre de 2026**, para que no te cobren. Ruta: semrush.com → icono de perfil (arriba a la derecha) → *Subscription info* → *Cancel subscription*. Guarda el correo de confirmación.
+
 # PASO 1 · Semrush: SEO (25 min) ★ imprescindible
 
 En cada enlace, confirma arriba que la base de datos es **Colombia (CO)**. Captura la pantalla completa del *Domain Overview*.
@@ -228,5 +230,7 @@ Cuando termines, rellena esta tabla (o mándame solo las capturas y la relleno y
 | TikTok (seguidores) | | | | |
 | Anuncios en Meta / Google | | | | |
 | ¿Lo nombra ChatGPT / Gemini / Google IA? | | | | |
+
+> ⚠️ **MUY IMPORTANTE · CANCELA LA PRUEBA GRATUITA DE SEMRUSH** en cuanto termines el Paso 1 y antes del **5 de noviembre de 2026**, para que no te cobren. Ruta: semrush.com → icono de perfil (arriba a la derecha) → *Subscription info* → *Cancel subscription*. Guarda el correo de confirmación.
 
 **Prioridad si vas justa de tiempo:** pasos 1, 5 y 6 (Semrush, fichas de Google, redes). Son exactamente los tres que el profesor dijo que faltaban.
