@@ -240,7 +240,7 @@ source: Cifras de las fichas anteriores (fuentes públicas, 31/10/2026). "n/l" =
 === orig 14 | key=act
 === orig 15
 === orig 16
-=== orig 17
+=== orig 17 | cover=[[88,251,446,275.5,"Hipótesis: la mayoría del tráfico","Arimo-R",19.5,"#41466a","#ffffff"],[88,276.5,446,300.5,"llegará por LinkedIn en móvil","Arimo-R",19.5,"#41466a","#ffffff"],[88,318,446,342,"Entrevistas: los CEO descartan","Arimo-R",19.5,"#41466a","#fafbfd"],[88,343,446,368,"un slogan genérico en segundos","Arimo-R",19.5,"#41466a","#fafbfd"]]
 === orig 18
 === orig 19
 === sep

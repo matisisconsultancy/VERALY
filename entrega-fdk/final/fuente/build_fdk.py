@@ -14,6 +14,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 HERE = os.path.dirname(os.path.abspath(__file__))
 FONTS = os.path.join(HERE, 'node_modules/@fontsource')
 pdfmetrics.registerFont(TTFont('Archivo', os.path.join(HERE, 'Archivo-400.ttf')))
+pdfmetrics.registerFont(TTFont('Arimo-R', os.path.join(HERE, 'Arimo-400.ttf')))
 pdfmetrics.registerFont(TTFont('Arimo-B', os.path.join(HERE, 'Arimo-700.ttf')))
 pdfmetrics.registerFont(TTFont('Archivo-I', os.path.join(HERE, 'Archivo-400i.ttf')))
 pdfmetrics.registerFont(TTFont('Archivo-SB', os.path.join(HERE, 'Archivo-600.ttf')))
@@ -246,7 +247,7 @@ def main(spec, orig, out, doctitle, imgroot):
                 for (x0, y0, x1, y1, text, font, size, color, bg) in json.loads(p['cover']):
                     c.setFillColor(bg); c.rect(x0, ph - y1, x1 - x0, y1 - y0, fill=1, stroke=0)
                     if text:
-                        c.setFillColor(color); c.setFont(font, size); c.drawString(x0 + 1, ph - y1 + 4, text)
+                        c.setFillColor(color); c.setFont(font, size); c.drawString(x0 + 2.5, ph - y1 + 5.5, text)
                 c.save(); buf.seek(0); pg.merge_page(PdfReader(buf).pages[0])
             w.add_page(pg)
         else:
