@@ -80,6 +80,24 @@ Problemas:
 
 ---
 
+## 1.3 Qué hizo el proyecto aprobado (JUVAN) que tu entrega no hizo
+
+Revisé el proyecto aprobado de tu compañero ("Plan Marketing Digital – JUVAN"). Es **menos riguroso que el tuyo** en datos y argumentación, pero aprobó porque sigue la rúbrica **al pie de la letra y con etiquetas visibles**. Estas son las prácticas que hay que copiar:
+
+| Práctica del proyecto aprobado | Tu entrega | Qué hacer |
+|---|---|---|
+| Índice con los **nombres exactos de los criterios**: "Análisis de la competencia", "Estrategia de Marketing Digital", "Objetivos SMART", "Estrategias", "Plan de acción", "Análisis y seguimiento", "Definición de plan de medición", "Definición de KPIs" | Títulos propios ("El sistema", "Ejecución", "Marco estratégico") | Renombrar las secciones con las palabras de la rúbrica (sección 2) |
+| Por cada competidor: análisis de la web (diseño, estructura, CTA, captación de datos), **diseño responsive**, **rendimiento con capturas de PageSpeed móvil y escritorio**, **reputación online**, **redes sociales con enlace a cada perfil**, **mezcla de contenido en %** por red, tono, frecuencia, engagement, **SEO técnico** (sitemap, robots.txt, canonical, Schema), SEO on-page, keywords, **SEO off-page**, tabla de mejoras (acción / impacto), **análisis SEM** (tabla elemento / análisis / nivel) y "qué aprender" | Solo Estudio Penal, sin redes, ficha de Google ni SEO técnico | Fichas de la sección 3 + checklist 3.3 ampliada |
+| Objetivo SMART con las cinco etiquetas en mayúscula (**ESPECÍFICO / MEDIBLE / ALCANZABLE / RELEVANTE / TEMPORAL**) | Tabla sin desglose | Sección 4.3 |
+| Después: **ESTRATEGIAS** con nombre de manual (Social Media Marketing, Marketing de Influencers, Social Ads) y una frase de por qué | Estrategias con nombres propios ("dos motores", "punto de cruce") | Sección 5, con nombres de manual |
+| **ACCIONES PARA EL OBJETIVO** contadas **mes a mes** ("Durante el primer mes… el segundo mes… el tercer mes…") | Roadmap por semanas sin vínculo con las estrategias | Sección 6.0 (nueva) |
+| **Calendario de posteo** semanal (lunes a domingo, por red y formato) para cada mes | Calendario editorial de 4 piezas | Sección 6.3 (nueva) |
+| **Estrategias SEO** desarrolladas por separado (on-page, técnico, contenidos, local, link building, Schema) y **estrategia SEM** con tipos de campaña | SEO en una tabla de clústeres; SEM solo como descarte | Sección 5.6 (nueva): SEO desarrollado + análisis SEM con justificación |
+| Tabla de **KPIs**: Objetivo / KPI / Meta / Herramienta / Frecuencia, más un texto de **Plan de medición** | KPIs por "nivel" | Sección 7 |
+| **Resumen ejecutivo** que cuenta qué se hará y qué se conseguirá | Resumen de diagnóstico | Sección 2.1 |
+
+**Conclusión:** tu proyecto tiene más profundidad que el aprobado. Lo que le falta es **la forma de la rúbrica**. No quites tu análisis: **envuélvelo** en esa estructura.
+
 # 2. Nueva estructura del documento
 
 Te propongo este índice. Sigue el orden de los criterios y deja la parte estratégica en el formato exacto que pide el profesor. Las páginas son orientativas.
@@ -170,6 +188,20 @@ Haz esto con cada competidor y **guarda captura de todo** (fecha visible). Las c
 | **Reputación online** | Reseñas en Google y otros directorios, menciones en prensa (últimos 12 meses), rankings (Legal 500, Chambers, Leaders League), presencia en IA | Google Noticias · legal500.com · chambers.com · Preguntar a ChatGPT/Gemini: *"¿Qué firma de abogados recomiendas en Colombia para un caso de captación masiva de dineros?"* y anotar quién sale |
 | **Contenidos** | Tipo de contenido (blog, guías, vídeos, podcast), frecuencia, profundidad técnica, firmado por socio sí/no | Blog, LinkedIn, YouTube |
 | **Leads / Email** | ¿Lead magnet? ¿Newsletter? ¿Formulario largo o corto? ¿Pop-ups? | Navegar el sitio |
+
+**Dimensiones extra que usó el proyecto aprobado (añádelas a cada ficha):**
+
+| Dimensión | Dato a tomar | Dónde / cómo |
+|---|---|---|
+| **Diseño responsive** | ¿Se adapta al móvil? Captura de la web en el móvil | Abrirla en el móvil |
+| **SEO técnico** | ¿Existe /sitemap.xml? ¿Existe /robots.txt? ¿Hay etiqueta canonical? ¿Datos estructurados (Schema: LegalService, Attorney, FAQPage)? | Escribir dominio.com/sitemap.xml y dominio.com/robots.txt · validator.schema.org · search.google.com/test/rich-results |
+| **SEO on-page** | Un H1 por página, títulos y meta descriptions con keyword, URLs limpias, ALT en las imágenes | Extensión "SEO META in 1 CLICK" o "Detailed SEO Extension" |
+| **SEO off-page** | Backlinks, menciones en prensa y directorios | Semrush Backlink Analytics |
+| **Mezcla de contenido en redes** | % aproximado por tipo (educativo, institucional, equipo, casos, promoción) en las últimas 20 publicaciones | Contar a mano |
+| **Tono de comunicación** | 3–5 adjetivos con una cita de ejemplo | Lectura de la web y las redes |
+| **Análisis SEM** | Tabla Elemento / Análisis / Nivel: objetivo de la landing, preparación para Google Ads, experiencia tras el clic, velocidad, móvil, CTA | Valoración propia a partir de la web |
+| **Qué aprende Veraly** | 3–5 viñetas de buenas prácticas adaptables | Conclusión de la ficha |
+| **Mejoras que el competidor no ha hecho** | Tabla Acción / Impacto (alto, medio) | Conclusión de la ficha: son oportunidades para Veraly |
 
 ## 3.4 Ficha por competidor (una diapositiva por competidor)
 
@@ -572,9 +604,74 @@ Sugerencia: el **email marketing** queda como "pospuesto" (no descartado) para e
 
 ---
 
+## 5.6 Detalle de la estrategia SEO y análisis SEM (como en el proyecto aprobado)
+
+### Estrategias SEO
+
+**Objetivo general SEO:** que veraly.com.co ocupe la primera posición para su marca y aparezca en el top 10 de Google Colombia para búsquedas especializadas en captación masiva, pirámides y fraude financiero, y que las IA (ChatGPT, Gemini, AI Overviews) citen a la firma como fuente.
+
+| Sub-estrategia | Acciones | Objetivo |
+|---|---|---|
+| **1. SEO on-page** | Title y meta description por URL con keyword y marca; un solo H1; jerarquía H2/H3; URLs descriptivas (/afectados-por-captacion-masiva); ALT en las imágenes; enlazado interno desde cada análisis hacia la página del perfil | OBJ 1, 3 |
+| **2. SEO técnico** | Search Console verificado; sitemap.xml enviado; robots.txt; canonical; redirecciones 301 desde las URLs antiguas; mantener PageSpeed ≥ 90 (hoy 96/99); imágenes WebP | OBJ 1, 3 |
+| **3. Marketing de contenidos (clúster de fraude financiero)** | 1 página pilar "Captación masiva y habitual de dineros: guía completa" + artículos satélite (pirámides, estafa en masa, intervención de la Supersociedades, cómo reclamar en una intervención, riesgo penal empresarial, diferencia entre estafa y captación). 2 artículos/mes desde el mes 2 | OBJ 3 |
+| **4. SEO local** | Google Business Profile completo; NAP (nombre, dirección, teléfono) idéntico en la web, la ficha y los directorios; página /contacto con mapa | OBJ 2 |
+| **5. Link building / off-page** | Alta en directorios jurídicos; artículos de opinión de socios en medios jurídicos; ponencias universitarias con enlace; perfiles de socios en directorios profesionales | OBJ 3 |
+| **6. Datos estructurados (Schema.org)** | LegalService, Organization, Person/Attorney (los 5 socios), Article, FAQPage, BreadcrumbList | OBJ 1, 3 |
+| **7. GEO / SEO para IA** | Bloques de preguntas y respuestas en cada página; definiciones claras citables; datos con fuente oficial; revisión trimestral de qué responden las IA | OBJ 1, 3 |
+| **8. SEO de marca** | Unificar el nombre "Veraly Grupo Jurídico" en todos los perfiles; enlazar redes ↔ web; corregir los enlaces sociales rotos | OBJ 1 |
+
+**Palabras clave prioritarias** (validar volúmenes en Semrush; usar tu documento *Veraly_Keyword_Research*):
+
+- **Marca:** veraly · veraly grupo jurídico · veraly abogados
+- **Afectado (A):** me estafaron con una pirámide · cómo recuperar dinero de una captadora · denunciar captación masiva
+- **Investigado (B):** abogado captación masiva · defensa artículo 316 código penal · me investigan por captación ilegal
+- **Informacional (A·C):** qué es captación masiva y habitual de dineros · diferencia entre estafa y captación · intervención Supersociedades captación
+- **Empresa (C):** cuándo un negocio se considera captación ilegal · riesgo penal empresarial Colombia
+
+### Análisis SEM y justificación de su no uso
+
+Los criterios exigen que, si una estrategia no se usa, *"deberá presentarse el análisis realizado y la justificación"*. Presenta el SEM así:
+
+| Elemento | Análisis | Decisión |
+|---|---|---|
+| Campaña de búsqueda por situación del afectado ("me estafaron con una pirámide") | Llegaría a personas en situación de calamidad: es el supuesto del art. 30.7 de la Ley 1123 (obtener clientes aprovechando una calamidad) | **Descartada** |
+| Campaña de marca ("veraly abogados") | Sin competencia por la marca: el SEO de marca la cubre gratis | **Innecesaria** en los 3 primeros meses |
+| Campaña para empresas (Perfil C: "riesgo penal empresarial") | Encaje disciplinario más bajo, pero sin medición instalada y sin presupuesto de medios en la propuesta | **Pospuesta**: se valora en el mes 6, con datos reales y validación de los socios |
+| Display / remarketing | Perseguir a quien visitó una página sobre procesos penales expone su privacidad (Perfil B) y choca con la Ley 1581 | **Descartada** |
+| Social Ads (Meta, TikTok, LinkedIn Ads) | Segmentar perfiles en crisis repite el riesgo del art. 30.7. LinkedIn Ads para C se valora junto con el SEM para C | **Descartada / pospuesta** |
+| Competencia | `[Completar con lo que veas en Google Ads Transparency y en la Biblioteca de anuncios de Meta]`. Affirma y CMS invierten en publirreportajes, no consta SEM | Referencia |
+
 # 6. Plan de acción a 3 meses (sección 11 del documento)
 
 Cada acción lleva **objetivo, estrategia, responsable, fechas, herramienta, coste y KPI**. Esto es lo que el profesor llama "plan de acción". Fechas `[AJUSTAR]` con inicio el 1/12/2026.
+
+## 6.0 Acciones para los objetivos, mes a mes (formato del proyecto aprobado)
+
+**Mes 1 (diciembre): ordenar y preparar.**
+- Se retiran de la web actual los testimonios con estrellas y la palabra "garantizamos".
+- Se verifica Search Console y se capturan las búsquedas de marca.
+- Se crea la ficha de Google.
+- Se renueva el perfil de Instagram (bio, logotipo, destacadas) y se archivan las publicaciones de cobranza.
+- Se optimizan la página de LinkedIn y los perfiles de dos socios, y empiezan las publicaciones semanales en LinkedIn.
+- En paralelo se validan las palabras clave en Semrush y se aprueban la arquitectura y los wireframes de la nueva web.
+- **Estrategias:** E1, E2, E4, E5 y E7.
+
+**Mes 2 (enero): construir.**
+- Se redacta el copy de las 9 páginas con el sistema verbal de la marca.
+- Se hacen la sesión de fotos y las fichas de los cinco socios.
+- Se desarrolla el sitio y se instalan GA4, GTM y los 8 eventos.
+- Se publica la política de datos (Ley 1581).
+- Instagram pasa a 8 publicaciones al mes con la nueva identidad y LinkedIn mantiene su ritmo.
+- Se aprueba el protocolo de respuesta a evento.
+- **Estrategias:** E1, E3, E4, E5, E6 y E7.
+
+**Mes 3 (febrero): publicar y medir.**
+- Se publica el sitio con redirecciones 301.
+- Salen los dos primeros análisis (mecanismo de la captación y rutas para el afectado). Cada uno se reutiliza en LinkedIn (post del socio) e Instagram (carrusel).
+- Se da de alta a la firma en directorios jurídicos y se envía el primer análisis a medios especializados.
+- Al cierre del mes se hace el **informe del mes 3**: KPIs frente a metas y ajuste de las metas de los meses 4–6 con datos reales.
+- **Estrategias:** E1, E2, E3, E4, E5, E6 y E7.
 
 ## 6.1 Tabla del plan de acción
 
@@ -628,15 +725,38 @@ Hazlo como gráfico de barras en la diapositiva. Este es el esquema por semanas:
 | A20 Directorios y medios | | | | | | | | | | ■ | ■ | ■ |
 | A21 Informe del mes 3 | | | | | | | | | | | | ■ |
 
-## 6.3 Calendario de contenidos del trimestre (ejemplo para la diapositiva)
+## 6.3 Calendario de publicaciones (lunes a domingo, como en el proyecto aprobado)
 
-| Mes | Web / blog | LinkedIn (página) | LinkedIn (socios) | Instagram | Ficha de Google |
-|---|---|---|---|---|---|
-| Diciembre | — (sitio en construcción) | 3 posts: presentación de la firma, los 5 socios, "La lectura completa" | 2 por socio | 6 posts: nueva identidad, equipo, método | — |
-| Enero | — | 4 posts: formato 06 "Ciclo del fraude", formato 04, 2 de mecanismo | 2 por socio | 8 posts | 1 publicación: presentación |
-| Febrero | Análisis 1 y 2 | 4 posts: lanzamiento de la web + 2 análisis + formato 04 | 2 por socio | 8 posts (2 carruseles de los análisis) | 1 publicación: web nueva |
+Dimensionado a la capacidad real de los socios. Fines de semana sin publicación: el público profesional (B y C) no consume LinkedIn en fin de semana, y la sobriedad de la marca no pide presencia diaria. **LI** = LinkedIn página · **LI-S** = LinkedIn de un socio · **IG** = Instagram · **GBP** = ficha de Google.
 
-> Mantén tu nota sobre la capacidad editorial de los socios (riesgo R1): demuestra criterio. Pero preséntala como **riesgo con mitigación**, no como duda sobre el propio plan.
+**MES 1 · Diciembre: nueva identidad**
+
+| Semana | Lunes | Martes | Miércoles | Jueves | Viernes | Sáb–Dom |
+|---|---|---|---|---|---|---|
+| S1 | — | LI: "Quiénes somos: cinco ramas, un caso" | — | — | — | — |
+| S2 | IG: post de nueva identidad (logotipo de convergencia) | LI-S: presentación del socio (Naar) | IG: carrusel "Qué hacemos: defensa en fraude financiero" | LI: formato 04 "La lectura completa" | IG: equipo (socio 1) | — |
+| S3 | IG: carrusel "La primera decisión no es demandar, es entender" | LI: formato 06 "Ciclo del fraude" | IG: equipo (socio 2) | LI-S: presentación del socio (Vergara) | IG: "Cómo trabajamos: método en 4 pasos" | — |
+| S4 | — | LI: mensaje de cierre de año sin tono estacional comercial | IG: equipo (socio 3) | — | — | — |
+
+**MES 2 · Enero: autoridad**
+
+| Semana | Lunes | Martes | Miércoles | Jueves | Viernes | Sáb–Dom |
+|---|---|---|---|---|---|---|
+| S1 | IG: carrusel "5 señales de un esquema de captación" | LI: formato 01 Mecanismo | IG: equipo (socio 4) | LI-S: opinión sobre un caso público (Bayter) | GBP: publicación de presentación | — |
+| S2 | IG: reel "Captación masiva en 60 segundos" | LI: formato 02 Ruta jurídica | — | LI-S: (Canizales) penal + administrativo | IG: carrusel "Penal y administrativa: las dos vías" | — |
+| S3 | IG: equipo (socio 5) | LI: formato 04 "La lectura completa" | IG: carrusel "Qué documentos conservar si fuiste afectado" | LI-S: (Naar) jurisprudencia del art. 316 | — | — |
+| S4 | IG: carrusel "Estafa vs. captación: diferencias" | LI: formato 06 "Ciclo del fraude" | IG: "Cómo trabajamos" | LI-S: (Vergara) | IG: anticipo de la nueva web | — |
+
+**MES 3 · Febrero: lanzamiento de la web y primeros análisis**
+
+| Semana | Lunes | Martes | Miércoles | Jueves | Viernes | Sáb–Dom |
+|---|---|---|---|---|---|---|
+| S1 | **WEB: publicación del sitio + análisis 1** | LI: lanzamiento de la web | IG: carrusel resumen del análisis 1 | LI-S: (Naar + Bayter) análisis 1 | GBP: publicación "Nueva web" | — |
+| S2 | IG: reel del método | LI: formato 01 Mecanismo | IG: equipo (las 5 fichas) | LI-S: (Canizales) | IG: carrusel "Qué es la intervención de la Supersociedades" | — |
+| S3 | **WEB: análisis 2** | LI: análisis 2 | IG: carrusel resumen del análisis 2 | LI-S: (Vergara) análisis 2 | — | — |
+| S4 | IG: carrusel "Preguntas frecuentes" | LI: formato 04 | IG: "Cómo contactarnos de forma confidencial" | LI-S: (Bayter) | Informe del mes 3 (interno) | — |
+
+**Totales del trimestre:** 2 análisis en la web · 13 publicaciones en la página de LinkedIn · 11 de socios · 30 en Instagram · 2 en la ficha de Google. Si un esquema colapsa, el protocolo de respuesta a evento sustituye la publicación del día.
 
 ## 6.4 Visión a 12 meses (cierre de la sección)
 
@@ -754,4 +874,4 @@ Tu presupuesto actual mezcla lo contratado con lo excluido y deja muchos "a defi
 
 ---
 
-*Criterios: CEI, "Criterios y requisitos técnicos de evaluación · Marketing Digital · Proyecto final" (2025). Fuentes externas consultadas el 31/10/2026 (resultados de búsqueda; verificar en vivo antes de citar): estudiopenal.com (home, /servicios, /contactanos, /programa-una-consulta, guía de honorarios 2026, guía de captación masiva 2026) · legal500.de y legal500.com (rankings de Colombia) · practiceguides.chambers.com (perfil de F. Sintura) · asuntoslegales.com.co (rankings de Leaders League; caso Rocha, cuya cabecera fechada en 2026 podría corresponder a un texto de 2023; lanzamiento de Simhon, Vanegas & Calle, mayo de 2026) · elespectador.com (caso Rocha) · pulzo.com (caso Interbolsa) · cms.law/es/col · linkedin.com/company/cms-rodriguez-azuero · portafolio.co (contenido patrocinado) · affirmalegal.com (áreas, pago de servicios, blog, testimonios) · forbes.co (2024) · larepublica.co (especial patrocinado 2024). El resto de datos procede de los documentos del propio proyecto (Estrategia de Marketing Digital, Memoria y Keyword Research de Veraly, julio de 2026).*
+*Referencia de formato: proyecto aprobado "Plan Marketing Digital – JUVAN". Criterios: CEI, "Criterios y requisitos técnicos de evaluación · Marketing Digital · Proyecto final" (2025). Fuentes externas consultadas el 31/10/2026 (resultados de búsqueda; verificar en vivo antes de citar): estudiopenal.com (home, /servicios, /contactanos, /programa-una-consulta, guía de honorarios 2026, guía de captación masiva 2026) · legal500.de y legal500.com (rankings de Colombia) · practiceguides.chambers.com (perfil de F. Sintura) · asuntoslegales.com.co (rankings de Leaders League; caso Rocha, cuya cabecera fechada en 2026 podría corresponder a un texto de 2023; lanzamiento de Simhon, Vanegas & Calle, mayo de 2026) · elespectador.com (caso Rocha) · pulzo.com (caso Interbolsa) · cms.law/es/col · linkedin.com/company/cms-rodriguez-azuero · portafolio.co (contenido patrocinado) · affirmalegal.com (áreas, pago de servicios, blog, testimonios) · forbes.co (2024) · larepublica.co (especial patrocinado 2024). El resto de datos procede de los documentos del propio proyecto (Estrategia de Marketing Digital, Memoria y Keyword Research de Veraly, julio de 2026).*
