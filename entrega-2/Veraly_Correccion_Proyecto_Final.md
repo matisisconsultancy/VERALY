@@ -794,26 +794,62 @@ Después de esta tabla, mantén tu **plan de medición de 8 eventos** (p. 51). E
 
 # 8. Presupuesto (sección 13 del documento)
 
-Tu presupuesto actual mezcla lo contratado con lo excluido y deja muchos "a definir". Te recomiendo separar **coste de la consultoría** y **coste de ejecución del plan de marketing**, y para cada partida poner cifra o rango con su fuente:
+El presupuesto se presenta con la **estructura real de la propuesta de Matisis Consultancy** aprobada por Veraly: *"Marca, Ecosistema Digital y Estrategia de Crecimiento"* (2026). Se separan tres bloques: lo que cubre Matisis, lo que paga Veraly a terceros y la inversión en medios.
 
-| Partida | Estrategia | Tipo | Coste trimestral | Fuente / nota |
-|---|---|---|---|---|
-| Paquete Branding + Web + Contenido | E1, E3 | Contratado | $10.000.000 COP (5 pagos de $2.000.000) | Propuesta firmada |
-| Google Analytics 4, Tag Manager, Search Console, Looker Studio | E7 | Herramienta | $0 | Gratuitas |
-| Google Business Profile | E2 | Herramienta | $0 | Gratuita |
-| Meta Business Suite, LinkedIn (orgánico) | E4, E5 | Herramienta | $0 | Gratuitas |
-| Canva Pro | E5 | Herramienta | `[COMPLETAR precio actual en COP]` | canva.com/pricing |
-| Semrush Pro (o mantener la cuenta actual) | E3, E6 | Herramienta | `[COMPLETAR precio actual]` | semrush.com/prices |
-| Hosting y mantenimiento técnico | E1 | Infraestructura | `[COTIZAR]` | Según el stack elegido |
-| Licencia tipográfica | E1 | Licencia | `[COTIZAR]` | Fundición tipográfica |
-| Fotografía profesional de los socios | E1 | Producción | `[COTIZAR 2–3 fotógrafos]` | Excluido del alcance |
-| Redacción especializada (solo si falla la capacidad editorial) | E3 | Contingencia | `[COTIZAR]` | Riesgo R1 |
-| Publicidad pagada | — | Descartada | $0 | Art. 30.7 Ley 1123 |
-| **TOTAL** | | | `[SUMAR]` | |
+## 8.1 Honorarios de Matisis Consultancy (propuesta aprobada)
 
-> **Consejo:** pide 2 o 3 cotizaciones reales (fotógrafo, hosting) y pon la cifra con la fuente. Así cumples la prohibición de texto falso y el profesor ve un presupuesto completo, no un listado de "a definir".
+| Workstream | Alcance | Estrategias del plan que cubre | Precio de lista (COP) |
+|---|---|---|---|
+| **WS1 · Branding**: estrategia de marca e identidad visual | Posicionamiento, naming validado, sistema verbal (claims), identidad gráfica (brief v1.4), brandbook | Base de todas (coherencia de marca); E5 (realineación de Instagram) | $4.500.000 |
+| **WS2 · Web**: oferta y arquitectura de conversión | Arquitectura de dos capas (9 URLs), copy, landing-brandbook, conversión sobria (formulario + WhatsApp + teléfono), SEO on-page y técnico, instalación de medición con el desarrollo del sitio | E1, E2, E7 | $5.500.000 |
+| **WS3 · Contenido**: autoridad y ecosistema digital | Pilares de contenido, calendario editorial, plantillas de LinkedIn e Instagram, protocolo de respuesta a evento, estrategia de captación | E3, E4, E5, E6 | $3.500.000 |
+| **Total de lista** | | | **$13.000.000** |
+| **Precio de colaboración firmado** | Descuento del 23% sobre la lista | | **$10.000.000** |
 
----
+**Forma de pago:** 5 pagos mensuales de $2.000.000 COP. `[AJUSTAR los meses a la fecha real de firma]`
+
+| Pago | Mes del plan | Hito asociado | Importe (COP) |
+|---|---|---|---|
+| 1 | Mes 1 (dic.) | Arranque: retirada de elementos de riesgo, Search Console, ficha de Google, perfiles sociales, arquitectura | $2.000.000 |
+| 2 | Mes 2 (ene.) | Copy aprobado y fichas de socios | $2.000.000 |
+| 3 | Mes 3 (feb.) | Sitio publicado, medición activa, primeros análisis | $2.000.000 |
+| 4 | Mes 4 (mar.) | Optimización con datos y calendario editorial en marcha | $2.000.000 |
+| 5 | Mes 5 (abr.) | Cierre del alcance e informe de resultados | $2.000.000 |
+| | | **Total** | **$10.000.000** |
+
+**Fuera del alcance de la propuesta** (según el propio documento): hosting, fotografía, inversión en medios, herramientas de pago y mantenimiento después del mes 6.
+
+## 8.2 Costes de terceros a cargo de Veraly (trimestre del plan de acción)
+
+| Partida | Estrategia | Coste | Estado |
+|---|---|---|---|
+| GA4, Google Tag Manager, Search Console, Looker Studio | E7 | $0 | Herramientas gratuitas |
+| Google Business Profile | E2 | $0 | Gratuita |
+| Meta Business Suite y LinkedIn orgánico | E4, E5 | $0 | Gratuitas |
+| Dominio veraly.com.co | E1 | Ya pagado | Renovación anual `[importe de la factura]` |
+| Hosting del nuevo sitio | E1 | `[COTIZACIÓN]` | Depende del stack |
+| Licencia tipográfica | E1 | `[COTIZACIÓN]` | Exigida por el brief v1.4 |
+| Sesión de fotografía de los 5 socios | E1 | `[COTIZACIÓN]` | Crítica para la ruta del plan |
+| Semrush (o la herramienta SEO que ya usa Matisis) | E3, E6 | `[precio del plan contratado]` | La cuenta actual permite un proyecto |
+| Canva Pro (piezas de Instagram y LinkedIn) | E5 | `[precio]` | Opcional si Matisis produce las piezas |
+| **Subtotal de terceros** | | `[SUMAR]` | |
+
+## 8.3 Inversión en medios
+
+| Partida | Coste | Justificación |
+|---|---|---|
+| Google Ads / Meta Ads / LinkedIn Ads | **$0** | Excluido por la propuesta y descartado por el art. 30.7 de la Ley 1123 (ver 5.6). Se reevalúa en el mes 6 solo para el Perfil C |
+
+## 8.4 Resumen del presupuesto del plan
+
+| Bloque | Importe (COP) |
+|---|---|
+| Honorarios de Matisis (colaboración) | $10.000.000 |
+| Terceros (trimestre) | `[SUBTOTAL 8.2]` |
+| Medios | $0 |
+| **Total de la inversión** | **`[TOTAL]`** |
+
+> **Si tienes las cotizaciones reales** (hosting, fotografía, tipografía), pásamelas y relleno las casillas. Si no, mantén la casilla como "a cotizar" con la variable de la que depende: es preferible a inventar una cifra (criterio 2 del CEI).
 
 # 9. Checklist final antes de entregar
 
