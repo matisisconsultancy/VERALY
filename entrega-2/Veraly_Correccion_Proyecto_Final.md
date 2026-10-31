@@ -140,9 +140,13 @@ Cambiar **arquetipos** por **firmas reales**. Recomiendo 4 competidores, uno por
 |---|---|---|---|
 | 01 · Autoridad institucional | **Sintura & Asociados** | Penal económico y *white-collar*, rankings Legal 500 y Leaders League | sinturaabogados.com |
 | 02 · Retador digital | **Estudio Penal** | Arquitectura web por intención, captación directa, precios publicados | estudiopenal.com |
-| 03 · Representación de víctimas en captación | **CMS Rodríguez-Azuero** | Representó a víctimas de la pirámide ganadera de Felipe Rocha (Asuntos Legales, 2026): compite **directamente por el Perfil A** | rodriguez-azuero.com `[VERIFICAR URL]` |
+| 03 · Representación de víctimas en captación | **CMS Rodríguez-Azuero** | Representa a 17–18 víctimas de la pirámide ganadera de Felipe Rocha (Asuntos Legales; El Espectador): compite **directamente por el Perfil A** | cms.law/es/col |
 | 04 · Volumen SEO | **Affirma Legal** | Páginas "Abogado penalista en Bogotá y toda Colombia" y blog de preguntas frecuentes de derecho penal: compite por la búsqueda genérica | affirmalegal.com |
 
+> **Competidores emergentes que conviene mencionar** (en una línea, no hace falta ficha completa):
+> - **Simhon, Vanegas & Calle**: boutique fundada en mayo de 2026 por el equipo penal y de compliance que salió de CMS Rodríguez-Azuero. Incluye a Jacques Simhon, coabogado del caso Rocha. Es el competidor más parecido a Veraly en formato boutique ([Asuntos Legales](https://www.asuntoslegales.com.co/consumidor/equipo-de-cms-rodriguez-azuero-lanzo-la-firma-boutique-simhon-vanegas-calle-4398811)).
+> - **Asesoría Penal 24/7** (asesoriapenal247.com) y **Defensa y Litigio** (defensaylitigio.com): aparecen en Google para "captación masiva estafa Bogotá". La primera tiene una página específica sobre captación masiva.
+>
 > Si en clase o en tu investigación tienes otra firma más cercana (por ejemplo, otra boutique de Cartagena o de la costa Caribe), puedes sustituir a Affirma Legal. Lo importante es que sean **4 empresas reales con web, redes y ficha de Google analizables**. El mínimo del criterio es 3; con 4 vas sobrada.
 
 ## 3.2 Metodología (pégala como introducción de la sección)
@@ -169,104 +173,147 @@ Haz esto con cada competidor y **guarda captura de todo** (fecha visible). Las c
 
 ## 3.4 Ficha por competidor (una diapositiva por competidor)
 
-Usa esta misma plantilla para los cuatro. Abajo dejo **Estudio Penal pre-rellenado** con lo que ya tenías en tu documento. Lo que falta es exactamente lo que señaló el profesor.
+> **Origen de los datos.** Las fichas se rellenaron con una investigación de fuentes públicas hecha el **31/10/2026** (resultados de búsqueda de Google y páginas indexadas). Antes de entregar tienes que **abrir cada URL, comprobar el dato y hacer la captura**: el criterio 2 del CEI suspende cualquier texto falso, y en el anexo de herramientas las capturas son obligatorias. Lo que sigue en `[COMPLETAR]` necesita tus herramientas (Semrush, Google Maps, perfiles sociales con sesión iniciada, bibliotecas de anuncios).
 
-### Ficha · Estudio Penal (estudiopenal.com)
+### Ficha 1 · Estudio Penal (estudiopenal.com) · *Retador digital*
 
-| Dimensión | Hallazgo | Lectura para Veraly |
-|---|---|---|
-| **Posicionamiento** | Penal generalista, Bogotá. Competidor "retador digital" | Generalista: no especializado en fraude financiero |
-| **Web** | Páginas por intención (defensa corporativa, representación de víctimas, casación, disciplinario). CTA principal: WhatsApp con mensaje preescrito. Credenciales de socios visibles. Honorarios publicados: consulta $400.000 COP; proceso de 12 a 50 SMMLV | Valida la arquitectura de dos capas. El precio en la puerta filtra al Perfil A |
-| PageSpeed (móvil / escritorio) | `[COMPLETAR]` / `[COMPLETAR]` | |
-| **SEO** | Title optimizado: "Abogados Penalistas Bogotá". Contenido actualizado (junio 2026). Indexación abierta | Cabecera genérica tomada: Veraly va a la cola larga |
-| Tráfico orgánico/mes | `[COMPLETAR – Semrush]` | |
-| Palabras clave orgánicas | `[COMPLETAR]` | |
-| Authority Score / Backlinks / Dominios ref. | `[COMPLETAR]` / `[COMPLETAR]` / `[COMPLETAR]` | Comparar con Veraly: n/a / 0 / 0 |
-| Top 3 keywords | `[COMPLETAR]` | ¿Alguna contiene "captación", "estafa" o "pirámide"? Si no, es la oportunidad |
-| Blog | Sí. Último artículo: `[COMPLETAR fecha]`. Frecuencia: `[COMPLETAR]` | |
-| **SEM** | Google Ads: `[COMPLETAR sí/no + nº anuncios]` · Meta Ads: `[COMPLETAR]` | Si anuncian, ¿con qué mensaje? ¿Cumple la Ley 1123? |
-| **Medición** | Google Tag Manager instalado | Optimizan sobre datos; Veraly no tiene medición |
-| **Instagram** | `[COMPLETAR: @usuario · seguidores · nº publicaciones · posts/semana · formatos · engagement %]` | |
-| **Facebook** | `[COMPLETAR]` | |
-| **LinkedIn** (empresa + socios) | `[COMPLETAR: seguidores página · nº socios activos · frecuencia]` | Canal clave para el Perfil B y C y para la prescripción entre abogados |
-| **TikTok / YouTube** | `[COMPLETAR]` | |
-| **Ficha de Google** | `[COMPLETAR: existe · categoría · ★ media · nº reseñas · responde sí/no · fotos]` | Veraly no tiene ficha: es la brecha más barata de cerrar |
-| **Reputación online** | Usa "Aliados Estratégicos" y autoelogio ("la mejor representación técnica"). Prensa: `[COMPLETAR]`. ¿Aparece en ChatGPT/Gemini? `[COMPLETAR]` | Registro publicitario que Veraly evita y que la Ley 1123 restringe |
-| **Leads / Email** | WhatsApp directo, fricción mínima. Lead magnet / newsletter: `[COMPLETAR]` | Adoptable: reducir fricción sin presionar |
-| **Conclusión** | **Hace bien:** arquitectura por intención, medición, conversión por WhatsApp. **Hace mal:** generalista, filtra por precio, registro autoelogioso. **Oportunidad para Veraly:** ocupar la especialización en fraude financiero con un registro sobrio | |
+| Dimensión | Hallazgo | Fuente | Lectura para Veraly |
+|---|---|---|---|
+| **Posicionamiento** | Penal generalista en Bogotá con atención virtual en todo el país. Socio fundador: Luis Andrés González Rivera (Externado; pasó por Torregroza & Diazgranados, Sampedro & Torres y Jaime Granados Peña) | estudiopenal.com/luis-andres-gonzalez-rivera | Generalista: la captación es un tema más entre lesiones, porte de armas o violencia intrafamiliar |
+| **Web: title** | "Abogado Penalista Bogotá — Hable Hoy con un Socio" | estudiopenal.com | Ataca la cabecera genérica con un tono de urgencia comercial |
+| **Web: arquitectura** | Páginas por intención: defensa penal, defensa para empresas y directivos, casación, denuncias y víctimas, equipo, blog, agenda | estudiopenal.com/servicios | Valida la arquitectura de dos capas de Veraly |
+| **Web: conversión** | CTA principal: WhatsApp ("respuesta inmediata"). Secundario: agendar consulta virtual **gratuita** | estudiopenal.com/contactanos · /programa-una-consulta | Fricción mínima. Veraly puede adoptar WhatsApp con mensaje neutro |
+| **Web: precios** | Consulta inicial gratis. "Sesión estratégica presencial" de $400.000 COP, descontable de los honorarios. Rangos por etapa: indagación 2–5 SMMLV, acusación 5–15, juicio 10–25, apelación 3–8, casación 20–30. Proceso completo: 12–50 SMMLV | estudiopenal.com/cuanto-cobra-un-abogado-penalista-en-colombia-tarifas-reales-por-etapa-procesal-2026 | **Corrige tu p. 25:** la primera consulta es gratis; los $400.000 son la sesión presencial. La transparencia de precios es un argumento de confianza que Veraly todavía no tiene (Claim 4) |
+| **SEO: contenidos** | Blog "Derecho Penal Actual" con más de 30 guías largas actualizadas a 2026. **Tiene una guía de captación masiva (arts. 316 y 316A)** y otra de estafa en masa, fraude empresarial y reportes a la UIAF | estudiopenal.com/captacion-masiva-y-habitual-de-dinero-delito-o-inversion-guia-legal-y-defensa-2026 · /estafa-masa-en-colombia-elementos-cuantia-y-pena | **Hallazgo clave:** la cola larga de captación masiva **no está vacía**. Veraly tiene que diferenciarse por **profundidad y especialización** (ver conclusiones) |
+| SEO: métricas | Tráfico orgánico `[COMPLETAR]` · Keywords `[COMPLETAR]` · Authority Score `[COMPLETAR]` · Backlinks / dominios ref. `[COMPLETAR]` · Top 5 keywords `[COMPLETAR]` | Semrush, Domain Overview, Colombia | Comprueba en qué posición está su guía del art. 316 |
+| **Medición** | Google Tag Manager instalado (según tu auditoría del 17/07/2026) | Tu documento, p. 25 | Optimiza sobre datos |
+| **SEM** | Google Ads `[COMPLETAR]` · Meta Ads `[COMPLETAR]` | adstransparency.google.com · facebook.com/ads/library | |
+| **Redes sociales** | No se encontraron perfiles de empresa en Instagram, Facebook, LinkedIn, TikTok ni YouTube (en Instagram solo aparecen homónimos argentinos). Hay vídeos divulgativos del socio incrustados en algunos artículos | Búsquedas del 31/10/2026 | `[VERIFICAR en el pie de página de la web]`. Si se confirma, **las redes son su punto débil**: Veraly puede ganar en LinkedIn |
+| **Ficha de Google** | No se encontró ficha ni valoración. Tampoco aparece en el directorio tusabogadosycontadores.co | Búsquedas · tusabogadosycontadores.co/co/abogados-penales/Bogota | `[COMPLETAR en Google Maps: "Estudio Penal Carrera 13 # 90-17"]` |
+| **Reputación online** | Sin menciones en prensa ni presencia en Legal 500, Chambers o Leaders League. Autoridad autodeclarada: "más de 15 años de experiencia", "lidera la estrategia de defensa en los escenarios más críticos" | estudiopenal.com · /luis-andres-gonzalez-rivera | Autoridad sin validación de terceros |
+| **Incoherencias detectadas** | Dos direcciones en la misma página de contacto (Carrera 13 # 90-17 y Calle 90 # 11-13, piso 5) | estudiopenal.com/contactanos | Una señal de descuido que Veraly debe evitar |
+| **Conclusión** | **Hace bien:** SEO de contenidos fuerte y actualizado, precios transparentes, WhatsApp. **Hace mal:** generalista, sin redes ni validación de terceros, tono comercial ("Hable hoy", "Casos difíciles"). **Oportunidad:** especialización real en fraude financiero, autoridad verificable (cinco socios y lectura multidisciplinar) y LinkedIn | | |
 
-### Ficha · Sintura & Asociados
+### Ficha 2 · Sintura & Abogados Asociados (Francisco Sintura Varela Abogados Asociados) · *Autoridad institucional*
 
-| Dimensión | Hallazgo | Lectura para Veraly |
-|---|---|---|
-| Posicionamiento | Autoridad institucional en penal económico. Rankings Legal 500 y Leaders League | Ocupa el territorio sobrio y especializado, pero no compite en digital |
-| Web | Sitio sin actualizar desde 2024, sin blog, sin páginas por intención. Se dirige a bancos, aseguradoras y entidades | El Perfil A no tiene puerta de entrada |
-| PageSpeed · SEO (tráfico, keywords, AS, backlinks) | `[COMPLETAR]` | Es probable que tenga backlinks de prensa y rankings: compáralo con el 0 de Veraly |
-| SEM | `[COMPLETAR]` | |
-| Instagram · Facebook · LinkedIn · YouTube | `[COMPLETAR]` | |
-| Ficha de Google | `[COMPLETAR]` | |
-| Reputación online | Legal 500, Leaders League, prensa especializada. `[COMPLETAR menciones 12 meses]` · IA: `[COMPLETAR]` | Su autoridad viene de terceros, no de sus canales propios |
-| Contenidos · Leads | Sin blog. `[COMPLETAR]` | |
-| Conclusión | **Hace bien:** reputación y credenciales. **Hace mal:** presencia digital mínima, no habla a la persona natural. **Oportunidad:** ser "el Sintura digital y cercano" para el afectado | |
+| Dimensión | Hallazgo | Fuente | Lectura para Veraly |
+|---|---|---|---|
+| **Posicionamiento** | Se dedica "exclusivamente" al derecho penal económico y empresarial, con foco en compliance, cuello blanco y servicios financieros. Socio gerente: Francisco J. Sintura Varela (exjefe de sección en la Superintendencia Bancaria, profesor, consultor de PNUD y UNODC). Andrés Sintura es socio desde 2023 | legal500.de (Colombia › Compliance and white-collar crime) · practiceguides.chambers.com | Especialista y prestigioso. Se dirige a empresas |
+| **Marca** | Aparece con **dos nombres** según el directorio: "Sintura & Abogados Asociados" y "Francisco Sintura Varela Abogados Asociados" | Legal 500 · Chambers · Leaders League | Marca inconsistente |
+| **Web** | **No se pudo confirmar una web oficial** (sinturaabogados.com no aparece indexado) | Búsquedas del 31/10/2026 | `[VERIFICAR: tu documento original decía "sitio sin actualizar desde 2024". Abre la URL y haz la captura; si no existe, es un dato todavía más fuerte]` |
+| **SEO** | `[COMPLETAR en Semrush si existe el dominio]` | | |
+| **SEM** | `[COMPLETAR]` | | |
+| **Redes sociales** | No se encontraron perfiles en Instagram, Facebook, X, YouTube ni página de empresa en LinkedIn | Búsquedas del 31/10/2026 | `[VERIFICAR]` |
+| **Ficha de Google** | No encontrada | | `[COMPLETAR en Google Maps]` |
+| **Reputación online** | Legal 500: Colombia › Compliance and white-collar crime. Leaders League: "Excelencia" en Penal mercantil y en Litigio penal empresarial (ediciones 2020–2022) | legal500.de · asuntoslegales.com.co (rankings Leaders League) | Toda su autoridad viene de terceros |
+| **Caso notorio** | Representó a **víctimas** en el caso Interbolsa (1.028 afectados, más de $400.000 millones) | pulzo.com/economia/condena-para-lideres-caso-interbolsa-PP241892 | También trabaja el lado de las víctimas de fraude financiero |
+| **Conclusión** | **Hace bien:** prestigio validado por rankings y credenciales. **Hace mal:** presencia digital propia casi nula, sin contenido y con dos nombres. **Oportunidad:** ser la versión "encontrable" de este nivel técnico para quien busca en Google o pregunta a una IA | | |
 
-### Ficha · CMS Rodríguez-Azuero
+### Ficha 3 · CMS Rodríguez-Azuero (cms.law/es/col) · *Firma internacional que representa víctimas*
 
-| Dimensión | Hallazgo | Lectura para Veraly |
-|---|---|---|
-| Posicionamiento | Firma con red internacional (CMS). Representa a víctimas en el caso de la pirámide ganadera de Felipe Rocha (Asuntos Legales, julio 2026) | **Competidor directo por el Perfil A en colectivos de afectados**: es la evidencia de tu hallazgo 03 |
-| Web · SEO · SEM | `[COMPLETAR con la checklist]` | |
-| Redes · LinkedIn | `[COMPLETAR]` | Las firmas grandes suelen tener LinkedIn muy activo y poco Instagram |
-| Ficha de Google | `[COMPLETAR]` | |
-| Reputación online | Presencia en prensa económica por el caso Rocha. `[COMPLETAR]` | |
-| Conclusión | **Hace bien:** autoridad mediática en casos de víctimas. **Hace mal:** `[COMPLETAR]`. **Oportunidad:** boutique con lectura de cinco ramas frente a firma grande; honorarios conversados | |
+| Dimensión | Hallazgo | Fuente | Lectura para Veraly |
+|---|---|---|---|
+| **Posicionamiento** | Firma *full service* de la red internacional CMS. Socios relevantes: Sergio Rodríguez Azuero (fundador, Dispute Resolution) y Daniel Rodríguez (Compliance y Penal Corporativo) | cms.law/es/col · legal500.com | Corporativa, no especializada |
+| **Web** | Title: "CMS Rodríguez-Azuero - Firma de Abogados Internacional en Colombia". Páginas de "Derecho Penal Corporativo" (prevención y compliance) y "Solución de Conflictos". **Ninguna página dirigida a víctimas de fraude** | cms.law/es/col · /expertise/derecho-penal-corporativo | El Perfil A no encuentra una puerta |
+| **Contenidos** | Insight Hub activo (última publicación encontrada: 21/08/2026, sobre plazos tributarios). En penal, la última es de mayo de 2025 | cms.law/es/col/insight-hub | Publica, pero no sobre fraude financiero |
+| **SEO** | `[COMPLETAR en Semrush: cms.law/es/col]` | | Al ser un subdirectorio de un dominio global, su autoridad es alta |
+| **SEM / publicidad** | Contenido patrocinado en Portafolio ("una firma de abogados multinacional full service"). Google y Meta Ads `[COMPLETAR]` | portafolio.co/contenido-patrocinado/…-584744 | Invierte en prensa pagada |
+| **LinkedIn** | Página /company/cms-rodriguez-azuero con unos **13.000 seguidores** (dato del buscador, varía entre ~13.014 y ~13.733: `[VERIFICAR la cifra exacta]`) | linkedin.com/company/cms-rodriguez-azuero | Es la referencia de LinkedIn del grupo: la meta de 400 seguidores de Veraly es modesta frente a esta cifra |
+| **Facebook** | Existe (/CMSRodriguezAzuero), con pestaña de reseñas. Seguidores `[COMPLETAR]` | facebook.com/CMSRodriguezAzuero | |
+| **Instagram / YouTube / X** | No se encontraron cuentas de la oficina de Colombia | Búsquedas | `[VERIFICAR]` |
+| **Ficha de Google** | `[COMPLETAR]` | | |
+| **Reputación online** | Legal 500: Compliance & White-Collar Crime, Tier 2. Leaders League: "Altamente recomendado" en Litigio penal empresarial (2022–2023). Prensa por el caso Rocha: Asuntos Legales y El Espectador (representa a 17–18 víctimas) | legal500.com/firms/557-cms/c-colombia/rankings · elespectador.com/judicial/por-tercera-vez-cambian-al-fiscal-en-el-caso-de-felipe-rocha-y-piramide-ganadera | Es la prueba pública de tu hallazgo 03: los afectados se agrupan y contratan a un mismo abogado |
+| **Cambio reciente** | En mayo de 2026 el equipo de penal y compliance (incluido Jacques Simhon, del caso Rocha) salió y fundó **Simhon, Vanegas & Calle** | asuntoslegales.com.co/…-4398811 · lexlatin.com | Sus rankings de penal pueden quedar desactualizados. Aparece un competidor boutique nuevo |
+| **Conclusión** | **Hace bien:** autoridad internacional, rankings, prensa y un LinkedIn fuerte. **Hace mal:** comunicación corporativa, sin mensaje para víctimas, y ha perdido su equipo penal. **Oportunidad:** una boutique especializada que hable a la persona afectada con el rigor de una firma grande | | |
 
-### Ficha · Affirma Legal
+### Ficha 4 · Affirma Legal (affirmalegal.com) · *Volumen SEO*
 
-| Dimensión | Hallazgo | Lectura para Veraly |
-|---|---|---|
-| Posicionamiento | Penal generalista con cobertura en "Bogotá y toda Colombia" | Arquetipo "volumen SEO" |
-| Web · contenidos | Páginas transaccionales ("Abogado penalista en Bogotá", "Abogados penalistas en Colombia") y blog de preguntas frecuentes | Compite por la cabecera genérica, que Veraly descarta |
-| SEO (tráfico, keywords, AS, backlinks) | `[COMPLETAR]` | Probablemente el de más tráfico de los cuatro: es la referencia de lo que el SEO puede lograr en el sector |
-| SEM · Redes · Ficha de Google · Reputación | `[COMPLETAR]` | |
-| Conclusión | **Hace bien:** captura de búsqueda informacional y transaccional. **Hace mal:** sin especialización en fraude financiero. **Oportunidad:** contenidos especializados de cola larga sobre captación masiva | |
+| Dimensión | Hallazgo | Fuente | Lectura para Veraly |
+|---|---|---|---|
+| **Posicionamiento** | Despacho **generalista** (penal, familia, administrativo, comercial, propiedad intelectual, aduanero, migratorio, tributario, laboral) con sede en Bogotá. Antes se llamaba AGT Abogados (2011). Director: Nicolás Alviar | affirmalegal.com/areas-de-practica · /nosotros | La práctica penal es un área más, orientada a delitos empresariales comunes |
+| **Web: SEO local** | Muchas landing pages por ciudad y área: "Abogado Penalista en Bogotá y Toda Colombia", "Abogados Penalistas en Colombia" | affirmalegal.com/abogado-penalista/ | Ataca la cabecera genérica que Veraly descarta |
+| **Web: conversión** | Teléfono y formulario. **Venta de la consulta en línea**: virtual de 30 min $200.000 COP; presencial de 1 h $499.000 COP, con pago por PayU. Portal "Consulte cómo va su caso" | affirmalegal.com/pago-de-servicios/ · /consulte-como-va-su-caso/ | Modelo de e-commerce de servicios: tu tabla de descartes lo justifica para Veraly |
+| **Contenidos** | Blog con categorías de aduanero, familia, asesoría jurídica y propiedad intelectual. Última entrada encontrada: 08/04/2026. **No se encontró contenido sobre captación masiva, pirámides ni fraude financiero** | affirmalegal.com/blog | La especialización está libre en este competidor |
+| **Restos de marca anterior** | Una página del blog conserva el título "AGT Abogados S.A.S." | affirmalegal.com/blog/categoria/derecho-de-familia/page/2/ | Inconsistencia de marca |
+| **SEO: métricas** | `[COMPLETAR en Semrush]` | | Probablemente el de más tráfico de los cuatro |
+| **Redes sociales** | Su web enlaza Instagram @Affirmalegal, Facebook "Affirmalegal" y TikTok @affirma_legal. Seguidores y actividad `[COMPLETAR]`. LinkedIn y YouTube no encontrados | affirmalegal.com/su-compra-ha-sido-exitosa/ | Es el único de los cuatro con presencia en redes de consumo (incluido TikTok) |
+| **Ficha de Google** | `[COMPLETAR]` | | |
+| **Reputación y publicidad** | Forbes Colombia (2024, dos artículos). **Publirreportajes pagados** en La República ("Desafíos legales 2024") y Portafolio. Página de testimonios propios | forbes.co/2024/02/06/… · larepublica.co/especiales/desafios-legales-2024/… · affirmalegal.com/testimonios | Autoridad comprada y testimonios: justo lo que la Ley 1123 (art. 31.2) restringe a Veraly |
+| **Registro** | Autoelogio: se presenta como "una de las mejores firmas de abogados penalistas en Colombia" (paráfrasis del buscador: `[VERIFICAR la cita literal]`) | affirmalegal.com/derecho-penal/ | Registro opuesto al de Veraly |
+| **Conclusión** | **Hace bien:** SEO local agresivo, compra de la consulta en línea, presencia en redes y prensa. **Hace mal:** generalista, sin especialización en fraude, autoridad basada en publirreportajes y autoelogio. **Oportunidad:** contenido especializado y autoridad verificable | | |
 
 ## 3.5 Tabla comparativa (benchmark): diapositiva clave
 
-Esta tabla es la que más le va a gustar al profesor. Pon a Veraly en la primera columna, con los datos que **ya tienes**.
-
 | Indicador | **Veraly** | Estudio Penal | Sintura | CMS R-A | Affirma |
 |---|---|---|---|---|---|
-| Especialización en fraude financiero | Alta (no visible en web) | Baja | Media-alta | Media | Baja |
-| Web alineada con su negocio | No | Sí | Parcial | `[ ]` | Sí |
+| Tipo de firma | Boutique, 5 socios | Boutique penal | Boutique penal económico | Internacional *full service* | Generalista |
+| Especialización en fraude financiero | Alta (no visible en la web) | Media: guía del art. 316 dentro de un blog generalista | Media-alta (financiero, Interbolsa) | Media (caso Rocha) | Baja: sin contenido |
+| Página o mensaje para víctimas | No | Sí ("Denuncias y víctimas") | No | No | No |
+| Web alineada con su negocio | **No** | Sí | Sin web confirmada `[verificar]` | Sí | Sí |
 | PageSpeed móvil | 96 | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
 | Tráfico orgánico/mes (Semrush) | 0 | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
 | Palabras clave orgánicas | 8 | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
 | Authority Score | n/a | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
 | Backlinks / dominios ref. | 0 / 0 | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
-| Blog (sí/no · frecuencia) | No | Sí · `[ ]` | No | `[ ]` | Sí · `[ ]` |
-| Google Ads / Meta Ads | No / No | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
-| Instagram (seguidores · engagement) | 354 · `[calcular]` | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
-| LinkedIn empresa (seguidores) | `[ ]` | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
-| Facebook / TikTok / YouTube | `[ ]` | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
-| Ficha de Google (★ · nº reseñas) | No existe | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
-| Menciones en prensa (12 meses) | 0 `[verificar]` | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
+| Blog | No | Sí, más de 30 guías de 2026 | No | Insight Hub (poco penal) | Sí (sin penal-financiero) |
+| Contenido sobre captación masiva | No | **Sí** | No | No (solo prensa) | No |
+| CTA principal | Formulario genérico | WhatsApp + consulta gratis | — | Contacto corporativo | Teléfono + pago en línea |
+| Precios publicados | No | Sí (rangos en SMMLV) | No | No | Sí (consulta $200.000 / $499.000) |
+| Socios visibles con credenciales | No | Sí | Sí (en directorios) | Sí | Solo el director |
+| Instagram | 354 seg. · 71 pub. (cobranza) | No encontrado | No encontrado | No encontrado | @Affirmalegal `[seg.]` |
+| LinkedIn empresa | `[ ]` | No encontrado | No encontrado | ~13.000 seg. `[verificar]` | No encontrado |
+| Facebook / TikTok | `[ ]` | No encontrado | No encontrado | Facebook sí `[seg.]` | Facebook + TikTok `[seg.]` |
+| Ficha de Google (★ · reseñas) | No existe | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
+| Google / Meta Ads | No / No | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
+| Prensa pagada | No | No | No | Sí (Portafolio) | Sí (La República, Portafolio) |
+| Rankings (Legal 500 / Leaders League) | No | No | Sí | Sí | No |
 | Citado por IA (ChatGPT/Gemini) | 4 menciones · 0 citas | `[ ]` | `[ ]` | `[ ]` | `[ ]` |
-| WhatsApp / formulario | Formulario genérico | WhatsApp | `[ ]` | `[ ]` | `[ ]` |
-| Precios publicados | No | Sí | No | `[ ]` | `[ ]` |
-| Socios visibles con credenciales | No | Sí | Sí | `[ ]` | `[ ]` |
+| Testimonios / autoelogio | Sí, hoy (a retirar) | Autoelogio | No | No | Testimonios + autoelogio |
 
-**Opcional pero muy recomendable:** debajo, una **puntuación 1–5 por dimensión** (Web, SEO, SEM, Redes, Ficha Google, Reputación, Contenidos) con un gráfico de radar. Hace el análisis visual y comparable de un vistazo.
+**Recomendado:** añade debajo una **puntuación de 1 a 5 por dimensión** (Web, SEO, SEM, Redes, Ficha de Google, Reputación, Contenidos) con un gráfico de radar. Con los datos de arriba, una propuesta inicial (ajústala cuando tengas Semrush y Google Maps):
 
-## 3.6 Conclusiones del análisis competitivo (pega y ajusta cuando tengas los datos)
+| Dimensión (1–5) | Veraly hoy | Estudio Penal | Sintura | CMS R-A | Affirma |
+|---|---|---|---|---|---|
+| Web y conversión | 1 | 5 | 1 | 3 | 4 |
+| SEO y contenidos | 1 | 5 | 1 | 3 | 4 |
+| Redes sociales | 1 | 1 | 1 | 4 (LinkedIn) | 3 |
+| Reputación de terceros | 1 | 1 | 5 | 5 | 3 |
+| Especialización en fraude financiero comunicada | 1 | 3 | 3 | 2 | 1 |
 
-> 1. **Ningún competidor combina especialización en fraude financiero, registro sobrio y presencia digital activa.** Sintura tiene especialización y sobriedad, pero no compite en digital. Estudio Penal y Affirma compiten en digital, pero son generalistas y usan registro publicitario. CMS Rodríguez-Azuero compite por los colectivos de afectados desde una firma grande. Este es el espacio que ocupa Veraly (mantener aquí tu mapa de posicionamiento de la p. 26).
-> 2. **La búsqueda genérica ("abogado penalista Bogotá") está tomada** por Estudio Penal y Affirma, con `[X]` y `[Y]` visitas orgánicas al mes. Veraly no la disputa: va a la cola larga de captación masiva, donde `[COMPLETAR: ninguno posiciona / solo X posiciona]`.
-> 3. **Fichas de Google:** `[COMPLETAR: p. ej. "3 de 4 competidores tienen ficha, con medias de X★"]`. Veraly no tiene. Crearla es la acción de menor coste y mayor impacto inmediato del plan.
-> 4. **Redes sociales:** `[COMPLETAR: qué red domina el sector, p. ej. "LinkedIn es el canal común; Instagram se usa con contenido genérico y engagement inferior al X%"]`. Veraly puede diferenciarse con contenido técnico firmado por socios.
-> 5. **Publicidad:** `[COMPLETAR: quién anuncia y con qué mensajes]`. Esto refuerza (o matiza) el descarte del SEM sobre el Perfil A por el art. 30.7 de la Ley 1123.
-> 6. **Reputación:** los competidores con autoridad la obtienen de **terceros** (rankings, prensa). Veraly tiene 0 backlinks y 0 menciones. La estrategia de contenidos y relaciones públicas digitales debe generar esas citas.
+## 3.6 Conclusiones del análisis competitivo
 
----
+> 1. **Nadie combina especialización en fraude financiero, registro sobrio y presencia digital activa.**
+>    - Sintura tiene especialización y prestigio, pero casi no existe en digital.
+>    - CMS tiene autoridad y LinkedIn, pero habla a corporaciones y acaba de perder su equipo penal.
+>    - Estudio Penal y Affirma dominan la búsqueda, pero son generalistas y usan registro comercial (urgencia, autoelogio, publirreportajes).
+>    - Ese cruce es el espacio de Veraly (mantener aquí tu mapa de posicionamiento de la p. 26).
+> 2. **La cola larga de captación masiva no está vacía.** Estudio Penal ya tiene una guía 2026 de los arts. 316 y 316A, y Asesoría Penal 24/7 tiene una página específica. Veraly no puede limitarse a "estar". Tiene que **ser la referencia más profunda**:
+>    - un clúster completo (pirámides, captación, estafa en masa, intervención de la Supersociedades, cómo reclamar en una intervención, riesgo penal empresarial), no un artículo suelto;
+>    - firmado por socios con credenciales;
+>    - con la lectura penal + administrativa que solo da un equipo de varias ramas.
+> 3. **La búsqueda genérica** ("abogado penalista Bogotá") la disputan Estudio Penal y Affirma con decenas de landing pages. Veraly confirma su descarte.
+> 4. **Redes sociales: el canal menos disputado.** De los cuatro, solo CMS tiene un LinkedIn fuerte (orientado a lo corporativo) y solo Affirma tiene redes de consumo. Ninguno usa LinkedIn para la divulgación técnica sobre fraude financiero. Es la mayor oportunidad de Veraly en redes.
+> 5. **Las fichas de Google son débiles o inexistentes** en el grupo (`[confirmar con Google Maps]`). Crear la de Veraly es la acción más barata para ganar en el resultado de marca.
+> 6. **Autoridad.** Quien tiene autoridad la obtiene de terceros:
+>    - rankings, en el caso de Sintura y CMS;
+>    - prensa ganada, en el caso de CMS con el caso Rocha;
+>    - prensa pagada, en el caso de Affirma.
+>
+>    Veraly tiene 0 backlinks y 0 menciones. Debe ganar menciones con análisis de casos públicos (E6), **sin** testimonios ni publirreportajes laudatorios (art. 31.2 de la Ley 1123).
+> 7. **Precios:** dos de los cuatro competidores publican precios y Estudio Penal ofrece la primera consulta gratis. Esto refuerza la urgencia de que los socios definan el Claim 4 (honorarios conversados, con reglas claras).
+
+## 3.7 Correcciones que la investigación obliga a hacer en tu documento original
+
+La investigación del 31/10/2026 contradice algunas afirmaciones de tu primera entrega. Corrígelas: si el profesor las comprueba y no cuadran, choca con el criterio de "texto falso".
+
+| Página original | Lo que decía | Lo que hay que poner |
+|---|---|---|
+| p. 25 (Estudio Penal, transparencia económica) | "Consulta estratégica de $400.000 COP" | Primera consulta virtual **gratuita**. La "sesión estratégica presencial" cuesta $400.000 y se descuenta de los honorarios |
+| p. 24 y p. 41 ("filtra por precio en la puerta") | Estudio Penal excluye al afectado por precio | Matizar: la primera consulta es gratis. Lo que filtra son los rangos de honorarios publicados (12–50 SMMLV) |
+| p. 24 y p. 42 (Estudio Penal "no especializado en fraude financiero") | Generalista | Sigue siendo generalista, pero **ya tiene una guía de 2026 sobre captación masiva (arts. 316 y 316A)** y otra de estafa en masa |
+| p. 24 y p. 26 (Sintura "sitio sin actualizar desde 2024") | Web desactualizada | **Verificar:** en las búsquedas no aparece ninguna web oficial indexada. Abre la URL que usaste en julio y haz la captura |
+| p. 24 (arquetipos 03 y 04) | "Portales de catálogo" y "Firmas de socio mediático" | Sustituir por Affirma Legal y CMS Rodríguez-Azuero (fichas 3 y 4) |
+| Cualquier cita de la nota de Asuntos Legales sobre el caso Rocha | Fechada en julio de 2026 | La cabecera dice 2026, pero el texto parece de mayo de 2023: cita la fecha que veas en el cuerpo del artículo |
 
 # 4. Objetivos SMART desglosados (sección 9 del documento)
 
@@ -319,7 +366,7 @@ Esta tabla es la que más le va a gustar al profesor. Pon a Veraly en la primera
 |---|---|
 | **S** | Atraer **300 sesiones orgánicas al mes** de búsquedas no de marca relacionadas con captación masiva, pirámides y fraude financiero, y posicionar **3 páginas en el top 10** de Google Colombia. |
 | **M** | GA4 (sesiones orgánicas excluyendo marca) y Search Console (posición media por página). Línea base: 0 sesiones, 0 backlinks (Semrush, 17/07/2026). |
-| **A** | La cola larga de fraude financiero tiene competencia media-baja: los competidores son generalistas (ver análisis competitivo). Con 4 páginas de intención + 6 análisis en 6 meses es alcanzable. `[AJUSTAR la meta cuando valides volúmenes en Semrush; si el volumen total del clúster es menor, baja a 150–200]` |
+| **A** | La cola larga de fraude financiero tiene competencia, pero no especializada: Estudio Penal tiene una sola guía de captación masiva dentro de un blog generalista, y Affirma, Sintura y CMS no tienen contenido sobre el tema (ver análisis competitivo). Con 4 páginas de intención + 6 análisis en profundidad en 6 meses es alcanzable. `[AJUSTAR la meta cuando valides volúmenes en Semrush; si el volumen total del clúster es menor, baja a 150–200]` |
 | **R** | Es el primer tráfico que no depende de la red personal de los socios. Alimenta la autoridad (Motor 1) que luego hace visible a la firma ante los Perfiles B y C. |
 | **T** | **31/05/2027** (mes 6). Revisión intermedia el 28/02/2027. |
 
@@ -340,7 +387,7 @@ Esta tabla es la que más le va a gustar al profesor. Pon a Veraly en la primera
 | **S** | Activar la página de empresa de Veraly en LinkedIn y los perfiles de al menos **2 socios**, publicando **1 pieza/semana** en la página y **2 al mes por socio**, hasta alcanzar **400 seguidores** en la página con un **engagement medio ≥ 3%**. |
 | **M** | LinkedIn Analytics (seguidores, impresiones, engagement rate). Línea base: `[COMPLETAR: existe la página sí/no · seguidores actuales]`. |
 | **A** | Los seis formatos de publicación ya están diseñados (p. 47), lo que reduce el esfuerzo de los socios. Cinco socios con red profesional propia pueden invitar a sus contactos. |
-| **R** | LinkedIn es el canal de la prescripción entre abogados (Perfil B) y del cliente empresarial preventivo (Perfil C), el motor de margen y estabilidad. `[Añadir el dato de la competencia cuando lo tengas]` |
+| **R** | LinkedIn es el canal de la prescripción entre abogados (Perfil B) y del cliente empresarial preventivo (Perfil C), el motor de margen y estabilidad. Es el canal menos disputado por la competencia (solo CMS lo trabaja, con enfoque corporativo). |
 | **T** | **31/05/2027**. |
 
 ### OBJ 6 · Realineación de Instagram
@@ -435,7 +482,7 @@ Formato fijo: **Objetivo(s) al que responde · Qué es · Por qué (justificaci�
 
 - **Responde a:** OBJ 3 (apoyo a OBJ 4, 5 y 6).
 - **Qué es:** posicionar la cola larga de fraude financiero con contenidos técnicos firmados por los socios. Una sola pieza se reutiliza en web, LinkedIn e Instagram.
-- **Por qué:** la búsqueda genérica está tomada por Estudio Penal y Affirma (análisis competitivo). La cola específica no la trabaja nadie con criterio. Además, las IA mencionan a Veraly pero no la citan: sin contenido no hay nada que citar (p. 15).
+- **Por qué:** la búsqueda genérica está tomada por Estudio Penal y Affirma (análisis competitivo). En la cola específica solo compite Estudio Penal, con una guía suelta dentro de un blog generalista. Veraly gana con un **clúster completo y más profundo**, firmado por especialistas. Además, las IA mencionan a Veraly pero no la citan: sin contenido no hay nada que citar (p. 15).
 - **Público:** A (comprensión y rutas), C (riesgo empresarial); B lo lee como prueba de solvencia.
 - **Tácticas:**
   - Validar en Semrush los volúmenes de los clústeres (tu tabla de p. 42 y tu documento de keyword research).
@@ -449,7 +496,7 @@ Formato fijo: **Objetivo(s) al que responde · Qué es · Por qué (justificaci�
 
 - **Responde a:** OBJ 5 (apoyo a OBJ 3).
 - **Qué es:** convertir LinkedIn en el canal de autoridad y prescripción entre abogados y empresas.
-- **Por qué:** es donde están el Perfil B (referido de abogado) y el C (empresario). `[Dato de competencia: cuántos seguidores y qué frecuencia tienen]`. La prescripción B2B está desatendida en el sector (oportunidad DAFO).
+- **Por qué:** es donde están el Perfil B (referido de abogado) y el C (empresario). En la competencia, solo CMS tiene un LinkedIn fuerte (unos 13.000 seguidores), orientado a lo corporativo. Estudio Penal, Sintura y Affirma no tienen página de empresa localizable. Nadie usa LinkedIn para la divulgación técnica sobre fraude financiero. La prescripción B2B está desatendida en el sector (oportunidad DAFO).
 - **Público:** B, C y abogados prescriptores.
 - **Tácticas:**
   - Optimizar la página de empresa (banner, descripción, enlace).
@@ -464,7 +511,7 @@ Formato fijo: **Objetivo(s) al que responde · Qué es · Por qué (justificaci�
 
 - **Responde a:** OBJ 6.
 - **Qué es:** transformar @veraly.col de cuenta de cobranza a canal de verificación y divulgación sobria.
-- **Por qué:** hoy describe otra firma, usa otro logotipo y tiene una destacada de testimonios con estrellas (p. 16–17). `[Comparar con lo que hacen los competidores en Instagram]`.
+- **Por qué:** hoy describe otra firma, usa otro logotipo y tiene una destacada de testimonios con estrellas (p. 16–17). En la competencia solo Affirma tiene presencia en Instagram y TikTok, con un registro comercial. Hay espacio para la divulgación sobria.
 - **Público:** Perfil A (consume en móvil y en grupos).
 - **Tácticas:**
   - Nueva bio, logotipo y destacadas ("La firma", "Equipo", "Cómo trabajamos").
@@ -478,7 +525,7 @@ Formato fijo: **Objetivo(s) al que responde · Qué es · Por qué (justificaci�
 
 - **Responde a:** OBJ 3 (apoyo a OBJ 1 y 2).
 - **Qué es:** generar menciones y enlaces de terceros (prensa, directorios, otros abogados) y publicar en menos de 72 h cuando colapse un esquema.
-- **Por qué:** los competidores con autoridad la obtienen de terceros (Sintura: rankings; CMS: prensa). Veraly tiene 0 backlinks. La demanda llega agrupada por evento (hallazgo 03).
+- **Por qué:** los competidores con autoridad la obtienen de terceros (Sintura: rankings; CMS: rankings y prensa ganada por el caso Rocha; Affirma: publirreportajes pagados). Veraly tiene 0 backlinks. La demanda llega agrupada por evento (hallazgo 03).
 - **Público:** A (colectivos), medios, abogados.
 - **Tácticas:**
   - Protocolo de respuesta a evento: socio de guardia y plantilla de pieza.
@@ -516,7 +563,10 @@ El primer criterio evaluador del CEI es: *"Se valorará especial y positivamente
 
 ## 5.5 Estrategias descartadas (conserva tu tabla de la p. 48)
 
-Tu tabla de descartes es muy buena. Los criterios del CEI enumeran *"social media, SEO, SEM, email marketing, ecommerce, marketing de afiliados"* y exigen que, si una estrategia no se usa, *"deberá presentarse el análisis realizado y la justificación de por qué esa estrategia no es utilizada"*. Comprueba que **las seis aparecen** (como elegidas o descartadas). Conserva **SEM/Google Ads, paid social, e-commerce, marketing de afiliación, CRM/automatización y email nurturing**, pero colócala **justo después de las estrategias elegidas**, con el título "Estrategias descartadas y justificación". Añade una línea con el dato de la competencia en SEM cuando lo tengas (por ejemplo: "Estudio Penal invierte en Google Ads con mensajes de X; Veraly no lo hará sobre el Perfil A por el art. 30.7").
+Tu tabla de descartes es muy buena. Los criterios del CEI enumeran *"social media, SEO, SEM, email marketing, ecommerce, marketing de afiliados"* y exigen que, si una estrategia no se usa, *"deberá presentarse el análisis realizado y la justificación de por qué esa estrategia no es utilizada"*. Comprueba que **las seis aparecen** (como elegidas o descartadas). Conserva **SEM/Google Ads, paid social, e-commerce, marketing de afiliación, CRM/automatización y email nurturing**, pero colócala **justo después de las estrategias elegidas**, con el título "Estrategias descartadas y justificación". Añade el dato de la competencia:
+- **E-commerce:** Affirma vende la consulta en línea ($200.000 / $499.000 con PayU). Veraly lo descarta porque pondría un peaje en la puerta del Perfil A.
+- **Publirreportajes:** Affirma y CMS pagan contenido patrocinado en La República y Portafolio. Veraly lo descarta por el art. 31.2 de la Ley 1123 (publicidad laudatoria).
+- **SEM:** si en Google Ads Transparency ves que algún competidor anuncia, dilo aquí y explica por qué Veraly no lo hará sobre el Perfil A (art. 30.7).
 
 Sugerencia: el **email marketing** queda como "pospuesto" (no descartado) para el Perfil C a partir del mes 6, con una newsletter mensual de análisis. Así se ve que lo has considerado.
 
@@ -704,4 +754,4 @@ Tu presupuesto actual mezcla lo contratado con lo excluido y deja muchos "a defi
 
 ---
 
-*Criterios: CEI, "Criterios y requisitos técnicos de evaluación · Marketing Digital · Proyecto final" (2025). Fuentes externas citadas en este documento: Asuntos Legales, "Víctimas de pirámide ganadera solicitaron formalmente que se investigue a Felipe Rocha" (24/07/2026), asuntoslegales.com.co · affirmalegal.com (páginas de abogado penalista y blog). El resto de datos procede de los documentos del propio proyecto (Estrategia de Marketing Digital, Memoria y Keyword Research de Veraly, julio de 2026).*
+*Criterios: CEI, "Criterios y requisitos técnicos de evaluación · Marketing Digital · Proyecto final" (2025). Fuentes externas consultadas el 31/10/2026 (resultados de búsqueda; verificar en vivo antes de citar): estudiopenal.com (home, /servicios, /contactanos, /programa-una-consulta, guía de honorarios 2026, guía de captación masiva 2026) · legal500.de y legal500.com (rankings de Colombia) · practiceguides.chambers.com (perfil de F. Sintura) · asuntoslegales.com.co (rankings de Leaders League; caso Rocha, cuya cabecera fechada en 2026 podría corresponder a un texto de 2023; lanzamiento de Simhon, Vanegas & Calle, mayo de 2026) · elespectador.com (caso Rocha) · pulzo.com (caso Interbolsa) · cms.law/es/col · linkedin.com/company/cms-rodriguez-azuero · portafolio.co (contenido patrocinado) · affirmalegal.com (áreas, pago de servicios, blog, testimonios) · forbes.co (2024) · larepublica.co (especial patrocinado 2024). El resto de datos procede de los documentos del propio proyecto (Estrategia de Marketing Digital, Memoria y Keyword Research de Veraly, julio de 2026).*
