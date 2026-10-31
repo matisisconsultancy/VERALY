@@ -15,26 +15,45 @@ subtitle: Estructura alineada con los criterios del proyecto final: análisis de
 <tr><td class="n">A</td><td class="t">Anexos</td><td>Matriz de cumplimiento de los criterios y fuentes.</td><td class="p">{{anex}}</td></tr>
 </table>
 === orig 2 | key=res
-=== orig 3
 === new
-label: APERTURA · PUNTO DE PARTIDA
-title: Auditoría digital del punto de partida
-subtitle: Qué existe hoy en cada canal, en qué estado está y qué decisión se toma. Comprobado a 31/10/2026.
-source: Fuentes: PageSpeed Insights (14/07/2026), Search Console y GA4 del proyecto, registro del proyecto (15/07/2026) y búsqueda pública en Google (31/10/2026).
+label: APERTURA · RESUMEN EJECUTIVO
+title: Resumen ejecutivo: la estrategia en una página
+subtitle: Qué es FDK, de dónde parte, qué quiere conseguir, cómo lo conseguirá, con qué inversión y qué resultados se esperan.
 ---
-| Activo | Estado verificado | Dato | Decisión |
-|---|---|---|---|
-| **Web fdkempowernet.com** | En producción, dominio propio, ES/EN/IT | PageSpeed: **91 móvil · 95 escritorio** · 96 accesibilidad · 100 buenas prácticas · 100 SEO | Se conserva y se optimiza la conversión |
-| **Indexación** | **El dominio no aparece en la búsqueda pública** de la marca (31/10/2026) | Sitemap enviado pero pendiente de resolver | **Prioridad 1 del plan**: sin indexación no hay SEO |
-| **Blog The Velocity Edge** | Activo | 18+ entradas | Se convierte en el eje de contenidos y newsletter |
-| **Medición** | GA4 y Search Console instalados | Eventos personalizados por código, sin GTM | Se completan los 8 eventos de conversión |
-| **Email (Kit)** | Remitente y dominio confirmados; doble opt-in probado | Secuencia de bienvenida: 1 de 5 emails | Se completa y se valida SPF/DKIM/DMARC |
-| **LinkedIn del fundador** | Activo, sin cadencia sistemática | Seguidores: línea base a capturar en la semana 1 | Canal principal: 3–5 publicaciones/semana |
-| **The European Pivot** (Harriman House) | En publicación 2026 | **Sin ficha indexada** (ISBN, tiendas) a 31/10/2026 | Ficha de autor y del libro antes del lanzamiento |
-| **Otras redes** (Instagram, YouTube, podcast) | No existen | — | Descartadas en la fase 1 (ver estrategias descartadas) |
+<div class="cols" markdown="1">
+<div markdown="1">
 
-> **LECTURA.** Los activos son excepcionales y la tracción es nula: la marca **no es encontrable** todavía. La primera estrategia no es generar demanda, sino hacer que FDK exista en Google, en LinkedIn y en las tiendas de libros.
+#### El proyecto
+
+**FDK EmpowerNet** es la marca de *advisory* e inteligencia estratégica de **Francesco de Leo Kaufmann** (Ph.D. UCLA Anderson; cargos de dirección en FS Group y QBUZZ). Ofrece a CSO, CEO, inversores y consejos de las infraestructuras europeas (movilidad, energía y telecom) una tesis propia sobre dónde crea ventaja la IA. Monetiza con **Executive Briefings** y **retainers de advisory**; los tres libros (*The European Pivot*, Harriman House 2026, y dos obras más) son la prueba de autoridad.
+
+#### El punto de partida
+
+Activos excepcionales y **tracción nula**: la web está construida (PageSpeed 91/95), pero **no está indexada** y la marca no aparece al buscarla en Google. El LinkedIn del fundador no tiene cadencia, no hay lista de email ni medición de conversión, y el libro no tiene ficha indexada.
+
+#### El mercado
+
+Ningún competidor une **IA + infraestructura física + capital en Europa**. Los referentes (Exponential View, Benedict Evans, Eurasia/GZERO, Bruegel) son generalistas, geopolíticos o institucionales, y los independientes de cada vertical (Liebreich, Bubley) cubren un solo sector.
+
+</div>
+<div markdown="1">
+
+#### Qué se quiere conseguir (objetivos SMART)
+
+Existir en Google y medir (M1) · 36 publicaciones en LinkedIn y 3 % de engagement (M3) · **300 suscriptores** (M3) · 150 descargas y 6–8 menciones en el lanzamiento del libro (M5) · **40 leads** cualificados (M5) · 4 conceptos en el top 10 (M6) · **6–10 briefings y 1 retainer** (M12).
+
+#### Cómo se conseguirá
+
+8 estrategias: web y CRO, SEO, contenidos, **LinkedIn founder-led**, email, PR y eventos, SEM disciplinado y analítica. Se descartan Instagram, TikTok, Meta Ads y e-commerce. El **plan de acción** ordena 17 acciones en 3 meses: primero indexación, ficha del libro y medición; después contenido y lista; por último, el lanzamiento editorial.
+
+#### Inversión y resultado esperado
+
+Presupuesto **lean de ~6.500–13.500 € en 12 meses**, concentrado en el lanzamiento. Si se implementa, en 12 meses FDK pasa de ser invisible a ser **la voz de referencia de su nicho**, con una lista propia, un libro lanzado y un motor de *advisory* demostrado con el primer retainer.
+
+</div>
+</div>
 === new
+key: res2
 label: APERTURA · RESUMEN EJECUTIVO
 title: Qué sucedería si FDK implementa esta estrategia
 subtitle: Resultados verificables en tres plazos. El plan arranca el 1 de diciembre de 2026 (M1) y cierra el ciclo en noviembre de 2027 (M12).
@@ -71,6 +90,97 @@ subtitle: Resultados verificables en tres plazos. El plan arranca el 1 de diciem
 </div>
 
 > **CON UN PRESUPUESTO LEAN DE ~6.500–13.500 € EN 12 MESES**, founder-led y orgánico primero, con la inversión concentrada en el lanzamiento editorial.
+=== new
+label: APERTURA · RESPUESTA AL FEEDBACK
+title: Cambios respecto a la primera entrega
+subtitle: Respuesta punto por punto a las observaciones del evaluador en la primera convocatoria.
+---
+| Observación del evaluador | Corrección realizada | Dónde |
+|---|---|---|
+| **"El resumen ejecutivo es muy breve."** | Resumen ejecutivo ampliado: proyecto, punto de partida, mercado, objetivos, estrategias, inversión y resultados, más una página de resultados esperados a 3, 6 y 12 meses | pp. {{res}}–{{res2}} |
+| **"Los buyer persona deberían estar mejor explicados y detallados."** | Ficha completa de los 5 buyer personas: perfil, contexto, objetivos, frustraciones, objeciones, canales, contenido, proceso de decisión, mensaje, CTA y etapa del funnel | pp. {{bp}}–{{bp3}} |
+| **"No cuentas prácticamente nada de los competidores… no analizas sus canales digitales."** | Introducción y método; 4 referentes + 2 competidores verticales analizados en oferta, web, newsletter, LinkedIn, X, YouTube, podcast, libros, rankings y tráfico; tabla comparativa y 5 huecos de mercado | pp. {{comp}}–{{dafo}} |
+| **"No analizas a nivel SEO su web, ni sus canales digitales (aunque sean los de la marca personal)."** | Auditoría SEO de fdkempowernet.com (indexación, sitemap, rendimiento, on-page, contenidos, keywords, autoridad) y análisis de los canales de la marca personal del fundador | pp. {{seo}}–{{canales}} |
+| **"El plan de marketing digital tiene que seguir la estructura definida en los criterios."** | Parte estratégica reordenada: objetivos SMART desglosados → mapa objetivo/estrategia → estrategias y descartes → plan de acción a 3 meses → KPIs | pp. {{smart}}–{{kpi}} |
+
+> **SE CONSERVA LO QUE EL EVALUADOR VALORÓ:** introducción al negocio, misión, visión y valores, propuesta de valor y DAFO.
+=== orig 3
+=== new
+label: APERTURA · PUNTO DE PARTIDA
+title: Auditoría digital del punto de partida
+subtitle: Qué existe hoy en cada canal, en qué estado está y qué decisión se toma. Comprobado a 31/10/2026.
+source: Fuentes: PageSpeed Insights (14/07/2026), Search Console y GA4 del proyecto, registro del proyecto (15/07/2026) y búsqueda pública en Google (31/10/2026).
+---
+| Activo | Estado verificado | Dato | Decisión |
+|---|---|---|---|
+| **Web fdkempowernet.com** | En producción, dominio propio, ES/EN/IT | PageSpeed: **91 móvil · 95 escritorio** · 96 accesibilidad · 100 buenas prácticas · 100 SEO | Se conserva y se optimiza la conversión |
+| **Indexación** | **El dominio no aparece en la búsqueda pública** de la marca (31/10/2026) | Sitemap enviado pero pendiente de resolver | **Prioridad 1 del plan**: sin indexación no hay SEO |
+| **Blog The Velocity Edge** | Activo | 18+ entradas | Se convierte en el eje de contenidos y newsletter |
+| **Medición** | GA4 y Search Console instalados | Eventos personalizados por código, sin GTM | Se completan los 8 eventos de conversión |
+| **Email (Kit)** | Remitente y dominio confirmados; doble opt-in probado | Secuencia de bienvenida: 1 de 5 emails | Se completa y se valida SPF/DKIM/DMARC |
+| **LinkedIn del fundador** | Activo, sin cadencia sistemática | Seguidores: línea base a capturar en la semana 1 | Canal principal: 3–5 publicaciones/semana |
+| **The European Pivot** (Harriman House) | En publicación 2026 | **Sin ficha indexada** (ISBN, tiendas) a 31/10/2026 | Ficha de autor y del libro antes del lanzamiento |
+| **Otras redes** (Instagram, YouTube, podcast) | No existen | — | Descartadas en la fase 1 (ver estrategias descartadas) |
+
+> **LECTURA.** Los activos son excepcionales y la tracción es nula: la marca **no es encontrable** todavía. La primera estrategia no es generar demanda, sino hacer que FDK exista en Google, en LinkedIn y en las tiendas de libros.
+=== new
+key: seo
+label: APERTURA · ANÁLISIS SEO DE LA WEB
+title: Análisis SEO de fdkempowernet.com
+subtitle: La web es técnicamente sólida, pero Google todavía no la ha indexado. Sin indexación, ninguna otra acción SEO produce tráfico.
+source: Fuentes: PageSpeed Insights y Lighthouse (14/07/2026), Google Search Console del proyecto (14/07/2026), registro del proyecto (15/07/2026) y búsqueda pública de la marca en Google (31/10/2026).
+---
+<div class="cols" markdown="1">
+<div markdown="1">
+
+| Área SEO | Diagnóstico | Valoración |
+|---|---|---|
+| **Indexación** | Sitemap enviado a Search Console el 14/07/2026 con estado **"no se puede obtener"** (0 páginas detectadas). La home figura como **rastreada pero no indexada**. La marca no aparece en Google (31/10/2026) | 🔴 Crítico |
+| **Rendimiento** | PageSpeed: **91 móvil · 95 escritorio**. Se optimizó el mismo día de 61 a 82 y a 91. LCP 2,8 s (umbral recomendado: 2,5 s) | 🟢 Bueno |
+| **SEO técnico (Lighthouse)** | SEO **100** · Accesibilidad 96 · Buenas prácticas 100 · Multi-idioma ES/EN/IT automático | 🟢 Bueno |
+| **Arquitectura** | 5 secciones: Home, Intelligence Briefing, Article, About (Founder), Contact | 🟡 Faltan las 4 páginas hub de concepto y la landing del libro |
+| **Contenido** | Blog The Velocity Edge con 18+ entradas | 🟡 Sin tráfico mientras no haya indexación |
+| **Keywords** | Términos de valor identificados: *ai strategy*, *ai infrastructure*, *ai in energy*, *artificial intelligence investment*, más la marca y los conceptos propios | 🟡 Pendientes de posicionar |
+| **Autoridad (off-page)** | Marca nueva, sin enlaces editoriales conocidos ni ficha del libro indexada | 🔴 Por construir |
+| **Medición** | GA4 instalado en el código, sin Tag Manager; eventos de conversión por configurar | 🟡 Base operativa |
+
+</div>
+<div markdown="1">
+
+#### Qué significa
+
+El problema no es la calidad de la web, sino que **Google no la ve**. Mientras el sitemap no sea válido, las 18 entradas del blog no generan ni una visita orgánica. Por eso la indexación es el **OBJ 1** del plan.
+
+#### Acciones SEO derivadas (plan de acción)
+
+1. **A1** · Corregir el sitemap.xml y solicitar la indexación de las páginas clave.
+2. **A3** · Fichas del libro y del autor; schema Person, Book y Article.
+3. **A9** · 4 páginas hub de concepto: Velocity, Bifurcation, Repricing, Civic Platform.
+4. Mejorar el LCP por debajo de 2,5 s.
+5. Link building de autoridad: prensa, editorial, think tanks y podcasts como invitado.
+
+> **APRENDIZAJE CLAVE.** *Publicar no es indexar.* Una web con SEO técnico 100 puede seguir siendo invisible si el sitemap falla.
+
+</div>
+</div>
+=== new
+key: canales
+label: APERTURA · CANALES DE LA MARCA PERSONAL
+title: Canales digitales de la marca personal del fundador
+subtitle: La autoridad de FDK reside en Francesco de Leo Kaufmann, no en una marca corporativa. Este es el estado de cada canal en el que hoy se le puede encontrar.
+source: Fuentes: registro del proyecto (15/07/2026), plataforma Kit, piezas de LinkedIn producidas (ver memoria, anexo B) y búsqueda pública (31/10/2026).
+---
+| Canal | Estado actual | Fortaleza | Debilidad | Papel en la estrategia |
+|---|---|---|---|---|
+| **LinkedIn personal del fundador** | Activo, sin cadencia sistemática. Piezas visuales ya diseñadas con el sistema de FDK | Red directa de C-suite, inversores y policymakers; credenciales visibles | Publicación irregular; sin medición del engagement | **Canal principal (E4)**: 3–5 publicaciones/semana, una tesis por publicación |
+| **Web fdkempowernet.com** (página del fundador) | En producción; la página *About* funciona como home real | Mensaje correcto ("The strategic thesis your board doesn't have yet"), credenciales | No indexada; formulario de captación con copy de plantilla | **Hub de conversión (E1)** |
+| **The Velocity Edge** (blog + newsletter) | 18+ entradas; newsletter configurada en Kit con doble opt-in probado | Contenido propio y frecuente | 0 suscriptores; 1 de 5 emails de bienvenida; SPF/DKIM/DMARC sin validar | **Motor de lista (E3 · E5)** |
+| **Libros** (*The European Pivot*, Harriman House) | En publicación en 2026; portadas y web del libro diseñadas | Prueba de autoridad y catalizador de PR | Sin ficha indexada en tiendas ni en Google a 31/10/2026 | **Punta de lanza (E6)** |
+| **Email (Kit)** | Remitente y dominio confirmados | Canal propio, independiente de plataformas | Remitente de Gmail ante buzones corporativos | Nutrición y conversión a briefing |
+| **Instagram · YouTube · podcast · X** | No existen | — | — | **Descartados en fase 1**; YouTube y podcast se valoran en fase 2 |
+| **Prensa y eventos** | Credenciales institucionales (UCLA, FS Group, QBUZZ, World AI Innovation Forum) | Acceso a salas de alto nivel | Sin cobertura vinculada a FDK todavía | Lanzamiento del libro y roundtables |
+
+> **CONCLUSIÓN.** La marca personal tiene **autoridad offline real y presencia online casi nula**. Por eso el plan no empieza por generar demanda, sino por hacer visible esa autoridad: LinkedIn con cadencia, web indexada, lista propia y libro encontrable.
 === orig 4 | key=fund
 === orig 5
 === orig 6
@@ -79,6 +189,162 @@ subtitle: Resultados verificables en tres plazos. El plan arranca el 1 de diciem
 === orig 10 | key=aud
 === orig 11
 === orig 12
+=== new
+key: bp
+label: AUDIENCIA Y MERCADO — BUYER PERSONAS EN DETALLE · 1/3
+title: Buyer personas en detalle: los compradores primarios
+subtitle: Elena (CSO) y Marc (CEO) son quienes contratan el Executive Briefing y el retainer. Representan el motor de ingresos.
+---
+<div class="cols" markdown="1">
+<div class="card" markdown="1">
+
+### Elena · Chief Strategy Officer
+
+**Perfil.** 45–55 años. CSO de un operador europeo de infraestructura (energía o movilidad). Reporta al CEO y presenta al consejo.
+
+**Contexto.** El consejo le pide una posición sobre la IA y solo recibe narrativa de proveedores y consultoras.
+
+**Objetivo.** Llegar al consejo con **una tesis de IA propia y defendible**.
+
+**Frustraciones.** Informes genéricos; análisis *sell-side* que no se fían de su sector.
+
+**Objeciones.** "¿Por qué él y no mi consultora?" · "¿Es independiente pese a su cargo en FS?"
+
+**Dónde se informa.** LinkedIn, newsletters especializadas, eventos sectoriales, prensa económica.
+
+**Contenido que valora.** Tesis con datos del sector, el concepto del *repricing* y lecturas de 5 minutos.
+
+**Cómo decide.** Valida la credibilidad del autor, lee varias piezas y pide una conversación privada.
+
+**Mensaje.** "Llega a tu consejo con una tesis de IA propia, no con narrativa de proveedor."
+
+**CTA y etapa.** Executive Briefing · consideración → conversión.
+
+</div>
+<div class="card" markdown="1">
+
+### Marc · CEO de telecom o energía
+
+**Perfil.** 50–60 años. CEO de una compañía de telecom o energía con presencia europea.
+
+**Contexto.** Tiene que proteger la valoración de su empresa frente a la IA y a nuevos competidores.
+
+**Objetivo.** Una **posición competitiva clara** ante la IA y argumentos para inversores.
+
+**Frustraciones.** Falta de tiempo; el *thought leadership* vacío.
+
+**Objeciones.** "¿Esto es sustancia o *thought leadership*?"
+
+**Dónde se informa.** Recomendación de pares y consejeros, LinkedIn y libros de negocio.
+
+**Contenido que valora.** Una tesis construida desde la operación ("built from operations") y el libro como prueba.
+
+**Cómo decide.** Por referencia de un consejero o par; lee el libro o un capítulo antes de hablar.
+
+**Mensaje.** "Por qué la velocidad, no la escala, decide la próxima década."
+
+**CTA y etapa.** Briefing o el libro como entrada · interés → conversión.
+
+</div>
+</div>
+=== new
+key: bp2
+label: AUDIENCIA Y MERCADO — BUYER PERSONAS EN DETALLE · 2/3
+title: Buyer personas en detalle: inversora e introductor
+subtitle: Sofia (inversora) amplifica y valida la tesis del repricing. Andreas (consejero) no siempre compra, pero abre las puertas de mayor valor.
+---
+<div class="cols" markdown="1">
+<div class="card" markdown="1">
+
+### Sofia · Directora de inversiones
+
+**Perfil.** 40–55 años. Directora de inversiones en un fondo de infraestructura *long-duration*.
+
+**Contexto.** Busca anticipar qué operadores europeos se revalorizarán o depreciarán con la IA.
+
+**Objetivo.** Identificar el **repricing antes que el mercado**.
+
+**Frustraciones.** Ruido *sell-side*; análisis tecnológicos sin lectura de activos reales.
+
+**Objeciones.** "¿Qué aporta que no tenga mi equipo de research?"
+
+**Dónde se informa.** Newsletters, informes, LinkedIn y conferencias de inversión.
+
+**Contenido que valora.** The Velocity Edge y las notas de mercado sobre el repricing.
+
+**Cómo decide.** Se suscribe, lee durante semanas y recomienda a su comité.
+
+**Mensaje.** "Identifica el repricing de los operadores europeos antes de que el mercado lo valore."
+
+**CTA y etapa.** Suscripción a The Velocity Edge · consideración → fidelización.
+
+</div>
+<div class="card" markdown="1">
+
+### Andreas · Consejero independiente (introducer)
+
+**Perfil.** 55–65 años. Consejero independiente en varias compañías cotizadas.
+
+**Contexto.** Aprueba decisiones de IA que no siempre puede evaluar con criterio propio.
+
+**Objetivo.** **Un marco independiente** para gobernar esas decisiones.
+
+**Frustraciones.** Depender del relato del equipo directivo o del proveedor.
+
+**Objeciones.** "¿Es realmente independiente?"
+
+**Dónde se informa.** Su red personal, *roundtables* privados, prensa y libros.
+
+**Contenido que valora.** Marcos de decisión, el libro y conversaciones a puerta cerrada.
+
+**Cómo decide.** No compra directamente: **recomienda** a CEO y CSO de sus consejos.
+
+**Mensaje.** "Un marco para gobernar las decisiones de IA que hoy apruebas sin poder evaluar."
+
+**CTA y etapa.** Conversación privada o *roundtable* · prescripción.
+
+</div>
+</div>
+=== new
+key: bp3
+label: AUDIENCIA Y MERCADO — BUYER PERSONAS EN DETALLE · 3/3
+title: Buyer persona en detalle: el lector y el mapa de los cinco perfiles
+subtitle: Lorenzo llena el tope del embudo a través de los libros. La tabla resume qué necesita cada perfil y por qué canal llega.
+---
+<div class="cols" markdown="1">
+<div class="card" markdown="1">
+
+### Lorenzo · Lector de no ficción estratégica
+
+**Perfil.** 35–60 años. Directivo, consultor o académico interesado en IA, economía y Europa.
+
+**Objetivo.** Entender la transformación IA–economía–Europa **a nivel de sistema**.
+
+**Frustraciones.** Libros de IA superficiales o puramente tecnológicos.
+
+**Dónde se informa.** Amazon, Apple, Google y Kobo, LinkedIn y reseñas.
+
+**Cómo decide.** Descarga el capítulo gratuito, se suscribe y compra.
+
+**Mensaje.** "La velocidad, no la escala, decide la próxima década."
+
+**CTA y etapa.** Capítulo gratis → suscripción → compra de la trilogía · atracción.
+
+</div>
+<div markdown="1">
+
+| Perfil | Rol en el negocio | Canal de entrada | Contenido clave | CTA |
+|---|---|---|---|---|
+| **Elena** (CSO) | Compra | LinkedIn · web | Tesis del repricing | Executive Briefing |
+| **Marc** (CEO) | Compra | Referencia · libro | Built from operations | Briefing / libro |
+| **Sofia** (inversora) | Valida y amplifica | Newsletter | The Velocity Edge | Suscripción |
+| **Andreas** (consejero) | Prescribe | Red · roundtables | Marcos de decisión | Conversación privada |
+| **Lorenzo** (lector) | Tope del embudo | Tiendas · LinkedIn | Capítulo gratuito | Suscripción → compra |
+
+> **PRIORIDAD.** Elena y Marc reciben la máxima inversión de contenido porque cierran el ingreso. Andreas recibe atención 1:1. Sofia y Lorenzo se alimentan de contenido escalable (newsletter y libros).
+
+</div>
+</div>
 === new
 key: comp
 label: AUDIENCIA Y MERCADO — ANÁLISIS DE LA COMPETENCIA

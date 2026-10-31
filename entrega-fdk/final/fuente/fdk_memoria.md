@@ -191,7 +191,7 @@ title: 8. Herramientas utilizadas y previstas
 | **Kit (ConvertKit)** | Plataforma de email: remitente, dominio de envío, formulario y doble opt-in | Canal propio activo y flujo probado end-to-end |
 | **Microsoft Excel** | CRM operativo de workstreams | FDK_Workstream_CRM.xlsx (47 acciones, 11 workstreams) |
 
-> **Capturas.** Las evidencias visuales de las herramientas y de los activos producidos (libros, piezas de LinkedIn y emails de Kit) se recogen en el **Anexo B**. Las cifras de PageSpeed (14/07/2026) y el estado de Search Console se documentan en la estrategia (páginas 24 y 52).
+> **Capturas.** Las evidencias visuales de las herramientas y de los activos producidos (libros, piezas de LinkedIn y emails de Kit) se recogen en el **Anexo B**. Las cifras de PageSpeed (14/07/2026) y el estado de Search Console se documentan en la estrategia (páginas 9, 31 y 59).
 
 ### B · Herramientas previstas para la implementación
 
@@ -271,7 +271,7 @@ title: 10. Entregables producidos
 ---
 | Entregable | Descripción | Estado |
 |---|---|---|
-| **FDK_Estrategia_Marketing_Digital** (PDF) | Estrategia completa (versión 2.0): 55 páginas, con análisis de la competencia, objetivos SMART desglosados, plan de acción y registro de ejecución | Entregado |
+| **FDK_Estrategia_Marketing_Digital** (PDF) | Estrategia completa (versión 2.0): 62 páginas, con análisis de la competencia, objetivos SMART desglosados, plan de acción y registro de ejecución | Entregado |
 | **FDK_Memoria_Proyecto** (PDF) | Este documento | Entregado |
 | **FDK_Workstream_CRM.xlsx** | CRM operativo: 47 acciones en 11 workstreams, fechas automáticas, dashboard y presupuesto | Entregado |
 | **Web en producción** | Sitio propio en código, trilingüe, con blog y formulario de Executive Briefing (fdkempowernet.com) | En producción |
@@ -336,6 +336,10 @@ title: 11. Problemas encontrados y cómo se resolvieron (continuación)
 **11 · Volúmenes de palabras clave modelados.**
 *Problema:* el documento de Keyword Planner de la versión 1 completaba volúmenes y pujas con estimaciones modeladas, no con un export real de la herramienta. Presentarlos como datos habría vulnerado la prohibición de texto falso.
 *Solución:* el documento de palabras clave de esta memoria (Anexo C) conserva la investigación cualitativa (clusters, intención, decisión y negativas) y **excluye los volúmenes no verificados**, que se validarán con datos reales de la cuenta antes de activar cualquier campaña.
+
+**13 · Resumen ejecutivo, buyer personas y canales propios poco desarrollados.**
+*Problema:* el evaluador señaló que el resumen ejecutivo era muy breve, que los buyer personas debían estar mejor explicados y que no se analizaba a nivel SEO la web ni los canales digitales de la marca personal.
+*Solución:* resumen ejecutivo ampliado con resultados esperados; fichas detalladas de los 5 buyer personas (perfil, contexto, objetivos, frustraciones, objeciones, canales, contenido, decisión, mensaje y CTA); auditoría SEO de fdkempowernet.com y análisis canal por canal de la marca personal del fundador.
 
 **12 · La marca no aparece en la búsqueda pública.**
 *Problema:* a 31/10/2026, ni el dominio ni The European Pivot aparecen al buscar la marca.
@@ -446,7 +450,7 @@ title: 17. Anexos y evidencias
 ---
 | Anexo / evidencia | Estado | Dónde |
 |---|---|---|
-| Estrategia principal (PDF) | Entregado | Documento de estrategia, 55 páginas |
+| Estrategia principal (PDF) | Entregado | Documento de estrategia, 62 páginas |
 | Memoria del proyecto (PDF) | Este documento | — |
 | CRM operativo (XLSX) | Entregado | FDK_Workstream_CRM |
 | **Documento de palabras clave investigadas** | **Incluido** | **Anexo C** |
@@ -461,19 +465,19 @@ title: 18. Relación con los criterios de evaluación
 ---
 | Requisito | Dónde se encuentra |
 |---|---|
-| Análisis de situación actual | Estrategia, pp. 3–6 (incluida la auditoría digital) |
-| Misión, visión y valores | Estrategia, p. 8 |
-| DAFO | Estrategia, p. 21 |
-| Público objetivo / buyer personas | Estrategia, pp. 12–14 |
-| **Análisis de competencia (≥3)** | **Estrategia, pp. 15–20** |
-| **Objetivos SMART** | **Estrategia, pp. 29–31** (desglosados) |
-| **Selección de estrategias** y descartes | **Estrategia, pp. 32–39** |
-| **Plan de acción a tres meses** | **Estrategia, pp. 45–48** + CRM operativo |
-| Análisis y seguimiento · KPIs | Estrategia, pp. 49–50 |
-| Presupuesto | Estrategia, p. 51 |
-| Resumen ejecutivo | Estrategia, pp. 3 y 6 |
+| Análisis de situación actual | Estrategia, pp. 7–10 (auditoría digital, análisis SEO de la web y canales de la marca personal) |
+| Misión, visión y valores | Estrategia, p. 12 |
+| DAFO | Estrategia, p. 28 |
+| Público objetivo / buyer personas | Estrategia, pp. 16–21 (fichas detalladas de los 5 perfiles) |
+| **Análisis de competencia (≥3)** | **Estrategia, pp. 22–27** |
+| **Objetivos SMART** | **Estrategia, pp. 36–38** (desglosados) |
+| **Selección de estrategias** y descartes | **Estrategia, pp. 39–46** |
+| **Plan de acción a tres meses** | **Estrategia, pp. 52–55** + CRM operativo |
+| Análisis y seguimiento · KPIs | Estrategia, pp. 56–57 |
+| Presupuesto | Estrategia, p. 58 |
+| Resumen ejecutivo | Estrategia, pp. 3–5 (resumen ampliado y resultados esperados) |
 | Índice | Estrategia, p. 2 · Memoria, p. 2 |
-| Extensión mínima (25 pp.) | Estrategia: 55 páginas |
+| Extensión mínima (25 pp.) | Estrategia: 62 páginas |
 | **Por qué esta temática y qué se descartó** | **Memoria, Sección 2** |
 | **Problemas encontrados** | **Memoria, Sección 11** |
 | **Retos del proyecto** | **Memoria, Sección 12** |
